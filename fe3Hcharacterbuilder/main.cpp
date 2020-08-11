@@ -715,12 +715,12 @@ void DropDownClasses::DetermineSelectionStatus() {
 	if (CompareAllStrings()) {
 		int index = this->FindString(mostrecentselection);
 		this->SetSelection(index);
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_DDCL);  //this used to be ID_LBW, why?
+		wxCommandEvent eventtoself(wxEVT_COMBOBOX, ID_DDCL1);  //this used to be ID_LBW, why?
 		ProcessEvent(eventtoself);
 	}
 
 	else if (!CompareAllStrings()) {
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_DDCL);
+		wxCommandEvent eventtoself(wxEVT_COMBOBOX, ID_DDCL1);
 		eventtoself.SetString("DESELECTION");
 		ProcessEvent(eventtoself);
 	}
@@ -1750,10 +1750,6 @@ wxEND_EVENT_TABLE()
 wxBEGIN_EVENT_TABLE(ListBoxWeapons, wxListBox)
 EVT_LISTBOX(ID_LBW, ListBoxWeapons::OnNewSelection)
 wxEND_EVENT_TABLE()
-
-//wxBEGIN_EVENT_TABLE(ListBoxClasses, wxListBox)
-//	EVT_LISTBOX(ID_LBC, ListBoxClasses::OnNewSelection)
-//wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(ListBoxEquipment, wxListBox)
 EVT_LISTBOX(ID_LBE, ListBoxEquipment::OnNewSelection)

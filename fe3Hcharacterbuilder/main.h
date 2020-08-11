@@ -12,7 +12,6 @@
 #define ID_GES			22
 #define ID_GTS			23
 #define ID_MT			24
-#define ID_DDCL			25
 #define ID_DDSWORD		50
 #define ID_DDLANCE		51
 #define ID_DDAXE		52
