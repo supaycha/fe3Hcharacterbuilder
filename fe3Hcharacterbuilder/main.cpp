@@ -135,7 +135,7 @@ wxDEFINE_EVENT(BOUNCE_LEVEL_SELECTION, wxSpinEvent);
 //{
 //	gtbcs = new GTBCharacterStats;
 //	CreateGrid(1, gtbcs->GetColsCount());
-//	SetRowLabelSize(0);
+//	LabelSize(0);
 //	initpopulate();
 //}
 //
@@ -168,7 +168,7 @@ wxDEFINE_EVENT(BOUNCE_LEVEL_SELECTION, wxSpinEvent);
 ////	}
 ////
 ////	Stats* ptrtostats = new Stats(tempvectforstats);
-////	wxCommandEvent event(BOUNCE_CHARACTER_STATS, ID_GS1);
+////	wxCommandEvent event(BOUNCE_CHARACTER_STATS, ID_GMT1);
 ////	event.SetInt(ID_GTS);
 ////	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 ////	event.SetClientObject(tempdata);
@@ -356,7 +356,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Bind(BOUNCE_EXCLUSIVITY, &MyFrame::BounceExclusivity, this, ID_MT);				//through MT
 	Bind(BOUNCE_CHARACTER_STATS, &MyFrame::BounceLVCSInfo, this, ID_MT);				//now from GridStats through MT
 	Bind(BOUNCE_CLASS_SELECTION, &MyFrame::BounceClassInfo, this, ID_MT);		//now from DDCL through MT
-	Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_MT);	//now from DDCL through MT
+	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_MT);	//now from DDCL through MT
 
 	Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_LBW, ID_LBE);
 	Bind(BOUNCE_WEAPON_STATS, &MyFrame::BounceLVWSInfo, this, ID_GWS);
@@ -482,34 +482,84 @@ void MyFrame::OnQuit(wxCommandEvent& event) {
 
 MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2) :
 	wxPanel(parent, id, wxPoint(x, y), wxSize(x2, y2))
-{
-	total = new wxBoxSizer(wxVERTICAL);
-	row1 = new wxBoxSizer(wxHORIZONTAL);
-	row2 = new wxBoxSizer(wxHORIZONTAL);
+{	
 	wxArrayString emptybuffer;
-	wxString test = "1";
 	ddc = new DropDownCharacters(characternames, characterdata, this, ID_DDCH, emptybuffer, wxCB_DROPDOWN);
-
-	sclVector.push_back(new SpinCtrlLevel(this, ID_SPIN1, test, 1));
-	ddclVector.push_back(new DropDownClasses(classmap, this, ID_DDCL1, emptybuffer, wxLB_SINGLE));
-	gsVector.push_back(new GridStats(this, ID_GS1));
-
-	row1->Add(ddc);
-	for (unsigned int i = 0; i < sclVector.size(); ++i) {
-		row2->Add(sclVector[i], wxSizerFlags(0).Bottom());
-		row2->Add(ddclVector[i], wxSizerFlags(0).Bottom());
-		row2->Add(gsVector[i]);
+	
+	wxString test = "1";
+	for (int i = 0; i < 2; ++i) {
+		sclVector.push_back(new SpinCtrlLevel(this, ID_SPIN1, test, 1));
 	}
-	total->Add(row1);
-	total->Add(row2);
+
+	for (int i = 0; i < 3; ++i) {
+		ddclVector.push_back(new DropDownClasses(classmap, this, ID_DDCL1 + i, emptybuffer, wxLB_SINGLE));
+	}
+
+	for (int i = 0; i < 8; ++i) {
+		if (i == 0) {
+			gmtVector.push_back(new GridMysteriousTeacher(this, ID_GMT1, 0));
+		}
+		else {
+			gmtVector.push_back(new GridMysteriousTeacher(this, ID_GMT1, 1));
+		}
+	}
+
+	total = new wxBoxSizer(wxVERTICAL);
+	for (int i = 0; i < 8; ++i) {
+		rows.push_back(new wxBoxSizer(wxHORIZONTAL));
+	}
+
+	int offset = 3;
+	for (unsigned int i = 0; i < rows.size(); ++i) {
+		
+
+		switch(i) {
+			case 0: 
+			case 2:
+			case 4:
+			case 6: {
+				rows[i]->Add(gmtVector[i], wxSizerFlags(0).Bottom());
+				break;
+			}
+
+			case 1: {
+				rows[i]->Add(ddc, wxSizerFlags(0).Bottom());
+				rows[i]->Add(gmtVector[i], wxSizerFlags(0).Bottom());
+				break;
+			}
+
+			case 3:
+			case 5: {
+				rows[i]->Add(sclVector[i - offset], wxSizerFlags(0).Bottom());
+				rows[i]->Add(ddclVector[i - offset], wxSizerFlags(0).Bottom());
+				rows[i]->Add(gmtVector[i], wxSizerFlags(0).Bottom());
+				++offset;
+				break;
+			}
+			case 7: {
+				rows[i]->Add(ddclVector[i - 5], wxSizerFlags(0).Bottom());
+				rows[i]->Add(gmtVector[i], wxSizerFlags(0).Bottom());
+				break;
+			}
+		}
+
+		
+		//row2->Add(sclVector[i], wxSizerFlags(0).Bottom());
+		//row2->Add(ddclVector[i], wxSizerFlags(0).Bottom());
+		//row2->Add(gsVector[i]);
+	}
+
+	for (int i = 0; i < 8; ++i) {
+		total->Add(rows[i], wxSizerFlags(0).Right());
+	}
 
 	SetSizerAndFit(total);
 
 	Bind(BOUNCE_CHARACTER_INFO, &MysteriousTeacher::BounceDDCInfo, this, ID_DDCH);					//through MT
-	Bind(FORWARD_CHARACTER_STATS, &MysteriousTeacher::ForwardLVCSInfo, this, ID_GS1);				//now from GridStats through MT
-	Bind(FORWARD_CLASS_SELECTION, &MysteriousTeacher::ForwardClassInfo, this, ID_DDCL);		//now from DDCL through MT
+	Bind(FORWARD_CHARACTER_STATS, &MysteriousTeacher::ForwardLVCSInfo, this, ID_GMT1);				//now from GridStats through MT
+	Bind(FORWARD_CLASS_SELECTION, &MysteriousTeacher::ForwardClassInfo, this, ID_DDCL1);		//now from DDCL through MT
 
-	Bind(BOUNCE_DESELECTION_STATUS, &MysteriousTeacher::BounceSelectionStatusInfo, this, ID_DDCL);	//now from DDCL through MT
+	Bind(BOUNCE_DESELECTION_STATUS, &MysteriousTeacher::BounceSelectionStatusInfo, this, ID_DDCL1);	//now from DDCL through MT
 
 	Bind(BOUNCE_EXCLUSIVITY, &MysteriousTeacher::BounceExclusivity, this, ID_DDCH);				//through MT
 	Bind(FORWARD_EXCLUSIVITY, &MysteriousTeacher::ForwardExclusivity, this, ID_DDCH);				//through MT
@@ -521,9 +571,9 @@ void MysteriousTeacher::BounceDDCInfo(wxCommandEvent& eventfromwho) {
 	int idofreceiver = eventfromwho.GetInt();
 	switch (idofreceiver)
 	{
-		case ID_GS1: {
+		case ID_GMT1: {
 			Character* temp = dynamic_cast<Character*>(eventfromwho.GetClientObject());
-			gsVector[0]->ReceiveDDCInfo(*temp);
+			gmtVector[0]->ReceiveDDCInfo(*temp);
 			break;
 		}
 	}
@@ -547,14 +597,14 @@ void MysteriousTeacher::BounceSelectionStatusInfo(wxCommandEvent& eventfromwho) 
 	int idofreceiver = eventfromwho.GetInt();
 	switch (idofreceiver)
 	{
-		case ID_GS1: {
+		case ID_GMT1: {
 			if (eventfromwho.GetString() == "SELECTION") {
 				Class* temp = dynamic_cast<Class*>(eventfromwho.GetClientObject());
-				gsVector[0]->ReceiveLBCInfo(*temp);
+				gmtVector[0]->ReceiveLBCInfo(*temp);
 			}
 			else if (eventfromwho.GetString() == "DESELECTION") {
 				Class temp{};
-				gsVector[0]->ReceiveLBCInfo(temp);
+				gmtVector[0]->ReceiveLBCInfo(temp);
 			}
 			break;
 		}
@@ -574,7 +624,7 @@ void MysteriousTeacher::ForwardExclusivity(wxCommandEvent& eventfromwho) {
 
 void MysteriousTeacher::BounceLevelSelection(wxSpinEvent& eventfromwho) {
 	int temp = eventfromwho.GetInt();
-	gsVector[0]->ReceiveLevel(temp);
+	gmtVector[0]->ReceiveLevel(temp);
 }
 
 DropDownCharacters::DropDownCharacters(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, wxWindow* panel,
@@ -593,7 +643,7 @@ void DropDownCharacters::OnNewSelection(wxCommandEvent& selevent) {
 	ProcessEvent(event);
 
 	wxCommandEvent event2(BOUNCE_CHARACTER_INFO, ID_DDCH);
-	event2.SetInt(ID_GS1);
+	event2.SetInt(ID_GMT1);
 	event2.SetClientObject(selevent.GetClientObject());  //this sets Character selection data
 	ProcessEvent(event2);
 }
@@ -622,25 +672,25 @@ void DropDownClasses::OnNewSelection(wxCommandEvent& sentevent) {	//triggers on 
 	wxString receivedstring = sentevent.GetString();
 
 	if (receivedstring == mostrecentselection) {
-		wxCommandEvent eventtolvws(BOUNCE_DESELECTION_STATUS, ID_DDCL);
+		wxCommandEvent eventtolvws(BOUNCE_DESELECTION_STATUS, ID_DDCL1);
 		eventtolvws.SetClientObject(GetClientObject(this->FindString(mostrecentselection)));
 		eventtolvws.SetString("SELECTION");
-		eventtolvws.SetInt(ID_GS1);
+		eventtolvws.SetInt(ID_GMT1);
 		ProcessEvent(eventtolvws);
 
-		wxCommandEvent eventtoam(FORWARD_CLASS_SELECTION, ID_DDCL);
+		wxCommandEvent eventtoam(FORWARD_CLASS_SELECTION, ID_DDCL1);
 		eventtoam.SetClientObject(GetClientObject(this->FindString(mostrecentselection)));
 		eventtoam.SetInt(ID_AM);
 		ProcessEvent(eventtoam);
 	}
 
 	else if (sentevent.GetString() == "DESELECTION") {
-		wxCommandEvent eventtolvws(BOUNCE_DESELECTION_STATUS, ID_DDCL);
+		wxCommandEvent eventtolvws(BOUNCE_DESELECTION_STATUS, ID_DDCL1);
 		eventtolvws.SetString("DESELECTION");
-		eventtolvws.SetInt(ID_GS1);
+		eventtolvws.SetInt(ID_GMT1);
 		ProcessEvent(eventtolvws);
 
-		wxCommandEvent eventtoam(FORWARD_CLASS_SELECTION, ID_DDCL);
+		wxCommandEvent eventtoam(FORWARD_CLASS_SELECTION, ID_DDCL1);
 		eventtoam.SetString("DESELECTION");
 		eventtoam.SetInt(ID_AM);
 		ProcessEvent(eventtoam);
@@ -726,47 +776,52 @@ void DropDownClasses::DetermineSelectionStatus() {
 	}
 }
 
-GridStats::GridStats(wxWindow* parent, wxWindowID id) :
+GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders) :
 	wxGrid(parent, id)
 {
-	gtbcs = new GTBCharacterClassStats;
+	gtbcs = new GTBMysteriousTeacher;
 
 	CreateGrid(1, 10);
 	for (unsigned int i = 0; i < 10; ++i) {
 		SetColLabelValue(i, gtbcs->GetHeader(i));
 		AutoSizeColLabelSize(i);
 	}
+	SetUseNativeColLabels(true);
+
+	if (hidecolheaders) {
+		SetColLabelSize(0);
+	}
 
 	SetRowLabelSize(0);
 	initpopulate();
 }
 
-void GridStats::initpopulate() {
+void GridMysteriousTeacher::initpopulate() {
 	for (int i = 0; i < gtbcs->GetColsCount(); ++i) {
 		SetCellValue(0, i, L"0");
 		int k = 0;
 	}
 }
 
-void GridStats::ReceiveDDCInfo(Character character) {
+void GridMysteriousTeacher::ReceiveDDCInfo(Character character) {
 	gtbcs->ReceiveDDCInfo(character);
 	gtbcs->recalculate();
 	repopulate();
 }
 
-void GridStats::ReceiveLBCInfo(Class cLass) {
+void GridMysteriousTeacher::ReceiveLBCInfo(Class cLass) {
 	gtbcs->ReceiveLBCInfo(cLass);
 	gtbcs->recalculate();
 	repopulate();
 }
 
-void GridStats::ReceiveLevel(int level) {
+void GridMysteriousTeacher::ReceiveLevel(int level) {
 	gtbcs->ReceiveLevel(level);
 	gtbcs->recalculate();
 	repopulate();
 }
 
-void GridStats::repopulate() {
+void GridMysteriousTeacher::repopulate() {
 	std::vector<Stat> tempvectforstats;
 	for (int i = 0; i < gtbcs->GetColsCount(); ++i) {
 		std::wstring stattoset = gtbcs->GetValue(0, i);
@@ -778,14 +833,14 @@ void GridStats::repopulate() {
 	}
 
 	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(BOUNCE_CHARACTER_STATS, ID_GS1);
+	wxCommandEvent event(BOUNCE_CHARACTER_STATS, ID_GMT1);
 	event.SetInt(ID_GTS);
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
 }
 
-std::wstring GridStats::CompareStats(std::wstring characterstat, std::wstring classstat, int index) {
+std::wstring GridMysteriousTeacher::CompareStats(std::wstring characterstat, std::wstring classstat, int index) {
 	int charstatINT = _wtoi(characterstat.c_str());
 	int classstatINT = _wtoi(classstat.c_str());
 
@@ -798,13 +853,13 @@ std::wstring GridStats::CompareStats(std::wstring characterstat, std::wstring cl
 	return characterstat;
 }
 
-void GTBCharacterClassStats::ReceiveDDCInfo(Character character) {
+void GTBMysteriousTeacher::ReceiveDDCInfo(Character character) {
 	currentcharacterdata = character;
 	currentcharacterstats = character.getStats();
 	currentcharactergrowths = character.getGrowths();
 }
 
-void GTBCharacterClassStats::ReceiveLBCInfo(Class cLass) {
+void GTBMysteriousTeacher::ReceiveLBCInfo(Class cLass) {
 	currentclassdata = cLass;
 	currentclassstats = cLass.getStats();
 	currentcharactergrowths = cLass.getGrowths();
@@ -812,11 +867,11 @@ void GTBCharacterClassStats::ReceiveLBCInfo(Class cLass) {
 	currentmountedvariances = cLass.getMountedStats();
 }
 
-void GTBCharacterClassStats::ReceiveLevel(int level) {
+void GTBMysteriousTeacher::ReceiveLevel(int level) {
 	currentSPINselection = level;
 }
 
-void GTBCharacterClassStats::recalculate() {
+void GTBMysteriousTeacher::recalculate() {
 	for (int i = 0; i < 10; ++i) {
 		int basecharstat = _wtoi(currentcharacterstats[i].getText().c_str());
 		float chargrowth = _wtof(currentcharactergrowths[i].getText().c_str());

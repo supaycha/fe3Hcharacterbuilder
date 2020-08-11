@@ -1,17 +1,20 @@
-#define ID_FRAME		9
-#define ID_DDCH			10
-#define ID_LBW			11
-#define ID_LBE			13
-#define ID_SLM			14
-#define ID_AM			15
-#define ID_LBAA			16
-#define ID_LBSA			17
-#define ID_BML			18
-#define ID_BMR			19
-#define	ID_GWS			21
-#define ID_GES			22
-#define ID_GTS			23
-#define ID_MT			24
+#define ID_FRAME		7
+#define ID_MT			8
+#define ID_DDCH			9
+#define ID_DDCL1		10
+#define ID_SPIN1		15
+#define ID_GMT1			20
+#define ID_LBW			26
+#define ID_LBE			27
+#define	ID_GWS			28
+#define ID_GES			29
+#define ID_GTS			30
+#define ID_SLM			31
+#define ID_AM			32
+#define ID_LBAA			33
+#define ID_LBSA			34
+#define ID_BML			35
+#define ID_BMR			36
 #define ID_DDSWORD		50
 #define ID_DDLANCE		51
 #define ID_DDAXE		52
@@ -34,26 +37,23 @@
 #define ID_STHEAVYARMOR 69
 #define ID_STRIDING		70
 #define ID_STFLYING		71
-#define ID_HP			80
-#define ID_MOV			81
-#define ID_STR			82
-#define ID_MAG			83
-#define ID_DEX			84
-#define ID_SPD			85
-#define ID_LCK			86
-#define ID_DEF			87
-#define ID_RES			88
-#define ID_CHA			89
-#define ID_MIGHT		90
-#define ID_HIT			91
-#define ID_CRIT			92
-#define ID_RANGE		93
-#define ID_WEIGHT		94
-#define ID_SL			95
-#define ID_USES			96
-#define ID_SPIN1		100
-#define ID_DDCL1		110
-#define ID_GS1			120
+//#define ID_HP			80
+//#define ID_MOV			81
+//#define ID_STR			82
+//#define ID_MAG			83
+//#define ID_DEX			84
+//#define ID_SPD			85
+//#define ID_LCK			86
+//#define ID_DEF			87
+//#define ID_RES			88
+//#define ID_CHA			89
+//#define ID_MIGHT		90
+//#define ID_HIT			91
+//#define ID_CRIT			92
+//#define ID_RANGE		93
+//#define ID_WEIGHT		94
+//#define ID_SL			95
+//#define ID_USES			96
 
 const unsigned int CHARACTER_DATA_SIZE = 41;
 const unsigned int WEAPON_DATA_SIZE = 133;
@@ -141,10 +141,14 @@ class MysteriousTeacher;
 class DropDownCharacters;
 class SpinCtrlLevel;
 class DropDownClasses;
-class GridStats;
+class GridMysteriousTeacher;
+
 class ListBoxWeapons;
-class ListBoxClasses;
 class ListBoxEquipment;
+class GridWeaponStats;
+class GridEquipmentStats;
+class GridTotalStats;
+
 class SkillLevelManager;
 class DropDownSkillLevel;
 class StaticTextSkillLevel;
@@ -153,10 +157,6 @@ class ListBoxAA;
 class ListBoxSA;
 class ButtonMoveLeft;
 class ButtonMoveRight;
-class GridCharacterStats;
-class GridWeaponStats;
-class GridEquipmentStats;
-class GridTotalStats;
 
 class MyApp : public wxApp {
 public:
@@ -167,11 +167,9 @@ class MyFrame : public wxFrame {
 private:
 	MysteriousTeacher* mt;
 	ListBoxWeapons* lbw;
-	ListBoxClasses* lbc;
 	ListBoxEquipment* lbe;
 	SkillLevelManager* slm;
 	AbilityManager* am;
-	GridCharacterStats* gcs;
 	GridWeaponStats* gws;
 	GridEquipmentStats* ges;
 	GridTotalStats* gts;
@@ -192,19 +190,19 @@ public:
 	void OnQuit(wxCommandEvent& event);
 };
 
+
+//////////////////////////////////////////////
+
 class MysteriousTeacher : public wxPanel {
 private: //each row is index i of every vector
 	DropDownCharacters* ddc;
-
+	wxBoxSizer* total;
+	std::wstring currentDDCselection;
 	std::vector<SpinCtrlLevel*> sclVector;
 	std::vector<DropDownClasses*> ddclVector;
-	std::vector<GridStats*> gsVector;
-	wxBoxSizer* total;
-	wxBoxSizer* row1;
-	wxBoxSizer* row2;
+	std::vector<GridMysteriousTeacher*> gmtVector;
+	std::vector<wxBoxSizer*> rows;
 
-	std::wstring currentDDCselection;
-	;
 	//sd;//another stype of gtb that represents subsequent rows, these will hold total growth rates and results, and expose calculations upon a click
 public:
 	MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2);
@@ -260,7 +258,7 @@ public:
 	void DetermineSelectionStatus();
 };
 
-class GTBCharacterClassStats : public wxGridTableBase {
+class GTBMysteriousTeacher : public wxGridTableBase {
 private:
 	std::vector<wxString> headers{ "HP", "MOV", "STR", "MAG", "DEX", "SPD", "LCK", "DEF", "RES", "CHA" };
 	Character currentcharacterdata;
@@ -278,8 +276,8 @@ private:
 
 	Stats totals;
 public:
-	GTBCharacterClassStats() {}
-	~GTBCharacterClassStats() {}
+	GTBMysteriousTeacher() {}
+	~GTBMysteriousTeacher() {}
 	int GetNumberRows() override { return 1; }
 	int GetNumberCols() override { return headers.size(); }
 	wxString GetValue(int row, int col) override { return totals[col].getText(); }
@@ -297,13 +295,13 @@ public:
 	void recalculate();
 };
 
-class GridStats : public wxGrid {
+class GridMysteriousTeacher : public wxGrid {
 private:
 	std::vector<wxString> headers{ "HP", "MOV", "STR", "MAG", "DEX", "SPD", "LCK", "DEF", "RES", "CHA" };
-	GTBCharacterClassStats* gtbcs;
+	GTBMysteriousTeacher* gtbcs;
 public:
-	GridStats(wxWindow* parent, wxWindowID id);
-	~GridStats() {}
+	GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders);
+	~GridMysteriousTeacher() {}
 
 	void initpopulate();
 	void repopulate();
@@ -314,6 +312,9 @@ public:
 
 	void ReceiveLevel(int level);
 };
+
+////////////////////////////////////////
+
 
 class ListBoxWeapons : public wxListBox {
 private:
@@ -459,6 +460,9 @@ public:
 	void repopulate();
 };
 
+//////////////////////////////////
+
+
 class SkillLevelManager : public wxPanel {
 private:
 	std::map<StaticTextSkillLevel*, DropDownSkillLevel*>* manager;
@@ -487,6 +491,9 @@ public:
 
 	void initpopulate();
 };
+
+/// //////////////////////////////////////
+
 
 class AbilityManager : public wxPanel {
 private:
