@@ -2,19 +2,30 @@
 #define ID_MT			8
 #define ID_DDCH			9
 #define ID_DDCL1		10
+#define ID_DDCL2		11
+#define ID_DDCL3		12
 #define ID_SPIN1		15
+#define ID_SPIN2		16
 #define ID_GMT1			20
-#define ID_LBW			26
-#define ID_LBE			27
-#define	ID_GWS			28
-#define ID_GES			29
-#define ID_GTS			30
-#define ID_SLM			31
-#define ID_AM			32
-#define ID_LBAA			33
-#define ID_LBSA			34
-#define ID_BML			35
-#define ID_BMR			36
+#define ID_GMT2			21
+#define ID_GMT3			22
+#define ID_GMT4			23
+#define ID_GMT5			24
+#define ID_GMT6			25
+#define ID_GMT7			26
+#define ID_GMT8			27
+
+#define ID_LBW			30
+#define ID_LBE			31
+#define	ID_GWS			32
+#define ID_GES			33
+#define ID_GTS			34
+#define ID_SLM			35
+#define ID_AM			36
+#define ID_LBAA			37
+#define ID_LBSA			38
+#define ID_BML			39
+#define ID_BMR			40
 #define ID_DDSWORD		50
 #define ID_DDLANCE		51
 #define ID_DDAXE		52
@@ -178,10 +189,11 @@ private:
 public:
 	MyFrame(wxWindowID id, const wxString& title);
 	~MyFrame() {}
-	void BounceExclusivity(wxCommandEvent& eventfromwho);
+	void ReceiveRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT);	
+	void ReceiveRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT);
+
 	void BounceLVCSInfo(wxCommandEvent& eventfromwho);
 	void BounceClassInfo(wxCommandEvent& eventfromwho);
-	void BounceSelectionStatusInfo(wxCommandEvent& eventfromwho);
 
 	void BounceLVWSInfo(wxCommandEvent& eventfromwho);
 	void BounceLVESInfo(wxCommandEvent& eventfromwho);
@@ -190,34 +202,31 @@ public:
 	void OnQuit(wxCommandEvent& event);
 };
 
-
 //////////////////////////////////////////////
 
+
 class MysteriousTeacher : public wxPanel {
-private: //each row is index i of every vector
+private:	
+	GTBMysteriousTeacher* gtbmt;
 	DropDownCharacters* ddc;
 	wxBoxSizer* total;
+
 	std::wstring currentDDCselection;
 	std::vector<SpinCtrlLevel*> sclVector;
 	std::vector<DropDownClasses*> ddclVector;
 	std::vector<GridMysteriousTeacher*> gmtVector;
 	std::vector<wxBoxSizer*> rows;
-
-	//sd;//another stype of gtb that represents subsequent rows, these will hold total growth rates and results, and expose calculations upon a click
 public:
 	MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2);
 	~MysteriousTeacher() {}
 
-	void BounceDDCInfo(wxCommandEvent& eventfromwho);
+	void BounceDDCHSelection(wxCommandEvent& transmission);
+	void BounceSCLSelection(wxSpinEvent& transmission);
+	void BounceDDCLSelection(wxCommandEvent& transmission);
+
 	void ForwardLVCSInfo(wxCommandEvent& eventfromwho);
-	void ForwardClassInfo(wxCommandEvent& eventfromwho);
 
 	void BounceSelectionStatusInfo(wxCommandEvent& eventfromwho);
-
-	void BounceExclusivity(wxCommandEvent& eventfromwho);
-	void ForwardExclusivity(wxCommandEvent& eventfromwho);
-
-	void BounceLevelSelection(wxSpinEvent& eventfromwho);
 };
 
 class DropDownCharacters : public wxComboBox {
@@ -227,12 +236,11 @@ public:
 	DropDownCharacters(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, wxWindow* panel, wxWindowID id, const wxArrayString& choices, long style);
 	~DropDownCharacters() {}
 
-	void OnNewSelection(wxCommandEvent& event);
+	void OnNewSelection(wxCommandEvent& selection);
 };
 
 class SpinCtrlLevel : public wxSpinCtrl {
 private:
-	wxDECLARE_EVENT_TABLE();
 public:
 	SpinCtrlLevel(wxWindow* parent, wxWindowID id, const wxString& value, int min);
 	~SpinCtrlLevel() {}
@@ -250,7 +258,7 @@ public:
 	DropDownClasses(std::map<wxString, wxClientData*> classmap, wxWindow* panel, wxWindowID id, const wxArrayString& choices, long style);
 	~DropDownClasses() {}
 
-	void OnNewSelection(wxCommandEvent& sentevent);
+	void OnNewSelection(wxCommandEvent& selection);
 	void ReceiveExclusivity(wxString charactername);
 
 	void repopulate();
@@ -261,23 +269,39 @@ public:
 class GTBMysteriousTeacher : public wxGridTableBase {
 private:
 	std::vector<wxString> headers{ "HP", "MOV", "STR", "MAG", "DEX", "SPD", "LCK", "DEF", "RES", "CHA" };
-	Character currentcharacterdata;
-	Class currentclassdata;
 
-	Stats currentcharacterstats;
-	Growths currentcharactergrowths;
+	Stats currentDDCHstats;
+	Growths currentDDCHgrowths;
 
-	Stats currentclassstats;
-	Growths currentclassgrowths;
-	Stats currentclassboosts;
-	Stats currentmountedvariances;
+	Growths currentDDCL1growths;
+	int currentSCL1selection;
 
-	int currentSPINselection;
+	Growths currentDDCL2growths;
+	int currentSCL2selection;
+
+	Stats currentDDCL3booststostats;
+	Stats currentDDCL3minstats;
+	Stats currentDDCL3mountvars;
 
 	Stats totals;
 public:
-	GTBMysteriousTeacher() {}
+	GTBMysteriousTeacher() : 
+		currentDDCHstats{10, L"0"},
+		currentDDCHgrowths{ 10, L"0.0" },
+
+		currentDDCL1growths{ 10, L"0.0" },		
+		currentSCL1selection{ 1 },
+
+		currentDDCL2growths{ 10, L"0.0" },
+		currentSCL2selection{ 1 },
+
+		currentDDCL3booststostats{ 10, L"0" },
+		currentDDCL3minstats{ 10, L"0" },
+		currentDDCL3mountvars{ 10, L"0" },
+
+		totals{ 10, L"0" } {}
 	~GTBMysteriousTeacher() {}
+
 	int GetNumberRows() override { return 1; }
 	int GetNumberCols() override { return headers.size(); }
 	wxString GetValue(int row, int col) override { return totals[col].getText(); }
@@ -287,10 +311,9 @@ public:
 
 	wxString GetHeader(int index) { return headers[index]; }
 
-	void ReceiveDDCInfo(Character character);
-	void ReceiveLBCInfo(Class cLass);
-
-	void ReceiveLevel(int level);
+	void UpdateDDCHSelection(Character character);
+	void UpdateSCLSelection(int level, int ID);
+	void UpdateDDCLSelection(Class cLass, int ID);
 
 	void recalculate();
 };
@@ -298,7 +321,6 @@ public:
 class GridMysteriousTeacher : public wxGrid {
 private:
 	std::vector<wxString> headers{ "HP", "MOV", "STR", "MAG", "DEX", "SPD", "LCK", "DEF", "RES", "CHA" };
-	GTBMysteriousTeacher* gtbcs;
 public:
 	GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders);
 	~GridMysteriousTeacher() {}
@@ -306,11 +328,6 @@ public:
 	void initpopulate();
 	void repopulate();
 	std::wstring CompareStats(std::wstring characterstat, std::wstring classstat, int index);
-
-	void ReceiveDDCInfo(Character character);
-	void ReceiveLBCInfo(Class cLass);
-
-	void ReceiveLevel(int level);
 };
 
 ////////////////////////////////////////
@@ -516,7 +533,7 @@ public:
 
 	void ReceiveExclusivity(wxString charactername);
 	void ReceiveSLInfo(SLPACKAGE* slpackage);
-	void ReceiveClassInfo(wxString classname);
+	void ReceiveClassInnate(wxString classname);
 	void FilterAbilities();
 
 	void BounceSelectionstoRight(wxCommandEvent& eventfromOnClick);

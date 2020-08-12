@@ -1,7 +1,6 @@
 #include "main.h"
 #include <vld.h>
 
-wxDEFINE_EVENT(BOUNCE_EXCLUSIVITY, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_CHARACTER_STATS, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_CLASS_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_DESELECTION_STATUS, wxCommandEvent);
@@ -9,14 +8,18 @@ wxDEFINE_EVENT(BOUNCE_WEAPON_STATS, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_EQUIPMENT_STATS, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_SL_SELECTION, wxCommandEvent);
 
+wxDEFINE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
+wxDEFINE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
+
+wxDEFINE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
+
 wxDEFINE_EVENT(BOUNCE_CHARACTER_INFO, wxCommandEvent);
-wxDEFINE_EVENT(FORWARD_EXCLUSIVITY, wxCommandEvent);
 wxDEFINE_EVENT(FORWARD_CHARACTER_STATS, wxCommandEvent);
-wxDEFINE_EVENT(FORWARD_CLASS_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(FORWARD_DESELECTION_STATUS, wxCommandEvent);
 
 wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
-wxDEFINE_EVENT(BOUNCE_LEVEL_SELECTION, wxSpinEvent);
 
 //ListBoxClasses::ListBoxClasses(std::map<wxString, wxClientData*> uclassmap, wxWindow* panel,
 //	wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style) :
@@ -353,54 +356,31 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	ges = new GridEquipmentStats(this, ID_GES, wxPoint(0, 700), wxSize(750, 100));
 	gts = new GridTotalStats(this, ID_GTS, wxPoint(800, 650), wxSize(750, 100));
 
-	Bind(BOUNCE_EXCLUSIVITY, &MyFrame::BounceExclusivity, this, ID_MT);				//through MT
-	Bind(BOUNCE_CHARACTER_STATS, &MyFrame::BounceLVCSInfo, this, ID_MT);				//now from GridStats through MT
-	Bind(BOUNCE_CLASS_SELECTION, &MyFrame::BounceClassInfo, this, ID_MT);		//now from DDCL through MT
+	Bind(REPEAT_DDCH_SELECTION, &MyFrame::ReceiveRepeatedDDCHSelection_exclusivitycheck, this, ID_MT);				//through MT
+	Bind(REPEAT_DDCL_SELECTION, &MyFrame::ReceiveRepeatedDDCLSelection_classinnatecheck, this, ID_MT);		//now from DDCL through MT
+
+	//Bind(BOUNCE_CHARACTER_STATS, &MyFrame::BounceLVCSInfo, this, ID_MT);				//now from GridStats through MT
 	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_MT);	//now from DDCL through MT
 
-	Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_LBW, ID_LBE);
-	Bind(BOUNCE_WEAPON_STATS, &MyFrame::BounceLVWSInfo, this, ID_GWS);
-	Bind(BOUNCE_EQUIPMENT_STATS, &MyFrame::BounceLVESInfo, this, ID_GES);
-	Bind(BOUNCE_SL_SELECTION, &MyFrame::BounceSLInfo, this, ID_DDSWORD, ID_DDFLYING);
+	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_LBW, ID_LBE);
+	//Bind(BOUNCE_WEAPON_STATS, &MyFrame::BounceLVWSInfo, this, ID_GWS);
+	//Bind(BOUNCE_EQUIPMENT_STATS, &MyFrame::BounceLVESInfo, this, ID_GES);
+	//Bind(BOUNCE_SL_SELECTION, &MyFrame::BounceSLInfo, this, ID_DDSWORD, ID_DDFLYING);
 }
 
-void MyFrame::BounceExclusivity(wxCommandEvent& eventfromwho) {
-	wxString characternameforcheck = eventfromwho.GetString();
-	lbw->ReceiveExclusivity(characternameforcheck);
-	lbe->ReceiveExclusivity(characternameforcheck);
-	am->ReceiveExclusivity(characternameforcheck);
+void MyFrame::ReceiveRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
+	Character* tempcharacter = dynamic_cast<Character*>(repititionfromMT.GetClientObject());
+	wxString exclusivitycheck = tempcharacter->getName();
+	lbw->ReceiveExclusivity(exclusivitycheck);
+	lbe->ReceiveExclusivity(exclusivitycheck);
+	am->ReceiveExclusivity(exclusivitycheck);
 }
 
-void MyFrame::BounceLVCSInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
-	switch (idofreceiver)
-	{
-		case ID_GTS: {
-			Stats* temp = dynamic_cast<Stats*>(eventfromwho.GetClientObject());
-			gts->ReceiveLVCSInfo(*temp);
-			break;
-		}
-	}
-}
-
-void MyFrame::BounceClassInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
-	switch (idofreceiver)
-	{
-		case ID_AM: {
-			if (eventfromwho.GetString() != "DESELECTION") {
-				Class* temp = dynamic_cast<Class*>(eventfromwho.GetClientObject());
-				wxString classname = temp->getName();
-				am->ReceiveClassInfo(classname);
-			}
-			break;
-		}
-	}
-}
-
-void MyFrame::BounceSelectionStatusInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
-	switch (idofreceiver)
+void MyFrame::ReceiveRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {
+	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
+	wxString classinnatecheck = tempclass->getName();
+	am->ReceiveClassInnate(classinnatecheck);
+	/*switch (idofreceiver)
 	{
 		case ID_GWS: {
 			if (eventfromwho.GetString() == "SELECTION") {
@@ -430,8 +410,36 @@ void MyFrame::BounceSelectionStatusInfo(wxCommandEvent& eventfromwho) {
 			}
 			break;
 		}
+	}*/
+}
+
+void MyFrame::BounceLVCSInfo(wxCommandEvent& eventfromwho) {
+	int idofreceiver = eventfromwho.GetInt();
+	switch (idofreceiver)
+	{
+		case ID_GTS: {
+			Stats* temp = dynamic_cast<Stats*>(eventfromwho.GetClientObject());
+			gts->ReceiveLVCSInfo(*temp);
+			break;
+		}
 	}
 }
+
+void MyFrame::BounceClassInfo(wxCommandEvent& eventfromwho) {
+	int idofreceiver = eventfromwho.GetInt();
+	switch (idofreceiver)
+	{
+		case ID_AM: {
+			if (eventfromwho.GetString() != "DESELECTION") {
+				Class* temp = dynamic_cast<Class*>(eventfromwho.GetClientObject());
+				wxString classname = temp->getName();
+				am->ReceiveClassInfo(classname);
+			}
+			break;
+		}
+	}
+}
+
 
 void MyFrame::BounceLVWSInfo(wxCommandEvent& eventfromwho) {
 	int idofreceiver = eventfromwho.GetInt();
@@ -482,13 +490,15 @@ void MyFrame::OnQuit(wxCommandEvent& event) {
 
 MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2) :
 	wxPanel(parent, id, wxPoint(x, y), wxSize(x2, y2))
-{	
+{
+	gtbmt = new GTBMysteriousTeacher;
+
 	wxArrayString emptybuffer;
 	ddc = new DropDownCharacters(characternames, characterdata, this, ID_DDCH, emptybuffer, wxCB_DROPDOWN);
 	
 	wxString test = "1";
 	for (int i = 0; i < 2; ++i) {
-		sclVector.push_back(new SpinCtrlLevel(this, ID_SPIN1, test, 1));
+		sclVector.push_back(new SpinCtrlLevel(this, ID_SPIN1 + i, test, 1));
 	}
 
 	for (int i = 0; i < 3; ++i) {
@@ -497,10 +507,10 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 
 	for (int i = 0; i < 8; ++i) {
 		if (i == 0) {
-			gmtVector.push_back(new GridMysteriousTeacher(this, ID_GMT1, 0));
+			gmtVector.push_back(new GridMysteriousTeacher(this, ID_GMT1 + i, 0));
 		}
 		else {
-			gmtVector.push_back(new GridMysteriousTeacher(this, ID_GMT1, 1));
+			gmtVector.push_back(new GridMysteriousTeacher(this, ID_GMT1 + i, 1));
 		}
 	}
 
@@ -542,11 +552,6 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 				break;
 			}
 		}
-
-		
-		//row2->Add(sclVector[i], wxSizerFlags(0).Bottom());
-		//row2->Add(ddclVector[i], wxSizerFlags(0).Bottom());
-		//row2->Add(gsVector[i]);
 	}
 
 	for (int i = 0; i < 8; ++i) {
@@ -555,25 +560,74 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 
 	SetSizerAndFit(total);
 
-	Bind(BOUNCE_CHARACTER_INFO, &MysteriousTeacher::BounceDDCInfo, this, ID_DDCH);					//through MT
-	Bind(FORWARD_CHARACTER_STATS, &MysteriousTeacher::ForwardLVCSInfo, this, ID_GMT1);				//now from GridStats through MT
-	Bind(FORWARD_CLASS_SELECTION, &MysteriousTeacher::ForwardClassInfo, this, ID_DDCL1);		//now from DDCL through MT
+	//sender:		DDCH (Character)
+	//recipient/s:	GTBMT (datasets), MyFrame
+	Bind(TRANSMIT_DDCH_SELECTION, &MysteriousTeacher::BounceDDCHSelection, this, ID_DDCH);
+	Bind(TRANSMIT_SCL_SELECTION, &MysteriousTeacher::BounceSCLSelection, this, ID_SPIN1, ID_SPIN2);				//through MT
+	Bind(TRANSMIT_DDCL_SELECTION, &MysteriousTeacher::BounceDDCLSelection, this, ID_DDCL1, ID_DDCL3);		//now from DDCL through MT
 
-	Bind(BOUNCE_DESELECTION_STATUS, &MysteriousTeacher::BounceSelectionStatusInfo, this, ID_DDCL1);	//now from DDCL through MT
 
-	Bind(BOUNCE_EXCLUSIVITY, &MysteriousTeacher::BounceExclusivity, this, ID_DDCH);				//through MT
-	Bind(FORWARD_EXCLUSIVITY, &MysteriousTeacher::ForwardExclusivity, this, ID_DDCH);				//through MT
-
-	Bind(BOUNCE_LEVEL_SELECTION, &MysteriousTeacher::BounceLevelSelection, this, ID_SPIN1);				//through MT
+	//Bind(BOUNCE_CHARACTER_INFO, &MysteriousTeacher::BounceDDCInfo, this, ID_DDCH);					//through MT
+	//Bind(FORWARD_CHARACTER_STATS, &MysteriousTeacher::ForwardLVCSInfo, this, ID_GMT1);				//now from GridStats through MT
+	//Bind(BOUNCE_DESELECTION_STATUS, &MysteriousTeacher::BounceSelectionStatusInfo, this, ID_DDCL1);	//now from DDCL through MT
 }
 
-void MysteriousTeacher::BounceDDCInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
-	switch (idofreceiver)
-	{
-		case ID_GMT1: {
-			Character* temp = dynamic_cast<Character*>(eventfromwho.GetClientObject());
-			gmtVector[0]->ReceiveDDCInfo(*temp);
+void MysteriousTeacher::BounceDDCHSelection(wxCommandEvent& transmission) {
+	wxCommandEvent repetition (REPEAT_DDCH_SELECTION, ID_MT);
+	repetition.SetClientObject(transmission.GetClientObject());
+	ProcessEvent(repetition);
+
+	Character* tempcharacter = dynamic_cast<Character*>(transmission.GetClientObject());
+	gtbmt->UpdateDDCHSelection(*tempcharacter);
+
+	wxString exclusivitycheck = tempcharacter->getName();
+	for (int i = 0; i < ddclVector.size(); ++i) {
+		ddclVector[i]->ReceiveExclusivity(exclusivitycheck);
+	}
+}
+
+void MysteriousTeacher::BounceSCLSelection(wxSpinEvent& transmission) {
+	switch (transmission.GetId()) {
+		case ID_SPIN1: {
+			int templevel = transmission.GetInt();
+			gtbmt->UpdateSCLSelection(templevel, ID_SPIN1);
+
+			break;
+		}
+
+		case ID_SPIN2: {
+			int templevel = transmission.GetInt();
+			gtbmt->UpdateSCLSelection(templevel, ID_SPIN2);
+
+			break;
+		}
+	}
+}
+
+void MysteriousTeacher::BounceDDCLSelection(wxCommandEvent& transmission) {
+	wxCommandEvent repetition(REPEAT_DDCL_SELECTION, ID_MT);
+	repetition.SetClientObject(transmission.GetClientObject());
+	ProcessEvent(repetition);
+
+	switch (transmission.GetId()) {
+		case ID_DDCL1: {
+			Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
+			gtbmt->UpdateDDCLSelection(*tempclass, ID_DDCL1);
+
+			break;
+		}
+
+		case ID_DDCL2: {
+			Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
+			gtbmt->UpdateDDCLSelection(*tempclass, ID_DDCL2);
+
+			break;
+		}
+
+		case ID_DDCL3: {
+			Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
+			gtbmt->UpdateDDCLSelection(*tempclass, ID_DDCL3);
+
 			break;
 		}
 	}
@@ -583,13 +637,6 @@ void MysteriousTeacher::ForwardLVCSInfo(wxCommandEvent& eventfromwho) {
 	wxCommandEvent forwardevent(BOUNCE_CHARACTER_STATS, ID_MT);
 	forwardevent.SetClientObject(eventfromwho.GetClientObject());
 	forwardevent.SetInt(ID_GTS);
-	ProcessEvent(forwardevent);
-}
-
-void MysteriousTeacher::ForwardClassInfo(wxCommandEvent& eventfromwho) {
-	wxCommandEvent forwardevent(BOUNCE_CLASS_SELECTION, ID_MT);
-	forwardevent.SetClientObject(eventfromwho.GetClientObject());
-	forwardevent.SetInt(ID_AM);
 	ProcessEvent(forwardevent);
 }
 
@@ -611,22 +658,6 @@ void MysteriousTeacher::BounceSelectionStatusInfo(wxCommandEvent& eventfromwho) 
 	}
 }
 
-void MysteriousTeacher::BounceExclusivity(wxCommandEvent& eventfromwho) {
-	wxString characternameforcheck = eventfromwho.GetString();
-	ddclVector[0]->ReceiveExclusivity(characternameforcheck);
-}
-
-void MysteriousTeacher::ForwardExclusivity(wxCommandEvent& eventfromwho) {
-	wxCommandEvent forwardevent(BOUNCE_EXCLUSIVITY, ID_MT);
-	forwardevent.SetString(eventfromwho.GetString());
-	ProcessEvent(forwardevent);
-}
-
-void MysteriousTeacher::BounceLevelSelection(wxSpinEvent& eventfromwho) {
-	int temp = eventfromwho.GetInt();
-	gmtVector[0]->ReceiveLevel(temp);
-}
-
 DropDownCharacters::DropDownCharacters(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, wxWindow* panel,
 	wxWindowID id, const wxArrayString& choices, long style) :
 	wxComboBox(panel, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, choices, style)
@@ -634,18 +665,19 @@ DropDownCharacters::DropDownCharacters(std::vector<wxString> characternames, std
 	this->Append(ToArrayString(characternames), ToArrayData(characterdata));
 }
 
-void DropDownCharacters::OnNewSelection(wxCommandEvent& selevent) {
-	Character* tempcharacter = dynamic_cast<Character*>(selevent.GetClientObject());
-	wxString characternamecheck = tempcharacter->getName();
+void DropDownCharacters::OnNewSelection(wxCommandEvent& selection) {
+	Character* tempcharacter = dynamic_cast<Character*>(selection.GetClientObject());
+	//wxString exclusivecheck = tempcharacter->getName();
 
-	wxCommandEvent event(BOUNCE_EXCLUSIVITY, ID_DDCH);
-	event.SetString(characternamecheck);
+	wxCommandEvent event(TRANSMIT_DDCH_SELECTION, ID_DDCH);
+	event.SetClientObject(selection.GetClientObject());
+	//event.SetString(exclusivecheck);
 	ProcessEvent(event);
 
-	wxCommandEvent event2(BOUNCE_CHARACTER_INFO, ID_DDCH);
-	event2.SetInt(ID_GMT1);
-	event2.SetClientObject(selevent.GetClientObject());  //this sets Character selection data
-	ProcessEvent(event2);
+	//wxCommandEvent event2(BOUNCE_CHARACTER_INFO, ID_DDCH);
+	//event2.SetInt(ID_GMT1);
+	//event2.SetClientObject(selevent.GetClientObject());  //this sets Character selection data
+	//ProcessEvent(event2);
 }
 
 SpinCtrlLevel::SpinCtrlLevel(wxWindow* parent, wxWindowID id, const wxString& value, int min) :
@@ -654,10 +686,10 @@ SpinCtrlLevel::SpinCtrlLevel(wxWindow* parent, wxWindowID id, const wxString& va
 	Bind(wxEVT_SPINCTRL, &SpinCtrlLevel::OnNewSelection, this, ID_SPIN1);
 }
 
-void SpinCtrlLevel::OnNewSelection(wxSpinEvent& uevent) {
-	wxSpinEvent event(BOUNCE_LEVEL_SELECTION, ID_SPIN1);
-	int value = uevent.GetValue();
-	event.SetInt(value);
+void SpinCtrlLevel::OnNewSelection(wxSpinEvent& selection) {
+	wxSpinEvent event(TRANSMIT_SCL_SELECTION, selection.GetId());
+	int selectedvalue = selection.GetValue();
+	event.SetInt(selectedvalue);
 	ProcessEvent(event);
 }
 
@@ -667,11 +699,15 @@ DropDownClasses::DropDownClasses(std::map<wxString, wxClientData*> uclassmap, wx
 	classmap = uclassmap;
 }
 
-void DropDownClasses::OnNewSelection(wxCommandEvent& sentevent) {	//triggers on mouse click from user and from DetermineSelectionStatus()
-	mostrecentselection = this->GetStringSelection();
-	wxString receivedstring = sentevent.GetString();
+void DropDownClasses::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
+	Class* cLass = dynamic_cast<Class*>(selection.GetClientObject());
+	//wxString receivedstring = sentevent.GetString();
 
-	if (receivedstring == mostrecentselection) {
+	wxCommandEvent event(TRANSMIT_DDCL_SELECTION, selection.GetId());
+	event.SetClientObject(selection.GetClientObject());
+	ProcessEvent(event);
+
+	/*if (receivedstring == mostrecentselection) {
 		wxCommandEvent eventtolvws(BOUNCE_DESELECTION_STATUS, ID_DDCL1);
 		eventtolvws.SetClientObject(GetClientObject(this->FindString(mostrecentselection)));
 		eventtolvws.SetString("SELECTION");
@@ -694,7 +730,7 @@ void DropDownClasses::OnNewSelection(wxCommandEvent& sentevent) {	//triggers on 
 		eventtoam.SetString("DESELECTION");
 		eventtoam.SetInt(ID_AM);
 		ProcessEvent(eventtoam);
-	}
+	}*/
 }
 
 void DropDownClasses::ReceiveExclusivity(wxString charactername) {
@@ -779,8 +815,6 @@ void DropDownClasses::DetermineSelectionStatus() {
 GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders) :
 	wxGrid(parent, id)
 {
-	gtbcs = new GTBMysteriousTeacher;
-
 	CreateGrid(1, 10);
 	for (unsigned int i = 0; i < 10; ++i) {
 		SetColLabelValue(i, gtbcs->GetHeader(i));
@@ -801,24 +835,6 @@ void GridMysteriousTeacher::initpopulate() {
 		SetCellValue(0, i, L"0");
 		int k = 0;
 	}
-}
-
-void GridMysteriousTeacher::ReceiveDDCInfo(Character character) {
-	gtbcs->ReceiveDDCInfo(character);
-	gtbcs->recalculate();
-	repopulate();
-}
-
-void GridMysteriousTeacher::ReceiveLBCInfo(Class cLass) {
-	gtbcs->ReceiveLBCInfo(cLass);
-	gtbcs->recalculate();
-	repopulate();
-}
-
-void GridMysteriousTeacher::ReceiveLevel(int level) {
-	gtbcs->ReceiveLevel(level);
-	gtbcs->recalculate();
-	repopulate();
 }
 
 void GridMysteriousTeacher::repopulate() {
@@ -853,25 +869,57 @@ std::wstring GridMysteriousTeacher::CompareStats(std::wstring characterstat, std
 	return characterstat;
 }
 
-void GTBMysteriousTeacher::ReceiveDDCInfo(Character character) {
-	currentcharacterdata = character;
-	currentcharacterstats = character.getStats();
-	currentcharactergrowths = character.getGrowths();
+void GTBMysteriousTeacher::UpdateDDCHSelection(Character character) {
+	currentDDCHstats = character.getStats();
+	currentDDCHgrowths = character.getGrowths();
+
+	recalculate();
 }
 
-void GTBMysteriousTeacher::ReceiveLBCInfo(Class cLass) {
-	currentclassdata = cLass;
-	currentclassstats = cLass.getStats();
-	currentcharactergrowths = cLass.getGrowths();
-	currentclassboosts = cLass.getBoostedStats();
-	currentmountedvariances = cLass.getMountedStats();
+void GTBMysteriousTeacher::UpdateSCLSelection(int level, int ID) {
+	switch (ID) {
+		case ID_SPIN1: {
+			currentSCL1selection = level;
+			break;
+		}
+
+		case ID_SPIN2: {
+			currentSCL2selection = level;
+			break;
+		}
+	}
+
+	recalculate();
 }
 
-void GTBMysteriousTeacher::ReceiveLevel(int level) {
-	currentSPINselection = level;
+void GTBMysteriousTeacher::UpdateDDCLSelection(Class cLass, int ID) {
+	switch (ID) {
+		case ID_DDCL1: {
+			currentDDCL1growths = cLass.getGrowths();
+			break;
+		}
+
+		case ID_DDCL2: {
+			currentDDCL2growths = cLass.getGrowths();
+			break;
+		}
+
+		case ID_DDCL3: {
+			currentDDCL3booststostats = cLass.getBoostedStats();
+			currentDDCL3minstats = cLass.getStats();
+			currentDDCL3mountvars = cLass.getMountedStats();
+			break;
+		}
+	}
+
+	recalculate();
 }
 
 void GTBMysteriousTeacher::recalculate() {
+
+
+
+
 	for (int i = 0; i < 10; ++i) {
 		int basecharstat = _wtoi(currentcharacterstats[i].getText().c_str());
 		float chargrowth = _wtof(currentcharactergrowths[i].getText().c_str());
@@ -1545,7 +1593,7 @@ void AbilityManager::ReceiveExclusivity(wxString charactername) {
 	FilterAbilities();
 }
 
-void AbilityManager::ReceiveClassInfo(wxString classname) {
+void AbilityManager::ReceiveClassInnate(wxString classname) {
 	currentLBCselection = classname;
 	FilterAbilities();
 }
@@ -1793,9 +1841,6 @@ wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(DropDownCharacters, wxComboBox)
 EVT_COMBOBOX(ID_DDCH, DropDownCharacters::OnNewSelection)
-wxEND_EVENT_TABLE()
-
-wxBEGIN_EVENT_TABLE(SpinCtrlLevel, wxSpinCtrl)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(DropDownClasses, wxComboBox)
