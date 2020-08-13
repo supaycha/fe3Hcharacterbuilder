@@ -384,8 +384,8 @@ private:
 	std::wstring charactername;
 	Stats basestats;
 	Stats classboosts;
+	Growths classgrowths;	
 	Stats mountedvariances;
-	Growths classgrowths;
 public:
 	Class() {}
 	Class(std::wstring uNAME, bool uHasExclusivity, std::wstring uCharacterName,
@@ -416,11 +416,11 @@ public:
 						bMAG, bDEX, bSPD,
 						bLCK, bDEF, bRES,
 						bCHA },
-		mountedvariances{ cHP, cMOV, cSTR,
+		classgrowths{ cHP, cMOV, cSTR,
 						cMAG, cDEX, cSPD,
 						cLCK, cDEF, cRES,
 						cCHA },
-		classgrowths{ dHP, dMOV, dSTR,
+		mountedvariances{ dHP, dMOV, dSTR,
 						dMAG, dDEX, dSPD,
 						dLCK, dDEF, dRES,
 						dCHA } {}
@@ -429,8 +429,8 @@ public:
 	const std::wstring getName() override { return name; }
 	const Stats getStats() override { return basestats; }
 	const Stats getBoostedStats() { return classboosts; }
-	const Stats getMountedStats() { return mountedvariances; }
 	const Growths getGrowths() { return classgrowths; }
+	const Stats getMountedStats() { return mountedvariances; }
 
 	Class* new_expr() override { return new Class(); }
 	Class* clone() override { return new Class(*this); }
@@ -795,15 +795,18 @@ public:
 			L"3", L"2", L"3", L"0", L"5", L"0", L"0", L"2", L"0", L"2",
 			L"0.3", L"0", L"0.15", L"0", L"0", L"0.1", L"0", L"0.05", L"0", L"0.1",
 			L"0", L"2", L"0", L"0", L"0", L"2", L"0", L"0", L"0", L"0"));
-		list.emplace_back(std::make_unique<Class>(L"Commoner", false, L"NULL", L"0", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+		list.emplace_back(std::make_unique<Class>(L"Commoner", false, L"NULL", 
+			L"0", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
-		list.emplace_back(std::make_unique<Class>(L"Noble", false, L"NULL", L"0", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+		list.emplace_back(std::make_unique<Class>(L"Noble", false, L"NULL", 
+			L"0", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0.05",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
-		list.emplace_back(std::make_unique<Class>(L"Dancer", false, L"NULL", L"0", L"6", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+		list.emplace_back(std::make_unique<Class>(L"Dancer", false, L"NULL", 
+			L"0", L"6", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0",
 			L"0.2", L"0", L"-0.05", L"0", L"0", L"0", L"0", L"-0.05", L"-0.05", L"0.1",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
@@ -837,7 +840,8 @@ public:
 			L"1", L"1", L"1", L"0", L"0", L"1", L"0", L"0", L"0", L"0",
 			L"0.2", L"0", L"0.05", L"0", L"0", L"0.05", L"0", L"0", L"-0.05", L"0.05",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
-		list.emplace_back(std::make_unique<Class>(L"Thief", false, L"NULL", L"25", L"5", L"9", L"6", L"11", L"11", L"8", L"6", L"2", L"0",
+		list.emplace_back(std::make_unique<Class>(L"Thief", false, L"NULL", 
+			L"25", L"5", L"9", L"6", L"11", L"11", L"8", L"6", L"2", L"0",
 			L"0", L"1", L"0", L"0", L"2", L"2", L"0", L"0", L"0", L"0",
 			L"0.2", L"0", L"0", L"0", L"0.1", L"0.1", L"0", L"0", L"0", L"0.05",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
@@ -934,17 +938,17 @@ public:
 		list.emplace_back(std::make_unique<Class>(L"Warlock", false, L"NULL",
 			L"30", L"4", L"8", L"17", L"12", L"14", L"10", L"12", L"15", L"0",
 			L"0", L"0", L"0", L"3", L"1", L"1", L"0", L"0", L"4", L"0",
-			L"0.1", L"0", L"0", L"0.1", L"0", L"1", L"0", L"-0.05", L"0.05", L"0.05",
+			L"0.1", L"0", L"0", L"0.1", L"0", L"0", L"0", L"-0.05", L"0.05", L"0.05",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Dark Bishop", false, L"NULL",
 			L"30", L"4", L"8", L"17", L"12", L"14", L"10", L"12", L"15", L"0",
 			L"0", L"0", L"0", L"4", L"2", L"0", L"0", L"0", L"3", L"0",
-			L"0.1", L"0", L"0", L"0.1", L"0", L"1", L"0", L"-0.05", L"0.05", L"0",
+			L"0.1", L"0", L"0", L"0.1", L"0", L"0", L"0", L"-0.05", L"0.05", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Bishop", false, L"NULL",
 			L"30", L"4", L"8", L"15", L"12", L"14", L"10", L"12", L"15", L"0",
 			L"1", L"0", L"0", L"2", L"1", L"0", L"0", L"0", L"5", L"0",
-			L"0.1", L"0", L"0", L"0.1", L"0", L"1", L"0.1", L"-0.05", L"0.05", L"0.1",
+			L"0.1", L"0", L"0", L"0.1", L"0", L"0", L"0.1", L"-0.05", L"0.05", L"0.1",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Falcon Knight", false, L"NULL",
 			L"32", L"8", L"18", L"10", L"14", L"20", L"12", L"13", L"14", L"0",
@@ -989,7 +993,7 @@ public:
 		list.emplace_back(std::make_unique<Class>(L"Gremory", false, L"NULL",
 			L"32", L"5", L"8", L"17", L"14", L"16", L"12", L"13", L"16", L"0",
 			L"0", L"1", L"0", L"5", L"2", L"1", L"0", L"0", L"4", L"2",
-			L"0.1", L"0", L"0", L"0.1", L"0.1", L"1", L"0", L"0", L"0.05", L"0.1",
+			L"0.1", L"0", L"0", L"0.1", L"0.1", L"0", L"0", L"0", L"0.05", L"0.1",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Trickster", false, L"NULL",
 			L"28", L"5", L"14", L"12", L"10", L"14", L"12", L"10", L"10", L"0",

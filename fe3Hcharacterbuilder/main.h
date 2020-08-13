@@ -6,14 +6,7 @@
 #define ID_DDCL3		12
 #define ID_SPIN1		15
 #define ID_SPIN2		16
-#define ID_GMT1			20
-#define ID_GMT2			21
-#define ID_GMT3			22
-#define ID_GMT4			23
-#define ID_GMT5			24
-#define ID_GMT6			25
-#define ID_GMT7			26
-#define ID_GMT8			27
+#define ID_GMT			20
 
 #define ID_LBW			30
 #define ID_LBE			31
@@ -153,7 +146,7 @@ class DropDownCharacters;
 class SpinCtrlLevel;
 class DropDownClasses;
 class GridMysteriousTeacher;
-
+class GTBMysteriousTeacher;
 class ListBoxWeapons;
 class ListBoxEquipment;
 class GridWeaponStats;
@@ -207,15 +200,15 @@ public:
 
 class MysteriousTeacher : public wxPanel {
 private:	
-	GTBMysteriousTeacher* gtbmt;
+	GridMysteriousTeacher* gmt;
+
 	DropDownCharacters* ddc;
 	wxBoxSizer* total;
-
 	std::wstring currentDDCselection;
+
 	std::vector<SpinCtrlLevel*> sclVector;
 	std::vector<DropDownClasses*> ddclVector;
-	std::vector<GridMysteriousTeacher*> gmtVector;
-	std::vector<wxBoxSizer*> rows;
+	std::vector<wxBoxSizer*> columns;
 public:
 	MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2);
 	~MysteriousTeacher() {}
@@ -266,6 +259,23 @@ public:
 	void DetermineSelectionStatus();
 };
 
+class GridMysteriousTeacher : public wxGrid {
+private:
+	std::vector<wxString> headers{ "HP", "MOV", "STR", "MAG", "DEX", "SPD", "LCK", "DEF", "RES", "CHA" };
+	GTBMysteriousTeacher* gtbmt;
+public:
+	GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders);
+	~GridMysteriousTeacher() {}
+
+	void initpopulate();
+	void repopulate();
+	std::wstring CompareStats(std::wstring characterstat, std::wstring classstat, int index);
+
+	void UpdateDDCHSelection(Character character);
+	void UpdateSCLSelection(int level, int ID);
+	void UpdateDDCLSelection(Class cLass, int ID);
+};
+
 class GTBMysteriousTeacher : public wxGridTableBase {
 private:
 	std::vector<wxString> headers{ "HP", "MOV", "STR", "MAG", "DEX", "SPD", "LCK", "DEF", "RES", "CHA" };
@@ -283,7 +293,7 @@ private:
 	Stats currentDDCL3minstats;
 	Stats currentDDCL3mountvars;
 
-	Stats totals;
+
 public:
 	GTBMysteriousTeacher() : 
 		currentDDCHstats{10, L"0"},
@@ -299,15 +309,31 @@ public:
 		currentDDCL3minstats{ 10, L"0" },
 		currentDDCL3mountvars{ 10, L"0" },
 
-		totals{ 10, L"0" } {}
+		totals1{ 10, L"0" } {}
 	~GTBMysteriousTeacher() {}
+
+	Growths totals1;
+	Stats totals2;
+	Growths totals3;
+	Stats totals4;
+	Growths totals5;
+	Stats totals6;
+	Stats totals7;
+	Stats totals8;
 
 	int GetNumberRows() override { return 1; }
 	int GetNumberCols() override { return headers.size(); }
-	wxString GetValue(int row, int col) override { return totals[col].getText(); }
-	wxString GetValueClass(int row, int col) { return currentclassstats[col].getText(); }
-	void SetValue(int row, int col, const wxString& value) override { currentcharacterstats[col] = Stat(value); }
-	void SetValueClass(int row, int col, const wxString& value) { currentclassstats[col] = Stat(value); }
+	wxString GetValue(int row, int col) override { return totals1[col].getText(); }
+	wxString GetValue2(int row, int col) { return totals2[col].getText(); }
+	wxString GetValue3(int row, int col) { return totals3[col].getText(); }
+	wxString GetValue4(int row, int col) { return totals4[col].getText(); }
+	wxString GetValue5(int row, int col) { return totals5[col].getText(); }
+	wxString GetValue6(int row, int col) { return totals6[col].getText(); }
+	wxString GetValue7(int row, int col) { return totals7[col].getText(); }
+	wxString GetValue8(int row, int col) { return totals8[col].getText(); }
+
+	void SetValue(int row, int col, const wxString& value) override { currentDDCHstats[col] = Stat(value); }
+	void SetValueClass(int row, int col, const wxString& value) { currentDDCHstats[col] = Stat(value); }
 
 	wxString GetHeader(int index) { return headers[index]; }
 
@@ -318,17 +344,7 @@ public:
 	void recalculate();
 };
 
-class GridMysteriousTeacher : public wxGrid {
-private:
-	std::vector<wxString> headers{ "HP", "MOV", "STR", "MAG", "DEX", "SPD", "LCK", "DEF", "RES", "CHA" };
-public:
-	GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders);
-	~GridMysteriousTeacher() {}
 
-	void initpopulate();
-	void repopulate();
-	std::wstring CompareStats(std::wstring characterstat, std::wstring classstat, int index);
-};
 
 ////////////////////////////////////////
 
