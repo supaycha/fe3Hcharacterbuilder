@@ -1,19 +1,23 @@
 #include "main.h"
 #include <vld.h>
 
-wxDEFINE_EVENT(BOUNCE_CHARACTER_STATS, wxCommandEvent);
+
+wxDEFINE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
+wxDEFINE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
+
+wxDEFINE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(REPEAT_GMT_STATS, wxCommandEvent);
+
+
+
 wxDEFINE_EVENT(BOUNCE_CLASS_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_DESELECTION_STATUS, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_WEAPON_STATS, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_EQUIPMENT_STATS, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_SL_SELECTION, wxCommandEvent);
-
-wxDEFINE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
-wxDEFINE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
-wxDEFINE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
-
-wxDEFINE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
-wxDEFINE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
 
 wxDEFINE_EVENT(BOUNCE_CHARACTER_INFO, wxCommandEvent);
 wxDEFINE_EVENT(FORWARD_CHARACTER_STATS, wxCommandEvent);
@@ -178,10 +182,9 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	ges = new GridEquipmentStats(this, ID_GES, wxPoint(0, 700), wxSize(750, 100));
 	gts = new GridTotalStats(this, ID_GTS, wxPoint(800, 650), wxSize(750, 100));
 
-	Bind(REPEAT_DDCH_SELECTION, &MyFrame::ReceiveRepeatedDDCHSelection_exclusivitycheck, this, ID_MT);				//through MT
-	Bind(REPEAT_DDCL_SELECTION, &MyFrame::ReceiveRepeatedDDCLSelection_classinnatecheck, this, ID_MT);		//now from DDCL through MT
-
-	//Bind(BOUNCE_CHARACTER_STATS, &MyFrame::BounceLVCSInfo, this, ID_MT);				//now from GridStats through MT
+	Bind(REPEAT_DDCH_SELECTION, &MyFrame::ReceiveRepeatedDDCHSelection_exclusivitycheck, this, ID_MT);
+	Bind(REPEAT_DDCL_SELECTION, &MyFrame::ReceiveRepeatedDDCLSelection_classinnatecheck, this, ID_MT);
+	Bind(REPEAT_GMT_STATS,		&MyFrame::ReceiveRepeatedGMTStats_partoftotalstats,		 this, ID_MT);
 	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_MT);	//now from DDCL through MT
 
 	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_LBW, ID_LBE);
@@ -202,6 +205,11 @@ void MyFrame::ReceiveRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repi
 	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
 	wxString classinnatecheck = tempclass->getName();
 	am->ReceiveClassInnate(classinnatecheck);
+}
+
+void MyFrame::ReceiveRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT) {
+	Stats* tempGMTstats = dynamic_cast<Stats*>(repititionfromMT.GetClientObject());
+	gts->ReceiveLVCSInfo(*tempGMTstats);
 }
 
 void MyFrame::BounceLVCSInfo(wxCommandEvent& eventfromwho) {
@@ -330,7 +338,7 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	Bind(TRANSMIT_DDCH_SELECTION, &MysteriousTeacher::BounceDDCHSelection, this, ID_DDCH);
 	Bind(TRANSMIT_SCL_SELECTION, &MysteriousTeacher::BounceSCLSelection, this, ID_SPIN1, ID_SPIN2);				//through MT
 	Bind(TRANSMIT_DDCL_SELECTION, &MysteriousTeacher::BounceDDCLSelection, this, ID_DDCL1, ID_DDCL3);		//now from DDCL through MT
-
+	Bind(TRANSMIT_GMT_STATS, &MysteriousTeacher::ForwardGMTStats, this, ID_GMT);
 
 	//Bind(BOUNCE_CHARACTER_INFO, &MysteriousTeacher::BounceDDCInfo, this, ID_DDCH);					//through MT
 	//Bind(FORWARD_CHARACTER_STATS, &MysteriousTeacher::ForwardLVCSInfo, this, ID_GMT1);				//now from GridStats through MT
@@ -398,12 +406,18 @@ void MysteriousTeacher::BounceDDCLSelection(wxCommandEvent& transmission) {
 	}
 }
 
-void MysteriousTeacher::ForwardLVCSInfo(wxCommandEvent& eventfromwho) {
-	wxCommandEvent forwardevent(BOUNCE_CHARACTER_STATS, ID_MT);
-	forwardevent.SetClientObject(eventfromwho.GetClientObject());
-	forwardevent.SetInt(ID_GTS);
-	ProcessEvent(forwardevent);
+void MysteriousTeacher::ForwardGMTStats(wxCommandEvent& forwarded) {
+	wxCommandEvent event(REPEAT_GMT_STATS, ID_MT);
+	event.SetClientObject(forwarded.GetClientObject());
+	ProcessEvent(event);
 }
+
+//void MysteriousTeacher::ForwardLVCSInfo(wxCommandEvent& eventfromwho) {
+//	wxCommandEvent forwardevent(BOUNCE_CHARACTER_STATS, ID_MT);
+//	forwardevent.SetClientObject(eventfromwho.GetClientObject());
+//	forwardevent.SetInt(ID_GTS);
+//	ProcessEvent(forwardevent);
+//}
 
 void MysteriousTeacher::BounceSelectionStatusInfo(wxCommandEvent& eventfromwho) {
 	int idofreceiver = eventfromwho.GetInt();
@@ -557,11 +571,10 @@ void GridMysteriousTeacher::initpopulate() {
 }
 
 void GridMysteriousTeacher::repopulate() {
-	//std::vector<Stat> tempvectforstats;
+	std::vector<Stat> tempvectforstats;
 	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
 		std::wstring stattoset = gtbmt->GetValue(0, i);
 		SetCellValue(0, i, stattoset);
-		//tempvectforstats.push_back(Stat(stattoset));
 	}
 
 	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
@@ -597,14 +610,14 @@ void GridMysteriousTeacher::repopulate() {
 	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
 		std::wstring stattoset = gtbmt->GetValue8(0, i);
 		SetCellValue(7, i, stattoset);
+		tempvectforstats.push_back(Stat(stattoset));
 	}
 
-	//Stats* ptrtostats = new Stats(tempvectforstats);
-	//wxCommandEvent event(BOUNCE_CHARACTER_STATS, ID_GMT);
-	//event.SetInt(ID_GTS);
-	//wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
-	//event.SetClientObject(tempdata);
-	//ProcessEvent(event);
+	Stats* ptrtostats = new Stats(tempvectforstats);
+	wxCommandEvent event(TRANSMIT_GMT_STATS, ID_GMT);
+	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
+	event.SetClientObject(tempdata);
+	ProcessEvent(event);
 }
 
 void GridMysteriousTeacher::UpdateDDCHSelection(Character character) {
@@ -1104,7 +1117,7 @@ void GridTotalStats::initpopulate() {
 	}
 }
 
-void GridTotalStats::ReceiveLVCSInfo(Stats stats) {
+void GridTotalStats::ReceiveGMTStats(Stats stats) {
 	gtbts->ReceiveLVCSInfo(stats);
 	gtbts->recalculate();
 	repopulate();

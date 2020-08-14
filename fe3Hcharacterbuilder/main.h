@@ -184,7 +184,7 @@ public:
 	~MyFrame() {}
 	void ReceiveRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT);	
 	void ReceiveRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT);
-
+	void ReceiveRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT);
 	void BounceLVCSInfo(wxCommandEvent& eventfromwho);
 	void BounceClassInfo(wxCommandEvent& eventfromwho);
 
@@ -216,7 +216,9 @@ public:
 	void BounceSCLSelection(wxSpinEvent& transmission);
 	void BounceDDCLSelection(wxCommandEvent& transmission);
 
-	void ForwardLVCSInfo(wxCommandEvent& eventfromwho);
+	void ForwardGMTStats(wxCommandEvent& forwarded);
+
+	//void ForwardLVCSInfo(wxCommandEvent& eventfromwho);
 
 	void BounceSelectionStatusInfo(wxCommandEvent& eventfromwho);
 };
@@ -481,7 +483,9 @@ private:
 public:
 	GridTotalStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size);
 	void initpopulate();
-	void ReceiveLVCSInfo(Stats stats);
+	void ReceiveGMTStats(Stats stats);
+
+
 	void ReceiveLVWSInfo(Stats stats);
 	void ReceiveLVESInfo(Stats stats);
 	void repopulate();
