@@ -197,7 +197,6 @@ public:
 
 //////////////////////////////////////////////
 
-
 class MysteriousTeacher : public wxPanel {
 private:	
 	GridMysteriousTeacher* gmt;
@@ -256,7 +255,6 @@ public:
 
 	void repopulate();
 	bool CompareAllStrings();
-	void DetermineSelectionStatus();
 };
 
 class GridMysteriousTeacher : public wxGrid {
@@ -269,7 +267,6 @@ public:
 
 	void initpopulate();
 	void repopulate();
-	std::wstring CompareStats(std::wstring characterstat, std::wstring classstat, int index);
 
 	void UpdateDDCHSelection(Character character);
 	void UpdateSCLSelection(int level, int ID);
@@ -344,10 +341,7 @@ public:
 	void recalculate();
 };
 
-
-
 ////////////////////////////////////////
-
 
 class ListBoxWeapons : public wxListBox {
 private:

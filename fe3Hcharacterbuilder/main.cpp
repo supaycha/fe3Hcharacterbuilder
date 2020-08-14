@@ -21,184 +21,6 @@ wxDEFINE_EVENT(FORWARD_DESELECTION_STATUS, wxCommandEvent);
 
 wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 
-//ListBoxClasses::ListBoxClasses(std::map<wxString, wxClientData*> uclassmap, wxWindow* panel,
-//	wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style) :
-//	wxListBox(panel, id, pos, size, choices, style)
-//{
-//	classmap = uclassmap;
-//}
-//
-//void ListBoxClasses::OnNewSelection(wxCommandEvent& sentevent) {	//triggers on mouse click from user and from DetermineSelectionStatus()
-//	mostrecentselection = this->GetStringSelection();
-//	wxString receivedstring = sentevent.GetString();
-//	if (receivedstring == mostrecentselection) {
-//		wxCommandEvent eventtolvws(BROADCAST_DESELECTION_STATUS, ID_LBC);
-//		eventtolvws.SetClientObject(GetClientObject(this->FindString(mostrecentselection)));
-//		eventtolvws.SetString("SELECTION");
-//		eventtolvws.SetInt(ID_GCS);
-//		ProcessEvent(eventtolvws);
-//		wxCommandEvent eventtoam(FORWARD_CLASS_SELECTION, ID_LBC);
-//		eventtoam.SetClientObject(GetClientObject(this->FindString(mostrecentselection)));
-//		eventtoam.SetInt(ID_AM);
-//		ProcessEvent(eventtoam);
-//	}
-//
-//	else if (sentevent.GetString() == "DESELECTION") {
-//		wxCommandEvent eventtolvws(BROADCAST_DESELECTION_STATUS, ID_LBC);
-//		eventtolvws.SetString("DESELECTION");
-//		eventtolvws.SetInt(ID_GCS);
-//		ProcessEvent(eventtolvws);
-//		wxCommandEvent eventtoam(FORWARD_CLASS_SELECTION, ID_LBC);
-//		eventtoam.SetString("DESELECTION");
-//		eventtoam.SetInt(ID_AM);
-//		ProcessEvent(eventtoam);
-//	}
-//}
-//
-//void ListBoxClasses::ReceiveDDCInfo(wxString charactername) {
-//	currentDDCSelection = charactername;
-//	repopulate();
-//}
-//
-//void ListBoxClasses::repopulate() {
-//	std::vector<Class*> exclusiveclasses;
-//	std::vector<Class*> generalclasses;
-//	std::vector<wxString> classnames;
-//	std::vector<wxClientData*> classdata;
-//
-//	//splitting classmap up into exclusive and general class types
-//	for (auto element : classmap) {
-//		Class* temp = dynamic_cast<Class*>(element.second)->clone();
-//		if (temp->getExclusivity()) {
-//			exclusiveclasses.push_back(temp);
-//		}
-//		else {
-//			generalclasses.push_back(temp);
-//		}
-//	}
-//
-//	//exclusive types are added if tokenized characternames (cLass->getCharacterName())
-//		//match with (currentDDCSelection)
-//	for (auto cLass : exclusiveclasses) {
-//		std::wstring characternames = cLass->getCharacterName(), buffer;
-//		std::wstringstream stream(characternames);
-//		std::vector<std::wstring> namesfromstream;
-//
-//		while (std::getline(stream, buffer, L',')) {
-//			namesfromstream.push_back(buffer);
-//		}
-//
-//		for (auto possiblematch : namesfromstream) {
-//			if (currentDDCSelection == possiblematch) {
-//				classnames.push_back(cLass->getName());
-//				classdata.push_back(dynamic_cast<wxClientData*>(cLass));
-//			}
-//		}
-//	}
-//
-//	//all general types are added regardless of factors
-//	for (auto cLass : generalclasses) {
-//		classnames.push_back(cLass->getName());
-//		classdata.push_back(dynamic_cast<wxClientData*>(cLass));
-//	}
-//
-//	this->Set(ToArrayString(classnames), ToArrayData(classdata));
-//
-//	DetermineSelectionStatus();  //using mostrecentselection member variable
-//}
-//
-//bool ListBoxClasses::CompareAllStrings() {
-//	wxArrayString currentweaponselections = this->GetStrings();
-//
-//	for (auto weaponname : currentweaponselections) {
-//		if (weaponname == mostrecentselection) {
-//			return true;
-//		}
-//	}
-//
-//	return false;
-//}
-//
-//void ListBoxClasses::DetermineSelectionStatus() {
-//	if (CompareAllStrings()) {
-//		int index = this->FindString(mostrecentselection);
-//		this->SetSelection(index);
-//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
-//		ProcessEvent(eventtoself);
-//	}
-//
-//	else if (!CompareAllStrings()) {
-//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBC);
-//		eventtoself.SetString("DESELECTION");
-//		ProcessEvent(eventtoself);
-//	}
-//}
-//GridCharacterStats::GridCharacterStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size) :
-//	wxGrid(parent, id, pos, size)
-//{
-//	gtbcs = new GTBCharacterStats;
-//	CreateGrid(1, gtbcs->GetColsCount());
-//	LabelSize(0);
-//	initpopulate();
-//}
-//
-//void GridCharacterStats::initpopulate() {
-//	for (int i = 0; i < gtbcs->GetColsCount(); ++i) {
-//		SetCellValue(0, i, L"0");
-//		int k = 0;
-//	}
-//}
-//
-//void GridCharacterStats::ReceiveDDCInfo(Stats stats) {
-//	gtbcs->ReceiveDDCInfo(stats);
-//	repopulate();
-//}
-//
-//void GridCharacterStats::ReceiveLBCInfo(Stats stats) {
-//	gtbcs->ReceiveLBCInfo(stats);
-//	repopulate();
-//}
-//
-////void GridCharacterStats::repopulate() {
-////	std::vector<Stat> tempvectforstats;
-////	for (int i = 0; i < gtbcs->GetColsCount(); ++i) {
-////		std::wstring stattoset = CompareStats(gtbcs->GetValue(0, i), gtbcs->GetValueClass(0, i), i);
-////
-////		//wxString colvalue = gtbcs->GetValue(0, i);
-////		SetCellValue(0, i, stattoset);
-////		tempvectforstats.push_back(Stat(stattoset));
-////		int k = 0;
-////	}
-////
-////	Stats* ptrtostats = new Stats(tempvectforstats);
-////	wxCommandEvent event(BOUNCE_CHARACTER_STATS, ID_GMT1);
-////	event.SetInt(ID_GTS);
-////	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
-////	event.SetClientObject(tempdata);
-////	ProcessEvent(event);
-////}
-////
-////std::wstring GridCharacterStats::CompareStats(std::wstring characterstat, std::wstring classstat, int index) {
-////	int charstatINT = _wtoi(characterstat.c_str());
-////	int classstatINT = _wtoi(classstat.c_str());
-////
-////	if (classstatINT > charstatINT) {
-////		SetCellTextColour(0, index, *wxGREEN);
-////		return classstat;
-////	}
-////	SetCellTextColour(0, index, *wxBLACK);
-////
-////	return characterstat;
-////}
-//
-//void GTBCharacterStats::ReceiveDDCInfo(Stats stats) {
-//	currentcharacterstats = stats;
-//}
-//
-//void GTBCharacterStats::ReceiveLBCInfo(Stats stats) {
-//	currentclassstats = stats;
-//}
-
 void DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata);
 wxArrayString ToArrayString(std::vector<wxString> names);
 wxClientData** ToArrayData(std::vector<wxClientData*>& names);
@@ -347,10 +169,10 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	}
 
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, ID_MT, 0, 0, -1, -1);
-	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, wxPoint(900, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
+	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, wxPoint(500, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
 	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, wxPoint(1300, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
-	slm = new SkillLevelManager(this, ID_SLM, 800, 50, 150, 300);
-	am = new AbilityManager(this, ID_AM, 800, 50, 350, 400);
+	slm = new SkillLevelManager(this, ID_SLM, 700, 50, 150, 300);
+	am = new AbilityManager(this, ID_AM, 900, 50, 350, 400);
 
 	gws = new GridWeaponStats(this, ID_GWS, wxPoint(0, 600), wxSize(750, 100));
 	ges = new GridEquipmentStats(this, ID_GES, wxPoint(0, 700), wxSize(750, 100));
@@ -380,37 +202,6 @@ void MyFrame::ReceiveRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repi
 	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
 	wxString classinnatecheck = tempclass->getName();
 	am->ReceiveClassInnate(classinnatecheck);
-	/*switch (idofreceiver)
-	{
-		case ID_GWS: {
-			if (eventfromwho.GetString() == "SELECTION") {
-				Weapon* temp = dynamic_cast<Weapon*>(eventfromwho.GetClientObject());
-				gws->ReceiveLBWInfo(temp->getStats());
-			}
-			else if (eventfromwho.GetString() == "DESELECTION") {
-				Stats temp{ L"0", L"0", L"0", L"0", L"0", L"0", L"0" };
-				gws->ReceiveLBWInfo(temp);
-			}
-			break;
-		}
-
-		case ID_GES: {
-			if (eventfromwho.GetString() == "SELECTION") {
-				Equipment* temp = dynamic_cast<Equipment*>(eventfromwho.GetClientObject());
-				std::vector<Stat> tempstats(TOTAL_STATS_SIZE, Stat(L"0"));
-				Stats equipmentstats = temp->getStats();
-				tempstats[6] = equipmentstats[0].getText();
-				tempstats[7] = equipmentstats[1].getText();
-				Stats transferthis{ tempstats };
-				ges->ReceiveLBEInfo(transferthis);
-			}
-			else if (eventfromwho.GetString() == "DESELECTION") {
-				Stats temp{ L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0" };
-				ges->ReceiveLBEInfo(temp);
-			}
-			break;
-		}
-	}*/
 }
 
 void MyFrame::BounceLVCSInfo(wxCommandEvent& eventfromwho) {
@@ -433,13 +224,12 @@ void MyFrame::BounceClassInfo(wxCommandEvent& eventfromwho) {
 			if (eventfromwho.GetString() != "DESELECTION") {
 				Class* temp = dynamic_cast<Class*>(eventfromwho.GetClientObject());
 				wxString classname = temp->getName();
-				//am->ReceiveClassInfo(classname);
+				am->ReceiveClassInnate(classname);
 			}
 			break;
 		}
 	}
 }
-
 
 void MyFrame::BounceLVWSInfo(wxCommandEvent& eventfromwho) {
 	int idofreceiver = eventfromwho.GetInt();
@@ -493,7 +283,7 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 {
 	gmt = new GridMysteriousTeacher(this, ID_GMT, 0);
 	wxArrayString emptybuffer;
-	ddc = new DropDownCharacters(characternames, characterdata, this, ID_DDCH, emptybuffer, wxCB_DROPDOWN);
+	ddc = new DropDownCharacters(characternames, characterdata, this, ID_DDCH, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY);
 	
 	wxString test = "1";
 	for (int i = 0; i < 2; ++i) {
@@ -501,7 +291,7 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	}
 
 	for (int i = 0; i < 3; ++i) {
-		ddclVector.push_back(new DropDownClasses(classmap, this, ID_DDCL1 + i, emptybuffer, wxLB_SINGLE));
+		ddclVector.push_back(new DropDownClasses(classmap, this, ID_DDCL1 + i, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY));
 	}
 
 	total = new wxBoxSizer(wxHORIZONTAL);
@@ -531,7 +321,7 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 
 	columns[2]->Add(gmt);
 
-	for (int i = 0; i < columns.size(); ++i) {
+	for (unsigned int i = 0; i < columns.size(); ++i) {
 		total->Add(columns[i]);
 	}
 
@@ -556,7 +346,7 @@ void MysteriousTeacher::BounceDDCHSelection(wxCommandEvent& transmission) {
 	gmt->UpdateDDCHSelection(*tempcharacter);
 
 	wxString exclusivitycheck = tempcharacter->getName();
-	for (int i = 0; i < ddclVector.size(); ++i) {
+	for (unsigned int i = 0; i < ddclVector.size(); ++i) {
 		ddclVector[i]->ReceiveExclusivity(exclusivitycheck);
 	}
 }
@@ -642,17 +432,10 @@ DropDownCharacters::DropDownCharacters(std::vector<wxString> characternames, std
 
 void DropDownCharacters::OnNewSelection(wxCommandEvent& selection) {
 	Character* tempcharacter = dynamic_cast<Character*>(selection.GetClientObject());
-	//wxString exclusivecheck = tempcharacter->getName();
 
 	wxCommandEvent event(TRANSMIT_DDCH_SELECTION, ID_DDCH);
 	event.SetClientObject(selection.GetClientObject());
-	//event.SetString(exclusivecheck);
 	ProcessEvent(event);
-
-	//wxCommandEvent event2(BOUNCE_CHARACTER_INFO, ID_DDCH);
-	//event2.SetInt(ID_GMT1);
-	//event2.SetClientObject(selevent.GetClientObject());  //this sets Character selection data
-	//ProcessEvent(event2);
 }
 
 SpinCtrlLevel::SpinCtrlLevel(wxWindow* parent, wxWindowID id, const wxString& value, int min) :
@@ -675,39 +458,11 @@ DropDownClasses::DropDownClasses(std::map<wxString, wxClientData*> uclassmap, wx
 }
 
 void DropDownClasses::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
-	//if (selection.isem) {
-		Class* cLass = dynamic_cast<Class*>(selection.GetClientObject());
-		//wxString receivedstring = sentevent.GetString();
+	Class* cLass = dynamic_cast<Class*>(selection.GetClientObject());
 
-		wxCommandEvent event(TRANSMIT_DDCL_SELECTION, selection.GetId());
-		event.SetClientObject(selection.GetClientObject());
-		ProcessEvent(event);
-
-		/*if (receivedstring == mostrecentselection) {
-			wxCommandEvent eventtolvws(BOUNCE_DESELECTION_STATUS, ID_DDCL1);
-			eventtolvws.SetClientObject(GetClientObject(this->FindString(mostrecentselection)));
-			eventtolvws.SetString("SELECTION");
-			eventtolvws.SetInt(ID_GMT1);
-			ProcessEvent(eventtolvws);
-
-			wxCommandEvent eventtoam(FORWARD_CLASS_SELECTION, ID_DDCL1);
-			eventtoam.SetClientObject(GetClientObject(this->FindString(mostrecentselection)));
-			eventtoam.SetInt(ID_AM);
-			ProcessEvent(eventtoam);
-		}
-
-		else if (sentevent.GetString() == "DESELECTION") {
-			wxCommandEvent eventtolvws(BOUNCE_DESELECTION_STATUS, ID_DDCL1);
-			eventtolvws.SetString("DESELECTION");
-			eventtolvws.SetInt(ID_GMT1);
-			ProcessEvent(eventtolvws);
-
-			wxCommandEvent eventtoam(FORWARD_CLASS_SELECTION, ID_DDCL1);
-			eventtoam.SetString("DESELECTION");
-			eventtoam.SetInt(ID_AM);
-			ProcessEvent(eventtoam);
-		}*/
-	
+	wxCommandEvent event(TRANSMIT_DDCL_SELECTION, selection.GetId());
+	event.SetClientObject(selection.GetClientObject());
+	ProcessEvent(event);
 }
 
 void DropDownClasses::ReceiveExclusivity(wxString charactername) {
@@ -759,7 +514,7 @@ void DropDownClasses::repopulate() {
 
 	this->Set(ToArrayString(classnames), ToArrayData(classdata));
 
-	DetermineSelectionStatus();  //using mostrecentselection member variable
+	//DetermineSelectionStatus();  //using mostrecentselection member variable
 }
 
 bool DropDownClasses::CompareAllStrings() {
@@ -772,21 +527,6 @@ bool DropDownClasses::CompareAllStrings() {
 	}
 
 	return false;
-}
-
-void DropDownClasses::DetermineSelectionStatus() {
-	//if (CompareAllStrings()) {
-	//	int index = this->FindString(mostrecentselection);
-	//	this->SetSelection(index);
-	//	wxCommandEvent eventtoself(wxEVT_COMBOBOX, ID_DDCL1);  //this used to be ID_LBW, why?
-	//	ProcessEvent(eventtoself);
-	//}
-
-	//else if (!CompareAllStrings()) {
-	//	wxCommandEvent eventtoself(wxEVT_COMBOBOX, ID_DDCL1);
-	//	eventtoself.SetString("DESELECTION");
-	//	ProcessEvent(eventtoself);
-	//}
 }
 
 GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders) :
@@ -865,19 +605,6 @@ void GridMysteriousTeacher::repopulate() {
 	//wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	//event.SetClientObject(tempdata);
 	//ProcessEvent(event);
-}
-
-std::wstring GridMysteriousTeacher::CompareStats(std::wstring characterstat, std::wstring classstat, int index) {
-	int charstatINT = _wtoi(characterstat.c_str());
-	int classstatINT = _wtoi(classstat.c_str());
-
-	if (classstatINT > charstatINT) {
-		SetCellTextColour(0, index, *wxGREEN);
-		return classstat;
-	}
-	SetCellTextColour(0, index, *wxBLACK);
-
-	return characterstat;
 }
 
 void GridMysteriousTeacher::UpdateDDCHSelection(Character character) {
@@ -999,9 +726,6 @@ void GTBMysteriousTeacher::recalculate() {
 	for (int i = 0; i < 10; ++i) {
 		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
 		float classgrowth2 = _wtof(currentDDCL2growths[i].getText().c_str());
-		//float subtotal = chargrowth + classgrowth2;
-		//int level = currentSCL1selection;
-		//int avgtotal = subtotal * level;
 		totals5[i] = std::to_wstring(chargrowth + classgrowth2);
 	}
 
@@ -1013,6 +737,7 @@ void GTBMysteriousTeacher::recalculate() {
 		int avgtotal2 = subtotal2 * level2;
 		totals6[i] = std::to_wstring(avgtotal2);
 	}
+
 	for (int i = 0; i < 10; ++i) {
 		int charstat = _wtoi(currentDDCHstats[i].getText().c_str());
 
@@ -1057,7 +782,6 @@ void GTBMysteriousTeacher::recalculate() {
 		int megagrandtotal = grandtotal + classboost;
 		totals8[i] = std::to_wstring(megagrandtotal);
 	}
-
 }
 
 ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxWindow* panel,
@@ -1798,7 +1522,6 @@ ListBoxAA::ListBoxAA(wxWindow* panel, wxWindowID id, int x, int y, int x2, int y
 }
 
 void ListBoxAA::OnSelection(wxCommandEvent& event) {
-	wxArrayInt selections;
 	selectedAAnames = UpdateSelections();
 }
 
@@ -1861,7 +1584,6 @@ ListBoxSA::ListBoxSA(wxWindow* panel, wxWindowID id, int x, int y, int x2, int y
 }
 
 void ListBoxSA::OnSelection(wxCommandEvent& event) {
-	wxArrayInt selections;
 	selectedSAnames = UpdateSelections();
 }
 
