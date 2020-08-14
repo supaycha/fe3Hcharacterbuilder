@@ -209,8 +209,10 @@ void MyFrame::ReceiveRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repi
 
 void MyFrame::ReceiveRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT) {
 	Stats* tempGMTstats = dynamic_cast<Stats*>(repititionfromMT.GetClientObject());
-	gts->ReceiveLVCSInfo(*tempGMTstats);
+	gts->ReceiveGMTStats(*tempGMTstats);
 }
+
+
 
 void MyFrame::BounceLVCSInfo(wxCommandEvent& eventfromwho) {
 	int idofreceiver = eventfromwho.GetInt();
