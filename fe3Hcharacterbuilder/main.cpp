@@ -11,19 +11,17 @@ wxDEFINE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(REPEAT_GMT_STATS, wxCommandEvent);
 
+wxDEFINE_EVENT(TRANSMIT_LBW_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_LBE_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);
 
 
-wxDEFINE_EVENT(BOUNCE_CLASS_SELECTION, wxCommandEvent);
+
 wxDEFINE_EVENT(BOUNCE_DESELECTION_STATUS, wxCommandEvent);
-wxDEFINE_EVENT(BOUNCE_WEAPON_STATS, wxCommandEvent);
-wxDEFINE_EVENT(BOUNCE_EQUIPMENT_STATS, wxCommandEvent);
-wxDEFINE_EVENT(BOUNCE_SL_SELECTION, wxCommandEvent);
-
-wxDEFINE_EVENT(BOUNCE_CHARACTER_INFO, wxCommandEvent);
-wxDEFINE_EVENT(FORWARD_CHARACTER_STATS, wxCommandEvent);
 wxDEFINE_EVENT(FORWARD_DESELECTION_STATUS, wxCommandEvent);
-
 wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
+wxDEFINE_EVENT(BOUNCE_SL_SELECTION, wxCommandEvent);
 
 void DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata);
 wxArrayString ToArrayString(std::vector<wxString> names);
@@ -33,6 +31,9 @@ void** ToVoidData(std::vector<wxClientData*> ptrs);
 std::map<wxString, wxClientData*> ToMapBoth(std::vector<wxString> names, std::vector<wxClientData*> data);
 
 void DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata) {
+	if (BlankWeapon* temp = dynamic_cast<BlankWeapon*>(unit)) {
+		weapondata.push_back(temp->clone());
+	}
 	if (Axe* temp = dynamic_cast<Axe*>(unit)) {
 		weapondata.push_back(temp->clone());
 	}
@@ -172,28 +173,32 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 		equipmap.emplace(equipnames[i], equipdata[i]);
 	}
 
-	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, ID_MT, 0, 0, -1, -1);
-	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, wxPoint(500, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
-	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, wxPoint(1300, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
-	slm = new SkillLevelManager(this, ID_SLM, 700, 50, 150, 300);
-	am = new AbilityManager(this, ID_AM, 900, 50, 350, 400);
 
-	gws = new GridWeaponStats(this, ID_GWS, wxPoint(0, 600), wxSize(750, 100));
+	gts = new GridTotalStats(this, ID_GTS, wxPoint(800, 650), wxSize(750, 100));	
 	ges = new GridEquipmentStats(this, ID_GES, wxPoint(0, 700), wxSize(750, 100));
-	gts = new GridTotalStats(this, ID_GTS, wxPoint(800, 650), wxSize(750, 100));
+	gws = new GridWeaponStats(this, ID_GWS, wxPoint(0, 600), wxSize(750, 100));
+	am = new AbilityManager(this, ID_AM, 900, 50, 350, 400);
+	slm = new SkillLevelManager(this, ID_SLM, 700, 50, 150, 300);
 
-	Bind(REPEAT_DDCH_SELECTION, &MyFrame::ReceiveRepeatedDDCHSelection_exclusivitycheck, this, ID_MT);
-	Bind(REPEAT_DDCL_SELECTION, &MyFrame::ReceiveRepeatedDDCLSelection_classinnatecheck, this, ID_MT);
-	Bind(REPEAT_GMT_STATS,		&MyFrame::ReceiveRepeatedGMTStats_partoftotalstats,		 this, ID_MT);
+	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, wxPoint(1300, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
+	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, wxPoint(500, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
+	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, ID_MT, 0, 0, -1, -1);
+
+	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, ID_MT);
+	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, ID_MT);
+	Bind(REPEAT_GMT_STATS,		&MyFrame::BounceRepeatedGMTStats_partoftotalstats,		 this, ID_MT);
+
+	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, ID_LBW);
+	Bind(TRANSMIT_LBE_SELECTION, &MyFrame::BounceLBESelection, this, ID_LBE);
+	Bind(TRANSMIT_GWS_STATS, &MyFrame::BounceGWSStats_partoftotalstats, this, ID_GWS);
+	Bind(TRANSMIT_GES_STATS, &MyFrame::BounceGESStats_partoftotalstats, this, ID_GES);
+
 	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_MT);	//now from DDCL through MT
-
 	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_LBW, ID_LBE);
-	//Bind(BOUNCE_WEAPON_STATS, &MyFrame::BounceLVWSInfo, this, ID_GWS);
-	//Bind(BOUNCE_EQUIPMENT_STATS, &MyFrame::BounceLVESInfo, this, ID_GES);
 	//Bind(BOUNCE_SL_SELECTION, &MyFrame::BounceSLInfo, this, ID_DDSWORD, ID_DDFLYING);
 }
 
-void MyFrame::ReceiveRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
+void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
 	Character* tempcharacter = dynamic_cast<Character*>(repititionfromMT.GetClientObject());
 	wxString exclusivitycheck = tempcharacter->getName();
 	lbw->ReceiveExclusivity(exclusivitycheck);
@@ -201,70 +206,37 @@ void MyFrame::ReceiveRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repi
 	am->ReceiveExclusivity(exclusivitycheck);
 }
 
-void MyFrame::ReceiveRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {
+void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {
 	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
 	wxString classinnatecheck = tempclass->getName();
 	am->ReceiveClassInnate(classinnatecheck);
 }
 
-void MyFrame::ReceiveRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT) {
+void MyFrame::BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT) {
 	Stats* tempGMTstats = dynamic_cast<Stats*>(repititionfromMT.GetClientObject());
 	gts->ReceiveGMTStats(*tempGMTstats);
 }
 
-
-
-void MyFrame::BounceLVCSInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
-	switch (idofreceiver)
-	{
-		case ID_GTS: {
-			Stats* temp = dynamic_cast<Stats*>(eventfromwho.GetClientObject());
-			gts->ReceiveLVCSInfo(*temp);
-			break;
-		}
-	}
+void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
+	Weapon* tempweapon = dynamic_cast<Weapon*>(selection.GetClientObject());
+	Stats tempstats = tempweapon->getStats();
+	gws->ReceiveLBWSelection(tempstats);
 }
 
-void MyFrame::BounceClassInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
-	switch (idofreceiver)
-	{
-		case ID_AM: {
-			if (eventfromwho.GetString() != "DESELECTION") {
-				Class* temp = dynamic_cast<Class*>(eventfromwho.GetClientObject());
-				wxString classname = temp->getName();
-				am->ReceiveClassInnate(classname);
-			}
-			break;
-		}
-	}
+void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
+	Equipment* tempequipment = dynamic_cast<Equipment*>(selection.GetClientObject());
+	Stats tempstats = tempequipment->getStats();
+	ges->ReceiveLBESelection(tempstats);
 }
 
-void MyFrame::BounceLVWSInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
-	switch (idofreceiver)
-	{
-		case ID_GTS: {
-			Stats* temp = dynamic_cast<Stats*>(eventfromwho.GetClientObject());
-			gts->ReceiveLVWSInfo(*temp);
-			int i = 9;
-			break;
-		}
-	}
+void MyFrame::BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS){
+	Stats* temp = dynamic_cast<Stats*>(eventfromGWS.GetClientObject());
+	gts->ReceiveGWSStats(*temp);
 }
 
-void MyFrame::BounceLVESInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
-	switch (idofreceiver)
-	{
-		case ID_GTS: {
-			Stats* temp = dynamic_cast<Stats*>(eventfromwho.GetClientObject());
-			gts->ReceiveLVESInfo(*temp);
-			int i = 9;
-			break;
-		}
-	}
+void MyFrame::BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES) {
+	Stats* temp = dynamic_cast<Stats*>(eventfromGES.GetClientObject());
+	gts->ReceiveGESStats(*temp);
 }
 
 void MyFrame::BounceSLInfo(wxCommandEvent& eventfromwho) {
@@ -340,11 +312,10 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	Bind(TRANSMIT_DDCH_SELECTION, &MysteriousTeacher::BounceDDCHSelection, this, ID_DDCH);
 	Bind(TRANSMIT_SCL_SELECTION, &MysteriousTeacher::BounceSCLSelection, this, ID_SPIN1, ID_SPIN2);				//through MT
 	Bind(TRANSMIT_DDCL_SELECTION, &MysteriousTeacher::BounceDDCLSelection, this, ID_DDCL1, ID_DDCL3);		//now from DDCL through MT
+
 	Bind(TRANSMIT_GMT_STATS, &MysteriousTeacher::ForwardGMTStats, this, ID_GMT);
 
-	//Bind(BOUNCE_CHARACTER_INFO, &MysteriousTeacher::BounceDDCInfo, this, ID_DDCH);					//through MT
-	//Bind(FORWARD_CHARACTER_STATS, &MysteriousTeacher::ForwardLVCSInfo, this, ID_GMT1);				//now from GridStats through MT
-	//Bind(BOUNCE_DESELECTION_STATUS, &MysteriousTeacher::BounceSelectionStatusInfo, this, ID_DDCL1);	//now from DDCL through MT
+	Bind(BOUNCE_DESELECTION_STATUS, &MysteriousTeacher::BounceSelectionStatusInfo, this, ID_LBW, ID_LBE);	//now from DDCL through MT
 }
 
 void MysteriousTeacher::BounceDDCHSelection(wxCommandEvent& transmission) {
@@ -414,13 +385,6 @@ void MysteriousTeacher::ForwardGMTStats(wxCommandEvent& forwarded) {
 	ProcessEvent(event);
 }
 
-//void MysteriousTeacher::ForwardLVCSInfo(wxCommandEvent& eventfromwho) {
-//	wxCommandEvent forwardevent(BOUNCE_CHARACTER_STATS, ID_MT);
-//	forwardevent.SetClientObject(eventfromwho.GetClientObject());
-//	forwardevent.SetInt(ID_GTS);
-//	ProcessEvent(forwardevent);
-//}
-
 void MysteriousTeacher::BounceSelectionStatusInfo(wxCommandEvent& eventfromwho) {
 	int idofreceiver = eventfromwho.GetInt();
 	switch (idofreceiver)
@@ -444,11 +408,14 @@ DropDownCharacters::DropDownCharacters(std::vector<wxString> characternames, std
 	wxComboBox(panel, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, choices, style)
 {
 	this->Append(ToArrayString(characternames), ToArrayData(characterdata));
+	this->SetSelection(0);
+	wxCommandEvent eventtoself(wxEVT_COMBOBOX, ID_DDCH);
+	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+	ProcessEvent(eventtoself);
 }
 
 void DropDownCharacters::OnNewSelection(wxCommandEvent& selection) {
-	Character* tempcharacter = dynamic_cast<Character*>(selection.GetClientObject());
-
+	//Character* tempcharacter = dynamic_cast<Character*>(selection.GetClientObject());
 	wxCommandEvent event(TRANSMIT_DDCH_SELECTION, ID_DDCH);
 	event.SetClientObject(selection.GetClientObject());
 	ProcessEvent(event);
@@ -471,6 +438,10 @@ DropDownClasses::DropDownClasses(std::map<wxString, wxClientData*> uclassmap, wx
 	wxComboBox(panel, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, choices, style)
 {
 	classmap = uclassmap;
+	auto iter = classmap.begin();
+
+	wxString firstname = iter;
+	wxClientData* firstdata;
 }
 
 void DropDownClasses::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
@@ -806,23 +777,10 @@ ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxW
 	weaponmap = uweaponmap;
 }
 
-void ListBoxWeapons::OnNewSelection(wxCommandEvent& sentevent) {	//triggers on mouse click from user and from DetermineSelectionStatus()
-	mostrecentselection = this->GetStringSelection();
-	wxString receivedstring = sentevent.GetString();
-	if (receivedstring == mostrecentselection) {
-		wxCommandEvent eventtolvws(BOUNCE_DESELECTION_STATUS, ID_LBW);
-		eventtolvws.SetClientObject(GetClientObject(this->FindString(mostrecentselection)));
-		eventtolvws.SetString("SELECTION");
-		eventtolvws.SetInt(ID_GWS);
-		ProcessEvent(eventtolvws);
-	}
-
-	else if (sentevent.GetString() == "DESELECTION") {
-		wxCommandEvent eventtolvws(BOUNCE_DESELECTION_STATUS, ID_LBW);
-		eventtolvws.SetString("DESELECTION");
-		eventtolvws.SetInt(ID_GWS);
-		ProcessEvent(eventtolvws);
-	}
+void ListBoxWeapons::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
+	wxCommandEvent event(TRANSMIT_LBW_SELECTION, ID_LBW);
+	event.SetClientObject(selection.GetClientObject());
+	ProcessEvent(event);
 }
 
 void ListBoxWeapons::ReceiveExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
@@ -873,44 +831,50 @@ void ListBoxWeapons::repopulate() {				//this function should only be called by 
 
 	for (auto weapon : generalweapons) {
 		SL weaponSL = weapon->getSL();
-
-		if (weaponSL <= SLfilter[(int)weapon->getType()]) {
+		if ((int)weaponSL == -1) {
 			weaponnames.push_back(weapon->getName());
 			weapondata.push_back(dynamic_cast<wxClientData*>(weapon));
+		}
+
+		else {
+			if (weaponSL <= SLfilter[(int)weapon->getType()]) {
+				weaponnames.push_back(weapon->getName());
+				weapondata.push_back(dynamic_cast<wxClientData*>(weapon));
+			}
 		}
 	}
 
 	this->Set(ToArrayString(weaponnames), ToArrayData(weapondata));
 
-	////DetermineSelectionStatus();  //using mostrecentselection member variable
+	//DetermineSelectionStatus();  //using mostrecentselection member variable
 }
 
-void ListBoxWeapons::DetermineSelectionStatus() {
-	if (CompareAllStrings()) {
-		int index = this->FindString(mostrecentselection);
-		this->SetSelection(index);
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
-		ProcessEvent(eventtoself);
-	}
-
-	else if (!CompareAllStrings()) {
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
-		eventtoself.SetString("DESELECTION");
-		ProcessEvent(eventtoself);
-	}
-}
-
-bool ListBoxWeapons::CompareAllStrings() {
-	wxArrayString currentweaponselections = this->GetStrings();
-
-	for (auto weaponname : currentweaponselections) {
-		if (weaponname == mostrecentselection) {
-			return true;
-		}
-	}
-
-	return false;
-}
+//void ListBoxWeapons::DetermineSelectionStatus() {
+//	if (CompareAllStrings()) {
+//		int index = this->FindString(mostrecentselection);
+//		this->SetSelection(index);
+//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
+//		ProcessEvent(eventtoself);
+//	}
+//
+//	else if (!CompareAllStrings()) {
+//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
+//		eventtoself.SetString("DESELECTION");
+//		ProcessEvent(eventtoself);
+//	}
+//}
+//
+//bool ListBoxWeapons::CompareAllStrings() {
+//	wxArrayString currentweaponselections = this->GetStrings();
+//
+//	for (auto weaponname : currentweaponselections) {
+//		if (weaponname == mostrecentselection) {
+//			return true;
+//		}
+//	}
+//
+//	return false;
+//}
 
 ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentmap, wxWindow* panel,
 	wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style) :
@@ -919,23 +883,11 @@ ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentm
 	equipmentmap = uequipmentmap;
 }
 
-void ListBoxEquipment::OnNewSelection(wxCommandEvent& sentevent) {	//triggers on mouse click from user and from DetermineSelectionStatus()
-	mostrecentselection = this->GetStringSelection();
-	wxString receivedstring = sentevent.GetString();
-	if (receivedstring == mostrecentselection) {
-		wxCommandEvent eventtolves(BOUNCE_DESELECTION_STATUS, ID_LBE);
-		eventtolves.SetClientObject(GetClientObject(this->FindString(mostrecentselection)));
-		eventtolves.SetString("SELECTION");
-		eventtolves.SetInt(ID_GES);
-		ProcessEvent(eventtolves);
-	}
-
-	else if (sentevent.GetString() == "DESELECTION") {
-		wxCommandEvent eventtolves(BOUNCE_DESELECTION_STATUS, ID_LBE);
-		eventtolves.SetString("DESELECTION");
-		eventtolves.SetInt(ID_GES);
-		ProcessEvent(eventtolves);
-	}
+void ListBoxEquipment::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
+	//Equipment* tempequipment = dynamic_cast<Weapon*>(selection.GetClientObject());
+	wxCommandEvent event(TRANSMIT_LBE_SELECTION, ID_LBE);
+	event.SetClientObject(selection.GetClientObject());
+	ProcessEvent(event);
 }
 
 void ListBoxEquipment::ReceiveExclusivity(wxString charactername) {
@@ -987,35 +939,34 @@ void ListBoxEquipment::repopulate() {
 
 	this->Set(ToArrayString(equipmentnames), ToArrayData(equipmentdata));
 
-	DetermineSelectionStatus();  //using mostrecentselection member variable
+	//DetermineSelectionStatus();  //using mostrecentselection member variable
 }
 
-bool ListBoxEquipment::CompareAllStrings() {
-	wxArrayString currentequipmentselections = this->GetStrings();
-
-	for (auto equipmentname : currentequipmentselections) {
-		if (equipmentname == mostrecentselection) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-void ListBoxEquipment::DetermineSelectionStatus() {
-	if (CompareAllStrings()) {
-		int index = this->FindString(mostrecentselection);
-		this->SetSelection(index);
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
-		ProcessEvent(eventtoself);
-	}
-
-	else if (!CompareAllStrings()) {
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
-		eventtoself.SetString("DESELECTION");
-		ProcessEvent(eventtoself);
-	}
-}
+//bool ListBoxEquipment::CompareAllStrings() {
+//	wxArrayString currentequipmentselections = this->GetStrings();
+//
+//	for (auto equipmentname : currentequipmentselections) {
+//		if (equipmentname == mostrecentselection) {
+//			return true;
+//		}
+//	}
+//
+//	return false;
+//}
+//
+//void ListBoxEquipment::DetermineSelectionStatus() {
+//	if (CompareAllStrings()) {
+//		int index = this->FindString(mostrecentselection);
+//		this->SetSelection(index);
+//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
+//		ProcessEvent(eventtoself);
+//	}
+//	else if (!CompareAllStrings()) {
+//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
+//		eventtoself.SetString("DESELECTION");
+//		ProcessEvent(eventtoself);
+//	}
+//}
 
 GridWeaponStats::GridWeaponStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size) :
 	wxGrid(parent, id, pos, size)
@@ -1033,8 +984,8 @@ void GridWeaponStats::initpopulate() {
 	}
 }
 
-void GridWeaponStats::ReceiveLBWInfo(Stats stats) {
-	gtbws->ReceiveLBWInfo(stats);
+void GridWeaponStats::ReceiveLBWSelection(Stats stats) {
+	gtbws->ReceiveLBWSelection(stats);
 	repopulate();
 }
 
@@ -1048,14 +999,14 @@ void GridWeaponStats::repopulate() {
 	}
 
 	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(BOUNCE_WEAPON_STATS, ID_GWS);
+	wxCommandEvent event(TRANSMIT_GWS_STATS, ID_GWS);
 	event.SetInt(ID_GTS);
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
 }
 
-void GTBWeaponStats::ReceiveLBWInfo(Stats stats) {
+void GTBWeaponStats::ReceiveLBWSelection(Stats stats) {
 	weaponstats = stats;
 }
 
@@ -1075,8 +1026,8 @@ void GridEquipmentStats::initpopulate() {
 	}
 }
 
-void GridEquipmentStats::ReceiveLBEInfo(Stats stats) {
-	gtbes->ReceiveLBEInfo(stats);
+void GridEquipmentStats::ReceiveLBESelection(Stats stats) {
+	gtbes->ReceiveLBESelection(stats);
 	repopulate();
 }
 
@@ -1092,14 +1043,14 @@ void GridEquipmentStats::repopulate() {
 	}
 
 	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(BOUNCE_EQUIPMENT_STATS, ID_GES);
+	wxCommandEvent event(TRANSMIT_GES_STATS, ID_GES);
 	event.SetInt(ID_GTS);
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
 }
 
-void GTBEquipmentStats::ReceiveLBEInfo(Stats stats) {
+void GTBEquipmentStats::ReceiveLBESelection(Stats stats) {
 	equipmentstats = stats;
 }
 
@@ -1120,19 +1071,19 @@ void GridTotalStats::initpopulate() {
 }
 
 void GridTotalStats::ReceiveGMTStats(Stats stats) {
-	gtbts->ReceiveLVCSInfo(stats);
+	gtbts->ReceiveGMTStats(stats);
 	gtbts->recalculate();
 	repopulate();
 }
 
-void GridTotalStats::ReceiveLVWSInfo(Stats stats) {
-	gtbts->ReceiveLVWSInfo(stats);
+void GridTotalStats::ReceiveGWSStats(Stats stats) {
+	gtbts->ReceiveGWSStats(stats);
 	gtbts->recalculate();
 	repopulate();
 }
 
-void GridTotalStats::ReceiveLVESInfo(Stats stats) {
-	gtbts->ReceiveLVESInfo(stats);
+void GridTotalStats::ReceiveGESStats(Stats stats) {
+	gtbts->ReceiveGESStats(stats);
 	gtbts->recalculate();
 	repopulate();
 }
@@ -1161,23 +1112,23 @@ void GTBTotalStats::recalculate() {
 	CalculateTotalRange();
 }
 
-void GTBTotalStats::ReceiveLVCSInfo(Stats stats) {
-	currentLVCSstats = stats;
+void GTBTotalStats::ReceiveGMTStats(Stats stats) {
+	currentGMTstats = stats;
 }
 
-void GTBTotalStats::ReceiveLVWSInfo(Stats stats) {
-	currentLVWSstats = stats;
+void GTBTotalStats::ReceiveGWSStats(Stats stats) {
+	currentGWSstats = stats;
 }
 
-void GTBTotalStats::ReceiveLVESInfo(Stats stats) {
-	currentLVESstats = stats;
+void GTBTotalStats::ReceiveGESStats(Stats stats) {
+	currentGESstats = stats;
 }
 
 void GTBTotalStats::CalculateTotalPhysicalAttack() {
-	std::wstring temp = currentLVCSstats[2].getText();
+	std::wstring temp = currentGMTstats[2].getText();
 	int lvcstat2 = _wtoi(temp.c_str());
 
-	temp = currentLVWSstats[0].getText();
+	temp = currentGWSstats[0].getText();
 	int lvwstat0 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(lvcstat2 + lvwstat0);
@@ -1192,10 +1143,10 @@ void GTBTotalStats::CalculateTotalPhysicalAttack() {
 }
 
 void GTBTotalStats::CalculateTotalMagicAttack() {
-	std::wstring temp = currentLVCSstats[3].getText();
+	std::wstring temp = currentGMTstats[3].getText();
 	int lvcstat3 = _wtoi(temp.c_str());
 
-	temp = currentLVWSstats[0].getText();
+	temp = currentGWSstats[0].getText();
 	int lvwstat0 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(lvcstat3 + lvwstat0);
@@ -1211,10 +1162,10 @@ void GTBTotalStats::CalculateTotalMagicAttack() {
 }
 
 void GTBTotalStats::CalculateTotalPhysicalHit() {
-	std::wstring temp = currentLVCSstats[4].getText();
+	std::wstring temp = currentGMTstats[4].getText();
 	int lvcstat4 = _wtoi(temp.c_str());
 
-	temp = currentLVWSstats[1].getText();
+	temp = currentGWSstats[1].getText();
 	int lvwstat1 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(lvcstat4 + lvwstat1);
@@ -1229,13 +1180,13 @@ void GTBTotalStats::CalculateTotalPhysicalHit() {
 }
 
 void GTBTotalStats::CalculateTotalMagicHit() {
-	std::wstring temp = currentLVCSstats[4].getText();
+	std::wstring temp = currentGMTstats[4].getText();
 	int lvcstat4 = _wtoi(temp.c_str());
 
-	temp = currentLVCSstats[6].getText();
+	temp = currentGMTstats[6].getText();
 	int lvcstat6 = _wtoi(temp.c_str());
 
-	temp = currentLVWSstats[1].getText();
+	temp = currentGWSstats[1].getText();
 	int lvwstat1 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring((lvcstat4 / 2) + (lvcstat6 / 2) + lvwstat1);
@@ -1251,13 +1202,13 @@ void GTBTotalStats::CalculateTotalMagicHit() {
 }
 
 void GTBTotalStats::CalculateTotalCrit() {
-	std::wstring temp = currentLVCSstats[4].getText();
+	std::wstring temp = currentGMTstats[4].getText();
 	int lvcstat4 = _wtoi(temp.c_str());
 
-	temp = currentLVCSstats[6].getText();
+	temp = currentGMTstats[6].getText();
 	int lvcstat6 = _wtoi(temp.c_str());
 
-	temp = currentLVWSstats[2].getText();
+	temp = currentGWSstats[2].getText();
 	int lvwstat2 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(lvcstat4 + (lvcstat6 / 2) + lvwstat2);
@@ -1270,13 +1221,13 @@ void GTBTotalStats::CalculateTotalCrit() {
 }
 
 void GTBTotalStats::CalculateAS() {
-	std::wstring temp = currentLVCSstats[5].getText();
+	std::wstring temp = currentGMTstats[5].getText();
 	int lvcstat5 = _wtoi(temp.c_str());
 
-	temp = currentLVWSstats[4].getText();
+	temp = currentGWSstats[4].getText();
 	int lvwstat4 = _wtoi(temp.c_str());
 
-	temp = currentLVWSstats[2].getText();
+	temp = currentGWSstats[2].getText();
 	int lvwstat2 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(lvcstat5 + lvwstat4 - (lvwstat2 / 5));
@@ -1288,10 +1239,10 @@ void GTBTotalStats::CalculateAS() {
 }
 
 void GTBTotalStats::CalculateTotalProt() {
-	std::wstring temp = currentLVCSstats[7].getText();
+	std::wstring temp = currentGMTstats[7].getText();
 	int lvcstat7 = _wtoi(temp.c_str());
 
-	temp = currentLVESstats[6].getText();
+	temp = currentGESstats[6].getText();
 	int lvestat6 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(lvcstat7 + lvestat6);
@@ -1304,10 +1255,10 @@ void GTBTotalStats::CalculateTotalProt() {
 }
 
 void GTBTotalStats::CalculateTotalResilience() {
-	std::wstring temp = currentLVCSstats[8].getText();
+	std::wstring temp = currentGMTstats[8].getText();
 	int lvcstat8 = _wtoi(temp.c_str());
 
-	temp = currentLVESstats[7].getText();
+	temp = currentGESstats[7].getText();
 	int lvestat7 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(lvcstat8 + lvestat7);
@@ -1335,10 +1286,10 @@ void GTBTotalStats::CalculateTotalAvoid() {
 }
 
 void GTBTotalStats::CalculateTotalCritAvoid() {
-	std::wstring temp = currentLVWSstats[2].getText();
+	std::wstring temp = currentGWSstats[2].getText();
 	int lvwstat2 = _wtoi(temp.c_str());
 
-	temp = currentLVCSstats[6].getText();
+	temp = currentGMTstats[6].getText();
 	int lvcstat6 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(lvwstat2 - lvcstat6);
@@ -1351,7 +1302,7 @@ void GTBTotalStats::CalculateTotalCritAvoid() {
 }
 
 void GTBTotalStats::CalculateTotalRange() {
-	std::wstring temp = currentLVWSstats[3].getText();
+	std::wstring temp = currentGWSstats[3].getText();
 	int lvwstat3 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(lvwstat3);
@@ -1703,7 +1654,7 @@ EVT_COMBOBOX(ID_DDCH, DropDownCharacters::OnNewSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(DropDownCharacters, wxComboBox)
-EVT_COMBOBOX(ID_DDCH, DropDownCharacters::OnNewSelection)
+	EVT_COMBOBOX(ID_DDCH, DropDownCharacters::OnNewSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(DropDownClasses, wxComboBox)

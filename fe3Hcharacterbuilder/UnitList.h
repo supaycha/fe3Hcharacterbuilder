@@ -109,15 +109,15 @@ public:
 };
 
 enum class SL : int {
-	E = 0, EPLUS = 1, D = 2, DPLUS = 3, C = 4, CPLUS = 5, B = 6, BPLUS = 7, A = 8, APLUS = 9, S = 10, SPLUS = 11
+	BLANK = -1, E = 0, EPLUS = 1, D = 2, DPLUS = 3, C = 4, CPLUS = 5, B = 6, BPLUS = 7, A = 8, APLUS = 9, S = 10, SPLUS = 11
 };
 
 enum class WEAPONTYPE : int {
-	SWORD = 0, LANCE = 1, AXE = 2, BOW = 3, GAUNTLETS = 4, REASON = 5, FAITH = 6, AUTHORITY = 7, HEAVYARMOR = 8, RIDING = 9, FLYING = 10
+	BLANK = -1, SWORD = 0, LANCE = 1, AXE = 2, BOW = 3, GAUNTLETS = 4, REASON = 5, FAITH = 6, AUTHORITY = 7, HEAVYARMOR = 8, RIDING = 9, FLYING = 10
 };
 
 enum class EQUIPMENTTYPE : int {
-	SHIELD = 0, RING = 1, STAFF = 2, GEM = 3
+	BLANK = -1, SHIELD = 0, RING = 1, STAFF = 2, GEM = 3
 };
 
 struct SLPACKAGE : public wxClientData {
@@ -263,6 +263,20 @@ public:
 	WhiteMagic* clone() override { return new WhiteMagic(*this); }
 };
 
+class BlankWeapon : public Weapon {
+private:
+	WEAPONTYPE wt = WEAPONTYPE::BLANK;
+public:
+	BlankWeapon() {}
+	BlankWeapon(std::wstring uName, bool uExclusivity, std::wstring uCharacterName, std::wstring uMight, std::wstring uHit, std::wstring uCrit,
+		std::wstring uRange, std::wstring uWeight, std::wstring uSkillLVL,
+		std::wstring uUses, SL skillLVL) : Weapon{ uName, uExclusivity, uCharacterName, uMight, uHit, uCrit, uRange, uWeight, uSkillLVL, uUses, skillLVL } {}
+	~BlankWeapon() {}
+	WEAPONTYPE getType() override { return wt; };
+	BlankWeapon* new_expr() override { return new BlankWeapon(); }
+	BlankWeapon* clone() override { return new BlankWeapon(*this); }
+};
+
 class Equipment : public Unit {
 private:
 	std::wstring equipmentname;
@@ -339,6 +353,19 @@ public:
 	EQUIPMENTTYPE getType() override { return et; };
 	Gem* new_expr() override { return new Gem(); }
 	Gem* clone() override { return new Gem(*this); }
+};
+class BlankEquipment : public Equipment {
+private:
+	EQUIPMENTTYPE et = EQUIPMENTTYPE::BLANK;
+public:
+	BlankEquipment() {}
+	BlankEquipment(std::wstring uName, bool uExclusivity, std::wstring uCharacterNameorNames, std::wstring uProtection, std::wstring uResilience, std::wstring uDescription) :
+		Equipment{ uName, uExclusivity, uCharacterNameorNames, uProtection, uResilience, uDescription } {}
+	~BlankEquipment() {}
+
+	EQUIPMENTTYPE getType() override { return et; };
+	BlankEquipment* new_expr() override { return new BlankEquipment(); }
+	BlankEquipment* clone() override { return new BlankEquipment(*this); }
 };
 
 class Character : public Unit {
@@ -508,12 +535,30 @@ public:
 	SkillLevelAbility* new_expr() override { return new SkillLevelAbility(); }
 	SkillLevelAbility* clone() override { return new SkillLevelAbility(*this); }
 };
+class BlankAbility : public Ability {
+private:
+	std::wstring slaType = L"---";
+	SL sl;
+	WEAPONTYPE wt;
+public:
+	BlankAbility() {}
+	BlankAbility(std::wstring uName, std::wstring uSource, SL uLevel, WEAPONTYPE uWT, std::wstring uDescription) : sl(uLevel), wt(uWT), Ability{ uName, uSource, uDescription } {}
+	~BlankAbility() {}
+	std::wstring getType() { return slaType; }
+
+	SL getSL() { return sl; }
+	WEAPONTYPE getWeaponType() { return wt; }
+	BlankAbility* new_expr() override { return new BlankAbility(); }
+	BlankAbility* clone() override { return new BlankAbility(*this); }
+};
 
 class UnitList {
 private:
 	std::vector<std::unique_ptr<Unit>> list;
 public:
 	UnitList() {
+		list.emplace_back(std::make_unique<Character>(L"---", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Character>(L"Byleth", L"27", L"4", L"13", L"6", L"9", L"8", L"8", L"6", L"6", L"7",
 			L"0.45", L"0", L"0.45", L"0.35", L"0.45", L"0.45", L"0.45", L"0.35", L"0.3", L"0.45"));
 		list.emplace_back(std::make_unique<Character>(L"Edelgard", L"29", L"4", L"13", L"6", L"5", L"8", L"5", L"6", L"4", L"10",
@@ -594,6 +639,8 @@ public:
 			L"0.2", L"0", L"0.2", L"0.6", L"0.3", L"0.35", L"0.15", L"0.15", L"0.3", L"0.25"));
 		list.emplace_back(std::make_unique<Character>(L"Hapi", L"26", L"4", L"6", L"11", L"8", L"6", L"4", L"4", L"7", L"4",
 			L"0.35", L"0", L"0.35", L"0.45", L"0.45", L"0.4", L"0.2", L"0.15", L"0.45", L"0.25"));
+
+		list.emplace_back(std::make_unique<BlankWeapon>(L"---", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"0", L"0", SL::BLANK));
 		list.emplace_back(std::make_unique<Sword>(L"Broken Sword", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
 		list.emplace_back(std::make_unique<Sword>(L"Iron Sword", false, L"NULL", L"5", L"90", L"0", L"1", L"5", L"E", L"40", SL::E));
 		list.emplace_back(std::make_unique<Sword>(L"Steel Sword", false, L"NULL", L"8", L"85", L"0", L"1", L"10", L"D", L"50", SL::D));
@@ -727,6 +774,8 @@ public:
 		list.emplace_back(std::make_unique<WhiteMagic>(L"Silence", false, L"NULL", L"0", L"100", L"0", L"3-10", L"0", L"B", L"3", SL::B));
 		list.emplace_back(std::make_unique<WhiteMagic>(L"Rescue", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"B", L"3", SL::B));
 		list.emplace_back(std::make_unique<WhiteMagic>(L"Warp", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"B", L"1", SL::B));
+
+		list.emplace_back(std::make_unique<BlankEquipment>(L"---", false, L"NULL", L"0", L"0", L"NULL"));
 		list.emplace_back(std::make_unique<Shield>(L"Leather Shield", false, L"NULL", L"1", L"1", L"NULL"));
 		list.emplace_back(std::make_unique<Shield>(L"Iron Shield", false, L"NULL", L"2", L"2", L"NULL"));
 		list.emplace_back(std::make_unique<Shield>(L"Steel Shield", false, L"NULL", L"3", L"3", L"NULL"));
@@ -755,11 +804,11 @@ public:
 		list.emplace_back(std::make_unique<Gem>(L"Knowledge Gem", false, L"NULL", L"0", L"0", L"Base skill level experience +100%."));
 		list.emplace_back(std::make_unique<Gem>(L"Rafail Gem", true, L"Mercedes,Jeritza", L"0", L"0", L"Base skill level experience +100%."));
 
-
-
-
-
-
+		list.emplace_back(std::make_unique<Class>(L"---", false, L"NULL",
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Enlightened One", true, L"Byleth",
 			L"28", L"6", L"17", L"8", L"12", L"14", L"10", L"12", L"10", L"0",
 			L"1", L"2", L"2", L"3", L"1", L"1", L"1", L"2", L"2", L"1",
@@ -1031,6 +1080,7 @@ private:
 
 public:
 	AbilityList() {
+		list.emplace_back(std::make_unique<BlankAbility>(L"---", L"---", SL::BLANK, WEAPONTYPE::BLANK, L"---"));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Professor's Guidance", L"Byleth", L"+20% Experience Gained to user and adjacent ally"));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Imperial Lineage", L"Edelgard", L"+20% Experience Gained"));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Royal Lineage", L"Dimitri", L"+20% Experience Gained"));

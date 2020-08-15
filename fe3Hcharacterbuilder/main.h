@@ -60,9 +60,9 @@
 //#define ID_USES			96
 
 const unsigned int CHARACTER_DATA_SIZE = 41;
-const unsigned int WEAPON_DATA_SIZE = 133;
-const unsigned int CLASS_DATA_SIZE = 52;
-const unsigned int EQUIPMENT_DATA_SIZE = 27;
+const unsigned int WEAPON_DATA_SIZE = 134;
+const unsigned int CLASS_DATA_SIZE = 53;
+const unsigned int EQUIPMENT_DATA_SIZE = 28;
 const unsigned int SL_DATA_SIZE = 11;
 const unsigned int CHAR_CLASS_STATS_SIZE = 10;
 const unsigned int TOTAL_STATS_SIZE = 11;
@@ -182,14 +182,13 @@ private:
 public:
 	MyFrame(wxWindowID id, const wxString& title);
 	~MyFrame() {}
-	void ReceiveRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT);	
-	void ReceiveRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT);
-	void ReceiveRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT);
-	void BounceLVCSInfo(wxCommandEvent& eventfromwho);
-	void BounceClassInfo(wxCommandEvent& eventfromwho);
-
-	void BounceLVWSInfo(wxCommandEvent& eventfromwho);
-	void BounceLVESInfo(wxCommandEvent& eventfromwho);
+	void BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT);	
+	void BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT);
+	void BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT);
+	void BounceLBWSelection(wxCommandEvent& selection);
+	void BounceLBESelection(wxCommandEvent& selection);
+	void BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS);
+	void BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES);
 	void BounceSLInfo(wxCommandEvent& eventfromwho);
 
 	void OnQuit(wxCommandEvent& event);
@@ -396,7 +395,7 @@ public:
 	wxString GetValue(int row, int col) override { return weaponstats[col].getText(); }
 	void SetValue(int row, int col, const wxString& value) override { weaponstats[col] = Stat(value); }
 
-	void ReceiveLBWInfo(Stats stats);
+	void ReceiveLBWSelection(Stats stats);
 };
 
 class GridWeaponStats : public wxGrid {
@@ -405,7 +404,7 @@ private:
 public:
 	GridWeaponStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size);
 	void initpopulate();
-	void ReceiveLBWInfo(Stats stats);
+	void ReceiveLBWSelection(Stats stats);
 	void repopulate();
 };
 
@@ -421,7 +420,7 @@ public:
 	wxString GetValue(int row, int col) override { return equipmentstats[col].getText(); }
 	void SetValue(int row, int col, const wxString& value) override { equipmentstats[col] = Stat(value); }
 
-	void ReceiveLBEInfo(Stats stats);
+	void ReceiveLBESelection(Stats stats);
 };
 
 class GridEquipmentStats : public wxGrid {
@@ -430,38 +429,38 @@ private:
 public:
 	GridEquipmentStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size);
 	void initpopulate();
-	void ReceiveLBEInfo(Stats stats);
+	void ReceiveLBESelection(Stats stats);
 	void repopulate();
 };
 
 class GTBTotalStats : public wxGridTableBase {
 private:
 	std::vector<wxString> headers{ "PATK", "MATK", "PHIT", "MHIT", "TCRIT", "AS", "TPROT", "TRSL", "AVO", "CRITAVO", "RNGE" };
-	Stats currentLVCSstats;
-	Stats currentLVWSstats;
-	Stats currentLVESstats;
+	Stats currentGMTstats;
+	Stats currentGWSstats;
+	Stats currentGESstats;
 	Stats totalstats;
 public:
 	GTBTotalStats() :
-		currentLVCSstats{ CHARACTER_DATA_SIZE, L"0" },
-		currentLVWSstats{ WEAPON_DATA_SIZE, L"0" },
-		currentLVESstats{ TOTAL_STATS_SIZE, L"0" },
+		currentGMTstats{ CHARACTER_DATA_SIZE, L"0" },
+		currentGWSstats{ WEAPON_DATA_SIZE, L"0" },
+		currentGESstats{ TOTAL_STATS_SIZE, L"0" },
 		totalstats(TOTAL_STATS_SIZE, L"0") {}
 	~GTBTotalStats() {}
 	int GetNumberRows() override { return 1; }
 	int GetNumberCols() override { return headers.size(); }
 	wxString GetValue(int row, int col) override { return totalstats[col].getText(); }
-	wxString GetValueCharacterStats(int row, int col) { return currentLVCSstats[col].getText(); }
-	wxString GetValueWeaponStats(int row, int col) { return currentLVWSstats[col].getText(); }
-	wxString GetValueEquipmentStats(int row, int col) { return currentLVESstats[col].getText(); }
+	wxString GetValueCharacterStats(int row, int col) { return currentGMTstats[col].getText(); }
+	wxString GetValueWeaponStats(int row, int col) { return currentGWSstats[col].getText(); }
+	wxString GetValueEquipmentStats(int row, int col) { return currentGESstats[col].getText(); }
 
 	void SetValue(int row, int col, const wxString& value) override { totalstats[col] = Stat(value); }
-	void SetValueCharacterStats(int row, int col, const wxString& value) { currentLVCSstats[col] = Stat(value); }
-	void SetValueWeaponStats(int row, int col, const wxString& value) { currentLVWSstats[col] = Stat(value); }
-	void SetValueEquipmentStats(int row, int col, const wxString& value) { currentLVESstats[col] = Stat(value); }
-	void ReceiveLVCSInfo(Stats stats);
-	void ReceiveLVWSInfo(Stats stats);
-	void ReceiveLVESInfo(Stats stats);
+	void SetValueCharacterStats(int row, int col, const wxString& value) { currentGMTstats[col] = Stat(value); }
+	void SetValueWeaponStats(int row, int col, const wxString& value) { currentGWSstats[col] = Stat(value); }
+	void SetValueEquipmentStats(int row, int col, const wxString& value) { currentGESstats[col] = Stat(value); }
+	void ReceiveGMTStats(Stats stats);
+	void ReceiveGWSStats(Stats stats);
+	void ReceiveGESStats(Stats stats);
 	void recalculate();
 
 	void CalculateTotalPhysicalAttack();
@@ -484,10 +483,9 @@ public:
 	GridTotalStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size);
 	void initpopulate();
 	void ReceiveGMTStats(Stats stats);
-
-
-	void ReceiveLVWSInfo(Stats stats);
-	void ReceiveLVESInfo(Stats stats);
+	void ReceiveGWSStats(Stats stats);
+	
+	void ReceiveGESStats(Stats stats);
 	void repopulate();
 };
 
