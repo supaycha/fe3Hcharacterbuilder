@@ -173,16 +173,40 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 		equipmap.emplace(equipnames[i], equipdata[i]);
 	}
 
+	Buildersizer = new wxBoxSizer(wxHORIZONTAL);
+	MTandGridStats_col = new wxBoxSizer(wxVERTICAL);
+	lbsizer = new wxBoxSizer(wxHORIZONTAL);
+	slablsizer = new wxBoxSizer(wxHORIZONTAL);
 
-	gts = new GridTotalStats(this, ID_GTS, wxPoint(800, 650), wxSize(750, 100));	
-	ges = new GridEquipmentStats(this, ID_GES, wxPoint(0, 700), wxSize(750, 100));
-	gws = new GridWeaponStats(this, ID_GWS, wxPoint(0, 600), wxSize(750, 100));
+	gws = new GridWeaponStats(this, ID_GWS);
+	ges = new GridEquipmentStats(this, ID_GES);
+	gts = new GridTotalStats(this, ID_GTS);		
+	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, ID_MT, 0, 0, -1, -1);
+
 	am = new AbilityManager(this, ID_AM, 900, 50, 350, 400);
 	slm = new SkillLevelManager(this, ID_SLM, 700, 50, 150, 300);
 
 	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, wxPoint(1300, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
 	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, wxPoint(500, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
-	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, ID_MT, 0, 0, -1, -1);
+	gridstatssizer = new wxBoxSizer(wxVERTICAL);
+
+	gridstatssizer->Add(gws);
+	gridstatssizer->Add(ges);
+	gridstatssizer->Add(gts);
+	MTandGridStats_col->Add(mt);
+	MTandGridStats_col->Add(gridstatssizer);
+
+	lbsizer->Add(lbe);
+	lbsizer->Add(lbw);
+
+	slablsizer->Add(am);
+	slablsizer->Add(slm);
+
+	Buildersizer->Add(MTandGridStats_col);
+	Buildersizer->Add(lbsizer);
+	Buildersizer->Add(slablsizer);
+
+	this->SetSizerAndFit(Buildersizer);
 
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, ID_MT);
 	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, ID_MT);
@@ -440,8 +464,18 @@ DropDownClasses::DropDownClasses(std::map<wxString, wxClientData*> uclassmap, wx
 	classmap = uclassmap;
 	auto iter = classmap.begin();
 
-	wxString firstname = iter;
-	wxClientData* firstdata;
+	std::vector<wxString> firstname;
+	std::vector<wxClientData*> firstdata;
+
+	firstname.push_back(iter->first);
+	Class* temp = dynamic_cast<Class*>(iter->second)->clone();
+	firstdata.push_back(dynamic_cast<wxClientData*>(temp));
+	this->Set(ToArrayString(firstname), ToArrayData(firstdata));
+
+	this->SetSelection(0);
+	wxCommandEvent eventtoself(wxEVT_COMBOBOX, this->GetId());
+	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+	ProcessEvent(eventtoself);
 }
 
 void DropDownClasses::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
@@ -968,8 +1002,8 @@ void ListBoxEquipment::repopulate() {
 //	}
 //}
 
-GridWeaponStats::GridWeaponStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size) :
-	wxGrid(parent, id, pos, size)
+GridWeaponStats::GridWeaponStats(wxWindow* parent, wxWindowID id) :
+	wxGrid(parent, id)
 {
 	gtbws = new GTBWeaponStats;
 	CreateGrid(1, gtbws->GetColsCount());
@@ -1010,8 +1044,8 @@ void GTBWeaponStats::ReceiveLBWSelection(Stats stats) {
 	weaponstats = stats;
 }
 
-GridEquipmentStats::GridEquipmentStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size) :
-	wxGrid(parent, id, pos, size)
+GridEquipmentStats::GridEquipmentStats(wxWindow* parent, wxWindowID id) :
+	wxGrid(parent, id)
 {
 	gtbes = new GTBEquipmentStats;
 	CreateGrid(1, gtbes->GetColsCount());
@@ -1054,8 +1088,8 @@ void GTBEquipmentStats::ReceiveLBESelection(Stats stats) {
 	equipmentstats = stats;
 }
 
-GridTotalStats::GridTotalStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size) :
-	wxGrid(parent, id, pos, size)
+GridTotalStats::GridTotalStats(wxWindow* parent, wxWindowID id) :
+	wxGrid(parent, id)
 {
 	gtbts = new GTBTotalStats;
 	CreateGrid(1, gtbts->GetColsCount());

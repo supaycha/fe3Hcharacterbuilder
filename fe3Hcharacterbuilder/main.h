@@ -169,6 +169,12 @@ public:
 
 class MyFrame : public wxFrame {
 private:
+	wxBoxSizer* Buildersizer;
+	wxBoxSizer* MTandGridStats_col;
+	wxBoxSizer* gridstatssizer;
+	wxBoxSizer* lbsizer;
+	wxBoxSizer* slablsizer;
+
 	MysteriousTeacher* mt;
 	ListBoxWeapons* lbw;
 	ListBoxEquipment* lbe;
@@ -402,7 +408,7 @@ class GridWeaponStats : public wxGrid {
 private:
 	GTBWeaponStats* gtbws;
 public:
-	GridWeaponStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size);
+	GridWeaponStats(wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveLBWSelection(Stats stats);
 	void repopulate();
@@ -427,7 +433,7 @@ class GridEquipmentStats : public wxGrid {
 private:
 	GTBEquipmentStats* gtbes;
 public:
-	GridEquipmentStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size);
+	GridEquipmentStats(wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveLBESelection(Stats stats);
 	void repopulate();
@@ -480,7 +486,7 @@ class GridTotalStats : public wxGrid {
 private:
 	GTBTotalStats* gtbts;
 public:
-	GridTotalStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size);
+	GridTotalStats(wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveGMTStats(Stats stats);
 	void ReceiveGWSStats(Stats stats);
