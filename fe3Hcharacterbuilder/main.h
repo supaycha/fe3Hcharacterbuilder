@@ -66,6 +66,7 @@ const unsigned int EQUIPMENT_DATA_SIZE = 28;
 const unsigned int SL_DATA_SIZE = 11;
 const unsigned int CHAR_CLASS_STATS_SIZE = 10;
 const unsigned int TOTAL_STATS_SIZE = 11;
+const unsigned int MIN_HEIGHT_OF_COMBOBOX = 23;
 
 #ifndef MAIN_H
 #define MAIN_H
@@ -402,6 +403,8 @@ public:
 	void SetValue(int row, int col, const wxString& value) override { weaponstats[col] = Stat(value); }
 
 	void ReceiveLBWSelection(Stats stats);
+
+	wxString GetHeader(int index) { return headers[index]; }
 };
 
 class GridWeaponStats : public wxGrid {
@@ -427,6 +430,8 @@ public:
 	void SetValue(int row, int col, const wxString& value) override { equipmentstats[col] = Stat(value); }
 
 	void ReceiveLBESelection(Stats stats);
+
+	wxString GetHeader(int index) { return headers[index]; }
 };
 
 class GridEquipmentStats : public wxGrid {
@@ -480,6 +485,8 @@ public:
 	void CalculateTotalAvoid();
 	void CalculateTotalCritAvoid();
 	void CalculateTotalRange();
+
+	wxString GetHeader(int index) { return headers[index]; }
 };
 
 class GridTotalStats : public wxGrid {

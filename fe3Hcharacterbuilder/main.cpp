@@ -183,11 +183,11 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	gts = new GridTotalStats(this, ID_GTS);		
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, ID_MT, 0, 0, -1, -1);
 
-	am = new AbilityManager(this, ID_AM, 900, 50, 350, 400);
-	slm = new SkillLevelManager(this, ID_SLM, 700, 50, 150, 300);
+	am = new AbilityManager(this, ID_AM, 900, 50, -1, -1);
+	slm = new SkillLevelManager(this, ID_SLM, 700, 50, -1, -1);
 
-	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, wxPoint(1300, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
-	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, wxPoint(500, 50), wxSize(180, 500), emptybuffer, wxLB_SINGLE);
+	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, wxPoint(1300, 50), wxSize(-1, -1), emptybuffer, wxLB_SINGLE);
+	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, wxPoint(500, 50), wxSize(-1, -1), emptybuffer, wxLB_SINGLE);
 	gridstatssizer = new wxBoxSizer(wxVERTICAL);
 
 	gridstatssizer->Add(gws);
@@ -306,24 +306,24 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	}
 
 	int offset = 3;
-
-	columns[0]->AddSpacer(gmt->GetRowSize(0));
-	columns[0]->AddSpacer(gmt->GetRowSize(0));
-	columns[0]->AddSpacer(gmt->GetRowSize(0));
+	int sizeeveryrowshouldbe = 19;
+	columns[0]->AddSpacer(gmt->GetRowHeight(0));
+	columns[0]->AddSpacer(gmt->GetRowHeight(0));
+	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 	columns[0]->Add(sclVector[0]);
-	columns[0]->AddSpacer(gmt->GetRowSize(0));
+	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 	columns[0]->Add(sclVector[1]);
-	columns[0]->AddSpacer(gmt->GetRowSize(0));
-	columns[0]->AddSpacer(gmt->GetRowSize(0));
+	columns[0]->AddSpacer(gmt->GetRowHeight(0));
+	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 
-	columns[1]->AddSpacer(gmt->GetRowSize(0));
-	columns[1]->Add(ddc, wxEXPAND);
-	columns[1]->AddSpacer(gmt->GetRowSize(0));
-	columns[1]->Add(ddclVector[0]);
-	columns[1]->AddSpacer(gmt->GetRowSize(0));
-	columns[1]->Add(ddclVector[1]);
-	columns[1]->AddSpacer(gmt->GetRowSize(0));
-	columns[1]->Add(ddclVector[2]);
+	columns[1]->AddSpacer(gmt->GetRowHeight(0));
+	columns[1]->Add(ddc);
+	columns[1]->AddSpacer(gmt->GetRowHeight(0));
+	columns[1]->Add(ddclVector[0], 0, wxEXPAND, 0);
+	columns[1]->AddSpacer(gmt->GetRowHeight(0));
+	columns[1]->Add(ddclVector[1], 0, wxEXPAND, 0);
+	columns[1]->AddSpacer(gmt->GetRowHeight(0));
+	columns[1]->Add(ddclVector[2], 0, wxEXPAND, 0);
 
 	columns[2]->Add(gmt);
 
@@ -332,7 +332,7 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	}
 
 	SetSizerAndFit(total);
-
+	//wxSize lulz = ddc->GetClientSize();
 	Bind(TRANSMIT_DDCH_SELECTION, &MysteriousTeacher::BounceDDCHSelection, this, ID_DDCH);
 	Bind(TRANSMIT_SCL_SELECTION, &MysteriousTeacher::BounceSCLSelection, this, ID_SPIN1, ID_SPIN2);				//through MT
 	Bind(TRANSMIT_DDCL_SELECTION, &MysteriousTeacher::BounceDDCLSelection, this, ID_DDCL1, ID_DDCL3);		//now from DDCL through MT
@@ -555,10 +555,16 @@ GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bo
 {
 	gtbmt = new GTBMysteriousTeacher;
 
-	CreateGrid(8, 10);
+	CreateGrid(8, 10);	
+	SetDefaultRowSize(MIN_HEIGHT_OF_COMBOBOX);
+	SetDefaultColSize(34);
+	SetDefaultCellAlignment(wxALIGN_CENTER, wxALIGN_CENTER);
+	EnableEditing(false);
+	DisableDragGridSize();
+
 	for (unsigned int i = 0; i < 10; ++i) {
 		SetColLabelValue(i, gtbmt->GetHeader(i));
-		AutoSizeColLabelSize(i);
+
 	}
 	SetUseNativeColLabels(true);
 
@@ -578,6 +584,7 @@ void GridMysteriousTeacher::initpopulate() {
 }
 
 void GridMysteriousTeacher::repopulate() {
+	wxGridCellFloatRenderer* testerlulz = new wxGridCellFloatRenderer(3, 2);
 	std::vector<Stat> tempvectforstats;
 	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
 		std::wstring stattoset = gtbmt->GetValue(0, i);
@@ -591,6 +598,8 @@ void GridMysteriousTeacher::repopulate() {
 
 	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
 		std::wstring stattoset = gtbmt->GetValue3(0, i);
+		SetCellRenderer(2, i, testerlulz->Clone());
+		SetCellAlignment(2, i, wxALIGN_CENTER, wxALIGN_CENTER);
 		SetCellValue(2, i, stattoset);
 	}
 
@@ -601,6 +610,8 @@ void GridMysteriousTeacher::repopulate() {
 
 	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
 		std::wstring stattoset = gtbmt->GetValue5(0, i);
+		SetCellRenderer(4, i, testerlulz->Clone());
+		SetCellAlignment(4, i, wxALIGN_CENTER, wxALIGN_CENTER);
 		SetCellValue(4, i, stattoset);
 	}
 
@@ -625,6 +636,7 @@ void GridMysteriousTeacher::repopulate() {
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
+
 }
 
 void GridMysteriousTeacher::UpdateDDCHSelection(Character character) {
@@ -1006,7 +1018,14 @@ GridWeaponStats::GridWeaponStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
 	gtbws = new GTBWeaponStats;
+
 	CreateGrid(1, gtbws->GetColsCount());
+	for (int i = 0; i < gtbws->GetColsCount(); ++i) {
+		SetColLabelValue(i, gtbws->GetHeader(i));
+		AutoSizeColLabelSize(i);
+	}
+	SetUseNativeColLabels(true);
+
 	SetRowLabelSize(0);
 	initpopulate();
 }
@@ -1048,7 +1067,14 @@ GridEquipmentStats::GridEquipmentStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
 	gtbes = new GTBEquipmentStats;
+
 	CreateGrid(1, gtbes->GetColsCount());
+	for (int i = 0; i < gtbes->GetColsCount(); ++i) {
+		SetColLabelValue(i, gtbes->GetHeader(i));
+		AutoSizeColLabelSize(i);
+	}
+	SetUseNativeColLabels(true);
+
 	SetRowLabelSize(0);
 	initpopulate();
 }
@@ -1092,7 +1118,14 @@ GridTotalStats::GridTotalStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
 	gtbts = new GTBTotalStats;
+
 	CreateGrid(1, gtbts->GetColsCount());
+	for (int i = 0; i < gtbts->GetColsCount(); ++i) {
+		SetColLabelValue(i, gtbts->GetHeader(i));
+		AutoSizeColLabelSize(i);
+	}
+	SetUseNativeColLabels(true);
+
 	SetRowLabelSize(0);
 	initpopulate();
 }
