@@ -40,6 +40,11 @@ public:
 		std::wstring uUses) :
 		stats{ uMight, uHit, uCrit, uRange, uWeight, uSkillLVL, uUses }
 	{}
+	Stats(std::wstring uPHYSATK, std::wstring uMGKATK, std::wstring uHIT,
+		std::wstring uCRIT, std::wstring uAVO, std::wstring uPROT,
+		std::wstring uRES, std::wstring uCHA, std::wstring uEND) :
+		stats{ uPHYSATK, uMGKATK, uHIT, uCRIT, uAVO, uPROT, uRES, uCHA, uEND }
+	{}
 	Stats(std::wstring uPHYSATK, std::wstring uMGKATK, std::wstring uPHYSHIT,
 		std::wstring uMGKHIT, std::wstring uTCRIT, std::wstring uAS,
 		std::wstring TPROT, std::wstring TRSL, std::wstring uAVO, std::wstring uCRITAVO, std::wstring uRNGE) :
@@ -551,12 +556,54 @@ public:
 	BlankAbility* new_expr() override { return new BlankAbility(); }
 	BlankAbility* clone() override { return new BlankAbility(*this); }
 };
+class Gambit : public Unit {
+private:
+	std::wstring name;
+	Stats gambitstats;
+public:
+	Gambit() {}
+	~Gambit() {}
+
+	const std::wstring getName() override { return name; }
+	const Stats getStats() override { return gambitstats; }
+
+	Gambit* new_expr() override { return new Gambit(); }
+	Gambit* clone() override { return new Gambit(*this); }
+};
+
+class Battalion : public Unit {
+private:
+	std::wstring name;
+	Stats battstats;
+	Gambit gambit;
+	SL sl;
+public:
+	Battalion() {}
+	Battalion(std::wstring uName, 
+		std::wstring uPA, std::wstring uMA, std::wstring uHIT, std::wstring uCRIT, std::wstring uAVO,
+		std::wstring uPROT, std::wstring uRES, std::wstring uCHA, std::wstring uEND, Gambit uGambit, SL uSL) :
+		name { uName },
+		battstats{ uPA, uMA, uHIT, uCRIT, uAVO, uPROT, uRES, uCHA, uEND },
+		gambit { uGambit },
+		sl{ uSL } 
+	{}
+	~Battalion() {}
+
+	const std::wstring getName() override { return name; }
+	const Stats getStats() override { return battstats; }
+	SL getSL() { return sl; }
+
+	Battalion* new_expr() override { return new Battalion(); }
+	Battalion* clone() override { return new Battalion(*this); }
+};
 
 class UnitList {
 private:
 	std::vector<std::unique_ptr<Unit>> list;
 public:
 	UnitList() {
+		list.emplace_back(std::make_unique<Battalion>(L"---", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", Gambit(), SL::BLANK));
+		list.emplace_back(std::make_unique<Battalion>(L"Church of Seiros Soldiers", L"0", L"0", L"0", L"0", L"0", L"1", L"1", L"1", L"30", Gambit(), SL::E));
 		list.emplace_back(std::make_unique<Character>(L"---", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Character>(L"Byleth", L"27", L"4", L"13", L"6", L"9", L"8", L"8", L"6", L"6", L"7",

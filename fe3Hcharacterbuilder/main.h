@@ -10,15 +10,17 @@
 
 #define ID_LBW			30
 #define ID_LBE			31
-#define	ID_GWS			32
-#define ID_GES			33
-#define ID_GTS			34
-#define ID_SLM			35
-#define ID_AM			36
-#define ID_LBAA			37
-#define ID_LBSA			38
-#define ID_BML			39
-#define ID_BMR			40
+#define ID_LBB			32
+#define	ID_GWS			33
+#define ID_GES			34
+#define ID_GBS			35
+#define ID_GTS			36
+#define ID_SLM			37
+#define ID_AM			38
+#define ID_LBAA			39
+#define ID_LBSA			40
+#define ID_BML			41
+#define ID_BMR			42
 #define ID_DDSWORD		50
 #define ID_DDLANCE		51
 #define ID_DDAXE		52
@@ -70,8 +72,10 @@ class GridMysteriousTeacher;
 class GTBMysteriousTeacher;
 class ListBoxWeapons;
 class ListBoxEquipment;
+class ListBoxBattalions;
 class GridWeaponStats;
 class GridEquipmentStats;
+class GridBattalionStats;
 class GridTotalStats;
 
 class SkillLevelManager;
@@ -99,8 +103,10 @@ private:
 	MysteriousTeacher* mt;
 	ListBoxWeapons* lbw;
 	ListBoxEquipment* lbe;	
+	ListBoxBattalions* lbb;
 	GridWeaponStats* gws;
 	GridEquipmentStats* ges;
+	GridBattalionStats* gbs;
 	GridTotalStats* gts;
 	SkillLevelManager* slm;
 	AbilityManager* am;
@@ -114,8 +120,10 @@ public:
 	void BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT);
 	void BounceLBWSelection(wxCommandEvent& selection);
 	void BounceLBESelection(wxCommandEvent& selection);
+	void BounceLBBSelection(wxCommandEvent& selection);
 	void BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS);
 	void BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES);
+	void BounceGBSStats_partoftotalstats(wxCommandEvent& eventfromGBS);
 	void BounceSLInfo(wxCommandEvent& eventfromwho);
 
 	void OnQuit(wxCommandEvent& event);
@@ -280,7 +288,7 @@ public:
 	ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
 	~ListBoxWeapons() {}
 
-	void OnNewSelection(wxCommandEvent& sentevent);
+	void OnNewSelection(wxCommandEvent& selection);
 	void ReceiveExclusivity(wxString charactername);
 	void ReceiveSLInfo(SLPACKAGE* slpackage);
 
@@ -296,14 +304,31 @@ private:
 	wxString mostrecentLBEselection;
 	wxDECLARE_EVENT_TABLE();
 public:
-	ListBoxEquipment(std::map<wxString, wxClientData*> equipmentmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
+	ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
 	~ListBoxEquipment() {}
 
-	void OnNewSelection(wxCommandEvent& sentevent);
+	void OnNewSelection(wxCommandEvent& selection);
 	void ReceiveExclusivity(wxString charactername);
 
 	void repopulate();
 	void DetermineSelectionStatus();	
+	bool CompareAllStrings();
+};
+
+class ListBoxBattalions : public wxListBox {
+	std::map<wxString, wxClientData*> battalionmap;
+	SL sl;
+	wxString mostrecentLBBselection;
+	wxDECLARE_EVENT_TABLE();
+public:
+	ListBoxBattalions(std::map<wxString, wxClientData*> ubattalionmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
+	~ListBoxBattalions() {}
+
+	void OnNewSelection(wxCommandEvent& selection);
+	void ReceiveSLInfo(SLPACKAGE* slpackage);
+
+	void repopulate();
+	void DetermineSelectionStatus();
 	bool CompareAllStrings();
 };
 
@@ -361,12 +386,40 @@ public:
 	void repopulate();
 };
 
+class GTBBattalionStats : public wxGridTableBase {
+private:
+	std::vector<wxString> headers{ "PATK", "MATK", "HIT", "CRIT", "AVO", "PROT", "RES", "CHA", "END" };
+	Stats battalionstats;
+public:
+	GTBBattalionStats() {}
+	~GTBBattalionStats() {}
+	int GetNumberRows() override { return 1; }
+	int GetNumberCols() override { return headers.size(); }
+	wxString GetValue(int row, int col) override { return battalionstats[col].getText(); }
+	void SetValue(int row, int col, const wxString& value) override { battalionstats[col] = Stat(value); }
+
+	void ReceiveLBBSelection(Stats stats);
+
+	wxString GetHeader(int index) { return headers[index]; }
+};
+
+class GridBattalionStats : public wxGrid {
+private:
+	GTBBattalionStats* gtbbs;
+public:
+	GridBattalionStats(wxWindow* parent, wxWindowID id);
+	void initpopulate();
+	void ReceiveLBBSelection(Stats stats);
+	void repopulate();
+};
+
 class GTBTotalStats : public wxGridTableBase {
 private:
 	std::vector<wxString> headers{ "PATK", "MATK", "PHIT", "MHIT", "TCRIT", "AS", "TPROT", "TRSL", "AVO", "CRITAVO", "RNGE" };
 	Stats currentGMTstats;
 	Stats currentGWSstats;
 	Stats currentGESstats;
+	Stats currentGBSstats;
 	Stats totalstats;
 public:
 	GTBTotalStats() :
@@ -389,6 +442,7 @@ public:
 	void ReceiveGMTStats(Stats stats);
 	void ReceiveGWSStats(Stats stats);
 	void ReceiveGESStats(Stats stats);
+	void ReceiveGBSStats(Stats stats);
 	void recalculate();
 
 	void CalculateTotalPhysicalAttack();
@@ -414,8 +468,8 @@ public:
 	void initpopulate();
 	void ReceiveGMTStats(Stats stats);
 	void ReceiveGWSStats(Stats stats);
-	
 	void ReceiveGESStats(Stats stats);
+	void ReceiveGBSStats(Stats stats);
 	void repopulate();
 };
 
