@@ -41,23 +41,6 @@
 #define ID_STHEAVYARMOR 69
 #define ID_STRIDING		70
 #define ID_STFLYING		71
-//#define ID_HP			80
-//#define ID_MOV			81
-//#define ID_STR			82
-//#define ID_MAG			83
-//#define ID_DEX			84
-//#define ID_SPD			85
-//#define ID_LCK			86
-//#define ID_DEF			87
-//#define ID_RES			88
-//#define ID_CHA			89
-//#define ID_MIGHT		90
-//#define ID_HIT			91
-//#define ID_CRIT			92
-//#define ID_RANGE		93
-//#define ID_WEIGHT		94
-//#define ID_SL			95
-//#define ID_USES			96
 
 const unsigned int CHARACTER_DATA_SIZE = 41;
 const unsigned int WEAPON_DATA_SIZE = 134;
@@ -78,70 +61,6 @@ const unsigned int SET_LENGTH_OF_COLUMNS = 34;
 #include <algorithm>
 #include <vld.h>
 #include "UnitList.h"
-//class ListBoxClasses : public wxListBox {
-//private:
-//	std::map<wxString, wxClientData*> classmap;
-//	wxString currentDDCSelection;
-//	wxString mostrecentselection;
-//	wxDECLARE_EVENT_TABLE();
-//public:
-//	ListBoxClasses(std::map<wxString, wxClientData*> classmap, wxWindow* panel, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style);
-//	~ListBoxClasses() {}
-//
-//	void OnNewSelection(wxCommandEvent& sentevent);
-//	void ReceiveDDCInfo(wxString charactername);
-//
-//	void repopulate();
-//	bool CompareAllStrings();
-//	void DetermineSelectionStatus();
-//};
-//class ListBoxClasses : public wxListBox {
-//private:
-//	std::map<wxString, wxClientData*> classmap;
-//	wxString currentDDCSelection;
-//	wxString mostrecentselection;
-//	wxDECLARE_EVENT_TABLE();
-//public:
-//	ListBoxClasses(std::map<wxString, wxClientData*> classmap, wxWindow* panel, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style);
-//	~ListBoxClasses() {}
-//
-//	void OnNewSelection(wxCommandEvent& sentevent);
-//	void ReceiveDDCInfo(wxString charactername);
-//	
-//	void repopulate();
-//	bool CompareAllStrings();
-//	void DetermineSelectionStatus();
-//};
-//class GTBCharacterStats : public wxGridTableBase {
-//private:
-//	std::vector<wxString> headers{ "HP", "MOV", "STR", "MAG", "DEX", "SPD", "LCK", "DEF", "RES", "CHA" };
-//	Stats currentcharacterstats;
-//	Stats currentclassstats;
-//public:
-//	GTBCharacterStats() {}
-//	~GTBCharacterStats() {}
-//	int GetNumberRows() override { return 1; }
-//	int GetNumberCols() override { return headers.size(); }
-//	wxString GetValue(int row, int col) override { return currentcharacterstats[col].getText(); }
-//	wxString GetValueClass(int row, int col) { return currentclassstats[col].getText(); }
-//	void SetValue(int row, int col, const wxString& value) override { currentcharacterstats[col] = Stat(value); }
-//	void SetValueClass(int row, int col, const wxString& value) { currentclassstats[col] = Stat(value); }
-//
-//	void ReceiveDDCInfo(Stats characterstats);
-//	void ReceiveLBCInfo(Stats classstats);
-//};
-//
-//class GridCharacterStats : public wxGrid {
-//private:
-//	GTBCharacterStats* gtbcs;
-//public:
-//	GridCharacterStats(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size);
-//	void initpopulate();
-//	void ReceiveDDCInfo(Stats characterstats);
-//	void ReceiveLBCInfo(Stats classstats);
-//	void repopulate();
-//	std::wstring CompareStats(std::wstring characterstat, std::wstring classstats, int index);
-//};
 
 class MysteriousTeacher;
 class DropDownCharacters;
@@ -179,12 +98,12 @@ private:
 
 	MysteriousTeacher* mt;
 	ListBoxWeapons* lbw;
-	ListBoxEquipment* lbe;
-	SkillLevelManager* slm;
-	AbilityManager* am;
+	ListBoxEquipment* lbe;	
 	GridWeaponStats* gws;
 	GridEquipmentStats* ges;
 	GridTotalStats* gts;
+	SkillLevelManager* slm;
+	AbilityManager* am;
 
 	wxDECLARE_EVENT_TABLE();
 public:
@@ -224,10 +143,6 @@ public:
 	void BounceDDCLSelection(wxCommandEvent& transmission);
 
 	void ForwardGMTStats(wxCommandEvent& forwarded);
-
-	//void ForwardLVCSInfo(wxCommandEvent& eventfromwho);
-
-	void BounceSelectionStatusInfo(wxCommandEvent& eventfromwho);
 };
 
 class DropDownCharacters : public wxComboBox {
@@ -253,7 +168,7 @@ class DropDownClasses : public wxComboBox {
 private:
 	std::map<wxString, wxClientData*> classmap;
 	wxString currentDDCSelection;
-	wxString mostrecentselection;
+	wxString mostrecentDDCLselection;
 	wxDECLARE_EVENT_TABLE();
 public:
 	DropDownClasses(std::map<wxString, wxClientData*> classmap, wxWindow* panel, wxWindowID id, const wxArrayString& choices, long style);
@@ -263,6 +178,7 @@ public:
 	void ReceiveExclusivity(wxString charactername);
 
 	void repopulate();
+	void DetermineSelectionStatus();
 	bool CompareAllStrings();
 };
 

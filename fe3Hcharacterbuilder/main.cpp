@@ -1,7 +1,6 @@
 #include "main.h"
 #include <vld.h>
 
-
 wxDEFINE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
 wxDEFINE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
@@ -15,13 +14,9 @@ wxDEFINE_EVENT(TRANSMIT_LBW_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBE_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);
-
-
-
-wxDEFINE_EVENT(BOUNCE_DESELECTION_STATUS, wxCommandEvent);
-wxDEFINE_EVENT(FORWARD_DESELECTION_STATUS, wxCommandEvent);
-wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
+
+wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 
 void DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata);
 wxArrayString ToArrayString(std::vector<wxString> names);
@@ -212,7 +207,6 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Buildersizer->Add(slablsizer);
 
 	this->SetSizerAndFit(Buildersizer);
-	//wxSize teehee = lbsizer->GetSize();
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, ID_MT);
 	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, ID_MT);
 	Bind(REPEAT_GMT_STATS,		&MyFrame::BounceRepeatedGMTStats_partoftotalstats,		 this, ID_MT);
@@ -222,9 +216,6 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Bind(TRANSMIT_GWS_STATS, &MyFrame::BounceGWSStats_partoftotalstats, this, ID_GWS);
 	Bind(TRANSMIT_GES_STATS, &MyFrame::BounceGESStats_partoftotalstats, this, ID_GES);
 	Bind(TRANSMIT_SL_SELECTION, &MyFrame::BounceSLInfo, this, ID_DDSWORD, ID_DDFLYING);
-
-	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_MT);	//now from DDCL through MT
-	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_LBW, ID_LBE);
 }
 
 void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
@@ -299,6 +290,7 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 {
 	gmt = new GridMysteriousTeacher(this, ID_GMT, 0);
 	gmt->SetMargins(0, 0);
+
 	wxArrayString emptybuffer;
 	ddc = new DropDownCharacters(characternames, characterdata, this, ID_DDCH, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY);
 	
@@ -308,7 +300,7 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	}
 
 	for (int i = 0; i < 3; ++i) {
-		ddclVector.push_back(new DropDownClasses(classmap, this, ID_DDCL1 + i, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY));
+		ddclVector.push_back(new DropDownClasses(classmap, this, ID_DDCL1 + i, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY | wxCB_SORT));
 	}
 
 	total = new wxBoxSizer(wxHORIZONTAL);
@@ -346,12 +338,9 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 
 	SetSizerAndFit(total);
 	Bind(TRANSMIT_DDCH_SELECTION, &MysteriousTeacher::BounceDDCHSelection, this, ID_DDCH);
-	Bind(TRANSMIT_SCL_SELECTION, &MysteriousTeacher::BounceSCLSelection, this, ID_SPIN1, ID_SPIN2);				//through MT
-	Bind(TRANSMIT_DDCL_SELECTION, &MysteriousTeacher::BounceDDCLSelection, this, ID_DDCL1, ID_DDCL3);		//now from DDCL through MT
-
+	Bind(TRANSMIT_SCL_SELECTION, &MysteriousTeacher::BounceSCLSelection, this, ID_SPIN1, ID_SPIN2);
+	Bind(TRANSMIT_DDCL_SELECTION, &MysteriousTeacher::BounceDDCLSelection, this, ID_DDCL1, ID_DDCL3);
 	Bind(TRANSMIT_GMT_STATS, &MysteriousTeacher::ForwardGMTStats, this, ID_GMT);
-
-	Bind(BOUNCE_DESELECTION_STATUS, &MysteriousTeacher::BounceSelectionStatusInfo, this, ID_LBW, ID_LBE);	//now from DDCL through MT
 }
 
 void MysteriousTeacher::BounceDDCHSelection(wxCommandEvent& transmission) {
@@ -391,25 +380,23 @@ void MysteriousTeacher::BounceDDCLSelection(wxCommandEvent& transmission) {
 	repetition.SetClientObject(transmission.GetClientObject());
 	ProcessEvent(repetition);
 
+	Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
 	switch (transmission.GetId()) {
 		case ID_DDCL1: {
-			Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
+			//Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
 			gmt->UpdateDDCLSelection(*tempclass, ID_DDCL1);
-
 			break;
 		}
 
 		case ID_DDCL2: {
-			Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
+			//Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
 			gmt->UpdateDDCLSelection(*tempclass, ID_DDCL2);
-
 			break;
 		}
 
 		case ID_DDCL3: {
-			Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
+			//Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
 			gmt->UpdateDDCLSelection(*tempclass, ID_DDCL3);
-
 			break;
 		}
 	}
@@ -421,30 +408,13 @@ void MysteriousTeacher::ForwardGMTStats(wxCommandEvent& forwarded) {
 	ProcessEvent(event);
 }
 
-void MysteriousTeacher::BounceSelectionStatusInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
-	switch (idofreceiver)
-	{
-		case ID_GMT: {
-			if (eventfromwho.GetString() == "SELECTION") {
-				Class* temp = dynamic_cast<Class*>(eventfromwho.GetClientObject());
-				//gmt->ReceiveLBCInfo(*temp);
-			}
-			else if (eventfromwho.GetString() == "DESELECTION") {
-				Class temp{};
-				//gmt->ReceiveLBCInfo(temp);
-			}
-			break;
-		}
-	}
-}
-
 DropDownCharacters::DropDownCharacters(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, wxWindow* panel,
 	wxWindowID id, const wxArrayString& choices, long style) :
 	wxComboBox(panel, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, choices, style)
 {
 	this->Append(ToArrayString(characternames), ToArrayData(characterdata));
 	this->SetSelection(0);
+
 	wxCommandEvent eventtoself(wxEVT_COMBOBOX, ID_DDCH);
 	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 	ProcessEvent(eventtoself);
@@ -489,9 +459,7 @@ DropDownClasses::DropDownClasses(std::map<wxString, wxClientData*> uclassmap, wx
 	ProcessEvent(eventtoself);
 }
 
-void DropDownClasses::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
-	Class* cLass = dynamic_cast<Class*>(selection.GetClientObject());
-
+void DropDownClasses::OnNewSelection(wxCommandEvent& selection) {
 	wxCommandEvent event(TRANSMIT_DDCL_SELECTION, selection.GetId());
 	event.SetClientObject(selection.GetClientObject());
 	ProcessEvent(event);
@@ -508,7 +476,6 @@ void DropDownClasses::repopulate() {
 	std::vector<wxString> classnames;
 	std::vector<wxClientData*> classdata;
 
-	//splitting classmap up into exclusive and general class types
 	for (auto element : classmap) {
 		Class* temp = dynamic_cast<Class*>(element.second)->clone();
 		if (temp->getExclusivity()) {
@@ -519,8 +486,6 @@ void DropDownClasses::repopulate() {
 		}
 	}
 
-	//exclusive types are added if tokenized characternames (cLass->getCharacterName())
-		//match with (currentDDCSelection)
 	for (auto cLass : exclusiveclasses) {
 		std::wstring characternames = cLass->getCharacterName(), buffer;
 		std::wstringstream stream(characternames);
@@ -538,20 +503,39 @@ void DropDownClasses::repopulate() {
 		}
 	}
 
-	//all general types are added regardless of factors
 	for (auto cLass : generalclasses) {
 		classnames.push_back(cLass->getName());
 		classdata.push_back(dynamic_cast<wxClientData*>(cLass));
 	}
 
+	mostrecentDDCLselection = GetStringSelection();
 	this->Set(ToArrayString(classnames), ToArrayData(classdata));
+	DetermineSelectionStatus();
+}
+
+void DropDownClasses::DetermineSelectionStatus() {
+	if (CompareAllStrings()) {
+		int index = this->FindString(mostrecentDDCLselection);
+		this->SetSelection(index);
+		wxCommandEvent eventtoself(wxEVT_COMBOBOX, this->GetId());
+		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+		ProcessEvent(eventtoself);
+	}
+
+	else if (!CompareAllStrings()) {
+		int index = this->FindString("---");
+		this->SetSelection(index);
+		wxCommandEvent eventtoself(wxEVT_COMBOBOX, this->GetId());
+		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+		ProcessEvent(eventtoself);
+	}
 }
 
 bool DropDownClasses::CompareAllStrings() {
-	wxArrayString currentweaponselections = this->GetStrings();
+	wxArrayString currentclassselections = this->GetStrings();
 
-	for (auto weaponname : currentweaponselections) {
-		if (weaponname == mostrecentselection) {
+	for (auto classname : currentclassselections) {
+		if (classname == mostrecentDDCLselection) {
 			return true;
 		}
 	}
@@ -857,7 +841,7 @@ void ListBoxWeapons::ReceiveExclusivity(wxString charactername) {	//forwarded fr
 	repopulate();
 }
 
-void ListBoxWeapons::ReceiveSLInfo(SLPACKAGE* slpackage) {		//forwarded from MyFrame::BounceForwardedSLInfo()
+void ListBoxWeapons::ReceiveSLInfo(SLPACKAGE* slpackage) {
 	if (slpackage->index < 7) {
 		SLfilter[slpackage->index] = slpackage->sl;
 	}
@@ -865,8 +849,8 @@ void ListBoxWeapons::ReceiveSLInfo(SLPACKAGE* slpackage) {		//forwarded from MyF
 	repopulate();
 }
 
-void ListBoxWeapons::repopulate() {				//this function should only be called by Recieve--() functions of class
-	std::vector<Weapon*> exclusiveweapons;		//all variables used are stored in object
+void ListBoxWeapons::repopulate() {				
+	std::vector<Weapon*> exclusiveweapons;		
 	std::vector<Weapon*> generalweapons;
 	std::vector<wxString> weaponnames;
 	std::vector<wxClientData*> weapondata;
@@ -915,7 +899,6 @@ void ListBoxWeapons::repopulate() {				//this function should only be called by 
 	mostrecentLBWselection = GetStringSelection();
 	this->Set(ToArrayString(weaponnames), ToArrayData(weapondata));
 
-	//wxString whatsselectedrightnow = GetStringSelection();
 	DetermineSelectionStatus();
 }
 
@@ -923,6 +906,7 @@ void ListBoxWeapons::DetermineSelectionStatus() {
 	if (CompareAllStrings()) {
 		int index = this->FindString(mostrecentLBWselection);
 		this->SetSelection(index);
+
 		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
 		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 		ProcessEvent(eventtoself);
@@ -931,6 +915,7 @@ void ListBoxWeapons::DetermineSelectionStatus() {
 	else if (!CompareAllStrings()) {
 		int index = this->FindString("---");
 		this->SetSelection(index);
+
 		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
 		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 		ProcessEvent(eventtoself);
@@ -970,8 +955,7 @@ ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentm
 	ProcessEvent(eventtoself);
 }
 
-void ListBoxEquipment::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
-	//Equipment* tempequipment = dynamic_cast<Weapon*>(selection.GetClientObject());
+void ListBoxEquipment::OnNewSelection(wxCommandEvent& selection) {
 	wxCommandEvent event(TRANSMIT_LBE_SELECTION, ID_LBE);
 	event.SetClientObject(selection.GetClientObject());
 	ProcessEvent(event);
@@ -988,7 +972,6 @@ void ListBoxEquipment::repopulate() {
 	std::vector<wxString> equipmentnames;
 	std::vector<wxClientData*> equipmentdata;
 
-	//splitting classmap up into exclusive and general class types
 	for (auto element : equipmentmap) {
 		Equipment* temp = dynamic_cast<Equipment*>(element.second)->clone();
 		if (temp->getExclusivity()) {
@@ -999,8 +982,6 @@ void ListBoxEquipment::repopulate() {
 		}
 	}
 
-	//exclusive types are added if tokenized characternames (cLass->getCharacterName())
-		//match with (currentDDCSelection)
 	for (auto cLass : exclusiveequipment) {
 		std::wstring characternames = cLass->getCharacterName(), buffer;
 		std::wstringstream stream(characternames);
@@ -1018,7 +999,6 @@ void ListBoxEquipment::repopulate() {
 		}
 	}
 
-	//all general types are added regardless of factors
 	for (auto equipment : generalequipment) {
 		equipmentnames.push_back(equipment->getName());
 		equipmentdata.push_back(dynamic_cast<wxClientData*>(equipment));
@@ -1762,7 +1742,7 @@ DECLARE_APP(MyApp);
 IMPLEMENT_APP(MyApp);
 
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
-EVT_COMBOBOX(ID_DDCH, DropDownCharacters::OnNewSelection)
+	EVT_COMBOBOX(ID_DDCH, DropDownCharacters::OnNewSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(DropDownCharacters, wxComboBox)
@@ -1784,35 +1764,34 @@ wxBEGIN_EVENT_TABLE(ListBoxEquipment, wxListBox)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(SkillLevelManager, wxPanel)
-EVT_COMBOBOX(ID_DDSWORD, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDLANCE, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDAXE, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDBOW, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDGAUNTLETS, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDREASON, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDFAITH, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDAUTHORITY, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDHEAVYARMOR, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDRIDING, SkillLevelManager::OnNewSelection)
-EVT_COMBOBOX(ID_DDFLYING, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDSWORD, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDLANCE, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDAXE, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDBOW, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDGAUNTLETS, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDREASON, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDFAITH, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDAUTHORITY, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDHEAVYARMOR, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDRIDING, SkillLevelManager::OnNewSelection)
+	EVT_COMBOBOX(ID_DDFLYING, SkillLevelManager::OnNewSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(AbilityManager, wxPanel)
-//EVT_LISTBOX(ID_LBC, ListBoxClasses::OnNewSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(ListBoxAA, wxListBox)
-EVT_LISTBOX(ID_LBAA, ListBoxAA::OnSelection)
+	EVT_LISTBOX(ID_LBAA, ListBoxAA::OnSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(ListBoxSA, wxListBox)
-EVT_LISTBOX(ID_LBSA, ListBoxSA::OnSelection)
+	EVT_LISTBOX(ID_LBSA, ListBoxSA::OnSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(ButtonMoveRight, wxButton)
-EVT_BUTTON(ID_BMR, ButtonMoveRight::OnClick)
+	EVT_BUTTON(ID_BMR, ButtonMoveRight::OnClick)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(ButtonMoveLeft, wxButton)
-EVT_BUTTON(ID_BML, ButtonMoveLeft::OnClick)
+	EVT_BUTTON(ID_BML, ButtonMoveLeft::OnClick)
 wxEND_EVENT_TABLE()
