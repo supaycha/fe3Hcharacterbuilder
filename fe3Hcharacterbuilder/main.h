@@ -67,6 +67,7 @@ const unsigned int SL_DATA_SIZE = 11;
 const unsigned int CHAR_CLASS_STATS_SIZE = 10;
 const unsigned int TOTAL_STATS_SIZE = 11;
 const unsigned int MIN_HEIGHT_OF_COMBOBOX = 23;
+const unsigned int SET_LENGTH_OF_COLUMNS = 34;
 
 #ifndef MAIN_H
 #define MAIN_H
@@ -215,7 +216,7 @@ private:
 	std::vector<DropDownClasses*> ddclVector;
 	std::vector<wxBoxSizer*> columns;
 public:
-	MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2);
+	MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id);
 	~MysteriousTeacher() {}
 
 	void BounceDDCHSelection(wxCommandEvent& transmission);
@@ -360,7 +361,7 @@ private:
 
 	wxDECLARE_EVENT_TABLE();
 public:
-	ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxWindow* panel, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style);
+	ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
 	~ListBoxWeapons() {}
 
 	void OnNewSelection(wxCommandEvent& sentevent);
@@ -379,7 +380,7 @@ private:
 	wxString mostrecentselection;
 	wxDECLARE_EVENT_TABLE();
 public:
-	ListBoxEquipment(std::map<wxString, wxClientData*> equipmentmap, wxWindow* panel, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style);
+	ListBoxEquipment(std::map<wxString, wxClientData*> equipmentmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
 	~ListBoxEquipment() {}
 
 	void OnNewSelection(wxCommandEvent& sentevent);
@@ -510,7 +511,7 @@ private:
 	std::map<StaticTextSkillLevel*, DropDownSkillLevel*>* manager;
 	wxDECLARE_EVENT_TABLE();
 public:
-	SkillLevelManager(MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2);
+	SkillLevelManager(MyFrame* parent, wxWindowID id);
 	~SkillLevelManager() {}
 
 	void OnNewSelection(wxCommandEvent& uevent);
@@ -553,7 +554,7 @@ private:
 	std::vector<wxString> filterRtoL;
 	wxDECLARE_EVENT_TABLE();
 public:
-	AbilityManager(MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2);
+	AbilityManager(MyFrame* parent, wxWindowID id);
 	~AbilityManager() {}
 
 	void ReceiveExclusivity(wxString charactername);

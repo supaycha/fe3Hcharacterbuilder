@@ -181,13 +181,18 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	gws = new GridWeaponStats(this, ID_GWS);
 	ges = new GridEquipmentStats(this, ID_GES);
 	gts = new GridTotalStats(this, ID_GTS);		
-	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, ID_MT, 0, 0, -1, -1);
+	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, ID_MT);
 
-	am = new AbilityManager(this, ID_AM, 900, 50, -1, -1);
-	slm = new SkillLevelManager(this, ID_SLM, 700, 50, -1, -1);
+	am = new AbilityManager(this, ID_AM);
+	slm = new SkillLevelManager(this, ID_SLM);
 
-	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, wxPoint(1300, 50), wxSize(-1, -1), emptybuffer, wxLB_SINGLE);
-	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, wxPoint(500, 50), wxSize(-1, -1), emptybuffer, wxLB_SINGLE);
+	wxBoxSizer* lbesizer = new wxBoxSizer(wxVERTICAL);
+	wxBoxSizer* lbwsizer = new wxBoxSizer(wxVERTICAL);
+
+	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE);
+	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE);
+	lbesizer->Add(lbe);
+	lbwsizer->Add(lbw);
 	gridstatssizer = new wxBoxSizer(wxVERTICAL);
 
 	gridstatssizer->Add(gws);
@@ -196,8 +201,8 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	MTandGridStats_col->Add(mt);
 	MTandGridStats_col->Add(gridstatssizer);
 
-	lbsizer->Add(lbe);
-	lbsizer->Add(lbw);
+	lbsizer->Add(lbesizer, wxSizerFlags().Expand());
+	lbsizer->Add(lbwsizer);
 
 	slablsizer->Add(am);
 	slablsizer->Add(slm);
@@ -207,7 +212,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Buildersizer->Add(slablsizer);
 
 	this->SetSizerAndFit(Buildersizer);
-
+	//wxSize teehee = lbsizer->GetSize();
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, ID_MT);
 	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, ID_MT);
 	Bind(REPEAT_GMT_STATS,		&MyFrame::BounceRepeatedGMTStats_partoftotalstats,		 this, ID_MT);
@@ -249,7 +254,12 @@ void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
 
 void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 	Equipment* tempequipment = dynamic_cast<Equipment*>(selection.GetClientObject());
-	Stats tempstats = tempequipment->getStats();
+	std::vector<Stat> tempstats(TOTAL_STATS_SIZE, Stat(L"0"));
+	Stats selectionstats = tempequipment->getStats();
+	tempstats[6] = selectionstats[0].getText();
+	tempstats[7] = selectionstats[1].getText();
+	Stats transferthis{ tempstats };
+
 	ges->ReceiveLBESelection(tempstats);
 }
 
@@ -284,10 +294,11 @@ void MyFrame::OnQuit(wxCommandEvent& event) {
 	Close();
 }
 
-MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2) :
-	wxPanel(parent, id, wxPoint(x, y), wxSize(x2, y2))
+MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id) :
+	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
 	gmt = new GridMysteriousTeacher(this, ID_GMT, 0);
+	gmt->SetMargins(0, 0);
 	wxArrayString emptybuffer;
 	ddc = new DropDownCharacters(characternames, characterdata, this, ID_DDCH, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY);
 	
@@ -306,7 +317,8 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	}
 
 	int offset = 3;
-	int sizeeveryrowshouldbe = 19;
+
+	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 	columns[0]->AddSpacer(gmt->GetRowHeight(0));
@@ -316,6 +328,7 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 
+	columns[1]->AddSpacer(gmt->GetRowHeight(0));
 	columns[1]->AddSpacer(gmt->GetRowHeight(0));
 	columns[1]->Add(ddc);
 	columns[1]->AddSpacer(gmt->GetRowHeight(0));
@@ -332,7 +345,6 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	}
 
 	SetSizerAndFit(total);
-	//wxSize lulz = ddc->GetClientSize();
 	Bind(TRANSMIT_DDCH_SELECTION, &MysteriousTeacher::BounceDDCHSelection, this, ID_DDCH);
 	Bind(TRANSMIT_SCL_SELECTION, &MysteriousTeacher::BounceSCLSelection, this, ID_SPIN1, ID_SPIN2);				//through MT
 	Bind(TRANSMIT_DDCL_SELECTION, &MysteriousTeacher::BounceDDCLSelection, this, ID_DDCL1, ID_DDCL3);		//now from DDCL through MT
@@ -557,7 +569,7 @@ GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bo
 
 	CreateGrid(8, 10);	
 	SetDefaultRowSize(MIN_HEIGHT_OF_COMBOBOX);
-	SetDefaultColSize(34);
+	SetDefaultColSize(SET_LENGTH_OF_COLUMNS);
 	SetDefaultCellAlignment(wxALIGN_CENTER, wxALIGN_CENTER);
 	EnableEditing(false);
 	DisableDragGridSize();
@@ -817,8 +829,8 @@ void GTBMysteriousTeacher::recalculate() {
 }
 
 ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxWindow* panel,
-	wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style) :
-	wxListBox(panel, id, pos, size, choices, style)
+	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
+	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
 	weaponmap = uweaponmap;
 }
@@ -923,8 +935,8 @@ void ListBoxWeapons::repopulate() {				//this function should only be called by 
 //}
 
 ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentmap, wxWindow* panel,
-	wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style) :
-	wxListBox(panel, id, pos, size, choices, style)
+	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
+	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
 	equipmentmap = uequipmentmap;
 }
@@ -984,7 +996,6 @@ void ListBoxEquipment::repopulate() {
 	}
 
 	this->Set(ToArrayString(equipmentnames), ToArrayData(equipmentdata));
-
 	//DetermineSelectionStatus();  //using mostrecentselection member variable
 }
 
@@ -1376,8 +1387,8 @@ void GTBTotalStats::CalculateTotalRange() {
 	totalstats[10] = buffer;
 }
 
-SkillLevelManager::SkillLevelManager(MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2) :
-	wxPanel(parent, id, wxPoint(x, y), wxSize(x2, y2))
+SkillLevelManager::SkillLevelManager(MyFrame* parent, wxWindowID id) :
+	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
 	std::vector<wxString> labels{ "Sword", "Lance", "Axe", "Bow", "Gauntlets", "Reason", "Faith", "Authority", "Heavy Armor", "Riding", "Flying" };
 	wxString value{};
@@ -1444,8 +1455,8 @@ void DropDownSkillLevel::initpopulate() {
 	this->SetSelection(0);
 }
 
-AbilityManager::AbilityManager(MyFrame* parent, wxWindowID id, int x, int y, int x2, int y2) :
-	wxPanel(parent, id, wxPoint(x, y), wxSize(x2, y2))
+AbilityManager::AbilityManager(MyFrame* parent, wxWindowID id) :
+	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
 	std::vector<wxString> abilitynames;
 	std::vector<wxClientData*> abilitydata;
