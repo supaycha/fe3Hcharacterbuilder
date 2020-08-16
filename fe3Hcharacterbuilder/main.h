@@ -356,7 +356,7 @@ class ListBoxWeapons : public wxListBox {
 private:
 	std::map<wxString, wxClientData*> weaponmap;
 	wxString currentDDCselection;
-	wxString mostrecentselection;
+	wxString mostrecentLBWselection;
 	std::vector<SL> SLfilter{ 7, SL::E };
 
 	wxDECLARE_EVENT_TABLE();
@@ -369,15 +369,15 @@ public:
 	void ReceiveSLInfo(SLPACKAGE* slpackage);
 
 	void repopulate();
-	bool CompareAllStrings();
 	void DetermineSelectionStatus();
+	bool CompareAllStrings();
 };
 
 class ListBoxEquipment : public wxListBox {
 private:
 	std::map<wxString, wxClientData*> equipmentmap;
 	wxString currentDDCSelection;
-	wxString mostrecentselection;
+	wxString mostrecentLBEselection;
 	wxDECLARE_EVENT_TABLE();
 public:
 	ListBoxEquipment(std::map<wxString, wxClientData*> equipmentmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
@@ -387,8 +387,8 @@ public:
 	void ReceiveExclusivity(wxString charactername);
 
 	void repopulate();
+	void DetermineSelectionStatus();	
 	bool CompareAllStrings();
-	void DetermineSelectionStatus();
 };
 
 class GTBWeaponStats : public wxGridTableBase {

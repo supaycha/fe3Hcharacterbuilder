@@ -21,7 +21,7 @@ wxDEFINE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);
 wxDEFINE_EVENT(BOUNCE_DESELECTION_STATUS, wxCommandEvent);
 wxDEFINE_EVENT(FORWARD_DESELECTION_STATUS, wxCommandEvent);
 wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
-wxDEFINE_EVENT(BOUNCE_SL_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
 
 void DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata);
 wxArrayString ToArrayString(std::vector<wxString> names);
@@ -189,8 +189,8 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	wxBoxSizer* lbesizer = new wxBoxSizer(wxVERTICAL);
 	wxBoxSizer* lbwsizer = new wxBoxSizer(wxVERTICAL);
 
-	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE);
-	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE);
+	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
+	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 	lbesizer->Add(lbe);
 	lbwsizer->Add(lbw);
 	gridstatssizer = new wxBoxSizer(wxVERTICAL);
@@ -221,10 +221,10 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Bind(TRANSMIT_LBE_SELECTION, &MyFrame::BounceLBESelection, this, ID_LBE);
 	Bind(TRANSMIT_GWS_STATS, &MyFrame::BounceGWSStats_partoftotalstats, this, ID_GWS);
 	Bind(TRANSMIT_GES_STATS, &MyFrame::BounceGESStats_partoftotalstats, this, ID_GES);
+	Bind(TRANSMIT_SL_SELECTION, &MyFrame::BounceSLInfo, this, ID_DDSWORD, ID_DDFLYING);
 
 	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_MT);	//now from DDCL through MT
 	//Bind(BOUNCE_DESELECTION_STATUS, &MyFrame::BounceSelectionStatusInfo, this, ID_LBW, ID_LBE);
-	//Bind(BOUNCE_SL_SELECTION, &MyFrame::BounceSLInfo, this, ID_DDSWORD, ID_DDFLYING);
 }
 
 void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
@@ -451,7 +451,6 @@ DropDownCharacters::DropDownCharacters(std::vector<wxString> characternames, std
 }
 
 void DropDownCharacters::OnNewSelection(wxCommandEvent& selection) {
-	//Character* tempcharacter = dynamic_cast<Character*>(selection.GetClientObject());
 	wxCommandEvent event(TRANSMIT_DDCH_SELECTION, ID_DDCH);
 	event.SetClientObject(selection.GetClientObject());
 	ProcessEvent(event);
@@ -546,8 +545,6 @@ void DropDownClasses::repopulate() {
 	}
 
 	this->Set(ToArrayString(classnames), ToArrayData(classdata));
-
-	//DetermineSelectionStatus();  //using mostrecentselection member variable
 }
 
 bool DropDownClasses::CompareAllStrings() {
@@ -833,6 +830,20 @@ ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxW
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
 	weaponmap = uweaponmap;
+	auto iter = weaponmap.begin();
+
+	std::vector<wxString> firstname;
+	std::vector<wxClientData*> firstdata;
+
+	firstname.push_back(iter->first);
+	Weapon* temp = dynamic_cast<Weapon*>(iter->second)->clone();
+	firstdata.push_back(dynamic_cast<wxClientData*>(temp));
+	this->Set(ToArrayString(firstname), ToArrayData(firstdata));
+
+	this->SetSelection(0);
+	wxCommandEvent eventtoself(ID_LBW);
+	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+	ProcessEvent(eventtoself);
 }
 
 void ListBoxWeapons::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
@@ -901,44 +912,62 @@ void ListBoxWeapons::repopulate() {				//this function should only be called by 
 			}
 		}
 	}
-
+	mostrecentLBWselection = GetStringSelection();
 	this->Set(ToArrayString(weaponnames), ToArrayData(weapondata));
 
-	//DetermineSelectionStatus();  //using mostrecentselection member variable
+	//wxString whatsselectedrightnow = GetStringSelection();
+	DetermineSelectionStatus();
 }
 
-//void ListBoxWeapons::DetermineSelectionStatus() {
-//	if (CompareAllStrings()) {
-//		int index = this->FindString(mostrecentselection);
-//		this->SetSelection(index);
-//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
-//		ProcessEvent(eventtoself);
-//	}
-//
-//	else if (!CompareAllStrings()) {
-//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
-//		eventtoself.SetString("DESELECTION");
-//		ProcessEvent(eventtoself);
-//	}
-//}
-//
-//bool ListBoxWeapons::CompareAllStrings() {
-//	wxArrayString currentweaponselections = this->GetStrings();
-//
-//	for (auto weaponname : currentweaponselections) {
-//		if (weaponname == mostrecentselection) {
-//			return true;
-//		}
-//	}
-//
-//	return false;
-//}
+void ListBoxWeapons::DetermineSelectionStatus() {
+	if (CompareAllStrings()) {
+		int index = this->FindString(mostrecentLBWselection);
+		this->SetSelection(index);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
+		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+		ProcessEvent(eventtoself);
+	}
+
+	else if (!CompareAllStrings()) {
+		int index = this->FindString("---");
+		this->SetSelection(index);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
+		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+		ProcessEvent(eventtoself);
+	}
+}
+
+bool ListBoxWeapons::CompareAllStrings() {
+	wxArrayString currentweaponselections = this->GetStrings();
+
+	for (auto weaponname : currentweaponselections) {
+		if (weaponname == mostrecentLBWselection) {
+			return true;
+		}
+	}
+
+	return false;
+}
 
 ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentmap, wxWindow* panel,
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
 	equipmentmap = uequipmentmap;
+	auto iter = uequipmentmap.begin();
+
+	std::vector<wxString> firstname;
+	std::vector<wxClientData*> firstdata;
+
+	firstname.push_back(iter->first);
+	Equipment* temp = dynamic_cast<Equipment*>(iter->second)->clone();
+	firstdata.push_back(dynamic_cast<wxClientData*>(temp));
+	this->Set(ToArrayString(firstname), ToArrayData(firstdata));
+
+	this->SetSelection(0);
+	wxCommandEvent eventtoself(ID_LBE);
+	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+	ProcessEvent(eventtoself);
 }
 
 void ListBoxEquipment::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
@@ -995,35 +1024,40 @@ void ListBoxEquipment::repopulate() {
 		equipmentdata.push_back(dynamic_cast<wxClientData*>(equipment));
 	}
 
+	mostrecentLBEselection = GetStringSelection();
 	this->Set(ToArrayString(equipmentnames), ToArrayData(equipmentdata));
-	//DetermineSelectionStatus();  //using mostrecentselection member variable
+	DetermineSelectionStatus();
 }
 
-//bool ListBoxEquipment::CompareAllStrings() {
-//	wxArrayString currentequipmentselections = this->GetStrings();
-//
-//	for (auto equipmentname : currentequipmentselections) {
-//		if (equipmentname == mostrecentselection) {
-//			return true;
-//		}
-//	}
-//
-//	return false;
-//}
-//
-//void ListBoxEquipment::DetermineSelectionStatus() {
-//	if (CompareAllStrings()) {
-//		int index = this->FindString(mostrecentselection);
-//		this->SetSelection(index);
-//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
-//		ProcessEvent(eventtoself);
-//	}
-//	else if (!CompareAllStrings()) {
-//		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
-//		eventtoself.SetString("DESELECTION");
-//		ProcessEvent(eventtoself);
-//	}
-//}
+void ListBoxEquipment::DetermineSelectionStatus() {
+	if (CompareAllStrings()) {
+		int index = this->FindString(mostrecentLBEselection);
+		this->SetSelection(index);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
+		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+		ProcessEvent(eventtoself);
+	}
+
+	else if (!CompareAllStrings()) {
+		int index = this->FindString("---");
+		this->SetSelection(index);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
+		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
+		ProcessEvent(eventtoself);
+	}
+}
+
+bool ListBoxEquipment::CompareAllStrings() {
+	wxArrayString currentequipmentselections = this->GetStrings();
+
+	for (auto equipmentname : currentequipmentselections) {
+		if (equipmentname == mostrecentLBEselection) {
+			return true;
+		}
+	}
+
+	return false;
+}
 
 GridWeaponStats::GridWeaponStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
@@ -1416,12 +1450,12 @@ void SkillLevelManager::OnNewSelection(wxCommandEvent& uevent) {
 	DropDownSkillLevel* tempwindow = dynamic_cast<DropDownSkillLevel*>(uevent.GetEventObject());
 
 	temp->slstring = tempwindow->GetLabel();
-	wxCommandEvent eventforlbw(BOUNCE_SL_SELECTION, uevent.GetId());
+	wxCommandEvent eventforlbw(TRANSMIT_SL_SELECTION, uevent.GetId());
 	eventforlbw.SetClientObject(dynamic_cast<wxClientData*>(temp));
 	eventforlbw.SetInt(ID_LBW);
 	ProcessEvent(eventforlbw);
 
-	wxCommandEvent eventforam(BOUNCE_SL_SELECTION, uevent.GetId());
+	wxCommandEvent eventforam(TRANSMIT_SL_SELECTION, uevent.GetId());
 	eventforam.SetClientObject(dynamic_cast<wxClientData*>(temp));
 	eventforam.SetInt(ID_AM);
 	ProcessEvent(eventforam);
@@ -1479,7 +1513,7 @@ AbilityManager::AbilityManager(MyFrame* parent, wxWindowID id) :
 	bml = new ButtonMoveLeft(this, ID_BML, "<-", 150, 100, 50, 50);
 
 	Bind(SELECTION_HAS_CHANGED, &AbilityManager::BounceSelectionstoRight, this, ID_BMR);
-	//Bind(SELECTION_HAS_CHANGED, &AbilityManager::BounceSelectionstoLeft, this, ID_BML);
+	Bind(SELECTION_HAS_CHANGED, &AbilityManager::BounceSelectionstoLeft, this, ID_BML);
 }
 
 void AbilityManager::ReceiveExclusivity(wxString charactername) {
@@ -1742,11 +1776,11 @@ wxBEGIN_EVENT_TABLE(DropDownClasses, wxComboBox)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(ListBoxWeapons, wxListBox)
-EVT_LISTBOX(ID_LBW, ListBoxWeapons::OnNewSelection)
+	EVT_LISTBOX(ID_LBW, ListBoxWeapons::OnNewSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(ListBoxEquipment, wxListBox)
-EVT_LISTBOX(ID_LBE, ListBoxEquipment::OnNewSelection)
+	EVT_LISTBOX(ID_LBE, ListBoxEquipment::OnNewSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(SkillLevelManager, wxPanel)
