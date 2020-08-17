@@ -203,7 +203,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	wxBoxSizer* lbwsizer = new wxBoxSizer(wxVERTICAL);
 	wxBoxSizer* lbbsizer = new wxBoxSizer(wxVERTICAL);
 
-	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
+	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
 	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);	
 	lbb = new ListBoxBattalions(battalionmap, this, ID_LBB, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 
@@ -856,6 +856,7 @@ ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxW
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	weaponmap = uweaponmap;
 	auto iter = weaponmap.begin();
 
@@ -881,15 +882,18 @@ void ListBoxWeapons::OnNewSelection(wxCommandEvent& selection) {	//triggers on m
 
 void ListBoxWeapons::ReceiveExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
 	currentDDCselection = charactername;
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void ListBoxWeapons::ReceiveSLInfo(SLPACKAGE* slpackage) {
 	if (slpackage->index < 7) {
 		SLfilter[slpackage->index] = slpackage->sl;
 	}
-
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void ListBoxWeapons::repopulate() {				
@@ -981,6 +985,7 @@ ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentm
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	equipmentmap = uequipmentmap;
 	auto iter = uequipmentmap.begin();
 
@@ -1780,6 +1785,7 @@ void AbilityManager::BounceSelectionstoLeft(wxCommandEvent& eventfromOnClick) {
 ListBoxAA::ListBoxAA(wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxPoint(x, y), wxSize(x2, y2), choices, style)
 {
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
 }
 
 void ListBoxAA::OnSelection(wxCommandEvent& event) {
@@ -1842,6 +1848,7 @@ void ListBoxAA::reselection() {
 ListBoxSA::ListBoxSA(wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxPoint(x, y), wxSize(x2, y2), choices, style)
 {
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
 }
 
 void ListBoxSA::OnSelection(wxCommandEvent& event) {

@@ -582,12 +582,12 @@ public:
 	Battalion() {}
 	Battalion(std::wstring uName, 
 		std::wstring uPA, std::wstring uMA, std::wstring uHIT, std::wstring uCRIT, std::wstring uAVO,
-		std::wstring uPROT, std::wstring uRES, std::wstring uCHA, 
+		std::wstring uPROT, std::wstring uRES, std::wstring uCHA, std::wstring uEND,
 		std::wstring bPA, std::wstring bMA, std::wstring bHIT, std::wstring bCRIT, std::wstring bAVO,
-		std::wstring bPROT, std::wstring bRES, std::wstring bCHA, std::wstring uEND, std::wstring uGambit, SL uSL) :
+		std::wstring bPROT, std::wstring bRES, std::wstring bCHA, std::wstring bEND, std::wstring uGambit, SL uSL) :
 		name { uName },
 		battstats{ uPA, uMA, uHIT, uCRIT, uAVO, uPROT, uRES, uCHA, uEND },
-		levelincreases{ bPA, bMA, bHIT, bCRIT, bAVO, bPROT, bRES, bCHA, uEND },
+		levelincreases{ bPA, bMA, bHIT, bCRIT, bAVO, bPROT, bRES, bCHA, bEND },
 		gambit { uGambit },
 		sl{ uSL } 
 	{}
@@ -606,7 +606,9 @@ private:
 	std::vector<std::unique_ptr<Unit>> list;
 public:
 	UnitList() {
-		list.emplace_back(std::make_unique<Battalion>(L"---", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"---", SL::BLANK));
+		list.emplace_back(std::make_unique<Battalion>(L"---", 
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"---", SL::BLANK));
 		list.emplace_back(std::make_unique<Battalion>(L"Church of Seiros Soldiers", 
 			L"0", L"0", L"0", L"0", L"0", L"1", L"1", L"1", L"30", 
 			L"0", L"0", L"1.3", L"0", L"0", L"0.5", L"0.5", L"0", L"0", L"Disturbance", SL::E));
