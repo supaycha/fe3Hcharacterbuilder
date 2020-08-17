@@ -45,10 +45,10 @@
 #define ID_STFLYING		71
 
 const unsigned int CHARACTER_DATA_SIZE = 41;
-const unsigned int WEAPON_DATA_SIZE = 134;
+const unsigned int WEAPON_DATA_SIZE = 196;
 const unsigned int CLASS_DATA_SIZE = 53;
 const unsigned int EQUIPMENT_DATA_SIZE = 28;
-const unsigned int BATTALION_DATA_SIZE = 190;
+const unsigned int BATTALION_DATA_SIZE = 187;
 const unsigned int SL_DATA_SIZE = 11;
 const unsigned int CHAR_CLASS_STATS_SIZE = 10;
 const unsigned int TOTAL_STATS_SIZE = 11;

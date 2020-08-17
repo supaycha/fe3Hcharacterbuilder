@@ -173,7 +173,8 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	}
 
 	for (int i = 0; i < WEAPON_DATA_SIZE; ++i) {
-		weaponmap.emplace(weaponnames[i], weapondata[i]);
+		auto happened = weaponmap.emplace(weaponnames[i], weapondata[i]);
+		int k = 9;
 	}
 
 	for (int i = 0; i < CLASS_DATA_SIZE; ++i) {
