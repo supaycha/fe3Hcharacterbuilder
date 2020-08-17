@@ -556,32 +556,32 @@ public:
 	BlankAbility* new_expr() override { return new BlankAbility(); }
 	BlankAbility* clone() override { return new BlankAbility(*this); }
 };
-class Gambit : public Unit {
-private:
-	std::wstring name;
-	Stats gambitstats;
-public:
-	Gambit() {}
-	~Gambit() {}
-
-	const std::wstring getName() override { return name; }
-	const Stats getStats() override { return gambitstats; }
-
-	Gambit* new_expr() override { return new Gambit(); }
-	Gambit* clone() override { return new Gambit(*this); }
-};
+//class Gambit : public Unit {
+//private:
+//	std::wstring name;
+//	Stats gambitstats;
+//public:
+//	Gambit() {}
+//	~Gambit() {}
+//
+//	const std::wstring getName() override { return name; }
+//	const Stats getStats() override { return gambitstats; }
+//
+//	Gambit* new_expr() override { return new Gambit(); }
+//	Gambit* clone() override { return new Gambit(*this); }
+//};
 
 class Battalion : public Unit {
 private:
 	std::wstring name;
 	Stats battstats;
-	Gambit gambit;
+	std::wstring gambit;
 	SL sl;
 public:
 	Battalion() {}
 	Battalion(std::wstring uName, 
 		std::wstring uPA, std::wstring uMA, std::wstring uHIT, std::wstring uCRIT, std::wstring uAVO,
-		std::wstring uPROT, std::wstring uRES, std::wstring uCHA, std::wstring uEND, Gambit uGambit, SL uSL) :
+		std::wstring uPROT, std::wstring uRES, std::wstring uCHA, std::wstring uEND, std::wstring uGambit, SL uSL) :
 		name { uName },
 		battstats{ uPA, uMA, uHIT, uCRIT, uAVO, uPROT, uRES, uCHA, uEND },
 		gambit { uGambit },
@@ -602,8 +602,197 @@ private:
 	std::vector<std::unique_ptr<Unit>> list;
 public:
 	UnitList() {
-		list.emplace_back(std::make_unique<Battalion>(L"---", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", Gambit(), SL::BLANK));
-		list.emplace_back(std::make_unique<Battalion>(L"Church of Seiros Soldiers", L"0", L"0", L"0", L"0", L"0", L"1", L"1", L"1", L"30", Gambit(), SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"---", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"---", SL::BLANK));
+		list.emplace_back(std::make_unique<Battalion>(L"Church of Seiros Soldiers", L"0", L"0", L"0", L"0", L"0", L"1", L"1", L"1", L"30", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Seiros Mercenaries", L"1", L"-2", L"5", L"0", L"0", L"1", L"1", L"1", L"30", L"Onslaught", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Seiros Holy Monks", L"-1", L"0", L"5", L"0", L"0", L"0", L"1", L"1", L"30", L"Stride", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Seiros Sacred Monks", L"-1", L"0", L"5", L"0", L"0", L"0", L"2", L"1", L"30", L"Resonant White Magic", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Seiros Brawlers", L"2", L"-2", L"0", L"0", L"5", L"0", L"-1", L"1", L"30", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Seiros Magic Corps", L"-2", L"1", L"0", L"0", L"0", L"0", L"3", L"3", L"30", L"Group Flames", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Seiros Archers", L"0", L"0", L"10", L"0", L"5", L"0", L"0", L"3", L"45", L"Fusillade", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Seiros Armored Co.", L"2", L"0", L"0", L"0", L"-10", L"2", L"0", L"3", L"60", L"Onslaught", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Seiros Pegasus Co.", L"2", L"0", L"0", L"0", L"1", L"0", L"3", L"5", L"60", L"Assembly", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Knights of Seiros", L"2", L"-1", L"0", L"0", L"1", L"1", L"1", L"5", L"60", L"Blaze", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Holy Knights of Seiros", L"3", L"-2", L"0", L"0", L"0", L"1", L"3", L"7", L"75", L"Assault Troop", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Indech Sword Fighters", L"4", L"-21", L"10", L"2", L"0", L"0", L"0", L"10", L"105", L"Retribution", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Macuil Evil Repelling Co.", L"0", L"3", L"20", L"0", L"0", L"1", L"2", L"10", L"105", L"Resonant Lightning", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Infantry", L"0", L"-2", L"5", L"0", L"0", L"1", L"0", L"1", L"30", L"Lure", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Warriors", L"2", L"-2", L"0", L"0", L"0", L"0", L"0", L"1", L"30", L"Random Shot", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Brawlers", L"2", L"-2", L"0", L"0", L"5", L"0", L"-1", L"1", L"30", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Magic Corps", L"-2", L"2", L"0", L"0", L"0", L"0", L"2", L"3", L"20", L"Group Flames", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Archers", L"1", L"-2", L"10", L"0", L"0", L"1", L"0", L"3", L"30", L"Fusillade", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Cavalry", L"2", L"-2", L"0", L"0", L"0", L"2", L"0", L"3", L"45", L"Assault Troop", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Armored Co.", L"1", L"-2", L"0", L"0", L"-10", L"3", L"0", L"3", L"60", L"Impregnable Wall", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Knights", L"3", L"-2", L"0", L"0", L"0", L"2", L"0", L"5", L"60", L"Blaze", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Snipers", L"3", L"-2", L"5", L"0", L"0", L"1", L"0", L"5", L"60", L"Flash-Fire Arrows", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Magic Users", L"-2", L"3", L"0", L"5", L"0", L"0", L"2", L"5", L"45", L"Resonant Flames", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Pavise Co.", L"0", L"-2", L"0", L"0", L"-10", L"4", L"1", L"5", L"75", L"Blaze", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Pegasus Co.", L"2", L"0", L"10", L"0", L"0", L"1", L"2", L"6", L"60", L"Group Lance Attack", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Wyvern Co.", L"3", L"-2", L"5", L"5", L"0", L"2", L"0", L"5", L"60", L"Reversal", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Heavy Soldiers", L"2", L"-2", L"5", L"0", L"-10", L"5", L"1", L"7", L"75", L"Line of Lances", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Holy Magic Users", L"-2", L"2", L"0", L"0", L"0", L"0", L"3", L"8", L"60", L"Blessing", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Raiders", L"3", L"0", L"0", L"0", L"5", L"0", L"0", L"7", L"75", L"Absorption", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Imperial Guard", L"3", L"-2", L"0", L"10", L"0", L"0", L"0", L"7", L"75", L"Blaze", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Elite Wyvern Co.", L"4", L"-2", L"0", L"5", L"0", L"2", L"0", L"7", L"75", L"Assembly", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Black Eagle Heavy Axes", L"3", L"0", L"0", L"10", L"-10", L"4", L"2", L"10", L"105", L"Onslaught", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Black Eagle Cavalry", L"3", L"0", L"10", L"0", L"5", L"1", L"0", L"10", L"105", L"Linked Horses", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Black Eagle Pegasus Co.", L"3", L"0", L"0", L"10", L"5", L"1", L"3", L"10", L"105", L"Retribution", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Infantry", L"1", L"-2", L"0", L"0", L"0", L"1", L"0", L"1", L"30", L"Lure", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Lance Co.", L"1", L"-2", L"0", L"0", L"5", L"0", L"0", L"1", L"30", L"Group Lance Atack", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Brawlers", L"2", L"-2", L"0", L"0", L"5", L"0", L"-1", L"1", L"30", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Magic Corps", L"-2", L"1", L"0", L"0", L"0", L"1", L"2", L"3", L"30", L"Group Ice", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Archers", L"2", L"-2", L"5", L"0", L"0", L"1", L"0", L"3", L"30", L"Retribution", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Cavalry", L"2", L"-2", L"0", L"0", L"0", L"2", L"0", L"3", L"45", L"Stride", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Armored Co.", L"1", L"-2", L"0", L"0", L"-10", L"3", L"0", L"3", L"60", L"Impregnable Wall", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Knights", L"3", L"-2", L"0", L"0", L"0", L"2", L"1", L"5", L"60", L"Assault Troop", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Snipers	", L"1", L"-2", L"5", L"0", L"0", L"1", L"1", L"5", L"60", L"Fusillade", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Magic Users", L"-2", L"3", L"0", L"0", L"0", L"1", L"1", L"5", L"45", L"Resonant Ice", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Brave Lance Co.", L"2", L"-2", L"10", L"0", L"5", L"1", L"0", L"5", L"60", L"Onslaught", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Pegasus Co.", L"2", L"0", L"0", L"0", L"0", L"1", L"2", L"6", L"60", L"Assembly", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Wyvern Co.", L"3", L"-2", L"10", L"0", L"0", L"2", L"0", L"5", L"60", L"Recovery Roar", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Heavy Soldiers", L"0", L"-2", L"0", L"0", L"-10", L"3", L"0", L"7", L"90", L"Group Lance Attack", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Holy Knights", L"3", L"-2", L"0", L"0", L"-10", L"1", L"3", L"7", L"75", L"Linked Horses", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Heavy Knights", L"0", L"-2", L"5", L"0", L"-15", L"3", L"0", L"7", L"90", L"Sacred Shield", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Royal Guard", L"2", L"0", L"10", L"10", L"-10", L"0", L"0", L"7", L"75", L"Line of Lances", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Priests", L"0", L"2", L"0", L"0", L"-5", L"0", L"3", L"7", L"60", L"Blessing", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Blue Lion Knights", L"3", L"-2", L"0", L"10", L"-10", L"1", L"0", L"10", L"105", L"Linked Horses", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Blue Lion Magic Corps", L"-2", L"3", L"0", L"0", L"-10", L"1", L"3", L"10", L"105", L"Resonant Ice", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Blue Lion Dancers", L"-5", L"-5", L"0", L"0", L"15", L"1", L"1", L"10", L"105", L"Dance of the Goddess", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Infantry", L"0", L"-2", L"5", L"0", L"5", L"0", L"0", L"1", L"30", L"Lure", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Duelists", L"0", L"-2", L"0", L"5", L"5", L"0", L"0", L"1", L"30", L"Mad Melee	", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Brawlers", L"2", L"-2", L"0", L"0", L"5", L"0", L"-1", L"1", L"30", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Magic Corps", L"-2", L"1", L"0", L"0", L"5", L"0", L"2", L"3", L"30", L"Group Lightning", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Archers", L"1", L"-2", L"10", L"0", L"5", L"0", L"0", L"3", L"30", L"Poisoned Arrows", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Cavalry", L"2", L"-2", L"0", L"0", L"5", L"0", L"0", L"3", L"45", L"Assault Troop", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Armored Co.", L"1", L"-2", L"0", L"0", L"-5", L"2", L"0", L"3", L"60", L"Disturbance", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Knights", L"2", L"-2", L"0", L"0", L"5", L"1", L"1", L"5", L"60", L"Blaze", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Snipers", L"1", L"-2", L"10", L"0", L"5", L"0", L"0", L"5", L"60", L"Fusillade", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Magic Users", L"-2", L"2", L"0", L"0", L"5", L"0", L"2", L"5", L"45", L"Resonant Lightning	", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Veteran Duelists", L"2", L"-2", L"0", L"0", L"5", L"1", L"0", L"5", L"60", L"Absorption", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Pegasus Co.", L"2", L"0", L"0", L"0", L"5", L"0", L"1", L"6", L"60", L"Assembly", SL::D));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Wyvern Co.", L"3", L"-2", L"0", L"0", L"5", L"1", L"0", L"5", L"60", L"Impregnable Wall", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Pavise Co.", L"2", L"-2", L"0", L"0", L"-5", L"4", L"1", L"7", L"90", L"Group Lance Attack", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Physicians", L"0", L"1", L"0", L"0", L"5", L"0", L"2", L"7", L"60", L"Resonant White Magic", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Sages", L"0", L"4", L"0", L"0", L"-10", L"0", L"2", L"7", L"60", L"Blessing", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Master Archers", L"2", L"-1", L"0", L"10", L"5", L"0", L"0", L"7", L"60", L"Flash-Fire Arrows", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Guard", L"3", L"0", L"0", L"5", L"1", L"0", L"0", L"7", L"75", L"Poison Tactic", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Golden Deer Wyvern Co.", L"2", L"-2", L"0", L"0", L"5", L"1", L"0", L"10", L"105", L"Assault Troop", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Golden Deer Archers", L"2", L"-2", L"15", L"0", L"10", L"0", L"1", L"10", L"105", L"Poison Tactic", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Golden Deer Cavalry", L"4", L"-2", L"0", L"0", L"-5", L"3", L"2", L"10", L"105", L"Linked Horses", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Supreme Armored Co.", L"3", L"2", L"0", L"0", L"-10", L"2", L"1", L"10", L"120", L"Raging Flames", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"King of Lions Corps", L"5", L"-2", L"0", L"10", L"-5", L"1", L"0", L"10", L"120", L"Wave Attack	", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Immortal Corps", L"4", L"-2", L"0", L"0", L"10", L"0", L"0", L"10", L"120", L"Ashes and Dust", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Vestra Sorcery Engineers", L"-2", L"3", L"0", L"0", L"5", L"0", L"2", L"7", L"75", L"Resonant Lightning", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Aegir Astral Knights", L"3", L"-2", L"0", L"0", L"15", L"0", L"0", L"7", L"105", L"Assault Troop", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Hevring Prayer Troops", L"0", L"3", L"0", L"0", L"-10", L"0", L"3", L"7", L"75", L"Blessing", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Bergliez War Group", L"4", L"0", L"0", L"0", L"-10", L"0", L"0", L"7", L"105", L"Onslaught", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Varley Archers", L"0", L"0", L"20", L"0", L"-10", L"1", L"0", L"7", L"75", L"Fusillade", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Opera Co. Volunteers", L"0", L"0", L"10", L"0", L"10", L"0", L"0", L"10", L"75", L"Dance of the Goddess", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Brigid Hunters", L"0", L"-2", L"0", L"5", L"15", L"0", L"0", L"7", L"105", L"Poison Tactic", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Duscur Heavy Soldiers", L"4", L"-2", L"0", L"0", L"-15", L"5", L"0", L"7", L"120", L"Line of Lances", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Fraldarius Soldiers", L"3", L"0", L"0", L"10", L"0", L"2", L"0", L"7", L"105", L"Onslaught", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Gaspard Knights", L"1", L"0", L"0", L"0", L"-5", L"1", L"0", L"7", L"105", L"Assault Troop", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Gautier Knights", L"3", L"-2", L"0", L"0", L"15", L"0", L"0", L"7", L"105", L"Stride", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Church Soldiers", L"0", L"1", L"0", L"0", L"0", L"0", L"2", L"5", L"75", L"Resonant White Magic", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"School of Sorcery Soldiers", L"-2", L"2", L"10", L"0", L"0", L"0", L"2", L"5", L"75", L"Resonant Flames", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Galatea Pegasus Co.", L"3", L"0", L"0", L"0", L"5", L"1", L"2", L"8", L"105", L"Lure", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Gloucester Knights", L"2", L"2", L"10", L"0", L"0", L"1", L"1", L"7", L"105", L"Assault Troop", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Leicester Mercenaries", L"3", L"-2", L"10", L"10", L"0", L"0", L"0", L"7", L"105", L"Blaze", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Victor Private Military", L"2", L"0", L"5", L"0", L"0", L"0", L"2", L"5", L"105", L"Assembly", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Ordelia Sorcery Co.", L"-1", L"4", L"10", L"0", L"0", L"0", L"2", L"7", L"75", L"Resonant Lightning", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Edmund Troops", L"1", L"1", L"30", L"0", L"0", L"0", L"0", L"7", L"105", L"Flash-Fire Arrows", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Goneril Valkyries", L"4", L"-2", L"10", L"10", L"0", L"2", L"1", L"7", L"105", L"Assault Troop", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Sauin Militia", L"1", L"0", L"10", L"0", L"5", L"0", L"0", L"5", L"75", L"Poisoned Arrows", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Cichol Wyvern Co.", L"3", L"0", L"10", L"10", L"0", L"2", L"1", L"10", L"105", L"Assault Troop", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Cethleann Monks", L"0", L"2", L"10", L"0", L"0", L"1", L"3", L"10", L"105", L"Resonant White Magic", SL::A));
+		list.emplace_back(std::make_unique<Battalion>(L"Jeralt’s Mercenaries", L"1", L"0", L"0", L"5", L"5", L"0", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Reaper Knights", L"3", L"-2", L"0", L"5", L"10", L"0", L"0", L"1", L"105", L"Assault Troop", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Secret Transport Force", L"1", L"0", L"0", L"0", L"10", L"1", L"1", L"8", L"105", L"Stride", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Mockingbird’s Thieves", L"1", L"1", L"5", L"5", L"5", L"1", L"1", L"5", L"105", L"Absorption", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Leicester Dicers Corps", L"3", L"3", L"0", L"0", L"0", L"1", L"1", L"5", L"0", L"Onslaught", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Nuvelle Fliers Corps", L"0", L"3", L"0", L"0", L"5", L"0", L"3", L"8", L"105", L"Resonant Lightning", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Timotheos Magi Corps", L"0", L"3", L"5", L"5", L"0", L"0", L"1", L"7", L"105", L"Resonant Flames", SL::B));
+		list.emplace_back(std::make_unique<Battalion>(L"Remire Militia", L"0", L"0", L"0", L"0", L"0", L"1", L"0", L"1", L"30", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Empire Youths", L"0", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"30", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Youths", L"0", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"30", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Alliance Youths", L"0", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"30", L"", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Duscur Infantry", L"1", L"-2", L"0", L"0", L"5", L"1", L"-1", L"1", L"30", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Almyra Mercenaries", L"3", L"0", L"0", L"0", L"5", L"0", L"-2", L"1", L"30", L"Fusillade", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Brigid Mercenaries", L"1", L"0", L"5", L"5", L"0", L"0", L"0", L"1", L"30", L"Onslaught", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Morfis Magic Corps", L"-2", L"3", L"0", L"0", L"0", L"0", L"3", L"5", L"45", L"Resonant Lightning", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Essar Research Group", L"1", L"1", L"20", L"0", L"0", L"0", L"0", L"1", L"60", L"Blessing", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Holst’s Chosen", L"3", L"0", L"0", L"0", L"0", L"3", L"0", L"3", L"0", L"Assault Troop", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Nuvelle Chamberlain Co.", L"3", L"0", L"5", L"5", L"0", L"1", L"3", L"5", L"45", L"Battleground Cafe", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Nuvelle Attendants Co.", L"0", L"3", L"0", L"5", L"5", L"1", L"3", L"5", L"45", L"Absolute Defense", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Nuvelle Stewards Co.", L"1", L"1", L"5", L"5", L"1", L"1", L"3", L"10", L"45", L"Battleground Clean Up", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Iron King’s Thieves", L"-1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Gaspard Militia", L"-1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Gaspard Knights", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"West Church Corps", L"0", L"1", L"0", L"0", L"0", L"0", L"1", L"1", L"75", L"Group Lightning", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"West Church Mercenaries", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Onslaught", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"West Church Sages", L"0", L"2", L"0", L"0", L"-10", L"0", L"2", L"1", L"75", L"Group Lightning", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"West Church Pegasus Co.", L"1", L"0", L"0", L"0", L"0", L"0", L"1", L"3", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"West Church Knights", L"2", L"-1", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Mysterious Infantry", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Mysterious Magic Corps", L"0", L"1", L"0", L"0", L"0", L"0", L"1", L"1", L"75", L"Group Flames", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Mysterious Magic Users", L"-5", L"2", L"0", L"0", L"-5", L"0", L"2", L"1", L"75", L"Resonant Flames", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Miklan Private Militia", L"1", L"-2", L"5", L"0", L"0", L"1", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Reaper Infantry", L"0", L"0", L"0", L"0", L"10", L"0", L"0", L"1", L"75", L"Onslaught", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Reaper Knights", L"2", L"-2", L"0", L"0", L"10", L"0", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Rampaging Villagers", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Solon Subordinates", L"-2", L"3", L"0", L"0", L"-5", L"0", L"2", L"1", L"75", L"Resonant Flames", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Kronya Subordinates	", L"0", L"0", L"0", L"0", L"20", L"0", L"0", L"1", L"75", L"Onslaught", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Pallardó Bodyguards", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Poison Tactic", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Rowe Knights", L"3", L"-1", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Linked Horses", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"House Rowe Archers", L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Flash-Fire Arrows", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Rowe Armored Co.", L"1", L"0", L"0", L"0", L"-10", L"1", L"0", L"1", L"75", L"Group Lance Attack", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Rowe Cavalry", L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Daphnel Duelists", L"3", L"-2", L"0", L"0", L"10", L"0", L"0", L"1", L"105", L"Onslaught", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Almyra Wyvern Co.", L"4", L"-2", L"-5", L"0", L"10", L"2", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Almyra Cavalry", L"2", L"-2", L"0", L"0", L"10", L"0", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Dark Infantry", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Onslaught", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Dark Magic Corps", L"-1", L"2", L"0", L"0", L"0", L"0", L"2", L"1", L"75", L"Resonant Lightning", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Einherjar", L"4", L"0", L"0", L"0", L"-10", L"1", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Infantry", L"2", L"0", L"0", L"0", L"-5", L"0", L"1", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Heavy Co.", L"1", L"0", L"0", L"0", L"-10", L"2", L"0", L"1", L"75", L"Group Lance Attack", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Cavalry", L"3", L"0", L"0", L"0", L"-10", L"1", L"0", L"1", L"75", L"Linked Horses", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Wyvern Co.", L"2", L"0", L"0", L"0", L"-10", L"0", L"2", L"3", L"75", L"Poison Tactic", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Ancient Infantry", L"2", L"0", L"0", L"0", L"-5", L"0", L"1", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Ancient Armored Co.", L"1", L"0", L"0", L"0", L"-5", L"1", L"0", L"1", L"75", L"Onslaught", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Ancient Cavalry", L"3", L"0", L"0", L"0", L"-5", L"0", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Ancient Wyvern Co.", L"2", L"0", L"0", L"0", L"-5", L"0", L"1", L"3", L"75", L"Lure", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Cavalry", L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Infantry", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Wyvern Co.", L"2", L"0", L"0", L"0", L"0", L"0", L"2", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Duscur Infantry", L"1", L"0", L"0", L"0", L"-10", L"1", L"0", L"1", L"75", L"Onslaught", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Duscur Cavalry", L"2", L"0", L"0", L"0", L"-10", L"0", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Dominic Cavalry", L"1", L"0", L"10", L"0", L"0", L"0", L"0", L"1", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Merchant Military", L"-1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Poison Tactic", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Thieves", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Rogues", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Bandits", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Pirates", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Arundel Magic Corps", L"0", L"2", L"0", L"0", L"0", L"1", L"2", L"1", L"75", L"Resonant Flames", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Mysterious Wyvern Co.", L"1", L"0", L"0", L"0", L"5", L"1", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Dark Wyvern Co.", L"1", L"0", L"0", L"0", L"5", L"1", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Ancient Sorcerers", L"-5", L"2", L"0", L"0", L"-5", L"0", L"4", L"1", L"75", L"Resonant Flames", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Sorcerers", L"-5", L"4", L"0", L"0", L"-5", L"0", L"4", L"1", L"75", L"Resonant Lightning", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Magic Corps", L"0", L"3", L"0", L"0", L"0", L"0", L"3", L"1", L"75", L"Resonant Flames", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Archers", L"1", L"0", L"10", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Gaspard Archers", L"-1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Thief Marksmen", L"-1", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Cliff Bandit Marksmen", L"-1", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Pirate Marksmen", L"-1", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"75", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"West Church Archers", L"1", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"75", L"Fusillade", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Flame Emperor Co.", L"3", L"2", L"-5", L"0", L"-10", L"2", L"1", L"5", L"75", L"Raging Flames", SL::C));
+		list.emplace_back(std::make_unique<Battalion>(L"Thief Pegasus Corps", L"2", L"0", L"0", L"0", L"1", L"0", L"3", L"5", L"60", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Pirate Pegasus Corps", L"2", L"0", L"0", L"0", L"1", L"0", L"3", L"5", L"60", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Bandit Pegasus Corps", L"2", L"0", L"0", L"0", L"1", L"0", L"3", L"5", L"60", L"Disturbance", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Dahlman Guard", L"0", L"3", L"20", L"0", L"0", L"3", L"3", L"10", L"105", L"Resonant Flames", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Dahlman Magic Co.", L"0", L"2", L"10", L"0", L"0", L"2", L"3", L"5", L"75", L"Group Flames", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Dahlman Armored Group", L"3", L"0", L"10", L"0", L"0", L"3", L"0", L"5", L"75", L"Assault Troop", SL::E));
+		list.emplace_back(std::make_unique<Battalion>(L"Dahlman PMC", L"2", L"0", L"10", L"0", L"0", L"2", L"0", L"3", L"75", L"Onslaught", SL::E));
+
 		list.emplace_back(std::make_unique<Character>(L"---", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Character>(L"Byleth", L"27", L"4", L"13", L"6", L"9", L"8", L"8", L"6", L"6", L"7",
