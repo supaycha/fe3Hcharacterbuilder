@@ -248,6 +248,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
 	Character* tempcharacter = dynamic_cast<Character*>(repititionfromMT.GetClientObject());
 	wxString exclusivitycheck = tempcharacter->getName();
+
 	lbw->ReceiveExclusivity(exclusivitycheck);
 	lbe->ReceiveExclusivity(exclusivitycheck);
 	am->ReceiveExclusivity(exclusivitycheck);
@@ -510,7 +511,9 @@ void DropDownClasses::OnNewSelection(wxCommandEvent& selection) {
 
 void DropDownClasses::ReceiveExclusivity(wxString charactername) {
 	currentDDCSelection = charactername;
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void DropDownClasses::repopulate() {
@@ -589,6 +592,7 @@ bool DropDownClasses::CompareAllStrings() {
 GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders) :
 	wxGrid(parent, id)
 {
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbmt = new GTBMysteriousTeacher;
 
 	CreateGrid(8, 10);	
@@ -677,20 +681,26 @@ void GridMysteriousTeacher::repopulate() {
 
 void GridMysteriousTeacher::UpdateDDCHSelection(Character character) {
 	gtbmt->UpdateDDCHSelection(character);
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void GridMysteriousTeacher::UpdateSCLSelection(int level, int ID) {
 	switch (ID) {
 		case ID_SPIN1: {
 			gtbmt->UpdateSCLSelection(level, ID_SPIN1);
+			Freeze();
 			repopulate();
+			Thaw();
 			break;
 		}
 
 		case ID_SPIN2: {
 			gtbmt->UpdateSCLSelection(level, ID_SPIN2);
+			Freeze();
 			repopulate();
+			Thaw();
 			break;
 		}
 	}
@@ -700,21 +710,27 @@ void GridMysteriousTeacher::UpdateDDCLSelection(Class cLass, int ID) {
 	switch (ID) {
 		case ID_DDCL1: {
 			gtbmt->UpdateDDCLSelection(cLass, ID_DDCL1);
+			Freeze();
 			repopulate();
+			Thaw();
 
 			break;
 		}
 
 		case ID_DDCL2: {
 			gtbmt->UpdateDDCLSelection(cLass, ID_DDCL2);
+			Freeze();
 			repopulate();
+			Thaw();
 
 			break;
 		}
 
 		case ID_DDCL3: {
 			gtbmt->UpdateDDCLSelection(cLass, ID_DDCL3);
+			Freeze();
 			repopulate();
+			Thaw();
 
 			break;
 		}
@@ -1011,7 +1027,9 @@ void ListBoxEquipment::OnNewSelection(wxCommandEvent& selection) {
 
 void ListBoxEquipment::ReceiveExclusivity(wxString charactername) {
 	currentDDCSelection = charactername;
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void ListBoxEquipment::repopulate() {
@@ -1120,7 +1138,9 @@ void ListBoxBattalions::ReceiveSLInfo(SLPACKAGE* slpackage) {
 		sl = slpackage->sl;
 	}
 
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void ListBoxBattalions::repopulate() {
@@ -1189,6 +1209,7 @@ bool ListBoxBattalions::CompareAllStrings() {
 GridWeaponStats::GridWeaponStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbws = new GTBWeaponStats;
 
 	CreateGrid(1, gtbws->GetColsCount());
@@ -1211,7 +1232,9 @@ void GridWeaponStats::initpopulate() {
 
 void GridWeaponStats::ReceiveLBWSelection(Stats stats) {
 	gtbws->ReceiveLBWSelection(stats);
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void GridWeaponStats::repopulate() {
@@ -1237,6 +1260,7 @@ void GTBWeaponStats::ReceiveLBWSelection(Stats stats) {
 GridEquipmentStats::GridEquipmentStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbes = new GTBEquipmentStats;
 
 	CreateGrid(1, gtbes->GetColsCount());
@@ -1259,7 +1283,9 @@ void GridEquipmentStats::initpopulate() {
 
 void GridEquipmentStats::ReceiveLBESelection(Stats stats) {
 	gtbes->ReceiveLBESelection(stats);
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void GridEquipmentStats::repopulate() {
@@ -1287,6 +1313,7 @@ void GTBEquipmentStats::ReceiveLBESelection(Stats stats) {
 GridBattalionStats::GridBattalionStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbbs = new GTBBattalionStats;
 
 	CreateGrid(1, gtbbs->GetColsCount());
@@ -1309,7 +1336,9 @@ void GridBattalionStats::initpopulate() {
 
 void GridBattalionStats::ReceiveLBBSelection(Stats stats) {
 	gtbbs->ReceiveLBBSelection(stats);
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void GridBattalionStats::repopulate() {
@@ -1337,6 +1366,7 @@ void GTBBattalionStats::ReceiveLBBSelection(Stats stats) {
 GridTotalStats::GridTotalStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbts = new GTBTotalStats;
 
 	CreateGrid(1, gtbts->GetColsCount());
@@ -1360,25 +1390,33 @@ void GridTotalStats::initpopulate() {
 void GridTotalStats::ReceiveGMTStats(Stats stats) {
 	gtbts->ReceiveGMTStats(stats);
 	gtbts->recalculate();
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void GridTotalStats::ReceiveGWSStats(Stats stats) {
 	gtbts->ReceiveGWSStats(stats);
 	gtbts->recalculate();
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void GridTotalStats::ReceiveGESStats(Stats stats) {
 	gtbts->ReceiveGESStats(stats);
 	gtbts->recalculate();
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void GridTotalStats::ReceiveGBSStats(Stats stats) {
 	gtbts->ReceiveGBSStats(stats);
 	gtbts->recalculate();
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void GridTotalStats::repopulate() {
@@ -1819,7 +1857,9 @@ void ListBoxAA::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {
 	}
 	selectedAAnames = tempselected;
 
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void ListBoxAA::ReceiveSelectionsfromBounceL(std::vector<wxString> uSelections) {
@@ -1827,7 +1867,9 @@ void ListBoxAA::ReceiveSelectionsfromBounceL(std::vector<wxString> uSelections) 
 		std::erase(selectedAAnames, newselect);
 	}
 
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void ListBoxAA::repopulate() {
@@ -1892,12 +1934,16 @@ void ListBoxSA::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {
 	filteredSAnames = tempfiltered;
 	selectedSAnames = tempselected;
 
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void ListBoxSA::ReceiveSelectionsfromBounceR(std::vector<wxString> uSelections) {
 	filteredSAnames = uSelections;
+	Freeze();
 	repopulate();
+	Thaw();
 }
 
 void ListBoxSA::repopulate() {
@@ -1924,7 +1970,9 @@ std::vector<wxString> ListBoxSA::GetSelectionsSAAndClear() {
 
 	temp = selectedSAnames;
 	selectedSAnames.clear();
+	Freeze();
 	repopulate();
+	Thaw();
 	return temp;
 }
 
