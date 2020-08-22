@@ -13,21 +13,120 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="done">
+      <UniqueIdentifier>{8fb27f71-bcd2-4390-af76-709e0888a2f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MysteriousTeacher">
+      <UniqueIdentifier>{b5524919-a5a8-4142-9743-6c268abb57e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MysteriousTeacher">
+      <UniqueIdentifier>{4dd1b861-d90e-46c4-98f0-b1caba425bfb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="UnitList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbilityList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbilityManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gridmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GTBmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UnitList.cpp">
+    <ClCompile Include="MyFrame.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillLevelManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MysteriousTeacher.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="DropDownCharacters.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="SpinCtrlLevel.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="DropDownClasses.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="GridMysteriousTeacher.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="GTBMysteriousTeacher.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="Stat.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="Growth.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="AbilityManager.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="Gridmain.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="GTBmain.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="ListBox.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillLevelManager.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="MyFrame.h">
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="AbilityList.h">
+      <Filter>done</Filter>
     </ClInclude>
     <ClInclude Include="UnitList.h">
-      <Filter>Header Files</Filter>
+      <Filter>done</Filter>
+    </ClInclude>
+    <ClInclude Include="MysteriousTeacher.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="DropDownCharacters.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="SpinCtrlLevel.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="DropDownClasses.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="GridMysteriousTeacher.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="GTBMysteriousTeacher.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
