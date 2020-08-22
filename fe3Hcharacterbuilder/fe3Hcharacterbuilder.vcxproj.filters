@@ -22,15 +22,24 @@
     <Filter Include="Source Files\MysteriousTeacher">
       <UniqueIdentifier>{4dd1b861-d90e-46c4-98f0-b1caba425bfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\AbilityManager">
+      <UniqueIdentifier>{58d0c883-ecfe-4cce-bf05-15ca869c6bf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AbilityManager">
+      <UniqueIdentifier>{b111ac2d-d463-4252-be34-dbb06b6e7892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SkillLevelManager">
+      <UniqueIdentifier>{4b8e77ae-8637-441d-a5b5-c7c1f652d69b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SkillLevelManager">
+      <UniqueIdentifier>{d0972078-486d-4377-89af-085ee07bf6ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UnitList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AbilityList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AbilityManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Gridmain.cpp">
@@ -46,9 +55,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MyFrame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SkillLevelManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MysteriousTeacher.cpp">
@@ -69,11 +75,32 @@
     <ClCompile Include="GTBMysteriousTeacher.cpp">
       <Filter>Source Files\MysteriousTeacher</Filter>
     </ClCompile>
+    <ClCompile Include="AbilityManager.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ListBoxAA.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ListBoxSA.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonMoveRight.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonMoveLeft.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillLevelManager.cpp">
+      <Filter>Source Files\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticTextSkillLevel.cpp">
+      <Filter>Source Files\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DropDownSkillLevel.cpp">
+      <Filter>Source Files\SkillLevelManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>done</Filter>
-    </ClInclude>
     <ClInclude Include="Unit.h">
       <Filter>done</Filter>
     </ClInclude>
@@ -86,9 +113,6 @@
     <ClInclude Include="constants.h">
       <Filter>done</Filter>
     </ClInclude>
-    <ClInclude Include="AbilityManager.h">
-      <Filter>done</Filter>
-    </ClInclude>
     <ClInclude Include="Gridmain.h">
       <Filter>done</Filter>
     </ClInclude>
@@ -96,9 +120,6 @@
       <Filter>done</Filter>
     </ClInclude>
     <ClInclude Include="ListBox.h">
-      <Filter>done</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillLevelManager.h">
       <Filter>done</Filter>
     </ClInclude>
     <ClInclude Include="MyFrame.h">
@@ -127,6 +148,33 @@
     </ClInclude>
     <ClInclude Include="GTBMysteriousTeacher.h">
       <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="AbilityManager.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ListBoxAA.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ListBoxSA.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonMoveRight.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonMoveLeft.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillLevelManager.h">
+      <Filter>Header Files\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticTextSkillLevel.h">
+      <Filter>Header Files\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DropDownSkillLevel.h">
+      <Filter>Header Files\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
