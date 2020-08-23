@@ -31,6 +31,18 @@
     <Filter Include="Source Files\AbilityManager">
       <UniqueIdentifier>{c2011ee8-2511-43db-ba5e-dce4a74fd240}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Unit">
+      <UniqueIdentifier>{41c75272-167b-4c7d-a9e4-085fbeff800e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unit\Ability">
+      <UniqueIdentifier>{bbaff029-9291-4087-abff-0db64df3d909}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unit\Equipment">
+      <UniqueIdentifier>{ba6606f8-1243-4a97-ae0b-db0384fcce46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unit\Weapon">
+      <UniqueIdentifier>{cb24bd77-77ae-4368-ac99-594c172b3e62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AbilityList.h">
@@ -58,9 +70,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Stat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\UnitList.h">
@@ -107,6 +116,84 @@
     </ClInclude>
     <ClInclude Include="include\AbilityManager\ListBoxSA.h">
       <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Class.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Battalion.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Ability.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterInnateAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassInnateAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassMasteryAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillLevelAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="BlankAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackMagic.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Bow.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="DarkMagic.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Gauntlets.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Lance.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WhiteMagic.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="BlankWeapon.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="Ring.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="Staff.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="Gem.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="BlankEquipment.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ability.h" />
+    <ClInclude Include="Axe.h" />
+    <ClInclude Include="Battalion.h" />
+    <ClInclude Include="BlackMagic.h" />
+    <ClInclude Include="BlankAbility.h" />
+    <ClInclude Include="BlankEquipment.h" />
+    <ClInclude Include="BlankWeapon.h" />
+    <ClInclude Include="Bow.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="CharacterInnateAbility.h" />
+    <ClInclude Include="Class.h" />
+    <ClInclude Include="ClassInnateAbility.h" />
+    <ClInclude Include="ClassMasteryAbility.h" />
+    <ClInclude Include="DarkMagic.h" />
+    <ClInclude Include="Equipment.h" />
+    <ClInclude Include="Gauntlets.h" />
+    <ClInclude Include="Gem.h" />
     <ClInclude Include="include\AbilityList.h" />
     <ClInclude Include="include\AbilityManager\AbilityManager.h" />
     <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h" />
@@ -44,6 +61,14 @@
     <ClInclude Include="include\Stat.h" />
     <ClInclude Include="include\Unit.h" />
     <ClInclude Include="include\UnitList.h" />
+    <ClInclude Include="Lance.h" />
+    <ClInclude Include="Ring.h" />
+    <ClInclude Include="Shield.h" />
+    <ClInclude Include="SkillLevelAbility.h" />
+    <ClInclude Include="Staff.h" />
+    <ClInclude Include="Sword.h" />
+    <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WhiteMagic.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp" />
