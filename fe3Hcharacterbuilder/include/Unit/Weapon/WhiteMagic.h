@@ -1,6 +1,10 @@
 #ifndef WHITEMAGIC_H
 #define WHITEMAGIC_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Weapon/Weapon.h>
+
 class WhiteMagic : public Weapon {
 private:
 	WEAPONTYPE wt = WEAPONTYPE::FAITH;

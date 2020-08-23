@@ -1,8 +1,8 @@
 #ifndef BUTTONMOVERIGHT_H
 #define BUTTONMOVERIGHT_H
 
-//#include <wx/wx.h>
-//#include "constants.h"
+#include <wx/wx.h>
+#include "constants.h"
 
 wxDECLARE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 

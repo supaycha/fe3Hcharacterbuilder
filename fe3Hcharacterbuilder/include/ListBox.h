@@ -4,7 +4,10 @@
 #include <wx/wx.h>
 #include <map>
 #include <sstream>
-#include "Unit.h"
+#include <Unit/Unit.h>
+#include <Unit/Weapon/Weapon.h>
+#include <Unit/Equipment/Equipment.h>
+#include <Unit/Battalion.h>
 #include "constants.h"
 //#include <vld.h>
 

@@ -1,6 +1,9 @@
 #ifndef CHARACTERINNATEABILITY_H
 #define CHARACTERINNATEABILITY_H
 
+#include <string>
+#include <Unit/Ability/Ability.h>
+
 class CharacterInnateAbility : public Ability {
 private:
 	std::wstring ciaType = L"CharacterInnate";

@@ -3,8 +3,8 @@
 
 #include <wx/wx.h>
 #include <wx/grid.h>
-#include "Stat.h"
-#include "constants.h"
+#include <Stat.h>
+#include <constants.h>
 //#include <vld.h>
 
 class GTBWeaponStats : public wxGridTableBase {

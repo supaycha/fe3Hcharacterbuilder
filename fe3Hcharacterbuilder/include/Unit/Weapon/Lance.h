@@ -1,6 +1,10 @@
 #ifndef LANCE_H
 #define LANCE_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Weapon/Weapon.h>
+
 class Lance : public Weapon {
 private:
 	WEAPONTYPE wt = WEAPONTYPE::LANCE;

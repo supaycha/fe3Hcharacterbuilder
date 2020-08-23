@@ -1,6 +1,11 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+#include <wx/wx.h>
+#include <Stat.h>
+#include <Growth.h>
+#include <Unit/Unit.h>
+
 class Character : public Unit {
 private:
 	std::wstring charname;

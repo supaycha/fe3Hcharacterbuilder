@@ -1,6 +1,10 @@
 #ifndef BLANKEQUIPMENT_H
 #define BLANKEQUIPMENT_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Equipment/Equipment.h>
+
 class BlankEquipment : public Equipment {
 private:
 	EQUIPMENTTYPE et = EQUIPMENTTYPE::BLANK;

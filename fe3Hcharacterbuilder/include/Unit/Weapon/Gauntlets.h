@@ -1,6 +1,10 @@
 #ifndef GAUNTLETS_H
 #define GAUNTLETS_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Weapon/Weapon.h>
+
 class Gauntlets : public Weapon {
 private:
 	WEAPONTYPE wt = WEAPONTYPE::GAUNTLETS;

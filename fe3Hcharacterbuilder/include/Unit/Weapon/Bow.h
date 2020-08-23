@@ -1,6 +1,10 @@
 #ifndef BOW_H
 #define BOW_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Weapon/Weapon.h>
+
 class Bow : public Weapon {
 private:
 	WEAPONTYPE wt = WEAPONTYPE::BOW;

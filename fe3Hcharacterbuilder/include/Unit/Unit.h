@@ -1,7 +1,8 @@
 #ifndef UNIT_H
 #define UNIT_H
 
-//#include "Stat.h"
+#include <wx/wx.h>
+#include "Stat.h"
 //#include "Growth.h"
 //#include "constants.h"
 //#include <vld.h>

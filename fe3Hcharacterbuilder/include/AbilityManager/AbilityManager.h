@@ -1,17 +1,20 @@
 #ifndef ABILITYMANAGER_H
 #define ABILITYMANAGER_H
 
-//#include <wx/wx.h>
-//#include <map>
-//#include <sstream>
-//#include "Unit.h"
-//#include "AbilityList.h"
-//#include "constants.h"
-//#include "MyFrame.h"
-//#include "ListBoxAA.h"
-//#include "ListBoxSA.h"
-//#include "ButtonMoveRight.h"
-//#include "ButtonMoveLeft.h"
+#include <wx/wx.h>
+#include <map>
+#include <sstream>
+#include <Unit/Ability/Ability.h>
+#include <Unit/Ability/CharacterInnateAbility.h>
+#include <Unit/Ability/ClassInnateAbility.h>
+#include <Unit/Ability/SkillLevelAbility.h>
+#include <AbilityManager/ButtonMoveRight.h>
+#include <AbilityManager/ButtonMoveLeft.h>
+#include <AbilityManager/ListBoxAA.h>
+#include <AbilityManager/ListBoxSA.h>
+#include <AbilityList.h>
+#include <constants.h>
+#include <MyFrame.h>
 //#include <vld.h>
 
 class MyFrame;

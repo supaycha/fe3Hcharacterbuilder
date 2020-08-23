@@ -1,6 +1,10 @@
 #ifndef RING_H
 #define RING_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Equipment/Equipment.h>
+
 class Ring : public Equipment {
 private:
 	EQUIPMENTTYPE et = EQUIPMENTTYPE::RING;

@@ -1,6 +1,7 @@
 #ifndef STAT_H
 #define STAT_H
 
+#include <string>
 #include <wx/wx.h>
 //#include <vld.h>
 

@@ -1,5 +1,9 @@
 #ifndef AXE_H
-#define AXE_h
+#define AXE_H
+
+#include <string>
+#include <constants.h>
+#include <Unit/Weapon/Weapon.h>
 
 class Axe : public Weapon {
 private:

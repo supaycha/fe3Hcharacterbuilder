@@ -1,6 +1,9 @@
 #ifndef CLASSINNATEABILITY_H
 #define CLASSINNATEABILITY_H
 
+#include <string>
+#include <Unit/Ability/Ability.h>
+
 class ClassInnateAbility : public Ability {
 private:
 	std::wstring ciaType = L"ClassInnate";

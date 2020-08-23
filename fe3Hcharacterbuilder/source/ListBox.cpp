@@ -1,4 +1,4 @@
-#include "../include/ListBox.h"
+#include <ListBox.h>
 
 ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxWindow* panel,
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :

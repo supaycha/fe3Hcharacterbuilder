@@ -1,6 +1,9 @@
 #ifndef CLASSMASTERYABILITY_H
 #define CLASSMASTERYABILITY_H
 
+#include <string>
+#include <Unit/Ability/Ability.h>
+
 class ClassMasteryAbility : public Ability {
 private:
 	std::wstring cmaType = L"ClassMastery";

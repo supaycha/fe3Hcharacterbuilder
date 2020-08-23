@@ -3,12 +3,27 @@
 
 #include <wx/wx.h>
 #include <map>
-#include "Stat.h"
-#include "Unit.h"
+#include <Stat.h>
+#include <Unit/Unit.h>
+#include <Unit/Battalion.h>
+#include <Unit/Character.h>
+#include <Unit/Weapon/Weapon.h>
+#include <Unit/Weapon/BlankWeapon.h>
+#include <Unit/Weapon/Axe.h>
+#include <Unit/Weapon/BlackMagic.h>
+#include <Unit/Weapon/Bow.h>
+#include <Unit/Weapon/DarkMagic.h>
+#include <Unit/Weapon/Gauntlets.h>
+#include <Unit/Weapon/Lance.h>
+#include <Unit/Weapon/Sword.h>
+#include <Unit/Weapon/WhiteMagic.h>
+#include <Unit/Class.h>
+#include <Unit/Equipment/Equipment.h>
+
 #include "UnitList.h"
-#include "constants.h"
-#include "ListBox.h"
-#include "Gridmain.h"
+#include <constants.h>
+#include <ListBox.h>
+#include <Gridmain.h>
 #include <AbilityManager/AbilityManager.h>
 #include <SkillLevelManager/SkillLevelManager.h>
 #include <MysteriousTeacher/MysteriousTeacher.h>

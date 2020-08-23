@@ -1,10 +1,12 @@
 #ifndef DROPDOWNCLASSES_H
 #define DROPDOWNCLASSES_H
 
-//#include <wx/wx.h>
-//#include <map>
-//#include <sstream>
-//#include "Unit.h"
+#include <wx/wx.h>
+#include <map>
+#include <sstream>
+#include <constants.h>
+#include <Unit/Unit.h>
+#include <Unit/Class.h>
 
 wxDECLARE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
 

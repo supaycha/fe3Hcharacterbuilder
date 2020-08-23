@@ -1,6 +1,10 @@
 #ifndef GEM_H
 #define GEM_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Equipment/Equipment.h>
+
 class Gem : public Equipment {
 private:
 	EQUIPMENTTYPE et = EQUIPMENTTYPE::STAFF;

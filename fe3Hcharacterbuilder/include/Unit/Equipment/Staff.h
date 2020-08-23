@@ -1,6 +1,10 @@
 #ifndef STAFF_H
 #define STAFF_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Equipment/Equipment.h>
+
 class Staff : public Equipment {
 private:
 	EQUIPMENTTYPE et = EQUIPMENTTYPE::STAFF;

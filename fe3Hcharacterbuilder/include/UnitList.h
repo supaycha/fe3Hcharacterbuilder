@@ -2,8 +2,27 @@
 #define UNITLIST_H
 
 #include <wx/wx.h>
-#include "Unit.h"
-#include "constants.h"
+#include <Unit/Unit.h>
+#include <Unit/Battalion.h>
+#include <Unit/Character.h>
+#include <Unit/Weapon/Weapon.h>
+#include <Unit/Weapon/BlankWeapon.h>
+#include <Unit/Weapon/Axe.h>
+#include <Unit/Weapon/BlackMagic.h>
+#include <Unit/Weapon/Bow.h>
+#include <Unit/Weapon/DarkMagic.h>
+#include <Unit/Weapon/Gauntlets.h>
+#include <Unit/Weapon/Lance.h>
+#include <Unit/Weapon/Sword.h>
+#include <Unit/Weapon/WhiteMagic.h>
+#include <Unit/Equipment/Equipment.h>
+#include <Unit/Equipment/BlankEquipment.h>
+#include <Unit/Equipment/Gem.h>
+#include <Unit/Equipment/Ring.h>
+#include <Unit/Equipment/Shield.h>
+#include <Unit/Equipment/Staff.h>
+#include <Unit/Class.h>
+#include <constants.h>
 //#include <vld.h>
 
 class UnitList {

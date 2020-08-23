@@ -3,9 +3,9 @@
 
 #include <wx/wx.h>
 #include <wx/grid.h>
-#include "Stat.h"
-#include "constants.h"
-#include "GTBmain.h"
+#include <Stat.h>
+#include <constants.h>
+#include <GTBmain.h>
 //#include <vld.h>
 
 wxDECLARE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);

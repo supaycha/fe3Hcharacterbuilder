@@ -1,8 +1,8 @@
 #ifndef DROPDOWNCHARACTERS_H
 #define DROPDOWNCHARACTERS_H
 
-//#include <wx/wx.h>
-//#include "constants.h"
+#include <wx/wx.h>
+#include "constants.h"
 
 wxDECLARE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
 

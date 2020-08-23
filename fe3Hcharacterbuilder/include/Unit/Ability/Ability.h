@@ -1,6 +1,10 @@
 #ifndef ABILITY_H
 #define ABILITY_H
 
+#include <string>
+#include <Stat.h>
+#include <Unit/Unit.h>
+
 class Ability : public Unit {
 private:
 	std::wstring abname;

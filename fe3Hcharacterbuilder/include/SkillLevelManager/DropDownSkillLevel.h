@@ -1,8 +1,8 @@
 #ifndef DROPDOWNSKILLLEVEL_H
 #define DROPDOWNSKILLLEVEL_H
 
-//#include <wx/wx.h>
-//#include "constants.h"
+#include <wx/wx.h>
+#include "constants.h"
 
 class DropDownSkillLevel : public wxComboBox {
 private:

@@ -1,6 +1,10 @@
 #ifndef SKILLLEVELABILITY_H
 #define SKILLLEVELABILITY_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Ability/Ability.h>
+
 class SkillLevelAbility : public Ability {
 private:
 	std::wstring slaType = L"SkillLevel";

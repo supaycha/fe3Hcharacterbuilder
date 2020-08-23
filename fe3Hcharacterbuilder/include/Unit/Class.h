@@ -1,6 +1,11 @@
 #ifndef CLASS_H
 #define CLASS_H
 
+#include <wx/wx.h>
+#include <Stat.h>
+#include <Growth.h>
+#include <Unit/Unit.h>
+
 class Class : public Unit {
 private:
 	std::wstring name;

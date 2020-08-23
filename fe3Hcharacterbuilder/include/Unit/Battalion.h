@@ -1,6 +1,11 @@
 #ifndef BATTALION_H
 #define BATTALION_H
 
+#include <wx/wx.h>
+#include <Stat.h>
+#include <constants.h>
+#include <Unit/Unit.h>
+
 class Battalion : public Unit {
 private:
 	std::wstring name;

@@ -1,6 +1,11 @@
 #ifndef WEAPON_H
 #define WEAPON_H
 
+#include <string>
+#include <Stat.h>
+#include <constants.h>
+#include <Unit/Unit.h>
+
 class Weapon : public Unit {
 private:
 	std::wstring weapname;

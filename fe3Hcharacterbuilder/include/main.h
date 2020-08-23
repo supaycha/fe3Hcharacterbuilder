@@ -2,10 +2,8 @@
 #define MAIN_H
 
 #include <wx/wx.h>
-#include <map>
-#include "Unit.h"
-#include "MyFrame.h"
-#include "constants.h"
+#include <MyFrame.h>
+#include <constants.h>
 //#include <vld.h>
 
 class MyApp : public wxApp {

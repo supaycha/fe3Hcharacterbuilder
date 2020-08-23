@@ -1,6 +1,10 @@
 #ifndef SHIELD_H
 #define SHIELD_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Equipment/Equipment.h>
+
 class Shield : public Equipment {
 private:
 	EQUIPMENTTYPE et = EQUIPMENTTYPE::SHIELD;

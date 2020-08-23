@@ -1,6 +1,11 @@
 #ifndef EQUIPMENT_H
 #define EQUIPMENT_H
 
+#include <string>
+#include <Stat.h>
+#include <constants.h>
+#include <Unit/Unit.h>
+
 class Equipment : public Unit {
 private:
 	std::wstring equipmentname;

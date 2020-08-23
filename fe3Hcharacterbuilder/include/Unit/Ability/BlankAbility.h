@@ -1,6 +1,9 @@
 #ifndef BLANKABILITY_H
 #define BLANKABILITY_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Ability/Ability.h>
 
 class BlankAbility : public Ability {
 private:

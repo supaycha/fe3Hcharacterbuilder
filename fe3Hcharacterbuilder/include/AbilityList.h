@@ -2,7 +2,12 @@
 #define ABILITYLIST_H
 
 #include <wx/wx.h>
-#include "Unit.h"
+#include <Unit/Ability/Ability.h>
+#include <Unit/Ability/BlankAbility.h>
+#include <Unit/Ability/CharacterInnateAbility.h>
+#include <Unit/Ability/ClassInnateAbility.h>
+#include <Unit/Ability/SkillLevelAbility.h>
+#include <Unit/Ability/ClassMasteryAbility.h>
 #include "constants.h"
 //#include <vld.h>
 

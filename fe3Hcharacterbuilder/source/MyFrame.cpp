@@ -1,4 +1,4 @@
-#include "MyFrame.h"
+#include <MyFrame.h>
 
 wxDEFINE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);

@@ -1,11 +1,14 @@
 #ifndef GTBMYSTERIOUSTEACHER_H
 #define GTBMYSTERIOUSTEACHER_H
 
-//#include <wx/wx.h>
-//#include <wx/grid.h>
-//#include "Stat.h"
-//#include "Growth.h"
-//#include "Unit.h"
+#include <wx/wx.h>
+#include <wx/grid.h>
+#include <Stat.h>
+#include <Growth.h>
+#include <constants.h>
+#include <Unit/Unit.h>
+#include <Unit/Character.h>
+#include <Unit/Class.h>
 
 class GTBMysteriousTeacher : public wxGridTableBase {
 private:

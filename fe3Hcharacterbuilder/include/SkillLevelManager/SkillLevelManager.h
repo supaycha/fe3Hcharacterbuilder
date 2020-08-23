@@ -1,12 +1,13 @@
 #ifndef SKILLLEVELMANAGER_H
 #define SKILLLEVELMANAGER_H
 
-//#include <wx/wx.h>
-//#include <map>
-//#include "constants.h"
-//#include "MyFrame.h"
-//#include "StaticTextSkillLevel.h"
-//#include "DropDownSkillLevel.h"
+#include <wx/wx.h>
+#include <map>
+#include <constants.h>
+#include <MyFrame.h>
+#include <SkillLevelManager/StaticTextSkillLevel.h>
+#include <SkillLevelManager/StaticTextSkillLevel.h>
+#include "DropDownSkillLevel.h"
 //#include <vld.h>
 class MyFrame;
 

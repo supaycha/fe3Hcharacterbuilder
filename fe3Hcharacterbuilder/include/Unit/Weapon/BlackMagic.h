@@ -1,6 +1,10 @@
 #ifndef BLACKMAGIC_H
 #define BLACKMAGIC_H
 
+#include <string>
+#include <constants.h>
+#include <Unit/Weapon/Weapon.h>
+
 class BlackMagic : public Weapon {
 private:
 	WEAPONTYPE wt = WEAPONTYPE::REASON;
