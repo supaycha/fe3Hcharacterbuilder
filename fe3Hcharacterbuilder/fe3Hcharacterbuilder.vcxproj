@@ -30,7 +30,6 @@
     <ClInclude Include="include\constants.h" />
     <ClInclude Include="include\DropDownCharacters.h" />
     <ClInclude Include="include\DropDownClasses.h" />
-    <ClInclude Include="include\DropDownSkillLevel.h" />
     <ClInclude Include="include\Gridmain.h" />
     <ClInclude Include="include\GridMysteriousTeacher.h" />
     <ClInclude Include="include\Growth.h" />
@@ -42,10 +41,11 @@
     <ClInclude Include="include\main.h" />
     <ClInclude Include="include\MyFrame.h" />
     <ClInclude Include="include\MysteriousTeacher.h" />
-    <ClInclude Include="include\SkillLevelManager.h" />
+    <ClInclude Include="include\SkillLevelManager\DropDownSkillLevel.h" />
+    <ClInclude Include="include\SkillLevelManager\SkillLevelManager.h" />
+    <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h" />
     <ClInclude Include="include\SpinCtrlLevel.h" />
     <ClInclude Include="include\Stat.h" />
-    <ClInclude Include="include\StaticTextSkillLevel.h" />
     <ClInclude Include="include\Unit.h" />
     <ClInclude Include="include\UnitList.h" />
   </ItemGroup>
@@ -58,7 +58,6 @@
     <ClCompile Include="source\AbilityManager\ListBoxSA.cpp" />
     <ClCompile Include="source\DropDownCharacters.cpp" />
     <ClCompile Include="source\DropDownClasses.cpp" />
-    <ClCompile Include="source\DropDownSkillLevel.cpp" />
     <ClCompile Include="source\Gridmain.cpp" />
     <ClCompile Include="source\GridMysteriousTeacher.cpp" />
     <ClCompile Include="source\GTBmain.cpp" />
@@ -67,9 +66,10 @@
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\MyFrame.cpp" />
     <ClCompile Include="source\MysteriousTeacher.cpp" />
-    <ClCompile Include="source\SkillLevelManager.cpp" />
+    <ClCompile Include="source\SkillLevelManager\DropDownSkillLevel.cpp" />
+    <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp" />
+    <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp" />
     <ClCompile Include="source\SpinCtrlLevel.cpp" />
-    <ClCompile Include="source\StaticTextSkillLevel.cpp" />
     <ClCompile Include="source\UnitList.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -33,9 +33,6 @@
     <ClInclude Include="include\DropDownClasses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\DropDownSkillLevel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Gridmain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -69,16 +66,10 @@
     <ClInclude Include="include\MysteriousTeacher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\SkillLevelManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\SpinCtrlLevel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Stat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\StaticTextSkillLevel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Unit.h">
@@ -102,6 +93,15 @@
     <ClInclude Include="include\AbilityManager\ListBoxSA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\SkillLevelManager\DropDownSkillLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SkillLevelManager\SkillLevelManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp">
@@ -111,9 +111,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\DropDownClasses.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\DropDownSkillLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Gridmain.cpp">
@@ -140,13 +137,7 @@
     <ClCompile Include="source\MysteriousTeacher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\SkillLevelManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\SpinCtrlLevel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\StaticTextSkillLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\UnitList.cpp">
@@ -165,6 +156,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\AbilityManager\ListBoxSA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkillLevelManager\DropDownSkillLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

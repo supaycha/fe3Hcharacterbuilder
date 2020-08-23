@@ -9,8 +9,8 @@
 #include "constants.h"
 #include "ListBox.h"
 #include "Gridmain.h"
-#include "AbilityManager.h"
-#include "SkillLevelManager.h"
+#include <AbilityManager/AbilityManager.h>
+#include <SkillLevelManager/SkillLevelManager.h>
 #include "MysteriousTeacher.h"
 //#include <vld.h>
 
