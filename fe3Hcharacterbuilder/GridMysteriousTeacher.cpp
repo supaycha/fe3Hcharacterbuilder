@@ -7,8 +7,8 @@ GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bo
 	gtbmt = new GTBMysteriousTeacher;
 
 	CreateGrid(8, 10);
-	SetDefaultRowSize(MIN_HEIGHT_OF_COMBOBOX);
-	SetDefaultColSize(SET_LENGTH_OF_COLUMNS);
+	SetDefaultRowSize((int)VARIOUS_SIZE::MIN_HEIGHT_OF_COMBOBOX);
+	SetDefaultColSize((int)VARIOUS_SIZE::SET_LENGTH_OF_COLUMNS);
 	SetDefaultCellAlignment(wxALIGN_CENTER, wxALIGN_CENTER);
 	EnableEditing(false);
 	DisableDragGridSize();
@@ -83,7 +83,7 @@ void GridMysteriousTeacher::repopulate() {
 	}
 
 	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GMT_STATS, ID_GMT);
+	wxCommandEvent event(TRANSMIT_GMT_STATS, (int)ID_MISC::ID_GMT);
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
@@ -99,16 +99,16 @@ void GridMysteriousTeacher::UpdateDDCHSelection(Character character) {
 
 void GridMysteriousTeacher::UpdateSCLSelection(int level, int ID) {
 	switch (ID) {
-		case ID_SPIN1: {
-			gtbmt->UpdateSCLSelection(level, ID_SPIN1);
+		case (int)ID_MISC::ID_SPIN1: {
+			gtbmt->UpdateSCLSelection(level, (int)ID_MISC::ID_SPIN1);
 			Freeze();
 			repopulate();
 			Thaw();
 			break;
 		}
 
-		case ID_SPIN2: {
-			gtbmt->UpdateSCLSelection(level, ID_SPIN2);
+		case (int)ID_MISC::ID_SPIN2: {
+			gtbmt->UpdateSCLSelection(level, (int)ID_MISC::ID_SPIN2);
 			Freeze();
 			repopulate();
 			Thaw();
@@ -119,8 +119,8 @@ void GridMysteriousTeacher::UpdateSCLSelection(int level, int ID) {
 
 void GridMysteriousTeacher::UpdateDDCLSelection(Class cLass, int ID) {
 	switch (ID) {
-		case ID_DDCL1: {
-			gtbmt->UpdateDDCLSelection(cLass, ID_DDCL1);
+		case (int)ID_MISC::ID_DDCL1: {
+			gtbmt->UpdateDDCLSelection(cLass, (int)ID_MISC::ID_DDCL1);
 			Freeze();
 			repopulate();
 			Thaw();
@@ -128,8 +128,8 @@ void GridMysteriousTeacher::UpdateDDCLSelection(Class cLass, int ID) {
 			break;
 		}
 
-		case ID_DDCL2: {
-			gtbmt->UpdateDDCLSelection(cLass, ID_DDCL2);
+		case (int)ID_MISC::ID_DDCL2: {
+			gtbmt->UpdateDDCLSelection(cLass, (int)ID_MISC::ID_DDCL2);
 			Freeze();
 			repopulate();
 			Thaw();
@@ -137,8 +137,8 @@ void GridMysteriousTeacher::UpdateDDCLSelection(Class cLass, int ID) {
 			break;
 		}
 
-		case ID_DDCL3: {
-			gtbmt->UpdateDDCLSelection(cLass, ID_DDCL3);
+		case (int)ID_MISC::ID_DDCL3: {
+			gtbmt->UpdateDDCLSelection(cLass, (int)ID_MISC::ID_DDCL3);
 			Freeze();
 			repopulate();
 			Thaw();

@@ -6,10 +6,10 @@ ButtonMoveRight::ButtonMoveRight(wxWindow* panel, wxWindowID id, const wxString&
 }
 
 void ButtonMoveRight::OnClick(wxCommandEvent& uevent) {
-	wxCommandEvent event(SELECTION_HAS_CHANGED, ID_BMR);
+	wxCommandEvent event(SELECTION_HAS_CHANGED, (int)ID_SINGLE_CONTROL::ID_BMR);
 	ProcessEvent(event);
 }
 
 wxBEGIN_EVENT_TABLE(ButtonMoveRight, wxButton)
-	EVT_BUTTON(ID_BMR, ButtonMoveRight::OnClick)
+	EVT_BUTTON((int)ID_SINGLE_CONTROL::ID_BMR, ButtonMoveRight::OnClick)
 wxEND_EVENT_TABLE()

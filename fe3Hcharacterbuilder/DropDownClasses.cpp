@@ -126,7 +126,7 @@ wxClientData** DropDownClasses::ToArrayData(std::vector<wxClientData*>& ptrs) {
 }
 
 wxBEGIN_EVENT_TABLE(DropDownClasses, wxComboBox)
-	EVT_COMBOBOX(ID_DDCL1, DropDownClasses::OnNewSelection)
-	EVT_COMBOBOX(ID_DDCL2, DropDownClasses::OnNewSelection)
-	EVT_COMBOBOX(ID_DDCL3, DropDownClasses::OnNewSelection)
+	EVT_COMBOBOX((int)ID_MISC::ID_DDCL1, DropDownClasses::OnNewSelection)
+	EVT_COMBOBOX((int)ID_MISC::ID_DDCL2, DropDownClasses::OnNewSelection)
+	EVT_COMBOBOX((int)ID_MISC::ID_DDCL3, DropDownClasses::OnNewSelection)
 wxEND_EVENT_TABLE()

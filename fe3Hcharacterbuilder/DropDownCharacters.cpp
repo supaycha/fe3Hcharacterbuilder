@@ -7,13 +7,13 @@ DropDownCharacters::DropDownCharacters(std::vector<wxString> characternames, std
 	this->Append(ToArrayString(characternames), ToArrayData(characterdata));
 	this->SetSelection(0);
 
-	wxCommandEvent eventtoself(wxEVT_COMBOBOX, ID_DDCH);
+	wxCommandEvent eventtoself(wxEVT_COMBOBOX, (int)ID_MISC::ID_DDCH);
 	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 	ProcessEvent(eventtoself);
 }
 
 void DropDownCharacters::OnNewSelection(wxCommandEvent& selection) {
-	wxCommandEvent event(TRANSMIT_DDCH_SELECTION, ID_DDCH);
+	wxCommandEvent event(TRANSMIT_DDCH_SELECTION, (int)ID_MISC::ID_DDCH);
 	event.SetClientObject(selection.GetClientObject());
 	ProcessEvent(event);
 }
@@ -38,5 +38,5 @@ wxClientData** DropDownCharacters::ToArrayData(std::vector<wxClientData*>& ptrs)
 }
 
 wxBEGIN_EVENT_TABLE(DropDownCharacters, wxComboBox)
-	EVT_COMBOBOX(ID_DDCH, DropDownCharacters::OnNewSelection)
+	EVT_COMBOBOX((int)ID_MISC::ID_DDCH, DropDownCharacters::OnNewSelection)
 wxEND_EVENT_TABLE()

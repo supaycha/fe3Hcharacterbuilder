@@ -6,10 +6,10 @@ ButtonMoveLeft::ButtonMoveLeft(wxWindow* panel, wxWindowID id, const wxString& l
 }
 
 void ButtonMoveLeft::OnClick(wxCommandEvent& uevent) {
-	wxCommandEvent event(SELECTION_HAS_CHANGED, ID_BML);
+	wxCommandEvent event(SELECTION_HAS_CHANGED, (int)ID_SINGLE_CONTROL::ID_BML);
 	ProcessEvent(event);
 }
 
 wxBEGIN_EVENT_TABLE(ButtonMoveLeft, wxButton)
-	EVT_BUTTON(ID_BML, ButtonMoveLeft::OnClick)
+	EVT_BUTTON((int)ID_SINGLE_CONTROL::ID_BML, ButtonMoveLeft::OnClick)
 wxEND_EVENT_TABLE()

@@ -9,12 +9,12 @@ void GTBMysteriousTeacher::UpdateDDCHSelection(Character character) {
 
 void GTBMysteriousTeacher::UpdateSCLSelection(int level, int ID) {
 	switch (ID) {
-		case ID_SPIN1: {
+		case (int)ID_MISC::ID_SPIN1: {
 			currentSCL1selection = level;
 			break;
 		}
 
-		case ID_SPIN2: {
+		case (int)ID_MISC::ID_SPIN2: {
 			currentSCL2selection = level;
 			break;
 		}
@@ -25,17 +25,17 @@ void GTBMysteriousTeacher::UpdateSCLSelection(int level, int ID) {
 
 void GTBMysteriousTeacher::UpdateDDCLSelection(Class cLass, int ID) {
 	switch (ID) {
-		case ID_DDCL1: {
+		case (int)ID_MISC::ID_DDCL1: {
 			currentDDCL1growths = cLass.getGrowths();
 			break;
 		}
 
-		case ID_DDCL2: {
+		case (int)ID_MISC::ID_DDCL2: {
 			currentDDCL2growths = cLass.getGrowths();
 			break;
 		}
 
-		case ID_DDCL3: {
+		case (int)ID_MISC::ID_DDCL3: {
 			currentDDCL3booststostats = cLass.getBoostedStats();
 			currentDDCL3minstats = cLass.getStats();
 			currentDDCL3mountvars = cLass.getMountedStats();

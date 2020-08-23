@@ -18,13 +18,13 @@ AbilityManager::AbilityManager(MyFrame* parent, wxWindowID id) :
 
 	const wxArrayString buffer{};
 
-	lbaa = new ListBoxAA(this, ID_LBAA, 0, 0, 150, 400, buffer, wxLB_MULTIPLE);
-	lbsa = new ListBoxSA(this, ID_LBSA, 200, 0, 150, 400, buffer, wxLB_MULTIPLE);
-	bmr = new ButtonMoveRight(this, ID_BMR, "->", 150, 50, 50, 50);
-	bml = new ButtonMoveLeft(this, ID_BML, "<-", 150, 100, 50, 50);
+	lbaa = new ListBoxAA(this, (int)ID_SINGLE_CONTROL::ID_LBAA, 0, 0, 150, 400, buffer, wxLB_MULTIPLE);
+	lbsa = new ListBoxSA(this, (int)ID_SINGLE_CONTROL::ID_LBSA, 200, 0, 150, 400, buffer, wxLB_MULTIPLE);
+	bmr = new ButtonMoveRight(this, (int)ID_SINGLE_CONTROL::ID_BMR, "->", 150, 50, 50, 50);
+	bml = new ButtonMoveLeft(this, (int)ID_SINGLE_CONTROL::ID_BML, "<-", 150, 100, 50, 50);
 
-	Bind(SELECTION_HAS_CHANGED, &AbilityManager::BounceSelectionstoRight, this, ID_BMR);
-	Bind(SELECTION_HAS_CHANGED, &AbilityManager::BounceSelectionstoLeft, this, ID_BML);
+	Bind(SELECTION_HAS_CHANGED, &AbilityManager::BounceSelectionstoRight, this, (int)ID_SINGLE_CONTROL::ID_BMR);
+	Bind(SELECTION_HAS_CHANGED, &AbilityManager::BounceSelectionstoLeft, this, (int)ID_SINGLE_CONTROL::ID_BML);
 }
 
 void AbilityManager::ReceiveExclusivity(wxString charactername) {

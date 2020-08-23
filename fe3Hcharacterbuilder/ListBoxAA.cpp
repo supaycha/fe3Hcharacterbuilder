@@ -77,5 +77,5 @@ wxArrayString ListBoxAA::ToArrayString(std::vector<wxString> names) {
 }
 
 wxBEGIN_EVENT_TABLE(ListBoxAA, wxListBox)
-	EVT_LISTBOX(ID_LBAA, ListBoxAA::OnSelection)
+	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBAA, ListBoxAA::OnSelection)
 wxEND_EVENT_TABLE()

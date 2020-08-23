@@ -41,7 +41,7 @@ void GridWeaponStats::repopulate() {
 	}
 
 	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GWS_STATS, ID_GWS);
+	wxCommandEvent event(TRANSMIT_GWS_STATS, (int)ID_SINGLE_CONTROL::ID_GWS);
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
@@ -90,7 +90,7 @@ void GridEquipmentStats::repopulate() {
 	}
 
 	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GES_STATS, ID_GES);
+	wxCommandEvent event(TRANSMIT_GES_STATS, (int)ID_SINGLE_CONTROL::ID_GES);
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
@@ -139,7 +139,7 @@ void GridBattalionStats::repopulate() {
 	}
 
 	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GBS_STATS, ID_GBS);
+	wxCommandEvent event(TRANSMIT_GBS_STATS, (int)ID_SINGLE_CONTROL::ID_GBS);
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);

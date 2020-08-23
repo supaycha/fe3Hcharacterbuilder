@@ -79,20 +79,20 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 		}
 	}
 
-	for (int i = 0; i < BATTALION_DATA_SIZE; ++i) {
+	for (int i = 0; i < (int)VARIOUS_SIZE::BATTALION_DATA_SIZE; ++i) {
 		battalionmap.emplace(battalionnames[i], battaliondata[i]);
 	}
 
-	for (int i = 0; i < WEAPON_DATA_SIZE; ++i) {
+	for (int i = 0; i < (int)VARIOUS_SIZE::WEAPON_DATA_SIZE; ++i) {
 		auto happened = weaponmap.emplace(weaponnames[i], weapondata[i]);
 		int k = 9;
 	}
 
-	for (int i = 0; i < CLASS_DATA_SIZE; ++i) {
+	for (int i = 0; i < (int)VARIOUS_SIZE::CLASS_DATA_SIZE; ++i) {
 		classmap.emplace(classnames[i], classdata[i]);
 	}
 
-	for (int i = 0; i < EQUIPMENT_DATA_SIZE; ++i) {
+	for (int i = 0; i < (int)VARIOUS_SIZE::EQUIPMENT_DATA_SIZE; ++i) {
 		equipmap.emplace(equipnames[i], equipdata[i]);
 	}
 
@@ -101,22 +101,22 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	lbsizer = new wxBoxSizer(wxHORIZONTAL);
 	slablsizer = new wxBoxSizer(wxHORIZONTAL);
 
-	gws = new GridWeaponStats(this, ID_GWS);
-	ges = new GridEquipmentStats(this, ID_GES);
-	gbs = new GridBattalionStats(this, ID_GBS);
-	gts = new GridTotalStats(this, ID_GTS);
-	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, ID_MT);
+	gws = new GridWeaponStats(this, (int)ID_SINGLE_CONTROL::ID_GWS);
+	ges = new GridEquipmentStats(this, (int)ID_SINGLE_CONTROL::ID_GES);
+	gbs = new GridBattalionStats(this, (int)ID_SINGLE_CONTROL::ID_GBS);
+	gts = new GridTotalStats(this, (int)ID_SINGLE_CONTROL::ID_GTS);
+	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
 
-	am = new AbilityManager(this, ID_AM);
-	slm = new SkillLevelManager(this, ID_SLM);
+	am = new AbilityManager(this, (int)ID_SINGLE_CONTROL::ID_AM);
+	slm = new SkillLevelManager(this, (int)ID_SINGLE_CONTROL::ID_SLM);
 
 	wxBoxSizer* lbesizer = new wxBoxSizer(wxVERTICAL);
 	wxBoxSizer* lbwsizer = new wxBoxSizer(wxVERTICAL);
 	wxBoxSizer* lbbsizer = new wxBoxSizer(wxVERTICAL);
 
-	lbw = new ListBoxWeapons(weaponmap, this, ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
-	lbe = new ListBoxEquipment(equipmap, this, ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
-	lbb = new ListBoxBattalions(battalionmap, this, ID_LBB, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
+	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
+	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
+	lbb = new ListBoxBattalions(battalionmap, this, (int)ID_SINGLE_CONTROL::ID_LBB, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 
 	lbwsizer->Add(lbw);
 	lbesizer->Add(lbe);
@@ -143,17 +143,17 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Buildersizer->Add(slablsizer);
 
 	this->SetSizerAndFit(Buildersizer);
-	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, ID_MT);
-	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, ID_MT);
-	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, ID_MT);
+	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, (int)ID_MISC::ID_MT);
+	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, (int)ID_MISC::ID_MT);
+	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, (int)ID_MISC::ID_MT);
 
-	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, ID_LBW);
-	Bind(TRANSMIT_LBE_SELECTION, &MyFrame::BounceLBESelection, this, ID_LBE);
-	Bind(TRANSMIT_LBB_SELECTION, &MyFrame::BounceLBBSelection, this, ID_LBB);
-	Bind(TRANSMIT_GWS_STATS, &MyFrame::BounceGWSStats_partoftotalstats, this, ID_GWS);
-	Bind(TRANSMIT_GES_STATS, &MyFrame::BounceGESStats_partoftotalstats, this, ID_GES);
-	Bind(TRANSMIT_GBS_STATS, &MyFrame::BounceGBSStats_partoftotalstats, this, ID_GBS);
-	Bind(TRANSMIT_SL_SELECTION, &MyFrame::BounceSLInfo, this, ID_DDSWORD, ID_DDFLYING);
+	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
+	Bind(TRANSMIT_LBE_SELECTION, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
+	Bind(TRANSMIT_LBB_SELECTION, &MyFrame::BounceLBBSelection, this, (int)ID_SINGLE_CONTROL::ID_LBB);
+	Bind(TRANSMIT_GWS_STATS, &MyFrame::BounceGWSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GWS);
+	Bind(TRANSMIT_GES_STATS, &MyFrame::BounceGESStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GES);
+	Bind(TRANSMIT_GBS_STATS, &MyFrame::BounceGBSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GBS);
+	Bind(TRANSMIT_SL_SELECTION, &MyFrame::BounceSLInfo, this, (int)DD_CONTROL::ID_DDSWORD, (int)DD_CONTROL::ID_DDFLYING);
 }
 
 void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
@@ -184,7 +184,7 @@ void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
 
 void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 	Equipment* tempequipment = dynamic_cast<Equipment*>(selection.GetClientObject());
-	std::vector<Stat> tempstats(TOTAL_STATS_SIZE, Stat(L"0"));
+	std::vector<Stat> tempstats((int)VARIOUS_SIZE::TOTAL_STATS_SIZE, Stat(L"0"));
 	Stats selectionstats = tempequipment->getStats();
 	tempstats[6] = selectionstats[0].getText();
 	tempstats[7] = selectionstats[1].getText();
@@ -218,17 +218,17 @@ void MyFrame::BounceSLInfo(wxCommandEvent& eventfromwho) {
 	int idofreceiver = eventfromwho.GetInt();
 	switch (idofreceiver)
 	{
-		case ID_LBW: {
+		case (int)ID_SINGLE_CONTROL::ID_LBW: {
 			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
 			lbw->ReceiveSLInfo(slpackage);
 			break;
 		}
-		case ID_AM: {
+		case (int)ID_SINGLE_CONTROL::ID_AM: {
 			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
 			am->ReceiveSLInfo(slpackage);
 			break;
 		}
-		case ID_LBB: {
+		case (int)ID_SINGLE_CONTROL::ID_LBB: {
 			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
 			lbb->ReceiveSLInfo(slpackage);
 			break;
@@ -271,5 +271,5 @@ void MyFrame::OnQuit(wxCommandEvent& event) {
 }
 
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
-	EVT_COMBOBOX(ID_DDCH, DropDownCharacters::OnNewSelection)
+	EVT_COMBOBOX((int)ID_MISC::ID_DDCH, DropDownCharacters::OnNewSelection)
 wxEND_EVENT_TABLE()

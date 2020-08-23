@@ -17,13 +17,13 @@ wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 	this->Set(ToArrayString(firstname), ToArrayData(firstdata));
 
 	this->SetSelection(0);
-	wxCommandEvent eventtoself(ID_LBW);
+	wxCommandEvent eventtoself((int)ID_SINGLE_CONTROL::ID_LBW);
 	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 	ProcessEvent(eventtoself);
 }
 
 void ListBoxWeapons::OnNewSelection(wxCommandEvent& selection) {	//triggers on mouse click from user and from DetermineSelectionStatus()
-	wxCommandEvent event(TRANSMIT_LBW_SELECTION, ID_LBW);
+	wxCommandEvent event(TRANSMIT_LBW_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBW);
 	event.SetClientObject(selection.GetClientObject());
 	ProcessEvent(event);
 }
@@ -102,7 +102,7 @@ void ListBoxWeapons::DetermineSelectionStatus() {
 		int index = this->FindString(mostrecentLBWselection);
 		this->SetSelection(index);
 
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, (int)ID_SINGLE_CONTROL::ID_LBW);
 		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 		ProcessEvent(eventtoself);
 	}
@@ -111,7 +111,7 @@ void ListBoxWeapons::DetermineSelectionStatus() {
 		int index = this->FindString("---");
 		this->SetSelection(index);
 
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBW);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, (int)ID_SINGLE_CONTROL::ID_LBW);
 		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 		ProcessEvent(eventtoself);
 	}
@@ -166,13 +166,13 @@ ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentm
 	this->Set(ToArrayString(firstname), ToArrayData(firstdata));
 
 	this->SetSelection(0);
-	wxCommandEvent eventtoself(ID_LBE);
+	wxCommandEvent eventtoself((int)ID_SINGLE_CONTROL::ID_LBE);
 	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 	ProcessEvent(eventtoself);
 }
 
 void ListBoxEquipment::OnNewSelection(wxCommandEvent& selection) {
-	wxCommandEvent event(TRANSMIT_LBE_SELECTION, ID_LBE);
+	wxCommandEvent event(TRANSMIT_LBE_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBE);
 	event.SetClientObject(selection.GetClientObject());
 	ProcessEvent(event);
 }
@@ -231,7 +231,7 @@ void ListBoxEquipment::DetermineSelectionStatus() {
 	if (CompareAllStrings()) {
 		int index = this->FindString(mostrecentLBEselection);
 		this->SetSelection(index);
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, (int)ID_SINGLE_CONTROL::ID_LBE);
 		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 		ProcessEvent(eventtoself);
 	}
@@ -239,7 +239,7 @@ void ListBoxEquipment::DetermineSelectionStatus() {
 	else if (!CompareAllStrings()) {
 		int index = this->FindString("---");
 		this->SetSelection(index);
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBE);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, (int)ID_SINGLE_CONTROL::ID_LBE);
 		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 		ProcessEvent(eventtoself);
 	}
@@ -292,14 +292,14 @@ ListBoxBattalions::ListBoxBattalions(std::map<wxString, wxClientData*> ubattalio
 	this->Set(ToArrayString(firstname), ToArrayData(firstdata));
 
 	this->SetSelection(0);
-	wxCommandEvent eventtoself(ID_LBB);
+	wxCommandEvent eventtoself((int)ID_SINGLE_CONTROL::ID_LBB);
 	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 	ProcessEvent(eventtoself);
 
 }
 
 void ListBoxBattalions::OnNewSelection(wxCommandEvent& selection) {
-	wxCommandEvent event(TRANSMIT_LBB_SELECTION, ID_LBB);
+	wxCommandEvent event(TRANSMIT_LBB_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBB);
 	event.SetClientObject(selection.GetClientObject());
 	ProcessEvent(event);
 }
@@ -350,7 +350,7 @@ void ListBoxBattalions::DetermineSelectionStatus() {
 		int index = this->FindString(mostrecentLBBselection);
 		this->SetSelection(index);
 
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBB);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, (int)ID_SINGLE_CONTROL::ID_LBB);
 		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 		ProcessEvent(eventtoself);
 	}
@@ -359,7 +359,7 @@ void ListBoxBattalions::DetermineSelectionStatus() {
 		int index = this->FindString("---");
 		this->SetSelection(index);
 
-		wxCommandEvent eventtoself(wxEVT_LISTBOX, ID_LBB);
+		wxCommandEvent eventtoself(wxEVT_LISTBOX, (int)ID_SINGLE_CONTROL::ID_LBB);
 		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 		ProcessEvent(eventtoself);
 	}
@@ -397,13 +397,13 @@ wxClientData** ListBoxBattalions::ToArrayData(std::vector<wxClientData*>& ptrs) 
 }
 
 wxBEGIN_EVENT_TABLE(ListBoxWeapons, wxListBox)
-	EVT_LISTBOX(ID_LBW, ListBoxWeapons::OnNewSelection)
+	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBW, ListBoxWeapons::OnNewSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(ListBoxEquipment, wxListBox)
-	EVT_LISTBOX(ID_LBE, ListBoxEquipment::OnNewSelection)
+	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBE, ListBoxEquipment::OnNewSelection)
 wxEND_EVENT_TABLE()
 
 wxBEGIN_EVENT_TABLE(ListBoxBattalions, wxListBox)
-	EVT_LISTBOX(ID_LBB, ListBoxBattalions::OnNewSelection)
+	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBB, ListBoxBattalions::OnNewSelection)
 wxEND_EVENT_TABLE()

@@ -68,10 +68,10 @@ private:
 	Stats totalstats;
 public:
 	GTBTotalStats() :
-		currentGMTstats{ CHARACTER_DATA_SIZE, L"0" },
-		currentGWSstats{ WEAPON_DATA_SIZE, L"0" },
-		currentGESstats{ TOTAL_STATS_SIZE, L"0" },
-		totalstats(TOTAL_STATS_SIZE, L"0") {}
+		currentGMTstats{ (int)VARIOUS_SIZE::CHARACTER_DATA_SIZE, L"0" },
+		currentGWSstats{ (int)VARIOUS_SIZE::WEAPON_DATA_SIZE, L"0" },
+		currentGESstats{ (int)VARIOUS_SIZE::TOTAL_STATS_SIZE, L"0" },
+		totalstats((int)VARIOUS_SIZE::TOTAL_STATS_SIZE, L"0") {}
 	~GTBTotalStats() {}
 	int GetNumberRows() override { return 1; }
 	int GetNumberCols() override { return headers.size(); }
