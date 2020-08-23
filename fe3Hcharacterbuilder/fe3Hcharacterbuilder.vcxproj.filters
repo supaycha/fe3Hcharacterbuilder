@@ -13,15 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\MysteriousTeacher">
+      <UniqueIdentifier>{073cc337-6df9-4b8a-8138-f5a08cc50913}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MysteriousTeacher">
+      <UniqueIdentifier>{6576b7f3-0a46-4620-8163-48184d836ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SkillLevelManager">
+      <UniqueIdentifier>{e5011233-a710-489e-a46f-c868b74e88b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SkillLevelManager">
+      <UniqueIdentifier>{29618d0a-6139-4fe8-b6c9-d8bbed81c34b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AbilityManager">
+      <UniqueIdentifier>{e93f7c59-4798-40a8-b2de-112b37b36a72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AbilityManager">
+      <UniqueIdentifier>{c2011ee8-2511-43db-ba5e-dce4a74fd240}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AbilityList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ButtonMoveLeft.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ButtonMoveRight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\constants.h">
@@ -39,12 +51,6 @@
     <ClInclude Include="include\ListBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ListBoxAA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ListBoxSA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -60,47 +66,47 @@
     <ClInclude Include="include\UnitList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\AbilityManager\AbilityManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AbilityManager\ButtonMoveRight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AbilityManager\ListBoxAA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AbilityManager\ListBoxSA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SkillLevelManager\DropDownSkillLevel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SkillLevelManager\SkillLevelManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MysteriousTeacher</Filter>
     </ClInclude>
     <ClInclude Include="include\MysteriousTeacher\DropDownClasses.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MysteriousTeacher</Filter>
     </ClInclude>
     <ClInclude Include="include\MysteriousTeacher\GridMysteriousTeacher.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MysteriousTeacher</Filter>
     </ClInclude>
     <ClInclude Include="include\MysteriousTeacher\GTBMysteriousTeacher.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MysteriousTeacher</Filter>
     </ClInclude>
     <ClInclude Include="include\MysteriousTeacher\MysteriousTeacher.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MysteriousTeacher</Filter>
     </ClInclude>
     <ClInclude Include="include\MysteriousTeacher\SpinCtrlLevel.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SkillLevelManager\DropDownSkillLevel.h">
+      <Filter>Header Files\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SkillLevelManager\SkillLevelManager.h">
+      <Filter>Header Files\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h">
+      <Filter>Header Files\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\AbilityManager.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ButtonMoveRight.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ListBoxAA.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ListBoxSA.h">
+      <Filter>Header Files\AbilityManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -125,47 +131,47 @@
     <ClCompile Include="source\UnitList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AbilityManager\AbilityManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AbilityManager\ButtonMoveLeft.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AbilityManager\ButtonMoveRight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AbilityManager\ListBoxAA.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AbilityManager\ListBoxSA.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\SkillLevelManager\DropDownSkillLevel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MysteriousTeacher</Filter>
     </ClCompile>
     <ClCompile Include="source\MysteriousTeacher\DropDownClasses.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MysteriousTeacher</Filter>
     </ClCompile>
     <ClCompile Include="source\MysteriousTeacher\GridMysteriousTeacher.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MysteriousTeacher</Filter>
     </ClCompile>
     <ClCompile Include="source\MysteriousTeacher\GTBMysteriousTeacher.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MysteriousTeacher</Filter>
     </ClCompile>
     <ClCompile Include="source\MysteriousTeacher\MysteriousTeacher.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MysteriousTeacher</Filter>
     </ClCompile>
     <ClCompile Include="source\MysteriousTeacher\SpinCtrlLevel.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkillLevelManager\DropDownSkillLevel.cpp">
+      <Filter>Source Files\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp">
+      <Filter>Source Files\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp">
+      <Filter>Source Files\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\AbilityManager.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ButtonMoveLeft.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ButtonMoveRight.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ListBoxAA.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ListBoxSA.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

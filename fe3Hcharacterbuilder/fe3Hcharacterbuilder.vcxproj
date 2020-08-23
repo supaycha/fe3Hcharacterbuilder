@@ -25,15 +25,11 @@
     <ClInclude Include="include\AbilityManager\ButtonMoveRight.h" />
     <ClInclude Include="include\AbilityManager\ListBoxAA.h" />
     <ClInclude Include="include\AbilityManager\ListBoxSA.h" />
-    <ClInclude Include="include\ButtonMoveLeft.h" />
-    <ClInclude Include="include\ButtonMoveRight.h" />
     <ClInclude Include="include\constants.h" />
     <ClInclude Include="include\Gridmain.h" />
     <ClInclude Include="include\Growth.h" />
     <ClInclude Include="include\GTBmain.h" />
     <ClInclude Include="include\ListBox.h" />
-    <ClInclude Include="include\ListBoxAA.h" />
-    <ClInclude Include="include\ListBoxSA.h" />
     <ClInclude Include="include\main.h" />
     <ClInclude Include="include\MyFrame.h" />
     <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h" />
