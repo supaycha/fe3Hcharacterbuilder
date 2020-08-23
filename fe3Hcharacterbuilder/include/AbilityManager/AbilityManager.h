@@ -1,17 +1,17 @@
 #ifndef ABILITYMANAGER_H
 #define ABILITYMANAGER_H
 
-#include <wx/wx.h>
-#include <map>
-#include <sstream>
-#include "Unit.h"
-#include "AbilityList.h"
-#include "constants.h"
-#include "MyFrame.h"
-#include "ListBoxAA.h"
-#include "ListBoxSA.h"
-#include "ButtonMoveRight.h"
-#include "ButtonMoveLeft.h"
+//#include <wx/wx.h>
+//#include <map>
+//#include <sstream>
+//#include "Unit.h"
+//#include "AbilityList.h"
+//#include "constants.h"
+//#include "MyFrame.h"
+//#include "ListBoxAA.h"
+//#include "ListBoxSA.h"
+//#include "ButtonMoveRight.h"
+//#include "ButtonMoveLeft.h"
 //#include <vld.h>
 
 class MyFrame;

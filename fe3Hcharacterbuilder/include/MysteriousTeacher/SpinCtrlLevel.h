@@ -1,9 +1,9 @@
 #ifndef SPINCTRLLEVEL_H
 #define SPINCTRLLEVEL_H
 
-#include <wx/wx.h>
-#include <wx/spinctrl.h>
-#include "constants.h"
+//#include <wx/wx.h>
+//#include <wx/spinctrl.h>
+//#include "constants.h"
 
 wxDECLARE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
 

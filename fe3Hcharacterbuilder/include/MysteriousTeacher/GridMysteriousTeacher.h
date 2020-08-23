@@ -1,10 +1,10 @@
 #ifndef GRIDMYSTERIOUSTEACHER_H
 #define GRIDMYSTERIOUSTEACHER_H
 
-#include <wx/wx.h>
-#include <wx/grid.h>
-#include "Unit.h"
-#include "GTBMysteriousTeacher.h"
+//#include <wx/wx.h>
+//#include <wx/grid.h>
+//#include "Unit.h"
+//#include "GTBMysteriousTeacher.h"
 
 wxDECLARE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
 

@@ -117,83 +117,83 @@
     <ClInclude Include="include\AbilityManager\ListBoxSA.h">
       <Filter>Header Files\AbilityManager</Filter>
     </ClInclude>
-    <ClInclude Include="include\Unit.h">
+    <ClInclude Include="include\Unit\Ability\Ability.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\Axe.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Battalion.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="Character.h">
+    <ClInclude Include="include\Unit\Weapon\BlackMagic.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\BlankAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\BlankEquipment.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\BlankWeapon.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\Bow.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Character.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="Class.h">
+    <ClInclude Include="include\Unit\Ability\CharacterInnateAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Class.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="Battalion.h">
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\ClassMasteryAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\DarkMagic.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\Equipment.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\Gauntlets.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\Gem.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Unit.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="Ability.h">
-      <Filter>Header Files\Unit\Ability</Filter>
+    <ClInclude Include="include\Unit\Weapon\Lance.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="Equipment.h">
+    <ClInclude Include="include\Unit\Equipment\Ring.h">
       <Filter>Header Files\Unit\Equipment</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterInnateAbility.h">
-      <Filter>Header Files\Unit\Ability</Filter>
-    </ClInclude>
-    <ClInclude Include="ClassInnateAbility.h">
-      <Filter>Header Files\Unit\Ability</Filter>
-    </ClInclude>
-    <ClInclude Include="ClassMasteryAbility.h">
-      <Filter>Header Files\Unit\Ability</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillLevelAbility.h">
-      <Filter>Header Files\Unit\Ability</Filter>
-    </ClInclude>
-    <ClInclude Include="BlankAbility.h">
-      <Filter>Header Files\Unit\Ability</Filter>
-    </ClInclude>
-    <ClInclude Include="BlackMagic.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="Axe.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="Bow.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="DarkMagic.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="Gauntlets.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="Lance.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="Sword.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="WhiteMagic.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="BlankWeapon.h">
-      <Filter>Header Files\Unit\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="Shield.h">
+    <ClInclude Include="include\Unit\Equipment\Shield.h">
       <Filter>Header Files\Unit\Equipment</Filter>
     </ClInclude>
-    <ClInclude Include="Ring.h">
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\Staff.h">
       <Filter>Header Files\Unit\Equipment</Filter>
     </ClInclude>
-    <ClInclude Include="Staff.h">
-      <Filter>Header Files\Unit\Equipment</Filter>
+    <ClInclude Include="include\Unit\Weapon\Sword.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="Gem.h">
-      <Filter>Header Files\Unit\Equipment</Filter>
+    <ClInclude Include="include\Unit\Weapon\WhiteMagic.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="BlankEquipment.h">
-      <Filter>Header Files\Unit\Equipment</Filter>
+    <ClInclude Include="include\Unit\Weapon\Weapon.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 #ifndef CLASS_H
 #define CLASS_H
 
-class Claess : public Unit {
+class Class : public Unit {
 private:
 	std::wstring name;
 	bool hasExclusivity;

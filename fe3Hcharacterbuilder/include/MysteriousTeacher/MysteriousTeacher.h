@@ -1,15 +1,15 @@
 #ifndef MYSTERIOUSTEACHER_H
 #define MYSTERIOUSTEACHER_H
 
-#include <wx/wx.h>
-#include <map>
-#include "Unit.h"
-#include "constants.h"
-#include "MyFrame.h"
-#include "DropDownCharacters.h"
-#include "SpinCtrlLevel.h"
-#include "DropDownClasses.h"
-#include "GridMysteriousTeacher.h"
+//#include <wx/wx.h>
+//#include <map>
+//#include "Unit.h"
+//#include "constants.h"
+//#include "MyFrame.h"
+//#include "DropDownCharacters.h"
+//#include "SpinCtrlLevel.h"
+//#include "DropDownClasses.h"
+//#include "GridMysteriousTeacher.h"
 //#include <vld.h>
 
 wxDECLARE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);

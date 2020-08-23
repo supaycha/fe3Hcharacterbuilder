@@ -1,7 +1,7 @@
 #ifndef STATICTEXTSKILLLEVEL_H
 #define STATICTEXTSKILLLEVEL_H
 
-#include <wx/wx.h>
+//#include <wx/wx.h>
 
 class StaticTextSkillLevel : public wxStaticText {
 private:
