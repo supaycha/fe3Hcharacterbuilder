@@ -1,4 +1,4 @@
-#include "ButtonMoveRight.h"
+#include "../include/ButtonMoveRight.h"
 
 ButtonMoveRight::ButtonMoveRight(wxWindow* panel, wxWindowID id, const wxString& label, int x, int y, int x2, int y2) :
 	wxButton(panel, id, label, wxPoint(x, y), wxSize(x2, y2))

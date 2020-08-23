@@ -1,4 +1,4 @@
-#include "AbilityManager.h"
+#include "../include/AbilityManager.h"
 
 AbilityManager::AbilityManager(MyFrame* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)

@@ -1,4 +1,4 @@
-#include "DropDownCharacters.h"
+#include "../include/DropDownCharacters.h"
 
 DropDownCharacters::DropDownCharacters(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, wxWindow* panel,
 	wxWindowID id, const wxArrayString& choices, long style) :

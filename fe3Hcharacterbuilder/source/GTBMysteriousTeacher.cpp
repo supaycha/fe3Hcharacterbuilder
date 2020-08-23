@@ -1,4 +1,4 @@
-#include "GTBMysteriousTeacher.h"
+#include "../include/GTBMysteriousTeacher.h"
 
 void GTBMysteriousTeacher::UpdateDDCHSelection(Character character) {
 	currentDDCHstats = character.getStats();

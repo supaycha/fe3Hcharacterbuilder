@@ -1,4 +1,4 @@
-#include "GTBmain.h"
+#include "../include/GTBmain.h"
 
 void GTBWeaponStats::ReceiveLBWSelection(Stats stats) {
 	weaponstats = stats;

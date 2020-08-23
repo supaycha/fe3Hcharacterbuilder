@@ -1,4 +1,4 @@
-#include "GridMysteriousTeacher.h"
+#include "../include/GridMysteriousTeacher.h"
 
 GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders) :
 	wxGrid(parent, id)

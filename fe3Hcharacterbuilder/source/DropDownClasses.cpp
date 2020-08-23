@@ -1,4 +1,4 @@
-#include "DropDownClasses.h"
+#include "../include/DropDownClasses.h"
 
 DropDownClasses::DropDownClasses(std::map<wxString, wxClientData*> uclassmap, wxWindow* panel, wxWindowID id, const wxArrayString& choices, long style) :
 	wxComboBox(panel, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, choices, style)

@@ -1,4 +1,4 @@
-#include "Gridmain.h"
+#include "../include/Gridmain.h"
 
 GridWeaponStats::GridWeaponStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)

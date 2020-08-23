@@ -18,6 +18,56 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\AbilityList.h" />
+    <ClInclude Include="include\AbilityManager.h" />
+    <ClInclude Include="include\ButtonMoveLeft.h" />
+    <ClInclude Include="include\ButtonMoveRight.h" />
+    <ClInclude Include="include\constants.h" />
+    <ClInclude Include="include\DropDownCharacters.h" />
+    <ClInclude Include="include\DropDownClasses.h" />
+    <ClInclude Include="include\DropDownSkillLevel.h" />
+    <ClInclude Include="include\Gridmain.h" />
+    <ClInclude Include="include\GridMysteriousTeacher.h" />
+    <ClInclude Include="include\Growth.h" />
+    <ClInclude Include="include\GTBmain.h" />
+    <ClInclude Include="include\GTBMysteriousTeacher.h" />
+    <ClInclude Include="include\ListBox.h" />
+    <ClInclude Include="include\ListBoxAA.h" />
+    <ClInclude Include="include\ListBoxSA.h" />
+    <ClInclude Include="include\main.h" />
+    <ClInclude Include="include\MyFrame.h" />
+    <ClInclude Include="include\MysteriousTeacher.h" />
+    <ClInclude Include="include\SkillLevelManager.h" />
+    <ClInclude Include="include\SpinCtrlLevel.h" />
+    <ClInclude Include="include\Stat.h" />
+    <ClInclude Include="include\StaticTextSkillLevel.h" />
+    <ClInclude Include="include\Unit.h" />
+    <ClInclude Include="include\UnitList.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\AbilityList.cpp" />
+    <ClCompile Include="source\AbilityManager.cpp" />
+    <ClCompile Include="source\ButtonMoveLeft.cpp" />
+    <ClCompile Include="source\ButtonMoveRight.cpp" />
+    <ClCompile Include="source\DropDownCharacters.cpp" />
+    <ClCompile Include="source\DropDownClasses.cpp" />
+    <ClCompile Include="source\DropDownSkillLevel.cpp" />
+    <ClCompile Include="source\Gridmain.cpp" />
+    <ClCompile Include="source\GridMysteriousTeacher.cpp" />
+    <ClCompile Include="source\GTBmain.cpp" />
+    <ClCompile Include="source\GTBMysteriousTeacher.cpp" />
+    <ClCompile Include="source\ListBox.cpp" />
+    <ClCompile Include="source\ListBoxAA.cpp" />
+    <ClCompile Include="source\ListBoxSA.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\MyFrame.cpp" />
+    <ClCompile Include="source\MysteriousTeacher.cpp" />
+    <ClCompile Include="source\SkillLevelManager.cpp" />
+    <ClCompile Include="source\SpinCtrlLevel.cpp" />
+    <ClCompile Include="source\StaticTextSkillLevel.cpp" />
+    <ClCompile Include="source\UnitList.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
