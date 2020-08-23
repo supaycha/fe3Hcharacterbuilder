@@ -6,6 +6,7 @@
 #include "constants.h"
 //#include <vld.h>
 
+//
 class AbilityList {
 private:
 	std::vector<std::unique_ptr<Ability>> list;

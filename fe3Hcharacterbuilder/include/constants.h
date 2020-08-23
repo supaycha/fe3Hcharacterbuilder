@@ -1,7 +1,6 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 //#include <vld.h>
-
 enum class ID_MISC {
 	ID_FRAME = 7,
 	ID_MT = 8,

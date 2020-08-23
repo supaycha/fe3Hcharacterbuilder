@@ -141,56 +141,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="AbilityList.cpp" />
-    <ClCompile Include="AbilityManager.cpp" />
-    <ClCompile Include="ButtonMoveLeft.cpp" />
-    <ClCompile Include="ButtonMoveRight.cpp" />
-    <ClCompile Include="DropDownCharacters.cpp" />
-    <ClCompile Include="DropDownClasses.cpp" />
-    <ClCompile Include="DropDownSkillLevel.cpp" />
-    <ClCompile Include="Gridmain.cpp" />
-    <ClCompile Include="GridMysteriousTeacher.cpp" />
-    <ClCompile Include="GTBmain.cpp" />
-    <ClCompile Include="GTBMysteriousTeacher.cpp" />
-    <ClCompile Include="ListBox.cpp" />
-    <ClCompile Include="ListBoxAA.cpp" />
-    <ClCompile Include="ListBoxSA.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MyFrame.cpp" />
-    <ClCompile Include="MysteriousTeacher.cpp" />
-    <ClCompile Include="SkillLevelManager.cpp" />
-    <ClCompile Include="SpinCtrlLevel.cpp" />
-    <ClCompile Include="StaticTextSkillLevel.cpp" />
-    <ClCompile Include="UnitList.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AbilityList.h" />
-    <ClInclude Include="AbilityManager.h" />
-    <ClInclude Include="ButtonMoveLeft.h" />
-    <ClInclude Include="ButtonMoveRight.h" />
-    <ClInclude Include="constants.h" />
-    <ClInclude Include="DropDownCharacters.h" />
-    <ClInclude Include="DropDownClasses.h" />
-    <ClInclude Include="DropDownSkillLevel.h" />
-    <ClInclude Include="Gridmain.h" />
-    <ClInclude Include="GridMysteriousTeacher.h" />
-    <ClInclude Include="Growth.h" />
-    <ClInclude Include="GTBmain.h" />
-    <ClInclude Include="GTBMysteriousTeacher.h" />
-    <ClInclude Include="ListBox.h" />
-    <ClInclude Include="ListBoxAA.h" />
-    <ClInclude Include="ListBoxSA.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="MyFrame.h" />
-    <ClInclude Include="MysteriousTeacher.h" />
-    <ClInclude Include="SkillLevelManager.h" />
-    <ClInclude Include="SpinCtrlLevel.h" />
-    <ClInclude Include="Stat.h" />
-    <ClInclude Include="StaticTextSkillLevel.h" />
-    <ClInclude Include="Unit.h" />
-    <ClInclude Include="UnitList.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
