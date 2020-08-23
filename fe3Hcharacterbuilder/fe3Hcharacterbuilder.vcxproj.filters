@@ -90,18 +90,24 @@
     <ClInclude Include="include\UnitList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\AbilityManager\AbilityManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ButtonMoveRight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ListBoxAA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ListBoxSA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AbilityManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ButtonMoveLeft.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ButtonMoveRight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\DropDownCharacters.cpp">
@@ -128,12 +134,6 @@
     <ClCompile Include="source\ListBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\ListBoxAA.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ListBoxSA.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -153,6 +153,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\UnitList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\AbilityManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ButtonMoveLeft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ButtonMoveRight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ListBoxAA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ListBoxSA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

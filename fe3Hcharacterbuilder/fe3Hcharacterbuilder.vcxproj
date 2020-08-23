@@ -21,6 +21,11 @@
   <ItemGroup>
     <ClInclude Include="include\AbilityList.h" />
     <ClInclude Include="include\AbilityManager.h" />
+    <ClInclude Include="include\AbilityManager\AbilityManager.h" />
+    <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h" />
+    <ClInclude Include="include\AbilityManager\ButtonMoveRight.h" />
+    <ClInclude Include="include\AbilityManager\ListBoxAA.h" />
+    <ClInclude Include="include\AbilityManager\ListBoxSA.h" />
     <ClInclude Include="include\ButtonMoveLeft.h" />
     <ClInclude Include="include\ButtonMoveRight.h" />
     <ClInclude Include="include\constants.h" />
@@ -47,9 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp" />
-    <ClCompile Include="source\AbilityManager.cpp" />
-    <ClCompile Include="source\ButtonMoveLeft.cpp" />
-    <ClCompile Include="source\ButtonMoveRight.cpp" />
+    <ClCompile Include="source\AbilityManager\AbilityManager.cpp" />
+    <ClCompile Include="source\AbilityManager\ButtonMoveLeft.cpp" />
+    <ClCompile Include="source\AbilityManager\ButtonMoveRight.cpp" />
+    <ClCompile Include="source\AbilityManager\ListBoxAA.cpp" />
+    <ClCompile Include="source\AbilityManager\ListBoxSA.cpp" />
     <ClCompile Include="source\DropDownCharacters.cpp" />
     <ClCompile Include="source\DropDownClasses.cpp" />
     <ClCompile Include="source\DropDownSkillLevel.cpp" />
@@ -58,8 +65,6 @@
     <ClCompile Include="source\GTBmain.cpp" />
     <ClCompile Include="source\GTBMysteriousTeacher.cpp" />
     <ClCompile Include="source\ListBox.cpp" />
-    <ClCompile Include="source\ListBoxAA.cpp" />
-    <ClCompile Include="source\ListBoxSA.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\MyFrame.cpp" />
     <ClCompile Include="source\MysteriousTeacher.cpp" />

@@ -1,4 +1,4 @@
-#include "../include/AbilityManager.h"
+#include "C:\Users\these\Desktop\fe3Hcharacterbuilder\fe3Hcharacterbuilder\include\AbilityManager"
 
 AbilityManager::AbilityManager(MyFrame* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
