@@ -11,7 +11,7 @@
 #include "Gridmain.h"
 #include <AbilityManager/AbilityManager.h>
 #include <SkillLevelManager/SkillLevelManager.h>
-#include "MysteriousTeacher.h"
+#include <MysteriousTeacher/MysteriousTeacher.h>
 //#include <vld.h>
 
 wxDECLARE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);

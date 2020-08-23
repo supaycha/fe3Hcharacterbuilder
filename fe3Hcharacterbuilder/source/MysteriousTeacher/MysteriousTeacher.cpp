@@ -1,4 +1,4 @@
-#include "MysteriousTeacher.h"
+#include <MysteriousTeacher\MysteriousTeacher.h>
 
 MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)

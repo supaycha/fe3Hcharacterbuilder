@@ -1,4 +1,4 @@
-#include "SpinCtrlLevel.h"
+#include <MysteriousTeacher\SpinCtrlLevel.h>
 
 SpinCtrlLevel::SpinCtrlLevel(wxWindow* parent, wxWindowID id, const wxString& value, int min) :
 	wxSpinCtrl(parent, id, value, wxDefaultPosition, wxDefaultSize, min)

@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\DropDownCharacters.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\AbilityList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -30,22 +27,13 @@
     <ClInclude Include="include\constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\DropDownClasses.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Gridmain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GridMysteriousTeacher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Growth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GTBmain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GTBMysteriousTeacher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBox.h">
@@ -61,12 +49,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\MyFrame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MysteriousTeacher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SpinCtrlLevel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Stat.h">
@@ -102,27 +84,33 @@
     <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\DropDownClasses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\GridMysteriousTeacher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\GTBMysteriousTeacher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\MysteriousTeacher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\SpinCtrlLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\DropDownCharacters.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\DropDownClasses.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Gridmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\GridMysteriousTeacher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\GTBmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GTBMysteriousTeacher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\ListBox.cpp">
@@ -132,12 +120,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\MyFrame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\MysteriousTeacher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\SpinCtrlLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\UnitList.cpp">
@@ -165,6 +147,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\DropDownClasses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\GridMysteriousTeacher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\GTBMysteriousTeacher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\MysteriousTeacher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\SpinCtrlLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
