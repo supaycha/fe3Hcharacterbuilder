@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AbilityList.h" />
-    <ClInclude Include="include\AbilityManager.h" />
     <ClInclude Include="include\AbilityManager\AbilityManager.h" />
     <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h" />
     <ClInclude Include="include\AbilityManager\ButtonMoveRight.h" />
@@ -127,7 +126,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files %28x86%29\Visual Leak Detector\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files %28x86%29\Visual Leak Detector\include;C:\Users\these\Desktop\fe3Hcharacterbuilder\fe3Hcharacterbuilder\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files %28x86%29\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

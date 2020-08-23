@@ -21,9 +21,6 @@
     <ClInclude Include="include\AbilityList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\AbilityManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ButtonMoveLeft.h">
       <Filter>Header Files</Filter>
     </ClInclude>
