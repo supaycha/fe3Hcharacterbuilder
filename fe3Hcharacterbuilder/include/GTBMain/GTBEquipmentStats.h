@@ -7,7 +7,7 @@
 
 class GTBEquipmentStats : public wxGridTableBase {
 private:
-	std::vector<wxString> headers{ "PATK", "MATK", "PHIT", "MHIT", "TCRIT", "AS", "TPROT", "TRSL", "AVO", "CRITAVO", "RNGE" };
+	std::vector<wxString> headers{ "PROT", "WGT", "RES", "HIT", "TCRIT", "AVO", "SPD", "MOV", "LCK", "MATK", "HEAL", "RANGE" };
 	Stats equipmentstats;
 public:
 	GTBEquipmentStats() {}

@@ -184,11 +184,11 @@ void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
 
 void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 	Equipment* tempequipment = dynamic_cast<Equipment*>(selection.GetClientObject());
-	std::vector<Stat> tempstats((int)VARIOUS_SIZE::TOTAL_STATS_SIZE, Stat(L"0"));
-	Stats selectionstats = tempequipment->getStats();
-	tempstats[6] = selectionstats[0].getText();
-	tempstats[7] = selectionstats[1].getText();
-	Stats transferthis{ tempstats };
+	//std::vector<Stat> tempstats((int)VARIOUS_SIZE::TOTAL_STATS_SIZE, Stat(L"0"));
+	Stats tempstats = tempequipment->getStats();
+	//tempstats[6] = selectionstats[0].getText();
+	//tempstats[7] = selectionstats[1].getText();
+	//Stats transferthis{ tempstats };
 
 	ges->ReceiveLBESelection(tempstats);
 }
