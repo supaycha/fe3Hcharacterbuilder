@@ -18,6 +18,81 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\AbilityList.h" />
+    <ClInclude Include="include\AbilityManager\AbilityManager.h" />
+    <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h" />
+    <ClInclude Include="include\AbilityManager\ButtonMoveRight.h" />
+    <ClInclude Include="include\AbilityManager\ListBoxAA.h" />
+    <ClInclude Include="include\AbilityManager\ListBoxSA.h" />
+    <ClInclude Include="include\constants.h" />
+    <ClInclude Include="include\Gridmain.h" />
+    <ClInclude Include="include\Growth.h" />
+    <ClInclude Include="include\GTBmain.h" />
+    <ClInclude Include="include\ListBox.h" />
+    <ClInclude Include="include\main.h" />
+    <ClInclude Include="include\MyFrame.h" />
+    <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h" />
+    <ClInclude Include="include\MysteriousTeacher\DropDownClasses.h" />
+    <ClInclude Include="include\MysteriousTeacher\GridMysteriousTeacher.h" />
+    <ClInclude Include="include\MysteriousTeacher\GTBMysteriousTeacher.h" />
+    <ClInclude Include="include\MysteriousTeacher\MysteriousTeacher.h" />
+    <ClInclude Include="include\MysteriousTeacher\SpinCtrlLevel.h" />
+    <ClInclude Include="include\SkillLevelManager\DropDownSkillLevel.h" />
+    <ClInclude Include="include\SkillLevelManager\SkillLevelManager.h" />
+    <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h" />
+    <ClInclude Include="include\Stat.h" />
+    <ClInclude Include="include\UnitList.h" />
+    <ClInclude Include="include\Unit\Ability\Ability.h" />
+    <ClInclude Include="include\Unit\Ability\BlankAbility.h" />
+    <ClInclude Include="include\Unit\Ability\CharacterInnateAbility.h" />
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility.h" />
+    <ClInclude Include="include\Unit\Ability\ClassMasteryAbility.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility.h" />
+    <ClInclude Include="include\Unit\Battalion.h" />
+    <ClInclude Include="include\Unit\Character.h" />
+    <ClInclude Include="include\Unit\Class.h" />
+    <ClInclude Include="include\Unit\Equipment\BlankEquipment.h" />
+    <ClInclude Include="include\Unit\Equipment\Equipment.h" />
+    <ClInclude Include="include\Unit\Equipment\Gem.h" />
+    <ClInclude Include="include\Unit\Equipment\Ring.h" />
+    <ClInclude Include="include\Unit\Equipment\Shield.h" />
+    <ClInclude Include="include\Unit\Equipment\Staff.h" />
+    <ClInclude Include="include\Unit\Unit.h" />
+    <ClInclude Include="include\Unit\Weapon\Axe.h" />
+    <ClInclude Include="include\Unit\Weapon\BlackMagic.h" />
+    <ClInclude Include="include\Unit\Weapon\BlankWeapon.h" />
+    <ClInclude Include="include\Unit\Weapon\Bow.h" />
+    <ClInclude Include="include\Unit\Weapon\DarkMagic.h" />
+    <ClInclude Include="include\Unit\Weapon\Gauntlets.h" />
+    <ClInclude Include="include\Unit\Weapon\Lance.h" />
+    <ClInclude Include="include\Unit\Weapon\Sword.h" />
+    <ClInclude Include="include\Unit\Weapon\Weapon.h" />
+    <ClInclude Include="include\Unit\Weapon\WhiteMagic.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\AbilityList.cpp" />
+    <ClCompile Include="source\AbilityManager\AbilityManager.cpp" />
+    <ClCompile Include="source\AbilityManager\ButtonMoveLeft.cpp" />
+    <ClCompile Include="source\AbilityManager\ButtonMoveRight.cpp" />
+    <ClCompile Include="source\AbilityManager\ListBoxAA.cpp" />
+    <ClCompile Include="source\AbilityManager\ListBoxSA.cpp" />
+    <ClCompile Include="source\Gridmain.cpp" />
+    <ClCompile Include="source\GTBmain.cpp" />
+    <ClCompile Include="source\ListBox.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\MyFrame.cpp" />
+    <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp" />
+    <ClCompile Include="source\MysteriousTeacher\DropDownClasses.cpp" />
+    <ClCompile Include="source\MysteriousTeacher\GridMysteriousTeacher.cpp" />
+    <ClCompile Include="source\MysteriousTeacher\GTBMysteriousTeacher.cpp" />
+    <ClCompile Include="source\MysteriousTeacher\MysteriousTeacher.cpp" />
+    <ClCompile Include="source\MysteriousTeacher\SpinCtrlLevel.cpp" />
+    <ClCompile Include="source\SkillLevelManager\DropDownSkillLevel.cpp" />
+    <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp" />
+    <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp" />
+    <ClCompile Include="source\UnitList.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -72,7 +147,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files %28x86%29\Visual Leak Detector\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files %28x86%29\Visual Leak Detector\include;C:\Users\these\Desktop\fe3Hcharacterbuilder\fe3Hcharacterbuilder\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files %28x86%29\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,14 +216,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="UnitList.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="main.h" />
-    <ClInclude Include="UnitList.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

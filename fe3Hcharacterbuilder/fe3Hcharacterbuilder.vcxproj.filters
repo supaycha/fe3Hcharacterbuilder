@@ -13,21 +13,252 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\MysteriousTeacher">
+      <UniqueIdentifier>{073cc337-6df9-4b8a-8138-f5a08cc50913}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MysteriousTeacher">
+      <UniqueIdentifier>{6576b7f3-0a46-4620-8163-48184d836ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SkillLevelManager">
+      <UniqueIdentifier>{e5011233-a710-489e-a46f-c868b74e88b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SkillLevelManager">
+      <UniqueIdentifier>{29618d0a-6139-4fe8-b6c9-d8bbed81c34b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AbilityManager">
+      <UniqueIdentifier>{e93f7c59-4798-40a8-b2de-112b37b36a72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AbilityManager">
+      <UniqueIdentifier>{c2011ee8-2511-43db-ba5e-dce4a74fd240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unit">
+      <UniqueIdentifier>{41c75272-167b-4c7d-a9e4-085fbeff800e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unit\Ability">
+      <UniqueIdentifier>{bbaff029-9291-4087-abff-0db64df3d909}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unit\Equipment">
+      <UniqueIdentifier>{ba6606f8-1243-4a97-ae0b-db0384fcce46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unit\Weapon">
+      <UniqueIdentifier>{cb24bd77-77ae-4368-ac99-594c172b3e62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UnitList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="include\AbilityList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gridmain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Growth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GTBmain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ListBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UnitList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\DropDownClasses.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\GridMysteriousTeacher.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\GTBMysteriousTeacher.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\MysteriousTeacher.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MysteriousTeacher\SpinCtrlLevel.h">
+      <Filter>Header Files\MysteriousTeacher</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SkillLevelManager\DropDownSkillLevel.h">
+      <Filter>Header Files\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SkillLevelManager\SkillLevelManager.h">
+      <Filter>Header Files\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h">
+      <Filter>Header Files\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\AbilityManager.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ButtonMoveRight.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ListBoxAA.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilityManager\ListBoxSA.h">
+      <Filter>Header Files\AbilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\Ability.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\Axe.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Battalion.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\BlackMagic.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\BlankAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\BlankEquipment.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\BlankWeapon.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\Bow.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Character.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\CharacterInnateAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Class.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\ClassMasteryAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\DarkMagic.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\Equipment.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\Gauntlets.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\Gem.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Unit.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\Lance.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\Ring.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\Shield.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility.h">
+      <Filter>Header Files\Unit\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Equipment\Staff.h">
+      <Filter>Header Files\Unit\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\Sword.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\WhiteMagic.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Weapon\Weapon.h">
+      <Filter>Header Files\Unit\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Stat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UnitList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="source\AbilityList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gridmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTBmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ListBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MyFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UnitList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\DropDownClasses.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\GridMysteriousTeacher.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\GTBMysteriousTeacher.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\MysteriousTeacher.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MysteriousTeacher\SpinCtrlLevel.cpp">
+      <Filter>Source Files\MysteriousTeacher</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkillLevelManager\DropDownSkillLevel.cpp">
+      <Filter>Source Files\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp">
+      <Filter>Source Files\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp">
+      <Filter>Source Files\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\AbilityManager.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ButtonMoveLeft.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ButtonMoveRight.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ListBoxAA.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\ListBoxSA.cpp">
+      <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
