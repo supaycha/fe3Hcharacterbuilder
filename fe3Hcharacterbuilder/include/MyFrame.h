@@ -19,11 +19,13 @@
 #include <Unit/Weapon/WhiteMagic.h>
 #include <Unit/Class.h>
 #include <Unit/Equipment/Equipment.h>
-
 #include "UnitList.h"
 #include <constants.h>
 #include <ListBox.h>
-#include <Gridmain.h>
+#include <GridMain/GridWeaponStats.h>
+#include <GridMain/GridEquipmentStats.h>
+#include <GridMain/GridBattalionStats.h>
+#include <GridMain/GridTotalStats.h>
 #include <AbilityManager/AbilityManager.h>
 #include <SkillLevelManager/SkillLevelManager.h>
 #include <MysteriousTeacher/MysteriousTeacher.h>

@@ -26,7 +26,10 @@
     <ClInclude Include="include\AbilityManager\ListBoxAA.h" />
     <ClInclude Include="include\AbilityManager\ListBoxSA.h" />
     <ClInclude Include="include\constants.h" />
-    <ClInclude Include="include\Gridmain.h" />
+    <ClInclude Include="include\GridMain\GridBattalionStats.h" />
+    <ClInclude Include="include\GridMain\GridEquipmentStats.h" />
+    <ClInclude Include="include\GridMain\GridTotalStats.h" />
+    <ClInclude Include="include\GridMain\GridWeaponStats.h" />
     <ClInclude Include="include\Growth.h" />
     <ClInclude Include="include\GTBmain.h" />
     <ClInclude Include="include\ListBox.h" />
@@ -77,7 +80,10 @@
     <ClCompile Include="source\AbilityManager\ButtonMoveRight.cpp" />
     <ClCompile Include="source\AbilityManager\ListBoxAA.cpp" />
     <ClCompile Include="source\AbilityManager\ListBoxSA.cpp" />
-    <ClCompile Include="source\Gridmain.cpp" />
+    <ClCompile Include="source\GridMain\GridBattalionStats.cpp" />
+    <ClCompile Include="source\GridMain\GridEquipmentStats.cpp" />
+    <ClCompile Include="source\GridMain\GridTotalStats.cpp" />
+    <ClCompile Include="source\GridMain\GridWeaponStats.cpp" />
     <ClCompile Include="source\GTBmain.cpp" />
     <ClCompile Include="source\ListBox.cpp" />
     <ClCompile Include="source\main.cpp" />

@@ -51,9 +51,6 @@
     <ClInclude Include="include\constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Gridmain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Growth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -195,12 +192,21 @@
     <ClInclude Include="include\MyFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\GridMain\GridBattalionStats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GridMain\GridEquipmentStats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GridMain\GridTotalStats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GridMain\GridWeaponStats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Gridmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\GTBmain.cpp">
@@ -259,6 +265,18 @@
     </ClCompile>
     <ClCompile Include="source\AbilityManager\ListBoxSA.cpp">
       <Filter>Source Files\AbilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GridMain\GridBattalionStats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GridMain\GridEquipmentStats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GridMain\GridTotalStats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GridMain\GridWeaponStats.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
