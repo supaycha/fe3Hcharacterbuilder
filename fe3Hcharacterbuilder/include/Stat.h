@@ -23,7 +23,10 @@ public:
 	Stats() : stats{ 10, Stat{} } {}
 	Stats(int size, std::wstring value) : stats(size, value) {}
 	Stats(std::vector<Stat> change) : stats(change) {}
-	Stats(std::wstring uPROT, std::wstring uRES) : stats{ uPROT, uRES } {}
+	Stats(std::wstring uPROT, std::wstring uWGT, std::wstring uRES, std::wstring uHIT, std::wstring uTCRIT,
+		std::wstring uAVO, std::wstring uSPD, std::wstring uMOV, std::wstring uLCK, std::wstring uMATK, 
+		std::wstring uHEAL, std::wstring uRANGE) : 
+		stats{ uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE } {}
 	Stats(std::wstring uHP, std::wstring uMOV, std::wstring uSTR,
 		std::wstring uMAG, std::wstring uDEX, std::wstring uSPD,
 		std::wstring uLCK, std::wstring uDEF, std::wstring uRES,

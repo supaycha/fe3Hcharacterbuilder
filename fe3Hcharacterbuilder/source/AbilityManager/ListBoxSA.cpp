@@ -3,7 +3,7 @@
 ListBoxSA::ListBoxSA(wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxPoint(x, y), wxSize(x2, y2), choices, style)
 {
-	SetBackgroundStyle(wxBG_STYLE_PAINT);
+	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 }
 
 void ListBoxSA::OnSelection(wxCommandEvent& event) {

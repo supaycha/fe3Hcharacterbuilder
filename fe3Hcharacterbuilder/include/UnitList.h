@@ -1044,34 +1044,36 @@ public:
 		list.emplace_back(std::make_unique<WhiteMagic>(L"Rescue", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"B", L"3", SL::B));
 		list.emplace_back(std::make_unique<WhiteMagic>(L"Warp", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"B", L"1", SL::B));
 
-		list.emplace_back(std::make_unique<BlankEquipment>(L"---", false, L"NULL", L"0", L"0", L"NULL"));
-		list.emplace_back(std::make_unique<Shield>(L"Leather Shield", false, L"NULL", L"1", L"1", L"NULL"));
-		list.emplace_back(std::make_unique<Shield>(L"Iron Shield", false, L"NULL", L"2", L"2", L"NULL"));
-		list.emplace_back(std::make_unique<Shield>(L"Steel Shield", false, L"NULL", L"3", L"3", L"NULL"));
-		list.emplace_back(std::make_unique<Shield>(L"Silver Shield", false, L"NULL", L"4", L"4", L"NULL"));
-		list.emplace_back(std::make_unique<Shield>(L"Talisman Shield", false, L"NULL", L"1", L"4", L"Resilience +2"));
-		list.emplace_back(std::make_unique<Shield>(L"Hexlock Shield", false, L"NULL", L"2", L"5", L"Resilience +4"));
-		list.emplace_back(std::make_unique<Shield>(L"Aegis Shield", true, L"Felix", L"6", L"6", L"Relic shield. Resilience +3, may halve damage for Crest of Fraldarius."));
-		list.emplace_back(std::make_unique<Shield>(L"Ochain Shield", true, L"Seteth,Ferdinand", L"6", L"4", L"Sacred shield (Cichol); restores HP each turn and negates foe’s critical hits."));
-		list.emplace_back(std::make_unique<Shield>(L"Seiros Shield", true, L"Edelgard", L"5", L"3", L"Sacred shield (Seiros); restores HP each turn and halves damage from Monsters."));
-		list.emplace_back(std::make_unique<Shield>(L"Aurora Shield", false, L"NULL", L"3", L"0", L"Nullifies user’s Flying-type weakness."));
-		list.emplace_back(std::make_unique<Shield>(L"Kadmos Shield", false, L"NULL", L"3", L"0", L"Nullifies user’s Armoured-type weakness."));
-		list.emplace_back(std::make_unique<Shield>(L"Lampos Shield", false, L"NULL", L"3", L"0", L"Nullifies user’s Cavalry-type weakness."));
-		list.emplace_back(std::make_unique<Ring>(L"Accuracy Ring", false, L"NULL", L"0", L"0", L"Hit rate +10"));
-		list.emplace_back(std::make_unique<Ring>(L"Critical Ring", false, L"NULL", L"0", L"0", L"Critical rate +5."));
-		list.emplace_back(std::make_unique<Ring>(L"Evasion Ring", false, L"NULL", L"0", L"0", L"Avoid +10."));
-		list.emplace_back(std::make_unique<Ring>(L"Speed Ring", false, L"NULL", L"0", L"0", L"Speed +2."));
-		list.emplace_back(std::make_unique<Ring>(L"March Ring", false, L"NULL", L"0", L"0", L"Movement +1."));
-		list.emplace_back(std::make_unique<Ring>(L"Goddess Ring", false, L"NULL", L"0", L"0", L"Luck +8; restores HP each turn."));
-		list.emplace_back(std::make_unique<Ring>(L"Prayer Ring", false, L"NULL", L"0", L"0", L"Grants Miracle ability; restores HP each turn."));
-		list.emplace_back(std::make_unique<Ring>(L"Fetters of Dromi", true, L"Yuri", L"0", L"0", L"Relic ring (Aubin); Movement +1, user can continue moving after taking certain actions and may halve damage received."));
-		list.emplace_back(std::make_unique<Staff>(L"Magic Staff", false, L"NULL", L"0", L"1", L"Increases Might of magic spells by 3."));
-		list.emplace_back(std::make_unique<Staff>(L"Healing Staff", false, L"NULL", L"0", L"1", L"Increases Healing power by 10."));
-		list.emplace_back(std::make_unique<Staff>(L"Caduceus Staff", true, L"Flayn,Linhardt", L"0", L"1", L"Sacred staff (Cethleann); offensive magic range +1, restores HP each turn."));
-		list.emplace_back(std::make_unique<Staff>(L"Thyrsus", true, L"Lysithea,Lorenz", L"0", L"1", L"Relic staff (Gloucester); offensive magic range +2, may halve damage received."));
-		list.emplace_back(std::make_unique<Gem>(L"Experience Gem", false, L"NULL", L"0", L"0", L"Base experience points +50%."));
-		list.emplace_back(std::make_unique<Gem>(L"Knowledge Gem", false, L"NULL", L"0", L"0", L"Base skill level experience +100%."));
-		list.emplace_back(std::make_unique<Gem>(L"Rafail Gem", true, L"Mercedes,Jeritza", L"0", L"0", L"Base skill level experience +100%."));
+		list.emplace_back(std::make_unique<BlankEquipment>(L"---", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
+
+																								 //PROT, WEIGHT, RES, HIT, TCRIT, AVO, SPD, MOV, LCK, MATK, HEAL, RANGE
+		list.emplace_back(std::make_unique<Shield>(L"Leather Shield", false, L"NULL",			 L"1",	L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
+		list.emplace_back(std::make_unique<Shield>(L"Iron Shield", false, L"NULL",				 L"2", L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
+		list.emplace_back(std::make_unique<Shield>(L"Steel Shield", false, L"NULL",				 L"3", L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
+		list.emplace_back(std::make_unique<Shield>(L"Silver Shield", false, L"NULL",			 L"4", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
+		list.emplace_back(std::make_unique<Shield>(L"Talisman Shield", false, L"NULL",			 L"1", L"4", L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Resilience +2"));
+		list.emplace_back(std::make_unique<Shield>(L"Hexlock Shield", false, L"NULL",			 L"2", L"5", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Resilience +4"));
+		list.emplace_back(std::make_unique<Shield>(L"Aegis Shield", true, L"Felix",				 L"6", L"6", L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Relic shield. Resilience +3, may halve damage for Crest of Fraldarius."));
+		list.emplace_back(std::make_unique<Shield>(L"Ochain Shield", true, L"Seteth,Ferdinand",  L"6", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Sacred shield (Cichol); restores HP each turn and negates foe’s critical hits."));
+		list.emplace_back(std::make_unique<Shield>(L"Seiros Shield", true, L"Edelgard",		     L"5", L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Sacred shield (Seiros); restores HP each turn and halves damage from Monsters."));
+		list.emplace_back(std::make_unique<Shield>(L"Aurora Shield", false, L"NULL",			 L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Nullifies user’s Flying-type weakness."));
+		list.emplace_back(std::make_unique<Shield>(L"Kadmos Shield", false, L"NULL",			 L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Nullifies user’s Armoured-type weakness."));
+		list.emplace_back(std::make_unique<Shield>(L"Lampos Shield", false, L"NULL",			 L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Nullifies user’s Cavalry-type weakness."));
+		list.emplace_back(std::make_unique<Ring>(L"Accuracy Ring", false, L"NULL",				 L"0", L"0", L"0", L"10", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Hit rate +10"));
+		list.emplace_back(std::make_unique<Ring>(L"Critical Ring", false, L"NULL",				 L"0", L"0", L"0", L"0",  L"5", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Critical rate +5."));
+		list.emplace_back(std::make_unique<Ring>(L"Evasion Ring", false, L"NULL",				 L"0", L"0", L"0", L"0",  L"0", L"10",L"0", L"0", L"0", L"0", L"0", L"0", L"Avoid +10."));
+		list.emplace_back(std::make_unique<Ring>(L"Speed Ring", false, L"NULL",					 L"0", L"0", L"0", L"0",  L"0", L"0", L"2", L"0", L"0", L"0", L"0", L"0", L"Speed +2."));
+		list.emplace_back(std::make_unique<Ring>(L"March Ring", false, L"NULL",					 L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0", L"Movement +1."));
+		list.emplace_back(std::make_unique<Ring>(L"Goddess Ring", false, L"NULL",				 L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"0", L"8", L"0", L"0", L"0", L"Luck +8; restores HP each turn."));
+		list.emplace_back(std::make_unique<Ring>(L"Prayer Ring", false, L"NULL",				 L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Grants Miracle ability; restores HP each turn."));
+		list.emplace_back(std::make_unique<Ring>(L"Fetters of Dromi", true, L"Yuri",			 L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0", L"Relic ring (Aubin); Movement +1, user can continue moving after taking certain actions and may halve damage received."));
+		list.emplace_back(std::make_unique<Staff>(L"Magic Staff", false, L"NULL",				 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"3", L"0", L"0", L"Increases Might of magic spells by 3."));
+		list.emplace_back(std::make_unique<Staff>(L"Healing Staff", false, L"NULL",				 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"10", L"0", L"Increases Healing power by 10."));
+		list.emplace_back(std::make_unique<Staff>(L"Caduceus Staff", true, L"Flayn,Linhardt",	 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"Sacred staff (Cethleann); offensive magic range +1, restores HP each turn."));
+		list.emplace_back(std::make_unique<Staff>(L"Thyrsus", true, L"Lysithea,Lorenz",			 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"2", L"Relic staff (Gloucester); offensive magic range +2, may halve damage received."));
+		list.emplace_back(std::make_unique<Gem>(L"Experience Gem", false, L"NULL",				 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Base experience points +50%."));
+		list.emplace_back(std::make_unique<Gem>(L"Knowledge Gem", false, L"NULL",				 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Base skill level experience +100%."));
+		list.emplace_back(std::make_unique<Gem>(L"Rafail Gem", true, L"Mercedes,Jeritza",		 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Base skill level experience +100%."));
 
 		list.emplace_back(std::make_unique<Class>(L"---", false, L"NULL",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",

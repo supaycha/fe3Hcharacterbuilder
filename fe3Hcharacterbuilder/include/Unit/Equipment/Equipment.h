@@ -5,7 +5,7 @@
 #include <Stat.h>
 #include <constants.h>
 #include <Unit/Unit.h>
-
+//PROT, WEIGHT, RES, HIT, TCRIT, AVO, SPD, MOV, LCK, MATK, HEAL, RANGE
 class Equipment : public Unit {
 private:
 	std::wstring equipmentname;
@@ -15,11 +15,15 @@ private:
 	std::wstring description;
 public:
 	Equipment() {};
-	Equipment(std::wstring uName, bool uExclusivity, std::wstring uCharacterName, std::wstring uProtection, std::wstring uResilience, std::wstring uDescription) :
+	Equipment(std::wstring uName, bool uExclusivity, std::wstring uCharacterName, 
+		std::wstring uPROT, std::wstring uWGT, std::wstring uRES, std::wstring uHIT, std::wstring uTCRIT,
+		std::wstring uAVO, std::wstring uSPD, std::wstring uMOV, std::wstring uLCK, std::wstring uMATK, 
+		std::wstring uHEAL, std::wstring uRANGE, 
+		std::wstring uDescription) :
 		equipmentname{ uName },
 		exclusivity{ uExclusivity },
 		charactername{ uCharacterName },
-		equipstats{ uProtection, uResilience },
+		equipstats{ uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE },
 		description{ uDescription } {}
 	~Equipment() {}
 	Equipment(const Equipment&) = default;
@@ -27,7 +31,7 @@ public:
 	virtual const Stats getStats() { return equipstats; }
 	bool getExclusivity() { return exclusivity; }
 	virtual const std::wstring getCharacterName() { return charactername; }
-	virtual EQUIPMENTTYPE getType() = 0;
+	//virtual EQUIPMENTTYPE getType() = 0;
 	virtual Equipment* new_expr() = 0;
 	virtual Equipment* clone() = 0;
 };

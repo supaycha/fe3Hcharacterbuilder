@@ -10,11 +10,15 @@ private:
 	EQUIPMENTTYPE et = EQUIPMENTTYPE::SHIELD;
 public:
 	Shield() {}
-	Shield(std::wstring uName, bool uExclusivity, std::wstring uCharacterName, std::wstring uProtection, std::wstring uResilience, std::wstring uDescription) :
-		Equipment{ uName, uExclusivity, uCharacterName, uProtection, uResilience, uDescription } {}
+	Shield(std::wstring uName, bool uExclusivity, std::wstring uCharacterName,
+		std::wstring uPROT, std::wstring uWGT, std::wstring uRES, std::wstring uHIT, std::wstring uTCRIT,
+		std::wstring uAVO, std::wstring uSPD, std::wstring uMOV, std::wstring uLCK, std::wstring uMATK,
+		std::wstring uHEAL, std::wstring uRANGE, 
+		std::wstring uDescription) :
+		Equipment{ uName, uExclusivity, uCharacterName, uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE, uDescription } {}
 	~Shield() {}
 
-	EQUIPMENTTYPE getType() override { return et; };
+	//EQUIPMENTTYPE getType() override { return et; };
 	Shield* new_expr() override { return new Shield(); }
 	Shield* clone() override { return new Shield(*this); }
 };

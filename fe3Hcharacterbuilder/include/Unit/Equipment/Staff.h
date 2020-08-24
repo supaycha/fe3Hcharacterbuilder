@@ -10,11 +10,15 @@ private:
 	EQUIPMENTTYPE et = EQUIPMENTTYPE::STAFF;
 public:
 	Staff() {}
-	Staff(std::wstring uName, bool uExclusivity, std::wstring uCharacterNameorNames, std::wstring uProtection, std::wstring uResilience, std::wstring uDescription) :
-		Equipment{ uName, uExclusivity, uCharacterNameorNames, uProtection, uResilience, uDescription } {}
+	Staff(std::wstring uName, bool uExclusivity, std::wstring uCharacterNameorNames, 
+		std::wstring uPROT, std::wstring uWGT, std::wstring uRES, std::wstring uHIT, std::wstring uTCRIT,
+		std::wstring uAVO, std::wstring uSPD, std::wstring uMOV, std::wstring uLCK, std::wstring uMATK,
+		std::wstring uHEAL, std::wstring uRANGE, 
+		std::wstring uDescription) :
+		Equipment{ uName, uExclusivity, uCharacterNameorNames, uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE, uDescription } {}
 	~Staff() {}
 
-	EQUIPMENTTYPE getType() override { return et; };
+	//EQUIPMENTTYPE getType() override { return et; };
 	Staff* new_expr() override { return new Staff(); }
 	Staff* clone() override { return new Staff(*this); }
 };

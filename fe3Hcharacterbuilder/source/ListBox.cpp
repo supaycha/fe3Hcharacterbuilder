@@ -4,7 +4,7 @@ ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxW
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
 wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
-	SetBackgroundStyle(wxBG_STYLE_PAINT);
+	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 	weaponmap = uweaponmap;
 	auto iter = weaponmap.begin();
 
@@ -153,7 +153,7 @@ ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentm
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
-	SetBackgroundStyle(wxBG_STYLE_PAINT);
+	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 	equipmentmap = uequipmentmap;
 	auto iter = uequipmentmap.begin();
 
@@ -224,6 +224,7 @@ void ListBoxEquipment::repopulate() {
 
 	mostrecentLBEselection = GetStringSelection();
 	this->Set(ToArrayString(equipmentnames), ToArrayData(equipmentdata));
+	wxArrayString blehbl = this->GetStrings();
 	DetermineSelectionStatus();
 }
 
