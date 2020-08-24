@@ -21,7 +21,9 @@
 #include <Unit/Equipment/Equipment.h>
 #include "UnitList.h"
 #include <constants.h>
-#include <ListBox.h>
+#include <ListBox/ListBoxWeapons.h>
+#include <ListBox/ListBoxEquipment.h>
+#include <ListBox/ListBoxBattalions.h>
 #include <GridMain/GridWeaponStats.h>
 #include <GridMain/GridEquipmentStats.h>
 #include <GridMain/GridBattalionStats.h>

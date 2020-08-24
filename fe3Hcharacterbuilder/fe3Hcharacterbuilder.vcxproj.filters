@@ -55,6 +55,12 @@
     <Filter Include="Header Files\GTBMain">
       <UniqueIdentifier>{88839e34-ef0e-4f8c-9604-a98f7a8e8b12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ListBox">
+      <UniqueIdentifier>{59d01672-ca6e-4fea-b1d9-d3f6dcad0562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ListBox">
+      <UniqueIdentifier>{d1256d7d-28f8-44ad-973f-36aa9113d3bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AbilityList.h">
@@ -64,9 +70,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Growth.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ListBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\main.h">
@@ -225,12 +228,18 @@
     <ClInclude Include="include\GTBMain\GTBWeaponStats.h">
       <Filter>Header Files\GTBMain</Filter>
     </ClInclude>
+    <ClInclude Include="include\ListBox\ListBoxBattalions.h">
+      <Filter>Header Files\ListBox</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ListBox\ListBoxEquipment.h">
+      <Filter>Header Files\ListBox</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ListBox\ListBoxWeapons.h">
+      <Filter>Header Files\ListBox</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ListBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\main.cpp">
@@ -307,6 +316,15 @@
     </ClCompile>
     <ClCompile Include="source\GTBMain\GTBWeaponStats.cpp">
       <Filter>Source Files\GTBMain</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ListBox\ListBoxBattalions.cpp">
+      <Filter>Source Files\ListBox</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ListBox\ListBoxEquipment.cpp">
+      <Filter>Source Files\ListBox</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ListBox\ListBoxWeapons.cpp">
+      <Filter>Source Files\ListBox</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

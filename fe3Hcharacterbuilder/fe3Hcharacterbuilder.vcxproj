@@ -35,7 +35,9 @@
     <ClInclude Include="include\GTBMain\GTBEquipmentStats.h" />
     <ClInclude Include="include\GTBMain\GTBTotalStats.h" />
     <ClInclude Include="include\GTBMain\GTBWeaponStats.h" />
-    <ClInclude Include="include\ListBox.h" />
+    <ClInclude Include="include\ListBox\ListBoxBattalions.h" />
+    <ClInclude Include="include\ListBox\ListBoxEquipment.h" />
+    <ClInclude Include="include\ListBox\ListBoxWeapons.h" />
     <ClInclude Include="include\main.h" />
     <ClInclude Include="include\MyFrame.h" />
     <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h" />
@@ -91,7 +93,9 @@
     <ClCompile Include="source\GTBMain\GTBEquipmentStats.cpp" />
     <ClCompile Include="source\GTBMain\GTBTotalStats.cpp" />
     <ClCompile Include="source\GTBMain\GTBWeaponStats.cpp" />
-    <ClCompile Include="source\ListBox.cpp" />
+    <ClCompile Include="source\ListBox\ListBoxBattalions.cpp" />
+    <ClCompile Include="source\ListBox\ListBoxEquipment.cpp" />
+    <ClCompile Include="source\ListBox\ListBoxWeapons.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\MyFrame.cpp" />
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp" />
