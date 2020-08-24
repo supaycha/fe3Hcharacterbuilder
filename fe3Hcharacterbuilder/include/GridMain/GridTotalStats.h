@@ -3,7 +3,7 @@
 
 #include <wx/wx.h>
 #include <Stat.h>
-#include <GTBmain.h>
+#include <GTBMain/GTBTotalStats.h>
 
 class GridTotalStats : public wxGrid {
 private:

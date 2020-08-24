@@ -43,6 +43,18 @@
     <Filter Include="Header Files\Unit\Weapon">
       <UniqueIdentifier>{cb24bd77-77ae-4368-ac99-594c172b3e62}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GridMain">
+      <UniqueIdentifier>{991d6234-c25f-4605-bec8-f5558f3deb33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GridMain">
+      <UniqueIdentifier>{32c97707-805c-450a-aa5b-f577abc15754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GTBMain">
+      <UniqueIdentifier>{f2d491c9-5c36-4fd1-8361-61362995ea53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GTBMain">
+      <UniqueIdentifier>{88839e34-ef0e-4f8c-9604-a98f7a8e8b12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AbilityList.h">
@@ -52,9 +64,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Growth.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GTBmain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBox.h">
@@ -193,23 +202,32 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GridMain\GridBattalionStats.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GridMain</Filter>
     </ClInclude>
     <ClInclude Include="include\GridMain\GridEquipmentStats.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GridMain</Filter>
     </ClInclude>
     <ClInclude Include="include\GridMain\GridTotalStats.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GridMain</Filter>
     </ClInclude>
     <ClInclude Include="include\GridMain\GridWeaponStats.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GridMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GTBMain\GTBBattalionStats.h">
+      <Filter>Header Files\GTBMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GTBMain\GTBEquipmentStats.h">
+      <Filter>Header Files\GTBMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GTBMain\GTBTotalStats.h">
+      <Filter>Header Files\GTBMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GTBMain\GTBWeaponStats.h">
+      <Filter>Header Files\GTBMain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GTBmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\ListBox.cpp">
@@ -267,16 +285,28 @@
       <Filter>Source Files\AbilityManager</Filter>
     </ClCompile>
     <ClCompile Include="source\GridMain\GridBattalionStats.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GridMain</Filter>
     </ClCompile>
     <ClCompile Include="source\GridMain\GridEquipmentStats.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GridMain</Filter>
     </ClCompile>
     <ClCompile Include="source\GridMain\GridTotalStats.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GridMain</Filter>
     </ClCompile>
     <ClCompile Include="source\GridMain\GridWeaponStats.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GridMain</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTBMain\GTBBattalionStats.cpp">
+      <Filter>Source Files\GTBMain</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTBMain\GTBEquipmentStats.cpp">
+      <Filter>Source Files\GTBMain</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTBMain\GTBTotalStats.cpp">
+      <Filter>Source Files\GTBMain</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTBMain\GTBWeaponStats.cpp">
+      <Filter>Source Files\GTBMain</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

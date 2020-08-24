@@ -1,62 +1,10 @@
-#ifndef GTBMAIN_H
-#define GTBMAIN_H
+#ifndef GTBTOTALSTATS_H
+#define GTBTOTALSTATS_H
 
 #include <wx/wx.h>
 #include <wx/grid.h>
 #include <Stat.h>
 #include <constants.h>
-//#include <vld.h>
-
-class GTBWeaponStats : public wxGridTableBase {
-private:
-	std::vector<wxString> headers{ "MIGHT", "HIT", "CRIT", "RANGE", "WEIGHT", "SL", "USES" };
-	Stats weaponstats;
-public:
-	GTBWeaponStats() {}
-	~GTBWeaponStats() {}
-	int GetNumberRows() override { return 1; }
-	int GetNumberCols() override { return headers.size(); }
-	wxString GetValue(int row, int col) override { return weaponstats[col].getText(); }
-	void SetValue(int row, int col, const wxString& value) override { weaponstats[col] = Stat(value); }
-
-	void ReceiveLBWSelection(Stats stats);
-
-	wxString GetHeader(int index) { return headers[index]; }
-};
-
-class GTBEquipmentStats : public wxGridTableBase {
-private:
-	std::vector<wxString> headers{ "PATK", "MATK", "PHIT", "MHIT", "TCRIT", "AS", "TPROT", "TRSL", "AVO", "CRITAVO", "RNGE" };
-	Stats equipmentstats;
-public:
-	GTBEquipmentStats() {}
-	~GTBEquipmentStats() {}
-	int GetNumberRows() override { return 1; }
-	int GetNumberCols() override { return headers.size(); }
-	wxString GetValue(int row, int col) override { return equipmentstats[col].getText(); }
-	void SetValue(int row, int col, const wxString& value) override { equipmentstats[col] = Stat(value); }
-
-	void ReceiveLBESelection(Stats stats);
-
-	wxString GetHeader(int index) { return headers[index]; }
-};
-
-class GTBBattalionStats : public wxGridTableBase {
-private:
-	std::vector<wxString> headers{ "PATK", "MATK", "HIT", "CRIT", "AVO", "PROT", "RES", "CHA", "END" };
-	Stats battalionstats;
-public:
-	GTBBattalionStats() {}
-	~GTBBattalionStats() {}
-	int GetNumberRows() override { return 1; }
-	int GetNumberCols() override { return headers.size(); }
-	wxString GetValue(int row, int col) override { return battalionstats[col].getText(); }
-	void SetValue(int row, int col, const wxString& value) override { battalionstats[col] = Stat(value); }
-
-	void ReceiveLBBSelection(Stats stats);
-
-	wxString GetHeader(int index) { return headers[index]; }
-};
 
 class GTBTotalStats : public wxGridTableBase {
 private:

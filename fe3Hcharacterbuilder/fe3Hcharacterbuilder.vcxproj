@@ -31,7 +31,10 @@
     <ClInclude Include="include\GridMain\GridTotalStats.h" />
     <ClInclude Include="include\GridMain\GridWeaponStats.h" />
     <ClInclude Include="include\Growth.h" />
-    <ClInclude Include="include\GTBmain.h" />
+    <ClInclude Include="include\GTBMain\GTBBattalionStats.h" />
+    <ClInclude Include="include\GTBMain\GTBEquipmentStats.h" />
+    <ClInclude Include="include\GTBMain\GTBTotalStats.h" />
+    <ClInclude Include="include\GTBMain\GTBWeaponStats.h" />
     <ClInclude Include="include\ListBox.h" />
     <ClInclude Include="include\main.h" />
     <ClInclude Include="include\MyFrame.h" />
@@ -84,7 +87,10 @@
     <ClCompile Include="source\GridMain\GridEquipmentStats.cpp" />
     <ClCompile Include="source\GridMain\GridTotalStats.cpp" />
     <ClCompile Include="source\GridMain\GridWeaponStats.cpp" />
-    <ClCompile Include="source\GTBmain.cpp" />
+    <ClCompile Include="source\GTBMain\GTBBattalionStats.cpp" />
+    <ClCompile Include="source\GTBMain\GTBEquipmentStats.cpp" />
+    <ClCompile Include="source\GTBMain\GTBTotalStats.cpp" />
+    <ClCompile Include="source\GTBMain\GTBWeaponStats.cpp" />
     <ClCompile Include="source\ListBox.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\MyFrame.cpp" />

@@ -1,19 +1,4 @@
-#include "../include/GTBmain.h"
-
-void GTBWeaponStats::ReceiveLBWSelection(Stats stats) {
-	weaponstats = stats;
-}
-
-
-void GTBEquipmentStats::ReceiveLBESelection(Stats stats) {
-	equipmentstats = stats;
-}
-
-
-void GTBBattalionStats::ReceiveLBBSelection(Stats stats) {
-	battalionstats = stats;
-}
-
+#include <GTBMain/GTBTotalStats.h>
 
 void GTBTotalStats::recalculate() {
 	CalculateTotalPhysicalAttack();

@@ -3,7 +3,8 @@
 
 #include <wx/wx.h>
 #include <Stat.h>
-#include <GTBmain.h>
+#include <constants.h>
+#include <GTBMain/GTBBattalionStats.h>
 
 wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 
