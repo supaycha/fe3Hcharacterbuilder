@@ -37,6 +37,9 @@ void GTBTotalStats::CalculateTotalPhysicalAttack() {
 	temp = currentGWSstats[0].getText();
 	int lvwstat0 = _wtoi(temp.c_str());
 
+	//temp = currentGWSstats[0].getText();
+	//int lvwstat0 = _wtoi(temp.c_str());
+
 	temp = currentGBSstats[0].getText();
 	int lvbstat0 = _wtoi(temp.c_str());
 
@@ -57,10 +60,13 @@ void GTBTotalStats::CalculateTotalMagicAttack() {
 	temp = currentGWSstats[0].getText();
 	int lvwstat0 = _wtoi(temp.c_str());
 
+	temp = currentGESstats[9].getText();
+	int lvestat9 = _wtoi(temp.c_str());
+
 	temp = currentGBSstats[1].getText();
 	int lvbstat1 = _wtoi(temp.c_str());
 
-	const std::wstring buffer = std::to_wstring(lvcstat3 + lvwstat0 + lvbstat1);
+	const std::wstring buffer = std::to_wstring(lvcstat3 + lvwstat0 + lvestat9 + lvbstat1);
 	//+ ifEffective(Weapon Might x3)
 	//+ Combat Art
 	//+ Skills
@@ -79,10 +85,13 @@ void GTBTotalStats::CalculateTotalPhysicalHit() {
 	temp = currentGWSstats[1].getText();
 	int lvwstat1 = _wtoi(temp.c_str());
 
+	temp = currentGESstats[3].getText();
+	int lvestat3 = _wtoi(temp.c_str());
+
 	temp = currentGBSstats[2].getText();
 	int lvbstat2 = _wtoi(temp.c_str());
 
-	const std::wstring buffer = std::to_wstring(lvcstat4 + lvwstat1 + lvbstat2);
+	const std::wstring buffer = std::to_wstring(lvcstat4 + lvwstat1 + lvestat3 + lvbstat2);
 
 	/*+ Combat Art
 	+ Skills
@@ -103,10 +112,13 @@ void GTBTotalStats::CalculateTotalMagicHit() {
 	temp = currentGWSstats[1].getText();
 	int lvwstat1 = _wtoi(temp.c_str());
 
+	temp = currentGESstats[3].getText();
+	int lvestat3 = _wtoi(temp.c_str());
+
 	temp = currentGBSstats[2].getText();
 	int lvbstat2 = _wtoi(temp.c_str());
 
-	const std::wstring buffer = std::to_wstring((lvcstat4 / 2) + (lvcstat6 / 2) + lvwstat1 + lvbstat2);
+	const std::wstring buffer = std::to_wstring((lvcstat4 / 2) + (lvcstat6 / 2) + lvwstat1 + lvestat3 + lvbstat2);
 
 	/*+ Skills
 	+ Linked attacks
@@ -124,41 +136,54 @@ void GTBTotalStats::CalculateTotalCrit() {
 	temp = currentGWSstats[2].getText();
 	int lvwstat2 = _wtoi(temp.c_str());
 
+	temp = currentGESstats[4].getText();
+	int lvestat4 = _wtoi(temp.c_str());
+
 	temp = currentGBSstats[3].getText();
 	int lvbstat3 = _wtoi(temp.c_str());
 
-	const std::wstring buffer = std::to_wstring(lvcstat4 + (lvcstat6 / 2) + lvwstat2 + lvbstat3);
+	const std::wstring buffer = std::to_wstring(lvcstat4 + (lvcstat6 / 2) + lvwstat2 + lvestat4 + lvbstat3);
 
 	totalstats[4] = buffer;
 	/////*+Skills*/);
 }
 
 void GTBTotalStats::CalculateAS() {
-	std::wstring temp = currentGMTstats[5].getText();
+
+	//character strength
+	std::wstring temp = currentGMTstats[2].getText();
+	int lvcstat2 = _wtoi(temp.c_str());
+
+	//character speed
+	temp = currentGMTstats[5].getText();
 	int lvcstat5 = _wtoi(temp.c_str());
 
+	//weapon weight
 	temp = currentGWSstats[4].getText();
 	int lvwstat4 = _wtoi(temp.c_str());
+	
+	//equipment speed
+	temp = currentGESstats[6].getText();
+	int lvestat6 = _wtoi(temp.c_str());
 
-	temp = currentGWSstats[2].getText();
-	int lvwstat2 = _wtoi(temp.c_str());
 
-	const std::wstring buffer = std::to_wstring(lvcstat5 + lvwstat4 - (lvwstat2 / 5));
+	const std::wstring buffer = std::to_wstring((lvcstat5 + lvestat6) - (lvwstat4 - (lvcstat2 / 5)));
 
 	totalstats[5] = buffer;
 }
 
 void GTBTotalStats::CalculateTotalProt() {
+
 	std::wstring temp = currentGMTstats[7].getText();
 	int lvcstat7 = _wtoi(temp.c_str());
 
-	temp = currentGESstats[6].getText();
-	int lvestat6 = _wtoi(temp.c_str());
+	temp = currentGESstats[0].getText();
+	int lvestat0 = _wtoi(temp.c_str());
 
 	temp = currentGBSstats[5].getText();
 	int lvbstat5 = _wtoi(temp.c_str());
 
-	const std::wstring buffer = std::to_wstring(lvcstat7 + lvestat6 + lvbstat5);
+	const std::wstring buffer = std::to_wstring(lvcstat7 + lvestat0 + lvbstat5);
 
 	totalstats[6] = buffer;
 }
@@ -167,25 +192,32 @@ void GTBTotalStats::CalculateTotalResilience() {
 	std::wstring temp = currentGMTstats[8].getText();
 	int lvcstat8 = _wtoi(temp.c_str());
 
-	temp = currentGESstats[7].getText();
-	int lvestat7 = _wtoi(temp.c_str());
+	temp = currentGESstats[2].getText();
+	int lvestat2 = _wtoi(temp.c_str());
 
 	temp = currentGBSstats[6].getText();
 	int lvbstat6 = _wtoi(temp.c_str());
 
-	const std::wstring buffer = std::to_wstring(lvcstat8 + lvestat7 + lvbstat6);
+	const std::wstring buffer = std::to_wstring(lvcstat8 + lvestat2 + lvbstat6);
 
 	totalstats[7] = buffer;
 }
 
 void GTBTotalStats::CalculateTotalAvoid() {
+
+	//total attack speed
 	std::wstring temp = totalstats[5].getText();
 	int totalstats5 = _wtoi(temp.c_str());
 
+	//equipment avoid
+	temp = currentGESstats[5].getText();
+	int lvestat5 = _wtoi(temp.c_str());
+
+	//battalion avoid 
 	temp = currentGBSstats[4].getText();
 	int lvbstat4 = _wtoi(temp.c_str());
 
-	const std::wstring buffer = std::to_wstring(totalstats5 + lvbstat4);
+	const std::wstring buffer = std::to_wstring(totalstats5 + lvestat5 + lvbstat4);
 
 	totalstats[8] = buffer;
 
@@ -194,13 +226,17 @@ void GTBTotalStats::CalculateTotalAvoid() {
 }
 
 void GTBTotalStats::CalculateTotalCritAvoid() {
-	std::wstring temp = currentGWSstats[2].getText();
-	int lvwstat2 = _wtoi(temp.c_str());
+	//std::wstring temp = currentGWSstats[2].getText();
+	//int lvwstat2 = _wtoi(temp.c_str());
 
-	temp = currentGMTstats[6].getText();
+	//character luck
+	std::wstring temp = currentGMTstats[6].getText();
 	int lvcstat6 = _wtoi(temp.c_str());
 
-	const std::wstring buffer = std::to_wstring(lvwstat2 - lvcstat6);
+	temp = currentGESstats[8].getText();
+	int lvestat8 = _wtoi(temp.c_str());
+
+	const std::wstring buffer = std::to_wstring(lvcstat6 + lvestat8);
 
 	totalstats[9] = buffer;
 }
