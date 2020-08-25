@@ -52,14 +52,26 @@
     <Filter Include="Source Files\GTBMain">
       <UniqueIdentifier>{f2d491c9-5c36-4fd1-8361-61362995ea53}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GTBMain">
-      <UniqueIdentifier>{88839e34-ef0e-4f8c-9604-a98f7a8e8b12}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\ListBox">
       <UniqueIdentifier>{59d01672-ca6e-4fea-b1d9-d3f6dcad0562}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\ListBox">
       <UniqueIdentifier>{d1256d7d-28f8-44ad-973f-36aa9113d3bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CurrentAbilities">
+      <UniqueIdentifier>{ffbf4a34-6072-4faa-9444-db5fe238793c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CurrentAbilities">
+      <UniqueIdentifier>{df4ff9a5-efc5-4b84-800a-47008a5074e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AUITESTTOOLBAR">
+      <UniqueIdentifier>{c75e2f24-79b8-4484-ab46-6f863e241326}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AUITESTTOOLBAR">
+      <UniqueIdentifier>{6278bb8d-8445-498d-970c-f7564f4b4aff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GTBMain">
+      <UniqueIdentifier>{88839e34-ef0e-4f8c-9604-a98f7a8e8b12}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -106,12 +118,6 @@
       <Filter>Header Files\SkillLevelManager</Filter>
     </ClInclude>
     <ClInclude Include="include\AbilityManager\AbilityManager.h">
-      <Filter>Header Files\AbilityManager</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h">
-      <Filter>Header Files\AbilityManager</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AbilityManager\ButtonMoveRight.h">
       <Filter>Header Files\AbilityManager</Filter>
     </ClInclude>
     <ClInclude Include="include\AbilityManager\ListBoxAA.h">
@@ -237,6 +243,27 @@
     <ClInclude Include="include\ListBox\ListBoxWeapons.h">
       <Filter>Header Files\ListBox</Filter>
     </ClInclude>
+    <ClInclude Include="include\AbilityManager\ButtonRemoveAbility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ButtonAddAbility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AUITESTTOOLBAR\RightToolBar.h">
+      <Filter>Header Files\AUITESTTOOLBAR</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CurrentAbilities\ListBoxCHIA.h">
+      <Filter>Header Files\CurrentAbilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CurrentAbilities\ListBoxCLIA.h">
+      <Filter>Header Files\CurrentAbilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CurrentAbilities\ListBoxSLA.h">
+      <Filter>Header Files\CurrentAbilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CurrentAbilities\CurrentAbilities.h">
+      <Filter>Header Files\CurrentAbilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp">
@@ -281,12 +308,6 @@
     <ClCompile Include="source\AbilityManager\AbilityManager.cpp">
       <Filter>Source Files\AbilityManager</Filter>
     </ClCompile>
-    <ClCompile Include="source\AbilityManager\ButtonMoveLeft.cpp">
-      <Filter>Source Files\AbilityManager</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AbilityManager\ButtonMoveRight.cpp">
-      <Filter>Source Files\AbilityManager</Filter>
-    </ClCompile>
     <ClCompile Include="source\AbilityManager\ListBoxAA.cpp">
       <Filter>Source Files\AbilityManager</Filter>
     </ClCompile>
@@ -325,6 +346,27 @@
     </ClCompile>
     <ClCompile Include="source\ListBox\ListBoxWeapons.cpp">
       <Filter>Source Files\ListBox</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilityManager\CurrentAbilities.cpp">
+      <Filter>Source Files\CurrentAbilities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ButtonRemoveAbility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CurrentAbilities\ListBoxSLA.cpp">
+      <Filter>Source Files\CurrentAbilities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CurrentAbilities\ListBoxCHIA.cpp">
+      <Filter>Source Files\CurrentAbilities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CurrentAbilities\ListBoxCLIA.cpp">
+      <Filter>Source Files\CurrentAbilities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AUITESTTOOLBAR\RightToolBar.cpp">
+      <Filter>Source Files\AUITESTTOOLBAR</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ButtonAddAbility.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

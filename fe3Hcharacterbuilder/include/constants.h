@@ -25,8 +25,8 @@ enum class ID_SINGLE_CONTROL {
 	ID_AM = 38,
 	ID_LBAA = 39,
 	ID_LBSA = 40,
-	ID_BML = 41,
-	ID_BMR = 42
+	ID_BAA = 41,
+	ID_BRA = 42
 };
 
 enum class DD_CONTROL {

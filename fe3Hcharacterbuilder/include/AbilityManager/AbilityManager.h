@@ -8,7 +8,7 @@
 #include <Unit/Ability/CharacterInnateAbility.h>
 #include <Unit/Ability/ClassInnateAbility.h>
 #include <Unit/Ability/SkillLevelAbility.h>
-#include <AbilityManager/ButtonMoveRight.h>
+#include <ButtonAddAbility.h>
 #include <AbilityManager/ButtonMoveLeft.h>
 #include <AbilityManager/ListBoxAA.h>
 #include <AbilityManager/ListBoxSA.h>

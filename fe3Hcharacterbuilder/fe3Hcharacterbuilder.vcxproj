@@ -21,11 +21,16 @@
   <ItemGroup>
     <ClInclude Include="include\AbilityList.h" />
     <ClInclude Include="include\AbilityManager\AbilityManager.h" />
-    <ClInclude Include="include\AbilityManager\ButtonMoveLeft.h" />
-    <ClInclude Include="include\AbilityManager\ButtonMoveRight.h" />
+    <ClInclude Include="include\AbilityManager\ButtonRemoveAbility.h" />
     <ClInclude Include="include\AbilityManager\ListBoxAA.h" />
     <ClInclude Include="include\AbilityManager\ListBoxSA.h" />
+    <ClInclude Include="include\AUITESTTOOLBAR\RightToolBar.h" />
+    <ClInclude Include="include\ButtonAddAbility.h" />
     <ClInclude Include="include\constants.h" />
+    <ClInclude Include="include\CurrentAbilities\CurrentAbilities.h" />
+    <ClInclude Include="include\CurrentAbilities\ListBoxCHIA.h" />
+    <ClInclude Include="include\CurrentAbilities\ListBoxCLIA.h" />
+    <ClInclude Include="include\CurrentAbilities\ListBoxSLA.h" />
     <ClInclude Include="include\GridMain\GridBattalionStats.h" />
     <ClInclude Include="include\GridMain\GridEquipmentStats.h" />
     <ClInclude Include="include\GridMain\GridTotalStats.h" />
@@ -81,10 +86,15 @@
   <ItemGroup>
     <ClCompile Include="source\AbilityList.cpp" />
     <ClCompile Include="source\AbilityManager\AbilityManager.cpp" />
-    <ClCompile Include="source\AbilityManager\ButtonMoveLeft.cpp" />
-    <ClCompile Include="source\AbilityManager\ButtonMoveRight.cpp" />
     <ClCompile Include="source\AbilityManager\ListBoxAA.cpp" />
+    <ClCompile Include="source\AbilityManager\CurrentAbilities.cpp" />
     <ClCompile Include="source\AbilityManager\ListBoxSA.cpp" />
+    <ClCompile Include="source\AUITESTTOOLBAR\RightToolBar.cpp" />
+    <ClCompile Include="source\ButtonAddAbility.cpp" />
+    <ClCompile Include="source\ButtonRemoveAbility.cpp" />
+    <ClCompile Include="source\CurrentAbilities\ListBoxCHIA.cpp" />
+    <ClCompile Include="source\CurrentAbilities\ListBoxCLIA.cpp" />
+    <ClCompile Include="source\CurrentAbilities\ListBoxSLA.cpp" />
     <ClCompile Include="source\GridMain\GridBattalionStats.cpp" />
     <ClCompile Include="source\GridMain\GridEquipmentStats.cpp" />
     <ClCompile Include="source\GridMain\GridTotalStats.cpp" />
