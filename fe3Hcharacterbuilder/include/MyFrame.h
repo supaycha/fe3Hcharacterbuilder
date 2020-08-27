@@ -2,8 +2,9 @@
 #define MYFRAME_H
 
 #include <wx/wx.h>
-#include <map>
-#include <Stat.h>
+#include <wx/aui/aui.h>
+//#include <map>
+//#include <Stat.h>
 #include <Unit/Unit.h>
 #include <Unit/Battalion.h>
 #include <Unit/Character.h>
@@ -20,29 +21,28 @@
 #include <Unit/Class.h>
 #include <Unit/Equipment/Equipment.h>
 #include "UnitList.h"
-#include <constants.h>
+//#include <constants.h>
 #include <ListBox/ListBoxWeapons.h>
 #include <ListBox/ListBoxEquipment.h>
 #include <ListBox/ListBoxBattalions.h>
+#include <ListBoxASLA.h>
+#include <CurrentAbilities/ListBoxCHIA.h>
+#include <CurrentAbilities/ListBoxCLIA.h>
 #include <GridMain/GridWeaponStats.h>
 #include <GridMain/GridEquipmentStats.h>
 #include <GridMain/GridBattalionStats.h>
 #include <GridMain/GridTotalStats.h>
-#include <AbilityManager/AbilityManager.h>
-#include <SkillLevelManager/SkillLevelManager.h>
 #include <MysteriousTeacher/MysteriousTeacher.h>
+#include <SkillLevelManager/SkillLevelManager.h>
 //#include <vld.h>
 
 wxDECLARE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
 wxDECLARE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
 wxDECLARE_EVENT(REPEAT_GMT_STATS, wxCommandEvent);
-
 wxDECLARE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
-
 wxDECLARE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
 wxDECLARE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);
 wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
-
 wxDECLARE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
 wxDECLARE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
 wxDECLARE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
@@ -50,27 +50,30 @@ wxDECLARE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
 
 class MysteriousTeacher;
 class SkillLevelManager;
-class AbilityManager;
+class ListBoxASLA;
+class ListBoxCHIA;
+class ListBoxCLIA;
 
 class MyFrame : public wxFrame {
 private:
-	wxBoxSizer* Buildersizer;
-	wxBoxSizer* MTandGridStats_col;
-	wxBoxSizer* gridstatssizer;
-	wxBoxSizer* lbsizer;
-	wxBoxSizer* slablsizer;
-
+	static wxAuiManager* wxam;
+	wxBoxSizer* mainrow;
+	wxBoxSizer* column1;
+	wxBoxSizer* column2;
+	wxBoxSizer* column3;
+	wxBoxSizer* column4;
 	MysteriousTeacher* mt;
 	ListBoxWeapons* lbw;
 	ListBoxEquipment* lbe;
 	ListBoxBattalions* lbb;
+	ListBoxASLA* lbasla;
+	ListBoxCHIA* lbchia;
+	ListBoxCLIA* lbclia;
 	GridWeaponStats* gws;
 	GridEquipmentStats* ges;
 	GridBattalionStats* gbs;
 	GridTotalStats* gts;
 	SkillLevelManager* slm;
-	AbilityManager* am;
-
 	wxDECLARE_EVENT_TABLE();
 public:
 	MyFrame(wxWindowID id, const wxString& title);
@@ -89,6 +92,5 @@ public:
 
 	void OnQuit(wxCommandEvent& event);
 };
-
 
 #endif

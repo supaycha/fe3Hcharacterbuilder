@@ -9,12 +9,13 @@
 #include <Unit/Character.h>
 #include <Unit/Class.h>
 #include <constants.h>
-#include <MyFrame.h>
 #include <MysteriousTeacher/DropDownCharacters.h>
 #include <MysteriousTeacher/DropDownClasses.h>
-#include <MysteriousTeacher/GridMysteriousTeacher.h>
-#include <MysteriousTeacher/GTBMysteriousTeacher.h>
 #include <MysteriousTeacher/SpinCtrlLevel.h>
+#include <MysteriousTeacher/GTBMysteriousTeacher.h>
+#include <MysteriousTeacher/GridMysteriousTeacher.h>
+#include <MyFrame.h>
+
 //#include <vld.h>
 
 wxDECLARE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
@@ -38,7 +39,7 @@ private:
 	std::vector<DropDownClasses*> ddclVector;
 	std::vector<wxBoxSizer*> columns;
 public:
-	MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id);
+	MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, wxWindow* parent, wxWindowID id);
 	~MysteriousTeacher() {}
 
 	void BounceDDCHSelection(wxCommandEvent& transmission);

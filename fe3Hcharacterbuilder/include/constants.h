@@ -10,7 +10,7 @@ enum class ID_MISC {
 	ID_DDCL3 = 12,
 	ID_SPIN1 = 15,
 	ID_SPIN2 = 16,
-	ID_GMT = 20
+	ID_GMT = 20,
 };
 
 enum class ID_SINGLE_CONTROL {
@@ -22,11 +22,13 @@ enum class ID_SINGLE_CONTROL {
 	ID_GBS = 35,
 	ID_GTS = 36,
 	ID_SLM = 37,
-	ID_AM = 38,
-	ID_LBAA = 39,
+	ID_LBASLA = 38,
+	ID_LBSSLA = 39,
 	ID_LBSA = 40,
-	ID_BAA = 41,
-	ID_BRA = 42
+	ID_LBACHIA = 41,
+	ID_LBACLIA = 42,
+	ID_BAA = 43,
+	ID_BRA = 44
 };
 
 enum class DD_CONTROL {

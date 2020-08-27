@@ -1,16 +1,16 @@
-#include <AbilityManager\ListBoxSA.h>
+#include <ListBoxSSLA.h>
 
-ListBoxSA::ListBoxSA(wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
+ListBoxSSLA::ListBoxSSLA(wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxPoint(x, y), wxSize(x2, y2), choices, style)
 {
 	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 }
 
-void ListBoxSA::OnSelection(wxCommandEvent& event) {
+void ListBoxSSLA::OnSelection(wxCommandEvent& event) {
 	selectedSAnames = UpdateSelections();
 }
 
-std::vector<wxString> ListBoxSA::UpdateSelections() {
+std::vector<wxString> ListBoxSSLA::UpdateSelections() {
 	wxArrayInt selections;
 	std::vector<wxString> tempvector;
 	this->GetSelections(selections);
@@ -22,7 +22,7 @@ std::vector<wxString> ListBoxSA::UpdateSelections() {
 	return tempvector;
 }
 
-void ListBoxSA::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {
+void ListBoxSSLA::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {
 	std::vector<wxString> tempfiltered;
 	std::vector<wxString> tempselected;
 
@@ -52,20 +52,20 @@ void ListBoxSA::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {
 	Thaw();
 }
 
-void ListBoxSA::ReceiveSelectionsfromBounceR(std::vector<wxString> uSelections) {
+void ListBoxSSLA::ReceiveSelectionsfromBounceR(std::vector<wxString> uSelections) {
 	filteredSAnames = uSelections;
 	Freeze();
 	repopulate();
 	Thaw();
 }
 
-void ListBoxSA::repopulate() {
+void ListBoxSSLA::repopulate() {
 	this->Set(ToArrayString(filteredSAnames));
 
 	reselection();
 }
 
-void ListBoxSA::reselection() {
+void ListBoxSSLA::reselection() {
 	for (auto selection : selectedSAnames) {
 		int index = this->FindString(selection);
 		if (!(this->IsSelected(index))) {
@@ -74,7 +74,7 @@ void ListBoxSA::reselection() {
 	}
 }
 
-std::vector<wxString> ListBoxSA::GetSelectionsSAAndClear() {
+std::vector<wxString> ListBoxSSLA::GetSelectionsSAAndClear() {
 	std::vector<wxString> temp;
 
 	for (auto element : selectedSAnames) {
@@ -89,7 +89,7 @@ std::vector<wxString> ListBoxSA::GetSelectionsSAAndClear() {
 	return temp;
 }
 
-wxArrayString ListBoxSA::ToArrayString(std::vector<wxString> names) {
+wxArrayString ListBoxSSLA::ToArrayString(std::vector<wxString> names) {
 	wxArrayString temparraystring;
 	for (auto name : names) {
 		temparraystring.Add(name);
@@ -98,6 +98,6 @@ wxArrayString ListBoxSA::ToArrayString(std::vector<wxString> names) {
 	return temparraystring;
 }
 
-wxBEGIN_EVENT_TABLE(ListBoxSA, wxListBox)
-	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBSA, ListBoxSA::OnSelection)
+wxBEGIN_EVENT_TABLE(ListBoxSSLA, wxListBox)
+	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBSSLA, ListBoxSSLA::OnSelection)
 wxEND_EVENT_TABLE()

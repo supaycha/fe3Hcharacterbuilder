@@ -1,6 +1,6 @@
 #include <MysteriousTeacher\MysteriousTeacher.h>
 
-MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, MyFrame* parent, wxWindowID id) :
+MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::vector<wxClientData*> characterdata, std::map<wxString, wxClientData*> classmap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
 	gmt = new GridMysteriousTeacher(this, (int)ID_MISC::ID_GMT, 0);

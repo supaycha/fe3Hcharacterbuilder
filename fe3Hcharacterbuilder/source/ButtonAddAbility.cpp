@@ -6,7 +6,7 @@ ButtonAddAbility::ButtonAddAbility(wxWindow* panel, wxWindowID id, const wxStrin
 }
 
 void ButtonAddAbility::OnClick(wxCommandEvent& uevent) {
-	wxCommandEvent event(SELECTION_HAS_CHANGED, (int)ID_SINGLE_CONTROL::ID_BML);
+	wxCommandEvent event(SELECTION_HAS_CHANGED, (int)ID_SINGLE_CONTROL::ID_BAA);
 	ProcessEvent(event);
 }
 
