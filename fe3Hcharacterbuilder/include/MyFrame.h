@@ -32,8 +32,6 @@
 #include <EquippedOptions/EquippedSkillLvlAbilities.h>
 #include <GridMain/GridWeaponStats.h>
 #include <GridMain/GridEquipmentStats.h>
-#include <BattalionCollPane.h>
-#include <WeaponCollPane.h>
 #include <GridMain/GridBattalionStats.h>
 #include <GridMain/GridTotalStats.h>
 #include <MysteriousTeacher/MysteriousTeacher.h>

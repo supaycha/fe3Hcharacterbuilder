@@ -9,21 +9,21 @@ private:
 	std::vector<wxString> filteredSAnames;
 	std::vector<wxString> selectedSAnames;
 
-	wxDECLARE_EVENT_TABLE();
+	//wxDECLARE_EVENT_TABLE();
 public:
 	EquippedSkillLvlAbilities(wxWindow* parent, wxWindowID id, int x, int y);
 	~EquippedSkillLvlAbilities() {}
 
-	void OnSelection(wxCommandEvent& event);
-	void ReceiveAbilityFiltration(std::vector<wxString> dirtynames);
-	void ReceiveSelectionsfromBounceR(std::vector<wxString> uSelections);
-	void repopulate();
-	void reselection();
+	//void OnSelection(wxCommandEvent& event);
+	//void ReceiveAbilityFiltration(std::vector<wxString> dirtynames);
+	//void ReceiveSelectionsfromBounceR(std::vector<wxString> uSelections);
+	//void repopulate();
+	//void reselection();
 
-	std::vector<wxString> UpdateSelections();
-	std::vector<wxString> GetSelectionsSAAndClear();
+	//std::vector<wxString> UpdateSelections();
+	//std::vector<wxString> GetSelectionsSAAndClear();
 
-	wxArrayString ToArrayString(std::vector<wxString> names);
+	//wxArrayString ToArrayString(std::vector<wxString> names);
 };
 
 #endif

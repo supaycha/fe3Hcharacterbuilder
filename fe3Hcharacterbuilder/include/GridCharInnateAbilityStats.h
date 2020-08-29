@@ -1,20 +1,20 @@
-#ifndef GRIDBATTALIONSTATS_H
-#define GRIDBATTALIONSTATS_H
+#ifndef GRIDCHARINNATEABILITYSTATS_H
+#define GRIDCHARINNATEABILITYSTATS_H
 
 #include <wx/wx.h>
 #include <wx/grid.h>
 #include <Stat.h>
 #include <constants.h>
-#include <GTBMain/GTBBattalionStats.h>
+#include <GTBCharInnateAbilityStats.h>
 
 wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 
-class GridBattalionStats : public wxGrid {
+class GridCharInnateAbilityStats : public wxGrid {
 private:
-	GTBBattalionStats* gtbbs;
+	GTBCharInnateAbilityStats* gtbcias;
 	//wxDECLARE_EVENT_TABLE();
 public:
-	GridBattalionStats(wxWindow* parent, wxWindowID id);
+	GridCharInnateAbilityStats(wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveLBBSelection(Stats stats);
 	void repopulate();

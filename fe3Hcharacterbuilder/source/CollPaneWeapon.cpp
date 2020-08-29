@@ -1,6 +1,6 @@
-#include "WeaponCollPane.h"
+#include "CollPaneWeapon.h"
 
-WeaponCollPane::WeaponCollPane(wxWindow* parent, wxWindowID id, const wxString& label) :
+CollPaneWeapon::CollPaneWeapon(wxWindow* parent, wxWindowID id, const wxString& label) :
 	wxCollapsiblePane(parent, id, label, wxDefaultPosition, wxSize(-1, -1))
 {
 	
@@ -16,12 +16,12 @@ WeaponCollPane::WeaponCollPane(wxWindow* parent, wxWindowID id, const wxString& 
 	//this->SetSizer(mainsizer);
 }
 
-void WeaponCollPane::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
+void CollPaneWeapon::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
 	//SendSizeEventToParent();
 	//this->GetParent()->Layout();
 	event.Skip();
 }
 
-wxBEGIN_EVENT_TABLE(WeaponCollPane, wxCollapsiblePane)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_WCP, WeaponCollPane::OnCollPaneChange)
+wxBEGIN_EVENT_TABLE(CollPaneWeapon, wxCollapsiblePane)
+	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, CollPaneWeapon::OnCollPaneChange)
 wxEND_EVENT_TABLE()

@@ -2,6 +2,7 @@
 #define GRIDWEAPONSTATS_H
 
 #include <wx/wx.h>
+#include <wx/grid.h>
 #include <Stat.h>
 #include <constants.h>
 #include <GTBMain/GTBWeaponStats.h>

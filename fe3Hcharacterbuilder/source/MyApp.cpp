@@ -1,4 +1,4 @@
-#include "main.h"
+#include <MyApp.h>
 
 bool MyApp::OnInit() {
 	MyFrame* frame = new MyFrame((int)ID_MISC::ID_FRAME, wxT("feBuilder"));

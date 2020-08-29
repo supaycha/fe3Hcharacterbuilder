@@ -167,7 +167,7 @@ void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repit
 
 	lbw->ReceiveExclusivity(exclusivitycheck);
 	lbe->ReceiveExclusivity(exclusivitycheck);
-	echia->ReceiveExclusivity(exclusivitycheck);
+	//echia->ReceiveExclusivity(exclusivitycheck);
 }
 
 void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {
@@ -293,6 +293,7 @@ void MyFrame::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
 	EVT_COMBOBOX((int)ID_MISC::ID_DDCH, DropDownCharacters::OnNewSelection)
 	EVT_SIZE(MyFrame::OnSize)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_BCP, MyFrame::OnCollPaneChange)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_WCP, MyFrame::OnCollPaneChange)
+	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPB, MyFrame::OnCollPaneChange)
+	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, MyFrame::OnCollPaneChange)
+	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPE, MyFrame::OnCollPaneChange)
 wxEND_EVENT_TABLE()

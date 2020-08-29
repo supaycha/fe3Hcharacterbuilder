@@ -2,6 +2,7 @@
 #define GRIDTOTALSTATS_H
 
 #include <wx/wx.h>
+#include <wx/grid.h>
 #include <Stat.h>
 #include <GTBMain/GTBTotalStats.h>
 
