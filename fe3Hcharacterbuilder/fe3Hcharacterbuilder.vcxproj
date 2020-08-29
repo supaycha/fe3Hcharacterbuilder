@@ -19,6 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\EquippedPanel.h" />
+    <ClInclude Include="include\BattalionCollPane.h" />
+    <ClInclude Include="include\EquippedOptions\EquippedBattalion.h" />
+    <ClInclude Include="include\EquippedOptions\EquippedCharInnateAbility.h" />
+    <ClInclude Include="include\EquippedOptions\EquippedClassInnateAbility.h" />
+    <ClInclude Include="include\EquippedOptions\EquippedEquipment.h" />
+    <ClInclude Include="include\EquippedOptions\EquippedSkillLvlAbilities.h" />
+    <ClInclude Include="include\EquippedOptions\EquippedWeapon.h" />
     <ClInclude Include="include\AbilityList.h" />
     <ClInclude Include="include\AbilityManager.h" />
     <ClInclude Include="include\ListBoxASLA.h" />
@@ -79,8 +87,17 @@
     <ClInclude Include="include\Unit\Weapon\Sword.h" />
     <ClInclude Include="include\Unit\Weapon\Weapon.h" />
     <ClInclude Include="include\Unit\Weapon\WhiteMagic.h" />
+    <ClInclude Include="include\WeaponCollPane.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\EquippedPanel.cpp" />
+    <ClCompile Include="source\BattalionCollPane.cpp" />
+    <ClCompile Include="source\EquippedOptions\EquippedBattalion.cpp" />
+    <ClCompile Include="source\EquippedOptions\EquippedCharInnateAbility.cpp" />
+    <ClCompile Include="source\EquippedOptions\EquippedClassInnateAbility.cpp" />
+    <ClCompile Include="source\EquippedOptions\EquippedEquipment.cpp" />
+    <ClCompile Include="source\EquippedOptions\EquippedSkillLvlAbilities.cpp" />
+    <ClCompile Include="source\EquippedOptions\EquippedWeapon.cpp" />
     <ClCompile Include="source\AbilityList.cpp" />
     <ClCompile Include="source\AbilityManager.cpp" />
     <ClCompile Include="source\ListBoxASLA.cpp" />
@@ -112,6 +129,7 @@
     <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp" />
     <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp" />
     <ClCompile Include="source\UnitList.cpp" />
+    <ClCompile Include="source\WeaponCollPane.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

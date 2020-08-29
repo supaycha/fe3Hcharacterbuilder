@@ -25,10 +25,14 @@ enum class ID_SINGLE_CONTROL {
 	ID_LBASLA = 38,
 	ID_LBSSLA = 39,
 	ID_LBSA = 40,
-	ID_LBACHIA = 41,
-	ID_LBACLIA = 42,
-	ID_BAA = 43,
-	ID_BRA = 44
+	ID_ECHIA = 41,
+	ID_ECLIA = 42,
+	ID_ESLA = 43,
+	ID_BAA = 44,
+	ID_BRA = 45,
+	ID_BCP = 46,
+	ID_WCP = 47,
+	ID_EP = 48
 };
 
 enum class DD_CONTROL {

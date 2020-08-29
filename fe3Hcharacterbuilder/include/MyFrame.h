@@ -3,8 +3,9 @@
 
 #include <wx/wx.h>
 #include <wx/aui/aui.h>
-//#include <map>
-//#include <Stat.h>
+//#include <wx/collpane.h>
+#include <map>
+#include <Stat.h>
 #include <Unit/Unit.h>
 #include <Unit/Battalion.h>
 #include <Unit/Character.h>
@@ -21,19 +22,23 @@
 #include <Unit/Class.h>
 #include <Unit/Equipment/Equipment.h>
 #include "UnitList.h"
-//#include <constants.h>
+#include <constants.h>
 #include <ListBox/ListBoxWeapons.h>
 #include <ListBox/ListBoxEquipment.h>
 #include <ListBox/ListBoxBattalions.h>
 #include <ListBoxASLA.h>
-#include <CurrentAbilities/ListBoxCHIA.h>
-#include <CurrentAbilities/ListBoxCLIA.h>
+#include <EquippedOptions/EquippedCharInnateAbility.h>
+#include <EquippedOptions/EquippedClassInnateAbility.h>
+#include <EquippedOptions/EquippedSkillLvlAbilities.h>
 #include <GridMain/GridWeaponStats.h>
 #include <GridMain/GridEquipmentStats.h>
+#include <BattalionCollPane.h>
+#include <WeaponCollPane.h>
 #include <GridMain/GridBattalionStats.h>
 #include <GridMain/GridTotalStats.h>
 #include <MysteriousTeacher/MysteriousTeacher.h>
 #include <SkillLevelManager/SkillLevelManager.h>
+#include <EquippedPanel.h>
 //#include <vld.h>
 
 wxDECLARE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
@@ -51,29 +56,30 @@ wxDECLARE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
 class MysteriousTeacher;
 class SkillLevelManager;
 class ListBoxASLA;
-class ListBoxCHIA;
-class ListBoxCLIA;
 
 class MyFrame : public wxFrame {
 private:
-	static wxAuiManager* wxam;
-	wxBoxSizer* mainrow;
+	wxBoxSizer* framesizer;
 	wxBoxSizer* column1;
+
+	static wxAuiManager* wxam;
+	MysteriousTeacher* mt;
+	EquippedPanel* ep;
+
 	wxBoxSizer* column2;
 	wxBoxSizer* column3;
 	wxBoxSizer* column4;
-	MysteriousTeacher* mt;
 	ListBoxWeapons* lbw;
 	ListBoxEquipment* lbe;
 	ListBoxBattalions* lbb;
 	ListBoxASLA* lbasla;
-	ListBoxCHIA* lbchia;
-	ListBoxCLIA* lbclia;
-	GridWeaponStats* gws;
+	EquippedCharInnateAbility* echia;
+	EquippedClassInnateAbility* eclia;
+	EquippedSkillLvlAbilities* esla;
 	GridEquipmentStats* ges;
-	GridBattalionStats* gbs;
 	GridTotalStats* gts;
 	SkillLevelManager* slm;
+
 	wxDECLARE_EVENT_TABLE();
 public:
 	MyFrame(wxWindowID id, const wxString& title);
@@ -91,6 +97,8 @@ public:
 	void DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata);
 
 	void OnQuit(wxCommandEvent& event);
+	void OnSize(wxSizeEvent& event);
+	void OnCollPaneChange(wxCollapsiblePaneEvent& event);
 };
 
 #endif

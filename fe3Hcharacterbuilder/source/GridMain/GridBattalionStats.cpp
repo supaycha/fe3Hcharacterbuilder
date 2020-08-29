@@ -48,3 +48,12 @@ void GridBattalionStats::repopulate() {
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
 }
+
+//void GridBattalionStats::OnSize(wxSizeEvent& event) {
+//	Layout();
+//	event.Skip();
+//}
+//
+//wxBEGIN_EVENT_TABLE(GridBattalionStats, wxGrid)
+//	EVT_SIZE(GridBattalionStats::OnSize)
+//wxEND_EVENT_TABLE()

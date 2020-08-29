@@ -22,6 +22,7 @@ wxDEFINE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
 
 MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE | wxMAXIMIZE) {
+	
 	wxMenu* fileMenu = new wxMenu;
 	fileMenu->Append(wxID_EXIT, wxT("E&xit\tAlt-x"), wxT("Quit this program"));
 
@@ -100,48 +101,53 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 		equipmap.emplace(equipnames[i], equipdata[i]);
 	}
 
-	mainrow = new wxBoxSizer(wxHORIZONTAL);
-	column1 = new wxBoxSizer(wxVERTICAL);
-	column2 = new wxBoxSizer(wxHORIZONTAL);	
-	column3 = new wxBoxSizer(wxVERTICAL);
-	column4 = new wxBoxSizer(wxHORIZONTAL);
-
-	this->SetSizer(mainrow);
-	mainrow->Add(column1);
-	mainrow->Add(column2);
-	mainrow->Add(column3);
-	mainrow->Add(column4);
-
-	gws = new GridWeaponStats(this, (int)ID_SINGLE_CONTROL::ID_GWS);
-	ges = new GridEquipmentStats(this, (int)ID_SINGLE_CONTROL::ID_GES);
-	gbs = new GridBattalionStats(this, (int)ID_SINGLE_CONTROL::ID_GBS);
-	gts = new GridTotalStats(this, (int)ID_SINGLE_CONTROL::ID_GTS);
+	framesizer = new wxBoxSizer(wxHORIZONTAL);
+	column1 = new wxBoxSizer(wxVERTICAL);	
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
+	ep = new EquippedPanel(this, (int)ID_SINGLE_CONTROL::ID_EP);
+	column1->Add(mt);	
+	column1->Add(ep);
+	framesizer->Add(column1);
+	this->SetSizer(framesizer);
+
+	//column1->Add(gbs);
+	//column1->Add(sizerforbcp);
+	//sizerforbcp->Add(ptrforaddingsizer);
+	//column2 = new wxBoxSizer(wxVERTICAL);
+	//column3 = new wxBoxSizer(wxHORIZONTAL);
+	//column4 = new wxBoxSizer(wxHORIZONTAL);
+	//mainrow->Add(column2);
+	//mainrow->Add(column3);
+	//mainrow->Add(column4);
+
+	//gws = new GridWeaponStats(this, (int)ID_SINGLE_CONTROL::ID_GWS);
+	//ges = new GridEquipmentStats(this, (int)ID_SINGLE_CONTROL::ID_GES);
+	//gts = new GridTotalStats(this, (int)ID_SINGLE_CONTROL::ID_GTS);
 	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
 	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 	lbb = new ListBoxBattalions(battalionmap, this, (int)ID_SINGLE_CONTROL::ID_LBB, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 	lbasla = new ListBoxASLA(this, (int)ID_SINGLE_CONTROL::ID_LBASLA, 0, 0, 150, 400, buffer, wxLB_MULTIPLE);
-	lbchia = new ListBoxCHIA(this, (int)ID_SINGLE_CONTROL::ID_LBACHIA, 0, 0, 150, 50, buffer, wxLB_MULTIPLE);
-	lbclia = new ListBoxCLIA(this, (int)ID_SINGLE_CONTROL::ID_LBACLIA, 0, 0, 150, 50, buffer, wxLB_MULTIPLE);
-	slm = new SkillLevelManager(this, (int)ID_SINGLE_CONTROL::ID_SLM);
-
-	column1->Add(mt);
-	column1->Add(gws);
-	column1->Add(ges);
-	column1->Add(gbs);
-	column1->Add(gts);
-	column2->Add(lbw);
-	column2->Add(lbe);
-	column2->Add(lbb);
-	column3->Add(lbchia);
-	column3->Add(lbclia);
-	column4->Add(slm);
-	Layout();
+	//echia = new EquippedCharInnateAbility(this, (int)ID_SINGLE_CONTROL::ID_ECHIA, 150, 50);
+	//eclia = new EquippedClassInnateAbility(this, (int)ID_SINGLE_CONTROL::ID_ECLIA, 150, 50);
+	//esla = new EquippedSkillLvlAbilities(this, (int)ID_SINGLE_CONTROL::ID_ESLA, 150, 150);
+	//slm = new SkillLevelManager(this, (int)ID_SINGLE_CONTROL::ID_SLM);
+	//column1->Add(gws);
+	//column1->Add(ges);
+	//column1->Add(gbs);
+	//column1->Add(gts);	
+	//column2->Add(echia);
+	//column2->Add(eclia);
+	//column2->Add(esla);
+	//column4->Add(slm);
+	this->Layout();
 
 	wxam = new wxAuiManager(this);
 	wxam->AddPane(lbasla, wxRIGHT, wxT("Available Abilities"));
-	wxam->Update();
+	wxam->AddPane(lbw, wxRIGHT, wxT("Available Weapons"));
+	wxam->AddPane(lbe, wxRIGHT, wxT("Available Equipment"));
+	wxam->AddPane(lbb, wxRIGHT, wxT("Available Battalions"));
 
+	wxam->Update();
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, (int)ID_MISC::ID_MT);
@@ -161,13 +167,13 @@ void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repit
 
 	lbw->ReceiveExclusivity(exclusivitycheck);
 	lbe->ReceiveExclusivity(exclusivitycheck);
-	lbchia->ReceiveExclusivity(exclusivitycheck);
+	echia->ReceiveExclusivity(exclusivitycheck);
 }
 
 void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {
 	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
 	wxString classinnatecheck = tempclass->getName();
-	lbclia->ReceiveClassInnate(classinnatecheck);
+	eclia->ReceiveClassInnate(classinnatecheck);
 }
 
 void MyFrame::BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT) {
@@ -178,7 +184,7 @@ void MyFrame::BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repitition
 void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
 	Weapon* tempweapon = dynamic_cast<Weapon*>(selection.GetClientObject());
 	Stats tempstats = tempweapon->getStats();
-	gws->ReceiveLBWSelection(tempstats);
+	//gws->ReceiveLBWSelection(tempstats);
 }
 
 void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
@@ -195,7 +201,7 @@ void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
 	Battalion* tempbattalion = dynamic_cast<Battalion*>(selection.GetClientObject());
 	Stats tempstats = tempbattalion->getStats();
-	gbs->ReceiveLBBSelection(tempstats);
+	//gbs->ReceiveLBBSelection(tempstats);
 }
 
 void MyFrame::BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS) {
@@ -269,6 +275,24 @@ void MyFrame::OnQuit(wxCommandEvent& event) {
 	Close();
 }
 
+void MyFrame::OnSize(wxSizeEvent& event) {
+	if (ep) {
+		ep->Fit();
+	}
+	wxSize test = this->GetMinSize();
+	event.Skip();
+}
+
+void MyFrame::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
+	wxSize test = this->GetMinSize();
+	//bcp->SetMinSize(test);
+	//mainrow->Fit(this);
+	event.Skip();
+}
+
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
 	EVT_COMBOBOX((int)ID_MISC::ID_DDCH, DropDownCharacters::OnNewSelection)
+	EVT_SIZE(MyFrame::OnSize)
+	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_BCP, MyFrame::OnCollPaneChange)
+	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_WCP, MyFrame::OnCollPaneChange)
 wxEND_EVENT_TABLE()

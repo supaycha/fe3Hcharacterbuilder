@@ -37,41 +37,47 @@
     <Filter Include="Header Files\Unit\Weapon">
       <UniqueIdentifier>{cb24bd77-77ae-4368-ac99-594c172b3e62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GridMain">
-      <UniqueIdentifier>{991d6234-c25f-4605-bec8-f5558f3deb33}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GridMain">
-      <UniqueIdentifier>{32c97707-805c-450a-aa5b-f577abc15754}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GTBMain">
-      <UniqueIdentifier>{f2d491c9-5c36-4fd1-8361-61362995ea53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ListBox">
-      <UniqueIdentifier>{59d01672-ca6e-4fea-b1d9-d3f6dcad0562}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\ListBox">
-      <UniqueIdentifier>{d1256d7d-28f8-44ad-973f-36aa9113d3bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GTBMain">
-      <UniqueIdentifier>{88839e34-ef0e-4f8c-9604-a98f7a8e8b12}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\OUTDATE BUT CODE STILL">
+    <Filter Include="Header Files\TO BE DEPRECATED">
       <UniqueIdentifier>{da9abc0c-ce86-40f1-80df-a07d64e1985b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\OUTDATE BUT CODE STILL">
+    <Filter Include="Source Files\TO BE DEPRECATED">
       <UniqueIdentifier>{2178bd34-e91d-4eb7-910c-2bfa5ea2d5d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ListBox\ListBoxSL">
-      <UniqueIdentifier>{b6abd920-fa8c-48ec-a7fc-16a095849756}</UniqueIdentifier>
+    <Filter Include="Source Files\AVAILABLE OPTIONS">
+      <UniqueIdentifier>{d1256d7d-28f8-44ad-973f-36aa9113d3bc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ListBox\ListBoxSL">
-      <UniqueIdentifier>{c6819944-12ba-462b-90aa-386a56b43d10}</UniqueIdentifier>
+    <Filter Include="Header Files\AVAILABLE OPTIONS">
+      <UniqueIdentifier>{59d01672-ca6e-4fea-b1d9-d3f6dcad0562}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ListBox\ListBoxCharClassA">
-      <UniqueIdentifier>{50706dff-7298-4c5d-a51e-a71442e99352}</UniqueIdentifier>
+    <Filter Include="Header Files\EQUIPPED OPTIONS">
+      <UniqueIdentifier>{7ba0269f-ea84-48c5-abfb-917855093d9c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ListBox\ListBoxCharClassA">
-      <UniqueIdentifier>{fe78972c-f3f5-4859-9e4b-03eebd669cdd}</UniqueIdentifier>
+    <Filter Include="Source Files\EQUIPPED OPTIONS">
+      <UniqueIdentifier>{59a1ae69-5f5d-4c80-be3a-2861a723e5d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EQUIPPED OPTIONS\Battalion">
+      <UniqueIdentifier>{1baeb456-7f47-4400-bc3c-839108fa9a3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EQUIPPED OPTIONS\Equipment">
+      <UniqueIdentifier>{d1491cfc-5c4b-4ac6-9679-51a71f004b9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EQUIPPED OPTIONS\Weapon">
+      <UniqueIdentifier>{7fc797cf-7d54-414e-a43a-ab8a7820c959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EQUIPPED OPTIONS\Equipment">
+      <UniqueIdentifier>{ea1842b8-a568-4941-a8ff-2f36b641291b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EQUIPPED OPTIONS\Battalion">
+      <UniqueIdentifier>{edbcd58e-e68d-4a81-8f0b-a70c94994680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EQUIPPED OPTIONS\Weapon">
+      <UniqueIdentifier>{a8932abc-f295-402f-8139-b79f10c89500}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EQUIPPED OPTIONS\Ability">
+      <UniqueIdentifier>{4bb0c05f-2bb6-473b-98fa-a8de7aa0d0ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EQUIPPED OPTIONS\Ability">
+      <UniqueIdentifier>{4f2f8088-00a9-467d-af6b-3c41552fd5ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -201,38 +207,14 @@
     <ClInclude Include="include\MyFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GridMain\GridBattalionStats.h">
-      <Filter>Header Files\GridMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GridMain\GridEquipmentStats.h">
-      <Filter>Header Files\GridMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GridMain\GridTotalStats.h">
-      <Filter>Header Files\GridMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GridMain\GridWeaponStats.h">
-      <Filter>Header Files\GridMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GTBMain\GTBBattalionStats.h">
-      <Filter>Header Files\GTBMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GTBMain\GTBEquipmentStats.h">
-      <Filter>Header Files\GTBMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GTBMain\GTBTotalStats.h">
-      <Filter>Header Files\GTBMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GTBMain\GTBWeaponStats.h">
-      <Filter>Header Files\GTBMain</Filter>
-    </ClInclude>
     <ClInclude Include="include\ListBox\ListBoxBattalions.h">
-      <Filter>Header Files\ListBox</Filter>
+      <Filter>Header Files\AVAILABLE OPTIONS</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBox\ListBoxEquipment.h">
-      <Filter>Header Files\ListBox</Filter>
+      <Filter>Header Files\AVAILABLE OPTIONS</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBox\ListBoxWeapons.h">
-      <Filter>Header Files\ListBox</Filter>
+      <Filter>Header Files\AVAILABLE OPTIONS</Filter>
     </ClInclude>
     <ClInclude Include="include\ButtonAddAbility.h">
       <Filter>Header Files</Filter>
@@ -241,19 +223,70 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\AbilityManager.h">
-      <Filter>Header Files\OUTDATE BUT CODE STILL</Filter>
+      <Filter>Header Files\TO BE DEPRECATED</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBoxASLA.h">
-      <Filter>Header Files\ListBox\ListBoxSL</Filter>
+      <Filter>Header Files\AVAILABLE OPTIONS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GridMain\GridTotalStats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GTBMain\GTBTotalStats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GridMain\GridBattalionStats.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Battalion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GTBMain\GTBBattalionStats.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Battalion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GridMain\GridEquipmentStats.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GTBMain\GTBEquipmentStats.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GTBMain\GTBWeaponStats.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GridMain\GridWeaponStats.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBoxSSLA.h">
-      <Filter>Header Files\ListBox\ListBoxSL</Filter>
+      <Filter>Header Files\TO BE DEPRECATED</Filter>
     </ClInclude>
     <ClInclude Include="include\CurrentAbilities\ListBoxCHIA.h">
-      <Filter>Header Files\ListBox\ListBoxCharClassA</Filter>
+      <Filter>Header Files\TO BE DEPRECATED</Filter>
     </ClInclude>
     <ClInclude Include="include\CurrentAbilities\ListBoxCLIA.h">
-      <Filter>Header Files\ListBox\ListBoxCharClassA</Filter>
+      <Filter>Header Files\TO BE DEPRECATED</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EquippedOptions\EquippedBattalion.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Battalion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EquippedOptions\EquippedCharInnateAbility.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EquippedOptions\EquippedClassInnateAbility.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EquippedOptions\EquippedEquipment.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EquippedOptions\EquippedSkillLvlAbilities.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Ability</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EquippedOptions\EquippedWeapon.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BattalionCollPane.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Battalion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WeaponCollPane.h">
+      <Filter>Header Files\EQUIPPED OPTIONS\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EquippedPanel.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -296,38 +329,14 @@
     <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp">
       <Filter>Source Files\SkillLevelManager</Filter>
     </ClCompile>
-    <ClCompile Include="source\GridMain\GridBattalionStats.cpp">
-      <Filter>Source Files\GridMain</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GridMain\GridEquipmentStats.cpp">
-      <Filter>Source Files\GridMain</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GridMain\GridTotalStats.cpp">
-      <Filter>Source Files\GridMain</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GridMain\GridWeaponStats.cpp">
-      <Filter>Source Files\GridMain</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GTBMain\GTBBattalionStats.cpp">
-      <Filter>Source Files\GTBMain</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GTBMain\GTBEquipmentStats.cpp">
-      <Filter>Source Files\GTBMain</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GTBMain\GTBTotalStats.cpp">
-      <Filter>Source Files\GTBMain</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GTBMain\GTBWeaponStats.cpp">
-      <Filter>Source Files\GTBMain</Filter>
-    </ClCompile>
     <ClCompile Include="source\ListBox\ListBoxBattalions.cpp">
-      <Filter>Source Files\ListBox</Filter>
+      <Filter>Source Files\AVAILABLE OPTIONS</Filter>
     </ClCompile>
     <ClCompile Include="source\ListBox\ListBoxEquipment.cpp">
-      <Filter>Source Files\ListBox</Filter>
+      <Filter>Source Files\AVAILABLE OPTIONS</Filter>
     </ClCompile>
     <ClCompile Include="source\ListBox\ListBoxWeapons.cpp">
-      <Filter>Source Files\ListBox</Filter>
+      <Filter>Source Files\AVAILABLE OPTIONS</Filter>
     </ClCompile>
     <ClCompile Include="source\ButtonRemoveAbility.cpp">
       <Filter>Source Files</Filter>
@@ -336,19 +345,70 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\AbilityManager.cpp">
-      <Filter>Source Files\OUTDATE BUT CODE STILL</Filter>
+      <Filter>Source Files\TO BE DEPRECATED</Filter>
     </ClCompile>
     <ClCompile Include="source\ListBoxASLA.cpp">
-      <Filter>Source Files\ListBox\ListBoxSL</Filter>
+      <Filter>Source Files\AVAILABLE OPTIONS</Filter>
     </ClCompile>
-    <ClCompile Include="source\ListBoxSSLA.cpp">
-      <Filter>Source Files\ListBox\ListBoxSL</Filter>
+    <ClCompile Include="source\GTBMain\GTBBattalionStats.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Battalion</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTBMain\GTBEquipmentStats.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTBMain\GTBWeaponStats.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTBMain\GTBTotalStats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GridMain\GridBattalionStats.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Battalion</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GridMain\GridEquipmentStats.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GridMain\GridWeaponStats.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GridMain\GridTotalStats.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\CurrentAbilities\ListBoxCHIA.cpp">
-      <Filter>Source Files\ListBox\ListBoxCharClassA</Filter>
+      <Filter>Source Files\TO BE DEPRECATED</Filter>
     </ClCompile>
     <ClCompile Include="source\CurrentAbilities\ListBoxCLIA.cpp">
-      <Filter>Source Files\ListBox\ListBoxCharClassA</Filter>
+      <Filter>Source Files\TO BE DEPRECATED</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ListBoxSSLA.cpp">
+      <Filter>Source Files\TO BE DEPRECATED</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EquippedOptions\EquippedBattalion.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Battalion</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EquippedOptions\EquippedCharInnateAbility.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Ability</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EquippedOptions\EquippedClassInnateAbility.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Ability</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EquippedOptions\EquippedEquipment.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EquippedOptions\EquippedSkillLvlAbilities.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Ability</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EquippedOptions\EquippedWeapon.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BattalionCollPane.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Battalion</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WeaponCollPane.cpp">
+      <Filter>Source Files\EQUIPPED OPTIONS\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EquippedPanel.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
