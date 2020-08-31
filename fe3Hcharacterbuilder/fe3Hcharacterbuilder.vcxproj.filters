@@ -11,9 +11,6 @@
     <Filter Include="MysteriousTeacher">
       <UniqueIdentifier>{073cc337-6df9-4b8a-8138-f5a08cc50913}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SkillLevelManager">
-      <UniqueIdentifier>{e5011233-a710-489e-a46f-c868b74e88b2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TO BE DEPRECATED">
       <UniqueIdentifier>{da9abc0c-ce86-40f1-80df-a07d64e1985b}</UniqueIdentifier>
     </Filter>
@@ -62,6 +59,12 @@
     <Filter Include="EQUIPPED EQUIPMENT AND ABIL\Ability\SLA">
       <UniqueIdentifier>{fc84ccbb-5fed-4574-b018-4c17e1d74085}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AVAILABLE OPTIONS\SkillLevelManager">
+      <UniqueIdentifier>{e5011233-a710-489e-a46f-c868b74e88b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AVAILABLE OPTIONS\WeaponManager">
+      <UniqueIdentifier>{d94c9eb2-e486-49ce-99c6-f026c764aa96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h">
@@ -83,13 +86,13 @@
       <Filter>MysteriousTeacher</Filter>
     </ClInclude>
     <ClInclude Include="include\SkillLevelManager\DropDownSkillLevel.h">
-      <Filter>SkillLevelManager</Filter>
+      <Filter>AVAILABLE OPTIONS\SkillLevelManager</Filter>
     </ClInclude>
     <ClInclude Include="include\SkillLevelManager\SkillLevelManager.h">
-      <Filter>SkillLevelManager</Filter>
+      <Filter>AVAILABLE OPTIONS\SkillLevelManager</Filter>
     </ClInclude>
     <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h">
-      <Filter>SkillLevelManager</Filter>
+      <Filter>AVAILABLE OPTIONS\SkillLevelManager</Filter>
     </ClInclude>
     <ClInclude Include="include\Unit\Ability\Ability.h">
       <Filter>UnitandMisc\Ability</Filter>
@@ -301,6 +304,9 @@
       <Filter>EQUIPPED EQUIPMENT AND ABIL\Ability\SLA</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="include\WeaponManager.h">
+      <Filter>AVAILABLE OPTIONS\WeaponManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\GridMain\GridTotalStats.cpp" />
@@ -369,13 +375,13 @@
       <Filter>MysteriousTeacher</Filter>
     </ClCompile>
     <ClCompile Include="source\SkillLevelManager\DropDownSkillLevel.cpp">
-      <Filter>SkillLevelManager</Filter>
+      <Filter>AVAILABLE OPTIONS\SkillLevelManager</Filter>
     </ClCompile>
     <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp">
-      <Filter>SkillLevelManager</Filter>
+      <Filter>AVAILABLE OPTIONS\SkillLevelManager</Filter>
     </ClCompile>
     <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp">
-      <Filter>SkillLevelManager</Filter>
+      <Filter>AVAILABLE OPTIONS\SkillLevelManager</Filter>
     </ClCompile>
     <ClCompile Include="source\CurrentAbilities\ListBoxCHIA.cpp">
       <Filter>TO BE DEPRECATED</Filter>
@@ -451,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="source\GTBSkillLevelAbilityStats.cpp">
       <Filter>EQUIPPED EQUIPMENT AND ABIL\Ability\SLA</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WeaponManager.cpp">
+      <Filter>AVAILABLE OPTIONS\WeaponManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

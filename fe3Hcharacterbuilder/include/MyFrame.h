@@ -36,6 +36,7 @@
 #include <MysteriousTeacher/MysteriousTeacher.h>
 #include <SkillLevelManager/SkillLevelManager.h>
 #include <EquippedPanel.h>
+#include <WeaponManager.h>
 //#include <vld.h>
 
 wxDECLARE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
@@ -61,12 +62,12 @@ private:
 
 	MysteriousTeacher* mt;
 	EquippedPanel* ep;
-
+	WeaponManager* wm;
 	wxBoxSizer* column2;
 	wxBoxSizer* column3;
 	wxBoxSizer* column4;
 	wxBoxSizer* column5;
-	ListBoxWeapons* lbw;
+	//ListBoxWeapons* lbw;
 	ListBoxEquipment* lbe;
 	ListBoxBattalions* lbb;
 	ListBoxASLA* lbasla;

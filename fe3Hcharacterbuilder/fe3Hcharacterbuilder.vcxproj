@@ -100,6 +100,7 @@
     <ClInclude Include="include\Unit\Weapon\WhiteMagic.h" />
     <ClInclude Include="include\CollPaneWeapon.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="include\WeaponManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\CollPaneSkillLevelAbility.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp" />
     <ClCompile Include="source\UnitList.cpp" />
     <ClCompile Include="source\CollPaneWeapon.cpp" />
+    <ClCompile Include="source\WeaponManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="fe3Hcharacterbuilder.rc" />

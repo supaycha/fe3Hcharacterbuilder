@@ -11,6 +11,7 @@ enum class ID_MISC {
 	ID_SPIN1 = 15,
 	ID_SPIN2 = 16,
 	ID_GMT = 20,
+	ID_WM = 21
 };
 
 enum class ID_SINGLE_CONTROL {
@@ -74,7 +75,19 @@ enum class ST_CONTROL {
 	ID_STFLYING = 91
 };
 
+enum class WT_CONTROL {
+	ID_BSWORD = 1,
+	ID_BAXE = 2,
+	ID_BLANCE = 3,
+	ID_BBOW = 4,
+	ID_BGAUNTLETS = 5,
+	ID_BBLACKMAGIC = 6,
+	ID_BDARKMAGIC = 7,
+	ID_BWHITEMAGIC = 8
+};
+
 enum class VARIOUS_SIZE {
+	WEAPON_TYPE_SIZE = 8,
 	CHARACTER_DATA_SIZE = 41,
 	WEAPON_DATA_SIZE = 196,
 	CLASS_DATA_SIZE = 53,

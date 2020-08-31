@@ -108,61 +108,31 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
 	ep = new EquippedPanel(this, (int)ID_SINGLE_CONTROL::ID_EP);
-	
-	wxButton* sword = new wxButton(this, wxID_ANY);
-	wxBitmap swordICON23("IDB_SWORD23", wxBITMAP_TYPE_PNG_RESOURCE);
-	sword->SetBitmap(swordICON23, wxRIGHT);
+	wm = new WeaponManager(weaponmap, this, (int)ID_MISC::ID_WM);
+	//lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
+	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
+	wxStaticText* lbeLABEL = new wxStaticText(this, wxID_ANY, "Available Equipment");
 
-	wxButton* axe = new wxButton(this, wxID_ANY);
-	wxBitmap axeICON23("IDB_AXE23", wxBITMAP_TYPE_PNG_RESOURCE);	
-	axe->SetBitmap(axeICON23, wxRIGHT);	
-	
-	wxButton* lance = new wxButton(this, wxID_ANY);
-	wxBitmap lanceICON23("IDB_LANCE23", wxBITMAP_TYPE_PNG_RESOURCE);
-	lance->SetBitmap(lanceICON23, wxRIGHT);
-
-	wxButton* bow = new wxButton(this, wxID_ANY);
-	wxBitmap bowICON23("IDB_BOW23", wxBITMAP_TYPE_PNG_RESOURCE);
-	bow->SetBitmap(bowICON23, wxRIGHT);
-
-	wxButton* gauntlets = new wxButton(this, wxID_ANY);
-	wxBitmap gauntletsICON23("IDB_GAUNTLETS23", wxBITMAP_TYPE_PNG_RESOURCE);
-	gauntlets->SetBitmap(gauntletsICON23, wxRIGHT);
-
-	wxButton* blackmagic = new wxButton(this, wxID_ANY);
-	wxBitmap blackmagicICON23("IDB_BLACKMAGIC23", wxBITMAP_TYPE_PNG_RESOURCE);
-	blackmagic->SetBitmap(blackmagicICON23, wxRIGHT);
-
-	wxButton* darkmagic = new wxButton(this, wxID_ANY);
-	wxBitmap darkmagicICON23("IDB_DARKMAGIC23", wxBITMAP_TYPE_PNG_RESOURCE);
-	darkmagic->SetBitmap(darkmagicICON23, wxRIGHT);
-
-	wxButton* whitemagic = new wxButton(this, wxID_ANY);
-	wxBitmap whitemagicICON23("IDB_WHITEMAGIC23", wxBITMAP_TYPE_PNG_RESOURCE);
-	whitemagic->SetBitmap(whitemagicICON23, wxRIGHT);
-
-	wxStaticText* lbwLABEL = new wxStaticText(this, wxID_ANY, "Available Weapons");
-	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
-	
 	//slm = new SkillLevelManager(this, (int)ID_SINGLE_CONTROL::ID_SLM);
-	//lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 	//lbb = new ListBoxBattalions(battalionmap, this, (int)ID_SINGLE_CONTROL::ID_LBB, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 	//lbasla = new ListBoxASLA(this, (int)ID_SINGLE_CONTROL::ID_LBASLA, 0, 0, 150, 400, buffer, wxLB_MULTIPLE);
 
 	column1->Add(mt);	
 	column2->Add(ep);
 	column3->AddStretchSpacer();
-	column4->Add(sword);
-	column4->Add(axe);
-	column4->Add(lance);
-	column4->Add(bow);
-	column4->Add(gauntlets);
-	column4->Add(blackmagic);
-	column4->Add(darkmagic);
-	column4->Add(whitemagic);
-
-	column5->Add(lbwLABEL);
-	column5->Add(lbw);
+	//column4->Add(sword);
+	//column4->Add(axe);
+	//column4->Add(lance);
+	//column4->Add(bow);
+	//column4->Add(gauntlets);
+	//column4->Add(blackmagic);
+	//column4->Add(darkmagic);
+	//column4->Add(whitemagic);
+	column4->Add(wm);
+	//column5->Add(lbwLABEL);
+	//column5->Add(lbw);
+	column5->Add(lbeLABEL);
+	column5->Add(lbe);
 
 	framesizer->Add(column1);
 	framesizer->Add(column2);
@@ -189,8 +159,8 @@ void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repit
 	Character* tempcharacter = dynamic_cast<Character*>(repititionfromMT.GetClientObject());
 	wxString exclusivitycheck = tempcharacter->getName();
 
-	lbw->ReceiveExclusivity(exclusivitycheck);
-	//lbe->ReceiveExclusivity(exclusivitycheck);
+	//lbw->ReceiveExclusivity(exclusivitycheck);
+	lbe->ReceiveExclusivity(exclusivitycheck);
 	//echia->ReceiveExclusivity(exclusivitycheck);
 }
 
@@ -219,7 +189,7 @@ void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 	//tempstats[7] = selectionstats[1].getText();
 	//Stats transferthis{ tempstats };
 
-	ges->ReceiveLBESelection(tempstats);
+	//ges->ReceiveLBESelection(tempstats);
 }
 
 void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
@@ -249,7 +219,7 @@ void MyFrame::BounceSLInfo(wxCommandEvent& eventfromwho) {
 	{
 		case (int)ID_SINGLE_CONTROL::ID_LBW: {
 			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
-			lbw->ReceiveSLInfo(slpackage);
+			//lbw->ReceiveSLInfo(slpackage);
 			break;
 		}
 		case (int)ID_SINGLE_CONTROL::ID_LBASLA: {
