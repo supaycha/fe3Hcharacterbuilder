@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -99,6 +99,7 @@
     <ClInclude Include="include\Unit\Weapon\Weapon.h" />
     <ClInclude Include="include\Unit\Weapon\WhiteMagic.h" />
     <ClInclude Include="include\CollPaneWeapon.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\CollPaneSkillLevelAbility.cpp" />
@@ -152,6 +153,23 @@
     <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp" />
     <ClCompile Include="source\UnitList.cpp" />
     <ClCompile Include="source\CollPaneWeapon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="fe3Hcharacterbuilder.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fe3Hcharacterbuilder1.aps" />
+    <None Include="RCa10748" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="source\FE3H_Axe_weaponversion.png" />
+    <Image Include="source\FE3H_BlackMagic_weaponversion.png" />
+    <Image Include="source\FE3H_Bow_weaponversion.png" />
+    <Image Include="source\FE3H_DarkMagic_weaponversion.png" />
+    <Image Include="source\FE3H_Gauntlets_weaponversion.png" />
+    <Image Include="source\FE3H_Lance_weaponversion.png" />
+    <Image Include="source\FE3H_Sword_weaponversion.png" />
+    <Image Include="source\FE3H_WhiteMagic_weaponversion.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

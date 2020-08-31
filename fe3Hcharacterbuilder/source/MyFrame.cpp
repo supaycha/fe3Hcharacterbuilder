@@ -1,7 +1,5 @@
 #include <MyFrame.h>
 
-wxAuiManager* MyFrame::wxam;
-
 wxDEFINE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(REPEAT_GMT_STATS, wxCommandEvent);
@@ -102,52 +100,70 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	}
 
 	framesizer = new wxBoxSizer(wxHORIZONTAL);
-	column1 = new wxBoxSizer(wxVERTICAL);	
+	column1 = new wxBoxSizer(wxVERTICAL);		
+	column2 = new wxBoxSizer(wxVERTICAL);
+	column3 = new wxBoxSizer(wxHORIZONTAL);	
+	column4 = new wxBoxSizer(wxVERTICAL);
+	column5 = new wxBoxSizer(wxVERTICAL);
+
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
 	ep = new EquippedPanel(this, (int)ID_SINGLE_CONTROL::ID_EP);
-	column1->Add(mt);	
-	column1->Add(ep);
-	framesizer->Add(column1);
-	this->SetSizer(framesizer);
 
-	//column1->Add(gbs);
-	//column1->Add(sizerforbcp);
-	//sizerforbcp->Add(ptrforaddingsizer);
-	//column2 = new wxBoxSizer(wxVERTICAL);
-	//column3 = new wxBoxSizer(wxHORIZONTAL);
-	//column4 = new wxBoxSizer(wxHORIZONTAL);
-	//mainrow->Add(column2);
-	//mainrow->Add(column3);
-	//mainrow->Add(column4);
+	wxButton* axe = new wxButton(this, wxID_ANY);
+	wxBitmap axeICON("IDB_PNG1", wxBITMAP_TYPE_PNG_RESOURCE);	
+	axe->SetBitmap(axeICON, wxRIGHT);
+	wxButton* blackmagic = new wxButton(this, wxID_ANY);
+	wxBitmap blackmagicICON("IDB_PNG2", wxBITMAP_TYPE_PNG_RESOURCE);
+	blackmagic->SetBitmap(blackmagicICON, wxRIGHT);
+	wxButton* bow = new wxButton(this, wxID_ANY);
+	wxBitmap bowICON("IDB_PNG3", wxBITMAP_TYPE_PNG_RESOURCE);
+	bow->SetBitmap(bowICON, wxRIGHT);
+	wxButton* darkmagic = new wxButton(this, wxID_ANY);
+	wxBitmap darkmagicICON("IDB_PNG4", wxBITMAP_TYPE_PNG_RESOURCE);
+	darkmagic->SetBitmap(darkmagicICON, wxRIGHT);
+	wxButton* gauntlets = new wxButton(this, wxID_ANY);
+	wxBitmap gauntletsICON("IDB_PNG5", wxBITMAP_TYPE_PNG_RESOURCE);
+	gauntlets->SetBitmap(gauntletsICON, wxRIGHT);
+	wxButton* lance = new wxButton(this, wxID_ANY);
+	wxBitmap lanceICON("IDB_PNG6", wxBITMAP_TYPE_PNG_RESOURCE);
+	lance->SetBitmap(lanceICON, wxRIGHT);
+	wxButton* sword = new wxButton(this, wxID_ANY);
+	wxBitmap swordICON("IDB_PNG7", wxBITMAP_TYPE_PNG_RESOURCE);
+	sword->SetBitmap(swordICON, wxRIGHT);
+	wxButton* whitemagic = new wxButton(this, wxID_ANY);
+	wxBitmap whitemagicICON("IDB_PNG8", wxBITMAP_TYPE_PNG_RESOURCE);
+	whitemagic->SetBitmap(whitemagicICON, wxRIGHT);
 
-	//gws = new GridWeaponStats(this, (int)ID_SINGLE_CONTROL::ID_GWS);
-	//ges = new GridEquipmentStats(this, (int)ID_SINGLE_CONTROL::ID_GES);
-	//gts = new GridTotalStats(this, (int)ID_SINGLE_CONTROL::ID_GTS);
+	wxStaticText* lbwLABEL = new wxStaticText(this, wxID_ANY, "Available Weapons");
 	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
-	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
-	lbb = new ListBoxBattalions(battalionmap, this, (int)ID_SINGLE_CONTROL::ID_LBB, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
-	lbasla = new ListBoxASLA(this, (int)ID_SINGLE_CONTROL::ID_LBASLA, 0, 0, 150, 400, buffer, wxLB_MULTIPLE);
-	//echia = new EquippedCharInnateAbility(this, (int)ID_SINGLE_CONTROL::ID_ECHIA, 150, 50);
-	//eclia = new EquippedClassInnateAbility(this, (int)ID_SINGLE_CONTROL::ID_ECLIA, 150, 50);
-	//esla = new EquippedSkillLvlAbilities(this, (int)ID_SINGLE_CONTROL::ID_ESLA, 150, 150);
+	
 	//slm = new SkillLevelManager(this, (int)ID_SINGLE_CONTROL::ID_SLM);
-	//column1->Add(gws);
-	//column1->Add(ges);
-	//column1->Add(gbs);
-	//column1->Add(gts);	
-	//column2->Add(echia);
-	//column2->Add(eclia);
-	//column2->Add(esla);
-	//column4->Add(slm);
+	//lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
+	//lbb = new ListBoxBattalions(battalionmap, this, (int)ID_SINGLE_CONTROL::ID_LBB, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
+	//lbasla = new ListBoxASLA(this, (int)ID_SINGLE_CONTROL::ID_LBASLA, 0, 0, 150, 400, buffer, wxLB_MULTIPLE);
+
+	column1->Add(mt);	
+	column2->Add(ep);
+	column3->AddStretchSpacer();
+	column4->Add(sword);
+	column4->Add(axe);
+	column4->Add(lance);
+	column4->Add(bow);
+	column4->Add(gauntlets);
+	column4->Add(blackmagic);
+	column4->Add(darkmagic);
+	column4->Add(whitemagic);
+	column5->Add(lbwLABEL);
+	column5->Add(lbw);
+
+	framesizer->Add(column1);
+	framesizer->Add(column2);
+	framesizer->Add(column3, 1, wxEXPAND, 0);
+	framesizer->Add(column4);
+	framesizer->Add(column5);
+	this->SetSizer(framesizer);
 	this->Layout();
 
-	wxam = new wxAuiManager(this);
-	wxam->AddPane(lbasla, wxRIGHT, wxT("Available Abilities"));
-	wxam->AddPane(lbw, wxRIGHT, wxT("Available Weapons"));
-	wxam->AddPane(lbe, wxRIGHT, wxT("Available Equipment"));
-	wxam->AddPane(lbb, wxRIGHT, wxT("Available Battalions"));
-
-	wxam->Update();
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, (int)ID_MISC::ID_MT);
@@ -166,19 +182,19 @@ void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repit
 	wxString exclusivitycheck = tempcharacter->getName();
 
 	lbw->ReceiveExclusivity(exclusivitycheck);
-	lbe->ReceiveExclusivity(exclusivitycheck);
+	//lbe->ReceiveExclusivity(exclusivitycheck);
 	//echia->ReceiveExclusivity(exclusivitycheck);
 }
 
 void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {
 	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
 	wxString classinnatecheck = tempclass->getName();
-	eclia->ReceiveClassInnate(classinnatecheck);
+	//eclia->ReceiveClassInnate(classinnatecheck);
 }
 
 void MyFrame::BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT) {
 	Stats* tempGMTstats = dynamic_cast<Stats*>(repititionfromMT.GetClientObject());
-	gts->ReceiveGMTStats(*tempGMTstats);
+	//gts->ReceiveGMTStats(*tempGMTstats);
 }
 
 void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {

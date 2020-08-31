@@ -4,6 +4,7 @@ ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxW
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
+
 	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 	weaponmap = uweaponmap;
 	auto iter = weaponmap.begin();

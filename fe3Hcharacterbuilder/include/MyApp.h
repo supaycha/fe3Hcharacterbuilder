@@ -2,6 +2,7 @@
 #define MYAPP_H
 
 #include <wx/wx.h>
+#include <wx/imagpng.h>
 #include <MyFrame.h>
 #include <constants.h>
 //#include <vld.h>

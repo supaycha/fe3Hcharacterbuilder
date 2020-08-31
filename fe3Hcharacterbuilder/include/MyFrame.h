@@ -2,7 +2,6 @@
 #define MYFRAME_H
 
 #include <wx/wx.h>
-#include <wx/aui/aui.h>
 //#include <wx/collpane.h>
 #include <map>
 #include <Stat.h>
@@ -60,13 +59,13 @@ private:
 	wxBoxSizer* framesizer;
 	wxBoxSizer* column1;
 
-	static wxAuiManager* wxam;
 	MysteriousTeacher* mt;
 	EquippedPanel* ep;
 
 	wxBoxSizer* column2;
 	wxBoxSizer* column3;
 	wxBoxSizer* column4;
+	wxBoxSizer* column5;
 	ListBoxWeapons* lbw;
 	ListBoxEquipment* lbe;
 	ListBoxBattalions* lbb;

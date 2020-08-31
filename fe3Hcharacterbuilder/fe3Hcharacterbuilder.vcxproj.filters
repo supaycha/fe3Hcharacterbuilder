@@ -300,6 +300,7 @@
     <ClInclude Include="include\GTBSkillLevelAbilityStats.h">
       <Filter>EQUIPPED EQUIPMENT AND ABIL\Ability\SLA</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\GridMain\GridTotalStats.cpp" />
@@ -451,5 +452,40 @@
     <ClCompile Include="source\GTBSkillLevelAbilityStats.cpp">
       <Filter>EQUIPPED EQUIPMENT AND ABIL\Ability\SLA</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="fe3Hcharacterbuilder.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fe3Hcharacterbuilder1.aps" />
+    <None Include="RCa10748" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="source\FE3H_Axe_weaponversion.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="source\FE3H_BlackMagic_weaponversion.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="source\FE3H_Bow_weaponversion.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="source\FE3H_DarkMagic_weaponversion.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="source\FE3H_Gauntlets_weaponversion.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="source\FE3H_Lance_weaponversion.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="source\FE3H_Sword_weaponversion.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="source\FE3H_WhiteMagic_weaponversion.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
