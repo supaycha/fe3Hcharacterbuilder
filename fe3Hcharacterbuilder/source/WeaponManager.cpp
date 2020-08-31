@@ -8,7 +8,7 @@ WeaponManager::WeaponManager(std::map<wxString, wxClientData*> weaponmap, wxWind
 	wxBoxSizer* lbwsizer = new wxBoxSizer(wxVERTICAL);
 
 	wxArrayString emptybuffer;
-	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
+	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 260, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
 
 	for (int i = 0; i < (int)VARIOUS_SIZE::WEAPON_TYPE_SIZE; ++i) {
 		weapontypes.push_back(new wxButton(this, ((int)WT_CONTROL::ID_BSWORD) + i));
@@ -54,16 +54,4 @@ WeaponManager::WeaponManager(std::map<wxString, wxClientData*> weaponmap, wxWind
 	this->SetSizer(mainsizer);
 
 	this->Layout();
-	//column4->Add(sword);
-	//column4->Add(axe);
-	//column4->Add(lance);
-	//column4->Add(bow);
-	//column4->Add(gauntlets);
-	//column4->Add(blackmagic);
-	//column4->Add(darkmagic);
-	//column4->Add(whitemagic);
-	/*column5->Add(lbwLABEL);
-	column5->Add(lbw);*/
-
-
 }

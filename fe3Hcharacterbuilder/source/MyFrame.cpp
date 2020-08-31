@@ -29,7 +29,6 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	SetMenuBar(menuBar);
 
 	wxArrayString emptybuffer;
-	const wxArrayString buffer{};
 
 	std::vector<wxString> battalionnames;
 	std::vector<wxString> characternames;
@@ -105,32 +104,19 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	column3 = new wxBoxSizer(wxHORIZONTAL);	
 	column4 = new wxBoxSizer(wxVERTICAL);
 	column5 = new wxBoxSizer(wxVERTICAL);
+	//column6 = new wxBoxSizer(wxVERTICAL);
 
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
-	ep = new EquippedPanel(this, (int)ID_SINGLE_CONTROL::ID_EP);
-	wm = new WeaponManager(weaponmap, this, (int)ID_MISC::ID_WM);
-	//lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
-	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
+	ep = new EquippedPanel(this, (int)ID_SINGLE_CONTROL::ID_EP);	
+	slp = new SkillLevelPanel(weaponmap, battalionmap, this, (int)ID_SINGLE_CONTROL::ID_SLP);
 	wxStaticText* lbeLABEL = new wxStaticText(this, wxID_ANY, "Available Equipment");
+	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 
-	//slm = new SkillLevelManager(this, (int)ID_SINGLE_CONTROL::ID_SLM);
-	//lbb = new ListBoxBattalions(battalionmap, this, (int)ID_SINGLE_CONTROL::ID_LBB, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
-	//lbasla = new ListBoxASLA(this, (int)ID_SINGLE_CONTROL::ID_LBASLA, 0, 0, 150, 400, buffer, wxLB_MULTIPLE);
 
 	column1->Add(mt);	
 	column2->Add(ep);
 	column3->AddStretchSpacer();
-	//column4->Add(sword);
-	//column4->Add(axe);
-	//column4->Add(lance);
-	//column4->Add(bow);
-	//column4->Add(gauntlets);
-	//column4->Add(blackmagic);
-	//column4->Add(darkmagic);
-	//column4->Add(whitemagic);
-	column4->Add(wm);
-	//column5->Add(lbwLABEL);
-	//column5->Add(lbw);
+	column4->Add(slp);
 	column5->Add(lbeLABEL);
 	column5->Add(lbe);
 
@@ -139,6 +125,8 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	framesizer->Add(column3, 1, wxEXPAND, 0);
 	framesizer->Add(column4);
 	framesizer->Add(column5);
+	//framesizer->Add(column6);
+
 	this->SetSizer(framesizer);
 	this->Layout();
 

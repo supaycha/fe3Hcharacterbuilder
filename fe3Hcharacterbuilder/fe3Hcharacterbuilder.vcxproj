@@ -101,8 +101,10 @@
     <ClInclude Include="include\CollPaneWeapon.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="include\WeaponManager.h" />
+    <ClInclude Include="include\SkillLevelPanel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\SkillLevelPanel.cpp" />
     <ClCompile Include="source\CollPaneSkillLevelAbility.cpp" />
     <ClCompile Include="source\GridSkillLevelAbilityStats.cpp" />
     <ClCompile Include="source\GTBSkillLevelAbilityStats.cpp" />

@@ -22,6 +22,7 @@
 #include <Unit/Equipment/Equipment.h>
 #include "UnitList.h"
 #include <constants.h>
+#include <SkillLevelPanel.h>
 #include <ListBox/ListBoxWeapons.h>
 #include <ListBox/ListBoxEquipment.h>
 #include <ListBox/ListBoxBattalions.h>
@@ -34,7 +35,6 @@
 #include <GridMain/GridBattalionStats.h>
 #include <GridMain/GridTotalStats.h>
 #include <MysteriousTeacher/MysteriousTeacher.h>
-#include <SkillLevelManager/SkillLevelManager.h>
 #include <EquippedPanel.h>
 #include <WeaponManager.h>
 //#include <vld.h>
@@ -52,8 +52,8 @@ wxDECLARE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
 wxDECLARE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
 
 class MysteriousTeacher;
-class SkillLevelManager;
 class ListBoxASLA;
+class SkillLevelPanel;
 
 class MyFrame : public wxFrame {
 private:
@@ -67,6 +67,8 @@ private:
 	wxBoxSizer* column3;
 	wxBoxSizer* column4;
 	wxBoxSizer* column5;
+	wxBoxSizer* column6;
+
 	//ListBoxWeapons* lbw;
 	ListBoxEquipment* lbe;
 	ListBoxBattalions* lbb;
@@ -75,8 +77,8 @@ private:
 	EquippedClassInnateAbility* eclia;
 	EquippedSkillLvlAbilities* esla;
 	GridEquipmentStats* ges;
-	GridTotalStats* gts;
-	SkillLevelManager* slm;
+	GridTotalStats* gts;	
+	SkillLevelPanel* slp;
 
 	wxDECLARE_EVENT_TABLE();
 public:

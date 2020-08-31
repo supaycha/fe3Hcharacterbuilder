@@ -44,7 +44,8 @@ enum class ID_SINGLE_CONTROL {
 	ID_AP = 56,
 	ID_GTBSLAS = 57,
 	ID_CPSLA = 58,
-	ID_GSLAS = 59
+	ID_GSLAS = 59,
+	ID_SLP = 60
 };
 
 enum class DD_CONTROL {

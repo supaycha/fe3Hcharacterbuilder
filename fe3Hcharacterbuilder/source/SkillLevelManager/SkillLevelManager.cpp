@@ -1,6 +1,6 @@
 #include <SkillLevelManager\SkillLevelManager.h>
 
-SkillLevelManager::SkillLevelManager(MyFrame* parent, wxWindowID id) :
+SkillLevelManager::SkillLevelManager(wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
 	std::vector<wxString> labels{ "Sword", "Lance", "Axe", "Bow", "Gauntlets", "Reason", "Faith", "Authority", "Heavy Armor", "Riding", "Flying" };

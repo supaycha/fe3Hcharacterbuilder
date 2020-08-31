@@ -18,7 +18,7 @@ private:
 	std::map<StaticTextSkillLevel*, DropDownSkillLevel*>* manager;
 	wxDECLARE_EVENT_TABLE();
 public:
-	SkillLevelManager(MyFrame* parent, wxWindowID id);
+	SkillLevelManager(wxWindow* parent, wxWindowID id);
 	~SkillLevelManager() {}
 
 	void OnNewSelection(wxCommandEvent& uevent);
