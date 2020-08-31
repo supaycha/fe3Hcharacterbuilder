@@ -108,31 +108,38 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
 	ep = new EquippedPanel(this, (int)ID_SINGLE_CONTROL::ID_EP);
+	
+	wxButton* sword = new wxButton(this, wxID_ANY);
+	wxBitmap swordICON23("IDB_SWORD23", wxBITMAP_TYPE_PNG_RESOURCE);
+	sword->SetBitmap(swordICON23, wxRIGHT);
 
 	wxButton* axe = new wxButton(this, wxID_ANY);
-	wxBitmap axeICON("IDB_PNG1", wxBITMAP_TYPE_PNG_RESOURCE);	
-	axe->SetBitmap(axeICON, wxRIGHT);
-	wxButton* blackmagic = new wxButton(this, wxID_ANY);
-	wxBitmap blackmagicICON("IDB_PNG2", wxBITMAP_TYPE_PNG_RESOURCE);
-	blackmagic->SetBitmap(blackmagicICON, wxRIGHT);
-	wxButton* bow = new wxButton(this, wxID_ANY);
-	wxBitmap bowICON("IDB_PNG3", wxBITMAP_TYPE_PNG_RESOURCE);
-	bow->SetBitmap(bowICON, wxRIGHT);
-	wxButton* darkmagic = new wxButton(this, wxID_ANY);
-	wxBitmap darkmagicICON("IDB_PNG4", wxBITMAP_TYPE_PNG_RESOURCE);
-	darkmagic->SetBitmap(darkmagicICON, wxRIGHT);
-	wxButton* gauntlets = new wxButton(this, wxID_ANY);
-	wxBitmap gauntletsICON("IDB_PNG5", wxBITMAP_TYPE_PNG_RESOURCE);
-	gauntlets->SetBitmap(gauntletsICON, wxRIGHT);
+	wxBitmap axeICON23("IDB_AXE23", wxBITMAP_TYPE_PNG_RESOURCE);	
+	axe->SetBitmap(axeICON23, wxRIGHT);	
+	
 	wxButton* lance = new wxButton(this, wxID_ANY);
-	wxBitmap lanceICON("IDB_PNG6", wxBITMAP_TYPE_PNG_RESOURCE);
-	lance->SetBitmap(lanceICON, wxRIGHT);
-	wxButton* sword = new wxButton(this, wxID_ANY);
-	wxBitmap swordICON("IDB_PNG7", wxBITMAP_TYPE_PNG_RESOURCE);
-	sword->SetBitmap(swordICON, wxRIGHT);
+	wxBitmap lanceICON23("IDB_LANCE23", wxBITMAP_TYPE_PNG_RESOURCE);
+	lance->SetBitmap(lanceICON23, wxRIGHT);
+
+	wxButton* bow = new wxButton(this, wxID_ANY);
+	wxBitmap bowICON23("IDB_BOW23", wxBITMAP_TYPE_PNG_RESOURCE);
+	bow->SetBitmap(bowICON23, wxRIGHT);
+
+	wxButton* gauntlets = new wxButton(this, wxID_ANY);
+	wxBitmap gauntletsICON23("IDB_GAUNTLETS23", wxBITMAP_TYPE_PNG_RESOURCE);
+	gauntlets->SetBitmap(gauntletsICON23, wxRIGHT);
+
+	wxButton* blackmagic = new wxButton(this, wxID_ANY);
+	wxBitmap blackmagicICON23("IDB_BLACKMAGIC23", wxBITMAP_TYPE_PNG_RESOURCE);
+	blackmagic->SetBitmap(blackmagicICON23, wxRIGHT);
+
+	wxButton* darkmagic = new wxButton(this, wxID_ANY);
+	wxBitmap darkmagicICON23("IDB_DARKMAGIC23", wxBITMAP_TYPE_PNG_RESOURCE);
+	darkmagic->SetBitmap(darkmagicICON23, wxRIGHT);
+
 	wxButton* whitemagic = new wxButton(this, wxID_ANY);
-	wxBitmap whitemagicICON("IDB_PNG8", wxBITMAP_TYPE_PNG_RESOURCE);
-	whitemagic->SetBitmap(whitemagicICON, wxRIGHT);
+	wxBitmap whitemagicICON23("IDB_WHITEMAGIC23", wxBITMAP_TYPE_PNG_RESOURCE);
+	whitemagic->SetBitmap(whitemagicICON23, wxRIGHT);
 
 	wxStaticText* lbwLABEL = new wxStaticText(this, wxID_ANY, "Available Weapons");
 	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
@@ -153,6 +160,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	column4->Add(blackmagic);
 	column4->Add(darkmagic);
 	column4->Add(whitemagic);
+
 	column5->Add(lbwLABEL);
 	column5->Add(lbw);
 

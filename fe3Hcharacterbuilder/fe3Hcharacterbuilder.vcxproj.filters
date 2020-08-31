@@ -463,28 +463,28 @@
     <None Include="RCa10748" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="source\FE3H_Axe_weaponversion.png">
+    <Image Include="source\FE3H_Axe_weaponversion23.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="source\FE3H_BlackMagic_weaponversion.png">
+    <Image Include="source\FE3H_BlackMagic_weaponversion23.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="source\FE3H_Bow_weaponversion.png">
+    <Image Include="source\FE3H_Bow_weaponversion23.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="source\FE3H_DarkMagic_weaponversion.png">
+    <Image Include="source\FE3H_DarkMagic_weaponversion23.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="source\FE3H_Gauntlets_weaponversion.png">
+    <Image Include="source\FE3H_Gauntlets_weaponversion23.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="source\FE3H_Lance_weaponversion.png">
+    <Image Include="source\FE3H_Lance_weaponversion23.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="source\FE3H_Sword_weaponversion.png">
+    <Image Include="source\FE3H_Sword_weaponversion23.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="source\FE3H_WhiteMagic_weaponversion.png">
+    <Image Include="source\FE3H_WhiteMagic_weaponversion23.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -50,21 +50,21 @@ END
 // PNG
 //
 
-IDB_PNG1                RCDATA                     "source\\FE3H_Axe_weaponversion.png"
+IDB_AXE23               RCDATA                     "source\\FE3H_Axe_weaponversion23.png"
 
-IDB_PNG2                RCDATA                     "source\\FE3H_BlackMagic_weaponversion.png"
+IDB_BLACKMAGIC23        RCDATA                     "source\\FE3H_BlackMagic_weaponversion23.png"
 
-IDB_PNG3                RCDATA                     "source\\FE3H_Bow_weaponversion.png"
+IDB_BOW23               RCDATA                     "source\\FE3H_Bow_weaponversion23.png"
 
-IDB_PNG4                RCDATA                     "source\\FE3H_DarkMagic_weaponversion.png"
+IDB_DARKMAGIC23         RCDATA                     "source\\FE3H_DarkMagic_weaponversion23.png"
 
-IDB_PNG5                RCDATA                     "source\\FE3H_Gauntlets_weaponversion.png"
+IDB_GAUNTLETS23         RCDATA                     "source\\FE3H_Gauntlets_weaponversion23.png"
 
-IDB_PNG6                RCDATA                     "source\\FE3H_Lance_weaponversion.png"
+IDB_LANCE23             RCDATA                     "source\\FE3H_Lance_weaponversion23.png"
 
-IDB_PNG7                RCDATA                     "source\\FE3H_Sword_weaponversion.png"
+IDB_SWORD23             RCDATA                     "source\\FE3H_Sword_weaponversion23.png"
 
-IDB_PNG8                RCDATA                     "source\\FE3H_WhiteMagic_weaponversion.png"
+IDB_WHITEMAGIC23        RCDATA                     "source\\FE3H_WhiteMagic_weaponversion23.png"
 
 #endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
