@@ -1,7 +1,7 @@
 #include <EquippedOptions/EquippedSkillLvlAbilities.h>
 
-EquippedSkillLvlAbilities::EquippedSkillLvlAbilities(wxWindow* parent, wxWindowID id, int x, int y) :
-	wxListBox(parent, id, wxDefaultPosition, wxSize(x, y))
+EquippedSkillLvlAbilities::EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id) :
+	wxTextCtrl(parent, id)
 {
 
 }

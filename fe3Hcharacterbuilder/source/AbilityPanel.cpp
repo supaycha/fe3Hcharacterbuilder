@@ -5,9 +5,24 @@ AbilityPanel::AbilityPanel(std::map<wxString, wxClientData*> abilitymap, wxWindo
 {
 	FilterAbilitiesAndInitCollPanes(abilitymap);
 	panelsizer = new wxBoxSizer(wxVERTICAL);
-	panelsizer->Add(cpchia);
-	panelsizer->Add(cpclia);
-	panelsizer->Add(cpsla);
+
+	wxStaticText* charinnatelabel = new wxStaticText(this, wxID_ANY, "Character Innate Ability");
+	wxStaticText* classinnatelabel = new wxStaticText(this, wxID_ANY, "Class Innate Ability");
+	wxStaticText* skilllevellabel = new wxStaticText(this, wxID_ANY, "Skill Level Ability");
+
+	panelsizer->Add(charinnatelabel);
+	panelsizer->Add(echia);
+
+	panelsizer->Add(classinnatelabel);
+	for (int i = 0; i < 3; ++i) {
+		panelsizer->Add(ecliaVector[i]);
+	}
+
+	panelsizer->Add(skilllevellabel);
+	for (int i = 0; i < 5; ++i) {
+		panelsizer->Add(eslaVector[i]);
+	}
+
 	this->SetSizer(panelsizer);
 }
 
@@ -35,9 +50,14 @@ void AbilityPanel::FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientDa
 		}
 	}
 
-	cpchia = new CollPaneCharInnateAbility(characterinnateabilities, this, (int)ID_SINGLE_CONTROL::ID_CPCHIA, "Character Innate Ability");
-	cpclia = new CollPaneClassInnateAbility(classinnateabilities, this, (int)ID_SINGLE_CONTROL::ID_CPCLIA, "Class Innate Ability");
-	cpsla = new CollPaneSkillLevelAbility(skilllevelabilities, this, (int)ID_SINGLE_CONTROL::ID_CPSLA, "Skill Level Ability");
+	echia = new EquippedCharInnateAbility(characterinnateabilities, this, (int)ID_SINGLE_CONTROL::ID_ECHIA);
+	for (int i = 0; i < 3; ++i) {
+		ecliaVector.push_back(new EquippedClassInnateAbility(classinnateabilities, this, ((int)ID_SINGLE_CONTROL::ID_ECLIA) + i));
+	}
+
+	for (int i = 0; i < 5; ++i) {
+		eslaVector.push_back(new EquippedSkillLvlAbilities(skilllevelabilities, this, ((int)ID_SINGLE_CONTROL::ID_ESLA + i)));
+	}
 
 	//for (auto ability : characterinnateabilities) {
 	//	if (ability->getSource() == currentDDCselection) {
@@ -74,11 +94,11 @@ void AbilityPanel::FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientDa
 }
 
 void AbilityPanel::ReceiveCharacterInnateExclusivity(wxString charactername) {
-	cpchia->ReceiveCharacterInnateExclusivity(charactername);
+	//cpchia->ReceiveCharacterInnateExclusivity(charactername);
 }
 
 void AbilityPanel::ReceiveClassInnateExclusivity(wxString classname) {
-	cpclia->ReceiveClassInnateExclusivity(classname);
+	//cpclia->ReceiveClassInnateExclusivity(classname);
 }
 
 void AbilityPanel::OnCollChange(wxCollapsiblePaneEvent& event) {
@@ -86,7 +106,7 @@ void AbilityPanel::OnCollChange(wxCollapsiblePaneEvent& event) {
 }
 
 wxBEGIN_EVENT_TABLE(AbilityPanel, wxPanel)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPCHIA, AbilityPanel::OnCollChange)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPCLIA, AbilityPanel::OnCollChange)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPSLA, AbilityPanel::OnCollChange)
+	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPCHIA, AbilityPanel::OnCollChange)
+	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPCLIA, AbilityPanel::OnCollChange)
+	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPSLA, AbilityPanel::OnCollChange)
 wxEND_EVENT_TABLE()

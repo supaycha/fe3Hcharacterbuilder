@@ -2,16 +2,17 @@
 #define EQUIPPEDSKILLLVLABILITIES_H
 
 #include <wx/wx.h>
+#include <map>
 #include <constants.h>
 
-class EquippedSkillLvlAbilities : public wxListBox {
+class EquippedSkillLvlAbilities : public wxTextCtrl {
 private:
 	std::vector<wxString> filteredSAnames;
 	std::vector<wxString> selectedSAnames;
 
 	//wxDECLARE_EVENT_TABLE();
 public:
-	EquippedSkillLvlAbilities(wxWindow* parent, wxWindowID id, int x, int y);
+	EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id);
 	~EquippedSkillLvlAbilities() {}
 
 	//void OnSelection(wxCommandEvent& event);

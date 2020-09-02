@@ -4,13 +4,13 @@ EquippedPanel::EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWin
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
 	panelsizer = new wxBoxSizer(wxVERTICAL);
-	cpb = new CollPaneBattalion(this, (int)ID_SINGLE_CONTROL::ID_CPB, "Battalion Stats");
-	cpw = new CollPaneWeapon(this, (int)ID_SINGLE_CONTROL::ID_CPW, "Weapon Stats");
-	cpe = new CollPaneEquipment(this, (int)ID_SINGLE_CONTROL::ID_CPE, "Equipment Stats");
+	eb = new EquippedBattalion(this, (int)ID_SINGLE_CONTROL::ID_EB);
+	ew = new EquippedWeapon(this, (int)ID_SINGLE_CONTROL::ID_EW);
+	ee = new EquippedEquipment(this, (int)ID_SINGLE_CONTROL::ID_EE);
 	ap = new AbilityPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_AP);
-	panelsizer->Add(cpb);
-	panelsizer->Add(cpw);
-	panelsizer->Add(cpe);
+	panelsizer->Add(eb);
+	panelsizer->Add(ew);
+	panelsizer->Add(ee);
 	panelsizer->Add(ap);
 	this->SetSizer(panelsizer);
 }
@@ -24,15 +24,15 @@ void EquippedPanel::ReceiveClassInnateExclusivity(wxString classname) {
 }
 
 void EquippedPanel::ReceiveLBWSelection(Stats stats) {
-	cpw->ReceiveLBWSelection(stats);
+	//cpw->ReceiveLBWSelection(stats);
 }
 
 void EquippedPanel::ReceiveLBESelection(Stats stats) {
-	cpe->ReceiveLBESelection(stats);
+	//cpe->ReceiveLBESelection(stats);
 }
 
 void EquippedPanel::ReceiveLBBSelection(Stats stats) {
-	cpb->ReceiveLBBSelection(stats);
+	//cpb->ReceiveLBBSelection(stats);
 }
 
 void EquippedPanel::OnSize(wxSizeEvent& event) {
@@ -51,7 +51,7 @@ void EquippedPanel::OnCollChange(wxCollapsiblePaneEvent& event) {
 
 wxBEGIN_EVENT_TABLE(EquippedPanel, wxPanel)
 	EVT_SIZE(EquippedPanel::OnSize)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPB, EquippedPanel::OnCollChange)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, EquippedPanel::OnCollChange)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPE, EquippedPanel::OnCollChange)
+	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPB, EquippedPanel::OnCollChange)
+	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, EquippedPanel::OnCollChange)
+	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPE, EquippedPanel::OnCollChange)
 wxEND_EVENT_TABLE()

@@ -22,5 +22,5 @@ void CollPaneSkillLevelAbility::OnCollPaneChange(wxCollapsiblePaneEvent& event) 
 }
 
 wxBEGIN_EVENT_TABLE(CollPaneSkillLevelAbility, wxCollapsiblePane)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPSLA, CollPaneSkillLevelAbility::OnCollPaneChange)
+	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPSLA, CollPaneSkillLevelAbility::OnCollPaneChange)
 wxEND_EVENT_TABLE()

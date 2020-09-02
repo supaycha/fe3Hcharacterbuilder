@@ -9,7 +9,7 @@
 #include <Unit/Ability/ClassInnateAbility.h>
 #include <AbilityList.h>
 
-class EquippedClassInnateAbility : public wxListBox {
+class EquippedClassInnateAbility : public wxTextCtrl {
 private:
 	wxString currentLBCselection;
 	std::map<wxString, wxClientData*> abilitymap;
@@ -17,7 +17,7 @@ private:
 	std::vector<wxString> filteredAAnames;
 	std::vector<wxString> selectedAAnames;
 public:
-	EquippedClassInnateAbility(wxWindow* parent, wxWindowID id, int x, int y);
+	EquippedClassInnateAbility(std::map<wxString, wxClientData*> classinnateabilities, wxWindow* parent, wxWindowID id);
 	~EquippedClassInnateAbility() {}
 	void ReceiveClassInnate(wxString classname);
 	void FilterAbilities();

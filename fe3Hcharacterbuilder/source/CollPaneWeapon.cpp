@@ -27,5 +27,5 @@ void CollPaneWeapon::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
 }
 
 wxBEGIN_EVENT_TABLE(CollPaneWeapon, wxCollapsiblePane)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, CollPaneWeapon::OnCollPaneChange)
+	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, CollPaneWeapon::OnCollPaneChange)
 wxEND_EVENT_TABLE()

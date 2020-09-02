@@ -50,5 +50,5 @@ void CollPaneCharInnateAbility::OnCollPaneChange(wxCollapsiblePaneEvent& event) 
 }
 
 wxBEGIN_EVENT_TABLE(CollPaneCharInnateAbility, wxCollapsiblePane)
-	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPCHIA, CollPaneCharInnateAbility::OnCollPaneChange)
+	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPCHIA, CollPaneCharInnateAbility::OnCollPaneChange)
 wxEND_EVENT_TABLE()

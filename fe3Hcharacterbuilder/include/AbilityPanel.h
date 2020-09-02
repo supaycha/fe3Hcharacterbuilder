@@ -11,16 +11,16 @@
 #include <Unit/Ability/CharacterInnateAbility.h>
 #include <Unit/Ability/ClassInnateAbility.h>
 #include <Unit/Ability/SkillLevelAbility.h>
-#include <CollPaneCharInnateAbility.h>
-#include <CollPaneClassInnateAbility.h>
-#include <CollPaneSkillLevelAbility.h>
+#include <EquippedOptions/EquippedCharInnateAbility.h>
+#include <EquippedOptions/EquippedClassInnateAbility.h>
+#include <EquippedOptions/EquippedSkillLvlAbilities.h>
 
 class AbilityPanel : public wxPanel {
 private:
 	wxBoxSizer* panelsizer;
-	CollPaneCharInnateAbility* cpchia;
-	CollPaneClassInnateAbility* cpclia;
-	CollPaneSkillLevelAbility* cpsla;
+	EquippedCharInnateAbility* echia;
+	std::vector<EquippedClassInnateAbility*> ecliaVector;
+	std::vector<EquippedSkillLvlAbilities*> eslaVector;
 	wxDECLARE_EVENT_TABLE();
 public:
 	AbilityPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);

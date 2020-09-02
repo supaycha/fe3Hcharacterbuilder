@@ -2,20 +2,18 @@
 #define EQUIPPEDPANEL_H
 
 #include <wx/wx.h>
-#include <wx/collpane.h>
 #include <map>
-#include <CollPaneWeapon.h>
-#include <CollPaneBattalion.h>
-#include <CollPaneEquipment.h>
-#include <GridMain/GridBattalionStats.h>
+#include <EquippedOptions/EquippedBattalion.h>
+#include <EquippedOptions/EquippedWeapon.h>
+#include <EquippedOptions/EquippedEquipment.h>
 #include <AbilityPanel.h>
 
 class EquippedPanel : public wxPanel {
 private:
 	wxBoxSizer* panelsizer;
-	CollPaneBattalion* cpb;
-	CollPaneWeapon* cpw;
-	CollPaneEquipment* cpe;
+	EquippedBattalion* eb;
+	EquippedWeapon* ew;
+	EquippedEquipment* ee;
 	AbilityPanel* ap;
 	wxDECLARE_EVENT_TABLE();
 public:

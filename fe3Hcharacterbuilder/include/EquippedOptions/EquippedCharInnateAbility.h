@@ -15,7 +15,7 @@ private:
 
 	wxString currentchianame;
 public:
-	EquippedCharInnateAbility(wxWindow* parent, wxWindowID id, int x, int y);
+	EquippedCharInnateAbility(std::map<wxString, wxClientData*> characterinnateabilities, wxWindow* parent, wxWindowID id);
 	~EquippedCharInnateAbility() {}
 	//void ReceiveExclusivity(wxString charactername);
 	//void FilterAbilities();

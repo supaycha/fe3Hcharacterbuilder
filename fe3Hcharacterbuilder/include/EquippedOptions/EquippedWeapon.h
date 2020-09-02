@@ -3,7 +3,7 @@
 
 #include <wx/wx.h>
 
-class EquippedWeapon : wxTextCtrl {
+class EquippedWeapon : public wxTextCtrl {
 private:
 public:
 	EquippedWeapon(wxWindow* parent, wxWindowID id);

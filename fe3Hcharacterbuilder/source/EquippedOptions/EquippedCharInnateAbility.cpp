@@ -1,6 +1,6 @@
 #include <EquippedOptions/EquippedCharInnateAbility.h>
 
-EquippedCharInnateAbility::EquippedCharInnateAbility(wxWindow* parent, wxWindowID id, int x, int y) :
+EquippedCharInnateAbility::EquippedCharInnateAbility(std::map<wxString, wxClientData*> characterinnateabilities, wxWindow* parent, wxWindowID id) :
 	wxTextCtrl(parent, id)
 {
 	//std::vector<wxString> abilitynames;

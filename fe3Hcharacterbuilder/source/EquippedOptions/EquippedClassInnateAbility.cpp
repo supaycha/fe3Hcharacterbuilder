@@ -1,7 +1,7 @@
 #include <EquippedOptions/EquippedClassInnateAbility.h>
 
-EquippedClassInnateAbility::EquippedClassInnateAbility(wxWindow* parent, wxWindowID id, int x, int y) :
-	wxListBox(parent, id, wxDefaultPosition, wxSize(x, y))
+EquippedClassInnateAbility::EquippedClassInnateAbility(std::map<wxString, wxClientData*> classinnateabilities, wxWindow* parent, wxWindowID id) :
+	wxTextCtrl(parent, id)
 {
 	std::vector<wxString> abilitynames;
 	std::vector<wxClientData*> abilitydata;
@@ -83,7 +83,7 @@ void EquippedClassInnateAbility::ReceiveAbilityFiltration(std::vector<wxString> 
 //}
 
 void EquippedClassInnateAbility::repopulate() {
-	this->Set(ToArrayString(filteredAAnames));
+	//this->Set(ToArrayString(filteredAAnames));
 	//reselection();
 }
 
