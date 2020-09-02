@@ -15,6 +15,10 @@ CollPaneBattalion::CollPaneBattalion(wxWindow* parent, wxWindowID id, const wxSt
 	//this->SetSizer(mainsizer);
 }
 
+void CollPaneBattalion::ReceiveLBBSelection(Stats stats) {
+	gbs->ReceiveLBBSelection(stats);
+}
+
 void CollPaneBattalion::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
 	
 	//this->GetParent()->Layout();

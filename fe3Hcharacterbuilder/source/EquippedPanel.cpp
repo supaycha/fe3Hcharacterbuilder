@@ -27,6 +27,14 @@ void EquippedPanel::ReceiveLBWSelection(Stats stats) {
 	cpw->ReceiveLBWSelection(stats);
 }
 
+void EquippedPanel::ReceiveLBESelection(Stats stats) {
+	cpe->ReceiveLBESelection(stats);
+}
+
+void EquippedPanel::ReceiveLBBSelection(Stats stats) {
+	cpb->ReceiveLBBSelection(stats);
+}
+
 void EquippedPanel::OnSize(wxSizeEvent& event) {
 	if (ap) {
 		ap->Fit();

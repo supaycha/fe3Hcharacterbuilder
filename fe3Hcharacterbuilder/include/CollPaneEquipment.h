@@ -12,6 +12,8 @@ private:
 public:
 	CollPaneEquipment(wxWindow* parent, wxWindowID id, const wxString& label);
 	~CollPaneEquipment() {}
+
+	void ReceiveLBESelection(Stats stats);
 	void OnCollPaneChange(wxCollapsiblePaneEvent& event);
 };
 

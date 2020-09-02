@@ -13,7 +13,7 @@ public:
 	WeaponManager(std::map<wxString, wxClientData*> weaponmap, wxWindow* parent, wxWindowID id);
 	~WeaponManager() {}
 
-	void ReceiveExclusivity(wxString charactername);
+	void ReceiveWeaponExclusivity(wxString charactername);
 	void ReceiveSLInfo(SLPACKAGE* slpackage);
 };
 

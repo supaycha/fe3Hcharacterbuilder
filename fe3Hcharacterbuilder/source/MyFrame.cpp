@@ -12,7 +12,6 @@ wxDEFINE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBW_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBE_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBB_SELECTION, wxCommandEvent);
-
 wxDEFINE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
 wxDEFINE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
@@ -87,13 +86,17 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 		}
 	}
 
+	for (unsigned int i = 0; i < alist.getSize(); ++i) {
+		abilitynames.push_back(alist[i]->getName());
+		abilitydata.push_back(alist[i]->clone());
+	}
+
 	for (int i = 0; i < (int)VARIOUS_SIZE::BATTALION_DATA_SIZE; ++i) {
 		battalionmap.emplace(battalionnames[i], battaliondata[i]);
 	}
 
 	for (int i = 0; i < (int)VARIOUS_SIZE::WEAPON_DATA_SIZE; ++i) {
-		auto happened = weaponmap.emplace(weaponnames[i], weapondata[i]);
-		int k = 9;
+		weaponmap.emplace(weaponnames[i], weapondata[i]);
 	}
 
 	for (int i = 0; i < (int)VARIOUS_SIZE::CLASS_DATA_SIZE; ++i) {
@@ -102,12 +105,6 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	for (int i = 0; i < (int)VARIOUS_SIZE::EQUIPMENT_DATA_SIZE; ++i) {
 		equipmap.emplace(equipnames[i], equipdata[i]);
-	}
-
-
-	for (unsigned int i = 0; i < alist.getSize(); ++i) {
-		abilitynames.push_back(alist[i]->getName());
-		abilitydata.push_back(alist[i]->clone());
 	}
 
 	for (unsigned int i = 0; i < alist.getSize(); ++i) {
@@ -129,17 +126,13 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	wxStaticText* lbeLABEL = new wxStaticText(this, wxID_ANY, "Available Equipment");
 	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 
-
 	column1->Add(mt);	
 	column1->Add(gts);
-
 	column2->Add(ep);	
-
 	column3->AddStretchSpacer();
 	column4->Add(slp);
 	column5->Add(lbeLABEL);
 	column5->Add(lbe);
-
 	framesizer->Add(column1);
 	framesizer->Add(column2);
 	framesizer->Add(column3, 1, wxEXPAND, 0);
@@ -153,7 +146,6 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, (int)ID_MISC::ID_MT);
-
 	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
 	Bind(TRANSMIT_LBE_SELECTION, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
 	Bind(TRANSMIT_LBB_SELECTION, &MyFrame::BounceLBBSelection, this, (int)ID_SINGLE_CONTROL::ID_LBB);
@@ -166,9 +158,9 @@ void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repit
 	Character* tempcharacter = dynamic_cast<Character*>(repititionfromMT.GetClientObject());
 	wxString charactername = tempcharacter->getName();
 
-	slp->ReceiveExclusivity(charactername);
-	lbe->ReceiveExclusivity(charactername);
+	slp->ReceiveWeaponExclusivity(charactername);
 	ep->ReceiveCharacterInnateExclusivity(charactername);
+	lbe->ReceiveEquipmentExclusivity(charactername);
 }
 
 void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {
@@ -179,7 +171,7 @@ void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repit
 
 void MyFrame::BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT) {
 	Stats* tempGMTstats = dynamic_cast<Stats*>(repititionfromMT.GetClientObject());
-	//gts->ReceiveGMTStats(*tempGMTstats);
+	gts->ReceiveGMTStats(*tempGMTstats);
 }
 
 void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
@@ -190,19 +182,14 @@ void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
 
 void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 	Equipment* tempequipment = dynamic_cast<Equipment*>(selection.GetClientObject());
-	//std::vector<Stat> tempstats((int)VARIOUS_SIZE::TOTAL_STATS_SIZE, Stat(L"0"));
 	Stats tempstats = tempequipment->getStats();
-	//tempstats[6] = selectionstats[0].getText();
-	//tempstats[7] = selectionstats[1].getText();
-	//Stats transferthis{ tempstats };
-
-	//ges->ReceiveLBESelection(tempstats);
+	ep->ReceiveLBESelection(tempstats);
 }
 
 void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
 	Battalion* tempbattalion = dynamic_cast<Battalion*>(selection.GetClientObject());
 	Stats tempstats = tempbattalion->getStats();
-	//gbs->ReceiveLBBSelection(tempstats);
+	ep->ReceiveLBBSelection(tempstats);
 }
 
 void MyFrame::BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS) {

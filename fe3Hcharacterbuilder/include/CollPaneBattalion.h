@@ -14,6 +14,7 @@ public:
 	CollPaneBattalion(wxWindow* parent, wxWindowID id, const wxString& label);
 	~CollPaneBattalion() {}
 
+	void ReceiveLBBSelection(Stats stats);
 	void OnCollPaneChange(wxCollapsiblePaneEvent& event);
 };
 

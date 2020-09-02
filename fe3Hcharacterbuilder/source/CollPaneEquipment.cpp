@@ -13,6 +13,10 @@ CollPaneEquipment::CollPaneEquipment(wxWindow* parent, wxWindowID id, const wxSt
 	equipmentsizer->SetSizeHints(equipmentwindow);
 }
 
+void CollPaneEquipment::ReceiveLBESelection(Stats stats) {
+	ges->ReceiveLBESelection(stats);
+}
+
 void CollPaneEquipment::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
 	event.Skip();
 }

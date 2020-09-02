@@ -34,8 +34,8 @@ SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, st
 	Bind(TRANSMIT_SL_SELECTION, &SkillLevelPanel::BounceSLInfo, this, (int)DD_CONTROL::ID_DDSWORD, (int)DD_CONTROL::ID_DDFLYING);
 }
 
-void SkillLevelPanel::ReceiveExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
-	wm->ReceiveExclusivity(charactername);
+void SkillLevelPanel::ReceiveWeaponExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
+	wm->ReceiveWeaponExclusivity(charactername);
 }
 //move entire bouncing of slpackage into skilllevelpanel.h from myframe.h
 //it would bounce from skilllevelmanager to this function, renamed bounce slinfo

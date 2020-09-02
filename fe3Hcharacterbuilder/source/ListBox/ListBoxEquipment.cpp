@@ -28,7 +28,7 @@ void ListBoxEquipment::OnNewSelection(wxCommandEvent& selection) {
 	ProcessEvent(event);
 }
 
-void ListBoxEquipment::ReceiveExclusivity(wxString charactername) {
+void ListBoxEquipment::ReceiveEquipmentExclusivity(wxString charactername) {
 	currentDDCSelection = charactername;
 	Freeze();
 	repopulate();

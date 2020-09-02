@@ -23,6 +23,8 @@ public:
 	~EquippedPanel() {}
 
 	void ReceiveLBWSelection(Stats stats);
+	void ReceiveLBESelection(Stats stats);
+	void ReceiveLBBSelection(Stats stats);
 	void ReceiveCharacterInnateExclusivity(wxString charactername);
 	void ReceiveClassInnateExclusivity(wxString classname);
 	void OnSize(wxSizeEvent& event);

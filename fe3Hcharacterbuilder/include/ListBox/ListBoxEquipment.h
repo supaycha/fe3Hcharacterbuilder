@@ -21,7 +21,7 @@ public:
 	~ListBoxEquipment() {}
 
 	void OnNewSelection(wxCommandEvent& selection);
-	void ReceiveExclusivity(wxString charactername);
+	void ReceiveEquipmentExclusivity(wxString charactername);
 
 	void repopulate();
 	void DetermineSelectionStatus();
