@@ -11,11 +11,11 @@ void DropDownSkillLevel::initpopulate() {
 	std::vector<wxString> skillLVLnames{ "E", "E+", "D", "D+", "C", "C+", "B", "B+", "A", "A+", "S", "S+" };
 	std::vector<wxClientData*> skillLVLdata{ new SLPACKAGE{SL::E}, new SLPACKAGE(SL::EPLUS), new SLPACKAGE(SL::D), new SLPACKAGE(SL::DPLUS), new SLPACKAGE(SL::C), new SLPACKAGE(SL::CPLUS),
 										  new SLPACKAGE(SL::B), new SLPACKAGE(SL::BPLUS), new SLPACKAGE(SL::A), new SLPACKAGE(SL::APLUS), new SLPACKAGE(SL::S), new SLPACKAGE(SL::SPLUS) };
-	int offset = 50;
+	int offset = 70;
 
 	for (int i = 0; i < (int)VARIOUS_SIZE::SL_DATA_SIZE; ++i) {
 		SLPACKAGE* temp = dynamic_cast<SLPACKAGE*>(skillLVLdata[i]);
-		temp->index = (GetId() - 50);
+		temp->index = (GetId() - offset);
 	}
 
 	this->Append(ToArrayString(skillLVLnames), ToArrayData(skillLVLdata));

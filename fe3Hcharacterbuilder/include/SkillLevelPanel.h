@@ -20,6 +20,9 @@ private:
 public:
 	SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, wxWindow* parent, wxWindowID id);
 	~SkillLevelPanel() {}
+
+	void ReceiveExclusivity(wxString charactername);
+	void BounceSLInfo(wxCommandEvent& eventfromwho);
 };
 
 #endif

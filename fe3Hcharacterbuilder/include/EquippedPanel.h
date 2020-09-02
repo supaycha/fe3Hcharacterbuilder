@@ -3,6 +3,7 @@
 
 #include <wx/wx.h>
 #include <wx/collpane.h>
+#include <map>
 #include <CollPaneWeapon.h>
 #include <CollPaneBattalion.h>
 #include <CollPaneEquipment.h>
@@ -18,9 +19,12 @@ private:
 	AbilityPanel* ap;
 	wxDECLARE_EVENT_TABLE();
 public:
-	EquippedPanel(wxWindow* parent, wxWindowID id);
+	EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
 	~EquippedPanel() {}
 
+	void ReceiveLBWSelection(Stats stats);
+	void ReceiveCharacterInnateExclusivity(wxString charactername);
+	void ReceiveClassInnateExclusivity(wxString classname);
 	void OnSize(wxSizeEvent& event);
 	void OnCollChange(wxCollapsiblePaneEvent& event);
 };

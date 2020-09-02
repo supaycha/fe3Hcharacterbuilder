@@ -3,6 +3,7 @@
 
 #include <wx/wx.h>
 #include <wx/collpane.h>
+#include <map>
 #include <GridSkillLevelAbilityStats.h>
 
 class CollPaneSkillLevelAbility : public wxCollapsiblePane {
@@ -11,7 +12,7 @@ private:
 	wxBoxSizer* mainsizer;
 	wxDECLARE_EVENT_TABLE();
 public:
-	CollPaneSkillLevelAbility(wxWindow* parent, wxWindowID id, const wxString& label);
+	CollPaneSkillLevelAbility(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label);
 	~CollPaneSkillLevelAbility() {}
 	void OnCollPaneChange(wxCollapsiblePaneEvent& event);
 };

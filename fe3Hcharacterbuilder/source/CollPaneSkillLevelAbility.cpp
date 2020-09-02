@@ -1,6 +1,6 @@
 #include "CollPaneSkillLevelAbility.h"
 
-CollPaneSkillLevelAbility::CollPaneSkillLevelAbility(wxWindow* parent, wxWindowID id, const wxString& label) :
+CollPaneSkillLevelAbility::CollPaneSkillLevelAbility(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label) :
 	wxCollapsiblePane(parent, id, label, wxDefaultPosition, wxSize(-1, -1))
 {
 	/*mainsizer = new wxBoxSizer(wxVERTICAL);*/

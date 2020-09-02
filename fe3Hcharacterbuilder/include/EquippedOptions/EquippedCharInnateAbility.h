@@ -13,14 +13,14 @@ private:
 	std::map<wxString, wxClientData*> abilitymap;
 	wxString currentDDCselection;
 
-	wxString abilityname;
+	wxString currentchianame;
 public:
 	EquippedCharInnateAbility(wxWindow* parent, wxWindowID id, int x, int y);
 	~EquippedCharInnateAbility() {}
 	//void ReceiveExclusivity(wxString charactername);
 	//void FilterAbilities();
-	//void ReceiveAbilityFiltration(std::vector<wxString> dirtynames);
-	//void repopulate();
+	void ReceiveAbilityName(wxString abilityname);
+	void repopulate();
 	//void reselection();
 	//wxArrayString ToArrayString(std::vector<wxString> names);
 };

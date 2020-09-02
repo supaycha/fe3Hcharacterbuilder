@@ -16,6 +16,10 @@ CollPaneWeapon::CollPaneWeapon(wxWindow* parent, wxWindowID id, const wxString& 
 	//this->SetSizer(mainsizer);
 }
 
+void CollPaneWeapon::ReceiveLBWSelection(Stats stats) {
+	gws->ReceiveLBWSelection(stats);
+}
+
 void CollPaneWeapon::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
 	//SendSizeEventToParent();
 	//this->GetParent()->Layout();

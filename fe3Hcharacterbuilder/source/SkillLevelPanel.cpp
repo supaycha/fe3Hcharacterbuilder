@@ -1,5 +1,7 @@
 #include "SkillLevelPanel.h"
 
+wxDEFINE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
+
 SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id)
 {
@@ -28,4 +30,33 @@ SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, st
 	slpSizer->Add(column3);
 	SetSizerAndFit(slpSizer);
 	//this->Layout();
+
+	Bind(TRANSMIT_SL_SELECTION, &SkillLevelPanel::BounceSLInfo, this, (int)DD_CONTROL::ID_DDSWORD, (int)DD_CONTROL::ID_DDFLYING);
+}
+
+void SkillLevelPanel::ReceiveExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
+	wm->ReceiveExclusivity(charactername);
+}
+//move entire bouncing of slpackage into skilllevelpanel.h from myframe.h
+//it would bounce from skilllevelmanager to this function, renamed bounce slinfo
+void SkillLevelPanel::BounceSLInfo(wxCommandEvent& eventfromwho) {
+	int idofreceiver = eventfromwho.GetInt();
+	switch (idofreceiver)
+	{
+		case (int)ID_SINGLE_CONTROL::ID_LBW: {
+			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
+			wm->ReceiveSLInfo(slpackage);
+			break;
+		}
+		case (int)ID_SINGLE_CONTROL::ID_LBASLA: {
+			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
+			lbasla->ReceiveSLInfo(slpackage);
+			break;
+		}
+		case (int)ID_SINGLE_CONTROL::ID_LBB: {
+			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
+			lbb->ReceiveSLInfo(slpackage);
+			break;
+		}
+	}
 }

@@ -55,3 +55,11 @@ WeaponManager::WeaponManager(std::map<wxString, wxClientData*> weaponmap, wxWind
 
 	this->Layout();
 }
+
+void WeaponManager::ReceiveExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
+	lbw->ReceiveExclusivity(charactername);
+}
+
+void WeaponManager::ReceiveSLInfo(SLPACKAGE* slpackage) {
+	lbw->ReceiveSLInfo(slpackage);
+}

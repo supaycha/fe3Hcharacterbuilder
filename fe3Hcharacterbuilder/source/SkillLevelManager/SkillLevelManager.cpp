@@ -34,10 +34,10 @@ void SkillLevelManager::OnNewSelection(wxCommandEvent& uevent) {
 	eventforlbw.SetInt((int)ID_SINGLE_CONTROL::ID_LBW);
 	ProcessEvent(eventforlbw);
 
-	wxCommandEvent eventforam(TRANSMIT_SL_SELECTION, uevent.GetId());
-	eventforam.SetClientObject(dynamic_cast<wxClientData*>(temp));
-	eventforam.SetInt((int)ID_SINGLE_CONTROL::ID_LBASLA);
-	ProcessEvent(eventforam);
+	wxCommandEvent eventforlbasla(TRANSMIT_SL_SELECTION, uevent.GetId());
+	eventforlbasla.SetClientObject(dynamic_cast<wxClientData*>(temp));
+	eventforlbasla.SetInt((int)ID_SINGLE_CONTROL::ID_LBASLA);
+	ProcessEvent(eventforlbasla);
 
 	wxCommandEvent eventforlbb(TRANSMIT_SL_SELECTION, uevent.GetId());
 	eventforlbb.SetClientObject(dynamic_cast<wxClientData*>(temp));

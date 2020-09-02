@@ -16,12 +16,6 @@ EquippedCharInnateAbility::EquippedCharInnateAbility(wxWindow* parent, wxWindowI
 	//	abilitymap.emplace(abilitynames[i], abilitydata[i]);
 	//}
 }
-
-//void EquippedCharInnateAbility::ReceiveExclusivity(wxString charactername) {
-//	currentDDCselection = charactername;
-//	FilterAbilities();
-//}
-//
 //void EquippedCharInnateAbility::FilterAbilities() {
 //	std::vector<CharacterInnateAbility*> characterinnateabilities;
 //
@@ -45,31 +39,19 @@ EquippedCharInnateAbility::EquippedCharInnateAbility(wxWindow* parent, wxWindowI
 //
 //}
 
-//void EquippedCharInnateAbility::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {
-//	filteredAAnames = dirtynames;
-//
-//	std::vector<wxString> tempselected;
-//
-//	for (auto newname : dirtynames) {
-//		for (auto oldname : selectedAAnames) {
-//			if (newname == oldname) {
-//				tempselected.push_back(newname);
-//				break;
-//			}
-//		}
-//	}
-//	selectedAAnames = tempselected;
-//
-//	Freeze();
-//	repopulate();
-//	Thaw();
-//}
+void EquippedCharInnateAbility::ReceiveAbilityName(wxString abilityname) {
+	currentchianame = abilityname;
 
-//void EquippedCharInnateAbility::repopulate() {
-//	this->SetLabelText(abilityname);
-//
-//	//reselection();
-//}
+	Freeze();
+	repopulate();
+	Thaw();
+}
+
+void EquippedCharInnateAbility::repopulate() {
+	this->SetLabelText(currentchianame);
+
+	//reselection();
+}
 
 //void EquippedCharInnateAbility::reselection() {
 //	for (auto selection : selectedAAnames) {

@@ -250,9 +250,6 @@
     <ClInclude Include="include\CollPaneEquipment.h">
       <Filter>EquippedPanel\Equipment</Filter>
     </ClInclude>
-    <ClInclude Include="include\EquippedOptions\EquippedCharInnateAbility.h">
-      <Filter>EquippedPanel\Ability\CHIA</Filter>
-    </ClInclude>
     <ClInclude Include="include\GridCharInnateAbilityStats.h">
       <Filter>EquippedPanel\Ability\CHIA</Filter>
     </ClInclude>
@@ -321,6 +318,9 @@
     </ClInclude>
     <ClInclude Include="include\SkillLevelPanel.h">
       <Filter>AVAILABLE OPTIONS\SkillLevelPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EquippedOptions\EquippedCharInnateAbility.h">
+      <Filter>TO BE DEPRECATED</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -414,9 +414,6 @@
     <ClCompile Include="source\CollPaneEquipment.cpp">
       <Filter>EquippedPanel\Equipment</Filter>
     </ClCompile>
-    <ClCompile Include="source\EquippedOptions\EquippedCharInnateAbility.cpp">
-      <Filter>EquippedPanel\Ability\CHIA</Filter>
-    </ClCompile>
     <ClCompile Include="source\GridCharInnateAbilityStats.cpp">
       <Filter>EquippedPanel\Ability\CHIA</Filter>
     </ClCompile>
@@ -482,6 +479,9 @@
     </ClCompile>
     <ClCompile Include="source\SkillLevelPanel.cpp">
       <Filter>AVAILABLE OPTIONS\SkillLevelPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EquippedOptions\EquippedCharInnateAbility.cpp">
+      <Filter>TO BE DEPRECATED</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
