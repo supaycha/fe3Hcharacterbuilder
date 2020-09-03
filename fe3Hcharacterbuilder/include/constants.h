@@ -126,8 +126,8 @@ enum class SL : int {
 enum class WEAPONTYPE : int {
 	BLANK = -1, 
 	SWORD = 0, 
-	LANCE = 1, 
-	AXE = 2, 
+	AXE = 1, 
+	LANCE = 2, 
 	BOW = 3, 
 	GAUNTLETS = 4, 
 	REASON = 5, 
@@ -152,6 +152,13 @@ struct SLPACKAGE : public wxClientData {
 	int index;
 
 	SLPACKAGE(SL uSL) : sl(uSL), index{}, slstring{} {}
+};
+
+struct WTPACKAGE : public wxClientData {
+	bool isNotIncluded;
+	int index;
+
+	WTPACKAGE(bool inclusion, int id) : isNotIncluded(inclusion), index{id} {}
 };
 
 #endif

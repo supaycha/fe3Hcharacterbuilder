@@ -4,6 +4,10 @@ ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxW
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
+	for (int i = 0; i < 8; ++i) {
+		WTPACKAGE transfer{ false, i };
+		WTfilter.push_back(transfer);
+	}
 
 	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 	weaponmap = uweaponmap;
@@ -45,7 +49,15 @@ void ListBoxWeapons::ReceiveSLInfo(SLPACKAGE* slpackage) {
 	Thaw();
 }
 
+void ListBoxWeapons::ReceiveWTInfo(WTPACKAGE package) {
+	WTfilter[package.index].isNotIncluded = package.isNotIncluded;
+	Freeze();
+	repopulate();
+	Thaw();
+}
+
 void ListBoxWeapons::repopulate() {
+
 	std::vector<Weapon*> exclusiveweapons;
 	std::vector<Weapon*> generalweapons;
 	std::vector<wxString> weaponnames;
@@ -78,17 +90,19 @@ void ListBoxWeapons::repopulate() {
 		}
 	}
 
-	for (auto weapon : generalweapons) {
-		SL weaponSL = weapon->getSL();
+	for (unsigned int i = 0; i < generalweapons.size(); ++i) {
+		SL weaponSL = generalweapons[i]->getSL();
 		if ((int)weaponSL == -1) {
-			weaponnames.push_back(weapon->getName());
-			weapondata.push_back(dynamic_cast<wxClientData*>(weapon));
+			weaponnames.push_back(generalweapons[i]->getName());
+			weapondata.push_back(dynamic_cast<wxClientData*>(generalweapons[i]));
 		}
-
+		else if (WTfilter[(int)generalweapons[i]->getType()].isNotIncluded){
+			continue;
+		}
 		else {
-			if (weaponSL <= SLfilter[(int)weapon->getType()]) {
-				weaponnames.push_back(weapon->getName());
-				weapondata.push_back(dynamic_cast<wxClientData*>(weapon));
+			if (weaponSL <= SLfilter[(int)generalweapons[i]->getType()]) {
+				weaponnames.push_back(generalweapons[i]->getName());
+				weapondata.push_back(dynamic_cast<wxClientData*>(generalweapons[i]));
 			}
 		}
 	}

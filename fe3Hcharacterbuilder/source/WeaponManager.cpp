@@ -6,12 +6,12 @@ WeaponManager::WeaponManager(std::map<wxString, wxClientData*> weaponmap, wxWind
 	mainsizer = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer* buttonsizer = new wxBoxSizer(wxVERTICAL);
 	wxBoxSizer* lbwsizer = new wxBoxSizer(wxVERTICAL);
-
+	const wxString buffer;
 	wxArrayString emptybuffer;
 	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 260, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
 
 	for (int i = 0; i < (int)VARIOUS_SIZE::WEAPON_TYPE_SIZE; ++i) {
-		weapontypes.push_back(new wxButton(this, ((int)WT_CONTROL::ID_BSWORD) + i));
+		weapontypes.push_back(new wxToggleButton(this, ((int)WT_CONTROL::ID_BSWORD) + i, buffer));
 	}
 
 	wxBitmap swordICON23("IDB_SWORD23", wxBITMAP_TYPE_PNG_RESOURCE);
@@ -56,6 +56,77 @@ WeaponManager::WeaponManager(std::map<wxString, wxClientData*> weaponmap, wxWind
 	this->Layout();
 }
 
+void WeaponManager::OnNewSelection(wxCommandEvent& eventfromwho) {
+	int offset = 1;
+	int id = eventfromwho.GetId();
+
+	int trueid = id - offset;
+	bool isNotIncluded = weapontypes[trueid]->GetValue();
+
+	WTPACKAGE package{ isNotIncluded, trueid };
+	lbw->ReceiveWTInfo(package);
+	//switch (id) {
+	//	case (int)WT_CONTROL::ID_BSWORD: {
+	//		bool isPressed = weapontypes[id - offset]->GetValue();
+	//		int templevel = transmission.GetInt();
+	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN1);
+
+	//		break;
+	//	}
+
+	//	case (int)WT_CONTROL::ID_BLANCE: {
+	//		int templevel = transmission.GetInt();
+	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
+
+	//		break;
+	//	}
+
+	//	case (int)WT_CONTROL::ID_BAXE: {
+	//		int templevel = transmission.GetInt();
+	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
+
+	//		break;
+	//	}
+
+	//	case (int)WT_CONTROL::ID_BBOW: {
+	//		int templevel = transmission.GetInt();
+	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
+
+	//		break;
+	//	}
+
+	//	case (int)WT_CONTROL::ID_BGAUNTLETS: {
+	//		int templevel = transmission.GetInt();
+	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
+
+	//		break;
+	//	}
+
+	//	case (int)WT_CONTROL::ID_BBLACKMAGIC: {
+	//		int templevel = transmission.GetInt();
+	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
+
+	//		break;
+	//	}
+
+	//	case (int)WT_CONTROL::ID_BDARKMAGIC: {
+	//		int templevel = transmission.GetInt();
+	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
+
+	//		break;
+	//	}
+
+	//	case (int)WT_CONTROL::ID_BWHITEMAGIC: {
+	//		int templevel = transmission.GetInt();
+	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
+
+	//		break;
+	//	}
+
+	//}
+
+}
+
 void WeaponManager::ReceiveWeaponExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
 	lbw->ReceiveExclusivity(charactername);
 }
@@ -63,3 +134,14 @@ void WeaponManager::ReceiveWeaponExclusivity(wxString charactername) {	//forward
 void WeaponManager::ReceiveSLInfo(SLPACKAGE* slpackage) {
 	lbw->ReceiveSLInfo(slpackage);
 }
+
+wxBEGIN_EVENT_TABLE(WeaponManager, wxPanel)
+	EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BSWORD, WeaponManager::OnNewSelection)
+	EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BLANCE, WeaponManager::OnNewSelection)
+	EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BAXE, WeaponManager::OnNewSelection)
+	EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BBOW, WeaponManager::OnNewSelection)
+	EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BGAUNTLETS, WeaponManager::OnNewSelection)
+	EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BBLACKMAGIC, WeaponManager::OnNewSelection)
+	EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BDARKMAGIC, WeaponManager::OnNewSelection)
+	EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BWHITEMAGIC, WeaponManager::OnNewSelection)
+wxEND_EVENT_TABLE()

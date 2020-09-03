@@ -16,7 +16,7 @@ private:
 	wxString currentDDCselection;
 	wxString mostrecentLBWselection;
 	std::vector<SL> SLfilter{ 7, SL::E };
-
+	std::vector<WTPACKAGE> WTfilter{};
 	wxDECLARE_EVENT_TABLE();
 public:
 	ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
@@ -25,7 +25,7 @@ public:
 	void OnNewSelection(wxCommandEvent& selection);
 	void ReceiveExclusivity(wxString charactername);
 	void ReceiveSLInfo(SLPACKAGE* slpackage);
-
+	void ReceiveWTInfo(WTPACKAGE package);
 	void repopulate();
 	void DetermineSelectionStatus();
 	bool CompareAllStrings();
