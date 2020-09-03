@@ -31,11 +31,11 @@ void AbilityPanel::FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientDa
 	//std::vector<ClassInnateAbility*> classinnateabilities;
 	//std::vector<SkillLevelAbility*> skilllevelabilities;
 	std::map<wxString, wxClientData*> characterinnateabilities;
-	std::map<wxString, wxClientData*> classinnateabilities;
 	std::map<wxString, wxClientData*> skilllevelabilities;
 	//std::vector<ClassMasteryAbility*> exclusiveweapons;
 
 	std::vector<wxString> abilitynames;
+	const wxString buffer;
 
 	for (auto element : abilitymap) {
 		Ability* tempability = dynamic_cast<Ability*>(element.second)->clone();
@@ -50,13 +50,13 @@ void AbilityPanel::FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientDa
 		}
 	}
 
-	echia = new EquippedCharInnateAbility(characterinnateabilities, this, (int)ID_SINGLE_CONTROL::ID_ECHIA);
+	echia = new EquippedCharInnateAbility(characterinnateabilities, this, (int)ID_SINGLE_CONTROL::ID_ECHIA, buffer);
 	for (int i = 0; i < 3; ++i) {
-		ecliaVector.push_back(new EquippedClassInnateAbility(classinnateabilities, this, ((int)ID_SINGLE_CONTROL::ID_ECLIA) + i));
+		ecliaVector.push_back(new EquippedClassInnateAbility(classinnateabilities, this, ((int)ID_SINGLE_CONTROL::ID_ECLIA + i), buffer));
 	}
 
 	for (int i = 0; i < 5; ++i) {
-		eslaVector.push_back(new EquippedSkillLvlAbilities(skilllevelabilities, this, ((int)ID_SINGLE_CONTROL::ID_ESLA + i)));
+		eslaVector.push_back(new EquippedSkillLvlAbilities(skilllevelabilities, this, ((int)ID_SINGLE_CONTROL::ID_ESLA + i), buffer));
 	}
 
 	//for (auto ability : characterinnateabilities) {
@@ -94,15 +94,47 @@ void AbilityPanel::FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientDa
 }
 
 void AbilityPanel::ReceiveCharacterInnateExclusivity(wxString charactername) {
-	//cpchia->ReceiveCharacterInnateExclusivity(charactername);
+	echia->ReceiveCharacterInnateExclusivity(charactername);
 }
 
 void AbilityPanel::ReceiveClassInnateExclusivity(wxString classname) {
-	//cpclia->ReceiveClassInnateExclusivity(classname);
+	currentLBCselection = classname;
+	this->CreateCLIAList();
 }
 
-void AbilityPanel::OnCollChange(wxCollapsiblePaneEvent& event) {
-	SendSizeEventToParent();
+void AbilityPanel::CreateCLIAList() {
+	std::wstring abilityname;
+	abilitynames.clear();
+	for (auto element : classinnateabilities) {
+		ClassInnateAbility* tempability = dynamic_cast<ClassInnateAbility*>(element.second)->clone();
+		std::wstring abilityns = tempability->getSource(), buffer;
+		std::wstringstream stream(abilityns);
+		std::vector<std::wstring> namesfromstream;
+	
+		while (std::getline(stream, buffer, L',')) {
+			namesfromstream.push_back(buffer);
+		}
+	
+		for (auto possiblematch : namesfromstream) {
+			if (possiblematch == currentLBCselection) {
+				abilitynames.push_back(tempability->getName());
+			}
+		}
+	}
+
+	while (abilitynames.size() < 3) {
+		abilitynames.push_back("---");
+	}
+
+	PopulateECLIAVector();
+}
+
+void AbilityPanel::PopulateECLIAVector() {
+	if (!abilitynames.empty()) {
+		for (unsigned i = 0; i < abilitynames.size(); ++i){
+			ecliaVector[i]->ReceiveClassInnateAbility(abilitynames[i]);
+		}
+	}
 }
 
 wxBEGIN_EVENT_TABLE(AbilityPanel, wxPanel)

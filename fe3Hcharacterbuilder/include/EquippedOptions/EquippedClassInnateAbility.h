@@ -7,25 +7,17 @@
 #include <Unit/Unit.h>
 #include <Unit/Ability/Ability.h>
 #include <Unit/Ability/ClassInnateAbility.h>
-#include <AbilityList.h>
 
-class EquippedClassInnateAbility : public wxTextCtrl {
+class EquippedClassInnateAbility : public wxStaticText {
 private:
 	wxString currentLBCselection;
-	std::map<wxString, wxClientData*> abilitymap;
-
-	std::vector<wxString> filteredAAnames;
-	std::vector<wxString> selectedAAnames;
+	std::vector<wxString> abilitynames;
 public:
-	EquippedClassInnateAbility(std::map<wxString, wxClientData*> classinnateabilities, wxWindow* parent, wxWindowID id);
+	EquippedClassInnateAbility(std::map<wxString, wxClientData*> classinnateabilities, wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedClassInnateAbility() {}
-	void ReceiveClassInnate(wxString classname);
-	void FilterAbilities();
-	void ReceiveAbilityFiltration(std::vector<wxString> dirtynames);
-	//void ReceiveSelectionsfromBounceL(std::vector<wxString> uSelections);
+
+	void ReceiveClassInnateAbility(wxString classname);
 	void repopulate();
-	//void reselection();
-	wxArrayString ToArrayString(std::vector<wxString> names);
 };
 
 #endif

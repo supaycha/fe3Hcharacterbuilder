@@ -21,17 +21,24 @@ private:
 	EquippedCharInnateAbility* echia;
 	std::vector<EquippedClassInnateAbility*> ecliaVector;
 	std::vector<EquippedSkillLvlAbilities*> eslaVector;
+
+	std::map<wxString, wxClientData*> classinnateabilities;
+	wxString currentLBCselection;
+	std::vector<wxString> abilitynames;
+
 	wxDECLARE_EVENT_TABLE();
 public:
 	AbilityPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
 	~AbilityPanel() {}
 
 	void ReceiveCharacterInnateExclusivity(wxString charactername);
-	void ReceiveClassInnateExclusivity(wxString classname);
+	
+	void ReceiveClassInnateExclusivity(wxString classname);	
+	void CreateCLIAList();
 
+	void PopulateECLIAVector();
 	void FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientData*> abilitymap);
 
-	void OnCollChange(wxCollapsiblePaneEvent& event);
 };
 
 #endif

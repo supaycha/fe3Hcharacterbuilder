@@ -176,20 +176,23 @@ void MyFrame::BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repitition
 
 void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
 	Weapon* tempweapon = dynamic_cast<Weapon*>(selection.GetClientObject());
-	Stats tempstats = tempweapon->getStats();
-	ep->ReceiveLBWSelection(tempstats);
+	//Stats tempstats = tempweapon->getStats();
+	wxString tempname = tempweapon->getName();
+	ep->ReceiveLBWSelection(tempname);
 }
 
 void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 	Equipment* tempequipment = dynamic_cast<Equipment*>(selection.GetClientObject());
-	Stats tempstats = tempequipment->getStats();
-	ep->ReceiveLBESelection(tempstats);
+	//Stats tempstats = tempequipment->getStats();
+	wxString tempname = tempequipment->getName();
+	ep->ReceiveLBESelection(tempname);
 }
 
 void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
 	Battalion* tempbattalion = dynamic_cast<Battalion*>(selection.GetClientObject());
-	Stats tempstats = tempbattalion->getStats();
-	ep->ReceiveLBBSelection(tempstats);
+	//Stats tempstats = tempbattalion->getStats();
+	wxString tempname = tempbattalion->getName();
+	ep->ReceiveLBBSelection(tempname);
 }
 
 void MyFrame::BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS) {

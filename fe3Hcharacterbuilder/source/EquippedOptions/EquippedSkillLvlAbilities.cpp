@@ -1,7 +1,7 @@
 #include <EquippedOptions/EquippedSkillLvlAbilities.h>
 
-EquippedSkillLvlAbilities::EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id) :
-	wxTextCtrl(parent, id)
+EquippedSkillLvlAbilities::EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label) :
+	wxStaticText(parent, id, label, wxDefaultPosition, wxDefaultSize)
 {
 
 }

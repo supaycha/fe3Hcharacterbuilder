@@ -1,7 +1,11 @@
 #include <EquippedOptions/EquippedBattalion.h>
 
-EquippedBattalion::EquippedBattalion(wxWindow* parent, wxWindowID id) :
-	wxTextCtrl(parent, id)
+EquippedBattalion::EquippedBattalion(wxWindow* parent, wxWindowID id, const wxString& label) :
+	wxStaticText(parent, id, label, wxDefaultPosition, wxDefaultSize)
 {
 
+}
+
+void EquippedBattalion::ReceiveLBBSelection(wxString battalionname) {
+	this->SetLabelText(battalionname);
 }

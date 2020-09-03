@@ -2,12 +2,17 @@
 #define EQUIPPEDWEAPON_H
 
 #include <wx/wx.h>
+#include <Stat.h>
 
-class EquippedWeapon : public wxTextCtrl {
+class EquippedWeapon : public wxStaticText {
 private:
+	wxDECLARE_EVENT_TABLE();
 public:
-	EquippedWeapon(wxWindow* parent, wxWindowID id);
+	EquippedWeapon(wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedWeapon() {}
+	int id;
+
+	void ReceiveLBWSelection(wxString weaponname);
 };
 
 #endif

@@ -5,14 +5,14 @@
 #include <map>
 #include <constants.h>
 
-class EquippedSkillLvlAbilities : public wxTextCtrl {
+class EquippedSkillLvlAbilities : public wxStaticText {
 private:
 	std::vector<wxString> filteredSAnames;
 	std::vector<wxString> selectedSAnames;
 
 	//wxDECLARE_EVENT_TABLE();
 public:
-	EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id);
+	EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedSkillLvlAbilities() {}
 
 	//void OnSelection(wxCommandEvent& event);

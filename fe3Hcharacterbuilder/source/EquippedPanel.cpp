@@ -3,13 +3,20 @@
 EquippedPanel::EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
+	const wxString buffer;
 	panelsizer = new wxBoxSizer(wxVERTICAL);
-	eb = new EquippedBattalion(this, (int)ID_SINGLE_CONTROL::ID_EB);
-	ew = new EquippedWeapon(this, (int)ID_SINGLE_CONTROL::ID_EW);
-	ee = new EquippedEquipment(this, (int)ID_SINGLE_CONTROL::ID_EE);
+	wxStaticText* equippedbattalionlabel = new wxStaticText(this, wxID_ANY, "Equipped Battalion");
+	eb = new EquippedBattalion(this, (int)ID_SINGLE_CONTROL::ID_EB, buffer);
+	wxStaticText* equippedweaponlabel = new wxStaticText(this, wxID_ANY, "Equipped Weapon");
+	ew = new EquippedWeapon(this, (int)ID_SINGLE_CONTROL::ID_EW, buffer);
+	wxStaticText* equippedequipmentlabel = new wxStaticText(this, wxID_ANY, "Equipped Equipment");
+	ee = new EquippedEquipment(this, (int)ID_SINGLE_CONTROL::ID_EE, buffer);
 	ap = new AbilityPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_AP);
+	panelsizer->Add(equippedbattalionlabel);
 	panelsizer->Add(eb);
+	panelsizer->Add(equippedweaponlabel);
 	panelsizer->Add(ew);
+	panelsizer->Add(equippedequipmentlabel);
 	panelsizer->Add(ee);
 	panelsizer->Add(ap);
 	this->SetSizer(panelsizer);
@@ -23,16 +30,16 @@ void EquippedPanel::ReceiveClassInnateExclusivity(wxString classname) {
 	ap->ReceiveClassInnateExclusivity(classname);
 }
 
-void EquippedPanel::ReceiveLBWSelection(Stats stats) {
-	//cpw->ReceiveLBWSelection(stats);
+void EquippedPanel::ReceiveLBWSelection(wxString weaponname) {
+	ew->ReceiveLBWSelection(weaponname);
 }
 
-void EquippedPanel::ReceiveLBESelection(Stats stats) {
-	//cpe->ReceiveLBESelection(stats);
+void EquippedPanel::ReceiveLBESelection(wxString equipmentname) {
+	ee->ReceiveLBESelection(equipmentname);
 }
 
-void EquippedPanel::ReceiveLBBSelection(Stats stats) {
-	//cpb->ReceiveLBBSelection(stats);
+void EquippedPanel::ReceiveLBBSelection(wxString battalionname) {
+	eb->ReceiveLBBSelection(battalionname);
 }
 
 void EquippedPanel::OnSize(wxSizeEvent& event) {

@@ -8,21 +8,16 @@
 #include <Unit/Ability/CharacterInnateAbility.h>
 #include <AbilityList.h>
 
-class EquippedCharInnateAbility : public wxTextCtrl {
+class EquippedCharInnateAbility : public wxStaticText {
 private:
-	std::map<wxString, wxClientData*> abilitymap;
 	wxString currentDDCselection;
-
-	wxString currentchianame;
+	std::map<wxString, wxClientData*> characterinnateabilities;
 public:
-	EquippedCharInnateAbility(std::map<wxString, wxClientData*> characterinnateabilities, wxWindow* parent, wxWindowID id);
+	EquippedCharInnateAbility(std::map<wxString, wxClientData*> characterinnateabilities, wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedCharInnateAbility() {}
-	//void ReceiveExclusivity(wxString charactername);
-	//void FilterAbilities();
-	void ReceiveAbilityName(wxString abilityname);
+
+	void ReceiveCharacterInnateExclusivity(wxString charactername);
 	void repopulate();
-	//void reselection();
-	//wxArrayString ToArrayString(std::vector<wxString> names);
 };
 
 #endif

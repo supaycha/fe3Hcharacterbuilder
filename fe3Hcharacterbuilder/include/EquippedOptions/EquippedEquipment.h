@@ -3,11 +3,13 @@
 
 #include <wx/wx.h>
 
-class EquippedEquipment : public wxTextCtrl {
+class EquippedEquipment : public wxStaticText {
 private:
 public:
-	EquippedEquipment(wxWindow* parent, wxWindowID id);
+	EquippedEquipment(wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedEquipment() {}
+
+	void ReceiveLBESelection(wxString equipmentname);
 };
 
 #endif

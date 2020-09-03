@@ -20,9 +20,9 @@ public:
 	EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
 	~EquippedPanel() {}
 
-	void ReceiveLBWSelection(Stats stats);
-	void ReceiveLBESelection(Stats stats);
-	void ReceiveLBBSelection(Stats stats);
+	void ReceiveLBWSelection(wxString weaponname);
+	void ReceiveLBESelection(wxString equipmentname);
+	void ReceiveLBBSelection(wxString battalionname);
 	void ReceiveCharacterInnateExclusivity(wxString charactername);
 	void ReceiveClassInnateExclusivity(wxString classname);
 	void OnSize(wxSizeEvent& event);
