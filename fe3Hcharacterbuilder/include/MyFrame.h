@@ -20,6 +20,7 @@
 #include <Unit/Weapon/WhiteMagic.h>
 #include <Unit/Class.h>
 #include <Unit/Equipment/Equipment.h>
+#include <AbilitySelections.h>
 #include "UnitList.h"
 #include <constants.h>
 #include <SkillLevelPanel.h>
@@ -41,6 +42,7 @@
 
 wxDECLARE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
 wxDECLARE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
+wxDECLARE_EVENT(REPEAT_LBASLA_SELECTION, wxCommandEvent);
 wxDECLARE_EVENT(REPEAT_GMT_STATS, wxCommandEvent);
 wxDECLARE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 wxDECLARE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
@@ -86,6 +88,7 @@ public:
 	~MyFrame() {}
 	void BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT);
 	void BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT);
+	void BounceRepeatedLBASLASelection_updateselabiliities(wxCommandEvent& repititionfromSLP);
 	void BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT);
 	void BounceLBWSelection(wxCommandEvent& selection);
 	void BounceLBESelection(wxCommandEvent& selection);

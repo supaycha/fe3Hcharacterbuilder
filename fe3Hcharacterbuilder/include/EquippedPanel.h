@@ -3,6 +3,7 @@
 
 #include <wx/wx.h>
 #include <map>
+#include <AbilitySelections.h>
 #include <EquippedOptions/EquippedBattalion.h>
 #include <EquippedOptions/EquippedWeapon.h>
 #include <EquippedOptions/EquippedEquipment.h>
@@ -25,6 +26,7 @@ public:
 	void ReceiveLBBSelection(wxString battalionname);
 	void ReceiveCharacterInnateExclusivity(wxString charactername);
 	void ReceiveClassInnateExclusivity(wxString classname);
+	void ReceiveSLASelections(AbilitySelections* selections);
 	void OnSize(wxSizeEvent& event);
 	void OnCollChange(wxCollapsiblePaneEvent& event);
 };

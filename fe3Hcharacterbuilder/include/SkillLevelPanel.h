@@ -8,6 +8,8 @@
 #include <ListBoxASLA.h>
 #include <ListBox/ListBoxBattalions.h>
 
+wxDECLARE_EVENT(REPEAT_LBASLA_SELECTION, wxCommandEvent);
+
 class SkillLevelManager;
 
 class SkillLevelPanel : public wxPanel {
@@ -23,6 +25,7 @@ public:
 
 	void ReceiveWeaponExclusivity(wxString charactername);
 	void BounceSLInfo(wxCommandEvent& eventfromwho);
+	void ForwardLBASLASelection(wxCommandEvent& forwarded);
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "SkillLevelPanel.h"
 
 wxDEFINE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_LBASLA_SELECTION, wxCommandEvent);
 
 SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id)
@@ -32,6 +33,7 @@ SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, st
 	//this->Layout();
 
 	Bind(TRANSMIT_SL_SELECTION, &SkillLevelPanel::BounceSLInfo, this, (int)DD_CONTROL::ID_DDSWORD, (int)DD_CONTROL::ID_DDFLYING);
+	Bind(TRANSMIT_LBASLA_SELECTION, &SkillLevelPanel::ForwardLBASLASelection, this, (int)ID_SINGLE_CONTROL::ID_LBASLA);
 }
 
 void SkillLevelPanel::ReceiveWeaponExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
@@ -59,4 +61,10 @@ void SkillLevelPanel::BounceSLInfo(wxCommandEvent& eventfromwho) {
 			break;
 		}
 	}
+}
+
+void SkillLevelPanel::ForwardLBASLASelection(wxCommandEvent& forwarded) {
+	wxCommandEvent event(REPEAT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_SLP);
+	event.SetClientObject(forwarded.GetClientObject());
+	ProcessEvent(event);
 }

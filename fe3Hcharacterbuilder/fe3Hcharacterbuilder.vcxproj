@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\AbilitySelections.h" />
     <ClInclude Include="include\CollPaneSkillLevelAbility.h" />
     <ClInclude Include="include\GridSkillLevelAbilityStats.h" />
     <ClInclude Include="include\GTBSkillLevelAbilityStats.h" />

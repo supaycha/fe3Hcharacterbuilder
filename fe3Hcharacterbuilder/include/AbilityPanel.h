@@ -5,6 +5,7 @@
 #include <wx/collpane.h>
 #include <map>
 #include <constants.h>
+#include <AbilitySelections.h>
 #include <Unit/Unit.h>
 #include <Unit/Ability/Ability.h>
 #include <Unit/Ability/BlankAbility.h>
@@ -24,8 +25,8 @@ private:
 
 	std::map<wxString, wxClientData*> classinnateabilities;
 	wxString currentLBCselection;
-	std::vector<wxString> abilitynames;
-
+	std::vector<wxString> CLIAnames;
+	std::vector<wxString> SLAnames;
 	wxDECLARE_EVENT_TABLE();
 public:
 	AbilityPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
@@ -39,6 +40,10 @@ public:
 	void PopulateECLIAVector();
 	void FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientData*> abilitymap);
 
+	void ReceiveSLASelections(AbilitySelections* selections);
+	void CreateSLAList();
+
+	void PopulateSLAVector();
 };
 
 #endif

@@ -104,7 +104,7 @@ void AbilityPanel::ReceiveClassInnateExclusivity(wxString classname) {
 
 void AbilityPanel::CreateCLIAList() {
 	std::wstring abilityname;
-	abilitynames.clear();
+	CLIAnames.clear();
 	for (auto element : classinnateabilities) {
 		ClassInnateAbility* tempability = dynamic_cast<ClassInnateAbility*>(element.second)->clone();
 		std::wstring abilityns = tempability->getSource(), buffer;
@@ -117,22 +117,44 @@ void AbilityPanel::CreateCLIAList() {
 	
 		for (auto possiblematch : namesfromstream) {
 			if (possiblematch == currentLBCselection) {
-				abilitynames.push_back(tempability->getName());
+				CLIAnames.push_back(tempability->getName());
 			}
 		}
 	}
 
-	while (abilitynames.size() < 3) {
-		abilitynames.push_back("---");
+	while (CLIAnames.size() < 3) {
+		CLIAnames.push_back("---");
 	}
 
 	PopulateECLIAVector();
 }
 
 void AbilityPanel::PopulateECLIAVector() {
-	if (!abilitynames.empty()) {
-		for (unsigned i = 0; i < abilitynames.size(); ++i){
-			ecliaVector[i]->ReceiveClassInnateAbility(abilitynames[i]);
+	if (!CLIAnames.empty()) {
+		for (unsigned i = 0; i < CLIAnames.size(); ++i){
+			ecliaVector[i]->ReceiveClassInnateAbility(CLIAnames[i]);
+		}
+	}
+}
+
+void AbilityPanel::ReceiveSLASelections(AbilitySelections* uselections) {
+	SLAnames.clear();
+	SLAnames = uselections->GetSelections();
+	this->CreateSLAList();
+}
+
+void AbilityPanel::CreateSLAList() {
+	while (SLAnames.size() < 5) {
+		SLAnames.push_back("---");
+	}
+
+	PopulateSLAVector();
+}
+
+void AbilityPanel::PopulateSLAVector() {
+	if (!SLAnames.empty()) {
+		for (unsigned i = 0; i < SLAnames.size(); ++i) {
+			eslaVector[i]->ReceiveSkillLevelAbility(SLAnames[i]);
 		}
 	}
 }

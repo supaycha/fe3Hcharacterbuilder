@@ -6,6 +6,21 @@ EquippedSkillLvlAbilities::EquippedSkillLvlAbilities(std::map<wxString, wxClient
 
 }
 
+void EquippedSkillLvlAbilities::ReceiveSkillLevelAbility(wxString slname) {
+	if (slname.empty()) {
+		currentLBASLAselection == "---";
+	}
+
+	else {
+		currentLBASLAselection = slname;
+	}
+
+	repopulate();
+}
+
+void EquippedSkillLvlAbilities::repopulate() {
+	this->SetLabelText(currentLBASLAselection);
+}
 //void EquippedSkillLvlAbilities::OnSelection(wxCommandEvent& event) {
 //	selectedSAnames = UpdateSelections();
 //}

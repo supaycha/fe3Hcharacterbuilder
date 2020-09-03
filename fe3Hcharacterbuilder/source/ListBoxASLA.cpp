@@ -21,6 +21,13 @@ ListBoxASLA::ListBoxASLA(wxWindow* panel, wxWindowID id, int x, int y, int x2, i
 
 void ListBoxASLA::OnSelection(wxCommandEvent& event) {
 	selectedAAnames = UpdateSelections();
+	AbilitySelections* selections = new AbilitySelections(selectedAAnames);
+	wxClientData* trueselections = dynamic_cast<wxClientData*>(selections);
+	wxCommandEvent transmission(TRANSMIT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBASLA);
+	transmission.SetClientObject(trueselections);
+	ProcessEvent(transmission);
+
+	int i = 9;
 }
 
 std::vector<wxString> ListBoxASLA::UpdateSelections() {
@@ -119,16 +126,6 @@ void ListBoxASLA::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {
 		}
 	}
 	selectedAAnames = tempselected;
-
-	Freeze();
-	repopulate();
-	Thaw();
-}
-
-void ListBoxASLA::ReceiveSelectionsfromBounceL(std::vector<wxString> uSelections) {
-	for (auto newselect : uSelections) {
-		std::erase(selectedAAnames, newselect);
-	}
 
 	Freeze();
 	repopulate();

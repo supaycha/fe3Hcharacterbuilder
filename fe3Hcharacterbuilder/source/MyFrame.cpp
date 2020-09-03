@@ -3,6 +3,7 @@
 wxDEFINE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(REPEAT_GMT_STATS, wxCommandEvent);
+wxDEFINE_EVENT(REPEAT_LBASLA_SELECTION, wxCommandEvent);
 
 wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 
@@ -145,6 +146,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, (int)ID_MISC::ID_MT);
+	Bind(REPEAT_LBASLA_SELECTION, &MyFrame::BounceRepeatedLBASLASelection_updateselabiliities, this, (int)ID_SINGLE_CONTROL::ID_SLP);
 	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, (int)ID_MISC::ID_MT);
 	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
 	Bind(TRANSMIT_LBE_SELECTION, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
@@ -167,6 +169,10 @@ void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repit
 	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
 	wxString classinnatecheck = tempclass->getName();
 	ep->ReceiveClassInnateExclusivity(classinnatecheck);
+}
+void MyFrame::BounceRepeatedLBASLASelection_updateselabiliities(wxCommandEvent& repititionfromSLP) {
+	AbilitySelections* tempselections = dynamic_cast<AbilitySelections*>(repititionfromSLP.GetClientObject());
+	ep->ReceiveSLASelections(tempselections);
 }
 
 void MyFrame::BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT) {
@@ -260,7 +266,6 @@ void MyFrame::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
 }
 
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
-	EVT_COMBOBOX((int)ID_MISC::ID_DDCH, DropDownCharacters::OnNewSelection)
 	EVT_SIZE(MyFrame::OnSize)
 	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPB, MyFrame::OnCollPaneChange)
 	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, MyFrame::OnCollPaneChange)

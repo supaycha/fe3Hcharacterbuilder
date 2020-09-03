@@ -5,7 +5,10 @@
 #include <map>
 #include <sstream>
 #include <constants.h>
+#include <AbilitySelections.h>
 #include <AbilityList.h>
+
+wxDECLARE_EVENT(TRANSMIT_LBASLA_SELECTION, wxCommandEvent);
 
 class ListBoxASLA : public wxListBox {
 private:

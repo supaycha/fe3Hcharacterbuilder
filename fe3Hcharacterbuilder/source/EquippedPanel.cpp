@@ -30,6 +30,10 @@ void EquippedPanel::ReceiveClassInnateExclusivity(wxString classname) {
 	ap->ReceiveClassInnateExclusivity(classname);
 }
 
+void EquippedPanel::ReceiveSLASelections(AbilitySelections* selections) {
+	ap->ReceiveSLASelections(selections);
+}
+
 void EquippedPanel::ReceiveLBWSelection(wxString weaponname) {
 	ew->ReceiveLBWSelection(weaponname);
 }

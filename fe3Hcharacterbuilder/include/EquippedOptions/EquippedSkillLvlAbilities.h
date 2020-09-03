@@ -10,10 +10,15 @@ private:
 	std::vector<wxString> filteredSAnames;
 	std::vector<wxString> selectedSAnames;
 
+	wxString currentLBASLAselection;
+
 	//wxDECLARE_EVENT_TABLE();
 public:
 	EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedSkillLvlAbilities() {}
+
+	void ReceiveSkillLevelAbility(wxString classname);
+	void repopulate();
 
 	//void OnSelection(wxCommandEvent& event);
 	//void ReceiveAbilityFiltration(std::vector<wxString> dirtynames);
