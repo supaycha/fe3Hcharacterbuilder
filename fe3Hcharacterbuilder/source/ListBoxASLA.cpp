@@ -130,6 +130,13 @@ void ListBoxASLA::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {
 	Freeze();
 	repopulate();
 	Thaw();
+
+	selectedAAnames = UpdateSelections();
+	AbilitySelections* selections = new AbilitySelections(selectedAAnames);
+	wxClientData* trueselections = dynamic_cast<wxClientData*>(selections);
+	wxCommandEvent transmission(TRANSMIT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBASLA);
+	transmission.SetClientObject(trueselections);
+	ProcessEvent(transmission);
 }
 
 void ListBoxASLA::repopulate() {
