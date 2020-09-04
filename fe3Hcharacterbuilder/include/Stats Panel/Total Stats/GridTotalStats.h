@@ -4,7 +4,7 @@
 #include <wx/wx.h>
 #include <wx/grid.h>
 #include <Stat.h>
-#include <GTBMain/GTBTotalStats.h>
+#include <Stats Panel/Total Stats/GTBTotalStats.h>
 
 class GridTotalStats : public wxGrid {
 private:

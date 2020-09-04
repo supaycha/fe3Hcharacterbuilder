@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\AbilitySelections.h" />
     <ClInclude Include="include\AvailablePanel\ListBoxEquipment.h" />
     <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxASLA.h" />
     <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxBattalions.h" />
@@ -94,6 +95,7 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\AbilitySelections.cpp" />
     <ClCompile Include="source\AvailablePanel\ListBoxEquipment.cpp" />
     <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxASLA.cpp" />
     <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxBattalions.cpp" />

@@ -4,10 +4,11 @@
 #include <wx/wx.h>
 #include <map>
 #include <AbilitySelections.h>
-#include <EquippedOptions/EquippedBattalion.h>
-#include <EquippedOptions/EquippedWeapon.h>
-#include <EquippedOptions/EquippedEquipment.h>
-#include <AbilityPanel.h>
+#include <constants.h>
+#include <EquippedPanel/Weapon/EquippedWeapon.h>
+#include <EquippedPanel/Battalion/EquippedBattalion.h>
+#include <EquippedPanel/Equipment/EquippedEquipment.h>
+#include <EquippedPanel/Ability/AbilityPanel.h>
 
 class EquippedPanel : public wxPanel {
 private:
@@ -16,7 +17,7 @@ private:
 	EquippedWeapon* ew;
 	EquippedEquipment* ee;
 	AbilityPanel* ap;
-	wxDECLARE_EVENT_TABLE();
+	//wxDECLARE_EVENT_TABLE();
 public:
 	EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
 	~EquippedPanel() {}
@@ -28,7 +29,7 @@ public:
 	void ReceiveClassInnateExclusivity(wxString classname);
 	void ReceiveSLASelections(AbilitySelections* selections);
 	void OnSize(wxSizeEvent& event);
-	void OnCollChange(wxCollapsiblePaneEvent& event);
+	//void OnCollChange(wxCollapsiblePaneEvent& event);
 };
 
 #endif

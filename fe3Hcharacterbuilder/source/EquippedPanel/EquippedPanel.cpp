@@ -60,13 +60,13 @@ void EquippedPanel::OnSize(wxSizeEvent& event) {
 	event.Skip();
 }
 
-void EquippedPanel::OnCollChange(wxCollapsiblePaneEvent& event) {
-	SendSizeEventToParent();
-}
+//void EquippedPanel::OnCollChange(wxCollapsiblePaneEvent& event) {
+//	SendSizeEventToParent();
+//}
 
-wxBEGIN_EVENT_TABLE(EquippedPanel, wxPanel)
-	EVT_SIZE(EquippedPanel::OnSize)
-	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPB, EquippedPanel::OnCollChange)
-	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, EquippedPanel::OnCollChange)
-	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPE, EquippedPanel::OnCollChange)
-wxEND_EVENT_TABLE()
+//wxBEGIN_EVENT_TABLE(EquippedPanel, wxPanel)
+//	EVT_SIZE(EquippedPanel::OnSize)
+//	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPB, EquippedPanel::OnCollChange)
+//	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, EquippedPanel::OnCollChange)
+//	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPE, EquippedPanel::OnCollChange)
+//wxEND_EVENT_TABLE()

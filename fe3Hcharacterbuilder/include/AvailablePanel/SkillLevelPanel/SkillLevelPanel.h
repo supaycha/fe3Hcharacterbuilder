@@ -2,15 +2,16 @@
 #define SKILLLEVELPANEL_H
 
 #include <wx/wx.h>
+#include <map>
 #include <constants.h>
-#include <SkillLevelManager/SkillLevelManager.h>
-#include <WeaponManager.h>
-#include <ListBoxASLA.h>
-#include <ListBox/ListBoxBattalions.h>
+#include <AvailablePanel/SkillLevelPanel/ListBoxASLA.h>
+#include <AvailablePanel/SkillLevelPanel/ListBoxBattalions.h>
+#include <AvailablePanel/SkillLevelPanel/WeaponManager/WeaponManager.h>
+#include <AvailablePanel/SkillLevelPanel/SkillLevelManager/SkillLevelManager.h>
 
 wxDECLARE_EVENT(REPEAT_LBASLA_SELECTION, wxCommandEvent);
 
-class SkillLevelManager;
+//class SkillLevelManager;
 
 class SkillLevelPanel : public wxPanel {
 private:

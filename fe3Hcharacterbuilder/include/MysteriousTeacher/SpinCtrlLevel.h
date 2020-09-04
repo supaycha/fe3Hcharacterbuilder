@@ -3,7 +3,7 @@
 
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
-#include "constants.h"
+#include <constants.h>
 
 wxDECLARE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
 

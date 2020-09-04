@@ -264,12 +264,12 @@ void MyFrame::OnSize(wxSizeEvent& event) {
 	event.Skip();
 }
 
-void MyFrame::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
-	wxSize test = this->GetMinSize();
-	//bcp->SetMinSize(test);
-	//mainrow->Fit(this);
-	event.Skip();
-}
+//void MyFrame::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
+//	wxSize test = this->GetMinSize();
+//	//bcp->SetMinSize(test);
+//	//mainrow->Fit(this);
+//	event.Skip();
+//}
 
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
 	EVT_SIZE(MyFrame::OnSize)

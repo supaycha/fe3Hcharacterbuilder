@@ -91,17 +91,14 @@ void MysteriousTeacher::BounceSCLSelection(wxSpinEvent& transmission) {
 }
 
 void MysteriousTeacher::BounceDDCLSelection(wxCommandEvent& transmission) {
-
 	Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
 	switch (transmission.GetId()) {
 		case (int)ID_MISC::ID_DDCL1: {
-			//Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
 			gmt->UpdateDDCLSelection(*tempclass, (int)ID_MISC::ID_DDCL1);
 			break;
 		}
 
 		case (int)ID_MISC::ID_DDCL2: {
-			//Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
 			gmt->UpdateDDCLSelection(*tempclass, (int)ID_MISC::ID_DDCL2);
 			break;
 		}
@@ -111,7 +108,6 @@ void MysteriousTeacher::BounceDDCLSelection(wxCommandEvent& transmission) {
 			repetition.SetClientObject(transmission.GetClientObject());
 			ProcessEvent(repetition);
 
-			//Class* tempclass = dynamic_cast<Class*>(transmission.GetClientObject());
 			gmt->UpdateDDCLSelection(*tempclass, (int)ID_MISC::ID_DDCL3);
 			break;
 		}

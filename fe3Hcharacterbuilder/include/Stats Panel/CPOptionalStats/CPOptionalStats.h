@@ -4,12 +4,13 @@
 #include <wx/wx.h>
 #include <wx/collpane.h>
 #include <constants.h>
-#include <GridMain/GridWeaponStats.h>
-#include <GridMain/GridEquipmentStats.h>
-#include <GridMain/GridBattalionStats.h>
-#include <GridCharInnateAbilityStats.h>
-#include <GridClassInnateAbilityStats.h>
-#include <GridSkillLevelAbilityStats.h>
+#include <Stat.h>
+#include <Stats Panel/CPOptionalStats/WeaponStats/GridWeaponStats.h>
+#include <Stats Panel/CPOptionalStats/EquipmentStats/GridEquipmentStats.h>
+#include <Stats Panel/CPOptionalStats/BattalionStats/GridBattalionStats.h>
+#include <Stats Panel/CPOptionalStats/CHIA/GridCharInnateAbilityStats.h>
+#include <Stats Panel/CPOptionalStats/CLIA/GridClassInnateAbilityStats.h>
+#include <Stats Panel/CPOptionalStats/SLA/GridSkillLevelAbilityStats.h>
 
 class CPOptionalStats : public wxCollapsiblePane{	
 private:

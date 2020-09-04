@@ -1,4 +1,4 @@
-#include <GridSkillLevelAbilityStats.h>
+#include <Stats Panel/CPOptionalStats/SLA/GridSkillLevelAbilityStats.h>
 
 GridSkillLevelAbilityStats::GridSkillLevelAbilityStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)

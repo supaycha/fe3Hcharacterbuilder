@@ -5,7 +5,7 @@
 #include <wx/grid.h>
 #include <Stat.h>
 #include <constants.h>
-#include <GTBMain/GTBBattalionStats.h>
+#include <Stats Panel/CPOptionalStats/BattalionStats/GTBBattalionStats.h>
 
 wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 

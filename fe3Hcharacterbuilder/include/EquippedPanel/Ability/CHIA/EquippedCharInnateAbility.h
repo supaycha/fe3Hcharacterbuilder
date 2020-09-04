@@ -6,7 +6,7 @@
 #include <Unit/Unit.h>
 #include <Unit/Ability/Ability.h>
 #include <Unit/Ability/CharacterInnateAbility.h>
-#include <AbilityList.h>
+//#include <AbilityList.h>
 
 class EquippedCharInnateAbility : public wxStaticText {
 private:

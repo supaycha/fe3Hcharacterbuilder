@@ -3,10 +3,12 @@
 
 #include <wx/wx.h>
 #include <map>
-#include <sstream>
 #include <constants.h>
+#include <Unit/Unit.h>
+#include <Unit/Ability/Ability.h>
+#include <Unit/Ability/SkillLevelAbility.h>
 #include <AbilitySelections.h>
-#include <AbilityList.h>
+#include <Lists/AbilityList.h>
 
 wxDECLARE_EVENT(TRANSMIT_LBASLA_SELECTION, wxCommandEvent);
 

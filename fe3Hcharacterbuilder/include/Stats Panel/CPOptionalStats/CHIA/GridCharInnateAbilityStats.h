@@ -5,7 +5,7 @@
 #include <wx/grid.h>
 #include <Stat.h>
 #include <constants.h>
-#include <GTBCharInnateAbilityStats.h>
+#include <Stats Panel/CPOptionalStats/CHIA/GTBCharInnateAbilityStats.h>
 
 wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 

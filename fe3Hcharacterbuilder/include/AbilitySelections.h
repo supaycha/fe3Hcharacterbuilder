@@ -9,11 +9,9 @@ private:
 public:
 	AbilitySelections() {}
 	AbilitySelections(std::vector<wxString> uselections) : selections{ uselections } {}
-
-	std::vector<wxString> GetSelections() { return selections; }
-
 	~AbilitySelections() {}
 
+	std::vector<wxString> GetSelections();
 };
 
 #endif

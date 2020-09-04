@@ -5,7 +5,7 @@
 #include <wx/grid.h>
 #include <Stat.h>
 #include <constants.h>
-#include <GTBSkillLevelAbilityStats.h>
+#include <Stats Panel/CPOptionalStats/SLA/GTBSkillLevelAbilityStats.h>
 
 wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 

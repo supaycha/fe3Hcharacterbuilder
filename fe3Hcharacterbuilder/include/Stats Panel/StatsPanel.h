@@ -4,20 +4,16 @@
 #include <wx/wx.h>
 #include <wx/collpane.h>
 #include <constants.h>
-#include <GridMain/GridWeaponStats.h>
-#include <GridMain/GridEquipmentStats.h>
-#include <GridMain/GridBattalionStats.h>
-#include <GridCharInnateAbilityStats.h>
-#include <GridClassInnateAbilityStats.h>
-#include <GridSkillLevelAbilityStats.h>
-#include <GridMain/GridTotalStats.h>
-#include <CPOptionalStats.h>
+
+#include <Stat.h>
+#include <Stats Panel/CPOptionalStats/CPOptionalStats.h>
+#include <Stats Panel/Total Stats/GridTotalStats.h>
 
 class StatsPanel : public wxPanel {
 private:
-	CPOptionalStats* optionalstats;
 	wxBoxSizer* spSizer;
 
+	CPOptionalStats* optionalstats;
 	GridTotalStats* gts;
 
 	wxDECLARE_EVENT_TABLE();

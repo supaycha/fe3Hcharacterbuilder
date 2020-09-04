@@ -6,7 +6,6 @@
 
 class EquippedWeapon : public wxStaticText {
 private:
-	wxDECLARE_EVENT_TABLE();
 public:
 	EquippedWeapon(wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedWeapon() {}

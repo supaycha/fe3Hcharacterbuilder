@@ -3,11 +3,11 @@
 
 #include <wx/wx.h>
 #include <wx/grid.h>
-#include "GTBMysteriousTeacher.h"
 #include <constants.h>
 #include <Unit/Unit.h>
 #include <Unit/Character.h>
 #include <Unit/Class.h>
+#include <MysteriousTeacher/GTBMysteriousTeacher.h>
 
 wxDECLARE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
 

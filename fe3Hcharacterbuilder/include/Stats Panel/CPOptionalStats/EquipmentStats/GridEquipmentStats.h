@@ -5,7 +5,7 @@
 #include <wx/grid.h>
 #include <Stat.h>
 #include <constants.h>
-#include <GTBMain/GTBEquipmentStats.h>
+#include <Stats Panel/CPOptionalStats/EquipmentStats/GTBEquipmentStats.h>
 
 wxDECLARE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);
 

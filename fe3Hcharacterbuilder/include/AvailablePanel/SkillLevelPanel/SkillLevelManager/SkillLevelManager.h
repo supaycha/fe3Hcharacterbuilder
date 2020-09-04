@@ -4,12 +4,9 @@
 #include <wx/wx.h>
 #include <map>
 #include <constants.h>
-#include <SkillLevelManager/DropDownSkillLevel.h>
-#include <SkillLevelManager/StaticTextSkillLevel.h>
-//#include <vld.h>
-#include <MyFrame.h>
-
-class MyFrame;
+#include <AvailablePanel/SkillLevelPanel/SkillLevelManager/StaticTextSkillLevel.h>
+#include <AvailablePanel/SkillLevelPanel/SkillLevelManager/DropDownSkillLevel.h>
+////#include <vld.h>
 
 wxDECLARE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
 

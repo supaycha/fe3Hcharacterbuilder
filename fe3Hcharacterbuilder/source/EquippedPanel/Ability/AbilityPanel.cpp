@@ -158,9 +158,3 @@ void AbilityPanel::PopulateSLAVector() {
 		}
 	}
 }
-
-wxBEGIN_EVENT_TABLE(AbilityPanel, wxPanel)
-	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPCHIA, AbilityPanel::OnCollChange)
-	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPCLIA, AbilityPanel::OnCollChange)
-	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPSLA, AbilityPanel::OnCollChange)
-wxEND_EVENT_TABLE()

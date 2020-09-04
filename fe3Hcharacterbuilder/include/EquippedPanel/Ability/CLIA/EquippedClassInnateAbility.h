@@ -3,10 +3,10 @@
 
 #include <wx/wx.h>
 #include <map>
-#include <sstream>
-#include <Unit/Unit.h>
-#include <Unit/Ability/Ability.h>
-#include <Unit/Ability/ClassInnateAbility.h>
+//#include <sstream>
+//#include <Unit/Unit.h>
+//#include <Unit/Ability/Ability.h>
+//#include <Unit/Ability/ClassInnateAbility.h>
 
 class EquippedClassInnateAbility : public wxStaticText {
 private:

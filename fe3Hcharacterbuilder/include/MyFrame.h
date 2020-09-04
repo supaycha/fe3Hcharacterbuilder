@@ -2,27 +2,32 @@
 #define MYFRAME_H
 
 #include <wx/wx.h>
-//#include <wx/collpane.h>
-//#include <map>
+#include <map>
+#include <AbilitySelections.h>
 //#include <Stat.h>
-#include "Unit/Unit.h"
-//#include <Unit/Battalion.h>
-//#include <Unit/Character.h>
-//#include <Unit/Weapon/Weapon.h>
-//#include <Unit/Weapon/BlankWeapon.h>
-//#include <Unit/Weapon/Axe.h>
-//#include <Unit/Weapon/BlackMagic.h>
-//#include <Unit/Weapon/Bow.h>
-//#include <Unit/Weapon/DarkMagic.h>
-//#include <Unit/Weapon/Gauntlets.h>
-//#include <Unit/Weapon/Lance.h>
-//#include <Unit/Weapon/Sword.h>
-//#include <Unit/Weapon/WhiteMagic.h>
-//#include <Unit/Class.h>
-//#include <Unit/Equipment/Equipment.h>
-//#include <AbilitySelections.h>
-//#include "UnitList.h"
-//#include <constants.h>
+#include <Unit/Unit.h>
+#include <Unit/Battalion.h>
+#include <Unit/Character.h>
+#include <Unit/Class.h>
+#include <Unit/Weapon/Weapon.h>
+#include <Unit/Weapon/BlankWeapon.h>
+#include <Unit/Weapon/Axe.h>
+#include <Unit/Weapon/BlackMagic.h>
+#include <Unit/Weapon/Bow.h>
+#include <Unit/Weapon/DarkMagic.h>
+#include <Unit/Weapon/Gauntlets.h>
+#include <Unit/Weapon/Lance.h>
+#include <Unit/Weapon/Sword.h>
+#include <Unit/Weapon/WhiteMagic.h>
+#include <Unit/Equipment/Equipment.h>
+#include <Lists/AbilityList.h>
+#include <Lists/UnitList.h>
+#include <constants.h>
+#include <MysteriousTeacher/MysteriousTeacher.h>
+#include <EquippedPanel/EquippedPanel.h>
+#include <AvailablePanel/SkillLevelPanel/SkillLevelPanel.h>
+#include <AvailablePanel/ListBoxEquipment.h>
+#include <Stats Panel/StatsPanel.h>
 //#include <SkillLevelPanel.h>
 //#include <ListBox/ListBoxWeapons.h>
 //#include <ListBox/ListBoxEquipment.h>
@@ -36,8 +41,6 @@
 //#include <GridMain/GridEquipmentStats.h>
 //#include <GridMain/GridBattalionStats.h>
 //#include <GridMain/GridTotalStats.h>
-#include "MysteriousTeacher/MysteriousTeacher.h"
-//#include <EquippedPanel/EquippedPanel.h>
 //#include <AvailablePanel/SkillLevelPanel/WeaponManager/WeaponManager.h>
 //#include <vld.h>
 
@@ -58,27 +61,18 @@ class MyFrame : public wxFrame {
 private:
 	wxBoxSizer* framesizer;
 	wxBoxSizer* column1;
-
-	MysteriousTeacher* mt;
-	EquippedPanel* ep;
-	WeaponManager* wm;
 	wxBoxSizer* column2;
 	wxBoxSizer* column3;
 	wxBoxSizer* column4;
 	wxBoxSizer* column5;
 	wxBoxSizer* column6;
 
-	//ListBoxWeapons* lbw;
+	MysteriousTeacher* mt;
+	EquippedPanel* ep;	
 	ListBoxEquipment* lbe;
-	ListBoxBattalions* lbb;
-	ListBoxASLA* lbasla;
-	EquippedCharInnateAbility* echia;
-	EquippedClassInnateAbility* eclia;
-	EquippedSkillLvlAbilities* esla;
-	GridEquipmentStats* ges;
-	GridTotalStats* gts;	
 	SkillLevelPanel* slp;
 	StatsPanel* sp;
+
 	wxDECLARE_EVENT_TABLE();
 public:
 	MyFrame(wxWindowID id, const wxString& title);
@@ -90,15 +84,15 @@ public:
 	void BounceLBWSelection(wxCommandEvent& selection);
 	void BounceLBESelection(wxCommandEvent& selection);
 	void BounceLBBSelection(wxCommandEvent& selection);
-	void BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS);
-	void BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES);
-	void BounceGBSStats_partoftotalstats(wxCommandEvent& eventfromGBS);
-	void BounceSLInfo(wxCommandEvent& eventfromwho);
+	//void BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS);
+	//void BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES);
+	//void BounceGBSStats_partoftotalstats(wxCommandEvent& eventfromGBS);
+	//void BounceSLInfo(wxCommandEvent& eventfromwho);
 	void DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata);
 
 	void OnQuit(wxCommandEvent& event);
 	void OnSize(wxSizeEvent& event);
-	void OnCollPaneChange(wxCollapsiblePaneEvent& event);
+	//void OnCollPaneChange(wxCollapsiblePaneEvent& event);
 };
 
 #endif

@@ -2,19 +2,19 @@
 #define ABILITYPANEL_H
 
 #include <wx/wx.h>
-#include <wx/collpane.h>
 #include <map>
+#include <sstream>
 #include <constants.h>
 #include <AbilitySelections.h>
 #include <Unit/Unit.h>
 #include <Unit/Ability/Ability.h>
-#include <Unit/Ability/BlankAbility.h>
+//#include <Unit/Ability/BlankAbility.h>
 #include <Unit/Ability/CharacterInnateAbility.h>
 #include <Unit/Ability/ClassInnateAbility.h>
 #include <Unit/Ability/SkillLevelAbility.h>
-#include <EquippedOptions/EquippedCharInnateAbility.h>
-#include <EquippedOptions/EquippedClassInnateAbility.h>
-#include <EquippedOptions/EquippedSkillLvlAbilities.h>
+#include <EquippedPanel/Ability/CHIA/EquippedCharInnateAbility.h>
+#include <EquippedPanel/Ability/CLIA/EquippedClassInnateAbility.h>
+#include <EquippedPanel/Ability/SLA/EquippedSkillLvlAbilities.h>
 
 class AbilityPanel : public wxPanel {
 private:
@@ -27,7 +27,6 @@ private:
 	wxString currentLBCselection;
 	std::vector<wxString> CLIAnames;
 	std::vector<wxString> SLAnames;
-	wxDECLARE_EVENT_TABLE();
 public:
 	AbilityPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
 	~AbilityPanel() {}

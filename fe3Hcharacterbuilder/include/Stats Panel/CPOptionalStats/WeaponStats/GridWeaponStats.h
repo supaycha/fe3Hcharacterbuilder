@@ -5,7 +5,7 @@
 #include <wx/grid.h>
 #include <Stat.h>
 #include <constants.h>
-#include <GTBMain/GTBWeaponStats.h>
+#include <Stats Panel/CPOptionalStats/WeaponStats/GTBWeaponStats.h>
 
 wxDECLARE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
 

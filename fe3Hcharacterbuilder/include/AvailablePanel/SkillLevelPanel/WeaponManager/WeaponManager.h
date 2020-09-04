@@ -3,8 +3,9 @@
 
 #include <wx/wx.h>
 #include <wx/tglbtn.h>
+#include <map>
 #include <constants.h>
-#include <ListBox/ListBoxWeapons.h>
+#include <AvailablePanel/SkillLevelPanel/WeaponManager/ListBoxWeapons.h>
 
 class WeaponManager : public wxPanel {
 private:
