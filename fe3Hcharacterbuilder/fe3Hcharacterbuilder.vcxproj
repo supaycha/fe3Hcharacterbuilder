@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\CPOptionalStats.h" />
     <ClInclude Include="include\AbilitySelections.h" />
     <ClInclude Include="include\CollPaneSkillLevelAbility.h" />
     <ClInclude Include="include\GridSkillLevelAbilityStats.h" />
@@ -103,8 +104,10 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="include\WeaponManager.h" />
     <ClInclude Include="include\SkillLevelPanel.h" />
+    <ClInclude Include="include\StatsPanel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\CPOptionalStats.cpp" />
     <ClCompile Include="source\SkillLevelPanel.cpp" />
     <ClCompile Include="source\CollPaneSkillLevelAbility.cpp" />
     <ClCompile Include="source\GridSkillLevelAbilityStats.cpp" />
@@ -158,6 +161,7 @@
     <ClCompile Include="source\UnitList.cpp" />
     <ClCompile Include="source\CollPaneWeapon.cpp" />
     <ClCompile Include="source\WeaponManager.cpp" />
+    <ClCompile Include="source\StatsPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="fe3Hcharacterbuilder.rc" />

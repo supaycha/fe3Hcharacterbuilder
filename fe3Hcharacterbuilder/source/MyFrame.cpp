@@ -121,14 +121,13 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	//column6 = new wxBoxSizer(wxVERTICAL);
 
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
-	gts = new GridTotalStats(this, (int)ID_SINGLE_CONTROL::ID_GTS);
 	ep = new EquippedPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_EP);	
 	slp = new SkillLevelPanel(weaponmap, battalionmap, this, (int)ID_SINGLE_CONTROL::ID_SLP);
 	wxStaticText* lbeLABEL = new wxStaticText(this, wxID_ANY, "Available Equipment");
 	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
-
+	sp = new StatsPanel(this, (int)ID_SINGLE_CONTROL::ID_SP);
 	column1->Add(mt);	
-	column1->Add(gts);
+	column1->Add(sp);
 	column2->Add(ep);	
 	column3->AddStretchSpacer();
 	column4->Add(slp);
@@ -254,6 +253,10 @@ void MyFrame::OnSize(wxSizeEvent& event) {
 	if (ep) {
 		ep->Fit();
 	}
+	if (sp) {
+		sp->Fit();
+	}
+
 	wxSize test = this->GetMinSize();
 	event.Skip();
 }

@@ -19,7 +19,7 @@ private:
 public:
 	AbilityList() {
 		list.emplace_back(std::make_unique<BlankAbility>(L"---", L"---", SL::BLANK, WEAPONTYPE::BLANK, L"---"));
-		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Professor's Guidance", L"Byleth", L"+20% Experience Gained to user and adjacent ally"));
+		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Professor's Guidance", L"Byleth", L"+20% Experience Gained to user and adjacent ally")); 
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Imperial Lineage", L"Edelgard", L"+20% Experience Gained"));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Royal Lineage", L"Dimitri", L"+20% Experience Gained"));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Leicester Lineage", L"Claude", L"+20% Experience Gained"));

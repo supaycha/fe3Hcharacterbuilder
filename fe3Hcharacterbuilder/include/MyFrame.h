@@ -31,6 +31,7 @@
 #include <EquippedOptions/EquippedCharInnateAbility.h>
 #include <EquippedOptions/EquippedClassInnateAbility.h>
 #include <EquippedOptions/EquippedSkillLvlAbilities.h>
+#include <StatsPanel.h>
 #include <GridMain/GridWeaponStats.h>
 #include <GridMain/GridEquipmentStats.h>
 #include <GridMain/GridBattalionStats.h>
@@ -81,7 +82,7 @@ private:
 	GridEquipmentStats* ges;
 	GridTotalStats* gts;	
 	SkillLevelPanel* slp;
-
+	StatsPanel* sp;
 	wxDECLARE_EVENT_TABLE();
 public:
 	MyFrame(wxWindowID id, const wxString& title);
