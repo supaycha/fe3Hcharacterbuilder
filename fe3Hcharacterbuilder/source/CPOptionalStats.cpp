@@ -42,3 +42,15 @@ CPOptionalStats::CPOptionalStats(wxWindow* parent, wxWindowID id, const wxString
 	statssizer->SetSizeHints(mainwindow);
 	this->SetSizer(mainsizer);
 }
+
+void CPOptionalStats::ReceiveLBWSelection(Stats stats) {
+	gws->ReceiveLBWSelection(stats);
+}
+
+void CPOptionalStats::ReceiveLBESelection(Stats stats) {
+	ges->ReceiveLBESelection(stats);
+}
+
+void CPOptionalStats::ReceiveLBBSelection(Stats stats) {
+	gbs->ReceiveLBBSelection(stats);
+}

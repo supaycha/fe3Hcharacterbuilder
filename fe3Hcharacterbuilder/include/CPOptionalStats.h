@@ -24,6 +24,10 @@ private:
 public:
 	CPOptionalStats(wxWindow* parent, wxWindowID id, const wxString& buffer);
 	~CPOptionalStats() {}
+
+	void ReceiveLBWSelection(Stats stats);
+	void ReceiveLBESelection(Stats stats);
+	void ReceiveLBBSelection(Stats stats);
 };
 
 #endif

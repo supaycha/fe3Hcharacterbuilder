@@ -24,6 +24,14 @@ private:
 public:
 	StatsPanel(wxWindow* parent, wxWindowID id);
 	~StatsPanel() {}
+	void ReceiveLBWSelection(Stats stats);
+	void ReceiveLBESelection(Stats stats);
+	void ReceiveLBBSelection(Stats stats);
+	void ReceiveGMTStats(Stats stats);
+
+	void BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS);
+	void BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES);
+	void BounceGBSStats_partoftotalstats(wxCommandEvent& eventfromGBS);
 
 	void OnCollChange(wxCollapsiblePaneEvent& event);
 };

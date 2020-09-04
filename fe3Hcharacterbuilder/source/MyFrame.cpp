@@ -7,9 +7,9 @@ wxDEFINE_EVENT(REPEAT_LBASLA_SELECTION, wxCommandEvent);
 
 wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 
-wxDEFINE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
-wxDEFINE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);
-wxDEFINE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
+//wxDEFINE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
+//wxDEFINE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);
+//wxDEFINE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBW_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBE_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBB_SELECTION, wxCommandEvent);
@@ -150,9 +150,9 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
 	Bind(TRANSMIT_LBE_SELECTION, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
 	Bind(TRANSMIT_LBB_SELECTION, &MyFrame::BounceLBBSelection, this, (int)ID_SINGLE_CONTROL::ID_LBB);
-	Bind(TRANSMIT_GWS_STATS, &MyFrame::BounceGWSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GWS);
-	Bind(TRANSMIT_GES_STATS, &MyFrame::BounceGESStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GES);
-	Bind(TRANSMIT_GBS_STATS, &MyFrame::BounceGBSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GBS);
+	//Bind(TRANSMIT_GWS_STATS, &MyFrame::BounceGWSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GWS);
+	//Bind(TRANSMIT_GES_STATS, &MyFrame::BounceGESStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GES);
+	//Bind(TRANSMIT_GBS_STATS, &MyFrame::BounceGBSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GBS);
 }
 
 void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
@@ -176,44 +176,47 @@ void MyFrame::BounceRepeatedLBASLASelection_updateselabiliities(wxCommandEvent& 
 
 void MyFrame::BounceRepeatedGMTStats_partoftotalstats(wxCommandEvent& repititionfromMT) {
 	Stats* tempGMTstats = dynamic_cast<Stats*>(repititionfromMT.GetClientObject());
-	gts->ReceiveGMTStats(*tempGMTstats);
+	sp->ReceiveGMTStats(*tempGMTstats);
 }
 
 void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
 	Weapon* tempweapon = dynamic_cast<Weapon*>(selection.GetClientObject());
-	//Stats tempstats = tempweapon->getStats();
+	Stats tempstats = tempweapon->getStats();
 	wxString tempname = tempweapon->getName();
+	sp->ReceiveLBWSelection(tempstats);
 	ep->ReceiveLBWSelection(tempname);
 }
 
 void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 	Equipment* tempequipment = dynamic_cast<Equipment*>(selection.GetClientObject());
-	//Stats tempstats = tempequipment->getStats();
+	Stats tempstats = tempequipment->getStats();
 	wxString tempname = tempequipment->getName();
+	sp->ReceiveLBESelection(tempstats);
 	ep->ReceiveLBESelection(tempname);
 }
 
 void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
 	Battalion* tempbattalion = dynamic_cast<Battalion*>(selection.GetClientObject());
-	//Stats tempstats = tempbattalion->getStats();
+	Stats tempstats = tempbattalion->getStats();
 	wxString tempname = tempbattalion->getName();
+	sp->ReceiveLBBSelection(tempstats);
 	ep->ReceiveLBBSelection(tempname);
 }
 
-void MyFrame::BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS) {
-	Stats* temp = dynamic_cast<Stats*>(eventfromGWS.GetClientObject());
-	gts->ReceiveGWSStats(*temp);
-}
-
-void MyFrame::BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES) {
-	Stats* temp = dynamic_cast<Stats*>(eventfromGES.GetClientObject());
-	gts->ReceiveGESStats(*temp);
-}
-
-void MyFrame::BounceGBSStats_partoftotalstats(wxCommandEvent& eventfromGBS) {
-	Stats* temp = dynamic_cast<Stats*>(eventfromGBS.GetClientObject());
-	gts->ReceiveGBSStats(*temp);
-}
+//void MyFrame::BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS) {
+//	Stats* temp = dynamic_cast<Stats*>(eventfromGWS.GetClientObject());
+//	gts->ReceiveGWSStats(*temp);
+//}
+//
+//void MyFrame::BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES) {
+//	Stats* temp = dynamic_cast<Stats*>(eventfromGES.GetClientObject());
+//	gts->ReceiveGESStats(*temp);
+//}
+//
+//void MyFrame::BounceGBSStats_partoftotalstats(wxCommandEvent& eventfromGBS) {
+//	Stats* temp = dynamic_cast<Stats*>(eventfromGBS.GetClientObject());
+//	gts->ReceiveGBSStats(*temp);
+//}
 
 void MyFrame::DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata) {
 	if (BlankWeapon* temp = dynamic_cast<BlankWeapon*>(unit)) {
