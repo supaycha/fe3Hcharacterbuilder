@@ -1,4 +1,4 @@
-#include <EquippedOptions/EquippedCharInnateAbility.h>
+#include <EquippedPanel/Ability/CHIA/EquippedCharInnateAbility.h>
 
 EquippedCharInnateAbility::EquippedCharInnateAbility(std::map<wxString, wxClientData*> ucharacterinnateabilities, wxWindow* parent, wxWindowID id, const wxString& label) :
 	wxStaticText(parent, id, label, wxDefaultPosition, wxDefaultSize)

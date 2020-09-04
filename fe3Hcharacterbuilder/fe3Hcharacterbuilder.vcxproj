@@ -28,8 +28,6 @@
     <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelPanel.h" />
     <ClInclude Include="include\AvailablePanel\SkillLevelPanel\WeaponManager\ListBoxWeapons.h" />
     <ClInclude Include="include\AvailablePanel\SkillLevelPanel\WeaponManager\WeaponManager.h" />
-    <ClInclude Include="include\CPOptionalStats.h" />
-    <ClInclude Include="include\AbilitySelections.h" />
     <ClInclude Include="include\EquippedPanel\Ability\AbilityPanel.h" />
     <ClInclude Include="include\EquippedPanel\Ability\CHIA\EquippedCharInnateAbility.h" />
     <ClInclude Include="include\EquippedPanel\Ability\CLIA\EquippedClassInnateAbility.h" />
@@ -38,35 +36,8 @@
     <ClInclude Include="include\EquippedPanel\Equipment\EquippedEquipment.h" />
     <ClInclude Include="include\EquippedPanel\EquippedPanel.h" />
     <ClInclude Include="include\EquippedPanel\Weapon\EquippedWeapon.h" />
-    <ClInclude Include="include\GridSkillLevelAbilityStats.h" />
-    <ClInclude Include="include\GTBSkillLevelAbilityStats.h" />
-    <ClInclude Include="include\GridClassInnateAbilityStats.h" />
-    <ClInclude Include="include\GTBClassInnateAbilityStats.h" />
-    <ClInclude Include="include\AbilityPanel.h" />
-    <ClInclude Include="include\GridCharInnateAbilityStats.h" />
-    <ClInclude Include="include\GTBCharInnateAbilityStats.h" />
-    <ClInclude Include="include\EquippedPanel.h" />
-    <ClInclude Include="include\EquippedOptions\EquippedBattalion.h" />
-    <ClInclude Include="include\EquippedOptions\EquippedCharInnateAbility.h" />
-    <ClInclude Include="include\EquippedOptions\EquippedClassInnateAbility.h" />
-    <ClInclude Include="include\EquippedOptions\EquippedEquipment.h" />
-    <ClInclude Include="include\EquippedOptions\EquippedSkillLvlAbilities.h" />
-    <ClInclude Include="include\EquippedOptions\EquippedWeapon.h" />
-    <ClInclude Include="include\AbilityList.h" />
-    <ClInclude Include="include\ListBoxASLA.h" />
     <ClInclude Include="include\constants.h" />
-    <ClInclude Include="include\GridMain\GridBattalionStats.h" />
-    <ClInclude Include="include\GridMain\GridEquipmentStats.h" />
-    <ClInclude Include="include\GridMain\GridTotalStats.h" />
-    <ClInclude Include="include\GridMain\GridWeaponStats.h" />
     <ClInclude Include="include\Growth.h" />
-    <ClInclude Include="include\GTBMain\GTBBattalionStats.h" />
-    <ClInclude Include="include\GTBMain\GTBEquipmentStats.h" />
-    <ClInclude Include="include\GTBMain\GTBTotalStats.h" />
-    <ClInclude Include="include\GTBMain\GTBWeaponStats.h" />
-    <ClInclude Include="include\ListBox\ListBoxBattalions.h" />
-    <ClInclude Include="include\ListBox\ListBoxEquipment.h" />
-    <ClInclude Include="include\ListBox\ListBoxWeapons.h" />
     <ClInclude Include="include\Lists\AbilityList.h" />
     <ClInclude Include="include\Lists\UnitList.h" />
     <ClInclude Include="include\MyApp.h" />
@@ -77,9 +48,6 @@
     <ClInclude Include="include\MysteriousTeacher\GTBMysteriousTeacher.h" />
     <ClInclude Include="include\MysteriousTeacher\MysteriousTeacher.h" />
     <ClInclude Include="include\MysteriousTeacher\SpinCtrlLevel.h" />
-    <ClInclude Include="include\SkillLevelManager\DropDownSkillLevel.h" />
-    <ClInclude Include="include\SkillLevelManager\SkillLevelManager.h" />
-    <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h" />
     <ClInclude Include="include\Stat.h" />
     <ClInclude Include="include\Stats Panel\CPOptionalStats\BattalionStats\GridBattalionStats.h" />
     <ClInclude Include="include\Stats Panel\CPOptionalStats\BattalionStats\GTBBattalionStats.h" />
@@ -97,7 +65,6 @@
     <ClInclude Include="include\Stats Panel\StatsPanel.h" />
     <ClInclude Include="include\Stats Panel\Total Stats\GridTotalStats.h" />
     <ClInclude Include="include\Stats Panel\Total Stats\GTBTotalStats.h" />
-    <ClInclude Include="include\UnitList.h" />
     <ClInclude Include="include\Unit\Ability\Ability.h" />
     <ClInclude Include="include\Unit\Ability\BlankAbility.h" />
     <ClInclude Include="include\Unit\Ability\CharacterInnateAbility.h" />
@@ -125,9 +92,6 @@
     <ClInclude Include="include\Unit\Weapon\Weapon.h" />
     <ClInclude Include="include\Unit\Weapon\WhiteMagic.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="include\WeaponManager.h" />
-    <ClInclude Include="include\SkillLevelPanel.h" />
-    <ClInclude Include="include\StatsPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AvailablePanel\ListBoxEquipment.cpp" />
@@ -139,7 +103,6 @@
     <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelPanel.cpp" />
     <ClCompile Include="source\AvailablePanel\SkillLevelPanel\WeaponManager\ListBoxWeapons.cpp" />
     <ClCompile Include="source\AvailablePanel\SkillLevelPanel\WeaponManager\WeaponManager.cpp" />
-    <ClCompile Include="source\CPOptionalStats.cpp" />
     <ClCompile Include="source\EquippedPanel\Ability\AbilityPanel.cpp" />
     <ClCompile Include="source\EquippedPanel\Ability\CHIA\EquippedCharInnateAbility.cpp" />
     <ClCompile Include="source\EquippedPanel\Ability\CLIA\EquippedClassInnateAbility.cpp" />
@@ -150,34 +113,6 @@
     <ClCompile Include="source\EquippedPanel\Weapon\EquippedWeapon.cpp" />
     <ClCompile Include="source\Lists\AbilityList.cpp" />
     <ClCompile Include="source\Lists\UnitList.cpp" />
-    <ClCompile Include="source\SkillLevelPanel.cpp" />
-    <ClCompile Include="source\GridSkillLevelAbilityStats.cpp" />
-    <ClCompile Include="source\GTBSkillLevelAbilityStats.cpp" />
-    <ClCompile Include="source\GridClassInnateAbilityStats.cpp" />
-    <ClCompile Include="source\GTBClassInnateAbilityStats.cpp" />
-    <ClCompile Include="source\AbilityPanel.cpp" />
-    <ClCompile Include="source\GridCharInnateAbilityStats.cpp" />
-    <ClCompile Include="source\GTBCharInnateAbilityStats.cpp" />
-    <ClCompile Include="source\EquippedPanel.cpp" />
-    <ClCompile Include="source\EquippedOptions\EquippedBattalion.cpp" />
-    <ClCompile Include="source\EquippedOptions\EquippedCharInnateAbility.cpp" />
-    <ClCompile Include="source\EquippedOptions\EquippedClassInnateAbility.cpp" />
-    <ClCompile Include="source\EquippedOptions\EquippedEquipment.cpp" />
-    <ClCompile Include="source\EquippedOptions\EquippedSkillLvlAbilities.cpp" />
-    <ClCompile Include="source\EquippedOptions\EquippedWeapon.cpp" />
-    <ClCompile Include="source\AbilityList.cpp" />
-    <ClCompile Include="source\ListBoxASLA.cpp" />
-    <ClCompile Include="source\GridMain\GridBattalionStats.cpp" />
-    <ClCompile Include="source\GridMain\GridEquipmentStats.cpp" />
-    <ClCompile Include="source\GridMain\GridTotalStats.cpp" />
-    <ClCompile Include="source\GridMain\GridWeaponStats.cpp" />
-    <ClCompile Include="source\GTBMain\GTBBattalionStats.cpp" />
-    <ClCompile Include="source\GTBMain\GTBEquipmentStats.cpp" />
-    <ClCompile Include="source\GTBMain\GTBTotalStats.cpp" />
-    <ClCompile Include="source\GTBMain\GTBWeaponStats.cpp" />
-    <ClCompile Include="source\ListBox\ListBoxBattalions.cpp" />
-    <ClCompile Include="source\ListBox\ListBoxEquipment.cpp" />
-    <ClCompile Include="source\ListBox\ListBoxWeapons.cpp" />
     <ClCompile Include="source\MyApp.cpp" />
     <ClCompile Include="source\MyFrame.cpp" />
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp" />
@@ -186,9 +121,6 @@
     <ClCompile Include="source\MysteriousTeacher\GTBMysteriousTeacher.cpp" />
     <ClCompile Include="source\MysteriousTeacher\MysteriousTeacher.cpp" />
     <ClCompile Include="source\MysteriousTeacher\SpinCtrlLevel.cpp" />
-    <ClCompile Include="source\SkillLevelManager\DropDownSkillLevel.cpp" />
-    <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp" />
-    <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp" />
     <ClCompile Include="source\Stats Panel\CPOptionalStats\BattalionStats\GridBattalionStats.cpp" />
     <ClCompile Include="source\Stats Panel\CPOptionalStats\BattalionStats\GTBBattalionStats.cpp" />
     <ClCompile Include="source\Stats Panel\CPOptionalStats\CHIA\GridCharInnateAbilityStats.cpp" />
@@ -205,9 +137,6 @@
     <ClCompile Include="source\Stats Panel\StatsPanel.cpp" />
     <ClCompile Include="source\Stats Panel\Total Stats\GridTotalStats.cpp" />
     <ClCompile Include="source\Stats Panel\Total Stats\GTBTotalStats.cpp" />
-    <ClCompile Include="source\UnitList.cpp" />
-    <ClCompile Include="source\WeaponManager.cpp" />
-    <ClCompile Include="source\StatsPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="fe3Hcharacterbuilder.rc" />

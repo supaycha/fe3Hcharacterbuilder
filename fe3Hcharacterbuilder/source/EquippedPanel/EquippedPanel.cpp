@@ -1,4 +1,4 @@
-#include "EquippedPanel.h"
+#include <EquippedPanel/EquippedPanel.h>
 
 EquippedPanel::EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)

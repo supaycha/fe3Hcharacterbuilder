@@ -1,4 +1,4 @@
-#include "SkillLevelPanel.h"
+#include <AvailablePanel/SkillLevelPanel/SkillLevelPanel.h>
 
 wxDEFINE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBASLA_SELECTION, wxCommandEvent);

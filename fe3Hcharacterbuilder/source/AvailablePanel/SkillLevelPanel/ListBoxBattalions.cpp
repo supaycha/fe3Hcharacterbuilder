@@ -1,4 +1,4 @@
-#include <ListBox/ListBoxBattalions.h>
+#include <AvailablePanel/SkillLevelPanel/ListBoxBattalions.h>
 
 ListBoxBattalions::ListBoxBattalions(std::map<wxString, wxClientData*> ubattalionmap, wxWindow* panel,
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :

@@ -1,4 +1,4 @@
-#include <EquippedOptions/EquippedBattalion.h>
+#include <EquippedPanel/Battalion/EquippedBattalion.h>
 
 EquippedBattalion::EquippedBattalion(wxWindow* parent, wxWindowID id, const wxString& label) :
 	wxStaticText(parent, id, label, wxDefaultPosition, wxDefaultSize)

@@ -1,4 +1,4 @@
-#include <GridMain/GridTotalStats.h>
+#include <Stats Panel/Total Stats/GridTotalStats.h>
 
 GridTotalStats::GridTotalStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)

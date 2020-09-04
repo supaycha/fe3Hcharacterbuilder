@@ -1,4 +1,4 @@
-#include <EquippedOptions/EquippedClassInnateAbility.h>
+#include <EquippedPanel/Ability/CLIA/EquippedClassInnateAbility.h>
 
 EquippedClassInnateAbility::EquippedClassInnateAbility(std::map<wxString, wxClientData*> uclassinnateabilities, wxWindow* parent, wxWindowID id, const wxString& label) :
 	wxStaticText(parent, id, label, wxDefaultPosition, wxDefaultSize)

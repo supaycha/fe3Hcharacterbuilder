@@ -1,4 +1,4 @@
-#include <ListBox/ListBoxEquipment.h>
+#include <AvailablePanel/ListBoxEquipment.h>
 
 ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentmap, wxWindow* panel,
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :

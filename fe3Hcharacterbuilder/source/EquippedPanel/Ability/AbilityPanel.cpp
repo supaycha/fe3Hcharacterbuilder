@@ -1,4 +1,4 @@
-#include "AbilityPanel.h"
+#include <EquippedPanel/Ability/AbilityPanel.h>
 
 AbilityPanel::AbilityPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)

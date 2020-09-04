@@ -1,4 +1,4 @@
-#include <GTBMain/GTBTotalStats.h>
+#include <Stats Panel/Total Stats/GTBTotalStats.h>
 
 void GTBTotalStats::recalculate() {
 	CalculateTotalPhysicalAttack();

@@ -1,4 +1,4 @@
-#include <GridMain/GridBattalionStats.h>
+#include <Stats Panel/CPOptionalStats/BattalionStats/GridBattalionStats.h>
 
 GridBattalionStats::GridBattalionStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)

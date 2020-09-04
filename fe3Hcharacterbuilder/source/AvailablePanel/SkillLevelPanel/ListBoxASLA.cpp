@@ -1,4 +1,4 @@
-#include <ListBoxASLA.h>
+#include <AvailablePanel/SkillLevelPanel/ListBoxASLA.h>
 
 ListBoxASLA::ListBoxASLA(wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxPoint(x, y), wxSize(x2, y2), choices, style)

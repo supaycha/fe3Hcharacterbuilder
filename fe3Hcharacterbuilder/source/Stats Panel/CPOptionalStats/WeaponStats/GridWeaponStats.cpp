@@ -1,4 +1,4 @@
-#include <GridMain/GridWeaponStats.h>
+#include <Stats Panel/CPOptionalStats/WeaponStats/GridWeaponStats.h>
 
 GridWeaponStats::GridWeaponStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)

@@ -1,4 +1,4 @@
-#include "GridCharInnateAbilityStats.h"
+#include <Stats Panel/CPOptionalStats/CHIA/GridCharInnateAbilityStats.h>
 
 GridCharInnateAbilityStats::GridCharInnateAbilityStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)

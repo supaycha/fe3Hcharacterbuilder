@@ -1,4 +1,4 @@
-#include <GridMain/GridEquipmentStats.h>
+#include <Stats Panel/CPOptionalStats/EquipmentStats/GridEquipmentStats.h>
 
 GridEquipmentStats::GridEquipmentStats(wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)

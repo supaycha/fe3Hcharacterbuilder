@@ -1,4 +1,4 @@
-#include <EquippedOptions/EquippedEquipment.h>
+#include <EquippedPanel/Equipment/EquippedEquipment.h>
 
 EquippedEquipment::EquippedEquipment(wxWindow* parent, wxWindowID id, const wxString& label) :
 	wxStaticText(parent, id, label, wxDefaultPosition, wxDefaultSize)

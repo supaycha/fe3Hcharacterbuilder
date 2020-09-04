@@ -1,4 +1,4 @@
-#include "CPOptionalStats.h"
+#include <Stats Panel/CPOptionalStats/CPOptionalStats.h>
 
 CPOptionalStats::CPOptionalStats(wxWindow* parent, wxWindowID id, const wxString& buffer) :
 	wxCollapsiblePane(parent, id, buffer)

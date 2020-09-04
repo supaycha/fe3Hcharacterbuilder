@@ -1,4 +1,4 @@
-#include "StatsPanel.h"
+#include <Stats Panel/StatsPanel.h>
 
 wxDEFINE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);

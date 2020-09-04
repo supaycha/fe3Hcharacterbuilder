@@ -1,4 +1,4 @@
-#include "WeaponManager.h"
+#include <AvailablePanel/SkillLevelPanel/WeaponManager/WeaponManager.h>
 
 WeaponManager::WeaponManager(std::map<wxString, wxClientData*> weaponmap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id)
