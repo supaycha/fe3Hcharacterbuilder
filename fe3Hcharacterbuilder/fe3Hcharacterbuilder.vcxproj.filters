@@ -5,17 +5,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="AVAILABLE OPTIONS">
-      <UniqueIdentifier>{59d01672-ca6e-4fea-b1d9-d3f6dcad0562}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TO BE DEPRECATED">
-      <UniqueIdentifier>{da9abc0c-ce86-40f1-80df-a07d64e1985b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Lists">
       <UniqueIdentifier>{697e9312-3aa1-48eb-a3b7-b442b774f221}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FrameApp">
-      <UniqueIdentifier>{ad5b9400-3c32-49b0-b58b-4e1dd7235409}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitandMisc">
       <UniqueIdentifier>{41c75272-167b-4c7d-a9e4-085fbeff800e}</UniqueIdentifier>
@@ -28,12 +19,6 @@
     </Filter>
     <Filter Include="UnitandMisc\Weapon">
       <UniqueIdentifier>{cb24bd77-77ae-4368-ac99-594c172b3e62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AVAILABLE OPTIONS\SkillLevelPanel">
-      <UniqueIdentifier>{e5011233-a710-489e-a46f-c868b74e88b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AVAILABLE OPTIONS\SkillLevelPanel\WeaponManager">
-      <UniqueIdentifier>{d94c9eb2-e486-49ce-99c6-f026c764aa96}</UniqueIdentifier>
     </Filter>
     <Filter Include="EquippedPanel">
       <UniqueIdentifier>{7ba0269f-ea84-48c5-abfb-917855093d9c}</UniqueIdentifier>
@@ -58,12 +43,6 @@
     </Filter>
     <Filter Include="EquippedPanel\Ability\SLA">
       <UniqueIdentifier>{fc84ccbb-5fed-4574-b018-4c17e1d74085}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AVAILABLE OPTIONS\SkillLevelPanel\SkillLevelManager">
-      <UniqueIdentifier>{5e37b242-b01f-4b82-843c-72fb49c2f316}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TO BE DEPRECATED\Ability Buttons %28need to be integrated somewhere%29">
-      <UniqueIdentifier>{db50ee54-10ba-4e91-b7ec-2ac4340d87b0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Stats Panel">
       <UniqueIdentifier>{cb281f2e-1f7c-42ac-9cb6-1c014fb49854}</UniqueIdentifier>
@@ -94,6 +73,18 @@
     </Filter>
     <Filter Include="Stats Panel\Total Stats">
       <UniqueIdentifier>{bcec909a-a483-4f9c-a341-6c73f2709225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AvailablePanel">
+      <UniqueIdentifier>{59d01672-ca6e-4fea-b1d9-d3f6dcad0562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AvailablePanel\SkillLevelPanel">
+      <UniqueIdentifier>{e5011233-a710-489e-a46f-c868b74e88b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AvailablePanel\SkillLevelPanel\WeaponManager">
+      <UniqueIdentifier>{d94c9eb2-e486-49ce-99c6-f026c764aa96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AvailablePanel\SkillLevelPanel\SkillLevelManager">
+      <UniqueIdentifier>{5e37b242-b01f-4b82-843c-72fb49c2f316}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -194,19 +185,7 @@
       <Filter>UnitandMisc\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBox\ListBoxEquipment.h">
-      <Filter>AVAILABLE OPTIONS</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AbilityManager.h">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ListBoxSSLA.h">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CurrentAbilities\ListBoxCHIA.h">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CurrentAbilities\ListBoxCLIA.h">
-      <Filter>TO BE DEPRECATED</Filter>
+      <Filter>AvailablePanel</Filter>
     </ClInclude>
     <ClInclude Include="include\Stat.h">
       <Filter>UnitandMisc</Filter>
@@ -220,18 +199,6 @@
     <ClInclude Include="include\UnitList.h">
       <Filter>Lists</Filter>
     </ClInclude>
-    <ClInclude Include="include\ButtonAddAbility.h">
-      <Filter>TO BE DEPRECATED\Ability Buttons %28need to be integrated somewhere%29</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ButtonRemoveAbility.h">
-      <Filter>TO BE DEPRECATED\Ability Buttons %28need to be integrated somewhere%29</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MyApp.h">
-      <Filter>FrameApp</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MyFrame.h">
-      <Filter>FrameApp</Filter>
-    </ClInclude>
     <ClInclude Include="include\constants.h">
       <Filter>UnitandMisc</Filter>
     </ClInclude>
@@ -242,31 +209,31 @@
       <Filter>EquippedPanel\Ability</Filter>
     </ClInclude>
     <ClInclude Include="include\WeaponManager.h">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\WeaponManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\WeaponManager</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBox\ListBoxWeapons.h">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\WeaponManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\WeaponManager</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBoxASLA.h">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel</Filter>
     </ClInclude>
     <ClInclude Include="include\ListBox\ListBoxBattalions.h">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel</Filter>
     </ClInclude>
     <ClInclude Include="include\SkillLevelManager\SkillLevelManager.h">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\SkillLevelManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
     </ClInclude>
     <ClInclude Include="include\SkillLevelManager\DropDownSkillLevel.h">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\SkillLevelManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
     </ClInclude>
     <ClInclude Include="include\SkillLevelManager\StaticTextSkillLevel.h">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\SkillLevelManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
     </ClInclude>
     <ClInclude Include="include\SkillLevelPanel.h">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel</Filter>
     </ClInclude>
     <ClInclude Include="include\GridMain\GridBattalionStats.h">
       <Filter>Stats Panel\CPOptionalStats\Battalion Stats</Filter>
@@ -274,14 +241,8 @@
     <ClInclude Include="include\GTBMain\GTBBattalionStats.h">
       <Filter>Stats Panel\CPOptionalStats\Battalion Stats</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollPaneBattalion.h">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClInclude>
     <ClInclude Include="include\EquippedOptions\EquippedBattalion.h">
       <Filter>EquippedPanel\Battalion</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CollPaneEquipment.h">
-      <Filter>TO BE DEPRECATED</Filter>
     </ClInclude>
     <ClInclude Include="include\GridMain\GridEquipmentStats.h">
       <Filter>Stats Panel\CPOptionalStats\Equipment Stats</Filter>
@@ -292,9 +253,6 @@
     <ClInclude Include="include\EquippedOptions\EquippedEquipment.h">
       <Filter>EquippedPanel\Equipment</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollPaneWeapon.h">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClInclude>
     <ClInclude Include="include\GridMain\GridWeaponStats.h">
       <Filter>Stats Panel\CPOptionalStats\Weapon Stats</Filter>
     </ClInclude>
@@ -304,9 +262,6 @@
     <ClInclude Include="include\EquippedOptions\EquippedWeapon.h">
       <Filter>EquippedPanel\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollPaneCharInnateAbility.h">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClInclude>
     <ClInclude Include="include\GridCharInnateAbilityStats.h">
       <Filter>Stats Panel\CPOptionalStats\CHIA</Filter>
     </ClInclude>
@@ -315,9 +270,6 @@
     </ClInclude>
     <ClInclude Include="include\EquippedOptions\EquippedCharInnateAbility.h">
       <Filter>EquippedPanel\Ability\CHIA</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CollPaneClassInnateAbility.h">
-      <Filter>TO BE DEPRECATED</Filter>
     </ClInclude>
     <ClInclude Include="include\GridClassInnateAbilityStats.h">
       <Filter>Stats Panel\CPOptionalStats\CLIA</Filter>
@@ -337,9 +289,6 @@
     <ClInclude Include="include\GTBSkillLevelAbilityStats.h">
       <Filter>Stats Panel\CPOptionalStats\SLA</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollPaneSkillLevelAbility.h">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClInclude>
     <ClInclude Include="include\AbilitySelections.h">
       <Filter>UnitandMisc</Filter>
     </ClInclude>
@@ -355,10 +304,47 @@
     <ClInclude Include="include\CPOptionalStats.h">
       <Filter>Stats Panel\CPOptionalStats</Filter>
     </ClInclude>
+    <ClInclude Include="include\MyApp.h" />
+    <ClInclude Include="include\MyFrame.h" />
+    <ClInclude Include="include\AvailablePanel\ListBoxEquipment.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxASLA.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxBattalions.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelPanel.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\WeaponManager\ListBoxWeapons.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\WeaponManager\WeaponManager.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelManager\DropDownSkillLevel.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelManager\SkillLevelManager.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelManager\StaticTextSkillLevel.h" />
+    <ClInclude Include="include\EquippedPanel\Ability\CHIA\EquippedCharInnateAbility.h" />
+    <ClInclude Include="include\EquippedPanel\Ability\CLIA\EquippedClassInnateAbility.h" />
+    <ClInclude Include="include\EquippedPanel\Ability\SLA\EquippedSkillLvlAbilities.h" />
+    <ClInclude Include="include\EquippedPanel\Ability\AbilityPanel.h" />
+    <ClInclude Include="include\EquippedPanel\Battalion\EquippedBattalion.h" />
+    <ClInclude Include="include\EquippedPanel\Equipment\EquippedEquipment.h" />
+    <ClInclude Include="include\EquippedPanel\Weapon\EquippedWeapon.h" />
+    <ClInclude Include="include\EquippedPanel\EquippedPanel.h" />
+    <ClInclude Include="include\Lists\AbilityList.h" />
+    <ClInclude Include="include\Lists\UnitList.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\BattalionStats\GridBattalionStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\BattalionStats\GTBBattalionStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\CHIA\GridCharInnateAbilityStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\CHIA\GTBCharInnateAbilityStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\CLIA\GridClassInnateAbilityStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\CLIA\GTBClassInnateAbilityStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\EquipmentStats\GridEquipmentStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\EquipmentStats\GTBEquipmentStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\SLA\GridSkillLevelAbilityStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\SLA\GTBSkillLevelAbilityStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\WeaponStats\GridWeaponStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\WeaponStats\GTBWeaponStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\CPOptionalStats.h" />
+    <ClInclude Include="include\Stats Panel\Total Stats\GridTotalStats.h" />
+    <ClInclude Include="include\Stats Panel\Total Stats\GTBTotalStats.h" />
+    <ClInclude Include="include\Stats Panel\StatsPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ListBox\ListBoxEquipment.cpp">
-      <Filter>AVAILABLE OPTIONS</Filter>
+      <Filter>AvailablePanel</Filter>
     </ClCompile>
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">
       <Filter>MysteriousTeacher</Filter>
@@ -378,35 +364,11 @@
     <ClCompile Include="source\MysteriousTeacher\SpinCtrlLevel.cpp">
       <Filter>MysteriousTeacher</Filter>
     </ClCompile>
-    <ClCompile Include="source\CurrentAbilities\ListBoxCHIA.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClCompile>
-    <ClCompile Include="source\CurrentAbilities\ListBoxCLIA.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ListBoxSSLA.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AbilityManager.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClCompile>
     <ClCompile Include="source\AbilityList.cpp">
       <Filter>Lists</Filter>
     </ClCompile>
     <ClCompile Include="source\UnitList.cpp">
       <Filter>Lists</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ButtonAddAbility.cpp">
-      <Filter>TO BE DEPRECATED\Ability Buttons %28need to be integrated somewhere%29</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ButtonRemoveAbility.cpp">
-      <Filter>TO BE DEPRECATED\Ability Buttons %28need to be integrated somewhere%29</Filter>
-    </ClCompile>
-    <ClCompile Include="source\MyApp.cpp">
-      <Filter>FrameApp</Filter>
-    </ClCompile>
-    <ClCompile Include="source\MyFrame.cpp">
-      <Filter>FrameApp</Filter>
     </ClCompile>
     <ClCompile Include="source\EquippedPanel.cpp">
       <Filter>EquippedPanel</Filter>
@@ -415,28 +377,28 @@
       <Filter>EquippedPanel\Ability</Filter>
     </ClCompile>
     <ClCompile Include="source\WeaponManager.cpp">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\WeaponManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\WeaponManager</Filter>
     </ClCompile>
     <ClCompile Include="source\ListBox\ListBoxWeapons.cpp">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\WeaponManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\WeaponManager</Filter>
     </ClCompile>
     <ClCompile Include="source\ListBoxASLA.cpp">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel</Filter>
     </ClCompile>
     <ClCompile Include="source\ListBox\ListBoxBattalions.cpp">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel</Filter>
     </ClCompile>
     <ClCompile Include="source\SkillLevelManager\SkillLevelManager.cpp">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\SkillLevelManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
     </ClCompile>
     <ClCompile Include="source\SkillLevelManager\DropDownSkillLevel.cpp">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\SkillLevelManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
     </ClCompile>
     <ClCompile Include="source\SkillLevelManager\StaticTextSkillLevel.cpp">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel\SkillLevelManager</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
     </ClCompile>
     <ClCompile Include="source\SkillLevelPanel.cpp">
-      <Filter>AVAILABLE OPTIONS\SkillLevelPanel</Filter>
+      <Filter>AvailablePanel\SkillLevelPanel</Filter>
     </ClCompile>
     <ClCompile Include="source\GridMain\GridBattalionStats.cpp">
       <Filter>Stats Panel\CPOptionalStats\Battalion Stats</Filter>
@@ -444,14 +406,8 @@
     <ClCompile Include="source\GTBMain\GTBBattalionStats.cpp">
       <Filter>Stats Panel\CPOptionalStats\Battalion Stats</Filter>
     </ClCompile>
-    <ClCompile Include="source\CollPaneBattalion.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClCompile>
     <ClCompile Include="source\EquippedOptions\EquippedBattalion.cpp">
       <Filter>EquippedPanel\Battalion</Filter>
-    </ClCompile>
-    <ClCompile Include="source\CollPaneEquipment.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
     </ClCompile>
     <ClCompile Include="source\GridMain\GridEquipmentStats.cpp">
       <Filter>Stats Panel\CPOptionalStats\Equipment Stats</Filter>
@@ -462,9 +418,6 @@
     <ClCompile Include="source\EquippedOptions\EquippedEquipment.cpp">
       <Filter>EquippedPanel\Equipment</Filter>
     </ClCompile>
-    <ClCompile Include="source\CollPaneWeapon.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClCompile>
     <ClCompile Include="source\GridMain\GridWeaponStats.cpp">
       <Filter>Stats Panel\CPOptionalStats\Weapon Stats</Filter>
     </ClCompile>
@@ -474,9 +427,6 @@
     <ClCompile Include="source\EquippedOptions\EquippedWeapon.cpp">
       <Filter>EquippedPanel\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="source\CollPaneCharInnateAbility.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClCompile>
     <ClCompile Include="source\GridCharInnateAbilityStats.cpp">
       <Filter>Stats Panel\CPOptionalStats\CHIA</Filter>
     </ClCompile>
@@ -485,9 +435,6 @@
     </ClCompile>
     <ClCompile Include="source\EquippedOptions\EquippedCharInnateAbility.cpp">
       <Filter>EquippedPanel\Ability\CHIA</Filter>
-    </ClCompile>
-    <ClCompile Include="source\CollPaneClassInnateAbility.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
     </ClCompile>
     <ClCompile Include="source\GridClassInnateAbilityStats.cpp">
       <Filter>Stats Panel\CPOptionalStats\CLIA</Filter>
@@ -507,9 +454,6 @@
     <ClCompile Include="source\GTBSkillLevelAbilityStats.cpp">
       <Filter>Stats Panel\CPOptionalStats\SLA</Filter>
     </ClCompile>
-    <ClCompile Include="source\CollPaneSkillLevelAbility.cpp">
-      <Filter>TO BE DEPRECATED</Filter>
-    </ClCompile>
     <ClCompile Include="source\StatsPanel.cpp">
       <Filter>Stats Panel</Filter>
     </ClCompile>
@@ -522,6 +466,43 @@
     <ClCompile Include="source\CPOptionalStats.cpp">
       <Filter>Stats Panel\CPOptionalStats</Filter>
     </ClCompile>
+    <ClCompile Include="source\MyApp.cpp" />
+    <ClCompile Include="source\MyFrame.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelManager\DropDownSkillLevel.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelManager\SkillLevelManager.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelManager\StaticTextSkillLevel.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\WeaponManager\ListBoxWeapons.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\WeaponManager\WeaponManager.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxASLA.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxBattalions.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelPanel.cpp" />
+    <ClCompile Include="source\AvailablePanel\ListBoxEquipment.cpp" />
+    <ClCompile Include="source\EquippedPanel\Ability\CHIA\EquippedCharInnateAbility.cpp" />
+    <ClCompile Include="source\EquippedPanel\Ability\CLIA\EquippedClassInnateAbility.cpp" />
+    <ClCompile Include="source\EquippedPanel\Ability\SLA\EquippedSkillLvlAbilities.cpp" />
+    <ClCompile Include="source\EquippedPanel\Ability\AbilityPanel.cpp" />
+    <ClCompile Include="source\EquippedPanel\Battalion\EquippedBattalion.cpp" />
+    <ClCompile Include="source\EquippedPanel\Equipment\EquippedEquipment.cpp" />
+    <ClCompile Include="source\EquippedPanel\Weapon\EquippedWeapon.cpp" />
+    <ClCompile Include="source\EquippedPanel\EquippedPanel.cpp" />
+    <ClCompile Include="source\Lists\AbilityList.cpp" />
+    <ClCompile Include="source\Lists\UnitList.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\BattalionStats\GridBattalionStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\BattalionStats\GTBBattalionStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\CHIA\GridCharInnateAbilityStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\CHIA\GTBCharInnateAbilityStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\CLIA\GridClassInnateAbilityStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\CLIA\GTBClassInnateAbilityStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\EquipmentStats\GridEquipmentStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\EquipmentStats\GTBEquipmentStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\SLA\GridSkillLevelAbilityStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\SLA\GTBSkillLevelAbilityStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\WeaponStats\GridWeaponStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\WeaponStats\GTBWeaponStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\CPOptionalStats.cpp" />
+    <ClCompile Include="source\Stats Panel\Total Stats\GridTotalStats.cpp" />
+    <ClCompile Include="source\Stats Panel\Total Stats\GTBTotalStats.cpp" />
+    <ClCompile Include="source\Stats Panel\StatsPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="fe3Hcharacterbuilder.rc">
