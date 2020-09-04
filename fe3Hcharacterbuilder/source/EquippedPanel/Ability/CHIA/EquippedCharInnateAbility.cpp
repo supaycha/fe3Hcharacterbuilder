@@ -12,12 +12,6 @@ void EquippedCharInnateAbility::ReceiveCharacterInnateExclusivity(wxString chara
 }
 
 void EquippedCharInnateAbility::repopulate() {
-	//for (auto element : characterinnateabilities) {
-	//	Ability* tempability = dynamic_cast<Ability*>(element.second)->clone();
-	//	if (CharacterInnateAbility* tempchia = dynamic_cast<CharacterInnateAbility*>(tempability)) {
-	//		characterinnateabilities.push_back(tempchia);
-	//	}
-	//}
 	std::wstring abilityname;
 	for (auto element : characterinnateabilities) {
 		CharacterInnateAbility* tempability = dynamic_cast<CharacterInnateAbility*>(element.second)->clone();
@@ -27,7 +21,4 @@ void EquippedCharInnateAbility::repopulate() {
 	}
 
 	this->SetLabelText(abilityname);
-	//gchias->ReceiveAbilityStats(abilitystats);
-	//Freeze();
-	//Thaw();
 }

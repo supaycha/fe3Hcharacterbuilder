@@ -57,8 +57,6 @@ public:
 	Stats* clone() { return new Stats(*this); }
 
 	void push_back(std::wstring stringforstat) { stats.push_back(stringforstat); }
-	//auto begin() { return stats.begin(); }
-	//auto end() { return stats.end(); }
 };
 
 #endif

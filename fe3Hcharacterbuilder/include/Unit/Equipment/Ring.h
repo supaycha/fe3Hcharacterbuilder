@@ -18,7 +18,6 @@ public:
 		Equipment{ uName, uExclusivity, uCharacterNameorNames, uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE, uDescription } {}
 	~Ring() {}
 
-	//EQUIPMENTTYPE getType() override { return et; };
 	Ring* new_expr() override { return new Ring(); }
 	Ring* clone() override { return new Ring(*this); }
 };

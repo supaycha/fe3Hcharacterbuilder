@@ -4,7 +4,6 @@
 #include <wx/wx.h>
 #include <map>
 #include <AbilitySelections.h>
-//#include <Stat.h>
 #include <Unit/Unit.h>
 #include <Unit/Battalion.h>
 #include <Unit/Character.h>
@@ -28,20 +27,6 @@
 #include <AvailablePanel/SkillLevelPanel/SkillLevelPanel.h>
 #include <AvailablePanel/ListBoxEquipment.h>
 #include <Stats Panel/StatsPanel.h>
-//#include <SkillLevelPanel.h>
-//#include <ListBox/ListBoxWeapons.h>
-//#include <ListBox/ListBoxEquipment.h>
-//#include <ListBox/ListBoxBattalions.h>
-//#include <ListBoxASLA.h>
-//#include <EquippedOptions/EquippedCharInnateAbility.h>
-//#include <EquippedOptions/EquippedClassInnateAbility.h>
-//#include <EquippedOptions/EquippedSkillLvlAbilities.h>
-//#include <StatsPanel.h>
-//#include <GridMain/GridWeaponStats.h>
-//#include <GridMain/GridEquipmentStats.h>
-//#include <GridMain/GridBattalionStats.h>
-//#include <GridMain/GridTotalStats.h>
-//#include <AvailablePanel/SkillLevelPanel/WeaponManager/WeaponManager.h>
 //#include <vld.h>
 
 wxDECLARE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
@@ -84,15 +69,10 @@ public:
 	void BounceLBWSelection(wxCommandEvent& selection);
 	void BounceLBESelection(wxCommandEvent& selection);
 	void BounceLBBSelection(wxCommandEvent& selection);
-	//void BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS);
-	//void BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES);
-	//void BounceGBSStats_partoftotalstats(wxCommandEvent& eventfromGBS);
-	//void BounceSLInfo(wxCommandEvent& eventfromwho);
 	void DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata);
 
 	void OnQuit(wxCommandEvent& event);
 	void OnSize(wxSizeEvent& event);
-	//void OnCollPaneChange(wxCollapsiblePaneEvent& event);
 };
 
 #endif

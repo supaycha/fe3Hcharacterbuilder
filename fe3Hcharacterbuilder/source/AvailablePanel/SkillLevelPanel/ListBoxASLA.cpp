@@ -42,63 +42,21 @@ std::vector<wxString> ListBoxASLA::UpdateSelections() {
 	return tempvector;
 }
 
-//void ListBoxASLA::ReceiveExclusivity(wxString charactername) {
-//	currentDDCselection = charactername;
-//	FilterAbilities();
-//}
-//
-//void ListBoxASLA::ReceiveClassInnate(wxString classname) {
-//	currentLBCselection = classname;
-//	FilterAbilities();
-//}
-
 void ListBoxASLA::ReceiveSLInfo(SLPACKAGE* slpackage) {
 	SLfilter[slpackage->index] = slpackage->sl;
 	FilterAbilities();
 }
 
 void ListBoxASLA::FilterAbilities() {
-	//std::vector<CharacterInnateAbility*> characterinnateabilities;
-	//std::vector<ClassInnateAbility*> classinnateabilities;
 	std::vector<SkillLevelAbility*> skilllevelabilities;
-	//std::vector<ClassMasteryAbility*> exclusiveweapons;
-
 	std::vector<wxString> abilitynames;
 
 	for (auto element : abilitymap) {
 		Ability* tempability = dynamic_cast<Ability*>(element.second)->clone();
-		//if (CharacterInnateAbility* tempchia = dynamic_cast<CharacterInnateAbility*>(tempability)) {
-		//	characterinnateabilities.push_back(tempchia);
-		//}
-		//if (ClassInnateAbility* tempclia = dynamic_cast<ClassInnateAbility*>(tempability)) {
-		//	classinnateabilities.push_back(tempclia);
-		//}
 		if (SkillLevelAbility* tempsla = dynamic_cast<SkillLevelAbility*>(tempability)) {
 			skilllevelabilities.push_back(tempsla);
 		}
 	}
-
-	//for (auto ability : characterinnateabilities) {
-	//	if (ability->getSource() == currentDDCselection) {
-	//		abilitynames.push_back(ability->getName());
-	//	}
-	//}
-
-	//for (auto ability : classinnateabilities) {
-	//	std::wstring abilityns = ability->getSource(), buffer;
-	//	std::wstringstream stream(abilityns);
-	//	std::vector<std::wstring> namesfromstream;
-
-	//	while (std::getline(stream, buffer, L',')) {
-	//		namesfromstream.push_back(buffer);
-	//	}
-
-	//	for (auto possiblematch : namesfromstream) {
-	//		if (possiblematch == currentLBCselection) {
-	//			abilitynames.push_back(ability->getName());
-	//		}
-	//	}
-	//}
 
 	for (auto ability : skilllevelabilities) {
 		SL abilitySL = ability->getSL();
@@ -109,7 +67,6 @@ void ListBoxASLA::FilterAbilities() {
 	}
 
 	ReceiveAbilityFiltration(abilitynames);
-	//lbsa->ReceiveAbilityFiltration(abilitynames);
 }
 
 void ListBoxASLA::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {

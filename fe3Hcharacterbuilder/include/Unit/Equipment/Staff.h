@@ -18,7 +18,6 @@ public:
 		Equipment{ uName, uExclusivity, uCharacterNameorNames, uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE, uDescription } {}
 	~Staff() {}
 
-	//EQUIPMENTTYPE getType() override { return et; };
 	Staff* new_expr() override { return new Staff(); }
 	Staff* clone() override { return new Staff(*this); }
 };

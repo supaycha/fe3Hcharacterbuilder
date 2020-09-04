@@ -12,14 +12,11 @@ wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 class GridCharInnateAbilityStats : public wxGrid {
 private:
 	GTBCharInnateAbilityStats* gtbcias;
-	//wxDECLARE_EVENT_TABLE();
 public:
 	GridCharInnateAbilityStats(wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveLBBSelection(Stats stats);
 	void repopulate();
-
-	//void OnSize(wxSizeEvent& event);
 };
 
 #endif

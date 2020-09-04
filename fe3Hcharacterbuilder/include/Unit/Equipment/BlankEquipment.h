@@ -18,7 +18,6 @@ public:
 		Equipment{ uName, uExclusivity, uCharacterNameorNames, uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE, uDescription } {}
 	~BlankEquipment() {}
 
-	//EQUIPMENTTYPE getType() override { return et; };
 	BlankEquipment* new_expr() override { return new BlankEquipment(); }
 	BlankEquipment* clone() override { return new BlankEquipment(*this); }
 };

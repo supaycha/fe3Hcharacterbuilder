@@ -7,9 +7,6 @@ wxDEFINE_EVENT(REPEAT_LBASLA_SELECTION, wxCommandEvent);
 
 wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 
-//wxDEFINE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
-//wxDEFINE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);
-//wxDEFINE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBW_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBE_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBB_SELECTION, wxCommandEvent);
@@ -118,7 +115,6 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	column3 = new wxBoxSizer(wxHORIZONTAL);	
 	column4 = new wxBoxSizer(wxVERTICAL);
 	column5 = new wxBoxSizer(wxVERTICAL);
-	//column6 = new wxBoxSizer(wxVERTICAL);
 
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
 	ep = new EquippedPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_EP);	
@@ -138,8 +134,6 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	framesizer->Add(column3, 1, wxEXPAND, 0);
 	framesizer->Add(column4);
 	framesizer->Add(column5);
-	//framesizer->Add(column6);
-
 	this->SetSizer(framesizer);
 	this->Layout();
 
@@ -150,9 +144,6 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
 	Bind(TRANSMIT_LBE_SELECTION, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
 	Bind(TRANSMIT_LBB_SELECTION, &MyFrame::BounceLBBSelection, this, (int)ID_SINGLE_CONTROL::ID_LBB);
-	//Bind(TRANSMIT_GWS_STATS, &MyFrame::BounceGWSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GWS);
-	//Bind(TRANSMIT_GES_STATS, &MyFrame::BounceGESStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GES);
-	//Bind(TRANSMIT_GBS_STATS, &MyFrame::BounceGBSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GBS);
 }
 
 void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
@@ -203,21 +194,6 @@ void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
 	ep->ReceiveLBBSelection(tempname);
 }
 
-//void MyFrame::BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS) {
-//	Stats* temp = dynamic_cast<Stats*>(eventfromGWS.GetClientObject());
-//	gts->ReceiveGWSStats(*temp);
-//}
-//
-//void MyFrame::BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES) {
-//	Stats* temp = dynamic_cast<Stats*>(eventfromGES.GetClientObject());
-//	gts->ReceiveGESStats(*temp);
-//}
-//
-//void MyFrame::BounceGBSStats_partoftotalstats(wxCommandEvent& eventfromGBS) {
-//	Stats* temp = dynamic_cast<Stats*>(eventfromGBS.GetClientObject());
-//	gts->ReceiveGBSStats(*temp);
-//}
-
 void MyFrame::DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata) {
 	if (BlankWeapon* temp = dynamic_cast<BlankWeapon*>(unit)) {
 		weapondata.push_back(temp->clone());
@@ -264,16 +240,6 @@ void MyFrame::OnSize(wxSizeEvent& event) {
 	event.Skip();
 }
 
-//void MyFrame::OnCollPaneChange(wxCollapsiblePaneEvent& event) {
-//	wxSize test = this->GetMinSize();
-//	//bcp->SetMinSize(test);
-//	//mainrow->Fit(this);
-//	event.Skip();
-//}
-
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
 	EVT_SIZE(MyFrame::OnSize)
-	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPB, MyFrame::OnCollPaneChange)
-	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPW, MyFrame::OnCollPaneChange)
-	//EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPE, MyFrame::OnCollPaneChange)
 wxEND_EVENT_TABLE()

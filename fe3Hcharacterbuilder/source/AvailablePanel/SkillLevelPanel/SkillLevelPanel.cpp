@@ -39,8 +39,7 @@ SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, st
 void SkillLevelPanel::ReceiveWeaponExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
 	wm->ReceiveWeaponExclusivity(charactername);
 }
-//move entire bouncing of slpackage into skilllevelpanel.h from myframe.h
-//it would bounce from skilllevelmanager to this function, renamed bounce slinfo
+
 void SkillLevelPanel::BounceSLInfo(wxCommandEvent& eventfromwho) {
 	int idofreceiver = eventfromwho.GetInt();
 	switch (idofreceiver)

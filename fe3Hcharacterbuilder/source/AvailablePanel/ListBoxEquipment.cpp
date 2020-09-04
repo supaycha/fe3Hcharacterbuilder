@@ -4,7 +4,6 @@ ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentm
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
-	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 	equipmentmap = uequipmentmap;
 	auto iter = uequipmentmap.begin();
 

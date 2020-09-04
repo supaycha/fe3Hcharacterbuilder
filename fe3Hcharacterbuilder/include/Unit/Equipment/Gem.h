@@ -18,7 +18,6 @@ public:
 		Equipment{ uName, uExclusivity, uCharacterNameorNames, uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE, uDescription } {}
 	~Gem() {}
 
-	//EQUIPMENTTYPE getType() override { return et; };
 	Gem* new_expr() override { return new Gem(); }
 	Gem* clone() override { return new Gem(*this); }
 };

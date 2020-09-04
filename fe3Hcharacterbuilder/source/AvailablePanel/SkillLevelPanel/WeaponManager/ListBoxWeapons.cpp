@@ -9,7 +9,6 @@ ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxW
 		WTfilter.push_back(transfer);
 	}
 
-	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 	weaponmap = uweaponmap;
 	auto iter = weaponmap.begin();
 

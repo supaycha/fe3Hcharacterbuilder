@@ -4,7 +4,6 @@
 #include <wx/wx.h>
 #include <wx/collpane.h>
 #include <constants.h>
-
 #include <Stat.h>
 #include <Stats Panel/CPOptionalStats/CPOptionalStats.h>
 #include <Stats Panel/Total Stats/GridTotalStats.h>

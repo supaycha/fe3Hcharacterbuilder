@@ -26,13 +26,10 @@ public:
 	~ListBoxASLA() {}
 
 	void OnSelection(wxCommandEvent& event);
-	//void ReceiveExclusivity(wxString charactername);
 	void ReceiveSLInfo(SLPACKAGE* slpackage);
-	//void ReceiveClassInnate(wxString classname);
 	void FilterAbilities();
 
 	void ReceiveAbilityFiltration(std::vector<wxString> dirtynames);
-	void ReceiveSelectionsfromBounceL(std::vector<wxString> uSelections);
 	void repopulate();
 	void reselection();
 

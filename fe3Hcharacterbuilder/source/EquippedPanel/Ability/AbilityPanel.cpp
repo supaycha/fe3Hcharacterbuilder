@@ -27,12 +27,8 @@ AbilityPanel::AbilityPanel(std::map<wxString, wxClientData*> abilitymap, wxWindo
 }
 
 void AbilityPanel::FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientData*> abilitymap) {
-	//std::vector<CharacterInnateAbility*> characterinnateabilities;
-	//std::vector<ClassInnateAbility*> classinnateabilities;
-	//std::vector<SkillLevelAbility*> skilllevelabilities;
 	std::map<wxString, wxClientData*> characterinnateabilities;
 	std::map<wxString, wxClientData*> skilllevelabilities;
-	//std::vector<ClassMasteryAbility*> exclusiveweapons;
 
 	std::vector<wxString> abilitynames;
 	const wxString buffer;
@@ -58,39 +54,6 @@ void AbilityPanel::FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientDa
 	for (int i = 0; i < 5; ++i) {
 		eslaVector.push_back(new EquippedSkillLvlAbilities(skilllevelabilities, this, ((int)ID_SINGLE_CONTROL::ID_ESLA + i), buffer));
 	}
-
-	//for (auto ability : characterinnateabilities) {
-	//	if (ability->getSource() == currentDDCselection) {
-	//		abilitynames.push_back(ability->getName());
-	//	}
-	//}
-
-	//for (auto ability : classinnateabilities) {
-	//	std::wstring abilityns = ability->getSource(), buffer;
-	//	std::wstringstream stream(abilityns);
-	//	std::vector<std::wstring> namesfromstream;
-
-	//	while (std::getline(stream, buffer, L',')) {
-	//		namesfromstream.push_back(buffer);
-	//	}
-
-	//	for (auto possiblematch : namesfromstream) {
-	//		if (possiblematch == currentLBCselection) {
-	//			abilitynames.push_back(ability->getName());
-	//		}
-	//	}
-	//}
-
-	//for (auto ability : skilllevelabilities) {
-	//	SL abilitySL = ability->getSL();
-
-	//	if (abilitySL <= SLfilter[(int)ability->getWeaponType()]) {
-	//		abilitynames.push_back(ability->getName());
-	//	}
-	//}
-
-	//lbaa->ReceiveAbilityFiltration(abilitynames);
-	//lbsa->ReceiveAbilityFiltration(abilitynames);
 }
 
 void AbilityPanel::ReceiveCharacterInnateExclusivity(wxString charactername) {

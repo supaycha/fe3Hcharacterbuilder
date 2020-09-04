@@ -18,7 +18,6 @@ public:
 		Equipment{ uName, uExclusivity, uCharacterName, uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE, uDescription } {}
 	~Shield() {}
 
-	//EQUIPMENTTYPE getType() override { return et; };
 	Shield* new_expr() override { return new Shield(); }
 	Shield* clone() override { return new Shield(*this); }
 };

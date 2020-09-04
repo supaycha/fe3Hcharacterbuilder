@@ -11,8 +11,6 @@ private:
 	std::wstring charname;
 	Stats charstats;
 	Growths basegrowths;
-	//Crest crest;
-	//BuddingTalent bt;
 public:
 	Character() {}
 	Character(std::wstring uNAME,

@@ -5,7 +5,7 @@
 #include <Stat.h>
 #include <constants.h>
 #include <Unit/Unit.h>
-//PROT, WEIGHT, RES, HIT, TCRIT, AVO, SPD, MOV, LCK, MATK, HEAL, RANGE
+
 class Equipment : public Unit {
 private:
 	std::wstring equipmentname;
@@ -31,7 +31,6 @@ public:
 	virtual const Stats getStats() { return equipstats; }
 	bool getExclusivity() { return exclusivity; }
 	virtual const std::wstring getCharacterName() { return charactername; }
-	//virtual EQUIPMENTTYPE getType() = 0;
 	virtual Equipment* new_expr() = 0;
 	virtual Equipment* clone() = 0;
 };

@@ -39,8 +39,6 @@ public:
 	Growths* clone() { return new Growths(*this); }
 
 	void push_back(std::wstring stringforgrowth) { growths.push_back(stringforgrowth); }
-	//auto begin() { return growths.begin(); }
-	//auto end() { return growths.end(); }
 };
 
 #endif

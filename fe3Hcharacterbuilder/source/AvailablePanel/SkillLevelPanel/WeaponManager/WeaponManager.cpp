@@ -65,66 +65,6 @@ void WeaponManager::OnNewSelection(wxCommandEvent& eventfromwho) {
 
 	WTPACKAGE package{ isNotIncluded, trueid };
 	lbw->ReceiveWTInfo(package);
-	//switch (id) {
-	//	case (int)WT_CONTROL::ID_BSWORD: {
-	//		bool isPressed = weapontypes[id - offset]->GetValue();
-	//		int templevel = transmission.GetInt();
-	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN1);
-
-	//		break;
-	//	}
-
-	//	case (int)WT_CONTROL::ID_BLANCE: {
-	//		int templevel = transmission.GetInt();
-	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
-
-	//		break;
-	//	}
-
-	//	case (int)WT_CONTROL::ID_BAXE: {
-	//		int templevel = transmission.GetInt();
-	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
-
-	//		break;
-	//	}
-
-	//	case (int)WT_CONTROL::ID_BBOW: {
-	//		int templevel = transmission.GetInt();
-	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
-
-	//		break;
-	//	}
-
-	//	case (int)WT_CONTROL::ID_BGAUNTLETS: {
-	//		int templevel = transmission.GetInt();
-	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
-
-	//		break;
-	//	}
-
-	//	case (int)WT_CONTROL::ID_BBLACKMAGIC: {
-	//		int templevel = transmission.GetInt();
-	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
-
-	//		break;
-	//	}
-
-	//	case (int)WT_CONTROL::ID_BDARKMAGIC: {
-	//		int templevel = transmission.GetInt();
-	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
-
-	//		break;
-	//	}
-
-	//	case (int)WT_CONTROL::ID_BWHITEMAGIC: {
-	//		int templevel = transmission.GetInt();
-	//		gmt->UpdateSCLSelection(templevel, (int)ID_MISC::ID_SPIN2);
-
-	//		break;
-	//	}
-
-	//}
-
 }
 
 void WeaponManager::ReceiveWeaponExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()

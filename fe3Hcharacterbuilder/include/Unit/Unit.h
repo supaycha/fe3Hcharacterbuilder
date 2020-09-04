@@ -3,8 +3,6 @@
 
 #include <wx/wx.h>
 #include "Stat.h"
-//#include "Growth.h"
-//#include "constants.h"
 //#include <vld.h>
 
 class Unit : public wxClientData {
@@ -33,4 +31,5 @@ public:
 //	Gambit* new_expr() override { return new Gambit(); }
 //	Gambit* clone() override { return new Gambit(*this); }
 //};
+
 #endif

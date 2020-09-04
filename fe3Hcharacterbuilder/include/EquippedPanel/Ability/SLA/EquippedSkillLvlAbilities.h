@@ -11,25 +11,12 @@ private:
 	std::vector<wxString> selectedSAnames;
 
 	wxString currentLBASLAselection;
-
-	//wxDECLARE_EVENT_TABLE();
 public:
 	EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedSkillLvlAbilities() {}
 
 	void ReceiveSkillLevelAbility(wxString classname);
 	void repopulate();
-
-	//void OnSelection(wxCommandEvent& event);
-	//void ReceiveAbilityFiltration(std::vector<wxString> dirtynames);
-	//void ReceiveSelectionsfromBounceR(std::vector<wxString> uSelections);
-	//void repopulate();
-	//void reselection();
-
-	//std::vector<wxString> UpdateSelections();
-	//std::vector<wxString> GetSelectionsSAAndClear();
-
-	//wxArrayString ToArrayString(std::vector<wxString> names);
 };
 
 #endif

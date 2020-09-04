@@ -11,8 +11,6 @@
 
 wxDECLARE_EVENT(REPEAT_LBASLA_SELECTION, wxCommandEvent);
 
-//class SkillLevelManager;
-
 class SkillLevelPanel : public wxPanel {
 private:
 	wxBoxSizer* slpSizer;

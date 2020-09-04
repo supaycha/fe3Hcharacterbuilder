@@ -17,7 +17,6 @@ private:
 	EquippedWeapon* ew;
 	EquippedEquipment* ee;
 	AbilityPanel* ap;
-	//wxDECLARE_EVENT_TABLE();
 public:
 	EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
 	~EquippedPanel() {}
@@ -29,7 +28,6 @@ public:
 	void ReceiveClassInnateExclusivity(wxString classname);
 	void ReceiveSLASelections(AbilitySelections* selections);
 	void OnSize(wxSizeEvent& event);
-	//void OnCollChange(wxCollapsiblePaneEvent& event);
 };
 
 #endif
