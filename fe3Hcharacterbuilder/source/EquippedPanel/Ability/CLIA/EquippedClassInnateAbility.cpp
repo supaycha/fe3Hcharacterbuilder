@@ -19,4 +19,11 @@ void EquippedClassInnateAbility::ReceiveClassInnateAbility(wxString classname) {
 
 void EquippedClassInnateAbility::repopulate() {
 	this->SetLabelText(currentLBCselection);
+	if (currentLBCselection == "---") {
+		SetToolTip(NULL);
+	}
+	else {
+		SetToolTip(currentLBCselection);
+
+	}
 }

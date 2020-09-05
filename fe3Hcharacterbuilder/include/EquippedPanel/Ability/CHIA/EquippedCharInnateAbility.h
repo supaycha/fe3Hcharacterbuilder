@@ -17,6 +17,7 @@ public:
 
 	void ReceiveCharacterInnateExclusivity(wxString charactername);
 	void repopulate();
+	wxString RetrieveDescription(wxString abilityname);
 };
 
 #endif

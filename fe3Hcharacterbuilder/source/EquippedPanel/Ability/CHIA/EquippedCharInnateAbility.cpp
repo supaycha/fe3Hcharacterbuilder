@@ -21,4 +21,16 @@ void EquippedCharInnateAbility::repopulate() {
 	}
 
 	this->SetLabelText(abilityname);
+	wxString description = this->RetrieveDescription(abilityname);
+	SetToolTip(description);
+}
+
+wxString EquippedCharInnateAbility::RetrieveDescription(wxString abilityname) {
+	for (auto element : characterinnateabilities) {
+		if (abilityname == element.first) {
+			CharacterInnateAbility* tempability = dynamic_cast<CharacterInnateAbility*>(element.second);
+			wxString tempdescription = tempability->getDescription();
+			return tempdescription;
+		}
+	}
 }

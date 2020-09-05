@@ -20,4 +20,11 @@ void EquippedSkillLvlAbilities::ReceiveSkillLevelAbility(wxString slname) {
 
 void EquippedSkillLvlAbilities::repopulate() {
 	this->SetLabelText(currentLBASLAselection);
+	if (currentLBASLAselection == "---") {
+		SetToolTip(NULL);
+	}
+	else {
+		SetToolTip(currentLBASLAselection);
+
+	}
 }
