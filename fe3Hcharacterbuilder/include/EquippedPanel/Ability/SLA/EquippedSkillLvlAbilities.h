@@ -4,6 +4,7 @@
 #include <wx/wx.h>
 #include <map>
 #include <constants.h>
+#include <Unit/Ability/SkillLevelAbility.h>
 
 class EquippedSkillLvlAbilities : public wxStaticText {
 private:
@@ -11,12 +12,14 @@ private:
 	std::vector<wxString> selectedSAnames;
 
 	wxString currentLBASLAselection;
+	std::map<wxString, wxClientData*> skilllevelabilities;
 public:
-	EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label);
+	EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> uskilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedSkillLvlAbilities() {}
 
 	void ReceiveSkillLevelAbility(wxString classname);
 	void repopulate();
+	wxString RetrieveDescription(wxString currentLBASLAselection);
 };
 
 #endif

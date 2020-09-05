@@ -182,8 +182,9 @@ void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 	Equipment* tempequipment = dynamic_cast<Equipment*>(selection.GetClientObject());
 	Stats tempstats = tempequipment->getStats();
 	wxString tempname = tempequipment->getName();
+	wxString description = tempequipment->getDescription();
 	sp->ReceiveLBESelection(tempstats);
-	ep->ReceiveLBESelection(tempname);
+	ep->ReceiveLBESelection(tempname, description);
 }
 
 void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {

@@ -9,7 +9,7 @@ public:
 	EquippedEquipment(wxWindow* parent, wxWindowID id, const wxString& label);
 	~EquippedEquipment() {}
 
-	void ReceiveLBESelection(wxString equipmentname);
+	void ReceiveLBESelection(wxString equipmentname, wxString equipmentdescription);
 };
 
 #endif

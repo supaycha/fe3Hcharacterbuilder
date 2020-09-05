@@ -31,6 +31,7 @@ public:
 	virtual const Stats getStats() { return equipstats; }
 	bool getExclusivity() { return exclusivity; }
 	virtual const std::wstring getCharacterName() { return charactername; }
+	wxString getDescription() { return description; }
 	virtual Equipment* new_expr() = 0;
 	virtual Equipment* clone() = 0;
 };

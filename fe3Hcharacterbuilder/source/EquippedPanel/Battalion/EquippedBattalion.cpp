@@ -8,4 +8,5 @@ EquippedBattalion::EquippedBattalion(wxWindow* parent, wxWindowID id, const wxSt
 
 void EquippedBattalion::ReceiveLBBSelection(wxString battalionname) {
 	this->SetLabelText(battalionname);
+
 }

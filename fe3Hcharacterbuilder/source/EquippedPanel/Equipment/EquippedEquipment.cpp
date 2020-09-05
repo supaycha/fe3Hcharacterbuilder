@@ -5,6 +5,7 @@ EquippedEquipment::EquippedEquipment(wxWindow* parent, wxWindowID id, const wxSt
 {
 }
 
-void EquippedEquipment::ReceiveLBESelection(wxString equipmentname) {
+void EquippedEquipment::ReceiveLBESelection(wxString equipmentname, wxString equipmentdescription) {	
 	this->SetLabelText(equipmentname);
+	SetToolTip(equipmentdescription);
 }

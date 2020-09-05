@@ -22,7 +22,7 @@ public:
 	~EquippedPanel() {}
 
 	void ReceiveLBWSelection(wxString weaponname);
-	void ReceiveLBESelection(wxString equipmentname);
+	void ReceiveLBESelection(wxString equipmentname, wxString equipmentdescription);
 	void ReceiveLBBSelection(wxString battalionname);
 	void ReceiveCharacterInnateExclusivity(wxString charactername);
 	void ReceiveClassInnateExclusivity(wxString classname);

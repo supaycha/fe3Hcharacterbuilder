@@ -3,6 +3,7 @@
 EquippedClassInnateAbility::EquippedClassInnateAbility(std::map<wxString, wxClientData*> uclassinnateabilities, wxWindow* parent, wxWindowID id, const wxString& label) :
 	wxStaticText(parent, id, label, wxDefaultPosition, wxDefaultSize)
 {
+	classinnateabilities = uclassinnateabilities;
 }
 
 void EquippedClassInnateAbility::ReceiveClassInnateAbility(wxString classname) {
@@ -23,7 +24,19 @@ void EquippedClassInnateAbility::repopulate() {
 		SetToolTip(NULL);
 	}
 	else {
-		SetToolTip(currentLBCselection);
-
+		wxString description = this->RetrieveDescription(currentLBCselection);
+		SetToolTip(description);
 	}
+}
+
+wxString EquippedClassInnateAbility::RetrieveDescription(wxString currentLBCselection) {
+	for (auto element : classinnateabilities) {
+		if (currentLBCselection == element.first) {
+			ClassInnateAbility* tempability = dynamic_cast<ClassInnateAbility*>(element.second);
+			wxString tempdescription = tempability->getDescription();
+			return tempdescription;
+		}
+	}
+
+	return "ERROR";
 }

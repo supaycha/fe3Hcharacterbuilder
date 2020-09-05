@@ -33,4 +33,6 @@ wxString EquippedCharInnateAbility::RetrieveDescription(wxString abilityname) {
 			return tempdescription;
 		}
 	}
+
+	return "ERROR";
 }

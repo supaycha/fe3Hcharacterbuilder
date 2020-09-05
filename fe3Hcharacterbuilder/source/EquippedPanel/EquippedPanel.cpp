@@ -42,8 +42,8 @@ void EquippedPanel::ReceiveLBWSelection(wxString weaponname) {
 	ew->ReceiveLBWSelection(weaponname);
 }
 
-void EquippedPanel::ReceiveLBESelection(wxString equipmentname) {
-	ee->ReceiveLBESelection(equipmentname);
+void EquippedPanel::ReceiveLBESelection(wxString equipmentname, wxString equipmentdescription) {
+	ee->ReceiveLBESelection(equipmentname, equipmentdescription);
 }
 
 void EquippedPanel::ReceiveLBBSelection(wxString battalionname) {

@@ -1,9 +1,9 @@
 #include <EquippedPanel/Ability/SLA/EquippedSkillLvlAbilities.h>
 
-EquippedSkillLvlAbilities::EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label) :
+EquippedSkillLvlAbilities::EquippedSkillLvlAbilities(std::map<wxString, wxClientData*> uskilllevelabilities, wxWindow* parent, wxWindowID id, const wxString& label) :
 	wxStaticText(parent, id, label, wxDefaultPosition, wxDefaultSize)
 {
-
+	skilllevelabilities = uskilllevelabilities;
 }
 
 void EquippedSkillLvlAbilities::ReceiveSkillLevelAbility(wxString slname) {
@@ -24,7 +24,19 @@ void EquippedSkillLvlAbilities::repopulate() {
 		SetToolTip(NULL);
 	}
 	else {
-		SetToolTip(currentLBASLAselection);
-
+		wxString description = this->RetrieveDescription(currentLBASLAselection);
+		SetToolTip(description);
 	}
+}
+
+wxString EquippedSkillLvlAbilities::RetrieveDescription(wxString currentLBCselection) {
+	for (auto element : skilllevelabilities) {
+		if (currentLBASLAselection == element.first) {
+			SkillLevelAbility* tempability = dynamic_cast<SkillLevelAbility*>(element.second);
+			wxString tempdescription = tempability->getDescription();
+			return tempdescription;
+		}
+	}
+
+	return "ERROR";
 }
