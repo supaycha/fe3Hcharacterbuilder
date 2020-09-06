@@ -1,22 +1,42 @@
 #include <Stats Panel/CPOptionalStats/CPOptionalStats.h>
 
-CPOptionalStats::CPOptionalStats(wxWindow* parent, wxWindowID id, const wxString& buffer) :
+CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, wxWindow* parent, wxWindowID id, const wxString& buffer) :
 	wxCollapsiblePane(parent, id, buffer)
 {
+	abilitymap = uabilitymap;
 	mainsizer = new wxBoxSizer(wxVERTICAL);
 	wxWindow* mainwindow = this->GetPane();
+
+	std::map<wxString, wxClientData*> characterinnateabilities;
+	std::map<wxString, wxClientData*> classinnateabilities;
+	std::map<wxString, wxClientData*> skilllevelabilities;
+
+	std::vector<wxString> abilitynames;
+
+	for (auto element : abilitymap) {
+		Ability* tempability = dynamic_cast<Ability*>(element.second)->clone();
+		if (CharacterInnateAbility* tempchia = dynamic_cast<CharacterInnateAbility*>(tempability)) {
+			characterinnateabilities.insert(element);
+		}
+		if (ClassInnateAbility* tempclia = dynamic_cast<ClassInnateAbility*>(tempability)) {
+			classinnateabilities.insert(element);
+		}
+		if (SkillLevelAbility* tempsla = dynamic_cast<SkillLevelAbility*>(tempability)) {
+			skilllevelabilities.insert(element);
+		}
+	}
 
 	gws = new GridWeaponStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GWS);
 	ges = new GridEquipmentStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GES);
 	gbs = new GridBattalionStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GBS);
-	gchias = new GridCharInnateAbilityStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GCHIAS);
+	gchias = new GridCharInnateAbilityStats(characterinnateabilities, mainwindow, (int)ID_SINGLE_CONTROL::ID_GCHIAS);
 
 	for (int i = 0; i < 3; ++i) {
-		gcliasVector.push_back(new GridClassInnateAbilityStats(mainwindow, ((int)ID_SINGLE_CONTROL::ID_GCLIAS + i)));
+		gcliasVector.push_back(new GridClassInnateAbilityStats(classinnateabilities, mainwindow, ((int)ID_SINGLE_CONTROL::ID_GCLIAS + i)));
 	}
 
 	for (int i = 0; i < 5; ++i) {
-		gslasVector.push_back(new GridSkillLevelAbilityStats(mainwindow, ((int)ID_SINGLE_CONTROL::ID_GSLAS + i)));
+		gslasVector.push_back(new GridSkillLevelAbilityStats(skilllevelabilities, mainwindow, ((int)ID_SINGLE_CONTROL::ID_GSLAS + i)));
 	}
 
 	wxBoxSizer* statssizer = new wxBoxSizer(wxHORIZONTAL);
@@ -53,4 +73,16 @@ void CPOptionalStats::ReceiveLBESelection(Stats stats) {
 
 void CPOptionalStats::ReceiveLBBSelection(Stats stats) {
 	gbs->ReceiveLBBSelection(stats);
+}
+
+void CPOptionalStats::ReceiveCHIASelection(wxString abilityname) {
+	gchias->ReceiveCHIASelection(abilityname);
+}
+
+void CPOptionalStats::ReceiveCLIASelection(wxString abilityname, int id) {
+	gcliasVector[id - 61]->ReceiveCLIASelection(abilityname);
+}
+
+void CPOptionalStats::ReceiveSLASelection(wxString abilityname, int id) {
+	gslasVector[id - 64]->ReceiveSLASelection(abilityname);
 }

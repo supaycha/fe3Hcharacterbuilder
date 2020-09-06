@@ -13,6 +13,9 @@ private:
 	Stats currentGWSstats;
 	Stats currentGESstats;
 	Stats currentGBSstats;
+	Stats currentGCHIASstats;
+	std::vector<Stats> currentGCLIASstats;
+	std::vector<Stats> currentGSLASstats;
 	Stats totalstats;
 public:
 	GTBTotalStats() :
@@ -36,6 +39,9 @@ public:
 	void ReceiveGWSStats(Stats stats);
 	void ReceiveGESStats(Stats stats);
 	void ReceiveGBSStats(Stats stats);
+	void ReceiveGCHIASStats(Stats stats);
+	void ReceiveGCLIASStats(Stats stats, int id);
+	void ReceiveGSLASStats(Stats stats, int id);
 	void recalculate();
 
 	void CalculateTotalPhysicalAttack();

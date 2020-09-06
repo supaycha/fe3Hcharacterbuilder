@@ -30,6 +30,18 @@ void GTBTotalStats::ReceiveGBSStats(Stats stats) {
 	currentGBSstats = stats;
 }
 
+void GTBTotalStats::ReceiveGCHIASStats(Stats stats) {
+	currentGCHIASstats = stats;
+}
+
+void GTBTotalStats::ReceiveGCLIASStats(Stats stats, int index) {
+	currentGCLIASstats[index] = stats;
+}
+
+void GTBTotalStats::ReceiveGSLASStats(Stats stats, int index) {
+	currentGSLASstats[index] = stats;
+}
+
 void GTBTotalStats::CalculateTotalPhysicalAttack() {
 	std::wstring temp = currentGMTstats[2].getText();
 	int lvcstat2 = _wtoi(temp.c_str());

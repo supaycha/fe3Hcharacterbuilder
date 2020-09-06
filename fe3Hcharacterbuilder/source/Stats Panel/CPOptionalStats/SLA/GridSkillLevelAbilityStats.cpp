@@ -1,8 +1,10 @@
 #include <Stats Panel/CPOptionalStats/SLA/GridSkillLevelAbilityStats.h>
 
-GridSkillLevelAbilityStats::GridSkillLevelAbilityStats(wxWindow* parent, wxWindowID id) :
+GridSkillLevelAbilityStats::GridSkillLevelAbilityStats(std::map<wxString, wxClientData*> uskilllevelabilities, wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
+	skilllevelabilities = uskilllevelabilities;
+
 	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbcias = new GTBSkillLevelAbilityStats;
 
@@ -29,6 +31,10 @@ void GridSkillLevelAbilityStats::ReceiveLBBSelection(Stats stats) {
 	Freeze();
 	repopulate();
 	Thaw();
+}
+
+void GridSkillLevelAbilityStats::ReceiveSLASelection(wxString abilityname) {
+	currentSLAselection = abilityname;
 }
 
 void GridSkillLevelAbilityStats::repopulate() {

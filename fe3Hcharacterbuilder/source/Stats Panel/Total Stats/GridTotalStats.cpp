@@ -56,6 +56,19 @@ void GridTotalStats::ReceiveGBSStats(Stats stats) {
 	Thaw();
 }
 
+void GridTotalStats::ReceiveGCHIASStats(Stats stats) {
+	gtbts->ReceiveGCHIASStats(stats);
+
+}
+
+void GridTotalStats::ReceiveGCLIASStats(Stats stats, int index) {
+	gtbts->ReceiveGCLIASStats(stats, index);
+}
+
+void GridTotalStats::ReceiveGSLASStats(Stats stats, int index) {
+	gtbts->ReceiveGSLASStats(stats, index);
+}
+
 void GridTotalStats::repopulate() {
 	int col = 1;
 

@@ -1,8 +1,9 @@
 #include <Stats Panel/CPOptionalStats/CHIA/GridCharInnateAbilityStats.h>
 
-GridCharInnateAbilityStats::GridCharInnateAbilityStats(wxWindow* parent, wxWindowID id) :
+GridCharInnateAbilityStats::GridCharInnateAbilityStats(std::map<wxString, wxClientData*> ucharacterinnateabilities, wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
+	characterinnateabilities = ucharacterinnateabilities;
 	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbcias = new GTBCharInnateAbilityStats;
 
@@ -26,6 +27,13 @@ void GridCharInnateAbilityStats::initpopulate() {
 
 void GridCharInnateAbilityStats::ReceiveLBBSelection(Stats stats) {
 	gtbcias->ReceiveLBBSelection(stats);
+	Freeze();
+	repopulate();
+	Thaw();
+}
+
+void GridCharInnateAbilityStats::ReceiveCHIASelection(wxString abilityname) {
+	currentCHIAselection = abilityname;
 	Freeze();
 	repopulate();
 	Thaw();

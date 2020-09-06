@@ -3,6 +3,7 @@
 
 #include <wx/wx.h>
 #include <wx/grid.h>
+#include <map>
 #include <Stat.h>
 #include <constants.h>
 #include <Stats Panel/CPOptionalStats/CHIA/GTBCharInnateAbilityStats.h>
@@ -12,10 +13,13 @@ wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
 class GridCharInnateAbilityStats : public wxGrid {
 private:
 	GTBCharInnateAbilityStats* gtbcias;
+	wxString currentCHIAselection;
+	std::map<wxString, wxClientData*> characterinnateabilities;
 public:
-	GridCharInnateAbilityStats(wxWindow* parent, wxWindowID id);
+	GridCharInnateAbilityStats(std::map<wxString, wxClientData*> ucharacterinnateabilities, wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveLBBSelection(Stats stats);
+	void ReceiveCHIASelection(wxString abilityname);
 	void repopulate();
 };
 

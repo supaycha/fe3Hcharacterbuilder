@@ -121,7 +121,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	slp = new SkillLevelPanel(weaponmap, battalionmap, this, (int)ID_SINGLE_CONTROL::ID_SLP);
 	wxStaticText* lbeLABEL = new wxStaticText(this, wxID_ANY, "Available Equipment");
 	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
-	sp = new StatsPanel(this, (int)ID_SINGLE_CONTROL::ID_SP);
+	sp = new StatsPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_SP);
 	column1->Add(mt);	
 	column1->Add(sp);
 	column2->Add(ep);	

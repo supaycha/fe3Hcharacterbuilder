@@ -1,8 +1,9 @@
 #include <Stats Panel/CPOptionalStats/CLIA/GridClassInnateAbilityStats.h>
 
-GridClassInnateAbilityStats::GridClassInnateAbilityStats(wxWindow* parent, wxWindowID id) :
+GridClassInnateAbilityStats::GridClassInnateAbilityStats(std::map<wxString, wxClientData*> uclassinnateabilities, wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
+	classinnateabilities = uclassinnateabilities;
 	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbcias = new GTBClassInnateAbilityStats;
 
@@ -29,6 +30,10 @@ void GridClassInnateAbilityStats::ReceiveLBBSelection(Stats stats) {
 	Freeze();
 	repopulate();
 	Thaw();
+}
+
+void GridClassInnateAbilityStats::ReceiveCLIASelection(wxString abilityname) {
+	currentCLIAselection = abilityname;
 }
 
 void GridClassInnateAbilityStats::repopulate() {
