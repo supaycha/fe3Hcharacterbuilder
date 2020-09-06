@@ -7,9 +7,10 @@
 class CharacterInnateAbility : public Ability {
 private:
 	std::wstring ciaType = L"CharacterInnate";
+	bool hasStatUp;
 public:
 	CharacterInnateAbility() {}
-	CharacterInnateAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription) : Ability{ uName, uSource, uDescription } {}
+	CharacterInnateAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, bool uHasStatUp) : hasStatUp{ uHasStatUp }, Ability { uName, uSource, uDescription } {}
 	~CharacterInnateAbility() {}
 	std::wstring getType() { return ciaType; }
 	CharacterInnateAbility* new_expr() override { return new CharacterInnateAbility(); }
