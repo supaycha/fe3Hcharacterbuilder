@@ -80,9 +80,9 @@ void CPOptionalStats::ReceiveCHIASelection(wxString abilityname) {
 }
 
 void CPOptionalStats::ReceiveCLIASelection(wxString abilityname, int id) {
-	gcliasVector[id - 61]->ReceiveCLIASelection(abilityname);
+	gcliasVector[id]->ReceiveCLIASelection(abilityname);
 }
 
 void CPOptionalStats::ReceiveSLASelection(wxString abilityname, int id) {
-	gslasVector[id - 64]->ReceiveSLASelection(abilityname);
+	gslasVector[id]->ReceiveSLASelection(abilityname);
 }

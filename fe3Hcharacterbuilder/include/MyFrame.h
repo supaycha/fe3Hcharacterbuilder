@@ -41,6 +41,7 @@ wxDECLARE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
 wxDECLARE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
 wxDECLARE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
 wxDECLARE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
+wxDECLARE_EVENT(TRANSMIT_CHIA_SELECTION, wxCommandEvent);
 
 class MyFrame : public wxFrame {
 private:
@@ -69,6 +70,8 @@ public:
 	void BounceLBWSelection(wxCommandEvent& selection);
 	void BounceLBESelection(wxCommandEvent& selection);
 	void BounceLBBSelection(wxCommandEvent& selection);
+	void BounceCHIASelection(wxCommandEvent& selection);
+	void BounceCLIASelection(wxCommandEvent& selection);
 	void DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata);
 
 	void OnQuit(wxCommandEvent& event);

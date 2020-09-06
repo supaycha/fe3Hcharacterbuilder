@@ -4,22 +4,28 @@
 #include <wx/wx.h>
 #include <wx/grid.h>
 #include <Stat.h>
+#include <constants.h>
 
 class GTBClassInnateAbilityStats : public wxGridTableBase {
 private:
-	std::vector<wxString> headers{ "PROT", "WGT", "RES", "HIT", "AVO", "TCRIT", "AVO", "SPD", "MOV", "LCK", "MATK", "HEAL", "RANGE" };
-	Stats gtbclassinnateabilitystats;
+	std::vector<STPACKAGE> headers{ { STATTYPE::PROT, "PROT" }, { STATTYPE::WEIGHT, "WGT" }, { STATTYPE::RES, "RES" }, { STATTYPE::HIT, "HIT" },
+									{ STATTYPE::AVO, "AVO" }, { STATTYPE::TCRIT, "TCRIT" }, { STATTYPE::SPD, "SPD" }, { STATTYPE::MOV, "MOV" },
+									{ STATTYPE::LCK, "LCK" }, { STATTYPE::MATK, "MATK" }, { STATTYPE::HEAL, "HEAL" }, { STATTYPE::RANGE, "RANGE" },
+									{ STATTYPE::MIGHT, "MIGHT" } };
+	STPACKAGE stp;
+	wxString currentheader;
 public:
 	GTBClassInnateAbilityStats() {}
 	~GTBClassInnateAbilityStats() {}
 	int GetNumberRows() override { return 1; }
-	int GetNumberCols() override { return headers.size(); }
-	wxString GetValue(int row, int col) override { return gtbclassinnateabilitystats[col].getText(); }
-	void SetValue(int row, int col, const wxString& value) override { gtbclassinnateabilitystats[col] = Stat(value); }
+	int GetNumberCols() override { return 1; }
+	wxString GetValue(int row, int col) override { return stp.name; }
+	void SetValue(int row, int col, const wxString& value) override { stp.name = value; }
 
-	void ReceiveLBBSelection(Stats stats);
+	void ReceiveCLIASSelection(STPACKAGE stp);
 
-	wxString GetHeader(int index) { return headers[index]; }
+	wxString GetHeader(int index) { return currentheader; }
+	wxString GetCurrentHeader();
 };
 
 #endif

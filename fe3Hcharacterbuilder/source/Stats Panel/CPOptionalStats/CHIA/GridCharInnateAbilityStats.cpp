@@ -8,7 +8,7 @@ GridCharInnateAbilityStats::GridCharInnateAbilityStats(std::map<wxString, wxClie
 	gtbcias = new GTBCharInnateAbilityStats;
 
 	CreateGrid(1, gtbcias->GetColsCount());
-	for (int i = 0; i < gtbcias->GetColsCount(); ++i) {
+	for (int i = 0; i < 1; ++i) {
 		SetColLabelValue(i, gtbcias->GetHeader(i));
 		AutoSizeColLabelSize(i);
 	}
@@ -25,28 +25,43 @@ void GridCharInnateAbilityStats::initpopulate() {
 	}
 }
 
-void GridCharInnateAbilityStats::ReceiveLBBSelection(Stats stats) {
-	gtbcias->ReceiveLBBSelection(stats);
-	Freeze();
-	repopulate();
-	Thaw();
-}
-
 void GridCharInnateAbilityStats::ReceiveCHIASelection(wxString abilityname) {
 	currentCHIAselection = abilityname;
-	Freeze();
-	repopulate();
-	Thaw();
+	bool hasStats = DetermineStatsPresence(currentCHIAselection);
+	if (hasStats) {
+		STPACKAGE stp = RetrieveSTPackage(currentCHIAselection);	
+		gtbcias->ReceiveCHIASSelection(stp);
+
+		Freeze();
+		repopulate();
+		SendSizeEventToParent();
+
+		Thaw();
+	}
+	else {
+		Freeze();
+		DeleteCols(0);
+		SetColLabelValue(0, "");
+		AppendCols(1);
+		SendSizeEventToParent();
+		Thaw();
+	}
 }
 
 void GridCharInnateAbilityStats::repopulate() {
 	std::vector<Stat> tempvectforstats;
 	int col = 1;
 
+	SetColLabelValue(0, gtbcias->GetHeader(1));
+	AutoSizeColLabelSize(0);
+	SetCellValue(0, 0, gtbcias->GetValue(0, 0));
+	tempvectforstats.push_back(Stat(gtbcias->GetValue(0, 0)));
+
 	for (int i = 0; i < gtbcias->GetColsCount(); ++i) {
 		wxString colvalue = gtbcias->GetValue(0, i);
+		SetColLabelValue(i, gtbcias->GetHeader(i));
+
 		SetCellValue(0, i, colvalue);
-		tempvectforstats.push_back(Stat(colvalue));
 		int k = 0;
 	}
 
@@ -55,4 +70,26 @@ void GridCharInnateAbilityStats::repopulate() {
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
+}
+
+bool GridCharInnateAbilityStats::DetermineStatsPresence(wxString currentCHIAselection) {
+	for (auto element : characterinnateabilities) {
+		if (currentCHIAselection == element.first) {
+			CharacterInnateAbility* tempability = dynamic_cast<CharacterInnateAbility*>(element.second)->clone();
+			return tempability->getHasStatUp();
+		}
+	}
+
+	return false;
+}
+
+STPACKAGE GridCharInnateAbilityStats::RetrieveSTPackage(wxString currentCHIAselection) {
+	for (auto element : characterinnateabilities) {
+		if (currentCHIAselection == element.first) {
+			CharacterInnateAbility* tempability = dynamic_cast<CharacterInnateAbility*>(element.second)->clone();
+			return tempability->getSTP();
+		}
+	}
+	
+	return STPACKAGE();
 }

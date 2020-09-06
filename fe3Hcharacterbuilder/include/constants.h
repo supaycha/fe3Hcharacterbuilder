@@ -58,8 +58,16 @@ enum class ID_SINGLE_CONTROL {
 	ID_GSLAS4 = 67,
 	ID_GSLAS5 = 68,	
 	ID_GTS = 69,
-	ID_CPOS = 70
-
+	ID_CPOS = 70,
+	//ID_CHIATXT = 71,
+	//ID_CLIATXT = 72,
+	//ID_CLIATXT2 = 73,
+	//ID_CLIATXT3 = 74,
+	//ID_SLATXT = 75,
+	//ID_SLATXT2 = 76,
+	//ID_SLATXT3 = 77,
+	//ID_SLATXT4 = 78,
+	//ID_SLATXT5 = 79,
 };
 
 enum class DD_CONTROL {
@@ -168,6 +176,43 @@ struct WTPACKAGE : public wxClientData {
 	int index;
 
 	WTPACKAGE(bool inclusion, int id) : isNotIncluded(inclusion), index{id} {}
+};
+
+enum class STATTYPE : int {
+	BLANK = -1,
+	HP,
+	MOV,
+	STR,
+	MAG,
+	DEX,
+	SPD,
+	LCK,
+	DEF,
+	RES,
+	CHA,
+	MIGHT,
+	HIT,
+	CRIT,
+	RANGE,
+	WEIGHT,
+	USES,
+	PROT,
+	TCRIT,
+	AVO,
+	MATK,
+	HEAL,
+	PATK,
+	END,
+	GMIGHT,
+	CRITAVO
+};
+
+struct STPACKAGE {
+	STATTYPE stattype;
+	wxString name;
+
+	STPACKAGE() {}
+	STPACKAGE(STATTYPE ust, wxString uname) : stattype {ust}, name {uname} {}
 };
 
 #endif

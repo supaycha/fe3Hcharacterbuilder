@@ -7,6 +7,8 @@
 #include <Unit/Ability/Ability.h>
 #include <Unit/Ability/CharacterInnateAbility.h>
 
+wxDECLARE_EVENT(TRANSMIT_CHIA_SELECTION, wxCommandEvent);
+
 class EquippedCharInnateAbility : public wxStaticText {
 private:
 	wxString currentDDCselection;

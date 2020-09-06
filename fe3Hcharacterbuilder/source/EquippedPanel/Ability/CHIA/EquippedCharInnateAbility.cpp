@@ -23,6 +23,10 @@ void EquippedCharInnateAbility::repopulate() {
 	this->SetLabelText(abilityname);
 	wxString description = this->RetrieveDescription(abilityname);
 	SetToolTip(description);
+
+	wxCommandEvent event(TRANSMIT_CHIA_SELECTION, (int)ID_SINGLE_CONTROL::ID_ECHIA);
+	event.SetString(abilityname);
+	ProcessEvent(event);
 }
 
 wxString EquippedCharInnateAbility::RetrieveDescription(wxString abilityname) {

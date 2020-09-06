@@ -6,6 +6,9 @@
 #include <map>
 #include <Stat.h>
 #include <constants.h>
+#include <Unit/Unit.h>
+#include <Unit/Ability/Ability.h>
+#include <Unit/Ability/ClassInnateAbility.h>
 #include <Stats Panel/CPOptionalStats/CLIA/GTBClassInnateAbilityStats.h>
 
 wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
@@ -18,9 +21,11 @@ private:
 public:
 	GridClassInnateAbilityStats(std::map<wxString, wxClientData*> uclassinnateabilities, wxWindow* parent, wxWindowID id);
 	void initpopulate();
-	void ReceiveLBBSelection(Stats stats);
 	void ReceiveCLIASelection(wxString abilityname);
 	void repopulate();
+	bool DetermineStatsPresence(wxString currentCLIAselection);
+	STPACKAGE RetrieveSTPackage(wxString currentCLIAselection);
+
 };
 
 #endif
