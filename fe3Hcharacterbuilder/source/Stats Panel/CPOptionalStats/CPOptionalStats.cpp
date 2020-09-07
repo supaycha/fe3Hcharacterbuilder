@@ -79,8 +79,10 @@ void CPOptionalStats::ReceiveCHIASelection(wxString abilityname) {
 	gchias->ReceiveCHIASelection(abilityname);
 }
 
-void CPOptionalStats::ReceiveCLIASelection(wxString abilityname, int id) {
-	gcliasVector[id]->ReceiveCLIASelection(abilityname);
+void CPOptionalStats::ReceiveCLIASelection(std::vector<wxString> abilityselections) {
+	for (unsigned int i = 0; i < abilityselections.size(); ++i) {
+		gcliasVector[i]->ReceiveCLIASelection(abilityselections[i]);
+	}
 }
 
 void CPOptionalStats::ReceiveSLASelection(wxString abilityname, int id) {

@@ -15,6 +15,8 @@ wxDEFINE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
 wxDEFINE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_CHIA_SELECTION, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_CLIA_SELECTION, wxCommandEvent);
+
 MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE | wxMAXIMIZE) {
 	
 	wxMenu* fileMenu = new wxMenu;
@@ -145,6 +147,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Bind(TRANSMIT_LBE_SELECTION, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
 	Bind(TRANSMIT_LBB_SELECTION, &MyFrame::BounceLBBSelection, this, (int)ID_SINGLE_CONTROL::ID_LBB);
 	Bind(TRANSMIT_CHIA_SELECTION, &MyFrame::BounceCHIASelection, this, (int)ID_SINGLE_CONTROL::ID_ECHIA);
+	Bind(TRANSMIT_CLIA_SELECTION, &MyFrame::BounceCLIASelection, this, (int)ID_SINGLE_CONTROL::ID_AP);
 }
 
 void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {
@@ -201,8 +204,9 @@ void MyFrame::BounceCHIASelection(wxCommandEvent& selection) {
 }
 
 void MyFrame::BounceCLIASelection(wxCommandEvent& selection) {
-	wxString tempstring = selection.GetString();
-	sp->ReceiveCLIASelection(tempstring, (GetId() - 22));
+	AbilitySelections* testing = dynamic_cast<AbilitySelections*>(selection.GetClientObject());
+	std::vector<wxString> testing2 = testing->GetSelections();
+	sp->ReceiveCLIASelection(testing2);
 }
 
 void MyFrame::DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata) {

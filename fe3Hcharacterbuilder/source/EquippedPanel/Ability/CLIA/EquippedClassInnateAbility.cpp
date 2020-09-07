@@ -25,8 +25,13 @@ void EquippedClassInnateAbility::repopulate() {
 	}
 	else {
 		wxString description = this->RetrieveDescription(currentLBCselection);
-		SetToolTip(description);
+		SetToolTip(description);	
+		wxCommandEvent event(TRANSMIT_CLIA_SELECTION, GetId());
+		event.SetString(currentLBCselection);
+		ProcessEvent(event);
+
 	}
+
 }
 
 wxString EquippedClassInnateAbility::RetrieveDescription(wxString currentLBCselection) {

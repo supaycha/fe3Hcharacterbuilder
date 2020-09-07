@@ -43,8 +43,8 @@ void StatsPanel::ReceiveCHIASelection(wxString abilityname) {
 	optionalstats->ReceiveCHIASelection(abilityname);
 }
 
-void StatsPanel::ReceiveCLIASelection(wxString abilityname, int id) {
-	optionalstats->ReceiveCLIASelection(abilityname, id);
+void StatsPanel::ReceiveCLIASelection(std::vector<wxString> abilityselections) {
+	optionalstats->ReceiveCLIASelection(abilityselections);
 }
 
 void StatsPanel::ReceiveSLASelection(wxString abilityname, int id) {
