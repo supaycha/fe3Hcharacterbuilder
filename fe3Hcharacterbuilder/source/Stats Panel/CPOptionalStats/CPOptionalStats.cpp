@@ -85,6 +85,8 @@ void CPOptionalStats::ReceiveCLIASelection(std::vector<wxString> abilityselectio
 	}
 }
 
-void CPOptionalStats::ReceiveSLASelection(wxString abilityname, int id) {
-	gslasVector[id]->ReceiveSLASelection(abilityname);
+void CPOptionalStats::ReceiveSLASelection(std::vector<wxString> abilityselections) {
+	for (unsigned int i = 0; i < abilityselections.size(); ++i) {
+		gslasVector[i]->ReceiveSLASelection(abilityselections[i]);
+	}
 }

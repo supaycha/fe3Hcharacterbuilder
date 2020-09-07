@@ -60,8 +60,12 @@ void ListBoxASLA::FilterAbilities() {
 
 	for (auto ability : skilllevelabilities) {
 		SL abilitySL = ability->getSL();
+		if ((int)ability->getWeaponType() == -1) {
+			abilitynames.push_back(ability->getName());
+			continue;
+		}
 
-		if (abilitySL <= SLfilter[(int)ability->getWeaponType()]) {
+		else if (abilitySL <= SLfilter[(int)ability->getWeaponType()]) {
 			abilitynames.push_back(ability->getName());
 		}
 	}

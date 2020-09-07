@@ -25,7 +25,7 @@ public:
 	void ReceiveLBBSelection(Stats stats);
 	void ReceiveCHIASelection(wxString abilityname);
 	void ReceiveCLIASelection(std::vector<wxString> abilityselections);
-	void ReceiveSLASelection(wxString abilityname, int id);
+	void ReceiveSLASelection(std::vector<wxString> abilityselections);
 	void ReceiveGMTStats(Stats stats);
 	void BounceGWSStats_partoftotalstats(wxCommandEvent& eventfromGWS);
 	void BounceGESStats_partoftotalstats(wxCommandEvent& eventfromGES);

@@ -38,7 +38,7 @@ public:
 	void ReceiveLBBSelection(Stats stats);
 	void ReceiveCHIASelection(wxString abilityname);
 	void ReceiveCLIASelection(std::vector<wxString> abilityselections);
-	void ReceiveSLASelection(wxString abilityname, int id);
+	void ReceiveSLASelection(std::vector<wxString> abilityselections);
 };
 
 #endif

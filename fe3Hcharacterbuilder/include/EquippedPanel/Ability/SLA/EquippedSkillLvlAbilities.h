@@ -6,6 +6,8 @@
 #include <constants.h>
 #include <Unit/Ability/SkillLevelAbility.h>
 
+wxDECLARE_EVENT(TRANSMIT_SLA_SELECTION, wxCommandEvent);
+
 class EquippedSkillLvlAbilities : public wxStaticText {
 private:
 	std::vector<wxString> filteredSAnames;
