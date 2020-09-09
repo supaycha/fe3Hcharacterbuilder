@@ -25,6 +25,12 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 			skilllevelabilities.insert(element);
 		}
 	}
+	wxStaticText* weaponstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Weapon Stats");
+	wxStaticText* equipmentstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Equipment Stats");
+	wxStaticText* battalionstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Battalion Stats");
+	wxStaticText* characterinnatestatslabel = new wxStaticText(mainwindow, wxID_ANY, "Character Innate Ability Stats");
+	wxStaticText* classinnatestatslabel = new wxStaticText(mainwindow, wxID_ANY, "Class Innate Ability Stats");
+	wxStaticText* skilllevelabilitystatslabel = new wxStaticText(mainwindow, wxID_ANY, "Skill Level Ability Stats");
 
 	gws = new GridWeaponStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GWS);
 	ges = new GridEquipmentStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GES);
@@ -43,19 +49,25 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 	wxBoxSizer* column1 = new wxBoxSizer(wxVERTICAL);
 	wxBoxSizer* column2 = new wxBoxSizer(wxVERTICAL);
 
+	column1->Add(weaponstatslabel);
 	column1->Add(gws);
+	column1->Add(equipmentstatslabel);
 	column1->Add(ges);
+	column1->Add(battalionstatslabel);
 	column1->Add(gbs);
-	column1->Add(gchias);
+	column2->Add(characterinnatestatslabel);
+	column2->Add(gchias);
 
+	column2->Add(classinnatestatslabel);
 	for (auto gridclias : gcliasVector) {
 		column2->Add(gridclias);
 	}
 
+	column2->Add(skilllevelabilitystatslabel);
 	for (auto gridslas : gslasVector) {
 		column2->Add(gridslas);
 	}
-
+	
 	statssizer->Add(column1);
 	statssizer->Add(column2);
 	mainwindow->SetSizer(statssizer);
@@ -82,11 +94,14 @@ void CPOptionalStats::ReceiveCHIASelection(wxString abilityname) {
 void CPOptionalStats::ReceiveCLIASelection(std::vector<wxString> abilityselections) {
 	for (unsigned int i = 0; i < abilityselections.size(); ++i) {
 		gcliasVector[i]->ReceiveCLIASelection(abilityselections[i]);
+		gcliasVector[i]->ForceRefresh();
 	}
 }
 
 void CPOptionalStats::ReceiveSLASelection(std::vector<wxString> abilityselections) {
 	for (unsigned int i = 0; i < abilityselections.size(); ++i) {
 		gslasVector[i]->ReceiveSLASelection(abilityselections[i]);
+		gslasVector[i]->ForceRefresh();
 	}
+
 }

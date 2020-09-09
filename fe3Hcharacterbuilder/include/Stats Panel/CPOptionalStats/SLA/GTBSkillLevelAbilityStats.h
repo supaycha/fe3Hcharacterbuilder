@@ -11,9 +11,9 @@ private:
 	std::vector<STPACKAGE> headers{ { STATTYPE::PROT, "PROT" }, { STATTYPE::WEIGHT, "WGT" }, { STATTYPE::RES, "RES" }, { STATTYPE::HIT, "HIT" },
 									{ STATTYPE::AVO, "AVO" }, { STATTYPE::TCRIT, "TCRIT" }, { STATTYPE::SPD, "SPD" }, { STATTYPE::MOV, "MOV" },
 									{ STATTYPE::LCK, "LCK" }, { STATTYPE::MATK, "MATK" }, { STATTYPE::HEAL, "HEAL" }, { STATTYPE::RANGE, "RANGE" },
-									{ STATTYPE::MIGHT, "MIGHT" }, { STATTYPE::BLANK, "---" }, { STATTYPE::CRITAVO, "CRITAVO" } };
-	std::vector<STPACKAGE> stpVector{ 1, STPACKAGE(STATTYPE::BLANK, "---") };
-	std::vector<wxString> currentheaders{ "---" };
+									{ STATTYPE::MIGHT, "MIGHT" }, { STATTYPE::CRITAVO, "CRITAVO" }, { STATTYPE::CRIT, "CRIT" } };
+	std::vector<STPACKAGE> stpVector{ };
+	std::vector<wxString> currentheaders{ };
 public:
 	GTBSkillLevelAbilityStats() {}
 	~GTBSkillLevelAbilityStats() {}

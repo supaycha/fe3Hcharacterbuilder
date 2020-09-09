@@ -34,6 +34,7 @@ public:
 	void BounceGCLIASStats_partoftotalstats(wxCommandEvent& event);
 	void BounceGSLASStats_partoftotalstats(wxCommandEvent& event);
 
+	//void OnSize(wxSizeEvent& event);
 	void OnCollChange(wxCollapsiblePaneEvent& event);
 };
 

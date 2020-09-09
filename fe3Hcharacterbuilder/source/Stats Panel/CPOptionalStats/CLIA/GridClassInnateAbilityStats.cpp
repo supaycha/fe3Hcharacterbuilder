@@ -7,22 +7,22 @@ GridClassInnateAbilityStats::GridClassInnateAbilityStats(std::map<wxString, wxCl
 	SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbcias = new GTBClassInnateAbilityStats;
 
-	CreateGrid(1, gtbcias->GetColsCount());
-	for (int i = 0; i < 1; ++i) {
-		SetColLabelValue(i, gtbcias->GetHeader(i));
-		AutoSizeColLabelSize(i);
-	}
+	CreateGrid(1, 1);
+	SetCellValue(0, 0, "---");
+	AutoSizeColumn(0, true);
 	SetUseNativeColLabels(true);
-
+	EnableEditing(false);
+	DisableDragGridSize();
 	SetRowLabelSize(0);
-	initpopulate();
+	SetColLabelSize(0);
+	//initpopulate();
 }
 
 void GridClassInnateAbilityStats::initpopulate() {
-	for (int i = 0; i < gtbcias->GetColsCount(); ++i) {
-		SetCellValue(0, i, L"0");
-		int k = 0;
-	}
+	//for (int i = 0; i < gtbcias->GetColsCount(); ++i) {
+	//	SetCellValue(0, i, L"0");
+	//	int k = 0;
+	//}
 }
 
 void GridClassInnateAbilityStats::ReceiveCLIASelection(wxString abilityname) {
@@ -40,9 +40,8 @@ void GridClassInnateAbilityStats::ReceiveCLIASelection(wxString abilityname) {
 	}
 	else {
 		Freeze();
-		DeleteCols(0);
-		SetColLabelValue(0, "");
-		AppendCols(1);
+		SetColLabelSize(0);
+		SetCellValue(0, 0, "---");
 		SendSizeEventToParent();
 		Thaw();
 	}
@@ -50,27 +49,27 @@ void GridClassInnateAbilityStats::ReceiveCLIASelection(wxString abilityname) {
 }
 
 void GridClassInnateAbilityStats::repopulate() {
-	std::vector<Stat> tempvectforstats;
-	int col = 1;
+	//std::vector<Stat> tempvectforstats;
+	SetColLabelSize(wxGRID_AUTOSIZE);
 
-	SetColLabelValue(0, gtbcias->GetHeader(1));
-	AutoSizeColLabelSize(0);
-	SetCellValue(0, 0, gtbcias->GetValue(0, 0));
-	tempvectforstats.push_back(Stat(gtbcias->GetValue(0, 0)));
+	//SetColLabelValue(0, gtbcias->GetHeader(1));
+	//SetCellValue(0, 0, gtbcias->GetValue(0, 0));
+	//tempvectforstats.push_back(Stat(gtbcias->GetValue(0, 0)));
 
 	for (int i = 0; i < gtbcias->GetColsCount(); ++i) {
 		wxString colvalue = gtbcias->GetValue(0, i);
-		SetColLabelValue(i, gtbcias->GetHeader(i));
+		SetColLabelValue(i, gtbcias->GetHeader(i));	
+		AutoSizeColLabelSize(i);
 
 		SetCellValue(0, i, colvalue);
 		int k = 0;
 	}
 
-	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GBS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
-	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
-	event.SetClientObject(tempdata);
-	ProcessEvent(event);
+	//Stats* ptrtostats = new Stats(tempvectforstats);
+	//wxCommandEvent event(TRANSMIT_GBS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
+	//wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
+	//event.SetClientObject(tempdata);
+	//ProcessEvent(event);
 }
 
 bool GridClassInnateAbilityStats::DetermineStatsPresence(wxString currentCHIAselection) {

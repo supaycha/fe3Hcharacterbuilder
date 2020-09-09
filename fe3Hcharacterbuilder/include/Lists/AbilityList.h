@@ -97,7 +97,7 @@ public:
 		list.emplace_back(std::make_unique<ClassInnateAbility>(L"Transmute", L"Dark Flier", L"If unit is hit with a magic attack during enemy phase, grants +3 to all stats until next player phase ends.", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<ClassInnateAbility>(L"Black Magic Range +1", L"Valkyrie", L"Increases black magic range by 1.", true, STATTYPE::RANGE, "1"));
 		list.emplace_back(std::make_unique<ClassInnateAbility>(L"Dark Magic Range +1", L"Valkyrie", L"Increases dark magic range by 1.", true, STATTYPE::RANGE, "1"));
-		list.emplace_back(std::make_unique<SkillLevelAbility>(L"---", L"---", SL::BLANK, WEAPONTYPE::BLANK, L"---", true, STATTYPE::BLANK, ""));
+		list.emplace_back(std::make_unique<SkillLevelAbility>(L"---", L"---", SL::BLANK, WEAPONTYPE::BLANK, L"---", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<SkillLevelAbility>(L"Sword Prowess Lv. 1", L"Sword", SL::EPLUS, WEAPONTYPE::SWORD, L"Grants Hit +5, Avoid +7 and Critical Evade +5 when equipped with Sword", true, STATTYPE::HIT, "5", STATTYPE::AVO, "7", STATTYPE::CRITAVO, "5"));
 		list.emplace_back(std::make_unique<SkillLevelAbility>(L"Sword Prowess Lv. 2", L"Sword", SL::DPLUS, WEAPONTYPE::SWORD, L"Grants Hit +6, Avoid +10 and Critical Evade +6 when equipped with Sword", true, STATTYPE::HIT, "6", STATTYPE::AVO, "10", STATTYPE::CRITAVO, "6"));
 		list.emplace_back(std::make_unique<SkillLevelAbility>(L"Sword Prowess Lv. 3", L"Sword", SL::CPLUS, WEAPONTYPE::SWORD, L"Grants Hit +7, Avoid +13 and Critical Evade +7 when equipped with Sword", true, STATTYPE::HIT, "7", STATTYPE::AVO, "13", STATTYPE::CRITAVO, "7"));

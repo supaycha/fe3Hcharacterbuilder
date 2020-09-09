@@ -87,11 +87,14 @@ void StatsPanel::BounceGSLASStats_partoftotalstats(wxCommandEvent& event) {
 	int id = event.GetId();
 	gts->ReceiveGSLASStats(*tempstats, id - 64);
 }
+//void StatsPanel::OnSize(wxSizeEvent& event) {
+//}
 
 void StatsPanel::OnCollChange(wxCollapsiblePaneEvent& event) {
 	SendSizeEventToParent();
 }
 
 wxBEGIN_EVENT_TABLE(StatsPanel, wxPanel)
+	//EVT_SIZE(StatsPanel::OnSize)
 	EVT_COLLAPSIBLEPANE_CHANGED((int)ID_SINGLE_CONTROL::ID_CPOS, StatsPanel::OnCollChange)
 wxEND_EVENT_TABLE()
