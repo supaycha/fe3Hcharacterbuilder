@@ -4,17 +4,21 @@ GridCharInnateAbilityStats::GridCharInnateAbilityStats(std::map<wxString, wxClie
 	wxGrid(parent, id)
 {
 	characterinnateabilities = ucharacterinnateabilities;
-	SetBackgroundStyle(wxBG_STYLE_PAINT);
-	gtbcias = new GTBCharInnateAbilityStats;
+	//SetBackgroundStyle(wxBG_STYLE_PAINT);
+	gtbchias = new GTBCharInnateAbilityStats;
 
-	CreateGrid(1, 1);
-	SetCellValue(0, 0, "---");
-	AutoSizeColumn(0, true);
+	CreateGrid(1, 3);
+	for (int i = 0; i < 3; ++i) {
+		SetColLabelValue(i, "---");
+		SetCellValue(0, i, "---");
+		AutoSizeColumn(i, true);
+	}
+
 	SetUseNativeColLabels(true);
 	EnableEditing(false);
 	DisableDragGridSize();
 	SetRowLabelSize(0);
-	SetColLabelSize(0);
+	//SetColLabelSize(0);
 	//initpopulate();
 }
 
@@ -30,42 +34,41 @@ void GridCharInnateAbilityStats::ReceiveCHIASelection(wxString abilityname) {
 	bool hasStats = DetermineStatsPresence(currentCHIAselection);
 	if (hasStats) {
 		STPACKAGE stp = RetrieveSTPackage(currentCHIAselection);	
-		gtbcias->ReceiveCHIASSelection(stp);
+		gtbchias->ReceiveCHIASSelection(stp);
 
-		Freeze();
+		//Freeze();
 		repopulate();
 		SendSizeEventToParent();
-
-		Thaw();
+		//Thaw();
 	}
 	else {
-		Freeze();	
-		SetColLabelSize(0);
-		SetCellValue(0, 0, "---");
+		//Freeze();	
+		ClearGrid();
+		for (int i = 0; i < 3; ++i) {
+			SetColLabelValue(i, "---");
+			SetCellValue(0, i, "---");
+			AutoSizeColLabelSize(i);
+		}
 		SendSizeEventToParent();
-		Thaw();
+		//Thaw();
 	}
 }
 
 void GridCharInnateAbilityStats::repopulate() {
 	std::vector<Stat> tempvectforstats;
 	SetColLabelSize(wxGRID_AUTOSIZE);
+	int colcount = gtbchias->GetColsCount();
 
-	SetColLabelValue(0, gtbcias->GetHeader(1));
-	AutoSizeColLabelSize(0);
-	SetCellValue(0, 0, gtbcias->GetValue(0, 0));
-	tempvectforstats.push_back(Stat(gtbcias->GetValue(0, 0)));
+	for (int i = 0; i < colcount; ++i) {
+		wxString colvalue = gtbchias->GetValue(0, i);
+		SetColLabelValue(i, gtbchias->GetHeader(i));
+		AutoSizeColLabelSize(i);
+		SetCellValue(0, i, colvalue);
+	}
 
-	//for (int i = 0; i < gtbcias->GetColsCount(); ++i) {
-	//	wxString colvalue = gtbcias->GetValue(0, i);
-	//	SetColLabelValue(i, gtbcias->GetHeader(i));
-
-	//	SetCellValue(0, i, colvalue);
-	//	int k = 0;
-	//}
-
+	tempvectforstats.push_back(Stat(gtbchias->GetValue(0, 0)));
 	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GBS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
+	wxCommandEvent event(TRANSMIT_GCHIAS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);

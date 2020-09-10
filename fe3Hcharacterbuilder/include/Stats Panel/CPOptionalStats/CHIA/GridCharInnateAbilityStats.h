@@ -12,11 +12,11 @@
 #include <Unit/Ability/CharacterInnateAbility.h>
 #include <Stats Panel/CPOptionalStats/CHIA/GTBCharInnateAbilityStats.h>
 
-wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
+wxDECLARE_EVENT(TRANSMIT_GCHIAS_STATS, wxCommandEvent);
 
 class GridCharInnateAbilityStats : public wxGrid {
 private:
-	GTBCharInnateAbilityStats* gtbcias;
+	GTBCharInnateAbilityStats* gtbchias;
 	wxString currentCHIAselection;
 	std::map<wxString, wxClientData*> characterinnateabilities;
 public:

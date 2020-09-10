@@ -9,6 +9,7 @@
 #include <Stats Panel/CPOptionalStats/CPOptionalStats.h>
 #include <Stats Panel/Total Stats/GridTotalStats.h>
 
+
 class StatsPanel : public wxPanel {
 private:
 	wxBoxSizer* spSizer;

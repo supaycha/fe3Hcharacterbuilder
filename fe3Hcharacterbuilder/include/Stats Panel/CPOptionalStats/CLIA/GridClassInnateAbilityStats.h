@@ -11,11 +11,11 @@
 #include <Unit/Ability/ClassInnateAbility.h>
 #include <Stats Panel/CPOptionalStats/CLIA/GTBClassInnateAbilityStats.h>
 
-wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
+wxDECLARE_EVENT(TRANSMIT_GCLIAS_STATS, wxCommandEvent);
 
 class GridClassInnateAbilityStats : public wxGrid {
 private:
-	GTBClassInnateAbilityStats* gtbcias;
+	GTBClassInnateAbilityStats* gtbclias;
 	wxString currentCLIAselection;
 	std::map<wxString, wxClientData*> classinnateabilities;
 public:

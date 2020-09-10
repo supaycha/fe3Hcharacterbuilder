@@ -35,11 +35,11 @@ void GTBTotalStats::ReceiveGCHIASStats(Stats stats) {
 }
 
 void GTBTotalStats::ReceiveGCLIASStats(Stats stats, int index) {
-	currentGCLIASstats[index] = stats;
+	//currentGCLIASstats[index] = stats;
 }
 
 void GTBTotalStats::ReceiveGSLASStats(Stats stats, int index) {
-	currentGSLASstats[index] = stats;
+	//currentGSLASstats[index] = stats;
 }
 
 void GTBTotalStats::CalculateTotalPhysicalAttack() {

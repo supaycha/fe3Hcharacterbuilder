@@ -22,7 +22,7 @@ StatsPanel::StatsPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* p
 	Bind(TRANSMIT_GWS_STATS, &StatsPanel::BounceGWSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GWS);
 	Bind(TRANSMIT_GES_STATS, &StatsPanel::BounceGESStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GES);
 	Bind(TRANSMIT_GBS_STATS, &StatsPanel::BounceGBSStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GBS);
-	Bind(TRANSMIT_GCHIAS_STATS, &StatsPanel::BounceGCHIASStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GCHIAS);
+	Bind(TRANSMIT_GCHIAS_STATS, &StatsPanel::BounceGCHIASStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
 	Bind(TRANSMIT_GCLIAS_STATS, &StatsPanel::BounceGCLIASStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GCLIAS, (int)ID_SINGLE_CONTROL::ID_GCLIAS3);
 	Bind(TRANSMIT_GSLAS_STATS, &StatsPanel::BounceGSLASStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GSLAS, (int)ID_SINGLE_CONTROL::ID_GSLAS5);
 }

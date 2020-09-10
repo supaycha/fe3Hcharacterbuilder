@@ -7,14 +7,18 @@ GridSkillLevelAbilityStats::GridSkillLevelAbilityStats(std::map<wxString, wxClie
 	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 	gtbslas = new GTBSkillLevelAbilityStats;
 
-	CreateGrid(1, 1);
-	SetCellValue(0, 0, "---");
-	AutoSizeColumn(0, true);
+	CreateGrid(1, 3);
+	for (int i = 0; i < 3; ++i) {
+		SetColLabelValue(i, "---");
+		SetCellValue(0, i, "---");
+		AutoSizeColumn(i, true);
+	}
+
 	SetUseNativeColLabels(true);
 	EnableEditing(false);
 	DisableDragGridSize();
 	SetRowLabelSize(0);
-	SetColLabelSize(0);
+	//SetColLabelSize(0);
 	//initpopulate();
 }
 
@@ -32,59 +36,44 @@ void GridSkillLevelAbilityStats::ReceiveSLASelection(wxString abilityname) {
 		std::vector<STPACKAGE> stpVector = RetrieveSTPackage(currentSLAselection);
 		gtbslas->ReceiveSLASSelection(stpVector);
 
-		Freeze();
+		//Freeze();
 		repopulate();
 		SendSizeEventToParent();
-		Thaw();
+		//Thaw();
 	}
 
 	else {
 		bool success;
-		Freeze();	
-		SetColLabelSize(0);
-
-		while (GetNumberCols() > 1) {
-			success = DeleteCols(1);
+		//Freeze();	
+		ClearGrid();
+		for (int i = 0; i < 3; ++i) {
+			SetColLabelValue(i, "---");
+			SetCellValue(0, i, "---");
+			AutoSizeColLabelSize(i);
 		}
-		SetCellValue(0, 0, "---");
 		SendSizeEventToParent();
-		Thaw();
+		//Thaw();
 	}
 }
 
 void GridSkillLevelAbilityStats::repopulate() {
-	//std::vector<Stat> tempvectforstats;
+	std::vector<Stat> tempvectforstats;
 	SetColLabelSize(wxGRID_AUTOSIZE);
 	int colcount = gtbslas->GetColsCount();
 	
-	wxString colvalue = gtbslas->GetValue(0, 0);
-	SetColLabelValue(0, gtbslas->GetHeader(0));	
-	AutoSizeColLabelSize(0);	
-	SetCellValue(0, 0, colvalue);
-
-	for (int i = 1; i < colcount; ++i) {
-		AppendCols(1);
+	for (int i = 0; i < colcount; ++i) {
 		wxString colvalue = gtbslas->GetValue(0, i);
 		SetColLabelValue(i, gtbslas->GetHeader(i));
 		AutoSizeColLabelSize(i);
 		SetCellValue(0, i, colvalue);
 	}
 
-	//tempvectforstats.push_back(Stat(gtbslas->GetValue(0, 0)));
-
-	//for (int i = 0; i < gtbslas->GetColsCount(); ++i) {
-	//	wxString colvalue = gtbslas->GetValue(0, i);
-	//	SetColLabelValue(i, gtbslas->GetHeader(i));
-
-	//	SetCellValue(0, i, colvalue);
-	//	int k = 0;
-	//}
-
-	//Stats* ptrtostats = new Stats(tempvectforstats);
-	//wxCommandEvent event(TRANSMIT_GBS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
-	//wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
-	//event.SetClientObject(tempdata);
-	//ProcessEvent(event);
+	tempvectforstats.push_back(Stat(gtbslas->GetValue(0, 0)));
+	Stats* ptrtostats = new Stats(tempvectforstats);
+	wxCommandEvent event(TRANSMIT_GSLAS_STATS, GetId());
+	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
+	event.SetClientObject(tempdata);
+	ProcessEvent(event);
 }
 
 bool GridSkillLevelAbilityStats::DetermineStatsPresence(wxString currentCSLAselection) {

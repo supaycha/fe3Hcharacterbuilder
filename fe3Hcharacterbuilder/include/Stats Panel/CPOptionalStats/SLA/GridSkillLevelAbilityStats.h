@@ -11,7 +11,7 @@
 #include <Unit/Ability/SkillLevelAbility.h>
 #include <Stats Panel/CPOptionalStats/SLA/GTBSkillLevelAbilityStats.h>
 
-wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
+wxDECLARE_EVENT(TRANSMIT_GSLAS_STATS, wxCommandEvent);
 
 class GridSkillLevelAbilityStats : public wxGrid {
 private:

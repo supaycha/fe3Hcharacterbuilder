@@ -58,15 +58,26 @@ void GridTotalStats::ReceiveGBSStats(Stats stats) {
 
 void GridTotalStats::ReceiveGCHIASStats(Stats stats) {
 	gtbts->ReceiveGCHIASStats(stats);
-
+	gtbts->recalculate();
+	Freeze();
+	repopulate();
+	Thaw();
 }
 
 void GridTotalStats::ReceiveGCLIASStats(Stats stats, int index) {
 	gtbts->ReceiveGCLIASStats(stats, index);
+	gtbts->recalculate();
+	Freeze();
+	repopulate();
+	Thaw();
 }
 
 void GridTotalStats::ReceiveGSLASStats(Stats stats, int index) {
 	gtbts->ReceiveGSLASStats(stats, index);
+	gtbts->recalculate();
+	Freeze();
+	repopulate();
+	Thaw();
 }
 
 void GridTotalStats::repopulate() {
