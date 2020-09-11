@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Unit\Gambit.h" />
     <ClInclude Include="include\AbilitySelections.h" />
     <ClInclude Include="include\AvailablePanel\ListBoxEquipment.h" />
     <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxASLA.h" />

@@ -22,6 +22,7 @@
 #include <Unit/Equipment/Shield.h>
 #include <Unit/Equipment/Staff.h>
 #include <Unit/Class.h>
+#include <Unit/Gambit.h>
 #include <constants.h>
 //#include <vld.h>
 
@@ -30,6 +31,120 @@ private:
 	std::vector<std::unique_ptr<Unit>> list;
 public:
 	UnitList() {
+		list.emplace_back(std::make_unique<Gambit>(L"Absolute Defense",
+			L"---", L"100", L"1", L"2", 
+			L"Grants +6 defense to all allies within its area of effect for one turn.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Absorption",
+			L"4", L"30", L"1", L"1", 
+			L"Inflicts rattled status on all targets. Restores(damage dealt / 2) HP to the user from each target in its area of effect.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Ashes and Dust",
+			L"12", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Assembly",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, user moves one space backward while the primary target moves into user's previous space.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Bag of Tricks",
+			L"---", L"100", L"---", L"---",
+			L"Sets the gambit uses of all allies within its area of effect to 0.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Battleground Cafe",
+			L"---", L"100", L"1", L"2",
+			L"Grants +4 strength to all allies within its area of effect for one turn.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Battleground Clean Up",
+			L"15", L"40", L"1", L"1",
+			L"Inflicts rattled status on all targets.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Blaze",
+			L"10", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Blessing",
+			L"---", L"100", L"1", L"1",
+			L"Grants Blessing status to all allies within its area of effect, reducing lethal damage taken to leave them at 1 HP for one turn.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Dance of the Goddess",
+			L"---", L"100", L"1", L"1",
+			L"Refreshes all allies within its area of effect, allowing them to move again if they have already moved.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Flash-Fire Arrows",
+			L"7", L"50", L"1", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Fusillade",
+			L"5", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Group of Flames",
+			L"2", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Group Ice",
+			L"3", L"50", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets.")); 
+		list.emplace_back(std::make_unique<Gambit>(L"Group Lance Attack",
+			L"6", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Group Lightning",
+			L"4", L"40", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Impregnable Wall",
+			L"---", L"100", L"1", L"5",
+			L"Grants Impregnable Wall status to all allies within its area of effect, reducing all damage dealt and taken by them to 1 for one turn."));
+		list.emplace_back(std::make_unique<Gambit>(L"Line of Lances",
+			L"5", L"50", L"1", L"2",
+			L"Deals bonus damage to cavalry units. Inflicts rattled status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Linked Horses",
+			L"12", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Lure",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, moves primary target behind the user."));
+		list.emplace_back(std::make_unique<Gambit>(L"Mad Melee",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away."));
+		list.emplace_back(std::make_unique<Gambit>(L"Poison Tactic",
+			L"5", L"60", L"1", L"1",
+			L"Inflicts rattled status and poison status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Poisoned Arrows",
+			L"4", L"60", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status and poison status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Raging Flames",
+			L"15", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn."));
+		list.emplace_back(std::make_unique<Gambit>(L"Random Shot",
+			L"8", L"40", L"1", L"2",
+			L"Inflicts rattled status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Recovery Roar",
+			L"---", L"100", L"1", L"5",
+			L"Removes any status condition from all allies in range."));
+		list.emplace_back(std::make_unique<Gambit>(L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn."));
+		list.emplace_back(std::make_unique<Gambit>(L"Resonant Ice",
+			L"7", L"50", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Resonant Lightning",
+			L"8", L"40", L"1-2", L"1",
+			L"Works as magical damage.Inflicts rattled status on all targets."));
+		list.emplace_back(std::make_unique<Gambit>(L"Resonant White Magic",
+			L"8", L"100", L"1", L"3",
+			L"Restores HP to all allies within its area of effect."));
+		list.emplace_back(std::make_unique<Gambit>(L"Retribution",
+			L"---", L"100", L"1", L"2",
+			L"Grants Retribution status to all allies within its area of effect, allowing them to counter-attack regardless of the range between them and their targets for 5 turns."));
+		list.emplace_back(std::make_unique<Gambit>(L"Reversal",
+			L"8", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, user switches places with the primary target."));
+		list.emplace_back(std::make_unique<Gambit>(L"Sacred Shield",
+			L"---", L"100", L"1", L"5",
+			L"Grants Sacred Shield status to all allies within its area of effect, reducing all damage dealt to them from ranged attacks to 0 for one turn."));
+		list.emplace_back(std::make_unique<Gambit>(L"Stride",
+			L"---", L"100", L"1", L"2",
+			L"Grants Stride status to all allies within its area of effect, giving them +5 Movement for one turn."));
+		list.emplace_back(std::make_unique<Gambit>(L"Wave Attack",
+			L"13", L"60", L"1", L"2",
+			L"Deals bonus damage to armored units. Inflicts Is ns01 status rattled.png rattled status on all targets."));
 		list.emplace_back(std::make_unique<Battalion>(L"---", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"---", SL::BLANK));

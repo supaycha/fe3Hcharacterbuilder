@@ -304,6 +304,9 @@
       <Filter>Stats Panel</Filter>
     </ClInclude>
     <ClInclude Include="include\AbilitySelections.h" />
+    <ClInclude Include="include\Unit\Gambit.h">
+      <Filter>UnitandMisc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">
