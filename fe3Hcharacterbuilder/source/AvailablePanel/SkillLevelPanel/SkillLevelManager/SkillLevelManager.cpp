@@ -3,7 +3,7 @@
 SkillLevelManager::SkillLevelManager(wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
-	std::vector<wxString> labels{ "Sword", "Lance", "Axe", "Bow", "Gauntlets", "Reason", "Faith", "Authority", "Heavy Armor", "Riding", "Flying" };
+	std::vector<wxString> labels{ "Sword", "Axe", "Lance", "Bow", "Gauntlets", "Reason", "Faith", "Authority", "Heavy Armor", "Riding", "Flying" };
 	wxString value{};
 	wxArrayString choices{};
 	int ddslIDoffset = 0;

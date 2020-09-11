@@ -95,7 +95,7 @@ void ListBoxWeapons::repopulate() {
 			weaponnames.push_back(generalweapons[i]->getName());
 			weapondata.push_back(dynamic_cast<wxClientData*>(generalweapons[i]));
 		}
-		else if (STfilter[(int)generalweapons[i]->getSkillType()].isNotIncluded){
+		else if (STfilter[(int)generalweapons[i]->getWeaponType()].isNotIncluded){
 			continue;
 		}
 		else {
