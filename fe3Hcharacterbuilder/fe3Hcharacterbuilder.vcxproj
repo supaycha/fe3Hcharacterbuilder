@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\GambitStats\GTBGambitStats.h" />
     <ClInclude Include="include\EquippedPanel\Gambit\EquippedGambit.h" />
     <ClInclude Include="include\Unit\Gambit.h" />
     <ClInclude Include="include\AbilitySelections.h" />
@@ -97,6 +99,8 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GTBGambitStats.cpp" />
     <ClCompile Include="source\EquippedPanel\Gambit\EquippedGambit.cpp" />
     <ClCompile Include="source\AbilitySelections.cpp" />
     <ClCompile Include="source\AvailablePanel\ListBoxEquipment.cpp" />

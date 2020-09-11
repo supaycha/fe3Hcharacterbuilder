@@ -14,6 +14,7 @@
 #include <Stats Panel/CPOptionalStats/WeaponStats/GridWeaponStats.h>
 #include <Stats Panel/CPOptionalStats/EquipmentStats/GridEquipmentStats.h>
 #include <Stats Panel/CPOptionalStats/BattalionStats/GridBattalionStats.h>
+#include <Stats Panel/CPOptionalStats/GambitStats/GridGambitStats.h>
 #include <Stats Panel/CPOptionalStats/CHIA/GridCharInnateAbilityStats.h>
 #include <Stats Panel/CPOptionalStats/CLIA/GridClassInnateAbilityStats.h>
 #include <Stats Panel/CPOptionalStats/SLA/GridSkillLevelAbilityStats.h>
@@ -25,6 +26,7 @@ private:
 	GridWeaponStats* gws;
 	GridEquipmentStats* ges;
 	GridBattalionStats* gbs;
+	GridGambitStats* ggs;
 	GridCharInnateAbilityStats* gchias;
 	std::vector<GridClassInnateAbilityStats*> gcliasVector;
 	std::vector<GridSkillLevelAbilityStats*> gslasVector;
@@ -35,7 +37,7 @@ public:
 
 	void ReceiveLBWSelection(Stats stats, WEAPONTYPE type);
 	void ReceiveLBESelection(Stats stats);
-	void ReceiveLBBSelection(Stats stats);
+	void ReceiveLBBSelection(Stats battalionstats, Stats gambitstats);
 	void ReceiveCHIASelection(wxString abilityname);
 	void ReceiveCLIASelection(std::vector<wxString> abilityselections);
 	void ReceiveSLASelection(std::vector<wxString> abilityselections);

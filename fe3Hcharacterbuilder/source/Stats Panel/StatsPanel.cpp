@@ -3,6 +3,7 @@
 wxDEFINE_EVENT(TRANSMIT_GWS_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GES_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
+wxDEFINE_EVENT(TRANSMIT_GGS_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GCHIAS_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GCLIAS_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GSLAS_STATS, wxCommandEvent);
@@ -35,8 +36,8 @@ void StatsPanel::ReceiveLBESelection(Stats stats) {
 	optionalstats->ReceiveLBESelection(stats);
 }
 
-void StatsPanel::ReceiveLBBSelection(Stats stats) {
-	optionalstats->ReceiveLBBSelection(stats);
+void StatsPanel::ReceiveLBBSelection(Stats battalionstats, Stats gambitstats) {
+	optionalstats->ReceiveLBBSelection(battalionstats, gambitstats);
 }
 
 void StatsPanel::ReceiveCHIASelection(wxString abilityname) {

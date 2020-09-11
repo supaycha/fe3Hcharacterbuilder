@@ -23,7 +23,7 @@ public:
 	~StatsPanel() {}
 	void ReceiveLBWSelection(Stats stats, WEAPONTYPE type);
 	void ReceiveLBESelection(Stats stats);
-	void ReceiveLBBSelection(Stats stats);
+	void ReceiveLBBSelection(Stats battalionstats, Stats gambitstats);
 	void ReceiveCHIASelection(wxString abilityname);
 	void ReceiveCLIASelection(std::vector<wxString> abilityselections);
 	void ReceiveSLASelection(std::vector<wxString> abilityselections);

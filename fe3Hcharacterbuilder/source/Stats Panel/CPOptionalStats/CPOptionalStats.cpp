@@ -28,6 +28,7 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 	wxStaticText* weaponstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Weapon Stats");
 	wxStaticText* equipmentstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Equipment Stats");
 	wxStaticText* battalionstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Battalion Stats");
+	wxStaticText* gambitstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Gambit Stats");
 	wxStaticText* characterinnatestatslabel = new wxStaticText(mainwindow, wxID_ANY, "Character Innate Ability Stats");
 	wxStaticText* classinnatestatslabel = new wxStaticText(mainwindow, wxID_ANY, "Class Innate Ability Stats");
 	wxStaticText* skilllevelabilitystatslabel = new wxStaticText(mainwindow, wxID_ANY, "Skill Level Ability Stats");
@@ -35,6 +36,7 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 	gws = new GridWeaponStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GWS);
 	ges = new GridEquipmentStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GES);
 	gbs = new GridBattalionStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GBS);
+	ggs = new GridGambitStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GGS);
 	gchias = new GridCharInnateAbilityStats(characterinnateabilities, mainwindow, (int)ID_SINGLE_CONTROL::ID_GCHIAS);
 
 	for (int i = 0; i < 3; ++i) {
@@ -55,6 +57,8 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 	column1->Add(ges);
 	column1->Add(battalionstatslabel);
 	column1->Add(gbs);
+	column1->Add(gambitstatslabel);
+	column1->Add(ggs);
 	column2->Add(characterinnatestatslabel);
 	column2->Add(gchias);
 
@@ -87,8 +91,10 @@ void CPOptionalStats::ReceiveLBESelection(Stats stats) {
 	ges->ReceiveLBESelection(stats);
 }
 
-void CPOptionalStats::ReceiveLBBSelection(Stats stats) {
-	gbs->ReceiveLBBSelection(stats);
+void CPOptionalStats::ReceiveLBBSelection(Stats battalionstats, Stats gambitstats) {
+	gbs->ReceiveLBBSelection(battalionstats);
+	ggs->ReceiveLBBSelection(gambitstats);
+	
 }
 
 void CPOptionalStats::ReceiveCHIASelection(wxString abilityname) {
