@@ -143,19 +143,34 @@ enum class SL : int {
 	SPLUS = 11
 };
 
-enum class WEAPONTYPE : int {
-	BLANK = -1, 
-	SWORD = 0, 
-	AXE = 1, 
-	LANCE = 2, 
-	BOW = 3, 
-	GAUNTLETS = 4, 
-	REASON = 5, 
+enum class SKILLTYPE : int {
+	BLANK = -1,
+	SWORD = 0,
+	AXE = 1,
+	LANCE = 2,
+	BOW = 3,
+	GAUNTLETS = 4,
+	REASON = 5,
 	FAITH = 6,
 	AUTHORITY = 7, 
 	HEAVYARMOR = 8, 
 	RIDING = 9, 
 	FLYING = 10
+};
+
+enum class WEAPONTYPE : int {
+	BLANK = -1,
+	SWORD = 0,
+	AXE = 1,
+	LANCE = 2,
+	BOW = 3,
+	GAUNTLETS = 4,
+	BLACKMAGIC = 6,
+	DARKMAGIC = 7,
+	WHITEMAGIC = 8,
+	BOTH = 13
+
+
 };
 
 enum class EQUIPMENTTYPE : int {
@@ -166,19 +181,19 @@ enum class EQUIPMENTTYPE : int {
 	GEM = 3
 };
 
-struct SLPACKAGE : public wxClientData {
+struct SKILLLEVELPACKAGE : public wxClientData {
 	SL sl;
 	wxString slstring;
 	int index;
 
-	SLPACKAGE(SL uSL) : sl(uSL), index{}, slstring{} {}
+	SKILLLEVELPACKAGE(SL uSL) : sl(uSL), index{}, slstring{} {}
 };
 
-struct WTPACKAGE : public wxClientData {
+struct STINCPACKAGE : public wxClientData {
 	bool isNotIncluded;
 	int index;
 
-	WTPACKAGE(bool inclusion, int id) : isNotIncluded(inclusion), index{id} {}
+	STINCPACKAGE(bool inclusion, int id) : isNotIncluded(inclusion), index{id} {}
 };
 
 enum class STATTYPE : int {
@@ -210,12 +225,12 @@ enum class STATTYPE : int {
 	CRITAVO
 };
 
-struct STPACKAGE {
+struct STATPACKAGE {
 	STATTYPE stattype;
 	wxString name;
 
-	STPACKAGE() {}
-	STPACKAGE(STATTYPE ust, wxString uname) : stattype {ust}, name {uname} {}
+	STATPACKAGE() {}
+	STATPACKAGE(STATTYPE ust, wxString uname) : stattype {ust}, name {uname} {}
 };
 
 #endif

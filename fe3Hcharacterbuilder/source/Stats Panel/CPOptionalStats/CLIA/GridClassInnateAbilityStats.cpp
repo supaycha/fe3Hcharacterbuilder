@@ -33,8 +33,8 @@ void GridClassInnateAbilityStats::ReceiveCLIASelection(wxString abilityname) {
 	currentCLIAselection = abilityname;
 	bool hasStats = DetermineStatsPresence(currentCLIAselection);
 	if (hasStats) {
-		STPACKAGE stp = RetrieveSTPackage(currentCLIAselection);
-		gtbclias->ReceiveCLIASSelection(stp);
+		STATPACKAGE statp = RetrieveSTATPackage(currentCLIAselection);
+		gtbclias->ReceiveCLIASSelection(statp);
 
 		//Freeze();
 		repopulate();
@@ -88,13 +88,13 @@ bool GridClassInnateAbilityStats::DetermineStatsPresence(wxString currentCHIAsel
 	return false;
 }
 
-STPACKAGE GridClassInnateAbilityStats::RetrieveSTPackage(wxString currentCHIAselection) {
+STATPACKAGE GridClassInnateAbilityStats::RetrieveSTATPackage(wxString currentCHIAselection) {
 	for (auto element : classinnateabilities) {
 		if (currentCHIAselection == element.first) {
 			ClassInnateAbility* tempability = dynamic_cast<ClassInnateAbility*>(element.second)->clone();
-			return tempability->getSTP();
+			return tempability->getSTATPACKAGE();
 		}
 	}
 
-	return STPACKAGE();
+	return STATPACKAGE();
 }

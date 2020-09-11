@@ -20,7 +20,7 @@ public:
 	void OnNewSelection(wxCommandEvent& eventfromwho);
 
 	void ReceiveWeaponExclusivity(wxString charactername);
-	void ReceiveSLInfo(SLPACKAGE* slpackage);
+	void ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage);
 };
 
 #endif

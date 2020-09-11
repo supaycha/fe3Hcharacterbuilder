@@ -5,8 +5,8 @@ ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxW
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
 	for (int i = 0; i < 8; ++i) {
-		WTPACKAGE transfer{ false, i };
-		WTfilter.push_back(transfer);
+		STINCPACKAGE transfer{ false, i };
+		STfilter.push_back(transfer);
 	}
 
 	weaponmap = uweaponmap;
@@ -39,7 +39,7 @@ void ListBoxWeapons::ReceiveExclusivity(wxString charactername) {	//forwarded fr
 	Thaw();
 }
 
-void ListBoxWeapons::ReceiveSLInfo(SLPACKAGE* slpackage) {
+void ListBoxWeapons::ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage) {
 	if (slpackage->index < 7) {
 		SLfilter[slpackage->index] = slpackage->sl;
 	}
@@ -48,8 +48,8 @@ void ListBoxWeapons::ReceiveSLInfo(SLPACKAGE* slpackage) {
 	Thaw();
 }
 
-void ListBoxWeapons::ReceiveWTInfo(WTPACKAGE package) {
-	WTfilter[package.index].isNotIncluded = package.isNotIncluded;
+void ListBoxWeapons::ReceiveSTInfo(STINCPACKAGE package) {
+	STfilter[package.index].isNotIncluded = package.isNotIncluded;
 	Freeze();
 	repopulate();
 	Thaw();
@@ -95,11 +95,11 @@ void ListBoxWeapons::repopulate() {
 			weaponnames.push_back(generalweapons[i]->getName());
 			weapondata.push_back(dynamic_cast<wxClientData*>(generalweapons[i]));
 		}
-		else if (WTfilter[(int)generalweapons[i]->getType()].isNotIncluded){
+		else if (STfilter[(int)generalweapons[i]->getSkillType()].isNotIncluded){
 			continue;
 		}
 		else {
-			if (weaponSL <= SLfilter[(int)generalweapons[i]->getType()]) {
+			if (weaponSL <= SLfilter[(int)generalweapons[i]->getSkillType()]) {
 				weaponnames.push_back(generalweapons[i]->getName());
 				weapondata.push_back(dynamic_cast<wxClientData*>(generalweapons[i]));
 			}

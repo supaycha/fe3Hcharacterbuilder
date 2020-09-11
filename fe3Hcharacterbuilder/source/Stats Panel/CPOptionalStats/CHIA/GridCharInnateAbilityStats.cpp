@@ -33,7 +33,7 @@ void GridCharInnateAbilityStats::ReceiveCHIASelection(wxString abilityname) {
 	currentCHIAselection = abilityname;
 	bool hasStats = DetermineStatsPresence(currentCHIAselection);
 	if (hasStats) {
-		STPACKAGE stp = RetrieveSTPackage(currentCHIAselection);	
+		STATPACKAGE stp = RetrieveSTATPackage(currentCHIAselection);	
 		gtbchias->ReceiveCHIASSelection(stp);
 
 		//Freeze();
@@ -85,13 +85,13 @@ bool GridCharInnateAbilityStats::DetermineStatsPresence(wxString currentCHIAsele
 	return false;
 }
 
-STPACKAGE GridCharInnateAbilityStats::RetrieveSTPackage(wxString currentCHIAselection) {
+STATPACKAGE GridCharInnateAbilityStats::RetrieveSTATPackage(wxString currentCHIAselection) {
 	for (auto element : characterinnateabilities) {
 		if (currentCHIAselection == element.first) {
 			CharacterInnateAbility* tempability = dynamic_cast<CharacterInnateAbility*>(element.second)->clone();
-			return tempability->getSTP();
+			return tempability->getSTATPACKAGE();
 		}
 	}
 	
-	return STPACKAGE();
+	return STATPACKAGE();
 }

@@ -180,7 +180,8 @@ void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
 	Weapon* tempweapon = dynamic_cast<Weapon*>(selection.GetClientObject());
 	Stats tempstats = tempweapon->getStats();
 	wxString tempname = tempweapon->getName();
-	sp->ReceiveLBWSelection(tempstats);
+	WEAPONTYPE tempweapontype = tempweapon->getWeaponType();
+	sp->ReceiveLBWSelection(tempstats, tempweapontype);
 	ep->ReceiveLBWSelection(tempname);
 }
 

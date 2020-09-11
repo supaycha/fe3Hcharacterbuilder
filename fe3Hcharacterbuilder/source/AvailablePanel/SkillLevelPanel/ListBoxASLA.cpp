@@ -42,7 +42,7 @@ std::vector<wxString> ListBoxASLA::UpdateSelections() {
 	return tempvector;
 }
 
-void ListBoxASLA::ReceiveSLInfo(SLPACKAGE* slpackage) {
+void ListBoxASLA::ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage) {
 	SLfilter[slpackage->index] = slpackage->sl;
 	FilterAbilities();
 }
@@ -60,12 +60,12 @@ void ListBoxASLA::FilterAbilities() {
 
 	for (auto ability : skilllevelabilities) {
 		SL abilitySL = ability->getSL();
-		if ((int)ability->getWeaponType() == -1) {
+		if ((int)ability->getSkillType() == -1) {
 			abilitynames.push_back(ability->getName());
 			continue;
 		}
 
-		else if (abilitySL <= SLfilter[(int)ability->getWeaponType()]) {
+		else if (abilitySL <= SLfilter[(int)ability->getSkillType()]) {
 			abilitynames.push_back(ability->getName());
 		}
 	}

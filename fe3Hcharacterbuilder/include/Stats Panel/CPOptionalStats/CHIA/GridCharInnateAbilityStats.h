@@ -25,7 +25,7 @@ public:
 	void ReceiveCHIASelection(wxString abilityname);
 	void repopulate();
 	bool DetermineStatsPresence(wxString currentCHIAselection);
-	STPACKAGE RetrieveSTPackage(wxString currentCHIAselection);
+	STATPACKAGE RetrieveSTATPackage(wxString currentCHIAselection);
 };
 
 #endif

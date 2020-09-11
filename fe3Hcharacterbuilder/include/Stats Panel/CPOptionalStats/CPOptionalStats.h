@@ -33,7 +33,7 @@ public:
 	CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, wxWindow* parent, wxWindowID id, const wxString& buffer);
 	~CPOptionalStats() {}
 
-	void ReceiveLBWSelection(Stats stats);
+	void ReceiveLBWSelection(Stats stats, WEAPONTYPE type);
 	void ReceiveLBESelection(Stats stats);
 	void ReceiveLBBSelection(Stats stats);
 	void ReceiveCHIASelection(wxString abilityname);

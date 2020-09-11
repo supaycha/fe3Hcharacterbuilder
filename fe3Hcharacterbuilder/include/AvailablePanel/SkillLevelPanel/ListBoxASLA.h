@@ -26,7 +26,7 @@ public:
 	~ListBoxASLA() {}
 
 	void OnSelection(wxCommandEvent& event);
-	void ReceiveSLInfo(SLPACKAGE* slpackage);
+	void ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage);
 	void FilterAbilities();
 
 	void ReceiveAbilityFiltration(std::vector<wxString> dirtynames);

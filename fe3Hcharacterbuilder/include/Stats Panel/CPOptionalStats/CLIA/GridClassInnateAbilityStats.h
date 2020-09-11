@@ -24,7 +24,7 @@ public:
 	void ReceiveCLIASelection(wxString abilityname);
 	void repopulate();
 	bool DetermineStatsPresence(wxString currentCLIAselection);
-	STPACKAGE RetrieveSTPackage(wxString currentCLIAselection);
+	STATPACKAGE RetrieveSTATPackage(wxString currentCLIAselection);
 
 };
 

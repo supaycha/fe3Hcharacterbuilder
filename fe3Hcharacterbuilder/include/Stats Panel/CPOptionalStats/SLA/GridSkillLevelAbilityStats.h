@@ -6,9 +6,9 @@
 #include <map>
 #include <Stat.h>
 #include <constants.h>
-#include <Unit/Unit.h>
-#include <Unit/Ability/Ability.h>
-#include <Unit/Ability/SkillLevelAbility.h>
+//#include <Unit/Unit.h>
+//#include <Unit/Ability/Ability.h>
+//#include <Unit/Ability/SkillLevelAbility.h>
 #include <Stats Panel/CPOptionalStats/SLA/GTBSkillLevelAbilityStats.h>
 
 wxDECLARE_EVENT(TRANSMIT_GSLAS_STATS, wxCommandEvent);
@@ -17,14 +17,13 @@ class GridSkillLevelAbilityStats : public wxGrid {
 private:
 	GTBSkillLevelAbilityStats* gtbslas;
 	wxString currentSLAselection;
-	std::map<wxString, wxClientData*> skilllevelabilities;
 public:
 	GridSkillLevelAbilityStats(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveSLASelection(wxString abilityname);
+	void ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type);
 	void repopulate();
-	bool DetermineStatsPresence(wxString currentSLAselection);
-	std::vector<STPACKAGE> RetrieveSTPackage(wxString currentSLAselection);
+	//std::vector<STINCPACKAGE> RetrieveSTPackage(wxString currentSLAselection);
 };
 
 #endif

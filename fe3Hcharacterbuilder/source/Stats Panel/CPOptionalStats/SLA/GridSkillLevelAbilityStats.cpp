@@ -3,9 +3,8 @@
 GridSkillLevelAbilityStats::GridSkillLevelAbilityStats(std::map<wxString, wxClientData*> uskilllevelabilities, wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
-	skilllevelabilities = uskilllevelabilities;
 	//SetBackgroundStyle(wxBG_STYLE_PAINT);
-	gtbslas = new GTBSkillLevelAbilityStats;
+	gtbslas = new GTBSkillLevelAbilityStats(uskilllevelabilities);
 
 	CreateGrid(1, 3);
 	for (int i = 0; i < 3; ++i) {
@@ -30,30 +29,15 @@ void GridSkillLevelAbilityStats::initpopulate() {
 }
 
 void GridSkillLevelAbilityStats::ReceiveSLASelection(wxString abilityname) {
-	currentSLAselection = abilityname;
-	bool hasStats = DetermineStatsPresence(currentSLAselection);
-	if (hasStats) {
-		std::vector<STPACKAGE> stpVector = RetrieveSTPackage(currentSLAselection);
-		gtbslas->ReceiveSLASSelection(stpVector);
+	gtbslas->ReceiveSLASSelection(abilityname);
+	repopulate();
+	SendSizeEventToParent();
+}
 
-		//Freeze();
-		repopulate();
-		SendSizeEventToParent();
-		//Thaw();
-	}
-
-	else {
-		bool success;
-		//Freeze();	
-		ClearGrid();
-		for (int i = 0; i < 3; ++i) {
-			SetColLabelValue(i, "---");
-			SetCellValue(0, i, "---");
-			AutoSizeColLabelSize(i);
-		}
-		SendSizeEventToParent();
-		//Thaw();
-	}
+void GridSkillLevelAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type) {
+	gtbslas->ReceiveLBWSelection_weapontypeifneeded(type);
+	repopulate();
+	SendSizeEventToParent();
 }
 
 void GridSkillLevelAbilityStats::repopulate() {
@@ -67,34 +51,4 @@ void GridSkillLevelAbilityStats::repopulate() {
 		AutoSizeColLabelSize(i);
 		SetCellValue(0, i, colvalue);
 	}
-
-	tempvectforstats.push_back(Stat(gtbslas->GetValue(0, 0)));
-	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GSLAS_STATS, GetId());
-	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
-	event.SetClientObject(tempdata);
-	ProcessEvent(event);
-}
-
-bool GridSkillLevelAbilityStats::DetermineStatsPresence(wxString currentCSLAselection) {
-	for (auto element : skilllevelabilities) {
-		if (currentCSLAselection == element.first) {
-			SkillLevelAbility* tempability = dynamic_cast<SkillLevelAbility*>(element.second)->clone();
-			return tempability->getHasStatUp();
-		}
-	}
-
-	return false;
-}
-
-std::vector<STPACKAGE> GridSkillLevelAbilityStats::RetrieveSTPackage(wxString currentCHIAselection) {
-	for (auto element : skilllevelabilities) {
-		if (currentCHIAselection == element.first) {
-			SkillLevelAbility* tempability = dynamic_cast<SkillLevelAbility*>(element.second)->clone();
-			int test = 9;
-			return tempability->getSTP();
-		}
-	}
-
-	return std::vector<STPACKAGE> ();
 }

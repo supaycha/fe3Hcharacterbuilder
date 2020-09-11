@@ -25,7 +25,7 @@ SkillLevelManager::SkillLevelManager(wxWindow* parent, wxWindowID id) :
 }
 
 void SkillLevelManager::OnNewSelection(wxCommandEvent& uevent) {
-	SLPACKAGE* temp = dynamic_cast<SLPACKAGE*>(uevent.GetClientObject());
+	SKILLLEVELPACKAGE* temp = dynamic_cast<SKILLLEVELPACKAGE*>(uevent.GetClientObject());
 	DropDownSkillLevel* tempwindow = dynamic_cast<DropDownSkillLevel*>(uevent.GetEventObject());
 
 	temp->slstring = tempwindow->GetLabel();

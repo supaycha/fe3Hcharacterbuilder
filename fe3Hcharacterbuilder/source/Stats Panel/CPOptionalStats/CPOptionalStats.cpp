@@ -75,8 +75,12 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 	this->SetSizer(mainsizer);
 }
 
-void CPOptionalStats::ReceiveLBWSelection(Stats stats) {
+void CPOptionalStats::ReceiveLBWSelection(Stats stats, WEAPONTYPE type) {
 	gws->ReceiveLBWSelection(stats);
+	for (unsigned int i = 0; i < 3; ++i) {
+		gslasVector[i]->ReceiveLBWSelection_weapontypeifneeded(type);
+		gslasVector[i]->ForceRefresh();
+	}
 }
 
 void CPOptionalStats::ReceiveLBESelection(Stats stats) {

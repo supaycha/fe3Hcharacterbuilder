@@ -28,7 +28,7 @@ void ListBoxBattalions::OnNewSelection(wxCommandEvent& selection) {
 	ProcessEvent(event);
 }
 
-void ListBoxBattalions::ReceiveSLInfo(SLPACKAGE* slpackage) {
+void ListBoxBattalions::ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage) {
 	if (slpackage->index == 7) {
 		sl = slpackage->sl;
 	}

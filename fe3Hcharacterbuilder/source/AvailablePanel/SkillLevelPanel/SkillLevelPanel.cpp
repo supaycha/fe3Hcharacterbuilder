@@ -45,17 +45,17 @@ void SkillLevelPanel::BounceSLInfo(wxCommandEvent& eventfromwho) {
 	switch (idofreceiver)
 	{
 		case (int)ID_SINGLE_CONTROL::ID_LBW: {
-			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
+			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(eventfromwho.GetClientObject());
 			wm->ReceiveSLInfo(slpackage);
 			break;
 		}
 		case (int)ID_SINGLE_CONTROL::ID_LBASLA: {
-			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
+			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(eventfromwho.GetClientObject());
 			lbasla->ReceiveSLInfo(slpackage);
 			break;
 		}
 		case (int)ID_SINGLE_CONTROL::ID_LBB: {
-			SLPACKAGE* slpackage = dynamic_cast<SLPACKAGE*>(eventfromwho.GetClientObject());
+			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(eventfromwho.GetClientObject());
 			lbb->ReceiveSLInfo(slpackage);
 			break;
 		}

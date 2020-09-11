@@ -27,8 +27,8 @@ StatsPanel::StatsPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* p
 	Bind(TRANSMIT_GSLAS_STATS, &StatsPanel::BounceGSLASStats_partoftotalstats, this, (int)ID_SINGLE_CONTROL::ID_GSLAS, (int)ID_SINGLE_CONTROL::ID_GSLAS5);
 }
 
-void StatsPanel::ReceiveLBWSelection(Stats stats) {
-	optionalstats->ReceiveLBWSelection(stats);
+void StatsPanel::ReceiveLBWSelection(Stats stats, WEAPONTYPE type) {
+	optionalstats->ReceiveLBWSelection(stats, type);
 }
 
 void StatsPanel::ReceiveLBESelection(Stats stats) {

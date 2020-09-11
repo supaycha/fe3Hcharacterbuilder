@@ -21,7 +21,7 @@ private:
 public:
 	StatsPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
 	~StatsPanel() {}
-	void ReceiveLBWSelection(Stats stats);
+	void ReceiveLBWSelection(Stats stats, WEAPONTYPE type);
 	void ReceiveLBESelection(Stats stats);
 	void ReceiveLBBSelection(Stats stats);
 	void ReceiveCHIASelection(wxString abilityname);
