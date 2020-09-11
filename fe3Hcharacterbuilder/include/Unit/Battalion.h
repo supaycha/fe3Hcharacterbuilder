@@ -33,6 +33,7 @@ public:
 
 	const std::wstring getName() override { return name; }
 	const Stats getStats() override { return battstats; }
+	Gambit getGambit() { return gambit; }
 	SL getSL() { return sl; }
 
 	Battalion* new_expr() override { return new Battalion(); }

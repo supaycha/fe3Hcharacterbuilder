@@ -62,6 +62,7 @@ enum class ID_SINGLE_CONTROL {
 	ID_GSLAS5 = 68,	
 	ID_GTS = 69,
 	ID_CPOS = 70,
+	ID_EG = 71,
 	//ID_CHIATXT = 71,
 	//ID_CLIATXT = 72,
 	//ID_CLIATXT2 = 73,

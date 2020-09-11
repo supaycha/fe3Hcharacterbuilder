@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\EquippedPanel\Gambit\EquippedGambit.h" />
     <ClInclude Include="include\Unit\Gambit.h" />
     <ClInclude Include="include\AbilitySelections.h" />
     <ClInclude Include="include\AvailablePanel\ListBoxEquipment.h" />
@@ -96,6 +97,7 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\EquippedPanel\Gambit\EquippedGambit.cpp" />
     <ClCompile Include="source\AbilitySelections.cpp" />
     <ClCompile Include="source\AvailablePanel\ListBoxEquipment.cpp" />
     <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxASLA.cpp" />

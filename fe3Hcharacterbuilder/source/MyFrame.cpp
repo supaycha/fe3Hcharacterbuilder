@@ -198,8 +198,9 @@ void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
 	Battalion* tempbattalion = dynamic_cast<Battalion*>(selection.GetClientObject());
 	Stats tempstats = tempbattalion->getStats();
 	wxString tempname = tempbattalion->getName();
+	wxString tempgambitname = tempbattalion->getGambit().getName();
 	sp->ReceiveLBBSelection(tempstats);
-	ep->ReceiveLBBSelection(tempname);
+	ep->ReceiveLBBSelection(tempname, tempgambitname);
 }
 void MyFrame::BounceCHIASelection(wxCommandEvent& selection) {
 	wxString tempstring = selection.GetString();

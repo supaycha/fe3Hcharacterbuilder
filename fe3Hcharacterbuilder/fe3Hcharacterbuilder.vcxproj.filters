@@ -86,6 +86,9 @@
     <Filter Include="Lists">
       <UniqueIdentifier>{697e9312-3aa1-48eb-a3b7-b442b774f221}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EquippedPanel\Gambit">
+      <UniqueIdentifier>{5604f82f-9c23-4a40-97ba-52c63471bf80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h">
@@ -307,6 +310,9 @@
     <ClInclude Include="include\Unit\Gambit.h">
       <Filter>UnitandMisc</Filter>
     </ClInclude>
+    <ClInclude Include="include\EquippedPanel\Gambit\EquippedGambit.h">
+      <Filter>EquippedPanel\Gambit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">
@@ -435,6 +441,9 @@
       <Filter>Stats Panel</Filter>
     </ClCompile>
     <ClCompile Include="source\AbilitySelections.cpp" />
+    <ClCompile Include="source\EquippedPanel\Gambit\EquippedGambit.cpp">
+      <Filter>EquippedPanel\Gambit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="fe3Hcharacterbuilder.rc">

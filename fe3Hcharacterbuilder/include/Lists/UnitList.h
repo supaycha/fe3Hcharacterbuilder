@@ -31,7 +31,7 @@ private:
 	std::vector<std::unique_ptr<Unit>> list;
 public:
 	UnitList() {
-		list.emplace_back(std::make_unique<Gambit>(L"Absolute Defense",
+		/*list.emplace_back(std::make_unique<Gambit>(L"Absolute Defense",
 			L"---", L"100", L"1", L"2", 
 			L"Grants +6 defense to all allies within its area of effect for one turn.")); 
 		list.emplace_back(std::make_unique<Gambit>(L"Absorption",
@@ -144,7 +144,7 @@ public:
 			L"Grants Stride status to all allies within its area of effect, giving them +5 Movement for one turn."));
 		list.emplace_back(std::make_unique<Gambit>(L"Wave Attack",
 			L"13", L"60", L"1", L"2",
-			L"Deals bonus damage to armored units. Inflicts Is ns01 status rattled.png rattled status on all targets."));
+			L"Deals bonus damage to armored units. Inflicts Is ns01 status rattled.png rattled status on all targets."));*/
 		list.emplace_back(std::make_unique<Battalion>(L"---", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 

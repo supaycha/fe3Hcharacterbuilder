@@ -9,6 +9,8 @@ EquippedPanel::EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWin
 	wxBoxSizer* intangibleequipped = new wxBoxSizer(wxVERTICAL);
 	wxStaticText* equippedbattalionlabel = new wxStaticText(this, wxID_ANY, "Equipped Battalion");
 	eb = new EquippedBattalion(this, (int)ID_SINGLE_CONTROL::ID_EB, buffer);
+	wxStaticText* equippedgambitlabel = new wxStaticText(this, wxID_ANY, "Equipped Gambit");
+	eg = new EquippedGambit(this, (int)ID_SINGLE_CONTROL::ID_EG, buffer);
 	wxStaticText* equippedweaponlabel = new wxStaticText(this, wxID_ANY, "Equipped Weapon");
 	ew = new EquippedWeapon(this, (int)ID_SINGLE_CONTROL::ID_EW, buffer);
 	wxStaticText* equippedequipmentlabel = new wxStaticText(this, wxID_ANY, "Equipped Equipment");
@@ -16,6 +18,8 @@ EquippedPanel::EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWin
 	ap = new AbilityPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_AP);
 	physicalequipped->Add(equippedbattalionlabel);
 	physicalequipped->Add(eb);
+	physicalequipped->Add(equippedgambitlabel);
+	physicalequipped->Add(eg);
 	physicalequipped->Add(equippedweaponlabel);
 	physicalequipped->Add(ew);
 	physicalequipped->Add(equippedequipmentlabel);
@@ -46,8 +50,9 @@ void EquippedPanel::ReceiveLBESelection(wxString equipmentname, wxString equipme
 	ee->ReceiveLBESelection(equipmentname, equipmentdescription);
 }
 
-void EquippedPanel::ReceiveLBBSelection(wxString battalionname) {
+void EquippedPanel::ReceiveLBBSelection(wxString battalionname, wxString gambitname) {
 	eb->ReceiveLBBSelection(battalionname);
+	eg->ReceiveLBBSelection(gambitname);
 }
 
 void EquippedPanel::OnSize(wxSizeEvent& event) {
