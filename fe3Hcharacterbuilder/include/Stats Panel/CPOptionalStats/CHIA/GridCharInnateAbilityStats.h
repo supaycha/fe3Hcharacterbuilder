@@ -17,15 +17,12 @@ wxDECLARE_EVENT(TRANSMIT_GCHIAS_STATS, wxCommandEvent);
 class GridCharInnateAbilityStats : public wxGrid {
 private:
 	GTBCharInnateAbilityStats* gtbchias;
-	wxString currentCHIAselection;
-	std::map<wxString, wxClientData*> characterinnateabilities;
 public:
 	GridCharInnateAbilityStats(std::map<wxString, wxClientData*> ucharacterinnateabilities, wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveCHIASelection(wxString abilityname);
+	void ReceiveLBBSelection(bool battalionselectionmade);
 	void repopulate();
-	bool DetermineStatsPresence(wxString currentCHIAselection);
-	STATPACKAGE RetrieveSTATPackage(wxString currentCHIAselection);
 };
 
 #endif

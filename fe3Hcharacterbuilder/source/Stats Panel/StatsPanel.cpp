@@ -36,8 +36,8 @@ void StatsPanel::ReceiveLBESelection(Stats stats) {
 	optionalstats->ReceiveLBESelection(stats);
 }
 
-void StatsPanel::ReceiveLBBSelection(Stats battalionstats, Stats gambitstats) {
-	optionalstats->ReceiveLBBSelection(battalionstats, gambitstats);
+void StatsPanel::ReceiveLBBSelection(Stats battalionstats, Stats gambitstats, bool battalionselectionmade) {
+	optionalstats->ReceiveLBBSelection(battalionstats, gambitstats, battalionselectionmade);
 }
 
 void StatsPanel::ReceiveCHIASelection(wxString abilityname) {

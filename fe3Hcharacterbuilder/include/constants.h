@@ -211,7 +211,9 @@ enum class STATTYPE : int {
 	RES,
 	CHA,
 	MIGHT,
+	GMIGHT,
 	HIT,
+	GHIT,
 	CRIT,
 	RANGE,
 	WEIGHT,
@@ -223,7 +225,6 @@ enum class STATTYPE : int {
 	HEAL,
 	PATK,
 	END,
-	GMIGHT,
 	CRITAVO
 };
 

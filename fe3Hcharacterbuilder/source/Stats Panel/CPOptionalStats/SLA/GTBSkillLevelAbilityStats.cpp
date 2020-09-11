@@ -7,13 +7,11 @@ GTBSkillLevelAbilityStats::GTBSkillLevelAbilityStats(std::map<wxString, wxClient
 
 void GTBSkillLevelAbilityStats::ReceiveSLASSelection(wxString ucurrentSLAselection) {
 	currentSLAselection = ucurrentSLAselection;
-
 	recalculate();
 }
 
 void GTBSkillLevelAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type) {
 	currentWeaponTypeofEquippedWeapon = type;
-	
 	recalculate();
 }
 

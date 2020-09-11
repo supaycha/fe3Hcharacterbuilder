@@ -3,12 +3,11 @@
 GridCharInnateAbilityStats::GridCharInnateAbilityStats(std::map<wxString, wxClientData*> ucharacterinnateabilities, wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
-	characterinnateabilities = ucharacterinnateabilities;
 	//SetBackgroundStyle(wxBG_STYLE_PAINT);
-	gtbchias = new GTBCharInnateAbilityStats;
+	gtbchias = new GTBCharInnateAbilityStats(ucharacterinnateabilities);
 
-	CreateGrid(1, 3);
-	for (int i = 0; i < 3; ++i) {
+	CreateGrid(1, 2);
+	for (int i = 0; i < 2; ++i) {
 		SetColLabelValue(i, "---");
 		SetCellValue(0, i, "---");
 		AutoSizeColumn(i, true);
@@ -30,28 +29,16 @@ void GridCharInnateAbilityStats::initpopulate() {
 }
 
 void GridCharInnateAbilityStats::ReceiveCHIASelection(wxString abilityname) {
-	currentCHIAselection = abilityname;
-	bool hasStats = DetermineStatsPresence(currentCHIAselection);
-	if (hasStats) {
-		STATPACKAGE stp = RetrieveSTATPackage(currentCHIAselection);	
-		gtbchias->ReceiveCHIASSelection(stp);
+	/*currentCHIAselection = abilityname;*/
+	gtbchias->ReceiveCHIASSelection(abilityname);
+	repopulate();
+	SendSizeEventToParent();
+}
 
-		//Freeze();
-		repopulate();
-		SendSizeEventToParent();
-		//Thaw();
-	}
-	else {
-		//Freeze();	
-		ClearGrid();
-		for (int i = 0; i < 3; ++i) {
-			SetColLabelValue(i, "---");
-			SetCellValue(0, i, "---");
-			AutoSizeColLabelSize(i);
-		}
-		SendSizeEventToParent();
-		//Thaw();
-	}
+void GridCharInnateAbilityStats::ReceiveLBBSelection(bool ubattalionselectionmade) {
+	gtbchias->ReceiveLBBSelection(ubattalionselectionmade);
+	repopulate();
+	SendSizeEventToParent();
 }
 
 void GridCharInnateAbilityStats::repopulate() {
@@ -66,32 +53,10 @@ void GridCharInnateAbilityStats::repopulate() {
 		SetCellValue(0, i, colvalue);
 	}
 
-	tempvectforstats.push_back(Stat(gtbchias->GetValue(0, 0)));
-	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GCHIAS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
-	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
-	event.SetClientObject(tempdata);
-	ProcessEvent(event);
-}
-
-bool GridCharInnateAbilityStats::DetermineStatsPresence(wxString currentCHIAselection) {
-	for (auto element : characterinnateabilities) {
-		if (currentCHIAselection == element.first) {
-			CharacterInnateAbility* tempability = dynamic_cast<CharacterInnateAbility*>(element.second)->clone();
-			return tempability->getHasStatUp();
-		}
-	}
-
-	return false;
-}
-
-STATPACKAGE GridCharInnateAbilityStats::RetrieveSTATPackage(wxString currentCHIAselection) {
-	for (auto element : characterinnateabilities) {
-		if (currentCHIAselection == element.first) {
-			CharacterInnateAbility* tempability = dynamic_cast<CharacterInnateAbility*>(element.second)->clone();
-			return tempability->getSTATPACKAGE();
-		}
-	}
-	
-	return STATPACKAGE();
+	//tempvectforstats.push_back(Stat(gtbchias->GetValue(0, 0)));
+	//Stats* ptrtostats = new Stats(tempvectforstats);
+	//wxCommandEvent event(TRANSMIT_GCHIAS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
+	//wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
+	//event.SetClientObject(tempdata);
+	//ProcessEvent(event);
 }

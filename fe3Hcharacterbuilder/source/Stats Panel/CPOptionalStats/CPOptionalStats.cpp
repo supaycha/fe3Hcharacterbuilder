@@ -91,10 +91,10 @@ void CPOptionalStats::ReceiveLBESelection(Stats stats) {
 	ges->ReceiveLBESelection(stats);
 }
 
-void CPOptionalStats::ReceiveLBBSelection(Stats battalionstats, Stats gambitstats) {
+void CPOptionalStats::ReceiveLBBSelection(Stats battalionstats, Stats gambitstats, bool battalionselectionmade) {
 	gbs->ReceiveLBBSelection(battalionstats);
 	ggs->ReceiveLBBSelection(gambitstats);
-	
+	gchias->ReceiveLBBSelection(battalionselectionmade);
 }
 
 void CPOptionalStats::ReceiveCHIASelection(wxString abilityname) {
