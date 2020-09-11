@@ -8,6 +8,7 @@ private:
 	std::wstring name;
 	Stats gambitstats;
 public:
+	Gambit() {}
 	Gambit(std::wstring uName, std::wstring uGMIGHT, std::wstring uHIT, std::wstring uGRANGE, std::wstring uUSES, std::wstring uDESCRIPTION) :
 		name{ uName }, gambitstats{ uGMIGHT, uHIT, uGRANGE, uUSES,uDESCRIPTION } {}
 	~Gambit() {}

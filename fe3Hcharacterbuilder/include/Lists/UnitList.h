@@ -147,669 +147,1312 @@ public:
 			L"Deals bonus damage to armored units. Inflicts Is ns01 status rattled.png rattled status on all targets."));
 		list.emplace_back(std::make_unique<Battalion>(L"---", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
-			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"---", SL::BLANK));
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"---", 
+			L"0", L"0", L"0", L"0",
+			L"---",
+			SL::BLANK));
 		list.emplace_back(std::make_unique<Battalion>(L"Church of Seiros Soldiers", 
 			L"0", L"0", L"0", L"0", L"0", L"1", L"1", L"1", L"30", 
-			L"0", L"0", L"1.3", L"0", L"0", L"0.5", L"0.5", L"0", L"0", L"Disturbance", SL::E));
+			L"0", L"0", L"1.3", L"0", L"0", L"0.5", L"0.5", L"0", L"0", 
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Mercenaries", 
 			L"1", L"-2", L"5", L"0", L"0", L"1", L"1", L"1", L"30", 
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Onslaught", SL::E));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Holy Monks", 
 			L"-1", L"0", L"5", L"0", L"0", L"0", L"1", L"1", L"30", 
-			L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"0", L"0", L"Stride", SL::E));
+			L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Stride",
+			L"---", L"100", L"1", L"2",
+			L"Grants Stride status to all allies within its area of effect, giving them +5 Movement for one turn.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Sacred Monks",
 			L"-1", L"0", L"5", L"0", L"0", L"0", L"2", L"1", L"30",
-			L"0", L"0", L"1.3", L"0", L"0", L"0", L"0.5", L"0", L"0", L"Resonant White Magic", SL::E));
+			L"0", L"0", L"1.3", L"0", L"0", L"0", L"0.5", L"0", L"0", 
+			L"Resonant White Magic",
+			L"8", L"100", L"1", L"3",
+			L"Restores HP to all allies within its area of effect.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Brawlers", 
 			L"2", L"-2", L"0", L"0", L"5", L"0", L"-1", L"1", L"30", 
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0", L"Disturbance", SL::E));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0",
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Magic Corps",
 			L"-2", L"1", L"0", L"0", L"0", L"0", L"3", L"3", L"30",
-			L"0", L"0.5", L"1.3", L"0", L"0", L"0", L"0.5", L"0", L"0", L"Group Flames", SL::D));
+			L"0", L"0.5", L"1.3", L"0", L"0", L"0", L"0.5", L"0", L"0", 
+			L"Group of Flames",
+			L"2", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.", 
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Archers", 
 			L"0", L"0", L"10", L"0", L"5", L"0", L"0", L"3", L"45",
-			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Fusillade", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0", L"0", L"0", L"0", 
+			L"Fusillade",
+			L"5", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Armored Co.", 
 			L"2", L"0", L"0", L"0", L"-10", L"2", L"0", L"3", L"60", 
-			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Onslaught", SL::D));
+			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.", 
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Pegasus Co.", 
 			L"2", L"0", L"0", L"0", L"1", L"0", L"3", L"5", L"60",
-			L"0.5", L"0", L"0", L"0", L"1", L"0.5", L"0.5", L"0", L"0", L"Assembly", SL::D));
+			L"0.5", L"0", L"0", L"0", L"1", L"0.5", L"0.5", L"0", L"0", 
+			L"Assembly",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, user moves one space backward while the primary target moves into user's previous space.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Knights of Seiros",
 			L"2", L"-1", L"0", L"0", L"1", L"1", L"1", L"5", L"60", 
-			L"0.5", L"0", L"0", L"0", L"1", L"0.5", L"0.5", L"0", L"0", L"Blaze", SL::C));
+			L"0.5", L"0", L"0", L"0", L"1", L"0.5", L"0.5", L"0", L"0",
+			L"Blaze",
+			L"10", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Holy Knights of Seiros", 
 			L"3", L"-2", L"0", L"0", L"0", L"1", L"3", L"7", L"75",
-			L"1", L"0", L"0", L"0", L"0", L"1", L"1", L"0", L"0", L"Assault Troop", SL::B));
+			L"1", L"0", L"0", L"0", L"0", L"1", L"1", L"0", L"0", 
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Indech Sword Fighters", 
 			L"4", L"-21", L"10", L"2", L"0", L"0", L"0", L"10", L"105", 
-			L"1", L"0", L"2.5", L"2", L"0", L"1", L"0", L"0", L"0", L"Retribution", SL::A));
+			L"1", L"0", L"2.5", L"2", L"0", L"1", L"0", L"0", L"0", 
+			L"Retribution",
+			L"---", L"100", L"1", L"2",
+			L"Grants Retribution status to all allies within its area of effect, allowing them to counter-attack regardless of the range between them and their targets for 5 turns.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Macuil Evil Repelling Co.", 
 			L"0", L"3", L"20", L"0", L"0", L"1", L"2", L"10", L"105",
-			L"0", L"1", L"2.5", L"0", L"0", L"0", L"1", L"0", L"0", L"Resonant Lightning", SL::A));
+			L"0", L"1", L"2.5", L"0", L"0", L"0", L"1", L"0", L"0", 
+			L"Resonant Lightning",
+			L"8", L"40", L"1-2", L"1",
+			L"Works as magical damage.Inflicts rattled status on all targets.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Infantry", 
 			L"0", L"-2", L"5", L"0", L"0", L"1", L"0", L"1", L"30", 
-			L"0", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Lure", SL::E));
+			L"0", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
+			L"Lure",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, moves primary target behind the user.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Warriors", 
 			L"2", L"-2", L"0", L"0", L"0", L"0", L"0", L"1", L"30",
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Random Shot", SL::E));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", 
+			L"Random Shot",
+			L"8", L"40", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Brawlers", 
 			L"2", L"-2", L"0", L"0", L"5", L"0", L"-1", L"1", L"30", 
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Disturbance", SL::E));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", 
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Magic Corps", 
 			L"-2", L"2", L"0", L"0", L"0", L"0", L"2", L"3", L"20", 
-			L"0", L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"Group Flames", SL::D));
+			L"0", L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", 
+			L"Group of Flames",
+			L"2", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.", 
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Archers", 
 			L"1", L"-2", L"10", L"0", L"0", L"1", L"0", L"3", L"30", 
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Fusillade", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Fusillade",
+			L"5", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Cavalry",
 			L"2", L"-2", L"0", L"0", L"0", L"2", L"0", L"3", L"45",
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0", L"Assault Troop", SL::D));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0", 
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Armored Co.", 
 			L"1", L"-2", L"0", L"0", L"-10", L"3", L"0", L"3", L"60",
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Impregnable Wall", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Impregnable Wall",
+			L"---", L"100", L"1", L"5",
+			L"Grants Impregnable Wall status to all allies within its area of effect, reducing all damage dealt and taken by them to 1 for one turn.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Knights",
 			L"3", L"-2", L"0", L"0", L"0", L"2", L"0", L"5", L"60", 
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Blaze", SL::C));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Blaze",
+			L"10", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Snipers", 
 			L"3", L"-2", L"5", L"0", L"0", L"1", L"0", L"5", L"60", 
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Flash-Fire Arrows", SL::C));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Flash-Fire Arrows",
+			L"7", L"50", L"1", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Magic Users",
 			L"-2", L"3", L"0", L"5", L"0", L"0", L"2", L"5", L"45", 
-			L"0", L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"Resonant Flames", SL::C));
+			L"0", L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0",
+			L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Pavise Co.",
 			L"0", L"-2", L"0", L"0", L"-10", L"4", L"1", L"5", L"75",
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0.5", L"0", L"0", L"Blaze", SL::C));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
+			L"Blaze",
+			L"10", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Pegasus Co.", 
 			L"2", L"0", L"10", L"0", L"0", L"1", L"2", L"6", L"60", 
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0.5", L"0", L"0", L"Group Lance Attack", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0.5", L"0", L"0", 
+			L"Group Lance Attack",
+			L"6", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Wyvern Co.",
 			L"3", L"-2", L"5", L"5", L"0", L"2", L"0", L"5", L"60", 
-			L"0.5", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0", L"0", L"Reversal", SL::C));
+			L"0.5", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Reversal",
+			L"8", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, user switches places with the primary target.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Heavy Soldiers", 
 			L"2", L"-2", L"5", L"0", L"-10", L"5", L"1", L"7", L"75", 
-			L"1", L"0", L"2.5", L"0", L"0", L"1", L"0", L"0", L"0", L"Line of Lances", SL::B));
+			L"1", L"0", L"2.5", L"0", L"0", L"1", L"0", L"0", L"0", 
+			L"Line of Lances",
+			L"5", L"50", L"1", L"2",
+			L"Deals bonus damage to cavalry units. Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Holy Magic Users", 
 			L"-2", L"2", L"0", L"0", L"0", L"0", L"3", L"8", L"60", 
-			L"0", L"1", L"0", L"0", L"0", L"1", L"1", L"0", L"0", L"Blessing", SL::B));
+			L"0", L"1", L"0", L"0", L"0", L"1", L"1", L"0", L"0", 
+			L"Blessing",
+			L"---", L"100", L"1", L"1",
+			L"Grants Blessing status to all allies within its area of effect, reducing lethal damage taken to leave them at 1 HP for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Raiders", 
 			L"3", L"0", L"0", L"0", L"5", L"0", L"0", L"7", L"75",
-			L"1", L"0", L"0", L"0", L"1.3", L"1", L"0", L"0", L"0", L"Absorption", SL::B));
+			L"1", L"0", L"0", L"0", L"1.3", L"1", L"0", L"0", L"0", 
+			L"Absorption",
+			L"4", L"30", L"1", L"1",
+			L"Inflicts rattled status on all targets. Restores(damage dealt / 2) HP to the user from each target in its area of effect.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Imperial Guard", 
 			L"3", L"-2", L"0", L"10", L"0", L"0", L"0", L"7", L"75", 
-			L"1", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"Blaze", SL::B));
+			L"1", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", 
+			L"Blaze",
+			L"10", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Elite Wyvern Co.", 
 			L"4", L"-2", L"0", L"5", L"0", L"2", L"0", L"7", L"75", 
-			L"1", L"0", L"0", L"1.3", L"0", L"1", L"0", L"0", L"0", L"Assembly", SL::B));
+			L"1", L"0", L"0", L"1.3", L"0", L"1", L"0", L"0", L"0",
+			L"Assembly",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, user moves one space backward while the primary target moves into user's previous space.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Black Eagle Heavy Axes",
 			L"3", L"0", L"0", L"10", L"-10", L"4", L"2", L"10", L"105",
-			L"1", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"Onslaught", SL::A));
+			L"1", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", 
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Black Eagle Cavalry",
 			L"3", L"0", L"10", L"0", L"5", L"1", L"0", L"10", L"105",
-			L"1", L"0", L"2.5", L"0", L"0", L"1", L"0", L"0", L"0", L"Linked Horses", SL::A));
+			L"1", L"0", L"2.5", L"0", L"0", L"1", L"0", L"0", L"0",
+			L"Linked Horses",
+			L"12", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Black Eagle Pegasus Co.",
 			L"3", L"0", L"0", L"10", L"5", L"1", L"3", L"10", L"105", 
-			L"1", L"0", L"0", L"0", L"1.3", L"1", L"1", L"0", L"0", L"Retribution", SL::A));
+			L"1", L"0", L"0", L"0", L"1.3", L"1", L"1", L"0", L"0", 
+			L"Retribution",
+			L"---", L"100", L"1", L"2",
+			L"Grants Retribution status to all allies within its area of effect, allowing them to counter-attack regardless of the range between them and their targets for 5 turns.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Infantry",
 			L"1", L"-2", L"0", L"0", L"0", L"1", L"0", L"1", L"30", 
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Lure", SL::E));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Lure",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, moves primary target behind the user.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Lance Co.", 
 			L"1", L"-2", L"0", L"0", L"5", L"0", L"0", L"1", L"30", 
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Group Lance Atack", SL::E));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0",
+			L"Group Lance Attack",
+			L"6", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Brawlers", 
 			L"2", L"-2", L"0", L"0", L"5", L"0", L"-1", L"1", L"30", 
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Disturbance", SL::E));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", 
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Magic Corps", 
 			L"-2", L"1", L"0", L"0", L"0", L"1", L"2", L"3", L"30", 
-			L"0", L"0.5", L"1.3", L"0", L"0", L"0", L"0.5", L"0", L"0", L"Group Ice", SL::D));
+			L"0", L"0.5", L"1.3", L"0", L"0", L"0", L"0.5", L"0", L"0", 
+			L"Group Ice",
+			L"3", L"50", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Archers",
 			L"2", L"-2", L"5", L"0", L"0", L"1", L"0", L"3", L"30",
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Retribution", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Retribution",
+			L"---", L"100", L"1", L"2",
+			L"Grants Retribution status to all allies within its area of effect, allowing them to counter-attack regardless of the range between them and their targets for 5 turns.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Cavalry", 
 			L"2", L"-2", L"0", L"0", L"0", L"2", L"0", L"3", L"45",
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Stride", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Stride",
+			L"---", L"100", L"1", L"2",
+			L"Grants Stride status to all allies within its area of effect, giving them +5 Movement for one turn.", 
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Armored Co.", 
 			L"1", L"-2", L"0", L"0", L"-10", L"3", L"0", L"3", L"60", 
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Impregnable Wall", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
+			L"Impregnable Wall",
+			L"---", L"100", L"1", L"5",
+			L"Grants Impregnable Wall status to all allies within its area of effect, reducing all damage dealt and taken by them to 1 for one turn.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Knights", 
 			L"3", L"-2", L"0", L"0", L"0", L"2", L"1", L"5", L"60", 
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Assault Troop", SL::C));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", 
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Snipers	", 
 			L"1", L"-2", L"5", L"0", L"0", L"1", L"1", L"5", L"60", 
-			L"0.5", L"0", L"2.5", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Fusillade", SL::C));
+			L"0.5", L"0", L"2.5", L"0", L"0", L"0.5", L"0", L"0", L"0",
+			L"Fusillade",
+			L"5", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Magic Users", 
 			L"-2", L"3", L"0", L"0", L"0", L"1", L"1", L"5", L"45", 
-			L"0", L"0.5", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0", L"Resonant Ice", SL::C));
+			L"0", L"0.5", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0", 
+			L"Resonant Ice",
+			L"7", L"50", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Brave Lance Co.", 
 			L"2", L"-2", L"10", L"0", L"5", L"1", L"0", L"5", L"60", 
-			L"0.5", L"0", L"2.5", L"0", L"1.3", L"0.5", L"0", L"0", L"0", L"Onslaught", SL::C));
+			L"0.5", L"0", L"2.5", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.", 
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Pegasus Co.", 
 			L"2", L"0", L"0", L"0", L"0", L"1", L"2", L"6", L"60", 
-			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", L"Assembly", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", 
+			L"Assembly",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, user moves one space backward while the primary target moves into user's previous space.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Wyvern Co.", 
 			L"3", L"-2", L"10", L"0", L"0", L"2", L"0", L"5", L"60", 
-			L"0.5", L"0", L"1.3", L"1.3", L"0", L"0.5", L"0", L"0", L"0", L"Recovery Roar", SL::C));
+			L"0.5", L"0", L"1.3", L"1.3", L"0", L"0.5", L"0", L"0", L"0",
+			L"Recovery Roar",
+			L"---", L"100", L"1", L"5",
+			L"Removes any status condition from all allies in range.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Heavy Soldiers",
 			L"0", L"-2", L"0", L"0", L"-10", L"3", L"0", L"7", L"90", 
-			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", L"Group Lance Attack", SL::B));
+			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", 
+			L"Group Lance Attack",
+			L"6", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Holy Knights",
 			L"3", L"-2", L"0", L"0", L"-10", L"1", L"3", L"7", L"75",
-			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", L"Linked Horses", SL::B));
+			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", 
+			L"Linked Horses",
+			L"12", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Heavy Knights",
 			L"0", L"-2", L"5", L"0", L"-15", L"3", L"0", L"7", L"90",
-			L"1", L"0", L"2.5", L"0", L"0", L"1", L"0", L"0", L"0", L"Sacred Shield", SL::B));
+			L"1", L"0", L"2.5", L"0", L"0", L"1", L"0", L"0", L"0", 
+			L"Sacred Shield",
+			L"---", L"100", L"1", L"5",
+			L"Grants Sacred Shield status to all allies within its area of effect, reducing all damage dealt to them from ranged attacks to 0 for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Royal Guard",
 			L"2", L"0", L"10", L"10", L"-10", L"0", L"0", L"7", L"75",
-			L"1", L"0", L"2.5", L"0", L"0", L"1", L"0", L"0", L"0", L"Line of Lances", SL::B));
+			L"1", L"0", L"2.5", L"0", L"0", L"1", L"0", L"0", L"0", 
+			L"Line of Lances",
+			L"5", L"50", L"1", L"2",
+			L"Deals bonus damage to cavalry units. Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Priests", 
 			L"0", L"2", L"0", L"0", L"-5", L"0", L"3", L"7", L"60",
-			L"0", L"1", L"1.3", L"0", L"0", L"0", L"1", L"0", L"0", L"Blessing", SL::B));
+			L"0", L"1", L"1.3", L"0", L"0", L"0", L"1", L"0", L"0",
+			L"Blessing",
+			L"---", L"100", L"1", L"1",
+			L"Grants Blessing status to all allies within its area of effect, reducing lethal damage taken to leave them at 1 HP for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Blue Lion Knights", 
 			L"3", L"-2", L"0", L"10", L"-10", L"1", L"0", L"10", 
-			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", L"105", L"Linked Horses", SL::A));
+			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", L"105", 
+			L"Linked Horses",
+			L"12", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Blue Lion Magic Corps",
 			L"-2", L"3", L"0", L"0", L"-10", L"1", L"3", L"10", L"105", 
-			L"0", L"1", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0", L"Resonant Ice", SL::A));
+			L"0", L"1", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0", 
+			L"Resonant Ice",
+			L"7", L"50", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Blue Lion Dancers", 
 			L"-5", L"-5", L"0", L"0", L"15", L"1", L"1", L"10", L"105", 
-			L"1", L"1", L"0", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", L"Dance of the Goddess", SL::A));
+			L"1", L"1", L"0", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", 
+			L"Dance of the Goddess",
+			L"---", L"100", L"1", L"1",
+			L"Refreshes all allies within its area of effect, allowing them to move again if they have already moved.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Infantry", 
 			L"0", L"-2", L"5", L"0", L"5", L"0", L"0", L"1", L"30",
-			L"0", L"0", L"1", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Lure", SL::E));
+			L"0", L"0", L"1", L"0", L"1.3", L"0", L"0", L"0", L"0", 
+			L"Lure",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, moves primary target behind the user.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Duelists", 
 			L"0", L"-2", L"0", L"5", L"5", L"0", L"0", L"1", L"30",
-			L"0", L"0", L"0", L"1", L"1.3", L"0", L"0", L"0", L"0", L"Mad Melee	", SL::E));
+			L"0", L"0", L"0", L"1", L"1.3", L"0", L"0", L"0", L"0", 
+			L"Mad Melee",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Brawlers", 
 			L"2", L"-2", L"0", L"0", L"5", L"0", L"-1", L"1", L"30", 
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Disturbance", SL::E));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", 
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Magic Corps", 
 			L"-2", L"1", L"0", L"0", L"5", L"0", L"2", L"3", L"30",
-			L"0", L"0.5", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0", L"Group Lightning", SL::D));
+			L"0", L"0.5", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0", 
+			L"Group Lightning",
+			L"4", L"40", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Archers", 
 			L"1", L"-2", L"10", L"0", L"5", L"0", L"0", L"3", L"30", 
-			L"0.5", L"0", L"1", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Poisoned Arrows", SL::D));
+			L"0.5", L"0", L"1", L"0", L"1.3", L"0", L"0", L"0", L"0",
+			L"Poisoned Arrows",
+			L"4", L"60", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status and poison status on all targets.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Cavalry", 
 			L"2", L"-2", L"0", L"0", L"5", L"0", L"0", L"3", L"45", 
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Assault Troop", SL::D));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", 
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Armored Co.",
 			L"1", L"-2", L"0", L"0", L"-5", L"2", L"0", L"3", L"60",
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0", L"Disturbance", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Knights",
 			L"2", L"-2", L"0", L"0", L"5", L"1", L"1", L"5", L"60", 
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0", L"Blaze", SL::C));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0", 
+			L"Blaze",
+			L"10", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Snipers", 
 			L"1", L"-2", L"10", L"0", L"5", L"0", L"0", L"5", L"60", 
-			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0", L"0", L"0", L"0", L"Fusillade", SL::C));
+			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0", L"0", L"0", L"0", 
+			L"Fusillade",
+			L"5", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Magic Users",
 			L"-2", L"2", L"0", L"0", L"5", L"0", L"2", L"5", L"45", 
-			L"0", L"0.5", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0", L"Resonant Lightning	", SL::C));
+			L"0", L"0.5", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0",
+			L"Resonant Lightning",
+			L"8", L"40", L"1-2", L"1",
+			L"Works as magical damage.Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Veteran Duelists",
 			L"2", L"-2", L"0", L"0", L"5", L"1", L"0", L"5", L"60", 
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0", L"Absorption", SL::C));
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0", 
+			L"Absorption",
+			L"4", L"30", L"1", L"1",
+			L"Inflicts rattled status on all targets. Restores(damage dealt / 2) HP to the user from each target in its area of effect.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Pegasus Co.",
 			L"2", L"0", L"0", L"0", L"5", L"0", L"1", L"6", L"60", 
-			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", L"Assembly", SL::D));
+			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", 
+			L"Assembly",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, user moves one space backward while the primary target moves into user's previous space.",
+			SL::D));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Wyvern Co.", 
 			L"3", L"-2", L"0", L"0", L"5", L"1", L"0", L"5", L"60", 
-			L"0.5", L"0", L"0", L"1.3", L"1.3", L"0.5", L"0", L"0", L"0", L"Impregnable Wall", SL::C));
+			L"0.5", L"0", L"0", L"1.3", L"1.3", L"0.5", L"0", L"0", L"0", 
+			L"Impregnable Wall",
+			L"---", L"100", L"1", L"5",
+			L"Grants Impregnable Wall status to all allies within its area of effect, reducing all damage dealt and taken by them to 1 for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Pavise Co.",
 			L"2", L"-2", L"0", L"0", L"-5", L"4", L"1", L"7", L"90", 
-			L"0.5", L"0", L"1.3", L"0", L"0", L"1", L"0", L"0", L"0", L"Group Lance Attack", SL::B));
+			L"0.5", L"0", L"1.3", L"0", L"0", L"1", L"0", L"0", L"0", 
+			L"Group Lance Attack",
+			L"6", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Physicians", 
 			L"0", L"1", L"0", L"0", L"5", L"0", L"2", L"7", L"60", 
-			L"0", L"0.5", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0", L"Resonant White Magic", SL::B));
+			L"0", L"0.5", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0", 
+			L"Resonant White Magic",
+			L"8", L"100", L"1", L"3",
+			L"Restores HP to all allies within its area of effect.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Sages", 
 			L"0", L"4", L"0", L"0", L"-10", L"0", L"2", L"7", L"60", 
-			L"0", L"1", L"1.3", L"1.3", L"0", L"0", L"1", L"0", L"0", L"Blessing", SL::B));
+			L"0", L"1", L"1.3", L"1.3", L"0", L"0", L"1", L"0", L"0",
+			L"Blessing",
+			L"---", L"100", L"1", L"1",
+			L"Grants Blessing status to all allies within its area of effect, reducing lethal damage taken to leave them at 1 HP for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Master Archers", 
 			L"2", L"-1", L"0", L"10", L"5", L"0", L"0", L"7", L"60", 
-			L"0.5", L"0", L"0", L"1.3", L"1.3", L"1", L"0", L"0", L"0", L"Flash-Fire Arrows", SL::B));
+			L"0.5", L"0", L"0", L"1.3", L"1.3", L"1", L"0", L"0", L"0", 
+			L"Flash-Fire Arrows",
+			L"7", L"50", L"1", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Guard", 
 			L"3", L"0", L"0", L"5", L"1", L"0", L"0", L"7", L"75", 
-			L"0.5", L"0", L"0", L"1.3", L"1", L"1", L"0", L"0", L"0", L"Poison Tactic", SL::B));
+			L"0.5", L"0", L"0", L"1.3", L"1", L"1", L"0", L"0", L"0", 
+			L"Poison Tactic",
+			L"5", L"60", L"1", L"1",
+			L"Inflicts rattled status and poison status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Golden Deer Wyvern Co.",
 			L"2", L"-2", L"0", L"0", L"5", L"1", L"0", L"10", L"105",
-			L"1", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0", L"0", L"0", L"Assault Troop", SL::A));
+			L"1", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0", L"0", L"0", 
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Golden Deer Archers", 
 			L"2", L"-2", L"15", L"0", L"10", L"0", L"1", L"10", L"105", 
-			L"0", L"0", L"2.5", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", L"Poison Tactic", SL::A));
+			L"0", L"0", L"2.5", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", 
+			L"Poison Tactic",
+			L"5", L"60", L"1", L"1",
+			L"Inflicts rattled status and poison status on all targets.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Golden Deer Cavalry", 
 			L"4", L"-2", L"0", L"0", L"-5", L"3", L"2", L"10", L"105",
-			L"1", L"0", L"1.3", L"0", L"0", L"1", L"0", L"0", L"0", L"Linked Horses", SL::A));
+			L"1", L"0", L"1.3", L"0", L"0", L"1", L"0", L"0", L"0",
+			L"Linked Horses",
+			L"12", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Supreme Armored Co.", 
 			L"3", L"2", L"0", L"0", L"-10", L"2", L"1", L"10", L"120",
-			L"1", L"1", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0", L"Raging Flames", SL::C));
+			L"1", L"1", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0", 
+			L"Raging Flames",
+			L"15", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"King of Lions Corps", 
 			L"5", L"-2", L"0", L"10", L"-5", L"1", L"0", L"10", L"120",
-			L"1.3", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", L"Wave Attack", SL::C));
+			L"1.3", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0",
+			L"Wave Attack",
+			L"13", L"60", L"1", L"2",
+			L"Deals bonus damage to armored units. Inflicts Is ns01 status rattled.png rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Immortal Corps",
 			L"4", L"-2", L"0", L"0", L"10", L"0", L"0", L"10", L"120", 
-			L"1", L"0", L"0", L"0", L"1.3", L"1", L"0", L"0", L"0", L"Ashes and Dust", SL::C));
+			L"1", L"0", L"0", L"0", L"1.3", L"1", L"0", L"0", L"0", 
+			L"Ashes and Dust",
+			L"12", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Vestra Sorcery Engineers", 
 			L"-2", L"3", L"0", L"0", L"5", L"0", L"2", L"7", L"75", 
-			L"0", L"1", L"0", L"0", L"1.3", L"1", L"1", L"0", L"0", L"Resonant Lightning", SL::C));
+			L"0", L"1", L"0", L"0", L"1.3", L"1", L"1", L"0", L"0", 
+			L"Resonant Lightning",
+			L"8", L"40", L"1-2", L"1",
+			L"Works as magical damage.Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Aegir Astral Knights",
 			L"3", L"-2", L"0", L"0", L"15", L"0", L"0", L"7", L"105", 
-			L"1", L"0", L"0", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", L"Assault Troop", SL::B));
+			L"1", L"0", L"0", L"0", L"1.3", L"0.5", L"0.5", L"0", L"0", 
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Hevring Prayer Troops", 
 			L"0", L"3", L"0", L"0", L"-10", L"0", L"3", L"7", L"75", 
-			L"0", L"1", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0", L"Blessing", SL::B));
+			L"0", L"1", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0", 
+			L"Blessing",
+			L"---", L"100", L"1", L"1",
+			L"Grants Blessing status to all allies within its area of effect, reducing lethal damage taken to leave them at 1 HP for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Bergliez War Group", 
 			L"4", L"0", L"0", L"0", L"-10", L"0", L"0", L"7", L"105", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
-			L"Onslaught", SL::B));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.", 
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Varley Archers", 
 			L"0", L"0", L"20", L"0", L"-10", L"1", L"0", L"7", L"75", 
 			L"0", L"0", L"2.5", L"0", L"0", L"1", L"0", L"0", L"0",
-			L"Fusillade", SL::B));
+			L"Fusillade",
+			L"5", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Opera Co. Volunteers", 
 			L"0", L"0", L"10", L"0", L"10", L"0", L"0", L"10", L"75",
 			L"0", L"0", L"2.5", L"0", L"1.3", L"1", L"0", L"0", L"0",
-			L"Dance of the Goddess", SL::B));
+			L"Dance of the Goddess",
+			L"---", L"100", L"1", L"1",
+			L"Refreshes all allies within its area of effect, allowing them to move again if they have already moved.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Brigid Hunters", 
 			L"0", L"-2", L"0", L"5", L"15", L"0", L"0", L"7", L"105", 
 			L"1", L"0", L"0", L"1.3", L"1.3", L"0", L"0", L"0", L"0",
-			L"Poison Tactic", SL::B));
+			L"Poison Tactic",
+			L"5", L"60", L"1", L"1",
+			L"Inflicts rattled status and poison status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Duscur Heavy Soldiers", 
 			L"4", L"-2", L"0", L"0", L"-15", L"5", L"0", L"7", L"120",
 			L"1", L"0", L"1.3", L"0", L"0", L"1.3", L"0", L"0", L"0",
-			L"Line of Lances", SL::B));
+			L"Line of Lances",
+			L"5", L"50", L"1", L"2",
+			L"Deals bonus damage to cavalry units. Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Fraldarius Soldiers", 
 			L"3", L"0", L"0", L"10", L"0", L"2", L"0", L"7", L"105",
 			L"1", L"0", L"0", L"2.5", L"0", L"1", L"0", L"0", L"0",
-			L"Onslaught", SL::B));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Gaspard Knights",
 			L"1", L"0", L"0", L"0", L"-5", L"1", L"0", L"7", L"105", 
 			L"1", L"0", L"1.3", L"0", L"0", L"1", L"0", L"0", L"0",
-			L"Assault Troop", SL::B));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Gautier Knights",
 			L"3", L"-2", L"0", L"0", L"15", L"0", L"0", L"7", L"105", 
 			L"1", L"0", L"0", L"0", L"1.3", L"1.3", L"0", L"0", L"0",
-			L"Stride", SL::B));
+			L"Stride",
+			L"---", L"100", L"1", L"2",
+			L"Grants Stride status to all allies within its area of effect, giving them +5 Movement for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Church Soldiers", 
 			L"0", L"1", L"0", L"0", L"0", L"0", L"2", L"5", L"75",
 			L"0", L"0.5", L"1.3", L"0", L"0", L"0", L"1", L"0", L"0",
-			L"Resonant White Magic", SL::C));
+			L"Resonant White Magic",
+			L"8", L"100", L"1", L"3",
+			L"Restores HP to all allies within its area of effect.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"School of Sorcery Soldiers", 
 			L"-2", L"2", L"10", L"0", L"0", L"0", L"2", L"5", L"75", 
 			L"0", L"1", L"2.5", L"0", L"0", L"0", L"0.5", L"0", L"0",
-			L"Resonant Flames", SL::C));
+			L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Galatea Pegasus Co.", 
 			L"3", L"0", L"0", L"0", L"5", L"1", L"2", L"8", L"105", 
 			L"1", L"0", L"1.3", L"0", L"1.3", L"1", L"1", L"0", L"0",
-			L"Lure", SL::B));
+			L"Lure",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, moves primary target behind the user.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Gloucester Knights", 
 			L"2", L"2", L"10", L"0", L"0", L"1", L"1", L"7", L"105",
 			L"1", L"1", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0",
-			L"Assault Troop", SL::B));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Leicester Mercenaries", 
 			L"3", L"-2", L"10", L"10", L"0", L"0", L"0", L"7", L"105", 
 			L"1", L"0", L"2.5", L"1.3", L"0", L"1", L"0", L"0", L"0",
-			L"Blaze", SL::B));
+			L"Blaze",
+			L"10", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Victor Private Military", 
 			L"2", L"0", L"5", L"0", L"0", L"0", L"2", L"5", L"105", 
 			L"1", L"0", L"2.5", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Assembly", SL::C));
+			L"Assembly",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, user moves one space backward while the primary target moves into user's previous space.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Ordelia Sorcery Co.", 
 			L"-1", L"4", L"10", L"0", L"0", L"0", L"2", L"7", L"75", 
 			L"0", L"1", L"2.5", L"0", L"0", L"0", L"1", L"0", L"0",
-			L"Resonant Lightning", SL::B));
+			L"Resonant Lightning",
+			L"8", L"40", L"1-2", L"1",
+			L"Works as magical damage.Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Edmund Troops", 
 			L"1", L"1", L"30", L"0", L"0", L"0", L"0", L"7", L"105", 
 			L"1", L"1", L"2.5", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Flash-Fire Arrows", SL::B));
+			L"Flash-Fire Arrows",
+			L"7", L"50", L"1", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Goneril Valkyries",
 			L"4", L"-2", L"10", L"10", L"0", L"2", L"1", L"7", L"105", 
 			L"1", L"0", L"2.5", L"1.3", L"0", L"1", L"0", L"0", L"0",
-			L"Assault Troop", SL::B));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Sauin Militia",
 			L"1", L"0", L"10", L"0", L"5", L"0", L"0", L"5", L"75", 
 			L"0", L"0", L"2.5", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Poisoned Arrows", SL::C));
+			L"Poisoned Arrows",
+			L"4", L"60", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status and poison status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Cichol Wyvern Co.",
 			L"3", L"0", L"10", L"10", L"0", L"2", L"1", L"10", L"105", 
 			L"1", L"0", L"1.3", L"1.3", L"1.3", L"1", L"0", L"0", L"0",
-			L"Assault Troop", SL::A));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Cethleann Monks", 
 			L"0", L"2", L"10", L"0", L"0", L"1", L"3", L"10", L"105", 
 			L"0", L"1", L"2.5", L"0", L"0", L"0", L"1", L"0", L"0",
-			L"Resonant White Magic", SL::A));
+			L"Resonant White Magic",
+			L"8", L"100", L"1", L"3",
+			L"Restores HP to all allies within its area of effect.",
+			SL::A));
 		list.emplace_back(std::make_unique<Battalion>(L"Jeralt’s Mercenaries",
 			L"1", L"0", L"0", L"5", L"5", L"0", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"1.3", L"2.5", L"0", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Reaper Knights", 
 			L"3", L"-2", L"0", L"5", L"10", L"0", L"0", L"1", L"105",
 			L"1", L"0", L"0", L"1.3", L"1.3", L"1", L"0", L"0", L"0",
-			L"Assault Troop", SL::B));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Secret Transport Force",
 			L"1", L"0", L"0", L"0", L"10", L"1", L"1", L"8", L"105",
 			L"0.5", L"0", L"0", L"0", L"1.3", L"1", L"1", L"0", L"0",
-			L"Stride", SL::B));
+			L"Stride",
+			L"---", L"100", L"1", L"2",
+			L"Grants Stride status to all allies within its area of effect, giving them +5 Movement for one turn.", 
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Mockingbird’s Thieves", 
 			L"1", L"1", L"5", L"5", L"5", L"1", L"1", L"5", L"105", 
 			L"1", L"1", L"1.3", L"1.3", L"1.3", L"0.5", L"0.5", L"0", L"0",
-			L"Absorption", SL::B));
+			L"Absorption",
+			L"4", L"30", L"1", L"1",
+			L"Inflicts rattled status on all targets. Restores(damage dealt / 2) HP to the user from each target in its area of effect.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Leicester Dicers Corps", 
 			L"3", L"3", L"0", L"0", L"0", L"1", L"1", L"5", L"0",
 			L"1", L"1", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0",
-			L"Onslaught", SL::B));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Nuvelle Fliers Corps", 
 			L"0", L"3", L"0", L"0", L"5", L"0", L"3", L"8", L"105", 
 			L"0", L"1", L"1.3", L"0", L"1.3", L"0", L"1", L"0", L"0",
-			L"Resonant Lightning", SL::B));
+			L"Resonant Lightning",
+			L"8", L"40", L"1-2", L"1",
+			L"Works as magical damage.Inflicts rattled status on all targets.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Timotheos Magi Corps", 
 			L"0", L"3", L"5", L"5", L"0", L"0", L"1", L"7", L"105", 
 			L"0", L"1.3", L"1.3", L"1.3", L"0", L"0.5", L"1", L"0", L"0",
-			L"Resonant Flames", SL::B));
+			L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Remire Militia", 
 			L"0", L"0", L"0", L"0", L"0", L"1", L"0", L"1", L"30",
 			L"0", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Youths", 
 			L"0", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"30", 
 			L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Youths", 
 			L"0", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"30",
 			L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Alliance Youths",
 			L"0", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"30",
 			L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"0", L"0",
-			L"", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Duscur Infantry", 
 			L"1", L"-2", L"0", L"0", L"5", L"1", L"-1", L"1", L"30", 
 			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Almyra Mercenaries", 
 			L"3", L"0", L"0", L"0", L"5", L"0", L"-2", L"1", L"30", 
 			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0",
-			L"Fusillade", SL::E));
+			L"Fusillade",
+			L"5", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Brigid Mercenaries",
 			L"1", L"0", L"5", L"5", L"0", L"0", L"0", L"1", L"30", 
 			L"0.5", L"0", L"1.3", L"1.3", L"0", L"0", L"0", L"0", L"0",
-			L"Onslaught", SL::E));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Morfis Magic Corps",
 			L"-2", L"3", L"0", L"0", L"0", L"0", L"3", L"5", L"45",
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Resonant Lightning", SL::C));
+			L"Resonant Lightning",
+			L"8", L"40", L"1-2", L"1",
+			L"Works as magical damage.Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Essar Research Group",
 			L"1", L"1", L"20", L"0", L"0", L"0", L"0", L"1", L"60",
 			L"1", L"1", L"2.5", L"0", L"0", L"0", L"0", L"0", L"0",
-			L"Blessing", SL::E));
+			L"Blessing",
+			L"---", L"100", L"1", L"1",
+			L"Grants Blessing status to all allies within its area of effect, reducing lethal damage taken to leave them at 1 HP for one turn.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Holst’s Chosen",
 			L"3", L"0", L"0", L"0", L"0", L"3", L"0", L"3", L"0", 
 			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0",
-			L"Assault Troop", SL::C));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Nuvelle Chamberlain Co.",
 			L"3", L"0", L"5", L"5", L"0", L"1", L"3", L"5", L"45",
 			L"1.3", L"0", L"1.3", L"1.3", L"0", L"0", L"1", L"0", L"0",
-			L"Battleground Cafe", SL::C));
+			L"Battleground Cafe",
+			L"---", L"100", L"1", L"2",
+			L"Grants +4 strength to all allies within its area of effect for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Nuvelle Attendants Co.",
 			L"0", L"3", L"0", L"5", L"5", L"1", L"3", L"5", L"45", 
 			L"0", L"1.3", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0",
-			L"Absolute Defense", SL::C));
+			L"Absolute Defense",
+			L"---", L"100", L"1", L"2",
+			L"Grants +6 defense to all allies within its area of effect for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Nuvelle Stewards Co.", 
 			L"1", L"1", L"5", L"5", L"1", L"1", L"3", L"10", L"45", 
 			L"1", L"1", L"1.3", L"1.3", L"1", L"0", L"1", L"0", L"0",
-			L"Battleground Clean Up", SL::C));
+			L"Battleground Clean Up",
+			L"15", L"40", L"1", L"1",
+			L"Inflicts rattled status on all targets.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Iron King’s Thieves", 
 			L"-1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", 
 			L"0", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Gaspard Militia", 
 			L"-1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", 
 			L"0", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"West Church Corps",
 			L"0", L"1", L"0", L"0", L"0", L"0", L"1", L"1", L"75",
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Group Lightning", SL::E));
+			L"Group Lightning",
+			L"4", L"40", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"West Church Mercenaries", 
 			L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Onslaught", SL::E));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"West Church Sages", 
 			L"0", L"2", L"0", L"0", L"-10", L"0", L"2", L"1", L"75", 
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Group Lightning", SL::E));
+			L"Group Lightning",
+			L"4", L"40", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"West Church Pegasus Co.", 
 			L"1", L"0", L"0", L"0", L"0", L"0", L"1", L"3", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"West Church Knights", 
 			L"2", L"-1", L"0", L"0", L"0", L"0", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Mysterious Infantry", 
 			L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Mysterious Magic Corps", 
 			L"0", L"1", L"0", L"0", L"0", L"0", L"1", L"1", L"75", 
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Group Flames", SL::E));
+			L"Group of Flames",
+			L"2", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Mysterious Magic Users",
 			L"-5", L"2", L"0", L"0", L"-5", L"0", L"2", L"1", L"75",
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Resonant Flames", SL::E));
+			L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Miklan Private Militia",
 			L"1", L"-2", L"5", L"0", L"0", L"1", L"0", L"1", L"75", 
 			L"0.5", L"0", L"2.5", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Reaper Infantry",
 			L"0", L"0", L"0", L"0", L"10", L"0", L"0", L"1", L"75",
 			L"0", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Onslaught", SL::E));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Rampaging Villagers",
 			L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Solon Subordinates", 
 			L"-2", L"3", L"0", L"0", L"-5", L"0", L"2", L"1", L"75",
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Resonant Flames", SL::E));
+			L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Kronya Subordinates	",
 			L"0", L"0", L"0", L"0", L"20", L"0", L"0", L"1", L"75",
 			L"0", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0",
-			L"Onslaught", SL::E));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Pallardó Bodyguards", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", 
 			L"0", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Poison Tactic", SL::E));
+			L"Poison Tactic",
+			L"5", L"60", L"1", L"1",
+			L"Inflicts rattled status and poison status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Rowe Knights", 
 			L"3", L"-1", L"0", L"0", L"0", L"0", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Linked Horses", SL::E));
+			L"Linked Horses",
+			L"12", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"House Rowe Archers", 
 			L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Flash-Fire Arrows", SL::E));
+			L"Flash-Fire Arrows",
+			L"7", L"50", L"1", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Rowe Armored Co.",
 			L"1", L"0", L"0", L"0", L"-10", L"1", L"0", L"1", L"75",
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Group Lance Attack", SL::E));
+			L"Group Lance Attack",
+			L"6", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Rowe Cavalry",
 			L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Daphnel Duelists",
 			L"3", L"-2", L"0", L"0", L"10", L"0", L"0", L"1", L"105",
 			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0",
-			L"Onslaught", SL::E));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Almyra Wyvern Co.", 
 			L"4", L"-2", L"-5", L"0", L"10", L"2", L"0", L"1", L"75",
 			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Almyra Cavalry", 
 			L"2", L"-2", L"0", L"0", L"10", L"0", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Dark Infantry", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", 
 			L"0", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Onslaught", SL::E));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Dark Magic Corps", 
 			L"-1", L"2", L"0", L"0", L"0", L"0", L"2", L"1", L"75", 
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Resonant Lightning", SL::E));
+			L"Resonant Lightning",
+			L"8", L"40", L"1-2", L"1",
+			L"Works as magical damage.Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Einherjar", 
 			L"4", L"0", L"0", L"0", L"-10", L"1", L"0", L"1", L"75",
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Infantry", 
 			L"2", L"0", L"0", L"0", L"-5", L"0", L"1", L"1", L"75",
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Heavy Co.", 
 			L"1", L"0", L"0", L"0", L"-10", L"2", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Group Lance Attack", SL::E));
+			L"Group Lance Attack",
+			L"6", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Cavalry", 
 			L"3", L"0", L"0", L"0", L"-10", L"1", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Linked Horses", SL::E));
+			L"Linked Horses",
+			L"12", L"50", L"1", L"1",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Wyvern Co.",
 			L"2", L"0", L"0", L"0", L"-10", L"0", L"2", L"3", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Poison Tactic", SL::E));
+			L"Poison Tactic",
+			L"5", L"60", L"1", L"1",
+			L"Inflicts rattled status and poison status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Ancient Infantry", 
 			L"2", L"0", L"0", L"0", L"-5", L"0", L"1", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Ancient Armored Co.", 
 			L"1", L"0", L"0", L"0", L"-5", L"1", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Onslaught", SL::E));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Ancient Cavalry", 
 			L"3", L"0", L"0", L"0", L"-5", L"0", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Ancient Wyvern Co.",
 			L"2", L"0", L"0", L"0", L"-5", L"0", L"1", L"3", L"75",
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Lure", SL::E));
+			L"Lure",
+			L"4", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. At the end of combat, moves primary target behind the user.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Cavalry", 
 			L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Infantry", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Wyvern Co.", 
 			L"2", L"0", L"0", L"0", L"0", L"0", L"2", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Duscur Cavalry",
 			L"2", L"0", L"0", L"0", L"-10", L"0", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Dominic Cavalry",
 			L"1", L"0", L"10", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"2.5", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Merchant Military",
 			L"-1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0", L"0.5", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Poison Tactic", SL::E));
+			L"Poison Tactic",
+			L"5", L"60", L"1", L"1",
+			L"Inflicts rattled status and poison status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Thieves", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Rogues", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Bandits",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75", 
 			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Pirates", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"1.3", L"0", L"1.3", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Arundel Magic Corps",
 			L"0", L"2", L"0", L"0", L"0", L"1", L"2", L"1", L"75",
 			L"0", L"1", L"0", L"0", L"0", L"1", L"1", L"0", L"0",
-			L"Resonant Flames", SL::E));
+			L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Mysterious Wyvern Co.",
 			L"1", L"0", L"0", L"0", L"5", L"1", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"2.5", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Dark Wyvern Co.", 
 			L"1", L"0", L"0", L"0", L"5", L"1", L"0", L"1", L"75", 
 			L"0.5", L"0", L"0", L"0", L"2.5", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Ancient Sorcerers", 
 			L"-5", L"2", L"0", L"0", L"-5", L"0", L"4", L"1", L"75",
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Resonant Flames", SL::E));
+			L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Enhanced Sorcerers", 
 			L"-5", L"4", L"0", L"0", L"-5", L"0", L"4", L"1", L"75", 
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Resonant Lightning", SL::E));
+			L"Resonant Lightning",
+			L"8", L"40", L"1-2", L"1",
+			L"Works as magical damage.Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Magic Corps",
 			L"0", L"3", L"0", L"0", L"0", L"0", L"3", L"1", L"75",
 			L"0", L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0",
-			L"Resonant Flames", SL::E));
+			L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Phantasmal Archers", 
 			L"1", L"0", L"10", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"2.5", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Gaspard Archers",
 			L"-1", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Thief Marksmen",
 			L"-1", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Cliff Bandit Marksmen",
 			L"-1", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Pirate Marksmen", 
 			L"-1", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"West Church Archers", 
 			L"1", L"0", L"5", L"0", L"0", L"0", L"0", L"1", L"75",
 			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
-			L"Fusillade", SL::E));
+			L"Fusillade",
+			L"5", L"50", L"2-3", L"2",
+			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Flame Emperor Co.", 
 			L"3", L"2", L"-5", L"0", L"-10", L"2", L"1", L"5", L"75", 
 			L"0.5", L"0.5", L"0", L"1.3", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Raging Flames", SL::C));
+			L"Raging Flames",
+			L"15", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Thief Pegasus Corps", 
 			L"2", L"0", L"0", L"0", L"1", L"0", L"3", L"5", L"60", 
 			L"0.5", L"0", L"0", L"0", L"1", L"0.5", L"0.5", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Pirate Pegasus Corps",
 			L"2", L"0", L"0", L"0", L"1", L"0", L"3", L"5", L"60", 
 			L"0.5", L"0", L"0", L"0", L"1", L"0.5", L"0.5", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Bandit Pegasus Corps",
 			L"2", L"0", L"0", L"0", L"1", L"0", L"3", L"5", L"60",
 			L"0.5", L"0", L"0", L"0", L"1", L"0.5", L"0.5", L"0", L"0",
-			L"Disturbance", SL::E));
+			L"Disturbance",
+			L"4", L"60", L"1", L"2",
+			L"Inflicts rattled status on all targets.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Dahlman Guard", 
 			L"0", L"3", L"20", L"0", L"0", L"3", L"3", L"10", L"105", 
 			L"0", L"1.3", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0",
-			L"Resonant Flames", SL::E));
+			L"Resonant Flames",
+			L"6", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Dahlman Magic Co.", 
 			L"0", L"2", L"10", L"0", L"0", L"2", L"3", L"5", L"75",
 			L"0", L"1", L"1.3", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
-			L"Group Flames", SL::E));
+			L"Group of Flames",
+			L"2", L"60", L"1-2", L"1",
+			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.", 
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Dahlman Armored Group", 
 			L"3", L"0", L"10", L"0", L"0", L"3", L"0", L"5", L"75", 
 			L"1", L"0", L"1.3", L"0", L"0", L"1.3", L"0", L"0", L"0",
-			L"Assault Troop", SL::E));
+			L"Assault Troop",
+			L"10", L"50", L"1", L"2",
+			L"Inflicts rattled status on all targets.",
+			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Dahlman PMC",
 			L"2", L"0", L"10", L"0", L"0", L"2", L"0", L"3", L"75", 
 			L"1", L"0", L"1.3", L"0", L"0", L"1", L"0.5", L"0", L"0",
-			L"Onslaught", SL::E));
+			L"Onslaught",
+			L"8", L"50", L"1", L"2",
+			L"Pushes foe 1 tile away.", 
+			SL::E));
 
 		list.emplace_back(std::make_unique<Character>(L"---", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
