@@ -1,9 +1,10 @@
 #include <AvailablePanel/SkillLevelPanel/ListBoxASLA.h>
 
-ListBoxASLA::ListBoxASLA(std::map<wxString, wxClientData*> uskilllevelabilitymap, wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
+ListBoxASLA::ListBoxASLA(std::map<wxString, wxClientData*> uskilllevelabilitymap, std::map<wxString, wxClientData*> uclassmasteryabilitymap,  wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxPoint(x, y), wxSize(x2, y2), choices, style)
 {
 	skilllevelabilitymap = uskilllevelabilitymap;
+	classmasteryabilitymap = uclassmasteryabilitymap;
 	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 }
 
@@ -39,6 +40,14 @@ void ListBoxASLA::ReceiveforAbilityExclusivityCheck(wxString charactername) {
 	currentDDCHselection = charactername;
 	FilterAbilities();
 }
+void ListBoxASLA::ReceiveClassMasteryExclusivity(wxString classmasterycheck) {
+	currentDDCLselection = classmasterycheck;
+	FilterAbilities();
+}
+void ListBoxASLA::ReceiveClassMasteryButtonStatus(bool isPressed) {
+	isClassMasteryToggleButtonPressed = isPressed;
+	FilterAbilities();
+}
 
 void ListBoxASLA::FilterAbilities() {
 	//std::vector<wxString> generalabilitynames;
@@ -72,6 +81,26 @@ void ListBoxASLA::FilterAbilities() {
 			}
 		}
 	}
+
+	if (isClassMasteryToggleButtonPressed) {
+		for (auto element : classmasteryabilitymap) {
+			ClassMasteryAbility* tempclassability = dynamic_cast<ClassMasteryAbility*>(element.second);
+			std::wstring abilityns = tempclassability->getSource(), buffer;
+			std::wstringstream stream(abilityns);
+			std::vector<std::wstring> namesfromstream;
+
+			while (std::getline(stream, buffer, L',')) {
+				namesfromstream.push_back(buffer);
+			}
+
+			for (auto possiblematch : namesfromstream) {
+				if (possiblematch == currentDDCLselection) {
+					abilitynames.push_back(tempclassability->getName());
+				}
+			}
+		}
+	}
+	
 
 
 	//for (auto ability : skilllevelabilities) {

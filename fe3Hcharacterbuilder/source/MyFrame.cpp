@@ -49,6 +49,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	std::map<wxString, wxClientData*> battalionmap;
 	std::map<wxString, wxClientData*> abilitymap;
 	std::map<wxString, wxClientData*> skilllevelabilitymap;
+	std::map<wxString, wxClientData*> classmasteryabilitymap;
 
 	UnitList ulist;
 	AbilityList alist;
@@ -114,6 +115,9 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 		if (SkillLevelAbility* temp = dynamic_cast<SkillLevelAbility*>(abilitydata[i])) {
 			skilllevelabilitymap.emplace(abilitynames[i], abilitydata[i]);
 		}
+		else if (ClassMasteryAbility* temp = dynamic_cast<ClassMasteryAbility*>(abilitydata[i])) {
+			classmasteryabilitymap.emplace(abilitynames[i], abilitydata[i]);
+		}
 	}
 
 	framesizer = new wxBoxSizer(wxHORIZONTAL);
@@ -125,7 +129,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
 	ep = new EquippedPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_EP);	
-	slp = new SkillLevelPanel(weaponmap, battalionmap, skilllevelabilitymap, this, (int)ID_SINGLE_CONTROL::ID_SLP);
+	slp = new SkillLevelPanel(weaponmap, battalionmap, skilllevelabilitymap, classmasteryabilitymap, this, (int)ID_SINGLE_CONTROL::ID_SLP);
 	wxStaticText* lbeLABEL = new wxStaticText(this, wxID_ANY, "Available Equipment");
 	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 	sp = new StatsPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_SP);
@@ -168,8 +172,9 @@ void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repit
 
 void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {
 	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
-	wxString classinnatecheck = tempclass->getName();
-	ep->ReceiveClassInnateExclusivity(classinnatecheck);
+	wxString classname = tempclass->getName();
+	ep->ReceiveClassInnateExclusivity(classname);
+	slp->ReceiveClassMasteryExclusivity(classname);
 }
 void MyFrame::BounceRepeatedLBASLASelection_updateselabiliities(wxCommandEvent& repititionfromSLP) {
 	AbilitySelections* tempselections = dynamic_cast<AbilitySelections*>(repititionfromSLP.GetClientObject());

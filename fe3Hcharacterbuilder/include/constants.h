@@ -20,6 +20,7 @@ enum class ID_MISC {
 	ID_SLA3 = 27,
 	ID_SLA4 = 28,
 	ID_SLA5 = 29,
+	ID_BCLASSMASTERY = 30
 };
 
 enum class ID_SINGLE_CONTROL {
