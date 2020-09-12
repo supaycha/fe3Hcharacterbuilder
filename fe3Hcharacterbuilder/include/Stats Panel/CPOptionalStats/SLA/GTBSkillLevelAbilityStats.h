@@ -8,7 +8,7 @@
 #include <constants.h>
 #include <Unit/Unit.h>
 #include <Unit/Ability/Ability.h>
-#include <Unit/Ability/SkillLevelAbility.h>
+#include <Unit/Ability/SkillLevelAbility/SkillLevelAbility.h>
 
 class GTBSkillLevelAbilityStats : public wxGridTableBase {
 private:

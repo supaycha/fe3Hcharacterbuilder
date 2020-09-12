@@ -67,7 +67,7 @@ void WeaponManager::OnNewSelection(wxCommandEvent& eventfromwho) {
 	lbw->ReceiveSTInfo(package);
 }
 
-void WeaponManager::ReceiveWeaponExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
+void WeaponManager::ReceiveforWeaponExclusivityCheck(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
 	lbw->ReceiveExclusivity(charactername);
 }
 

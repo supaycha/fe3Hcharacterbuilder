@@ -75,7 +75,7 @@
     <ClInclude Include="include\Unit\Ability\CharacterInnateAbility.h" />
     <ClInclude Include="include\Unit\Ability\ClassInnateAbility.h" />
     <ClInclude Include="include\Unit\Ability\ClassMasteryAbility.h" />
-    <ClInclude Include="include\Unit\Ability\SkillLevelAbility.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelAbility.h" />
     <ClInclude Include="include\Unit\Battalion.h" />
     <ClInclude Include="include\Unit\Character.h" />
     <ClInclude Include="include\Unit\Class.h" />
@@ -97,6 +97,8 @@
     <ClInclude Include="include\Unit\Weapon\Weapon.h" />
     <ClInclude Include="include\Unit\Weapon\WhiteMagic.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelCharacterAbility.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneralAbility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.cpp" />

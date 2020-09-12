@@ -10,7 +10,7 @@
 #include <Unit/Ability/Ability.h>
 #include <Unit/Ability/CharacterInnateAbility.h>
 #include <Unit/Ability/ClassInnateAbility.h>
-#include <Unit/Ability/SkillLevelAbility.h>
+#include <Unit/Ability/SkillLevelAbility/SkillLevelAbility.h>
 #include <Stats Panel/CPOptionalStats/WeaponStats/GridWeaponStats.h>
 #include <Stats Panel/CPOptionalStats/EquipmentStats/GridEquipmentStats.h>
 #include <Stats Panel/CPOptionalStats/BattalionStats/GridBattalionStats.h>

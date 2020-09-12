@@ -13,8 +13,9 @@ void DropDownSkillLevel::initpopulate() {
 										  new SKILLLEVELPACKAGE(SL::B), new SKILLLEVELPACKAGE(SL::BPLUS), new SKILLLEVELPACKAGE(SL::A), new SKILLLEVELPACKAGE(SL::APLUS), new SKILLLEVELPACKAGE(SL::S), new SKILLLEVELPACKAGE(SL::SPLUS) };
 	int offset = 70;
 
-	for (int i = 0; i < (int)VARIOUS_SIZE::SL_DATA_SIZE; ++i) {
+	for (int i = 0; i < 12; ++i) {
 		SKILLLEVELPACKAGE* temp = dynamic_cast<SKILLLEVELPACKAGE*>(skillLVLdata[i]);
+		int test = GetId();
 		temp->index = (GetId() - offset);
 	}
 

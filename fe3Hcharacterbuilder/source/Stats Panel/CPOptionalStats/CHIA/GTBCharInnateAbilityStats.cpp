@@ -44,6 +44,7 @@ std::vector<wxString> GTBCharInnateAbilityStats::GetCurrentHeaders() {
 
 	return tempvector;
 }
+
 bool GTBCharInnateAbilityStats::DetermineStatsPresence() {
 	for (auto element : characterinnateabilities) {
 		if (currentCHIAselection == element.first) {

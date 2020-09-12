@@ -48,6 +48,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	std::map<wxString, wxClientData*> equipmap;
 	std::map<wxString, wxClientData*> battalionmap;
 	std::map<wxString, wxClientData*> abilitymap;
+	std::map<wxString, wxClientData*> skilllevelabilitymap;
 
 	UnitList ulist;
 	AbilityList alist;
@@ -110,6 +111,9 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	for (unsigned int i = 0; i < alist.getSize(); ++i) {
 		abilitymap.emplace(abilitynames[i], abilitydata[i]);
+		if (SkillLevelAbility* temp = dynamic_cast<SkillLevelAbility*>(abilitydata[i])) {
+			skilllevelabilitymap.emplace(abilitynames[i], abilitydata[i]);
+		}
 	}
 
 	framesizer = new wxBoxSizer(wxHORIZONTAL);
@@ -121,7 +125,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
 	ep = new EquippedPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_EP);	
-	slp = new SkillLevelPanel(weaponmap, battalionmap, this, (int)ID_SINGLE_CONTROL::ID_SLP);
+	slp = new SkillLevelPanel(weaponmap, battalionmap, skilllevelabilitymap, this, (int)ID_SINGLE_CONTROL::ID_SLP);
 	wxStaticText* lbeLABEL = new wxStaticText(this, wxID_ANY, "Available Equipment");
 	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 	sp = new StatsPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_SP);
@@ -156,9 +160,10 @@ void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repit
 	Character* tempcharacter = dynamic_cast<Character*>(repititionfromMT.GetClientObject());
 	wxString charactername = tempcharacter->getName();
 
-	slp->ReceiveWeaponExclusivity(charactername);
+	slp->ReceiveDDCHSelection(charactername);
 	ep->ReceiveCharacterInnateExclusivity(charactername);
 	lbe->ReceiveEquipmentExclusivity(charactername);
+	//sp->ReceiveCharacterInnateExclusivity(charactername);
 }
 
 void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {

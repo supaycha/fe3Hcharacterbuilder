@@ -122,6 +122,7 @@ enum class VARIOUS_SIZE {
 	EQUIPMENT_DATA_SIZE = 28,
 	BATTALION_DATA_SIZE = 187,
 	SL_DATA_SIZE = 11,
+
 	CHAR_CLASS_STATS_SIZE = 10,
 	TOTAL_STATS_SIZE = 11,
 	EQUIPMENT_STATS_SIZE = 12,
@@ -189,6 +190,13 @@ struct SKILLLEVELPACKAGE : public wxClientData {
 	int index;
 
 	SKILLLEVELPACKAGE(SL uSL) : sl(uSL), index{}, slstring{} {}
+};
+
+struct CHARSLPACKAGE : public wxClientData {
+	SL sl;
+	wxString charactername;
+
+	CHARSLPACKAGE(SL usl, wxString ucharactername) : sl{ usl }, charactername{ ucharactername } {}
 };
 
 struct STINCPACKAGE : public wxClientData {

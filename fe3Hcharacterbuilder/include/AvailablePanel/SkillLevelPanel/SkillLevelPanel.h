@@ -19,10 +19,10 @@ private:
 	ListBoxASLA* lbasla;
 	ListBoxBattalions* lbb;
 public:
-	SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, wxWindow* parent, wxWindowID id);
+	SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
 	~SkillLevelPanel() {}
 
-	void ReceiveWeaponExclusivity(wxString charactername);
+	void ReceiveDDCHSelection(wxString charactername);
 	void BounceSLInfo(wxCommandEvent& eventfromwho);
 	void ForwardLBASLASelection(wxCommandEvent& forwarded);
 };

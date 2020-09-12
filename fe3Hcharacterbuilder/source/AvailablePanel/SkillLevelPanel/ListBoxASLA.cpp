@@ -1,21 +1,9 @@
 #include <AvailablePanel/SkillLevelPanel/ListBoxASLA.h>
 
-ListBoxASLA::ListBoxASLA(wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
+ListBoxASLA::ListBoxASLA(std::map<wxString, wxClientData*> uskilllevelabilitymap, wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxPoint(x, y), wxSize(x2, y2), choices, style)
 {
-	std::vector<wxString> abilitynames;
-	std::vector<wxClientData*> abilitydata;
-	AbilityList alist;
-
-	for (unsigned int i = 0; i < alist.getSize(); ++i) {
-		abilitynames.push_back(alist[i]->getName());
-		abilitydata.push_back(alist[i]->clone());
-	}
-
-	for (unsigned int i = 0; i < alist.getSize(); ++i) {
-		abilitymap.emplace(abilitynames[i], abilitydata[i]);
-	}
-
+	skilllevelabilitymap = uskilllevelabilitymap;
 	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 }
 
@@ -47,28 +35,56 @@ void ListBoxASLA::ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage) {
 	FilterAbilities();
 }
 
+void ListBoxASLA::ReceiveforAbilityExclusivityCheck(wxString charactername) {
+	currentDDCHselection = charactername;
+	FilterAbilities();
+}
+
 void ListBoxASLA::FilterAbilities() {
-	std::vector<SkillLevelAbility*> skilllevelabilities;
+	//std::vector<wxString> generalabilitynames;
+	//std::vector<wxString> characterabilitynames;
+
+	//std::vector<SkillLevelAbility*> skilllevelabilities;
 	std::vector<wxString> abilitynames;
 
-	for (auto element : abilitymap) {
-		Ability* tempability = dynamic_cast<Ability*>(element.second)->clone();
-		if (SkillLevelAbility* tempsla = dynamic_cast<SkillLevelAbility*>(tempability)) {
-			skilllevelabilities.push_back(tempsla);
+	for (auto element : skilllevelabilitymap) {
+		SkillLevelAbility* test = dynamic_cast<SkillLevelAbility*>(element.second);
+		if ((int)test->getSkillType() == -1) {
+			abilitynames.push_back(test->getName());
+		}
+
+		else if (SkillLevelGeneralAbility* tempgeneralability = dynamic_cast<SkillLevelGeneralAbility*>(test)) {
+			int skilltypenum = (int)tempgeneralability->getSkillType();
+			SL controlsl = SLfilter[skilltypenum];
+			SL abilitysl = tempgeneralability->getSL();
+			if (abilitysl <= controlsl) {
+				abilitynames.push_back(tempgeneralability->getName());
+			}
+		}
+
+		else if (SkillLevelCharacterAbility* tempcharacterability = dynamic_cast<SkillLevelCharacterAbility*>(test)) {
+			for (auto holderofability : tempcharacterability->getCharSL()) {
+				if (holderofability.charactername == currentDDCHselection) {
+					if (holderofability.sl <= SLfilter[(int)tempcharacterability->getSkillType()]) {
+						abilitynames.push_back(tempcharacterability->getName());
+					}
+				}
+			}
 		}
 	}
 
-	for (auto ability : skilllevelabilities) {
-		SL abilitySL = ability->getSL();
-		if ((int)ability->getSkillType() == -1) {
-			abilitynames.push_back(ability->getName());
-			continue;
-		}
 
-		else if (abilitySL <= SLfilter[(int)ability->getSkillType()]) {
-			abilitynames.push_back(ability->getName());
-		}
-	}
+	//for (auto ability : skilllevelabilities) {
+	//	SL abilitySL = ability->getSL();
+	//	if ((int)ability->getSkillType() == -1) {
+	//		abilitynames.push_back(ability->getName());
+	//		continue;
+	//	}
+
+	//	else if (abilitySL <= SLfilter[(int)ability->getSkillType()]) {
+	//		abilitynames.push_back(ability->getName());
+	//	}
+	//}
 
 	ReceiveAbilityFiltration(abilitynames);
 }
