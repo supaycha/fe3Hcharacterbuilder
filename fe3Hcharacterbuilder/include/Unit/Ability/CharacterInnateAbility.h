@@ -38,7 +38,7 @@ public:
 	~CharacterInnateAbility() {}
 	std::wstring getType() { return ciaType; }
 	bool getHasStatUp() { return hasStatUp; }
-	std::vector<STATPACKAGE>  getWTP() { return statpVector; }
+	std::vector<STATPACKAGE>  getSTATP() { return statpVector; }
 	CharacterInnateAbility* new_expr() override { return new CharacterInnateAbility(); }
 	CharacterInnateAbility* clone() override { return new CharacterInnateAbility(*this); }
 };

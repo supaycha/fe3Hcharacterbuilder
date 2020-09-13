@@ -1,6 +1,8 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 //#include <vld.h>
+#include <string>
+
 enum class ID_MISC {
 	ID_FRAME = 7,
 	ID_MT = 8,
@@ -239,10 +241,48 @@ enum class STATTYPE : int {
 
 struct STATPACKAGE {
 	STATTYPE stattype;
-	wxString name;
+	wxString value;
 
 	STATPACKAGE() {}
-	STATPACKAGE(STATTYPE ust, wxString uname) : stattype {ust}, name {uname} {}
+	STATPACKAGE(STATTYPE ust, wxString uvalue) : stattype {ust}, value {uvalue} {}
 };
+
+struct STATPACKAGEVECTOR : public wxClientData {
+	std::vector<STATPACKAGE> statpVector;
+
+	STATPACKAGEVECTOR() {}
+	STATPACKAGEVECTOR(std::vector<STATPACKAGE> ustatpVector) : statpVector{ ustatpVector } {}
+	auto begin() { return statpVector.begin(); }
+	auto end() { return statpVector.end(); }
+};
+
+//struct AbilityStats {	
+//	std::wstring hp = 0;
+//	std::wstring mov = 0;
+//	std::wstring str = 0;
+//	std::wstring mag = 0;
+//	std::wstring dex = 0;
+//	std::wstring spd = 0;
+//	std::wstring lck = 0;
+//	std::wstring def = 0;
+//	std::wstring res = 0;
+//	std::wstring cha = 0;
+//	std::wstring might = 0;
+//	std::wstring gmight = 0;
+//	std::wstring hit = 0;
+//	std::wstring ghit = 0;
+//	std::wstring crit = 0;
+//	std::wstring range = 0;
+//	std::wstring weight = 0;
+//	std::wstring uses = 0;
+//	std::wstring prot = 0;
+//	std::wstring tcrit = 0;
+//	std::wstring avo = 0;
+//	std::wstring matk = 0;
+//	std::wstring heal = 0;
+//	std::wstring patk = 0;
+//	std::wstring end = 0;
+//	std::wstring critavo = 0;
+//};
 
 #endif

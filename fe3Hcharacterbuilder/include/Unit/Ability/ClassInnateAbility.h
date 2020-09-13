@@ -16,7 +16,7 @@ public:
 	~ClassInnateAbility() {}
 	std::wstring getType() { return ciaType; }
 	bool getHasStatUp() { return hasStatUp; }
-	STATPACKAGE getSTATPACKAGE() { return statp; }
+	STATPACKAGE getSTATP() { return statp; }
 
 	ClassInnateAbility* new_expr() override { return new ClassInnateAbility(); }
 	ClassInnateAbility* clone() override { return new ClassInnateAbility(*this); }

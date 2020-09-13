@@ -42,7 +42,6 @@ void GridCharInnateAbilityStats::ReceiveLBBSelection(bool ubattalionselectionmad
 }
 
 void GridCharInnateAbilityStats::repopulate() {
-	std::vector<Stat> tempvectforstats;
 	SetColLabelSize(wxGRID_AUTOSIZE);
 	int colcount = gtbchias->GetColsCount();
 
@@ -53,10 +52,9 @@ void GridCharInnateAbilityStats::repopulate() {
 		SetCellValue(0, i, colvalue);
 	}
 
-	//tempvectforstats.push_back(Stat(gtbchias->GetValue(0, 0)));
-	//Stats* ptrtostats = new Stats(tempvectforstats);
-	//wxCommandEvent event(TRANSMIT_GCHIAS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
-	//wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
-	//event.SetClientObject(tempdata);
-	//ProcessEvent(event);
+	STATPACKAGEVECTOR* tempvectforstats = new STATPACKAGEVECTOR(gtbchias->RetrieveSTATPackage());
+	wxCommandEvent event(TRANSMIT_GCHIAS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
+	wxClientData* tempdata = dynamic_cast<wxClientData*>(tempvectforstats/*->clone()*/);
+	event.SetClientObject(tempdata);
+	ProcessEvent(event);
 }

@@ -8,7 +8,7 @@ void GTBClassInnateAbilityStats::ReceiveCLIASSelection(STATPACKAGE ustatp) {
 wxString GTBClassInnateAbilityStats::GetCurrentHeader() {
 	for (unsigned int i = 0; i < headers.size(); ++i) {
 		if (statp.stattype == headers[i].stattype) {
-			return headers[i].name;
+			return headers[i].value;
 		}
 	}
 }

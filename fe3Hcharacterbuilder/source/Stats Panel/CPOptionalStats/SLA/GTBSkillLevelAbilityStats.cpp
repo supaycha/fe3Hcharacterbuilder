@@ -30,7 +30,20 @@ void GTBSkillLevelAbilityStats::recalculate() {
 			statpVector = RetrieveSTATPackage();
 			currentheaders = GetCurrentHeaders();
 		}
+		
 	}
+}
+
+WEAPONTYPE GTBSkillLevelAbilityStats::RetrieveABILITYWEAPONTYPE() {
+	for (auto element : skilllevelabilities) {
+		if (currentSLAselection == element.first) {
+			SkillLevelAbility* tempability = dynamic_cast<SkillLevelAbility*>(element.second)->clone();
+			int test = 9;
+			return tempability->getWeaponType();
+		}
+	}
+
+	return WEAPONTYPE();
 }
 
 std::vector<STATPACKAGE> GTBSkillLevelAbilityStats::RetrieveSTATPackage() {
@@ -38,7 +51,7 @@ std::vector<STATPACKAGE> GTBSkillLevelAbilityStats::RetrieveSTATPackage() {
 		if (currentSLAselection == element.first) {
 			SkillLevelAbility* tempability = dynamic_cast<SkillLevelAbility*>(element.second)->clone();
 			int test = 9;
-			return tempability->getWTP();
+			return tempability->getSTATP();
 		}
 	}
 	
@@ -76,7 +89,7 @@ std::vector<wxString> GTBSkillLevelAbilityStats::GetCurrentHeaders() {
 	for (unsigned int i = 0; i < statpVector.size(); ++i) {
 		for (unsigned int k = 0; k < headers.size(); ++k) {
 			if (statpVector[i].stattype == headers[k].stattype) {
-				tempvector.push_back(headers[k].name);
+				tempvector.push_back(headers[k].value);
 			}
 		}
 	}
@@ -85,8 +98,12 @@ std::vector<wxString> GTBSkillLevelAbilityStats::GetCurrentHeaders() {
 }
 
 bool GTBSkillLevelAbilityStats::DetermineWTMatch() {
-	if (currentWeaponTypeofEquippedWeapon == type) {
-		return true;
+	WEAPONTYPE abilitywt = RetrieveABILITYWEAPONTYPE();
+	if (currentWeaponTypeofEquippedWeapon == abilitywt) {
+		//if (currentWeaponTypeofEquippedWeapon > WEAPONTYPE::BLANK) {
+			return true;
+
+		//}
 	}
 
 	return false;

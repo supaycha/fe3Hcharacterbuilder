@@ -56,8 +56,8 @@ void GridTotalStats::ReceiveGBSStats(Stats stats) {
 	Thaw();
 }
 
-void GridTotalStats::ReceiveGCHIASStats(Stats stats) {
-	gtbts->ReceiveGCHIASStats(stats);
+void GridTotalStats::ReceiveGCHIASStats(STATPACKAGEVECTOR spv) {
+	gtbts->ReceiveGCHIASStats(spv);
 	gtbts->recalculate();
 	Freeze();
 	repopulate();

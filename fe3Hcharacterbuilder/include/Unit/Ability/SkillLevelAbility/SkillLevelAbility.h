@@ -28,7 +28,7 @@ public:
 	SkillLevelAbility(const SkillLevelAbility&) = default;
 
 	bool getHasStatUp() { return hasStatUp; }
-	std::vector<STATPACKAGE>  getWTP() { return statpVector; }
+	std::vector<STATPACKAGE>  getSTATP() { return statpVector; }
 
 	virtual std::wstring getType() { return slaType; }
 	virtual SKILLTYPE getSkillType() { return st; }

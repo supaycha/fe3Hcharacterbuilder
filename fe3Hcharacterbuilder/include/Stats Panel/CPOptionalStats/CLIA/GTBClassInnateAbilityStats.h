@@ -19,8 +19,8 @@ public:
 	~GTBClassInnateAbilityStats() {}
 	int GetNumberRows() override { return 1; }
 	int GetNumberCols() override { return 1; }
-	wxString GetValue(int row, int col) override { return statp.name; }
-	void SetValue(int row, int col, const wxString& value) override { statp.name = value; }
+	wxString GetValue(int row, int col) override { return statp.value; }
+	void SetValue(int row, int col, const wxString& value) override { statp.value = value; }
 
 	void ReceiveCLIASSelection(STATPACKAGE statp);
 

@@ -16,7 +16,7 @@ public:
 	void ReceiveGWSStats(Stats stats);
 	void ReceiveGESStats(Stats stats);
 	void ReceiveGBSStats(Stats stats);
-	void ReceiveGCHIASStats(Stats stats);
+	void ReceiveGCHIASStats(STATPACKAGEVECTOR spv);
 	void ReceiveGCLIASStats(Stats stats, int id);
 	void ReceiveGSLASStats(Stats stats, int id);
 

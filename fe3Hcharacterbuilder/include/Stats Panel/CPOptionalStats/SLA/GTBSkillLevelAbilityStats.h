@@ -30,8 +30,8 @@ public:
 	~GTBSkillLevelAbilityStats() {}
 	int GetNumberRows() override { return 1; }
 	int GetNumberCols() override { return statpVector.size(); }
-	wxString GetValue(int nothing, int index) override { return statpVector[index].name; }
-	void SetValue(int nothing, int index, const wxString& value) override { statpVector[index].name = value; }
+	wxString GetValue(int nothing, int index) override { return statpVector[index].value; }
+	void SetValue(int nothing, int index, const wxString& value) override { statpVector[index].value = value; }
 	bool GetHasStats() { return hasStats; }
 	void ReceiveSLASSelection(wxString abilityname);
 	void ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type);
@@ -39,6 +39,7 @@ public:
 	//bool DetermineWeaponType();
 	bool DetermineWTMatch();
 
+	WEAPONTYPE RetrieveABILITYWEAPONTYPE();
 	std::vector<STATPACKAGE> RetrieveSTATPackage();
 	wxString GetHeader(int index) { return currentheaders[index]; }
 	std::vector<wxString> GetCurrentHeaders();

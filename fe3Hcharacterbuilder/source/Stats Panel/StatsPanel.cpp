@@ -73,7 +73,7 @@ void StatsPanel::BounceGBSStats_partoftotalstats(wxCommandEvent& eventfromGBS) {
 }
 
 void StatsPanel::BounceGCHIASStats_partoftotalstats(wxCommandEvent& event) {
-	Stats* tempstats = dynamic_cast<Stats*>(event.GetClientObject());
+	STATPACKAGEVECTOR* tempstats = dynamic_cast<STATPACKAGEVECTOR*>(event.GetClientObject());
 	gts->ReceiveGCHIASStats(*tempstats);
 }
 

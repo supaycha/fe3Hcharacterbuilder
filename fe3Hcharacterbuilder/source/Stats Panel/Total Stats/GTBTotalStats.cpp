@@ -1,6 +1,7 @@
 #include <Stats Panel/Total Stats/GTBTotalStats.h>
 
 void GTBTotalStats::recalculate() {
+	CalculateAbilityStats();
 	CalculateTotalPhysicalAttack();
 	CalculateTotalMagicAttack();
 	CalculateTotalPhysicalHit();
@@ -12,6 +13,123 @@ void GTBTotalStats::recalculate() {
 	CalculateTotalAvoid();
 	CalculateTotalCritAvoid();
 	CalculateTotalRange();
+}
+void GTBTotalStats::CalculateAbilityStats() {
+	ClearValues();
+	for (auto awaystattype : incomingGCHIASstats) {
+		for (auto homestattype : thisshouldreflectcurrent) {
+			if (awaystattype.stattype == homestattype.stattype) {
+				homestattype.value += awaystattype.value;
+			}
+			//switch (stattype.stattype) {
+			//	case STATTYPE::HP: {
+			//		as.hp += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::MOV: {
+			//		as.mov += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::STR: {
+			//		as.str += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::MAG: {
+			//		as.mag += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::DEX: {
+			//		as.dex += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::SPD: {
+			//		as.spd += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::LCK: {
+			//		as.lck += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::DEF: {
+			//		as.def += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::RES: {
+			//		as.res += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::CHA: {
+			//		as.cha += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::MIGHT: {
+			//		as.might += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::GMIGHT: {
+			//		as.gmight += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::HIT: {
+			//		as.hit += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::GHIT: {
+			//		as.ghit += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::CRIT: {
+			//		as.crit += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::RANGE: {
+			//		as.range += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::WEIGHT: {
+			//		as.weight += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::USES: {
+			//		as.uses += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::PROT: {
+			//		as.prot += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::TCRIT: {
+			//		as.tcrit += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::AVO: {
+			//		as.avo += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::MATK: {
+			//		as.matk += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::HEAL: {
+			//		as.heal += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::PATK: {
+			//		as.patk += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::END: {
+			//		as.end += stattype.value;
+			//		break;
+			//	}
+			//	case STATTYPE::CRITAVO: {
+			//		as.critavo += stattype.value;
+			//		break;
+			//	}
+			//}
+		}
+	}
+	int i = 9;
 }
 
 void GTBTotalStats::ReceiveGMTStats(Stats stats) {
@@ -30,8 +148,8 @@ void GTBTotalStats::ReceiveGBSStats(Stats stats) {
 	currentGBSstats = stats;
 }
 
-void GTBTotalStats::ReceiveGCHIASStats(Stats stats) {
-	currentGCHIASstats = stats;
+void GTBTotalStats::ReceiveGCHIASStats(STATPACKAGEVECTOR spv) {
+	incomingGCHIASstats = spv;
 }
 
 void GTBTotalStats::ReceiveGCLIASStats(Stats stats, int index) {
@@ -259,4 +377,10 @@ void GTBTotalStats::CalculateTotalRange() {
 
 	const std::wstring buffer = std::to_wstring(lvwstat3);
 	totalstats[10] = buffer;
+}
+
+void GTBTotalStats::ClearValues() {
+	for (auto element : thisshouldreflectcurrent) {
+		element.value = "0";
+	}
 }

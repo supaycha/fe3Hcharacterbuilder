@@ -9,7 +9,7 @@
 #include <Unit/Unit.h>
 #include <Unit/Ability/Ability.h>
 #include <Unit/Ability/CharacterInnateAbility.h>
-#include <Stats Panel/CPOptionalStats/CHIA/GTBCharInnateAbilityStats.h>
+//#include <Stats Panel/CPOptionalStats/CHIA/GTBCharInnateAbilityStats.h>
 
 class GTBCharInnateAbilityStats : public wxGridTableBase {
 private:
@@ -29,8 +29,8 @@ public:
 	~GTBCharInnateAbilityStats() {}
 	int GetNumberRows() override { return 1; }
 	int GetNumberCols() override { return statpVector.size(); }
-	wxString GetValue(int nothing, int index) override { return statpVector[index].name; }
-	void SetValue(int nothing, int index, const wxString& value) override { statpVector[index].name = value; }
+	wxString GetValue(int nothing, int index) override { return statpVector[index].value; }
+	void SetValue(int nothing, int index, const wxString& value) override { statpVector[index].value = value; }
 
 	void ReceiveCHIASSelection(wxString abilityname);
 	void ReceiveLBBSelection(bool battalionselectionmade);
