@@ -66,6 +66,7 @@ public:
 	void CalculateTotalCritAvoid();
 	void CalculateTotalRange();
 	void ClearValues();
+	int RetrieveStatFromPackage(STATTYPE st);
 
 	wxString GetHeader(int index) { return headers[index]; }
 };

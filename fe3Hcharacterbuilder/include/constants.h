@@ -236,7 +236,8 @@ enum class STATTYPE : int {
 	HEAL,
 	PATK,
 	END,
-	CRITAVO
+	CRITAVO,
+	WCRIT
 };
 
 struct STATPACKAGE {
