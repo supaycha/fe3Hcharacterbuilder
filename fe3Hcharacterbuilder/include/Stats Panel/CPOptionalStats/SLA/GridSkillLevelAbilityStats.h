@@ -16,14 +16,12 @@ wxDECLARE_EVENT(TRANSMIT_GSLAS_STATS, wxCommandEvent);
 class GridSkillLevelAbilityStats : public wxGrid {
 private:
 	GTBSkillLevelAbilityStats* gtbslas;
-	wxString currentSLAselection;
 public:
 	GridSkillLevelAbilityStats(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveSLASelection(wxString abilityname);
 	void ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type);
 	void repopulate();
-	//std::vector<STINCPACKAGE> RetrieveSTPackage(wxString currentSLAselection);
 };
 
 #endif

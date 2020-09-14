@@ -41,7 +41,6 @@ void GridSkillLevelAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTY
 }
 
 void GridSkillLevelAbilityStats::repopulate() {
-	std::vector<Stat> tempvectforstats;
 	SetColLabelSize(wxGRID_AUTOSIZE);
 	int colcount = gtbslas->GetColsCount();
 	
@@ -51,4 +50,10 @@ void GridSkillLevelAbilityStats::repopulate() {
 		AutoSizeColLabelSize(i);
 		SetCellValue(0, i, colvalue);
 	}
+	std::vector<STATPACKAGE> temp = gtbslas->RetrieveSTATPackage();
+	STATPACKAGEVECTOR* tempvectforstats = new STATPACKAGEVECTOR(temp);
+	wxCommandEvent event(TRANSMIT_GSLAS_STATS, GetId());
+	wxClientData* tempdata = dynamic_cast<wxClientData*>(tempvectforstats/*->clone()*/);
+	event.SetClientObject(tempdata);
+	ProcessEvent(event);
 }

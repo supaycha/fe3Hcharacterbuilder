@@ -78,15 +78,15 @@ void StatsPanel::BounceGCHIASStats_partoftotalstats(wxCommandEvent& event) {
 }
 
 void StatsPanel::BounceGCLIASStats_partoftotalstats(wxCommandEvent& event) {
-	Stats* tempstats = dynamic_cast<Stats*>(event.GetClientObject());
+	STATPACKAGEVECTOR* tempstats = dynamic_cast<STATPACKAGEVECTOR*>(event.GetClientObject());
 	int id = event.GetId();
-	gts->ReceiveGCLIASStats(*tempstats, id - 61);
+	gts->ReceiveGCLIASStats(*tempstats);
 }
 
 void StatsPanel::BounceGSLASStats_partoftotalstats(wxCommandEvent& event) {
-	Stats* tempstats = dynamic_cast<Stats*>(event.GetClientObject());
+	STATPACKAGEVECTOR* tempstats = dynamic_cast<STATPACKAGEVECTOR*>(event.GetClientObject());
 	int id = event.GetId();
-	gts->ReceiveGSLASStats(*tempstats, id - 64);
+	gts->ReceiveGSLASStats(*tempstats);
 }
 //void StatsPanel::OnSize(wxSizeEvent& event) {
 //}

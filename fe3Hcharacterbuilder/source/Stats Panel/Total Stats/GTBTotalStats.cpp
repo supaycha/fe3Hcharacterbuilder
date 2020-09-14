@@ -46,11 +46,11 @@ void GTBTotalStats::ReceiveGCHIASStats(STATPACKAGEVECTOR spv) {
 	incomingGCHIASstats = spv;
 }
 
-void GTBTotalStats::ReceiveGCLIASStats(Stats stats, int index) {
+void GTBTotalStats::ReceiveGCLIASStats(STATPACKAGEVECTOR spv) {
 	//currentGCLIASstats[index] = stats;
 }
 
-void GTBTotalStats::ReceiveGSLASStats(Stats stats, int index) {
+void GTBTotalStats::ReceiveGSLASStats(STATPACKAGEVECTOR spv) {
 	//currentGSLASstats[index] = stats;
 }
 

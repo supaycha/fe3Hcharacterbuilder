@@ -29,9 +29,31 @@ void GTBSkillLevelAbilityStats::recalculate() {
 		if (equivalentWTs) {
 			statpVector = RetrieveSTATPackage();
 			currentheaders = GetCurrentHeaders();
-		}
-		
+		}		
 	}
+}
+
+bool GTBSkillLevelAbilityStats::DetermineStatsPresence() {
+	for (auto element : skilllevelabilities) {
+		if (currentSLAselection == element.first) {
+			SkillLevelAbility* tempability = dynamic_cast<SkillLevelAbility*>(element.second)->clone();
+			return tempability->getHasStatUp();
+		}
+	}
+
+	return false;
+}
+
+bool GTBSkillLevelAbilityStats::DetermineWTMatch() {
+	WEAPONTYPE abilitywt = RetrieveABILITYWEAPONTYPE();
+	if (currentWeaponTypeofEquippedWeapon == abilitywt) {
+		if (currentWeaponTypeofEquippedWeapon > WEAPONTYPE::BLANK) {
+			return true;
+
+		}
+	}
+
+	return false;
 }
 
 WEAPONTYPE GTBSkillLevelAbilityStats::RetrieveABILITYWEAPONTYPE() {
@@ -58,32 +80,6 @@ std::vector<STATPACKAGE> GTBSkillLevelAbilityStats::RetrieveSTATPackage() {
 	return std::vector<STATPACKAGE>();
 }
 
-bool GTBSkillLevelAbilityStats::DetermineStatsPresence() {
-	for (auto element : skilllevelabilities) {
-		if (currentSLAselection == element.first) {
-			SkillLevelAbility* tempability = dynamic_cast<SkillLevelAbility*>(element.second)->clone();
-			return tempability->getHasStatUp();
-		}
-	}
-
-	return false;
-}
-
-//bool GTBSkillLevelAbilityStats::DetermineWeaponType() {
-//	for (auto element : skilllevelabilities) {
-//		if (currentSLAselection == element.first) {
-//			SkillLevelAbility* tempability = dynamic_cast<SkillLevelAbility*>(element.second)->clone();
-//
-//			type = tempability->getWeaponType();
-//			if ((int)type > (int)WEAPONTYPE::BLANK && (int)type < (int)WEAPONTYPE::AUTHORITY) {
-//				return true;
-//			}
-//		}
-//	}
-//	
-//	return false;
-//}
-
 std::vector<wxString> GTBSkillLevelAbilityStats::GetCurrentHeaders() {
 	std::vector<wxString> tempvector;
 	for (unsigned int i = 0; i < statpVector.size(); ++i) {
@@ -95,16 +91,4 @@ std::vector<wxString> GTBSkillLevelAbilityStats::GetCurrentHeaders() {
 	}
 
 	return tempvector;
-}
-
-bool GTBSkillLevelAbilityStats::DetermineWTMatch() {
-	WEAPONTYPE abilitywt = RetrieveABILITYWEAPONTYPE();
-	if (currentWeaponTypeofEquippedWeapon == abilitywt) {
-		//if (currentWeaponTypeofEquippedWeapon > WEAPONTYPE::BLANK) {
-			return true;
-
-		//}
-	}
-
-	return false;
 }

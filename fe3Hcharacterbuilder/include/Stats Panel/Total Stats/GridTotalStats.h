@@ -17,8 +17,8 @@ public:
 	void ReceiveGESStats(Stats stats);
 	void ReceiveGBSStats(Stats stats);
 	void ReceiveGCHIASStats(STATPACKAGEVECTOR spv);
-	void ReceiveGCLIASStats(Stats stats, int id);
-	void ReceiveGSLASStats(Stats stats, int id);
+	void ReceiveGCLIASStats(STATPACKAGEVECTOR spv);
+	void ReceiveGSLASStats(STATPACKAGEVECTOR spv);
 
 	void repopulate();
 };

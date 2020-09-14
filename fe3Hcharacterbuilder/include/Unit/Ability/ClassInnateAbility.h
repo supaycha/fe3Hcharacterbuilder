@@ -9,14 +9,14 @@ class ClassInnateAbility : public Ability {
 private:
 	std::wstring ciaType = L"ClassInnate";
 	bool hasStatUp;
-	STATPACKAGE statp;
+	std::vector<STATPACKAGE> statpVector;
 public:
 	ClassInnateAbility() {}
-	ClassInnateAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, bool uHasStatUp, STATTYPE ust, wxString uname) : hasStatUp{ uHasStatUp }, statp{ ust, uname }, Ability{ uName, uSource, uDescription } {}
+	ClassInnateAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, bool uHasStatUp, std::vector<STATPACKAGE> ustatpVector) : hasStatUp{ uHasStatUp }, statpVector{ ustatpVector }, Ability{ uName, uSource, uDescription } {}
 	~ClassInnateAbility() {}
 	std::wstring getType() { return ciaType; }
 	bool getHasStatUp() { return hasStatUp; }
-	STATPACKAGE getSTATP() { return statp; }
+	std::vector<STATPACKAGE> getSTATP() { return statpVector; }
 
 	ClassInnateAbility* new_expr() override { return new ClassInnateAbility(); }
 	ClassInnateAbility* clone() override { return new ClassInnateAbility(*this); }
