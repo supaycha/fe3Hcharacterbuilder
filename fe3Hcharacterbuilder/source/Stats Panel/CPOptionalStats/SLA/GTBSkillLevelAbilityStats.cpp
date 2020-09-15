@@ -25,11 +25,15 @@ void GTBSkillLevelAbilityStats::recalculate() {
 
 	hasStats = DetermineStatsPresence();
 	if (hasStats) {
+		statpVector = RetrieveSTATPackage();
+		currentheaders = GetCurrentHeaders();
+
 		equivalentWTs = DetermineWTMatch();
-		if (equivalentWTs) {
-			statpVector = RetrieveSTATPackage();
-			currentheaders = GetCurrentHeaders();
-		}		
+		if (!equivalentWTs) {
+			for (auto& stattype : statpVector) {
+				stattype.value = "0";
+			}
+		}
 	}
 }
 

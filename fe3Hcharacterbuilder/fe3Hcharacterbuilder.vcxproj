@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateCharacterAbility.h" />
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateGeneralAbility.h" />
     <ClInclude Include="include\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.h" />
     <ClInclude Include="include\Stats Panel\CPOptionalStats\GambitStats\GTBGambitStats.h" />
     <ClInclude Include="include\EquippedPanel\Gambit\EquippedGambit.h" />
@@ -73,7 +75,7 @@
     <ClInclude Include="include\Unit\Ability\Ability.h" />
     <ClInclude Include="include\Unit\Ability\BlankAbility.h" />
     <ClInclude Include="include\Unit\Ability\CharacterInnateAbility.h" />
-    <ClInclude Include="include\Unit\Ability\ClassInnateAbility.h" />
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateAbility.h" />
     <ClInclude Include="include\Unit\Ability\ClassMasteryAbility.h" />
     <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelAbility.h" />
     <ClInclude Include="include\Unit\Battalion.h" />

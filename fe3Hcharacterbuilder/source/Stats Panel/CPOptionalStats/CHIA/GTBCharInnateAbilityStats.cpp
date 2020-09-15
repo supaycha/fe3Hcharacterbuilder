@@ -25,24 +25,21 @@ void GTBCharInnateAbilityStats::recalculate() {
 
 	hasStats = DetermineStatsPresence();
 	if (hasStats) {
-		if (battalionselectionmade) {
-			statpVector = RetrieveSTATPackage();
-			currentheaders = GetCurrentHeaders();
-		}
-	}
-}
+		statpVector = RetrieveSTATPackage();
+		currentheaders = GetCurrentHeaders();
 
-std::vector<wxString> GTBCharInnateAbilityStats::GetCurrentHeaders() {
-	std::vector<wxString> tempvector;
-	for (unsigned int i = 0; i < statpVector.size(); ++i) {
-		for (unsigned int k = 0; k < headers.size(); ++k) {
-			if (statpVector[i].stattype == headers[k].stattype) {
-				tempvector.push_back(headers[k].value);
+		battalionmustexist = DetermineWhetherBattalionMustExist();
+		if (battalionselectionmade && !battalionmustexist) {
+			for (auto& stattype : statpVector) {
+				stattype.value = "0";
+			}
+		}
+		else if (!battalionselectionmade && battalionmustexist) {
+			for (auto& stattype : statpVector) {
+				stattype.value = "0";
 			}
 		}
 	}
-
-	return tempvector;
 }
 
 bool GTBCharInnateAbilityStats::DetermineStatsPresence() {
@@ -50,6 +47,17 @@ bool GTBCharInnateAbilityStats::DetermineStatsPresence() {
 		if (currentCHIAselection == element.first) {
 			CharacterInnateAbility* tempability = dynamic_cast<CharacterInnateAbility*>(element.second)->clone();
 			return tempability->getHasStatUp();
+		}
+	}
+
+	return false;
+}
+
+bool GTBCharInnateAbilityStats::DetermineWhetherBattalionMustExist() {
+	for (auto element : characterinnateabilities) {
+		if (currentCHIAselection == element.first) {
+			CharacterInnateAbility* tempability = dynamic_cast<CharacterInnateAbility*>(element.second)->clone();
+			return tempability->getBattalionMustExist();
 		}
 	}
 
@@ -65,4 +73,17 @@ std::vector<STATPACKAGE> GTBCharInnateAbilityStats::RetrieveSTATPackage() {
 	}
 
 	return std::vector<STATPACKAGE>();
+}
+
+std::vector<wxString> GTBCharInnateAbilityStats::GetCurrentHeaders() {
+	std::vector<wxString> tempvector;
+	for (unsigned int i = 0; i < statpVector.size(); ++i) {
+		for (unsigned int k = 0; k < headers.size(); ++k) {
+			if (statpVector[i].stattype == headers[k].stattype) {
+				tempvector.push_back(headers[k].value);
+			}
+		}
+	}
+
+	return tempvector;
 }

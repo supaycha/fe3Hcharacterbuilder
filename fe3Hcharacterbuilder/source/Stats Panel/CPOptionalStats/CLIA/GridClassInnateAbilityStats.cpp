@@ -34,6 +34,12 @@ void GridClassInnateAbilityStats::ReceiveCLIASelection(wxString abilityname) {
 	SendSizeEventToParent();
 }
 
+void GridClassInnateAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type) {
+	gtbclias->ReceiveLBWSelection_weapontypeifneeded(type);
+	repopulate();
+	SendSizeEventToParent();
+}
+
 void GridClassInnateAbilityStats::repopulate() {
 	SetColLabelSize(wxGRID_AUTOSIZE);
 	int colcount = gtbclias->GetColsCount();
@@ -45,7 +51,7 @@ void GridClassInnateAbilityStats::repopulate() {
 		SetCellValue(0, i, colvalue);
 	}	
 	
-	STATPACKAGEVECTOR* tempvectforstats = new STATPACKAGEVECTOR(gtbclias->RetrieveSTATPackage());
+	STATPACKAGEVECTOR* tempvectforstats = new STATPACKAGEVECTOR(gtbclias->getSTATP());
 	wxCommandEvent event(TRANSMIT_GCLIAS_STATS, GetId());
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(tempvectforstats/*->clone()*/);
 	event.SetClientObject(tempdata);

@@ -52,7 +52,7 @@ void GridCharInnateAbilityStats::repopulate() {
 		SetCellValue(0, i, colvalue);
 	}
 
-	STATPACKAGEVECTOR* tempvectforstats = new STATPACKAGEVECTOR(gtbchias->RetrieveSTATPackage());
+	STATPACKAGEVECTOR* tempvectforstats = new STATPACKAGEVECTOR(gtbchias->getSTATP());
 	wxCommandEvent event(TRANSMIT_GCHIAS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBCHIAS);
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(tempvectforstats/*->clone()*/);
 	event.SetClientObject(tempdata);

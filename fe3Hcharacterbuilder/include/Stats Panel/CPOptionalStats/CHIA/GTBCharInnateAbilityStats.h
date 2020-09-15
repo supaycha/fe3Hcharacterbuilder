@@ -23,6 +23,7 @@ private:
 	bool hasStats = false;
 	wxString currentCHIAselection;
 	bool battalionselectionmade;
+	bool battalionmustexist;
 	wxString currentheader;
 public:
 	GTBCharInnateAbilityStats(std::map<wxString, wxClientData*> ucharacterinnateabilities);
@@ -31,11 +32,13 @@ public:
 	int GetNumberCols() override { return statpVector.size(); }
 	wxString GetValue(int nothing, int index) override { return statpVector[index].value; }
 	void SetValue(int nothing, int index, const wxString& value) override { statpVector[index].value = value; }
+	std::vector<STATPACKAGE> getSTATP() { return statpVector; }
 
 	void ReceiveCHIASSelection(wxString abilityname);
 	void ReceiveLBBSelection(bool battalionselectionmade);
 	void recalculate();
 	bool DetermineStatsPresence();
+	bool DetermineWhetherBattalionMustExist();
 	std::vector<STATPACKAGE> RetrieveSTATPackage();
 	wxString GetHeader(int index) { return currentheaders[index]; }
 	std::vector<wxString> GetCurrentHeaders();

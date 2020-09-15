@@ -50,7 +50,7 @@ void GridSkillLevelAbilityStats::repopulate() {
 		AutoSizeColLabelSize(i);
 		SetCellValue(0, i, colvalue);
 	}
-	std::vector<STATPACKAGE> temp = gtbslas->RetrieveSTATPackage();
+	std::vector<STATPACKAGE> temp = gtbslas->getSTATP();
 	STATPACKAGEVECTOR* tempvectforstats = new STATPACKAGEVECTOR(temp);
 	wxCommandEvent event(TRANSMIT_GSLAS_STATS, GetId());
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(tempvectforstats/*->clone()*/);

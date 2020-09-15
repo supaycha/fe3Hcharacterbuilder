@@ -1,7 +1,7 @@
 #include <Stats Panel/Total Stats/GTBTotalStats.h>
 
 void GTBTotalStats::recalculate() {
-	CalculateAbilityStats();
+	CalculateAllAbilityStats();
 	CalculateTotalPhysicalAttack();
 	CalculateTotalMagicAttack();
 	CalculateTotalPhysicalHit();
@@ -14,10 +14,43 @@ void GTBTotalStats::recalculate() {
 	CalculateTotalCritAvoid();
 	CalculateTotalRange();
 }
-void GTBTotalStats::CalculateAbilityStats() {
+void GTBTotalStats::CalculateAllAbilityStats() {
+	CalculateCHIASStats();
+	CalculateCLIASStats();
+	CalculateSLASStats();
+}
+
+void GTBTotalStats::CalculateCHIASStats() {
 	//ClearValues();
 	for (auto awaystattype : incomingGCHIASstats) {
-		for (auto& homestattype : thisshouldreflectcurrent) {
+		for (auto& homestattype : currentCHIASvector) {
+			if (awaystattype.stattype == homestattype.stattype) {
+				homestattype.value = awaystattype.value;
+			}
+		}
+	}
+	int i = 9;
+}
+
+void GTBTotalStats::CalculateCLIASStats() {
+	//ClearValues();
+	for (auto awaystattype : incomingGCLIASstats) {
+		for (auto& homestattype : currentCLIASvector) {
+			if (awaystattype.stattype == homestattype.stattype) {
+				homestattype.value = awaystattype.value;
+			}
+			//else if (awaystattype.stattype == STATTYPE::BLANK) {
+			//	homestattype.value = "0";
+			//}
+		}
+	}
+	int i = 9;
+}
+
+void GTBTotalStats::CalculateSLASStats() {
+	//ClearValues();
+	for (auto awaystattype : incomingGSLASstats) {
+		for (auto& homestattype : currentSLASvector) {
 			if (awaystattype.stattype == homestattype.stattype) {
 				homestattype.value = awaystattype.value;
 			}
@@ -42,23 +75,67 @@ void GTBTotalStats::ReceiveGBSStats(Stats stats) {
 	currentGBSstats = stats;
 }
 
-void GTBTotalStats::ReceiveGCHIASStats(STATPACKAGEVECTOR spv) {
-	incomingGCHIASstats = spv;
+void GTBTotalStats::ReceiveGCHIASStats(STATPACKAGEVECTOR statsfromGCHIA) {
+	incomingGCHIASstats = statsfromGCHIA;
 }
 
-void GTBTotalStats::ReceiveGCLIASStats(STATPACKAGEVECTOR spv) {
-	//currentGCLIASstats[index] = stats;
+void GTBTotalStats::ReceiveGCLIASStats(STATPACKAGEVECTOR statsfromGCLIA) {
+	incomingGCLIASstats = statsfromGCLIA;
+	int i = 0;
 }
 
-void GTBTotalStats::ReceiveGSLASStats(STATPACKAGEVECTOR spv) {
-	//currentGSLASstats[index] = stats;
+void GTBTotalStats::ReceiveGSLASStats(STATPACKAGEVECTOR statsfromGSLA) {
+	incomingGSLASstats = statsfromGSLA;
+	int i = 0;
+}
+
+int GTBTotalStats::RetrieveStatsFromAbilityPackages(STATTYPE st) {
+	int tempchiavalue = RetrieveStatFromGCHIASPackage(st);
+	int tempcliavalue = RetrieveStatFromGCLIASPackage(st);
+	int tempslavalue = RetrieveStatFromGSLASPackage(st);
+
+	int temptotal = tempchiavalue + tempcliavalue + tempslavalue;
+	return temptotal;
+}
+
+int GTBTotalStats::RetrieveStatFromGCHIASPackage(STATTYPE st) {
+	for (auto stattype : currentCHIASvector) {
+		if (st == stattype.stattype) {
+			int testing = _wtoi(stattype.value.c_str());
+			return testing;
+		}
+	}
+
+	return 0;
+}
+
+int GTBTotalStats::RetrieveStatFromGCLIASPackage(STATTYPE st) {
+	for (auto stattype : currentCLIASvector) {
+		if (st == stattype.stattype) {
+			int testing = _wtoi(stattype.value.c_str());
+			return testing;
+		}
+	}
+
+	return 0;
+}
+
+int GTBTotalStats::RetrieveStatFromGSLASPackage(STATTYPE st) {
+	for (auto stattype : currentSLASvector) {
+		if (st == stattype.stattype) {
+			int testing = _wtoi(stattype.value.c_str());
+			return testing;
+		}
+	}
+
+	return 0;
 }
 
 void GTBTotalStats::CalculateTotalPhysicalAttack() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(2, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::MIGHT);
-	relevantabilities[1] = RetrieveStatFromPackage(STATTYPE::STR);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::MIGHT);
+	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::STR);
 	
 	std::wstring temp = currentGMTstats[2].getText();
 	int lvcstat2 = _wtoi(temp.c_str());
@@ -85,9 +162,9 @@ void GTBTotalStats::CalculateTotalPhysicalAttack() {
 void GTBTotalStats::CalculateTotalMagicAttack() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(3, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::MIGHT);
-	relevantabilities[1] = RetrieveStatFromPackage(STATTYPE::MAG);
-	relevantabilities[2] = RetrieveStatFromPackage(STATTYPE::MATK);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::MIGHT);
+	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::MAG);
+	relevantabilities[2] = RetrieveStatsFromAbilityPackages(STATTYPE::MATK);
 
 	std::wstring temp = currentGMTstats[3].getText();
 	int lvcstat3 = _wtoi(temp.c_str());
@@ -109,8 +186,8 @@ void GTBTotalStats::CalculateTotalMagicAttack() {
 void GTBTotalStats::CalculateTotalPhysicalHit() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(2, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::HIT);
-	relevantabilities[1] = RetrieveStatFromPackage(STATTYPE::DEX);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::HIT);
+	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::DEX);
 
 	std::wstring temp = currentGMTstats[4].getText();
 	int lvcstat4 = _wtoi(temp.c_str());
@@ -138,9 +215,9 @@ void GTBTotalStats::CalculateTotalPhysicalHit() {
 void GTBTotalStats::CalculateTotalMagicHit() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(3, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::HIT);
-	relevantabilities[1] = RetrieveStatFromPackage(STATTYPE::DEX);
-	relevantabilities[2] = RetrieveStatFromPackage(STATTYPE::LCK);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::HIT);
+	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::DEX);
+	relevantabilities[2] = RetrieveStatsFromAbilityPackages(STATTYPE::LCK);
 
 	std::wstring temp = currentGMTstats[4].getText();
 	int lvcstat4 = _wtoi(temp.c_str());
@@ -168,9 +245,9 @@ void GTBTotalStats::CalculateTotalMagicHit() {
 void GTBTotalStats::CalculateTotalCrit() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(3, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::DEX);
-	relevantabilities[1] = RetrieveStatFromPackage(STATTYPE::LCK);
-	relevantabilities[2] = RetrieveStatFromPackage(STATTYPE::WCRIT);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::DEX);
+	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::LCK);
+	relevantabilities[2] = RetrieveStatsFromAbilityPackages(STATTYPE::WCRIT);
 
 	std::wstring temp = currentGMTstats[4].getText();
 	int lvcstat4 = _wtoi(temp.c_str());
@@ -196,9 +273,9 @@ void GTBTotalStats::CalculateTotalCrit() {
 void GTBTotalStats::CalculateAS() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(3, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::SPD);
-	relevantabilities[1] = RetrieveStatFromPackage(STATTYPE::WEIGHT);
-	relevantabilities[2] = RetrieveStatFromPackage(STATTYPE::STR);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::SPD);
+	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::WEIGHT);
+	relevantabilities[2] = RetrieveStatsFromAbilityPackages(STATTYPE::STR);
 
 	//character strength
 	std::wstring temp = currentGMTstats[2].getText();
@@ -225,8 +302,8 @@ void GTBTotalStats::CalculateAS() {
 void GTBTotalStats::CalculateTotalProt() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(2, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::DEF);
-	relevantabilities[1] = RetrieveStatFromPackage(STATTYPE::PROT);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::DEF);
+	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::PROT);
 
 	std::wstring temp = currentGMTstats[7].getText();
 	int lvcstat7 = _wtoi(temp.c_str());
@@ -245,7 +322,7 @@ void GTBTotalStats::CalculateTotalProt() {
 void GTBTotalStats::CalculateTotalResilience() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(1, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::RES);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::RES);
 
 	std::wstring temp = currentGMTstats[8].getText();
 	int lvcstat8 = _wtoi(temp.c_str());
@@ -264,7 +341,7 @@ void GTBTotalStats::CalculateTotalResilience() {
 void GTBTotalStats::CalculateTotalAvoid() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(1, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::AVO);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::AVO);
 
 	//total attack speed
 	std::wstring temp = totalstats[5].getText();
@@ -289,7 +366,7 @@ void GTBTotalStats::CalculateTotalAvoid() {
 void GTBTotalStats::CalculateTotalCritAvoid() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(1, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::CRITAVO);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::CRITAVO);
 
 	//std::wstring temp = currentGWSstats[2].getText();
 	//int lvwstat2 = _wtoi(temp.c_str());
@@ -309,7 +386,7 @@ void GTBTotalStats::CalculateTotalCritAvoid() {
 void GTBTotalStats::CalculateTotalRange() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(1, 0);
-	relevantabilities[0] = RetrieveStatFromPackage(STATTYPE::RANGE);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::RANGE);
 
 	std::wstring temp = currentGWSstats[3].getText();
 	int lvwstat3 = _wtoi(temp.c_str());
@@ -318,22 +395,11 @@ void GTBTotalStats::CalculateTotalRange() {
 	totalstats[10] = buffer;
 }
 
-void GTBTotalStats::ClearValues() {
-	for (auto element : thisshouldreflectcurrent) {
-		element.value = "0";
-	}
-}
-
-int GTBTotalStats::RetrieveStatFromPackage(STATTYPE st) {
-	for (auto stattype : thisshouldreflectcurrent) {
-		if (st == stattype.stattype) {
-			int testing = _wtoi(stattype.value.c_str());
-			return testing;
-		}
-	}
-
-	return 0;
-}
+//void GTBTotalStats::ClearValues() {
+//	for (auto element : thisshouldreflectcurrent) {
+//		element.value = "0";
+//	}
+//}
 //switch (stattype.stattype) {
 //	case STATTYPE::HP: {
 //		as.hp += stattype.value;

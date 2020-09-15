@@ -10,7 +10,7 @@
 #include <Unit/Ability/Ability.h>
 //#include <Unit/Ability/BlankAbility.h>
 #include <Unit/Ability/CharacterInnateAbility.h>
-#include <Unit/Ability/ClassInnateAbility.h>
+#include <Unit/Ability/ClassInnateAbility/ClassInnateAbility.h>
 #include <Unit/Ability/SkillLevelAbility/SkillLevelAbility.h>
 #include <EquippedPanel/Ability/CHIA/EquippedCharInnateAbility.h>
 #include <EquippedPanel/Ability/CLIA/EquippedClassInnateAbility.h>

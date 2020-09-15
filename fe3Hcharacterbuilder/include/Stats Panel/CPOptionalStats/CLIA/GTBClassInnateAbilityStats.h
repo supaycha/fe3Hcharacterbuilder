@@ -8,7 +8,8 @@
 #include <constants.h>
 #include <Unit/Unit.h>
 #include <Unit/Ability/Ability.h>
-#include <Unit/Ability/ClassInnateAbility.h>
+#include <Unit/Ability/ClassInnateAbility/ClassInnateAbility.h>
+#include <Unit/Ability/ClassInnateAbility/ClassInnateCharacterAbility.h>
 
 class GTBClassInnateAbilityStats : public wxGridTableBase {
 private:
@@ -21,6 +22,8 @@ private:
 	std::vector<STATPACKAGE> statpVector{ };
 	wxString currentCLIAselection;
 	bool hasStats = false;
+	WEAPONTYPE currentWeaponTypeofEquippedWeapon = WEAPONTYPE::BLANK;
+	bool equivalentWTs;
 public:
 	GTBClassInnateAbilityStats(std::map<wxString, wxClientData*> ucharacterinnateabilities);
 	~GTBClassInnateAbilityStats() {}
@@ -30,10 +33,13 @@ public:
 	void SetValue(int nothin, int index, const wxString& value) override { statpVector[index].value = value; }
 	
 	void ReceiveCLIASSelection(wxString currentCLIAselection);	
-
+	void ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type);
+	std::vector<STATPACKAGE> getSTATP() { return statpVector; }
 	void recalculate();
 	bool DetermineStatsPresence();
+	bool DetermineWTMatch();
 
+	WEAPONTYPE RetrieveABILITYWEAPONTYPE();
 	std::vector<STATPACKAGE> RetrieveSTATPackage();
 	wxString GetHeader(int index) { return currentheaders[index]; }
 	std::vector<wxString> GetCurrentHeaders();

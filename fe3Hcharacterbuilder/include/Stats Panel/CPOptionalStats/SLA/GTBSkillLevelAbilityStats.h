@@ -32,16 +32,15 @@ public:
 	int GetNumberCols() override { return statpVector.size(); }
 	wxString GetValue(int nothing, int index) override { return statpVector[index].value; }
 	void SetValue(int nothing, int index, const wxString& value) override { statpVector[index].value = value; }
-	
-	bool GetHasStats() { return hasStats; }
+	std::vector<STATPACKAGE> getSTATP() { return statpVector; }
+
 	void ReceiveSLASSelection(wxString abilityname);
 	void ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type);	
-	
 	void recalculate();
 	bool DetermineStatsPresence();
 	bool DetermineWTMatch();
-
 	WEAPONTYPE RetrieveABILITYWEAPONTYPE();
+
 	std::vector<STATPACKAGE> RetrieveSTATPackage();
 	wxString GetHeader(int index) { return currentheaders[index]; }
 	std::vector<wxString> GetCurrentHeaders();

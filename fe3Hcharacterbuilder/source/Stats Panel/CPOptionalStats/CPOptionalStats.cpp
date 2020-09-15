@@ -81,7 +81,13 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 
 void CPOptionalStats::ReceiveLBWSelection(Stats stats, WEAPONTYPE type) {
 	gws->ReceiveLBWSelection(stats);
+
 	for (unsigned int i = 0; i < 3; ++i) {
+		gcliasVector[i]->ReceiveLBWSelection_weapontypeifneeded(type);
+		gcliasVector[i]->ForceRefresh();
+	}
+
+	for (unsigned int i = 0; i < 5; ++i) {
 		gslasVector[i]->ReceiveLBWSelection_weapontypeifneeded(type);
 		gslasVector[i]->ForceRefresh();
 	}

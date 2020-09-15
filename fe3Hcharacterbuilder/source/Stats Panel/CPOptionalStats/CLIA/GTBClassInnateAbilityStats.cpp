@@ -5,8 +5,13 @@ GTBClassInnateAbilityStats::GTBClassInnateAbilityStats(std::map<wxString, wxClie
 	classinnateabilities = uclassinnateabilities;
 }
 
-void GTBClassInnateAbilityStats::ReceiveCLIASSelection(wxString abilityname) {
-	currentCLIAselection = abilityname;
+void GTBClassInnateAbilityStats::ReceiveCLIASSelection(wxString ucurrentCLIAselection) {
+	currentCLIAselection = ucurrentCLIAselection;
+	recalculate();
+}
+
+void GTBClassInnateAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type) {
+	currentWeaponTypeofEquippedWeapon = type;
 	recalculate();
 }
 
@@ -20,11 +25,15 @@ void GTBClassInnateAbilityStats::recalculate() {
 
 	hasStats = DetermineStatsPresence();
 	if (hasStats) {
-		//equivalentWTs = DetermineWTMatch();
-		//if (equivalentWTs) {
-			statpVector = RetrieveSTATPackage();
-			currentheaders = GetCurrentHeaders();
-		//}
+		statpVector = RetrieveSTATPackage();
+		currentheaders = GetCurrentHeaders();
+
+		equivalentWTs = DetermineWTMatch();
+		if (!equivalentWTs) {
+			for (auto& stattype : statpVector) {
+				stattype.value = "0";
+			}
+		}
 	}
 }
 
@@ -37,6 +46,30 @@ bool GTBClassInnateAbilityStats::DetermineStatsPresence() {
 	}
 
 	return false;
+}
+
+bool GTBClassInnateAbilityStats::DetermineWTMatch() {
+	WEAPONTYPE abilitywt = RetrieveABILITYWEAPONTYPE();
+	if (currentWeaponTypeofEquippedWeapon == abilitywt) {
+		if (currentWeaponTypeofEquippedWeapon > WEAPONTYPE::BLANK) {
+			return true;
+
+		}
+	}
+
+	return false;
+}
+
+WEAPONTYPE GTBClassInnateAbilityStats::RetrieveABILITYWEAPONTYPE() {
+	for (auto element : classinnateabilities) {
+		if (currentCLIAselection == element.first) {
+			ClassInnateCharacterAbility* tempability = dynamic_cast<ClassInnateCharacterAbility*>(element.second)->clone();
+			int test = 9;
+			return tempability->getWeaponType();
+		}
+	}
+
+	return WEAPONTYPE();
 }
 
 std::vector<STATPACKAGE> GTBClassInnateAbilityStats::RetrieveSTATPackage() {
