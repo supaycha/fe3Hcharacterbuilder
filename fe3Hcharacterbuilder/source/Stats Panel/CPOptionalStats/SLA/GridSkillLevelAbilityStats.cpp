@@ -3,54 +3,57 @@
 GridSkillLevelAbilityStats::GridSkillLevelAbilityStats(std::map<wxString, wxClientData*> uskilllevelabilities, wxWindow* parent, wxWindowID id) :
 	wxGrid(parent, id)
 {
-	skilllevelabilities = uskilllevelabilities;
+	//SetBackgroundStyle(wxBG_STYLE_PAINT);
+	gtbslas = new GTBSkillLevelAbilityStats(uskilllevelabilities);
 
-	SetBackgroundStyle(wxBG_STYLE_PAINT);
-	gtbcias = new GTBSkillLevelAbilityStats;
-
-	CreateGrid(1, gtbcias->GetColsCount());
-	for (int i = 0; i < gtbcias->GetColsCount(); ++i) {
-		SetColLabelValue(i, gtbcias->GetHeader(i));
-		AutoSizeColLabelSize(i);
+	CreateGrid(1, 3);
+	for (int i = 0; i < 3; ++i) {
+		SetColLabelValue(i, "---");
+		SetCellValue(0, i, "---");
+		AutoSizeColumn(i, true);
 	}
-	SetUseNativeColLabels(true);
 
+	SetUseNativeColLabels(true);
+	EnableEditing(false);
+	DisableDragGridSize();
 	SetRowLabelSize(0);
-	initpopulate();
+	//SetColLabelSize(0);
+	//initpopulate();
 }
 
 void GridSkillLevelAbilityStats::initpopulate() {
-	for (int i = 0; i < gtbcias->GetColsCount(); ++i) {
-		SetCellValue(0, i, L"0");
-		int k = 0;
-	}
-}
-
-void GridSkillLevelAbilityStats::ReceiveLBBSelection(Stats stats) {
-	gtbcias->ReceiveLBBSelection(stats);
-	Freeze();
-	repopulate();
-	Thaw();
+	//for (int i = 0; i < gtbslas->GetColsCount(); ++i) {
+	//	SetCellValue(0, i, L"0");
+	//	int k = 0;
+	//}
 }
 
 void GridSkillLevelAbilityStats::ReceiveSLASelection(wxString abilityname) {
-	currentSLAselection = abilityname;
+	gtbslas->ReceiveSLASSelection(abilityname);
+	repopulate();
+	SendSizeEventToParent();
+}
+
+void GridSkillLevelAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type) {
+	gtbslas->ReceiveLBWSelection_weapontypeifneeded(type);
+	repopulate();
+	SendSizeEventToParent();
 }
 
 void GridSkillLevelAbilityStats::repopulate() {
-	std::vector<Stat> tempvectforstats;
-	int col = 1;
-
-	for (int i = 0; i < gtbcias->GetColsCount(); ++i) {
-		wxString colvalue = gtbcias->GetValue(0, i);
+	SetColLabelSize(wxGRID_AUTOSIZE);
+	int colcount = gtbslas->GetColsCount();
+	
+	for (int i = 0; i < colcount; ++i) {
+		wxString colvalue = gtbslas->GetValue(0, i);
+		SetColLabelValue(i, gtbslas->GetHeader(i));
+		AutoSizeColLabelSize(i);
 		SetCellValue(0, i, colvalue);
-		tempvectforstats.push_back(Stat(colvalue));
-		int k = 0;
 	}
-
-	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GBS_STATS, (int)ID_SINGLE_CONTROL::ID_GTBSLAS);
-	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
+	std::vector<STATPACKAGE> temp = gtbslas->getSTATP();
+	STATPACKAGEVECTOR* tempvectforstats = new STATPACKAGEVECTOR(temp);
+	wxCommandEvent event(TRANSMIT_GSLAS_STATS, GetId());
+	wxClientData* tempdata = dynamic_cast<wxClientData*>(tempvectforstats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
 }

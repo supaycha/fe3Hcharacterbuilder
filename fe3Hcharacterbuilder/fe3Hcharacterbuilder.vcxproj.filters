@@ -86,6 +86,18 @@
     <Filter Include="Lists">
       <UniqueIdentifier>{697e9312-3aa1-48eb-a3b7-b442b774f221}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EquippedPanel\Gambit">
+      <UniqueIdentifier>{5604f82f-9c23-4a40-97ba-52c63471bf80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stats Panel\CPOptionalStats\Gambit Stats">
+      <UniqueIdentifier>{11008257-95a1-4a82-813b-60472982a24a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitandMisc\Ability\SkillLevelAbility">
+      <UniqueIdentifier>{4138347c-6ca9-49ba-a48f-1de77eec683e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitandMisc\Ability\ClassInnateAbility">
+      <UniqueIdentifier>{9649a312-0d11-4d85-b40f-32dbeee24f86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h">
@@ -139,9 +151,6 @@
     <ClInclude Include="include\Unit\Class.h">
       <Filter>UnitandMisc</Filter>
     </ClInclude>
-    <ClInclude Include="include\Unit\Ability\ClassInnateAbility.h">
-      <Filter>UnitandMisc\Ability</Filter>
-    </ClInclude>
     <ClInclude Include="include\Unit\Ability\ClassMasteryAbility.h">
       <Filter>UnitandMisc\Ability</Filter>
     </ClInclude>
@@ -168,9 +177,6 @@
     </ClInclude>
     <ClInclude Include="include\Unit\Equipment\Shield.h">
       <Filter>UnitandMisc\Equipment</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Unit\Ability\SkillLevelAbility.h">
-      <Filter>UnitandMisc\Ability</Filter>
     </ClInclude>
     <ClInclude Include="include\Unit\Equipment\Staff.h">
       <Filter>UnitandMisc\Equipment</Filter>
@@ -303,7 +309,39 @@
     <ClInclude Include="include\Stats Panel\StatsPanel.h">
       <Filter>Stats Panel</Filter>
     </ClInclude>
-    <ClInclude Include="include\AbilitySelections.h" />
+    <ClInclude Include="include\Unit\Gambit.h">
+      <Filter>UnitandMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EquippedPanel\Gambit\EquippedGambit.h">
+      <Filter>EquippedPanel\Gambit</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.h">
+      <Filter>Stats Panel\CPOptionalStats\Gambit Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\GambitStats\GTBGambitStats.h">
+      <Filter>Stats Panel\CPOptionalStats\Gambit Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbilitySelections.h">
+      <Filter>UnitandMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelAbility.h">
+      <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelCharacterAbility.h">
+      <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneralAbility.h">
+      <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateAbility.h">
+      <Filter>UnitandMisc\Ability\ClassInnateAbility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateCharacterAbility.h">
+      <Filter>UnitandMisc\Ability\ClassInnateAbility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateGeneralAbility.h">
+      <Filter>UnitandMisc\Ability\ClassInnateAbility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">
@@ -431,7 +469,18 @@
     <ClCompile Include="source\Stats Panel\StatsPanel.cpp">
       <Filter>Stats Panel</Filter>
     </ClCompile>
-    <ClCompile Include="source\AbilitySelections.cpp" />
+    <ClCompile Include="source\EquippedPanel\Gambit\EquippedGambit.cpp">
+      <Filter>EquippedPanel\Gambit</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.cpp">
+      <Filter>Stats Panel\CPOptionalStats\Gambit Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GTBGambitStats.cpp">
+      <Filter>Stats Panel\CPOptionalStats\Gambit Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbilitySelections.cpp">
+      <Filter>UnitandMisc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="fe3Hcharacterbuilder.rc">

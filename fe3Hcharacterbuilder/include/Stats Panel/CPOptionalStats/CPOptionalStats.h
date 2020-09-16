@@ -9,11 +9,12 @@
 #include <Unit/Unit.h>
 #include <Unit/Ability/Ability.h>
 #include <Unit/Ability/CharacterInnateAbility.h>
-#include <Unit/Ability/ClassInnateAbility.h>
-#include <Unit/Ability/SkillLevelAbility.h>
+#include <Unit/Ability/ClassInnateAbility/ClassInnateAbility.h>
+#include <Unit/Ability/SkillLevelAbility/SkillLevelAbility.h>
 #include <Stats Panel/CPOptionalStats/WeaponStats/GridWeaponStats.h>
 #include <Stats Panel/CPOptionalStats/EquipmentStats/GridEquipmentStats.h>
 #include <Stats Panel/CPOptionalStats/BattalionStats/GridBattalionStats.h>
+#include <Stats Panel/CPOptionalStats/GambitStats/GridGambitStats.h>
 #include <Stats Panel/CPOptionalStats/CHIA/GridCharInnateAbilityStats.h>
 #include <Stats Panel/CPOptionalStats/CLIA/GridClassInnateAbilityStats.h>
 #include <Stats Panel/CPOptionalStats/SLA/GridSkillLevelAbilityStats.h>
@@ -25,6 +26,7 @@ private:
 	GridWeaponStats* gws;
 	GridEquipmentStats* ges;
 	GridBattalionStats* gbs;
+	GridGambitStats* ggs;
 	GridCharInnateAbilityStats* gchias;
 	std::vector<GridClassInnateAbilityStats*> gcliasVector;
 	std::vector<GridSkillLevelAbilityStats*> gslasVector;
@@ -33,12 +35,12 @@ public:
 	CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, wxWindow* parent, wxWindowID id, const wxString& buffer);
 	~CPOptionalStats() {}
 
-	void ReceiveLBWSelection(Stats stats);
+	void ReceiveLBWSelection(Stats stats, WEAPONTYPE type);
 	void ReceiveLBESelection(Stats stats);
-	void ReceiveLBBSelection(Stats stats);
+	void ReceiveLBBSelection(Stats battalionstats, Stats gambitstats, bool battalionselectionmade);
 	void ReceiveCHIASelection(wxString abilityname);
-	void ReceiveCLIASelection(wxString abilityname, int id);
-	void ReceiveSLASelection(wxString abilityname, int id);
+	void ReceiveCLIASelection(std::vector<wxString> abilityselections);
+	void ReceiveSLASelection(std::vector<wxString> abilityselections);
 };
 
 #endif

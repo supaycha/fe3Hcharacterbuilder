@@ -25,10 +25,18 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 			skilllevelabilities.insert(element);
 		}
 	}
+	wxStaticText* weaponstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Weapon Stats");
+	wxStaticText* equipmentstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Equipment Stats");
+	wxStaticText* battalionstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Battalion Stats");
+	wxStaticText* gambitstatslabel = new wxStaticText(mainwindow, wxID_ANY, "Gambit Stats");
+	wxStaticText* characterinnatestatslabel = new wxStaticText(mainwindow, wxID_ANY, "Character Innate Ability Stats");
+	wxStaticText* classinnatestatslabel = new wxStaticText(mainwindow, wxID_ANY, "Class Innate Ability Stats");
+	wxStaticText* skilllevelabilitystatslabel = new wxStaticText(mainwindow, wxID_ANY, "Skill Level Ability Stats");
 
 	gws = new GridWeaponStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GWS);
 	ges = new GridEquipmentStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GES);
 	gbs = new GridBattalionStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GBS);
+	ggs = new GridGambitStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GGS);
 	gchias = new GridCharInnateAbilityStats(characterinnateabilities, mainwindow, (int)ID_SINGLE_CONTROL::ID_GCHIAS);
 
 	for (int i = 0; i < 3; ++i) {
@@ -43,19 +51,27 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 	wxBoxSizer* column1 = new wxBoxSizer(wxVERTICAL);
 	wxBoxSizer* column2 = new wxBoxSizer(wxVERTICAL);
 
+	column1->Add(weaponstatslabel);
 	column1->Add(gws);
+	column1->Add(equipmentstatslabel);
 	column1->Add(ges);
+	column1->Add(battalionstatslabel);
 	column1->Add(gbs);
-	column1->Add(gchias);
+	column1->Add(gambitstatslabel);
+	column1->Add(ggs);
+	column2->Add(characterinnatestatslabel);
+	column2->Add(gchias);
 
+	column2->Add(classinnatestatslabel);
 	for (auto gridclias : gcliasVector) {
 		column2->Add(gridclias);
 	}
 
+	column2->Add(skilllevelabilitystatslabel);
 	for (auto gridslas : gslasVector) {
 		column2->Add(gridslas);
 	}
-
+	
 	statssizer->Add(column1);
 	statssizer->Add(column2);
 	mainwindow->SetSizer(statssizer);
@@ -63,26 +79,45 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 	this->SetSizer(mainsizer);
 }
 
-void CPOptionalStats::ReceiveLBWSelection(Stats stats) {
+void CPOptionalStats::ReceiveLBWSelection(Stats stats, WEAPONTYPE type) {
 	gws->ReceiveLBWSelection(stats);
+
+	for (unsigned int i = 0; i < 3; ++i) {
+		gcliasVector[i]->ReceiveLBWSelection_weapontypeifneeded(type);
+		gcliasVector[i]->ForceRefresh();
+	}
+
+	for (unsigned int i = 0; i < 5; ++i) {
+		gslasVector[i]->ReceiveLBWSelection_weapontypeifneeded(type);
+		gslasVector[i]->ForceRefresh();
+	}
 }
 
 void CPOptionalStats::ReceiveLBESelection(Stats stats) {
 	ges->ReceiveLBESelection(stats);
 }
 
-void CPOptionalStats::ReceiveLBBSelection(Stats stats) {
-	gbs->ReceiveLBBSelection(stats);
+void CPOptionalStats::ReceiveLBBSelection(Stats battalionstats, Stats gambitstats, bool battalionselectionmade) {
+	gbs->ReceiveLBBSelection(battalionstats);
+	ggs->ReceiveLBBSelection(gambitstats);
+	gchias->ReceiveLBBSelection(battalionselectionmade);
 }
 
 void CPOptionalStats::ReceiveCHIASelection(wxString abilityname) {
 	gchias->ReceiveCHIASelection(abilityname);
 }
 
-void CPOptionalStats::ReceiveCLIASelection(wxString abilityname, int id) {
-	gcliasVector[id - 61]->ReceiveCLIASelection(abilityname);
+void CPOptionalStats::ReceiveCLIASelection(std::vector<wxString> abilityselections) {
+	for (unsigned int i = 0; i < abilityselections.size(); ++i) {
+		gcliasVector[i]->ReceiveCLIASelection(abilityselections[i]);
+		gcliasVector[i]->ForceRefresh();
+	}
 }
 
-void CPOptionalStats::ReceiveSLASelection(wxString abilityname, int id) {
-	gslasVector[id - 64]->ReceiveSLASelection(abilityname);
+void CPOptionalStats::ReceiveSLASelection(std::vector<wxString> abilityselections) {
+	for (unsigned int i = 0; i < abilityselections.size(); ++i) {
+		gslasVector[i]->ReceiveSLASelection(abilityselections[i]);
+		gslasVector[i]->ForceRefresh();
+	}
+
 }

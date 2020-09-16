@@ -56,17 +56,28 @@ void GridTotalStats::ReceiveGBSStats(Stats stats) {
 	Thaw();
 }
 
-void GridTotalStats::ReceiveGCHIASStats(Stats stats) {
-	gtbts->ReceiveGCHIASStats(stats);
-
+void GridTotalStats::ReceiveGCHIASStats(STATPACKAGEVECTOR spv) {
+	gtbts->ReceiveGCHIASStats(spv);
+	gtbts->recalculate();
+	Freeze();
+	repopulate();
+	Thaw();
 }
 
-void GridTotalStats::ReceiveGCLIASStats(Stats stats, int index) {
-	gtbts->ReceiveGCLIASStats(stats, index);
+void GridTotalStats::ReceiveGCLIASStats(STATPACKAGEVECTOR spv) {
+	gtbts->ReceiveGCLIASStats(spv);
+	gtbts->recalculate();
+	Freeze();
+	repopulate();
+	Thaw();
 }
 
-void GridTotalStats::ReceiveGSLASStats(Stats stats, int index) {
-	gtbts->ReceiveGSLASStats(stats, index);
+void GridTotalStats::ReceiveGSLASStats(STATPACKAGEVECTOR spv) {
+	gtbts->ReceiveGSLASStats(spv);
+	gtbts->recalculate();
+	Freeze();
+	repopulate();
+	Thaw();
 }
 
 void GridTotalStats::repopulate() {

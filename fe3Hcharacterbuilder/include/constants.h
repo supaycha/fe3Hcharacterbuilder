@@ -1,6 +1,8 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 //#include <vld.h>
+#include <string>
+
 enum class ID_MISC {
 	ID_FRAME = 7,
 	ID_MT = 8,
@@ -20,6 +22,7 @@ enum class ID_MISC {
 	ID_SLA3 = 27,
 	ID_SLA4 = 28,
 	ID_SLA5 = 29,
+	ID_BCLASSMASTERY = 30
 };
 
 enum class ID_SINGLE_CONTROL {
@@ -44,10 +47,13 @@ enum class ID_SINGLE_CONTROL {
 	ID_GTBCLIAS = 51,
 	ID_ECHIA = 52,
 	ID_ECLIA = 53,
-	ID_AP = 54,
-	ID_GTBSLAS = 55,
-	ID_ESLA = 56,
-	ID_SLP = 57,
+	ID_ECLIA2 = 54,
+	ID_ECLIA3 = 55,
+
+	ID_AP = 56,
+	ID_GTBSLAS = 57,
+	ID_ESLA = 58,
+	ID_SLP = 59,
 	ID_GCHIAS = 60,
 	ID_GCLIAS = 61,
 	ID_GCLIAS2 = 62,
@@ -58,8 +64,18 @@ enum class ID_SINGLE_CONTROL {
 	ID_GSLAS4 = 67,
 	ID_GSLAS5 = 68,	
 	ID_GTS = 69,
-	ID_CPOS = 70
-
+	ID_CPOS = 70,
+	ID_EG = 71,
+	ID_GGS = 72
+	//ID_CHIATXT = 71,
+	//ID_CLIATXT = 72,
+	//ID_CLIATXT2 = 73,
+	//ID_CLIATXT3 = 74,
+	//ID_SLATXT = 75,
+	//ID_SLATXT2 = 76,
+	//ID_SLATXT3 = 77,
+	//ID_SLATXT4 = 78,
+	//ID_SLATXT5 = 79,
 };
 
 enum class DD_CONTROL {
@@ -109,6 +125,7 @@ enum class VARIOUS_SIZE {
 	EQUIPMENT_DATA_SIZE = 28,
 	BATTALION_DATA_SIZE = 187,
 	SL_DATA_SIZE = 11,
+
 	CHAR_CLASS_STATS_SIZE = 10,
 	TOTAL_STATS_SIZE = 11,
 	EQUIPMENT_STATS_SIZE = 12,
@@ -132,19 +149,34 @@ enum class SL : int {
 	SPLUS = 11
 };
 
-enum class WEAPONTYPE : int {
-	BLANK = -1, 
-	SWORD = 0, 
-	AXE = 1, 
-	LANCE = 2, 
-	BOW = 3, 
-	GAUNTLETS = 4, 
-	REASON = 5, 
+enum class SKILLTYPE : int {
+	BLANK = -1,
+	SWORD = 0,
+	AXE = 1,
+	LANCE = 2,
+	BOW = 3,
+	GAUNTLETS = 4,
+	REASON = 5,
 	FAITH = 6,
 	AUTHORITY = 7, 
 	HEAVYARMOR = 8, 
 	RIDING = 9, 
 	FLYING = 10
+};
+
+enum class WEAPONTYPE : int {
+	BLANK = -1,
+	SWORD = 0,
+	AXE = 1,
+	LANCE = 2,
+	BOW = 3,
+	GAUNTLETS = 4,
+	BLACKMAGIC = 5,
+	DARKMAGIC = 6,
+	WHITEMAGIC = 7,
+	BOTH = 13
+
+
 };
 
 enum class EQUIPMENTTYPE : int {
@@ -155,19 +187,103 @@ enum class EQUIPMENTTYPE : int {
 	GEM = 3
 };
 
-struct SLPACKAGE : public wxClientData {
+struct SKILLLEVELPACKAGE : public wxClientData {
 	SL sl;
 	wxString slstring;
 	int index;
 
-	SLPACKAGE(SL uSL) : sl(uSL), index{}, slstring{} {}
+	SKILLLEVELPACKAGE(SL uSL) : sl(uSL), index{}, slstring{} {}
 };
 
-struct WTPACKAGE : public wxClientData {
+struct CHARSLPACKAGE : public wxClientData {
+	SL sl;
+	wxString charactername;
+
+	CHARSLPACKAGE(SL usl, wxString ucharactername) : sl{ usl }, charactername{ ucharactername } {}
+};
+
+struct STINCPACKAGE : public wxClientData {
 	bool isNotIncluded;
 	int index;
 
-	WTPACKAGE(bool inclusion, int id) : isNotIncluded(inclusion), index{id} {}
+	STINCPACKAGE(bool inclusion, int id) : isNotIncluded(inclusion), index{id} {}
 };
+
+enum class STATTYPE : int {
+	BLANK = -1,
+	HP,
+	MOV,
+	STR,
+	MAG,
+	DEX,
+	SPD,
+	LCK,
+	DEF,
+	RES,
+	CHA,
+	MIGHT,
+	GMIGHT,
+	HIT,
+	GHIT,
+	CRIT,
+	RANGE,
+	WEIGHT,
+	USES,
+	PROT,
+	TCRIT,
+	AVO,
+	MATK,
+	HEAL,
+	PATK,
+	END,
+	CRITAVO,
+	WCRIT
+};
+
+struct STATPACKAGE {
+	STATTYPE stattype;
+	wxString value;
+
+	STATPACKAGE() {}
+	STATPACKAGE(STATTYPE ust, wxString uvalue) : stattype {ust}, value {uvalue} {}
+};
+
+struct STATPACKAGEVECTOR : public wxClientData {
+	std::vector<STATPACKAGE> statpVector;
+
+	STATPACKAGEVECTOR() {}
+	STATPACKAGEVECTOR(std::vector<STATPACKAGE> ustatpVector) : statpVector{ ustatpVector } {}
+	auto begin() { return statpVector.begin(); }
+	auto end() { return statpVector.end(); }
+};
+
+//struct AbilityStats {	
+//	std::wstring hp = 0;
+//	std::wstring mov = 0;
+//	std::wstring str = 0;
+//	std::wstring mag = 0;
+//	std::wstring dex = 0;
+//	std::wstring spd = 0;
+//	std::wstring lck = 0;
+//	std::wstring def = 0;
+//	std::wstring res = 0;
+//	std::wstring cha = 0;
+//	std::wstring might = 0;
+//	std::wstring gmight = 0;
+//	std::wstring hit = 0;
+//	std::wstring ghit = 0;
+//	std::wstring crit = 0;
+//	std::wstring range = 0;
+//	std::wstring weight = 0;
+//	std::wstring uses = 0;
+//	std::wstring prot = 0;
+//	std::wstring tcrit = 0;
+//	std::wstring avo = 0;
+//	std::wstring matk = 0;
+//	std::wstring heal = 0;
+//	std::wstring patk = 0;
+//	std::wstring end = 0;
+//	std::wstring critavo = 0;
+//};
 
 #endif

@@ -19,7 +19,7 @@ public:
 	~ListBoxBattalions() {}
 
 	void OnNewSelection(wxCommandEvent& selection);
-	void ReceiveSLInfo(SLPACKAGE* slpackage);
+	void ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage);
 
 	void repopulate();
 	void DetermineSelectionStatus();

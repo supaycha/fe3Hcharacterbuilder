@@ -48,6 +48,9 @@ public:
 		std::wstring TPROT, std::wstring TRSL, std::wstring uAVO, std::wstring uCRITAVO, std::wstring uRNGE) :
 		stats{ uPHYSATK, uMGKATK, uPHYSHIT, uMGKHIT, uTCRIT, uAS, TPROT, TRSL, uAVO, uCRITAVO, uRNGE }
 	{}
+	Stats(std::wstring uGMIGHT, std::wstring uGHIT, std::wstring uGRANGE,
+		std::wstring uUSES, std::wstring uGDESCRIPTION) :
+		stats{ uGMIGHT, uGHIT, uGRANGE, uUSES, uGDESCRIPTION } {}
 
 	int Size() const { return stats.size(); }
 	Stat& operator[](UINT index) { return stats[index]; }

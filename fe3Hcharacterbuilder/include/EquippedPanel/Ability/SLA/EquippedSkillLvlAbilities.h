@@ -4,7 +4,9 @@
 #include <wx/wx.h>
 #include <map>
 #include <constants.h>
-#include <Unit/Ability/SkillLevelAbility.h>
+#include <Unit/Ability/SkillLevelAbility/SkillLevelAbility.h>
+
+wxDECLARE_EVENT(TRANSMIT_SLA_SELECTION, wxCommandEvent);
 
 class EquippedSkillLvlAbilities : public wxStaticText {
 private:

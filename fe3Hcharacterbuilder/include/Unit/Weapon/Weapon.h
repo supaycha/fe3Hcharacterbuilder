@@ -31,7 +31,9 @@ public:
 	bool getExclusivity() { return exclusivity; }
 	virtual const std::wstring getCharacterName() { return charactername; }
 	SL getSL() { return sl; }
-	virtual WEAPONTYPE getType() = 0;
+	virtual SKILLTYPE getSkillType() = 0;
+	virtual WEAPONTYPE getWeaponType() = 0;
+
 	virtual Weapon* new_expr() = 0;
 	virtual Weapon* clone() = 0;
 };

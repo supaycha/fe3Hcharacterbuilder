@@ -1,5 +1,6 @@
 #include <EquippedPanel/Ability/AbilityPanel.h>
 
+
 AbilityPanel::AbilityPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
@@ -90,6 +91,11 @@ void AbilityPanel::CreateCLIAList() {
 	}
 
 	PopulateECLIAVector();
+	wxCommandEvent event(TRANSMIT_CLIA_SELECTION, (int)ID_SINGLE_CONTROL::ID_AP);
+	AbilitySelections* testing = new AbilitySelections(CLIAnames);
+	wxClientData* testing2 = dynamic_cast<wxClientData*>(testing);
+	event.SetClientObject(testing2);
+	ProcessEvent(event);
 }
 
 void AbilityPanel::PopulateECLIAVector() {
@@ -112,6 +118,11 @@ void AbilityPanel::CreateSLAList() {
 	}
 
 	PopulateSLAVector();
+	wxCommandEvent event(TRANSMIT_SLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_AP);
+	AbilitySelections* testing = new AbilitySelections(SLAnames);
+	wxClientData* testing2 = dynamic_cast<wxClientData*>(testing);
+	event.SetClientObject(testing2);
+	ProcessEvent(event);
 }
 
 void AbilityPanel::PopulateSLAVector() {

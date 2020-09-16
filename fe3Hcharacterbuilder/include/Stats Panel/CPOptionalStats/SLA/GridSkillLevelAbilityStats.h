@@ -6,20 +6,21 @@
 #include <map>
 #include <Stat.h>
 #include <constants.h>
+//#include <Unit/Unit.h>
+//#include <Unit/Ability/Ability.h>
+//#include <Unit/Ability/SkillLevelAbility.h>
 #include <Stats Panel/CPOptionalStats/SLA/GTBSkillLevelAbilityStats.h>
 
-wxDECLARE_EVENT(TRANSMIT_GBS_STATS, wxCommandEvent);
+wxDECLARE_EVENT(TRANSMIT_GSLAS_STATS, wxCommandEvent);
 
 class GridSkillLevelAbilityStats : public wxGrid {
 private:
-	GTBSkillLevelAbilityStats* gtbcias;
-	wxString currentSLAselection;
-	std::map<wxString, wxClientData*> skilllevelabilities;
+	GTBSkillLevelAbilityStats* gtbslas;
 public:
 	GridSkillLevelAbilityStats(std::map<wxString, wxClientData*> skilllevelabilities, wxWindow* parent, wxWindowID id);
 	void initpopulate();
-	void ReceiveLBBSelection(Stats stats);
 	void ReceiveSLASelection(wxString abilityname);
+	void ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type);
 	void repopulate();
 };
 

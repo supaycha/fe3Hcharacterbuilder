@@ -7,6 +7,7 @@
 
 class Gauntlets : public Weapon {
 private:
+	SKILLTYPE st = SKILLTYPE::GAUNTLETS;
 	WEAPONTYPE wt = WEAPONTYPE::GAUNTLETS;
 public:
 	Gauntlets() {}
@@ -14,7 +15,9 @@ public:
 		std::wstring uRange, std::wstring uWeight, std::wstring uSkillLVL,
 		std::wstring uUses, SL skillLVL) : Weapon{ uName, uExclusivity, uCharacterName, uMight, uHit, uCrit, uRange, uWeight, uSkillLVL, uUses, skillLVL } {}
 	~Gauntlets() {}
-	WEAPONTYPE getType() override { return wt; };
+	SKILLTYPE getSkillType() override { return st; };
+	WEAPONTYPE getWeaponType() override { return wt; };
+
 	Gauntlets* new_expr() override { return new Gauntlets(); }
 	Gauntlets* clone() override { return new Gauntlets(*this); }
 };

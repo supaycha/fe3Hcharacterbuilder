@@ -19,6 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateCharacterAbility.h" />
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateGeneralAbility.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.h" />
+    <ClInclude Include="include\Stats Panel\CPOptionalStats\GambitStats\GTBGambitStats.h" />
+    <ClInclude Include="include\EquippedPanel\Gambit\EquippedGambit.h" />
+    <ClInclude Include="include\Unit\Gambit.h" />
     <ClInclude Include="include\AbilitySelections.h" />
     <ClInclude Include="include\AvailablePanel\ListBoxEquipment.h" />
     <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxASLA.h" />
@@ -69,9 +75,9 @@
     <ClInclude Include="include\Unit\Ability\Ability.h" />
     <ClInclude Include="include\Unit\Ability\BlankAbility.h" />
     <ClInclude Include="include\Unit\Ability\CharacterInnateAbility.h" />
-    <ClInclude Include="include\Unit\Ability\ClassInnateAbility.h" />
+    <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateAbility.h" />
     <ClInclude Include="include\Unit\Ability\ClassMasteryAbility.h" />
-    <ClInclude Include="include\Unit\Ability\SkillLevelAbility.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelAbility.h" />
     <ClInclude Include="include\Unit\Battalion.h" />
     <ClInclude Include="include\Unit\Character.h" />
     <ClInclude Include="include\Unit\Class.h" />
@@ -93,8 +99,13 @@
     <ClInclude Include="include\Unit\Weapon\Weapon.h" />
     <ClInclude Include="include\Unit\Weapon\WhiteMagic.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelCharacterAbility.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneralAbility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.cpp" />
+    <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GTBGambitStats.cpp" />
+    <ClCompile Include="source\EquippedPanel\Gambit\EquippedGambit.cpp" />
     <ClCompile Include="source\AbilitySelections.cpp" />
     <ClCompile Include="source\AvailablePanel\ListBoxEquipment.cpp" />
     <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxASLA.cpp" />

@@ -19,8 +19,8 @@ public:
 
 	void OnNewSelection(wxCommandEvent& eventfromwho);
 
-	void ReceiveWeaponExclusivity(wxString charactername);
-	void ReceiveSLInfo(SLPACKAGE* slpackage);
+	void ReceiveforWeaponExclusivityCheck(wxString charactername);
+	void ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage);
 };
 
 #endif

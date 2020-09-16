@@ -7,6 +7,7 @@
 
 class BlankWeapon : public Weapon {
 private:
+	SKILLTYPE st = SKILLTYPE::BLANK;
 	WEAPONTYPE wt = WEAPONTYPE::BLANK;
 public:
 	BlankWeapon() {}
@@ -14,7 +15,9 @@ public:
 		std::wstring uRange, std::wstring uWeight, std::wstring uSkillLVL,
 		std::wstring uUses, SL skillLVL) : Weapon{ uName, uExclusivity, uCharacterName, uMight, uHit, uCrit, uRange, uWeight, uSkillLVL, uUses, skillLVL } {}
 	~BlankWeapon() {}
-	WEAPONTYPE getType() override { return wt; };
+	SKILLTYPE getSkillType() override { return st; };
+	WEAPONTYPE getWeaponType() override { return wt; };
+
 	BlankWeapon* new_expr() override { return new BlankWeapon(); }
 	BlankWeapon* clone() override { return new BlankWeapon(*this); }
 };

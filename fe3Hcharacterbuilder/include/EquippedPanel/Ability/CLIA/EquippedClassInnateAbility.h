@@ -3,8 +3,10 @@
 
 #include <wx/wx.h>
 #include <map>
-#include <Unit/Ability/ClassInnateAbility.h>
+#include <Unit/Ability/ClassInnateAbility/ClassInnateAbility.h>
 //#include <vld.h>
+
+wxDECLARE_EVENT(TRANSMIT_CLIA_SELECTION, wxCommandEvent);
 
 class EquippedClassInnateAbility : public wxStaticText {
 private:

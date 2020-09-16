@@ -63,15 +63,15 @@ void WeaponManager::OnNewSelection(wxCommandEvent& eventfromwho) {
 	int trueid = id - offset;
 	bool isNotIncluded = weapontypes[trueid]->GetValue();
 
-	WTPACKAGE package{ isNotIncluded, trueid };
-	lbw->ReceiveWTInfo(package);
+	STINCPACKAGE package{ isNotIncluded, trueid };
+	lbw->ReceiveSTInfo(package);
 }
 
-void WeaponManager::ReceiveWeaponExclusivity(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
+void WeaponManager::ReceiveforWeaponExclusivityCheck(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
 	lbw->ReceiveExclusivity(charactername);
 }
 
-void WeaponManager::ReceiveSLInfo(SLPACKAGE* slpackage) {
+void WeaponManager::ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage) {
 	lbw->ReceiveSLInfo(slpackage);
 }
 

@@ -3,7 +3,7 @@
 SkillLevelManager::SkillLevelManager(wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
 {
-	std::vector<wxString> labels{ "Sword", "Lance", "Axe", "Bow", "Gauntlets", "Reason", "Faith", "Authority", "Heavy Armor", "Riding", "Flying" };
+	std::vector<wxString> labels{ "Sword", "Axe", "Lance", "Bow", "Gauntlets", "Reason", "Faith", "Authority", "Heavy Armor", "Riding", "Flying" };
 	wxString value{};
 	wxArrayString choices{};
 	int ddslIDoffset = 0;
@@ -25,7 +25,7 @@ SkillLevelManager::SkillLevelManager(wxWindow* parent, wxWindowID id) :
 }
 
 void SkillLevelManager::OnNewSelection(wxCommandEvent& uevent) {
-	SLPACKAGE* temp = dynamic_cast<SLPACKAGE*>(uevent.GetClientObject());
+	SKILLLEVELPACKAGE* temp = dynamic_cast<SKILLLEVELPACKAGE*>(uevent.GetClientObject());
 	DropDownSkillLevel* tempwindow = dynamic_cast<DropDownSkillLevel*>(uevent.GetEventObject());
 
 	temp->slstring = tempwindow->GetLabel();
