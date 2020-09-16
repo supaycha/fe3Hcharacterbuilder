@@ -10,7 +10,8 @@ void GTBTotalStats::recalculate() {
 	CalculateAS();
 	CalculateTotalProt();
 	CalculateTotalResilience();
-	CalculateTotalAvoid();
+	CalculatePhysicalAvoid();
+	CalculateMagicalAvoid();
 	CalculateTotalCritAvoid();
 	CalculateTotalRange();
 }
@@ -342,7 +343,7 @@ void GTBTotalStats::CalculateTotalResilience() {
 	totalstats[7] = buffer;
 }
 
-void GTBTotalStats::CalculateTotalAvoid() {
+void GTBTotalStats::CalculatePhysicalAvoid() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(1, 0);
 	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::AVO);
@@ -367,6 +368,34 @@ void GTBTotalStats::CalculateTotalAvoid() {
 	//	+/- Terrain Effects*//*)*/;
 }
 
+void GTBTotalStats::CalculateMagicalAvoid() {
+	std::wstring statstring;
+	std::vector<int> relevantabilities(1, 0);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::AVO);
+
+	std::wstring temp = currentGMTstats[5].getText();
+	int lvcstat5 = _wtoi(temp.c_str());
+	
+	temp = currentGMTstats[6].getText();
+	int lvcstat6 = _wtoi(temp.c_str());
+
+	//equipment avoid
+	temp = currentGESstats[5].getText();
+	int lvestat5 = _wtoi(temp.c_str());
+
+	//battalion avoid 
+	temp = currentGBSstats[4].getText();
+	int lvbstat4 = _wtoi(temp.c_str());
+
+	const std::wstring buffer = std::to_wstring(((lvcstat5 - lvcstat6) / 2) + (relevantabilities[0] + lvestat5 + lvbstat4));
+
+	totalstats[9] = buffer;
+
+	//	/*+ Skills
+	//	+/- Terrain Effects*//*)*/;
+}
+
+
 void GTBTotalStats::CalculateTotalCritAvoid() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(1, 0);
@@ -384,7 +413,7 @@ void GTBTotalStats::CalculateTotalCritAvoid() {
 
 	const std::wstring buffer = std::to_wstring(relevantabilities[0] + lvcstat6 + lvestat8);
 
-	totalstats[9] = buffer;
+	totalstats[10] = buffer;
 }
 
 void GTBTotalStats::CalculateTotalRange() {
@@ -396,7 +425,7 @@ void GTBTotalStats::CalculateTotalRange() {
 	int lvwstat3 = _wtoi(temp.c_str());
 
 	const std::wstring buffer = std::to_wstring(relevantabilities[0] + lvwstat3);
-	totalstats[10] = buffer;
+	totalstats[11] = buffer;
 }
 
 //void GTBTotalStats::ClearValues() {

@@ -24,6 +24,13 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	}
 
 	int offset = 3;
+	wxStaticText* basechargrowthtext = new wxStaticText(this, wxID_ANY, "BASE CHAR GROWTHS ->", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL | wxST_NO_AUTORESIZE);
+	//basechargrowthtext->SetMinSize(wxSize(wxDEFAULT, gmt->GetRowHeight(0)));
+	wxStaticText* baseclassgrowthtext1 = new wxStaticText(this, wxID_ANY, "BASE CLASS GROWTHS ->", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL | wxST_NO_AUTORESIZE);
+	//baseclassgrowthtext1->SetMinSize(wxSize(wxDEFAULT, gmt->GetRowHeight(0)));
+	wxStaticText* baseclassgrowthtext2 = new wxStaticText(this, wxID_ANY, "BASE CLASS GROWTHS ->", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL | wxST_NO_AUTORESIZE);
+	//baseclassgrowthtext2->SetMinSize(wxSize(wxDEFAULT, gmt->GetRowHeight(0)));
+	wxStaticText* beforeclassbooststext = new wxStaticText(this, wxID_ANY, "BEFORE CLASS BOOSTS ->", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL | wxST_NO_AUTORESIZE);
 
 	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 	columns[0]->AddSpacer(gmt->GetRowHeight(0));
@@ -36,15 +43,18 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	columns[0]->AddSpacer(gmt->GetRowHeight(0));
 
 	columns[1]->AddSpacer(gmt->GetRowHeight(0));
-	columns[1]->AddSpacer(gmt->GetRowHeight(0));
+	columns[1]->Add(basechargrowthtext, 1, wxEXPAND, 0);
+	//columns[1]->AddSpacer(gmt->GetRowHeight(0));
 	columns[1]->Add(ddc);
-	columns[1]->AddSpacer(gmt->GetRowHeight(0));
-	columns[1]->Add(ddclVector[0], 0, wxEXPAND, 0);
-	columns[1]->AddSpacer(gmt->GetRowHeight(0));
-	columns[1]->Add(ddclVector[1], 0, wxEXPAND, 0);
-	columns[1]->AddSpacer(gmt->GetRowHeight(0));
-	columns[1]->Add(ddclVector[2], 0, wxEXPAND, 0);
-
+	columns[1]->Add(baseclassgrowthtext1, 1, wxEXPAND, 0);
+	//columns[1]->AddSpacer(gmt->GetRowHeight(0));
+	columns[1]->Add(ddclVector[0], 1, wxEXPAND, 0);
+	columns[1]->Add(baseclassgrowthtext2, 1, wxEXPAND, 0);
+	//columns[1]->AddSpacer(gmt->GetRowHeight(0));
+	columns[1]->Add(ddclVector[1], 1, wxEXPAND, 0);
+	columns[1]->Add(beforeclassbooststext, 1, wxEXPAND, 0);
+	//columns[1]->AddSpacer(gmt->GetRowHeight(0));
+	columns[1]->Add(ddclVector[2], 1, wxEXPAND, 0);
 	columns[2]->Add(gmt);
 
 	for (unsigned int i = 0; i < columns.size(); ++i) {

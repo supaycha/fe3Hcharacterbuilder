@@ -8,7 +8,7 @@
 
 class GTBTotalStats : public wxGridTableBase {
 private:
-	std::vector<wxString> headers{ "PATK", "MATK", "PHIT", "MHIT", "TCRIT", "AS", "TPROT", "TRSL", "AVO", "CRITAVO", "RNGE" };
+	std::vector<wxString> headers{ "PATK", "MATK", "PHIT", "MHIT", "TCRIT", "AS", "TPROT", "TRSL", "PHYSAVO", "MAGAVO", "CRITAVO", "RNGE" };
 	Stats currentGMTstats;
 	Stats currentGWSstats;
 	Stats currentGESstats;
@@ -85,7 +85,8 @@ public:
 	void CalculateAS();
 	void CalculateTotalProt();
 	void CalculateTotalResilience();
-	void CalculateTotalAvoid();
+	void CalculatePhysicalAvoid();
+	void CalculateMagicalAvoid();
 	void CalculateTotalCritAvoid();
 	void CalculateTotalRange();
 	//void ClearValues();
