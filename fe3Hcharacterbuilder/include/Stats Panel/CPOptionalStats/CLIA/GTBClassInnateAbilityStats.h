@@ -20,7 +20,7 @@ private:
 	std::vector<wxString> currentheaders{ };	
 	std::map<wxString, wxClientData*> classinnateabilities;
 	std::vector<STATPACKAGE> statpVector{ };
-	wxString currentCLIAselection;
+	std::wstring currentCLIAselection;
 	bool hasStats = false;
 	WEAPONTYPE currentWeaponTypeofEquippedWeapon = WEAPONTYPE::BLANK;
 	bool equivalentWTs;
