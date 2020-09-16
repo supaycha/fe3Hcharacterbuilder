@@ -293,8 +293,12 @@ void GTBTotalStats::CalculateAS() {
 	temp = currentGESstats[6].getText();
 	int lvestat6 = _wtoi(temp.c_str());
 
+	int miniszero = ((lvwstat4 + relevantabilities[1]) - ((lvcstat2 + relevantabilities[2]) / 5));
+	if (miniszero < 0) {
+		miniszero = 0;
+	}
 
-	const std::wstring buffer = std::to_wstring((lvcstat5 + lvestat6 + relevantabilities[0]) - ((lvwstat4 + relevantabilities[1]) - ((lvcstat2 + relevantabilities[2]) / 5)));
+	const std::wstring buffer = std::to_wstring((lvcstat5 + lvestat6 + relevantabilities[0]) - miniszero);
 
 	totalstats[5] = buffer;
 }
