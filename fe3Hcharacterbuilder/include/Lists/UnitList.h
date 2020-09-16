@@ -252,7 +252,7 @@ public:
 			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Warriors", 
 			L"2", L"-2", L"0", L"0", L"0", L"0", L"0", L"1", L"30",
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", 
+			L"0.5", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
 			L"Random Shot",
 			L"8", L"40", L"1", L"2",
 			L"Inflicts rattled status on all targets.",
@@ -315,7 +315,7 @@ public:
 			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Pavise Co.",
 			L"0", L"-2", L"0", L"0", L"-10", L"4", L"1", L"5", L"75",
-			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
+			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
 			L"Blaze",
 			L"10", L"50", L"1", L"1",
 			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.",
@@ -455,7 +455,7 @@ public:
 			SL::C));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Magic Users", 
 			L"-2", L"3", L"0", L"0", L"0", L"1", L"1", L"5", L"45", 
-			L"0", L"0.5", L"0", L"0", L"1.3", L"0.5", L"0", L"0", L"0", 
+			L"0", L"0.5", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0", 
 			L"Resonant Ice",
 			L"7", L"50", L"1-2", L"1",
 			L"Works as magical damage. Inflicts rattled status on all targets.",
@@ -490,7 +490,7 @@ public:
 			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Holy Knights",
 			L"3", L"-2", L"0", L"0", L"-10", L"1", L"3", L"7", L"75",
-			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", 
+			L"1", L"0", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0", 
 			L"Linked Horses",
 			L"12", L"50", L"1", L"1",
 			L"Inflicts rattled status on all targets.",
@@ -728,7 +728,7 @@ public:
 			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Bergliez War Group", 
 			L"4", L"0", L"0", L"0", L"-10", L"0", L"0", L"7", L"105", 
-			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"1", L"0", L"1.3", L"0", L"0", L"1", L"0", L"0", L"0",
 			L"Onslaught",
 			L"8", L"50", L"1", L"2",
 			L"Pushes foe 1 tile away.", 
@@ -1448,93 +1448,134 @@ public:
 			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Dahlman PMC",
 			L"2", L"0", L"10", L"0", L"0", L"2", L"0", L"3", L"75", 
-			L"1", L"0", L"1.3", L"0", L"0", L"1", L"0.5", L"0", L"0",
+			L"1", L"0", L"1.3", L"0", L"0", L"1", L"0", L"0", L"0",
 			L"Onslaught",
 			L"8", L"50", L"1", L"2",
 			L"Pushes foe 1 tile away.", 
 			SL::E));
 
-		list.emplace_back(std::make_unique<Character>(L"---", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+		list.emplace_back(std::make_unique<Character>(L"---", 
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
-		list.emplace_back(std::make_unique<Character>(L"Byleth", L"27", L"4", L"13", L"6", L"9", L"8", L"8", L"6", L"6", L"7",
+		list.emplace_back(std::make_unique<Character>(L"Byleth", 
+			L"27", L"4", L"13", L"6", L"9", L"8", L"8", L"6", L"6", L"7",
 			L"0.45", L"0", L"0.45", L"0.35", L"0.45", L"0.45", L"0.45", L"0.35", L"0.3", L"0.45"));
-		list.emplace_back(std::make_unique<Character>(L"Edelgard", L"29", L"4", L"13", L"6", L"5", L"8", L"5", L"6", L"4", L"10",
+		list.emplace_back(std::make_unique<Character>(L"Edelgard",
+			L"29", L"4", L"13", L"6", L"5", L"8", L"5", L"6", L"4", L"10",
 			L"0.4", L"0", L"0.55", L"0.45", L"0.45", L"0.4", L"0.3", L"0.35", L"0.35", L"0.6"));
-		list.emplace_back(std::make_unique<Character>(L"Dorothea", L"24", L"4", L"5", L"11", L"6", L"7", L"6", L"4", L"7", L"8",
+		list.emplace_back(std::make_unique<Character>(L"Dorothea",
+			L"24", L"4", L"5", L"11", L"6", L"7", L"6", L"4", L"7", L"8",
 			L"0.4", L"0", L"0.2", L"0.4", L"0.45", L"0.4", L"0.35", L"0.15", L"0.35", L"0.4"));
-		list.emplace_back(std::make_unique<Character>(L"Ferdinand", L"28", L"4", L"8", L"5", L"6", L"8", L"6", L"6", L"2", L"7",
+		list.emplace_back(std::make_unique<Character>(L"Ferdinand",
+			L"28", L"4", L"8", L"5", L"6", L"8", L"6", L"6", L"2", L"7",
 			L"0.5", L"0", L"0.45", L"0.2", L"0.4", L"0.5", L"0.4", L"0.35", L"0.2", L"0.4"));
-		list.emplace_back(std::make_unique<Character>(L"Hubert", L"22", L"4", L"6", L"12", L"6", L"7", L"6", L"4", L"7", L"8",
+		list.emplace_back(std::make_unique<Character>(L"Hubert", 
+			L"22", L"4", L"6", L"12", L"6", L"7", L"6", L"4", L"7", L"6",
 			L"0.35", L"0", L"0.3", L"0.55", L"0.45", L"0.45", L"0.35", L"0.25", L"0.4", L"0.35"));
-		list.emplace_back(std::make_unique<Character>(L"Linhardt", L"24", L"4", L"5", L"10", L"6", L"5", L"7", L"5", L"9", L"3",
+		list.emplace_back(std::make_unique<Character>(L"Linhardt", 
+			L"24", L"4", L"5", L"10", L"6", L"5", L"7", L"5", L"9", L"3",
 			L"0.3", L"0", L"0.3", L"0.45", L"0.4", L"0.4", L"0.45", L"0.3", L"0.45", L"0.2"));
-		list.emplace_back(std::make_unique<Character>(L"Caspar", L"26", L"4", L"9", L"3", L"5", L"6", L"8", L"6", L"2", L"4",
+		list.emplace_back(std::make_unique<Character>(L"Caspar",
+			L"26", L"4", L"9", L"3", L"5", L"6", L"8", L"6", L"2", L"4",
 			L"0.55", L"0", L"0.45", L"0.25", L"0.45", L"0.45", L"0.4", L"0.3", L"0.2", L"0.25"));
-		list.emplace_back(std::make_unique<Character>(L"Bernadetta", L"25", L"4", L"8", L"5", L"7", L"7", L"5", L"4", L"2", L"6",
+		list.emplace_back(std::make_unique<Character>(L"Bernadetta",
+			L"25", L"4", L"8", L"5", L"7", L"7", L"5", L"4", L"2", L"6",
 			L"0.35", L"0", L"0.35", L"0.2", L"0.55", L"0.5", L"0.25", L"0.2", L"0.3", L"0.35"));
-		list.emplace_back(std::make_unique<Character>(L"Petra", L"25", L"4", L"9", L"3", L"7", L"10", L"7", L"5", L"2", L"6",
+		list.emplace_back(std::make_unique<Character>(L"Petra",
+			L"25", L"4", L"9", L"3", L"7", L"10", L"7", L"5", L"2", L"6",
 			L"0.45", L"0", L"0.4", L"0.25", L"0.5", L"0.6", L"0.45", L"0.3", L"0.15", L"0.35"));
-		list.emplace_back(std::make_unique<Character>(L"Dimitri", L"28", L"4", L"12", L"4", L"7", L"7", L"5", L"7", L"4", L"9",
+		list.emplace_back(std::make_unique<Character>(L"Dimitri",
+			L"28", L"4", L"12", L"4", L"7", L"7", L"5", L"7", L"4", L"9",
 			L"0.55", L"0", L"0.6", L"0.2", L"0.5", L"0.5", L"0.25", L"0.4", L"0.2", L"0.55"));
-		list.emplace_back(std::make_unique<Character>(L"Dedue", L"30", L"4", L"12", L"2", L"5", L"7", L"5", L"8", L"1", L"4",
+		list.emplace_back(std::make_unique<Character>(L"Dedue",
+			L"30", L"4", L"12", L"2", L"5", L"7", L"5", L"8", L"1", L"4",
 			L"0.6", L"0", L"0.5", L"0.15", L"0.3", L"0.2", L"0.25", L"0.5", L"0.1", L"0.3"));
-		list.emplace_back(std::make_unique<Character>(L"Felix", L"26", L"4", L"10", L"5", L"6", L"9", L"5", L"5", L"3", L"5",
+		list.emplace_back(std::make_unique<Character>(L"Felix",
+			L"26", L"4", L"10", L"5", L"6", L"9", L"5", L"5", L"3", L"5",
 			L"0.45", L"0", L"0.55", L"0.3", L"0.45", L"0.55", L"0.4", L"0.3", L"0.2", L"0.3"));
-		list.emplace_back(std::make_unique<Character>(L"Ashe", L"23", L"4", L"8", L"5", L"8", L"9", L"6", L"5", L"6", L"5",
+		list.emplace_back(std::make_unique<Character>(L"Ashe",
+			L"23", L"4", L"8", L"5", L"8", L"9", L"6", L"5", L"6", L"5",
 			L"0.35", L"0", L"0.35", L"0.25", L"0.55", L"0.5", L"0.4", L"0.2", L"0.35", L"0.25"));
-		list.emplace_back(std::make_unique<Character>(L"Sylvain", L"27", L"4", L"9", L"5", L"5", L"8", L"6", L"6", L"2", L"7",
+		list.emplace_back(std::make_unique<Character>(L"Sylvain",
+			L"27", L"4", L"9", L"5", L"5", L"8", L"6", L"6", L"2", L"7",
 			L"0.55", L"0", L"0.45", L"0.3", L"0.35", L"0.5", L"0.35", L"0.4", L"0.25", L"0.4"));
-		list.emplace_back(std::make_unique<Character>(L"Mercedes", L"25", L"4", L"6", L"10", L"6", L"8", L"5", L"5", L"9", L"8",
+		list.emplace_back(std::make_unique<Character>(L"Mercedes",
+			L"25", L"4", L"6", L"10", L"6", L"8", L"5", L"5", L"9", L"8",
 			L"0.3", L"0", L"0.25", L"0.5", L"0.45", L"0.4", L"0.3", L"0.25", L"0.45", L"0.4"));
-		list.emplace_back(std::make_unique<Character>(L"Annette", L"23", L"4", L"6", L"11", L"7", L"7", L"6", L"5", L"4", L"6",
+		list.emplace_back(std::make_unique<Character>(L"Annette", 
+			L"23", L"4", L"6", L"11", L"7", L"7", L"6", L"5", L"4", L"6",
 			L"0.25", L"0", L"0.3", L"0.5", L"0.5", L"0.35", L"0.35", L"0.2", L"0.3", L"0.35"));
-		list.emplace_back(std::make_unique<Character>(L"Ingrid", L"27", L"4", L"8", L"6", L"6", L"8", L"6", L"5", L"8", L"8",
+		list.emplace_back(std::make_unique<Character>(L"Ingrid",
+			L"27", L"4", L"8", L"6", L"6", L"8", L"6", L"5", L"8", L"8",
 			L"0.4", L"0", L"0.35", L"0.35", L"0.4", L"0.6", L"0.45", L"0.3", L"0.4", L"0.45"));
-		list.emplace_back(std::make_unique<Character>(L"Claude", L"26", L"4", L"11", L"5", L"8", L"8", L"7", L"6", L"4", L"8",
+		list.emplace_back(std::make_unique<Character>(L"Claude",
+			L"26", L"4", L"11", L"5", L"8", L"8", L"7", L"6", L"4", L"8",
 			L"0.35", L"0", L"0.4", L"0.25", L"0.6", L"0.55", L"0.45", L"0.3", L"0.25", L"0.55"));
-		list.emplace_back(std::make_unique<Character>(L"Lorenz", L"28", L"4", L"8", L"7", L"6", L"7", L"5", L"6", L"6", L"3",
+		list.emplace_back(std::make_unique<Character>(L"Lorenz",
+			L"28", L"4", L"8", L"7", L"6", L"7", L"5", L"6", L"6", L"3",
 			L"0.55", L"0", L"0.4", L"0.4", L"0.45", L"0.4", L"0.25", L"0.3", L"0.4", L"0.35"));
-		list.emplace_back(std::make_unique<Character>(L"Raphael", L"30", L"4", L"11", L"3", L"5", L"6", L"6", L"7", L"1", L"4",
+		list.emplace_back(std::make_unique<Character>(L"Raphael", 
+			L"30", L"4", L"11", L"3", L"5", L"6", L"6", L"7", L"1", L"4",
 			L"0.65", L"0", L"0.5", L"0.15", L"0.35", L"0.15", L"0.35", L"0.45", L"0.1", L"0.25"));
-		list.emplace_back(std::make_unique<Character>(L"Ignatz", L"25", L"4", L"8", L"5", L"7", L"8", L"8", L"4", L"6", L"4",
+		list.emplace_back(std::make_unique<Character>(L"Ignatz",
+			L"25", L"4", L"8", L"5", L"7", L"8", L"8", L"4", L"6", L"4",
 			L"0.35", L"0", L"0.35", L"0.3", L"0.5", L"0.5", L"0.55", L"0.25", L"0.35", L"0.25"));
-		list.emplace_back(std::make_unique<Character>(L"Lysithea", L"22", L"4", L"4", L"11", L"7", L"7", L"4", L"3", L"4", L"5",
+		list.emplace_back(std::make_unique<Character>(L"Lysithea",
+			L"22", L"4", L"4", L"11", L"7", L"7", L"4", L"3", L"4", L"5",
 			L"0.2", L"0", L"0.15", L"0.6", L"0.6", L"0.5", L"0.15", L"0.1", L"0.25", L"0.25"));
-		list.emplace_back(std::make_unique<Character>(L"Marianne", L"23", L"4", L"5", L"11", L"6", L"7", L"6", L"4", L"8", L"7",
+		list.emplace_back(std::make_unique<Character>(L"Marianne",
+			L"23", L"4", L"5", L"11", L"6", L"7", L"6", L"4", L"8", L"7",
 			L"0.35", L"0", L"0.2", L"0.5", L"0.4", L"0.4", L"0.35", L"0.15", L"0.45", L"0.4"));
-		list.emplace_back(std::make_unique<Character>(L"Hilda", L"29", L"4", L"10", L"5", L"5", L"8", L"6", L"6", L"3", L"7",
+		list.emplace_back(std::make_unique<Character>(L"Hilda", 
+			L"29", L"4", L"10", L"5", L"5", L"8", L"6", L"6", L"3", L"7",
 			L"0.5", L"0", L"0.45", L"0.25", L"0.3", L"0.5", L"0.35", L"0.35", L"0.2", L"0.5"));
-		list.emplace_back(std::make_unique<Character>(L"Leonie", L"26", L"4", L"9", L"5", L"8", L"9", L"6", L"7", L"2", L"7",
+		list.emplace_back(std::make_unique<Character>(L"Leonie",
+			L"26", L"4", L"9", L"5", L"8", L"9", L"6", L"7", L"2", L"7",
 			L"0.4", L"0", L"0.4", L"0.2", L"0.55", L"0.6", L"0.4", L"0.4", L"0.15", L"0.4"));
-		list.emplace_back(std::make_unique<Character>(L"Flayn", L"24", L"4", L"6", L"9", L"6", L"5", L"4", L"5", L"10", L"9",
+		list.emplace_back(std::make_unique<Character>(L"Flayn",
+			L"24", L"4", L"6", L"9", L"6", L"5", L"4", L"5", L"10", L"9",
 			L"0.25", L"0", L"0.25", L"0.55", L"0.45", L"0.35", L"0.15", L"0.25", L"0.5", L"0.45"));
-		list.emplace_back(std::make_unique<Character>(L"Hanneman", L"25", L"4", L"6", L"10", L"6", L"6", L"4", L"5", L"7", L"5",
+		list.emplace_back(std::make_unique<Character>(L"Hanneman",
+			L"25", L"4", L"6", L"10", L"6", L"6", L"4", L"5", L"7", L"5",
 			L"0.4", L"0", L"0.3", L"0.55", L"0.45", L"0.2", L"0.35", L"0.25", L"0.4", L"0.35"));
-		list.emplace_back(std::make_unique<Character>(L"Seteth", L"27", L"4", L"9", L"8", L"8", L"5", L"6", L"6", L"4", L"9",
+		list.emplace_back(std::make_unique<Character>(L"Seteth",
+			L"27", L"4", L"9", L"8", L"8", L"5", L"6", L"6", L"4", L"9",
 			L"0.5", L"0", L"0.45", L"0.35", L"0.5", L"0.5", L"0.25", L"0.3", L"0.25", L"0.45"));
-		list.emplace_back(std::make_unique<Character>(L"Manuela", L"26", L"4", L"10", L"8", L"6", L"8", L"6", L"5", L"4", L"7",
+		list.emplace_back(std::make_unique<Character>(L"Manuela",
+			L"26", L"4", L"10", L"8", L"6", L"8", L"6", L"5", L"4", L"7",
 			L"0.5", L"0", L"0.35", L"0.35", L"0.4", L"0.6", L"0.35", L"0.3", L"0.25", L"0.5"));
-		list.emplace_back(std::make_unique<Character>(L"Gilbert", L"30", L"4", L"9", L"4", L"6", L"5", L"4", L"5", L"2", L"6",
+		list.emplace_back(std::make_unique<Character>(L"Gilbert",
+			L"30", L"4", L"9", L"4", L"6", L"5", L"4", L"5", L"2", L"6",
 			L"0.55", L"0", L"0.45", L"0.2", L"0.45", L"0.3", L"0.15", L"0.45", L"0.1", L"0.35"));
-		list.emplace_back(std::make_unique<Character>(L"Alois", L"28", L"4", L"9", L"4", L"5", L"6", L"5", L"5", L"2", L"7",
+		list.emplace_back(std::make_unique<Character>(L"Alois",
+			L"28", L"4", L"9", L"4", L"5", L"6", L"5", L"5", L"2", L"7",
 			L"0.45", L"0", L"0.45", L"0.2", L"0.35", L"0.4", L"0.3", L"0.4", L"0.2", L"0.4"));
-		list.emplace_back(std::make_unique<Character>(L"Catherine", L"27", L"4", L"8", L"5", L"6", L"7", L"6", L"5", L"2", L"4",
+		list.emplace_back(std::make_unique<Character>(L"Catherine", 
+			L"27", L"4", L"8", L"5", L"6", L"7", L"6", L"5", L"2", L"4",
 			L"0.5", L"0", L"0.5", L"0.25", L"0.4", L"0.55", L"0.3", L"0.3", L"0.2", L"0.25"));
-		list.emplace_back(std::make_unique<Character>(L"Shamir", L"26", L"4", L"8", L"4", L"7", L"6", L"8", L"5", L"2", L"6",
+		list.emplace_back(std::make_unique<Character>(L"Shamir",
+			L"26", L"4", L"8", L"4", L"7", L"6", L"8", L"5", L"2", L"6",
 			L"0.35", L"0", L"0.4", L"0.2", L"0.55", L"0.4", L"0.55", L"0.2", L"0.15", L"0.3"));
-		list.emplace_back(std::make_unique<Character>(L"Cyril", L"24", L"4", L"7", L"4", L"6", L"6", L"6", L"5", L"2", L"4",
+		list.emplace_back(std::make_unique<Character>(L"Cyril", 
+			L"24", L"4", L"7", L"4", L"6", L"6", L"6", L"5", L"2", L"4",
 			L"0.35", L"0", L"0.2", L"0.15", L"0.4", L"0.4", L"0.3", L"0.1", L"0.1", L"0.15"));
-		list.emplace_back(std::make_unique<Character>(L"Jeritza", L"30", L"4", L"8", L"6", L"6", L"8", L"4", L"7", L"5", L"3",
+		list.emplace_back(std::make_unique<Character>(L"Jeritza",
+			L"30", L"4", L"8", L"6", L"6", L"8", L"4", L"7", L"5", L"3",
 			L"0.5", L"0", L"0.5", L"0.35", L"0.35", L"0.6", L"0.3", L"0.4", L"0.25", L"0.25"));
-		list.emplace_back(std::make_unique<Character>(L"Anna", L"26", L"4", L"7", L"7", L"7", L"7", L"7", L"5", L"7", L"7",
+		list.emplace_back(std::make_unique<Character>(L"Anna",
+			L"26", L"4", L"7", L"7", L"7", L"7", L"7", L"5", L"7", L"7",
 			L"0.35", L"0", L"0.35", L"0.35", L"0.45", L"0.55", L"0.45", L"0.3", L"0.4", L"0.5"));
-		list.emplace_back(std::make_unique<Character>(L"Yuri", L"24", L"4", L"10", L"6", L"7", L"9", L"7", L"5", L"7", L"8",
+		list.emplace_back(std::make_unique<Character>(L"Yuri",
+			L"24", L"4", L"10", L"6", L"7", L"9", L"7", L"5", L"7", L"8",
 			L"0.3", L"0", L"0.4", L"0.35", L"0.4", L"0.65", L"0.45", L"0.3", L"0.35", L"0.5"));
-		list.emplace_back(std::make_unique<Character>(L"Balthus", L"28", L"4", L"11", L"5", L"4", L"7", L"3", L"7", L"4", L"4",
+		list.emplace_back(std::make_unique<Character>(L"Balthus", 
+			L"28", L"4", L"11", L"5", L"4", L"7", L"3", L"7", L"4", L"4",
 			L"0.5", L"0", L"0.5", L"0.3", L"0.25", L"0.3", L"0.2", L"0.45", L"0.3", L"0.3"));
-		list.emplace_back(std::make_unique<Character>(L"Constance", L"23", L"4", L"5", L"11", L"6", L"6", L"4", L"3", L"4", L"6",
+		list.emplace_back(std::make_unique<Character>(L"Constance", 
+			L"23", L"4", L"5", L"11", L"6", L"6", L"4", L"3", L"4", L"6",
 			L"0.2", L"0", L"0.2", L"0.6", L"0.3", L"0.35", L"0.15", L"0.15", L"0.3", L"0.25"));
-		list.emplace_back(std::make_unique<Character>(L"Hapi", L"26", L"4", L"6", L"11", L"8", L"6", L"4", L"4", L"7", L"4",
+		list.emplace_back(std::make_unique<Character>(L"Hapi",
+			L"26", L"4", L"6", L"11", L"8", L"6", L"4", L"4", L"7", L"4",
 			L"0.35", L"0", L"0.35", L"0.45", L"0.45", L"0.4", L"0.2", L"0.15", L"0.45", L"0.25"));
 
 		list.emplace_back(std::make_unique<BlankWeapon>(L"---", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"0", L"0", SL::BLANK));
@@ -1551,216 +1592,149 @@ public:
 		list.emplace_back(std::make_unique<Sword>(L"Killing Edge+", false, L"NULL", L"9", L"85", L"35", L"1", L"10", L"C", L"25", SL::C));
 		list.emplace_back(std::make_unique<Sword>(L"Training Sword", false, L"NULL", L"3", L"100", L"0", L"1", L"4", L"E", L"50", SL::E));
 		list.emplace_back(std::make_unique<Sword>(L"Training Sword+", false, L"NULL", L"3", L"100", L"0", L"1", L"2", L"E", L"65", SL::E));
-
 		list.emplace_back(std::make_unique<Sword>(L"Levin Sword", false, L"NULL", L"9", L"70", L"0", L"1-2", L"9", L"C", L"25", SL::C));
 		list.emplace_back(std::make_unique<Sword>(L"Levin Sword+", false, L"NULL", L"9", L"70", L"0", L"1-3", L"9", L"C", L"30", SL::C));
-
 		list.emplace_back(std::make_unique<Sword>(L"Armorslayer", false, L"NULL", L"8", L"80", L"0", L"1", L"11", L"D", L"20", SL::D));
 		list.emplace_back(std::make_unique<Sword>(L"Armorslayer+", false, L"NULL", L"8", L"100", L"5", L"1", L"11", L"D", L"25", SL::D));
-
 		list.emplace_back(std::make_unique<Sword>(L"Rapier", false, L"NULL", L"7", L"95", L"10", L"1", L"5", L"E", L"40", SL::E));
 		list.emplace_back(std::make_unique<Sword>(L"Rapier+", false, L"NULL", L"9", L"95", L"20", L"1", L"5", L"E", L"45", SL::E));
-
 		list.emplace_back(std::make_unique<Sword>(L"Devil Sword", false, L"NULL", L"13", L"65", L"0", L"1", L"10", L"D", L"30", SL::D));
 		list.emplace_back(std::make_unique<Sword>(L"Devil Sword+", false, L"NULL", L"16", L"65", L"0", L"1", L"10", L"D", L"30", SL::D));
-
 		list.emplace_back(std::make_unique<Sword>(L"Wo Dao", false, L"NULL", L"8", L"90", L"30", L"1", L"5", L"B", L"15", SL::B));
 		list.emplace_back(std::make_unique<Sword>(L"Wo Dao+", false, L"NULL", L"9", L"90", L"40", L"1", L"5", L"B", L"25", SL::B));
-
 		list.emplace_back(std::make_unique<Sword>(L"Sword of Seiros", false, L"NULL", L"11", L"80", L"10", L"1", L"6", L"A", L"30", SL::A));
 		list.emplace_back(std::make_unique<Sword>(L"Sword of Begalta", true, L"Claude", L"12", L"100", L"0", L"1", L"5", L"A", L"30", SL::A));
 		list.emplace_back(std::make_unique<Sword>(L"Sword of Moralta", false, L"NULL", L"13", L"75", L"25", L"1", L"9", L"A", L"30", SL::A));
-
 		list.emplace_back(std::make_unique<Sword>(L"Cursed Ashiya Sword", true, L"Felix", L"13", L"70", L"40", L"1", L"8", L"B", L"15", SL::B));
 		list.emplace_back(std::make_unique<Sword>(L"Cursed Ashiya Sword+", true, L"Felix", L"14", L"70", L"50", L"1", L"8", L"B", L"20", SL::B));
-
 		list.emplace_back(std::make_unique<Sword>(L"Sword of Zoltan", false, L"NULL", L"13", L"90", L"0", L"1", L"9", L"A", L"25", SL::A));
 		list.emplace_back(std::make_unique<Sword>(L"Sword of Zoltan+", false, L"NULL", L"16", L"90", L"5", L"1", L"9", L"A", L"30", SL::A));
-
 		list.emplace_back(std::make_unique<Sword>(L"Thunderbrand", true, L"Catherine", L"13", L"70", L"10", L"1", L"7", L"E", L"30", SL::E));
 		list.emplace_back(std::make_unique<Sword>(L"Blutgang", true, L"Marianne", L"13", L"80", L"0", L"1", L"7", L"E", L"20", SL::E));
 		list.emplace_back(std::make_unique<Sword>(L"Sword of the Creator", true, L"Byleth", L"7", L"90", L"0", L"1-2", L"9", L"E", L"20", SL::E));
-
 		list.emplace_back(std::make_unique<Sword>(L"Venin Edge", false, L"NULL", L"5", L"90", L"0", L"1", L"6", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Sword>(L"Venin Edge+", false, L"NULL", L"6", L"100", L"0", L"1", L"6", L"C", L"25", SL::C));
-
 		list.emplace_back(std::make_unique<Sword>(L"Mercurius", false, L"NULL", L"15", L"100", L"10", L"1", L"7", L"A", L"40", SL::A));
 		list.emplace_back(std::make_unique<Sword>(L"Rusted Sword", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
 		list.emplace_back(std::make_unique<Lance>(L"Broken Lance", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-
 		list.emplace_back(std::make_unique<Lance>(L"Iron Lance", false, L"NULL", L"6", L"80", L"0", L"1", L"6", L"E", L"30", SL::E));
 		list.emplace_back(std::make_unique<Lance>(L"Iron Lance+", false, L"NULL", L"7", L"90", L"0", L"1", L"6", L"E", L"35", SL::E));
-
 		list.emplace_back(std::make_unique<Lance>(L"Steel Lance", false, L"NULL", L"9", L"75", L"0", L"1", L"11", L"D", L"40", SL::D));
 		list.emplace_back(std::make_unique<Lance>(L"Steel Lance+", false, L"NULL", L"11", L"75", L"0", L"1", L"11", L"D", L"45", SL::D));
-
 		list.emplace_back(std::make_unique<Lance>(L"Silver Lance", false, L"NULL", L"13", L"80", L"0", L"1", L"9", L"B", L"25", SL::B));
 		list.emplace_back(std::make_unique<Lance>(L"Silver Lance+", false, L"NULL", L"14", L"80", L"0", L"1", L"9", L"B", L"35", SL::B));
-
 		list.emplace_back(std::make_unique<Lance>(L"Brave Lance", false, L"NULL", L"10", L"70", L"0", L"1", L"13", L"B", L"25", SL::B));
 		list.emplace_back(std::make_unique<Lance>(L"Brave Lance+", false, L"NULL", L"11", L"80", L"0", L"1", L"13", L"B", L"35", SL::B));
-
 		list.emplace_back(std::make_unique<Lance>(L"Killer Lance", false, L"NULL", L"9", L"80", L"25", L"1", L"11", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Lance>(L"Killer Lance+", false, L"NULL", L"10", L"80", L"35", L"1", L"11", L"C", L"25", SL::C));
-
 		list.emplace_back(std::make_unique<Lance>(L"Training Lance", false, L"NULL", L"4", L"90", L"0", L"1", L"5", L"E", L"50", SL::E));
 		list.emplace_back(std::make_unique<Lance>(L"Training Lance+", false, L"NULL", L"4", L"90", L"0", L"1", L"3", L"E", L"65", SL::E));
-
 		list.emplace_back(std::make_unique<Lance>(L"Javelin", false, L"NULL", L"2", L"80", L"0", L"1-2", L"8", L"D", L"30", SL::D));
 		list.emplace_back(std::make_unique<Lance>(L"Javelin+", false, L"NULL", L"3", L"80", L"0", L"1-2", L"8", L"D", L"40", SL::D));
-
 		list.emplace_back(std::make_unique<Lance>(L"Short Spear", false, L"NULL", L"5", L"75", L"0", L"1-2", L"10", L"C", L"25", SL::C));
 		list.emplace_back(std::make_unique<Lance>(L"Short Spear+", false, L"NULL", L"6", L"75", L"0", L"1-2", L"10", L"C", L"35", SL::C));
-
 		list.emplace_back(std::make_unique<Lance>(L"Spear", false, L"NULL", L"8", L"70", L"0", L"1-2", L"12", L"B", L"20", SL::B));
 		list.emplace_back(std::make_unique<Lance>(L"Spear+", false, L"NULL", L"9", L"70", L"0", L"1-2", L"12", L"B", L"30", SL::B));
-
 		list.emplace_back(std::make_unique<Lance>(L"Horseslayer", false, L"NULL", L"8", L"70", L"0", L"1", L"13", L"D", L"20", SL::D));
 		list.emplace_back(std::make_unique<Lance>(L"Horseslayer+", false, L"NULL", L"8", L"90", L"5", L"1", L"13", L"D", L"25", SL::D));
-
 		list.emplace_back(std::make_unique<Lance>(L"Blessed Lance", false, L"NULL", L"7", L"80", L"0", L"1", L"14", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Lance>(L"Blessed Lance+", false, L"NULL", L"9", L"80", L"0", L"1", L"14", L"C", L"20", SL::C));
-
 		list.emplace_back(std::make_unique<Lance>(L"Crescent Sickle", false, L"NULL", L"10", L"80", L"0", L"1", L"12", L"B", L"50", SL::B));
 		list.emplace_back(std::make_unique<Lance>(L"Crescent Sickle+", false, L"NULL", L"11", L"80", L"10", L"1", L"12", L"B", L"55", SL::B));
-
 		list.emplace_back(std::make_unique<Lance>(L"Lance of Zoltan", false, L"NULL", L"15", L"80", L"0", L"1", L"10", L"A", L"20", SL::A));
 		list.emplace_back(std::make_unique<Lance>(L"Lance of Zoltan+", false, L"NULL", L"18", L"80", L"5", L"1", L"10", L"A", L"25", SL::A));
-
 		list.emplace_back(std::make_unique<Lance>(L"Lance of Ruin", true, L"Sylvain", L"22", L"65", L"20", L"1", L"9", L"E", L"20", SL::E));
 		list.emplace_back(std::make_unique<Lance>(L"Areadbhar", true, L"Dimitri", L"19", L"75", L"10", L"1", L"9", L"E", L"20", SL::E));
 		list.emplace_back(std::make_unique<Lance>(L"Luin", true, L"Ingrid", L"17", L"90", L"10", L"1", L"9", L"E", L"20", SL::E));
 		list.emplace_back(std::make_unique<Lance>(L"Spear of Assal", true, L"Seteth", L"14", L"85", L"10", L"1", L"9", L"A", L"30", SL::A));
-
 		list.emplace_back(std::make_unique<Lance>(L"Arrow of Indra", false, L"NULL", L"12", L"75", L"0", L"1-2", L"14", L"C", L"30", SL::C));
 		list.emplace_back(std::make_unique<Lance>(L"Arrow of Indra+", false, L"NULL", L"12", L"75", L"0", L"1-3", L"14", L"C", L"35", SL::C));
-
 		list.emplace_back(std::make_unique<Lance>(L"Venin Lance", false, L"NULL", L"6", L"80", L"0", L"1", L"7", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Lance>(L"Venin Lance+", false, L"NULL", L"7", L"90", L"0", L"1", L"7", L"C", L"25", SL::C));
-
 		list.emplace_back(std::make_unique<Lance>(L"Gradivus", false, L"NULL", L"17", L"90", L"10", L"1-2", L"8", L"A", L"30", SL::A));
 		list.emplace_back(std::make_unique<Lance>(L"Rusted Lance", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Broken Axe", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		
+		list.emplace_back(std::make_unique<Axe>(L"Broken Axe", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));		
 		list.emplace_back(std::make_unique<Axe>(L"Iron Axe", false, L"NULL", L"8", L"70", L"0", L"1", L"7", L"E", L"45", SL::E));
 		list.emplace_back(std::make_unique<Axe>(L"Iron Axe+", false, L"NULL", L"9", L"80", L"0", L"1", L"7", L"E", L"50", SL::E));
-
 		list.emplace_back(std::make_unique<Axe>(L"Steel Axe", false, L"NULL", L"11", L"65", L"0", L"1", L"12", L"D", L"55", SL::D));
 		list.emplace_back(std::make_unique<Axe>(L"Steel Axe+", false, L"NULL", L"13", L"65", L"0", L"1", L"12", L"D", L"60", SL::D));
-
 		list.emplace_back(std::make_unique<Axe>(L"Silver Axe", false, L"NULL", L"16", L"70", L"0", L"1", L"10", L"B", L"30", SL::B));
 		list.emplace_back(std::make_unique<Axe>(L"Silver Axe+", false, L"NULL", L"17", L"70", L"0", L"1", L"10", L"B", L"40", SL::B));
-
 		list.emplace_back(std::make_unique<Axe>(L"Brave Axe", false, L"NULL", L"12", L"60", L"0", L"1", L"14", L"B", L"30", SL::B));
 		list.emplace_back(std::make_unique<Axe>(L"Brave Axe+", false, L"NULL", L"13", L"70", L"0", L"1", L"14", L"B", L"40", SL::B));
-
 		list.emplace_back(std::make_unique<Axe>(L"Killer Axe", false, L"NULL", L"11", L"70", L"25", L"1", L"12", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Axe>(L"Killer Axe+", false, L"NULL", L"12", L"70", L"35", L"1", L"12", L"C", L"25", SL::C));
-
 		list.emplace_back(std::make_unique<Axe>(L"Training Axe", false, L"NULL", L"6", L"80", L"0", L"1", L"6", L"E", L"50", SL::E));
 		list.emplace_back(std::make_unique<Axe>(L"Training Axe+", false, L"NULL", L"6", L"80", L"0", L"1", L"4", L"E", L"65", SL::E));
-
 		list.emplace_back(std::make_unique<Axe>(L"Bolt Axe", false, L"NULL", L"14", L"60", L"0", L"1-2", L"15", L"B", L"25", SL::B));
 		list.emplace_back(std::make_unique<Axe>(L"Bolt Axe+", false, L"NULL", L"14", L"60", L"0", L"1-3", L"15", L"B", L"30", SL::B));
-
 		list.emplace_back(std::make_unique<Axe>(L"Hand Axe", false, L"NULL", L"4", L"70", L"0", L"1-2", L"10", L"D", L"30", SL::D));
 		list.emplace_back(std::make_unique<Axe>(L"Hand Axe+", false, L"NULL", L"5", L"70", L"0", L"1-2", L"10", L"D", L"40", SL::D));
-
 		list.emplace_back(std::make_unique<Axe>(L"Short Axe", false, L"NULL", L"8", L"65", L"0", L"1-2", L"12", L"C", L"25", SL::C));
 		list.emplace_back(std::make_unique<Axe>(L"Short Axe+", false, L"NULL", L"9", L"65", L"0", L"1-2", L"12", L"C", L"35", SL::C));
-
 		list.emplace_back(std::make_unique<Axe>(L"Tomahawk", false, L"NULL", L"12", L"60", L"0", L"1-2", L"14", L"B", L"20", SL::B));
 		list.emplace_back(std::make_unique<Axe>(L"Tomahawk+", false, L"NULL", L"13", L"60", L"0", L"1-2", L"14", L"B", L"30", SL::B));
-
 		list.emplace_back(std::make_unique<Axe>(L"Hammer", false, L"NULL", L"10", L"60", L"0", L"1", L"15", L"D", L"20", SL::D));
 		list.emplace_back(std::make_unique<Axe>(L"Hammer+", false, L"NULL", L"10", L"80", L"5", L"1", L"15", L"D", L"25", SL::D));
-
 		list.emplace_back(std::make_unique<Axe>(L"Devil Axe", false, L"NULL", L"18", L"60", L"0", L"1", L"14", L"D", L"30", SL::D));
 		list.emplace_back(std::make_unique<Axe>(L"Devil Axe+", false, L"NULL", L"21", L"60", L"0", L"1", L"14", L"D", L"30", SL::D));
-
 		list.emplace_back(std::make_unique<Axe>(L"Freikugel", true, L"Hilda", L"23", L"65", L"10", L"1", L"11", L"E", L"20", SL::E));
 		list.emplace_back(std::make_unique<Axe>(L"Crusher", true, L"Annette", L"18", L"60", L"0", L"1", L"11", L"E", L"20", SL::E));
 		list.emplace_back(std::make_unique<Axe>(L"Axe of Ukonvasara", true, L"Lorenz", L"19", L"65", L"20", L"1", L"15", L"A", L"30", SL::A));
-
 		list.emplace_back(std::make_unique<Axe>(L"Axe of Zoltan", false, L"NULL", L"17", L"70", L"0", L"1", L"14", L"A", L"20", SL::A));
 		list.emplace_back(std::make_unique<Axe>(L"Axe of Zoltan+", false, L"NULL", L"20", L"70", L"5", L"1", L"14", L"A", L"25", SL::A));
-
 		list.emplace_back(std::make_unique<Axe>(L"Mace", false, L"NULL", L"6", L"70", L"0", L"1", L"6", L"E", L"20", SL::E));
 		list.emplace_back(std::make_unique<Axe>(L"Mace+", false, L"NULL", L"6", L"90", L"5", L"1", L"6", L"E", L"25", SL::E));
-
 		list.emplace_back(std::make_unique<Axe>(L"Amyr", true, L"Edelgard,Rhea", L"24", L"60", L"20", L"1", L"11", L"E", L"20", SL::E));
-
 		list.emplace_back(std::make_unique<Axe>(L"Venin Axe", false, L"NULL", L"8", L"70", L"0", L"1", L"8", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Axe>(L"Venin Axe+", false, L"NULL", L"9", L"80", L"0", L"1", L"8", L"C", L"25", SL::C));
-
 		list.emplace_back(std::make_unique<Axe>(L"Hauteclere", false, L"NULL", L"19", L"80", L"10", L"1", L"12", L"A", L"40", SL::A));
 		list.emplace_back(std::make_unique<Axe>(L"Rusted Axe", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
 		list.emplace_back(std::make_unique<Bow>(L"Broken Bow", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-
 		list.emplace_back(std::make_unique<Bow>(L"Iron Bow", false, L"NULL", L"6", L"85", L"0", L"2", L"6", L"E", L"40", SL::E));
 		list.emplace_back(std::make_unique<Bow>(L"Iron Bow+", false, L"NULL", L"7", L"95", L"0", L"2", L"5", L"E", L"45", SL::E));
-
 		list.emplace_back(std::make_unique<Bow>(L"Steel Bow", false, L"NULL", L"9", L"80", L"0", L"2", L"11", L"D", L"50", SL::D));
 		list.emplace_back(std::make_unique<Bow>(L"Steel Bow+", false, L"NULL", L"11", L"80", L"0", L"2", L"10", L"D", L"55", SL::D));
-
 		list.emplace_back(std::make_unique<Bow>(L"Silver Bow", false, L"NULL", L"12", L"75", L"0", L"2", L"9", L"B", L"30", SL::B));
 		list.emplace_back(std::make_unique<Bow>(L"Silver Bow+", false, L"NULL", L"13", L"75", L"0", L"2", L"8", L"B", L"40", SL::B));
-
 		list.emplace_back(std::make_unique<Bow>(L"Brave Bow", false, L"NULL", L"10", L"70", L"0", L"2", L"13", L"B", L"30", SL::B));
 		list.emplace_back(std::make_unique<Bow>(L"Brave Bow+", false, L"NULL", L"11", L"80", L"0", L"2", L"12", L"B", L"40", SL::B));
-
 		list.emplace_back(std::make_unique<Bow>(L"Killer Bow", false, L"NULL", L"9", L"80", L"25", L"2", L"11", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Bow>(L"Killer Bow+", false, L"NULL", L"10", L"80", L"35", L"2", L"11", L"C", L"25", SL::C));
-
 		list.emplace_back(std::make_unique<Bow>(L"Training Bow", false, L"NULL", L"3", L"90", L"0", L"2", L"5", L"E", L"50", SL::E));
 		list.emplace_back(std::make_unique<Bow>(L"Training Bow+", false, L"NULL", L"3", L"90", L"0", L"2", L"3", L"E", L"65", SL::E));
-
 		list.emplace_back(std::make_unique<Bow>(L"Magic Bow", false, L"NULL", L"8", L"75", L"0", L"2", L"9", L"B", L"25", SL::B));
 		list.emplace_back(std::make_unique<Bow>(L"Magic Bow+", false, L"NULL", L"8", L"75", L"0", L"2-3", L"9", L"B", L"30", SL::B));
-
 		list.emplace_back(std::make_unique<Bow>(L"Longbow", false, L"NULL", L"9", L"70", L"0", L"2-3", L"13", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Bow>(L"Longbow+", false, L"NULL", L"11", L"70", L"0", L"2-3", L"13", L"C", L"25", SL::C));
-
 		list.emplace_back(std::make_unique<Bow>(L"Mini Bow", false, L"NULL", L"4", L"90", L"0", L"1-2", L"3", L"D", L"50", SL::D));
 		list.emplace_back(std::make_unique<Bow>(L"Mini Bow+", false, L"NULL", L"6", L"90", L"10", L"1-2", L"3", L"D", L"55", SL::D));
-
 		list.emplace_back(std::make_unique<Bow>(L"Blessed Bow", false, L"NULL", L"6", L"70", L"0", L"2", L"14", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Bow>(L"Blessed Bow+", false, L"NULL", L"8", L"70", L"0", L"2", L"14", L"C", L"20", SL::C));
-
 		list.emplace_back(std::make_unique<Bow>(L"Tathlum Bow", true, L"Mercedes,Jeritza", L"13", L"80", L"10", L"2", L"11", L"A", L"30", SL::A));
 		list.emplace_back(std::make_unique<Bow>(L"The Inexhaustible", true, L"Seteth", L"11", L"80", L"0", L"2", L"11", L"A", L"30", SL::A));
-
 		list.emplace_back(std::make_unique<Bow>(L"Bow of Zoltan", false, L"NULL", L"13", L"75", L"0", L"2", L"8", L"A", L"20", SL::A));
 		list.emplace_back(std::make_unique<Bow>(L"Bow of Zoltan+", false, L"NULL", L"16", L"75", L"5", L"2", L"8", L"A", L"25", SL::A));
-
 		list.emplace_back(std::make_unique<Bow>(L"Failnaught", true, L"Claude", L"18", L"75", L"20", L"2-3", L"9", L"E", L"20", SL::E));
-
 		list.emplace_back(std::make_unique<Bow>(L"Venin Bow", false, L"NULL", L"6", L"85", L"0", L"2", L"6", L"C", L"20", SL::C));
 		list.emplace_back(std::make_unique<Bow>(L"Venin Bow+", false, L"NULL", L"7", L"95", L"0", L"2", L"6", L"C", L"25", SL::C));
-
 		list.emplace_back(std::make_unique<Bow>(L"Parthia", false, L"NULL", L"15", L"85", L"10", L"2", L"7", L"A", L"40", SL::A));
-		list.emplace_back(std::make_unique<Bow>(L"Rusted Bow", false, L"NULL", L"0", L"30", L"0", L"2", L"5", L"E", L"45", SL::E));
+		list.emplace_back(std::make_unique<Bow>(L"Rusted Bow", false, L"NULL", L"0", L"30", L"0", L"2", L"5", L"E", L"0", SL::E));
 		list.emplace_back(std::make_unique<Gauntlets>(L"Broken Gauntlets", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-
 		list.emplace_back(std::make_unique<Gauntlets>(L"Iron Gauntlets", false, L"NULL", L"1", L"85", L"5", L"1", L"3", L"E", L"50", SL::E));
 		list.emplace_back(std::make_unique<Gauntlets>(L"Iron Gauntlets+", false, L"NULL", L"1", L"95", L"5", L"1", L"3", L"E", L"60", SL::E));
-
 		list.emplace_back(std::make_unique<Gauntlets>(L"Steel Gauntlets", false, L"NULL", L"3", L"80", L"5", L"1", L"5", L"D", L"60", SL::D));
 		list.emplace_back(std::make_unique<Gauntlets>(L"Steel Gauntlets+", false, L"NULL", L"3", L"85", L"5", L"1", L"5", L"D", L"70", SL::D));
-
 		list.emplace_back(std::make_unique<Gauntlets>(L"Silver Gauntlets", false, L"NULL", L"4", L"85", L"5", L"1", L"7", L"B", L"40", SL::B));
 		list.emplace_back(std::make_unique<Gauntlets>(L"Silver Gauntlets+", false, L"NULL", L"4", L"90", L"5", L"1", L"7", L"B", L"55", SL::B));
-
 		list.emplace_back(std::make_unique<Gauntlets>(L"Training Gauntlets", false, L"NULL", L"0", L"90", L"5", L"1", L"1", L"E", L"70", SL::E));
 		list.emplace_back(std::make_unique<Gauntlets>(L"Training Gauntlets+", false, L"NULL", L"0", L"100", L"5", L"1", L"1", L"E", L"90", SL::E));
-
 		list.emplace_back(std::make_unique<Gauntlets>(L"Dragon Claws", false, L"NULL", L"4", L"75", L"5", L"1", L"7", L"A", L"30", SL::A));
 		list.emplace_back(std::make_unique<Gauntlets>(L"Dragon Claws+", false, L"NULL", L"4", L"85", L"5", L"1", L"7", L"A", L"40", SL::A));
-
 		list.emplace_back(std::make_unique<Gauntlets>(L"Killer Knuckles", false, L"NULL", L"3", L"80", L"20", L"1", L"5", L"B", L"30", SL::B));
 		list.emplace_back(std::make_unique<Gauntlets>(L"Killer Knuckles+", false, L"NULL", L"3", L"80", L"30", L"1", L"5", L"B", L"40", SL::B));
-
-		list.emplace_back(std::make_unique<Gauntlets>(L"Aura Gauntlets", false, L"NULL", L"2", L"70", L"0", L"1", L"4", L"A", L"30", SL::A));
+		list.emplace_back(std::make_unique<Gauntlets>(L"Aura Knuckles", false, L"NULL", L"2", L"70", L"0", L"1", L"4", L"A", L"30", SL::A));
+		list.emplace_back(std::make_unique<Gauntlets>(L"Aura Knuckles+", false, L"NULL", L"2", L"80", L"0", L"1", L"4", L"A", L"40", SL::A));
 		list.emplace_back(std::make_unique<Gauntlets>(L"Rusted Gauntlets", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
 		list.emplace_back(std::make_unique<Gauntlets>(L"Vajra-Mushti", true, L"Balthus", L"7", L"90", L"10", L"1", L"7", L"E", L"30", SL::E));
 		list.emplace_back(std::make_unique<BlackMagic>(L"Fire", false, L"NULL", L"3", L"90", L"0", L"1-2", L"3", L"E", L"10", SL::E));
@@ -1827,8 +1801,8 @@ public:
 		list.emplace_back(std::make_unique<Ring>(L"Fetters of Dromi", true, L"Yuri",			 L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0", L"Relic ring (Aubin); Movement +1, user can continue moving after taking certain actions and may halve damage received."));
 		list.emplace_back(std::make_unique<Staff>(L"Magic Staff", false, L"NULL",				 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"3", L"0", L"0", L"Increases Might of magic spells by 3."));
 		list.emplace_back(std::make_unique<Staff>(L"Healing Staff", false, L"NULL",				 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"10", L"0", L"Increases Healing power by 10."));
-		list.emplace_back(std::make_unique<Staff>(L"Caduceus Staff", true, L"Flayn,Linhardt",	 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"Sacred staff (Cethleann); offensive magic range +1, restores HP each turn."));
-		list.emplace_back(std::make_unique<Staff>(L"Thyrsus", true, L"Lysithea,Lorenz",			 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"2", L"Relic staff (Gloucester); offensive magic range +2, may halve damage received."));
+		list.emplace_back(std::make_unique<Staff>(L"Caduceus Staff", true, L"Flayn,Linhardt",	 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"Sacred staff (Cethleann); offensive magic range +1, restores HP each turn."));
+		list.emplace_back(std::make_unique<Staff>(L"Thyrsus", true, L"Lysithea,Lorenz",			 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"2", L"Relic staff (Gloucester); offensive magic range +2, may halve damage received."));
 		list.emplace_back(std::make_unique<Gem>(L"Experience Gem", false, L"NULL",				 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Base experience points +50%."));
 		list.emplace_back(std::make_unique<Gem>(L"Knowledge Gem", false, L"NULL",				 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Base skill level experience +100%."));
 		list.emplace_back(std::make_unique<Gem>(L"Rafail Gem", true, L"Mercedes,Jeritza",		 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Base skill level experience +100%."));
@@ -1875,17 +1849,17 @@ public:
 			L"0", L"2", L"0", L"0", L"0", L"2", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Commoner", false, L"NULL", 
 			L"0", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
-			L"0", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0",
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Noble", false, L"NULL", 
 			L"0", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
-			L"0", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0",
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0.05",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Dancer", false, L"NULL", 
 			L"0", L"6", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
-			L"0", L"0", L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0",
+			L"0", L"2", L"1", L"0", L"3", L"3", L"0", L"2", L"1", L"2",
 			L"0.2", L"0", L"-0.05", L"0", L"0", L"0", L"0", L"-0.05", L"-0.05", L"0.1",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Myrmidon", false, L"NULL",
@@ -2047,7 +2021,7 @@ public:
 			L"34", L"7", L"18", L"10", L"14", L"10", L"12", L"17", L"10", L"0",
 			L"5", L"0", L"1", L"0", L"0", L"-2", L"0", L"6", L"0", L"0",
 			L"0.3", L"0", L"0.1", L"0", L"0", L"-0.1", L"0", L"0.05", L"-0.05", L"0.05",
-			L"0", L"3", L"0", L"0", L"0", L"-2", L"0", L"-2", L"0", L"0"));
+			L"0", L"3", L"0", L"0", L"0", L"-2", L"0", L"2", L"0", L"0"));
 		list.emplace_back(std::make_unique<Class>(L"Bow Knight", false, L"NULL",
 			L"32", L"8", L"17", L"10", L"14", L"16", L"12", L"14", L"10", L"0",
 			L"2", L"2", L"1", L"0", L"3", L"3", L"1", L"1", L"0", L"0",

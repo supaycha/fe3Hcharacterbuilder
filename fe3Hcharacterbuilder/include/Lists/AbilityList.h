@@ -29,7 +29,7 @@ public:
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Imperial Lineage", L"Edelgard", L"+20% Experience Gained", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Royal Lineage", L"Dimitri", L"+20% Experience Gained", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Leicester Lineage", L"Claude", L"+20% Experience Gained", false, STATTYPE::BLANK, ""));
-		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Officer Duty", L"Hubert", L"Boosts Gambit Might by 5.", false, STATTYPE::GMIGHT, "5"));
+		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Officer Duty", L"Hubert", L"Boosts Gambit Might by 5.", true, STATTYPE::GMIGHT, "5"));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Songstress", L"Dorothea", L"At the start of each turn, restores adjacent allies’ HP by 10%.", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Confidence", L"Ferdinand", L"When HP is full, unit gains +15 Hit and Avoid", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Persecution Complex", L"Bernadetta", L"When HP is not full, unit gains +5 Damage", false, STATTYPE::BLANK, ""));
@@ -52,11 +52,11 @@ public:
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Rivalry", L"Leonie", L"When adjacent to a male ally, damage dealt to foe +2, damage received from foe -2.", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Infirmary Master", L"Manuela", L"Adjacent allies gain Crit Avoid +10 during combat", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Crest Scholar", L"Hanneman", L"Use Rally to grant Mag +4 to an ally", false, STATTYPE::BLANK, ""));
-		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Fighting Spirit", L"Catherine", L"Unit takes 5 less damage when no battalion is assigned or when battalion endurance is 0.", true, true, false, STATTYPE::PROT, "-5"));
+		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Fighting Spirit", L"Catherine", L"Unit takes 5 less damage when no battalion is assigned or when battalion endurance is 0.", true, true, false, STATTYPE::PROT, "5"));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Compassion", L"Alois", L"Use Rally to grant Lck +8 to an ally.", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Guardian", L"Seteth", L"Adjacent female allies deal 3 extra damage during combat", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Lily's Poise", L"Flayn", L"Adjacent allies take 3 less damage during combat.", false, STATTYPE::BLANK, ""));
-		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Veteran Knight", L"Gilbert", L"Unit takes 2 less damage while in formation with a battalion.", true, true, true, STATTYPE::PROT, "-2"));
+		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Veteran Knight", L"Gilbert", L"Unit takes 2 less damage while in formation with a battalion.", true, true, true, STATTYPE::PROT, "2"));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Survival Instinct", L"Shamir", L"If unit initiates combat and defeats foe, grants Str/Mag/Dex/Spd +4 for one turn.", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Aptitude", L"Cyril", L"Makes each stat 20% more likely to increase on level up.", false, STATTYPE::BLANK, ""));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(L"Murderous Intent", L"Jeritza", L"If unit initiates combat, grants Hit +20 during combat.", false, STATTYPE::BLANK, ""));
