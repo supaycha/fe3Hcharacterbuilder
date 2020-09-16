@@ -160,15 +160,15 @@ public:
 			L"Inflicts rattled status on all targets.", 
 			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Mercenaries", 
-			L"1", L"-2", L"5", L"0", L"0", L"1", L"1", L"1", L"30", 
+			L"1", L"-2", L"5", L"0", L"0", L"0", L"0", L"1", L"30", 
 			L"0.5", L"0", L"1.3", L"0", L"0", L"0.5", L"0", L"0", L"0",
 			L"Onslaught",
 			L"8", L"50", L"1", L"2",
-			L"Pushes foe 1 tile away.", 
+			L"Inflicts rattled status on all targets. At the end of combat, pushes primary target one space away. The target will not be pushed back if there is a unit in the space they would be pushed to.", 
 			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Holy Monks", 
 			L"-1", L"0", L"5", L"0", L"0", L"0", L"1", L"1", L"30", 
-			L"0", L"0", L"1.3", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"0", L"0", L"1.3", L"0", L"0", L"0", L"0.5", L"0", L"0", 
 			L"Stride",
 			L"---", L"100", L"1", L"2",
 			L"Grants Stride status to all allies within its area of effect, giving them +5 Movement for one turn.", 
@@ -182,7 +182,7 @@ public:
 			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Seiros Brawlers", 
 			L"2", L"-2", L"0", L"0", L"5", L"0", L"-1", L"1", L"30", 
-			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0.5", L"0", L"0",
+			L"0.5", L"0", L"0", L"0", L"1.3", L"0", L"0", L"0", L"0",
 			L"Disturbance",
 			L"4", L"60", L"1", L"2",
 			L"Inflicts rattled status on all targets.", 
@@ -230,7 +230,7 @@ public:
 			L"Inflicts rattled status on all targets.",
 			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Indech Sword Fighters", 
-			L"4", L"-21", L"10", L"2", L"0", L"0", L"0", L"10", L"105", 
+			L"4", L"-2", L"10", L"2", L"0", L"0", L"0", L"10", L"105", 
 			L"1", L"0", L"2.5", L"2", L"0", L"1", L"0", L"0", L"0", 
 			L"Retribution",
 			L"---", L"100", L"1", L"2",
@@ -265,7 +265,7 @@ public:
 			L"Inflicts rattled status on all targets.", 
 			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Empire Magic Corps", 
-			L"-2", L"2", L"0", L"0", L"0", L"0", L"2", L"3", L"20", 
+			L"-2", L"2", L"0", L"0", L"0", L"0", L"2", L"3", L"30", 
 			L"0", L"0.5", L"0", L"0", L"0", L"0", L"0.5", L"0", L"0", 
 			L"Group of Flames",
 			L"2", L"60", L"1-2", L"1",
@@ -510,15 +510,15 @@ public:
 			L"Deals bonus damage to cavalry units. Inflicts rattled status on all targets.",
 			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Kingdom Priests", 
-			L"0", L"2", L"0", L"0", L"-5", L"0", L"3", L"7", L"60",
+			L"0", L"1", L"0", L"0", L"-5", L"0", L"3", L"7", L"60",
 			L"0", L"1", L"1.3", L"0", L"0", L"0", L"1", L"0", L"0",
 			L"Blessing",
 			L"---", L"100", L"1", L"1",
 			L"Grants Blessing status to all allies within its area of effect, reducing lethal damage taken to leave them at 1 HP for one turn.",
 			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Blue Lion Knights", 
-			L"3", L"-2", L"0", L"10", L"-10", L"1", L"0", L"10", 
-			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", L"105", 
+			L"3", L"-2", L"0", L"10", L"-10", L"1", L"0", L"10", L"105",
+			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0", 
 			L"Linked Horses",
 			L"12", L"50", L"1", L"1",
 			L"Inflicts rattled status on all targets.",
@@ -895,7 +895,7 @@ public:
 			L"Inflicts rattled status on all targets. Restores(damage dealt / 2) HP to the user from each target in its area of effect.",
 			SL::B));
 		list.emplace_back(std::make_unique<Battalion>(L"Leicester Dicers Corps", 
-			L"3", L"3", L"0", L"0", L"0", L"1", L"1", L"5", L"0",
+			L"3", L"3", L"0", L"0", L"0", L"1", L"1", L"5", L"105",
 			L"1", L"1", L"1.3", L"0", L"0", L"1", L"1", L"0", L"0",
 			L"Onslaught",
 			L"8", L"50", L"1", L"2",
@@ -979,7 +979,7 @@ public:
 			L"Grants Blessing status to all allies within its area of effect, reducing lethal damage taken to leave them at 1 HP for one turn.",
 			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Holst’s Chosen",
-			L"3", L"0", L"0", L"0", L"0", L"3", L"0", L"3", L"0", 
+			L"3", L"0", L"0", L"0", L"0", L"3", L"0", L"3", L"60", 
 			L"1", L"0", L"1.3", L"1.3", L"0", L"1", L"0", L"0", L"0",
 			L"Assault Troop",
 			L"10", L"50", L"1", L"2",
@@ -1336,7 +1336,7 @@ public:
 			L"Inflicts rattled status on all targets.", 
 			SL::E));
 		list.emplace_back(std::make_unique<Battalion>(L"Ancient Sorcerers", 
-			L"-5", L"2", L"0", L"0", L"-5", L"0", L"4", L"1", L"75",
+			L"-5", L"2", L"0", L"0", L"-5", L"0", L"2", L"1", L"75",
 			L"0", L"0.5", L"0", L"0", L"0", L"0.5", L"0.5", L"0", L"0",
 			L"Resonant Flames",
 			L"6", L"60", L"1-2", L"1",
