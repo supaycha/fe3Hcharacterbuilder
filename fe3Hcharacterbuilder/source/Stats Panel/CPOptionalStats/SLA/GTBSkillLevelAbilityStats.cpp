@@ -15,6 +15,11 @@ void GTBSkillLevelAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTYP
 	recalculate();
 }
 
+//void GTBSkillLevelAbilityStats::ReceiveLBBSelection(bool ubattalionselectionmade) {
+//	battalionselectionmade = ubattalionselectionmade;
+//	recalculate();
+//}
+
 void GTBSkillLevelAbilityStats::recalculate() {	
 	statpVector.clear();
 	currentheaders.clear();
@@ -50,7 +55,7 @@ bool GTBSkillLevelAbilityStats::DetermineStatsPresence() {
 
 bool GTBSkillLevelAbilityStats::DetermineWTMatch() {
 	WEAPONTYPE abilitywt = RetrieveABILITYWEAPONTYPE();
-	if (currentWeaponTypeofEquippedWeapon == abilitywt) {
+	if (currentWeaponTypeofEquippedWeapon == abilitywt/* || abilitywt == WEAPONTYPE::ALL*/) {
 		if (currentWeaponTypeofEquippedWeapon > WEAPONTYPE::BLANK) {
 			return true;
 

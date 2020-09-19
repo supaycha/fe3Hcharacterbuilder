@@ -330,9 +330,6 @@
     <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelCharacterAbility.h">
       <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
     </ClInclude>
-    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneralAbility.h">
-      <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
-    </ClInclude>
     <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateAbility.h">
       <Filter>UnitandMisc\Ability\ClassInnateAbility</Filter>
     </ClInclude>
@@ -342,6 +339,10 @@
     <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateGeneralAbility.h">
       <Filter>UnitandMisc\Ability\ClassInnateAbility</Filter>
     </ClInclude>
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralAbility.h">
+      <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralProwessAbility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">

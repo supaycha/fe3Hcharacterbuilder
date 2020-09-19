@@ -50,7 +50,7 @@ bool GTBClassInnateAbilityStats::DetermineStatsPresence() {
 
 bool GTBClassInnateAbilityStats::DetermineWTMatch() {
 	WEAPONTYPE abilitywt = RetrieveABILITYWEAPONTYPE();
-	if (currentWeaponTypeofEquippedWeapon == abilitywt) {
+	if (currentWeaponTypeofEquippedWeapon == abilitywt || abilitywt == WEAPONTYPE::ALL) {
 		if (currentWeaponTypeofEquippedWeapon > WEAPONTYPE::BLANK) {
 			return true;
 

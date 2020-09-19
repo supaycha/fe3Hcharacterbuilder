@@ -16,6 +16,7 @@ public:
 	GridBattalionStats(wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveLBBSelection(Stats stats);
+	//void ReceiveAugmenttoStats(wxString value);
 	void repopulate();
 };
 

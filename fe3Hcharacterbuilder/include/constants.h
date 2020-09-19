@@ -174,9 +174,21 @@ enum class WEAPONTYPE : int {
 	BLACKMAGIC = 5,
 	DARKMAGIC = 6,
 	WHITEMAGIC = 7,
-	BOTH = 13
+	BOTH = 13,
+	ALL = 14
 
 
+};
+
+enum class PROWESSTYPE : int {
+	SWORD,
+	AXE,
+	LANCE,
+	BOW,
+	GAUNTLETS,
+	REASON,
+	FAITH,
+	AUTHORITY
 };
 
 enum class EQUIPMENTTYPE : int {
@@ -222,6 +234,8 @@ enum class STATTYPE : int {
 	RES,
 	CHA,
 	MIGHT,
+	PMIGHT,
+	MMIGHT,
 	GMIGHT,
 	HIT,
 	GHIT,

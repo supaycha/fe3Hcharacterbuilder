@@ -18,6 +18,7 @@ public:
 	void SetValue(int row, int col, const wxString& value) override { battalionstats[col] = Stat(value); }
 
 	void ReceiveLBBSelection(Stats stats);
+	//void ReceiveAugmenttoStats(wxString value);
 
 	wxString GetHeader(int index) { return headers[index]; }
 };

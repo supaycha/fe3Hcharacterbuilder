@@ -101,6 +101,10 @@ void CPOptionalStats::ReceiveLBBSelection(Stats battalionstats, Stats gambitstat
 	gbs->ReceiveLBBSelection(battalionstats);
 	ggs->ReceiveLBBSelection(gambitstats);
 	gchias->ReceiveLBBSelection(battalionselectionmade);
+	//for (unsigned int i = 0; i < 5; ++i) {
+	//	gslasVector[i]->ReceiveLBBSelection(battalionselectionmade);
+	//	gslasVector[i]->ForceRefresh();
+	//}
 }
 
 void CPOptionalStats::ReceiveCHIASelection(wxString abilityname) {
@@ -116,6 +120,24 @@ void CPOptionalStats::ReceiveCLIASelection(std::vector<wxString> abilityselectio
 
 void CPOptionalStats::ReceiveSLASelection(std::vector<wxString> abilityselections) {
 	for (unsigned int i = 0; i < abilityselections.size(); ++i) {
+		if (abilityselections[i] == "Authority Prowess Lv.1") {
+			ggs->ReceiveAugmenttoStats("2");
+		}
+		else if (abilityselections[i] == "Authority Prowess Lv.2") {
+			ggs->ReceiveAugmenttoStats("4");
+		}
+		else if (abilityselections[i] == "Authority Prowess Lv.3") {
+			ggs->ReceiveAugmenttoStats("6");
+		}
+		else if (abilityselections[i] == "Authority Prowess Lv.4") {
+			ggs->ReceiveAugmenttoStats("8");
+		}
+		else if (abilityselections[i] == "Authority Prowess Lv.5") {
+			ggs->ReceiveAugmenttoStats("10");
+		}
+		else {
+			ggs->ReceiveAugmenttoStats("0");
+		}
 		gslasVector[i]->ReceiveSLASelection(abilityselections[i]);
 		gslasVector[i]->ForceRefresh();
 	}

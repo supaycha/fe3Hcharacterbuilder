@@ -15,7 +15,7 @@ private:
 	std::vector<STATPACKAGE> headers{ { STATTYPE::PROT, "PROT" }, { STATTYPE::WEIGHT, "WGT" }, { STATTYPE::RES, "RES" }, { STATTYPE::HIT, "HIT" },
 									{ STATTYPE::AVO, "AVO" }, { STATTYPE::TCRIT, "TCRIT" }, { STATTYPE::SPD, "SPD" }, { STATTYPE::MOV, "MOV" },
 									{ STATTYPE::LCK, "LCK" }, { STATTYPE::MATK, "MATK" }, { STATTYPE::HEAL, "HEAL" }, { STATTYPE::RANGE, "RANGE" },
-									{ STATTYPE::MIGHT, "MIGHT" }, { STATTYPE::CRITAVO, "CRITAVO" }, { STATTYPE::CRIT, "CRIT" } };
+									{ STATTYPE::MIGHT, "MIGHT" }, { STATTYPE::GMIGHT, "GMIGHT" }, { STATTYPE::CRITAVO, "CRITAVO" }, { STATTYPE::CRIT, "CRIT" } };
 	std::vector<wxString> currentheaders{ };
 	std::map<wxString, wxClientData*> skilllevelabilities;
 	std::vector<STATPACKAGE> statpVector{ };
@@ -25,6 +25,7 @@ private:
 	bool hasWeaponType;
 	bool equivalentWTs;
 	WEAPONTYPE type = WEAPONTYPE::BLANK;
+	bool battalionselectionmade;
 public:
 	GTBSkillLevelAbilityStats(std::map<wxString, wxClientData*> uskilllevelabilities);
 	~GTBSkillLevelAbilityStats() {}
@@ -36,6 +37,8 @@ public:
 
 	void ReceiveSLASSelection(wxString abilityname);
 	void ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type);	
+	//void ReceiveLBBSelection(bool ubattalionselectionmade);
+
 	void recalculate();
 	bool DetermineStatsPresence();
 	bool DetermineWTMatch();

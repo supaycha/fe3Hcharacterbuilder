@@ -27,7 +27,7 @@ public:
 	//{}
 	~SkillLevelGeneralAbility() {}
 
-	SL getSL() { return sl; }
+	virtual SL getSL() { return sl; }
 	SkillLevelGeneralAbility* new_expr() override { return new SkillLevelGeneralAbility(); }
 	SkillLevelGeneralAbility* clone() override { return new SkillLevelGeneralAbility(*this); }
 };

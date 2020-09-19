@@ -134,9 +134,10 @@ int GTBTotalStats::RetrieveStatFromGSLASPackage(STATTYPE st) {
 
 void GTBTotalStats::CalculateTotalPhysicalAttack() {
 	std::wstring statstring;
-	std::vector<int> relevantabilities(2, 0);
+	std::vector<int> relevantabilities(3, 0);
 	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::MIGHT);
-	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::STR);
+	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::PMIGHT);
+	relevantabilities[2] = RetrieveStatsFromAbilityPackages(STATTYPE::STR);
 	
 	std::wstring temp = currentGMTstats[2].getText();
 	int lvcstat2 = _wtoi(temp.c_str());
@@ -162,10 +163,11 @@ void GTBTotalStats::CalculateTotalPhysicalAttack() {
 
 void GTBTotalStats::CalculateTotalMagicAttack() {
 	std::wstring statstring;
-	std::vector<int> relevantabilities(3, 0);
-	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::MIGHT);
-	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::MAG);
-	relevantabilities[2] = RetrieveStatsFromAbilityPackages(STATTYPE::MATK);
+	std::vector<int> relevantabilities(4, 0);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::MMIGHT);
+	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::MMIGHT);
+	relevantabilities[2] = RetrieveStatsFromAbilityPackages(STATTYPE::MAG);
+	relevantabilities[3] = RetrieveStatsFromAbilityPackages(STATTYPE::MATK);
 
 	std::wstring temp = currentGMTstats[3].getText();
 	int lvcstat3 = _wtoi(temp.c_str());

@@ -21,6 +21,7 @@ public:
 	void initpopulate();
 	void ReceiveSLASelection(wxString abilityname);
 	void ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type);
+	//void ReceiveLBBSelection(bool ubattalionselectionmade);
 	void repopulate();
 };
 

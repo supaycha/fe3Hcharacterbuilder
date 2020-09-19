@@ -31,6 +31,13 @@ void GridBattalionStats::ReceiveLBBSelection(Stats stats) {
 	Thaw();
 }
 
+//void GridBattalionStats::ReceiveAugmenttoStats(wxString value) {
+//	gtbbs->ReceiveAugmenttoStats(value);
+//	Freeze();
+//	repopulate();
+//	Thaw();
+//}
+
 void GridBattalionStats::repopulate() {
 	std::vector<Stat> tempvectforstats;
 	int col = 1;

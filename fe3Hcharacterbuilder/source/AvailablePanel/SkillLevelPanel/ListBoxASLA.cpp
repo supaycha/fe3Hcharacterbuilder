@@ -9,69 +9,175 @@ ListBoxASLA::ListBoxASLA(std::map<wxString, wxClientData*> uskilllevelabilitymap
 }
 
 void ListBoxASLA::OnSelection(wxCommandEvent& event) {
-	selectedAAnames = UpdateSelections();
-	AbilitySelections* selections = new AbilitySelections(selectedAAnames);
-	wxClientData* trueselections = dynamic_cast<wxClientData*>(selections);
-	wxCommandEvent transmission(TRANSMIT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBASLA);
-	transmission.SetClientObject(trueselections);
-	ProcessEvent(transmission);
+	//selectedabilities = UpdateSelectionsFromInternalSelection();
+	//selectedabilities = AccountforProwessRedudancies(selectedabilities);
+	//AbilitySelections* selections = new AbilitySelections(selectedabilities);
+	//wxClientData* trueselections = dynamic_cast<wxClientData*>(selections);
+	//wxCommandEvent transmission(TRANSMIT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBASLA);
+	//transmission.SetClientObject(trueselections);
+	//ProcessEvent(transmission);
 
-	int i = 9;
-}
-
-std::vector<wxString> ListBoxASLA::UpdateSelections() {
-	wxArrayInt selections;
-	std::vector<wxString> tempvector;
-	this->GetSelections(selections);
-
-	for (auto selection : selections) {
-		tempvector.push_back(this->GetString(selection));
-	}
-
-	return tempvector;
+	FactorInInternalChange();
 }
 
 void ListBoxASLA::ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage) {
 	SLfilter[slpackage->index] = slpackage->sl;
-	FilterAbilities();
+	FactorInExternalChange();
 }
 
 void ListBoxASLA::ReceiveforAbilityExclusivityCheck(wxString charactername) {
 	currentDDCHselection = charactername;
-	FilterAbilities();
+	FactorInExternalChange();
 }
+
 void ListBoxASLA::ReceiveClassMasteryExclusivity(wxString classmasterycheck) {
 	currentDDCLselection = classmasterycheck;
-	FilterAbilities();
+	FactorInExternalChange();
 }
+
 void ListBoxASLA::ReceiveClassMasteryButtonStatus(bool isPressed) {
 	isClassMasteryToggleButtonPressed = isPressed;
-	FilterAbilities();
+	FactorInExternalChange();
 }
 
-void ListBoxASLA::FilterAbilities() {
-	//std::vector<wxString> generalabilitynames;
-	//std::vector<wxString> characterabilitynames;
+void ListBoxASLA::FactorInInternalChange() {
+	previouslyselectedabilities = GetToBeErasedSelectedAbilities();
+	if (CheckForClearSignal()) {
+		stillpresentabilities = ClearSelections();
+	}
 
-	//std::vector<SkillLevelAbility*> skilllevelabilities;
+	else {
+		stillpresentabilities = AccountforProwessRedudancies(previouslyselectedabilities);	
+	}
+	
+	recalculate();
+}
+
+bool ListBoxASLA::CheckForClearSignal() {
+	for (auto selection : previouslyselectedabilities) {
+		if (selection == "---") {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+std::vector<wxString> ListBoxASLA::ClearSelections() {
+	wxArrayInt selections;
+	this->GetSelections(selections);
+	for (auto& selection : selections) {
+		switch (selection) {
+			case 0: {
+				continue;
+			}
+
+			default: {
+				this->Deselect(selection);
+				break;
+			}
+		}
+	}
+	
+	std::vector<wxString> tempemptyvector{ "---" };
+	return tempemptyvector;
+}
+
+std::vector<wxString> ListBoxASLA::AccountforProwessRedudancies(std::vector<wxString> previouslyselectedabilities) {
+	std::map<PROWESSTYPE, wxString> tempmap;
+	std::vector<wxString> stillpresentabilities;
+	for (auto selectionname : previouslyselectedabilities) {
+		for (auto ability : skilllevelabilitymap) {
+			if (selectionname == ability.first) {
+				if (SkillLevelGeneralProwessAbility* temp = dynamic_cast<SkillLevelGeneralProwessAbility*>(ability.second)) {
+					PROWESSTYPE tempabilityprowesstype = temp->getProwessType();
+					auto success = tempmap.insert(std::make_pair(tempabilityprowesstype, ability.first));
+					if (!success.second) {
+						std::wstring currentprowess = tempmap[tempabilityprowesstype];
+						wchar_t currentfinalchar = currentprowess.back();
+
+						std::wstring newprowess = ability.first;
+						wchar_t newfinalchar = newprowess.back();
+
+						if (newfinalchar > currentfinalchar) {
+							tempmap.insert_or_assign(tempabilityprowesstype, ability.first);
+						}
+					}
+				}
+
+				else {
+					stillpresentabilities.push_back(selectionname);
+				}
+			}
+		}
+	}
+
+	for (auto element : tempmap) {
+		stillpresentabilities.push_back(element.second);
+	}
+
+	return stillpresentabilities;
+}
+
+void ListBoxASLA::FactorInExternalChange() {
+	allavailableabilities = CreateListOfAvailableAbilities();
+	previouslyselectedabilities = GetToBeErasedSelectedAbilities();
+	stillpresentabilities = GetStillPresentAbilities(allavailableabilities, previouslyselectedabilities);		
+	recalculate();
+}
+
+void ListBoxASLA::recalculate() {
+	
+	Freeze();
+	repopulate();
+	Thaw();	
+	
+	ReselectAbilities(stillpresentabilities);	
+	
+	AbilitySelections* selections = new AbilitySelections(stillpresentabilities);
+	wxClientData* trueselections = dynamic_cast<wxClientData*>(selections);
+	wxCommandEvent transmission(TRANSMIT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBASLA);
+	transmission.SetClientObject(trueselections);
+	ProcessEvent(transmission);
+}
+
+std::vector<wxString> ListBoxASLA::CreateListOfAvailableAbilities() {
 	std::vector<wxString> abilitynames;
+	std::map<PROWESSTYPE, wxString> maptocrosscheckprowessabilities;
 
 	for (auto element : skilllevelabilitymap) {
-		SkillLevelAbility* test = dynamic_cast<SkillLevelAbility*>(element.second);
-		if ((int)test->getSkillType() == -1) {
-			abilitynames.push_back(test->getName());
+		SkillLevelAbility* tempsla = dynamic_cast<SkillLevelAbility*>(element.second);
+		if ((int)tempsla->getSkillType() == -1) {
+			abilitynames.push_back(tempsla->getName());
 		}
 
-		else if (SkillLevelGeneralAbility* tempgeneralability = dynamic_cast<SkillLevelGeneralAbility*>(test)) {
+		else if (SkillLevelGeneralAbility* tempgeneralability = dynamic_cast<SkillLevelGeneralAbility*>(element.second)) {
 			int skilltypenum = (int)tempgeneralability->getSkillType();
 			SL controlsl = SLfilter[skilltypenum];
 			SL abilitysl = tempgeneralability->getSL();
 			if (abilitysl <= controlsl) {
-				abilitynames.push_back(tempgeneralability->getName());
+				if (SkillLevelGeneralProwessAbility* temp = dynamic_cast<SkillLevelGeneralProwessAbility*>(element.second)) {
+					PROWESSTYPE tempabilityprowesstype = temp->getProwessType();
+					auto success = maptocrosscheckprowessabilities.insert(std::make_pair(tempabilityprowesstype, element.first));
+					if (!success.second) {
+						std::wstring currentprowess = maptocrosscheckprowessabilities[tempabilityprowesstype];
+						wchar_t currentfinalchar = currentprowess.back();
+
+						std::wstring newprowess = element.first;
+						wchar_t newfinalchar = newprowess.back();
+
+						if (newfinalchar > currentfinalchar) {
+							maptocrosscheckprowessabilities.insert_or_assign(tempabilityprowesstype, element.first);
+						}
+					}
+				}
+				else {
+					abilitynames.push_back(tempgeneralability->getName());
+				}
 			}
 		}
 
-		else if (SkillLevelCharacterAbility* tempcharacterability = dynamic_cast<SkillLevelCharacterAbility*>(test)) {
+		else if (SkillLevelCharacterAbility* tempcharacterability = dynamic_cast<SkillLevelCharacterAbility*>(element.second)) {
 			for (auto holderofability : tempcharacterability->getCharSL()) {
 				if (holderofability.charactername == currentDDCHselection) {
 					if (holderofability.sl <= SLfilter[(int)tempcharacterability->getSkillType()]) {
@@ -80,6 +186,10 @@ void ListBoxASLA::FilterAbilities() {
 				}
 			}
 		}
+	}
+
+	for (auto element : maptocrosscheckprowessabilities) {
+		abilitynames.push_back(element.second);
 	}
 
 	if (isClassMasteryToggleButtonPressed) {
@@ -100,65 +210,76 @@ void ListBoxASLA::FilterAbilities() {
 			}
 		}
 	}
-	
 
-
-	//for (auto ability : skilllevelabilities) {
-	//	SL abilitySL = ability->getSL();
-	//	if ((int)ability->getSkillType() == -1) {
-	//		abilitynames.push_back(ability->getName());
-	//		continue;
-	//	}
-
-	//	else if (abilitySL <= SLfilter[(int)ability->getSkillType()]) {
-	//		abilitynames.push_back(ability->getName());
-	//	}
-	//}
-
-	ReceiveAbilityFiltration(abilitynames);
+	return abilitynames;
 }
 
-void ListBoxASLA::ReceiveAbilityFiltration(std::vector<wxString> dirtynames) {
-	filteredAAnames = dirtynames;
+std::vector<wxString> ListBoxASLA::GetToBeErasedSelectedAbilities() {
+	wxArrayInt selections;
+	std::vector<wxString> tempvector;
+	this->GetSelections(selections);
 
-	std::vector<wxString> tempselected;
+	for (auto selection : selections) {
+		tempvector.push_back(this->GetString(selection));
+	}
 
-	for (auto newname : dirtynames) {
-		for (auto oldname : selectedAAnames) {
-			if (newname == oldname) {
-				tempselected.push_back(newname);
+	return tempvector;
+}
+
+void ListBoxASLA::repopulate() {
+	this->Set(ToArrayString(allavailableabilities));	
+}
+
+std::vector<wxString> ListBoxASLA::GetStillPresentAbilities(std::vector<wxString> allavailableabilities, std::vector<wxString> previouslyselectedabilities) {
+	std::vector<wxString> stillpresentabilities;
+	for (auto availableselection : allavailableabilities) {
+		for (auto previousselection : previouslyselectedabilities) {
+			if (previousselection == availableselection) {
+				stillpresentabilities.push_back(availableselection);
 				break;
 			}
 		}
 	}
-	selectedAAnames = tempselected;
 
-	Freeze();
-	repopulate();
-	Thaw();
-
-	selectedAAnames = UpdateSelections();
-	AbilitySelections* selections = new AbilitySelections(selectedAAnames);
-	wxClientData* trueselections = dynamic_cast<wxClientData*>(selections);
-	wxCommandEvent transmission(TRANSMIT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBASLA);
-	transmission.SetClientObject(trueselections);
-	ProcessEvent(transmission);
+	return stillpresentabilities;
 }
 
-void ListBoxASLA::repopulate() {
-	this->Set(ToArrayString(filteredAAnames));
-
-	reselection();
-}
-
-void ListBoxASLA::reselection() {
-	for (auto selection : selectedAAnames) {
+void ListBoxASLA::ReselectAbilities(std::vector<wxString> stillpresentabilities) {
+	for (auto selection : stillpresentabilities) {
 		int index = this->FindString(selection);
 		if (!(this->IsSelected(index))) {
 			this->SetSelection(index);
 		}
 	}
 }
+
+//std::vector<wxString> ListBoxASLA::UpdateSelectionsFromInternalSelection() {
+//	wxArrayInt selections;	
+//	this->GetSelections(selections);
+//
+//	bool isClearBeingSignaled = CheckForClearSignal(selections);	
+//	std::vector<wxString> tempvector;
+//	switch (isClearBeingSignaled) {
+//		case 0: {	
+//			tempvector = UpdateSelectionsFromExternalSelection();
+//			return tempvector;
+//			break;
+//		}
+//
+//		default: {
+//			tempvector = ClearSelections();
+//			return tempvector;
+//			break;
+//		}
+//	}
+//
+//	for (auto selection : selections) {
+//		tempvector.push_back(this->GetString(selection));
+//	}
+//
+//
+//	return tempvector;
+//}
 
 wxArrayString ListBoxASLA::ToArrayString(std::vector<wxString> names) {
 	wxArrayString temparraystring;

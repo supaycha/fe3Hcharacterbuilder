@@ -7,7 +7,7 @@
 #include <constants.h>
 #include <Stats Panel/CPOptionalStats/GambitStats/GTBGambitStats.h>
 
-wxDECLARE_EVENT(TRANSMIT_GGS_STATS, wxCommandEvent);
+//wxDECLARE_EVENT(TRANSMIT_GGS_STATS, wxCommandEvent);
 
 class GridGambitStats : public wxGrid {
 private:
@@ -16,6 +16,7 @@ public:
 	GridGambitStats(wxWindow* parent, wxWindowID id);
 	void initpopulate();
 	void ReceiveLBBSelection(Stats stats);
+	void ReceiveAugmenttoStats(wxString value);
 	void repopulate();
 };
 

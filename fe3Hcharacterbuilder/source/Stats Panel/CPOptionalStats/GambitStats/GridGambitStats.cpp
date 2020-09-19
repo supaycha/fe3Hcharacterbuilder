@@ -31,6 +31,13 @@ void GridGambitStats::ReceiveLBBSelection(Stats stats) {
 	Thaw();
 }
 
+void GridGambitStats::ReceiveAugmenttoStats(wxString value) {
+	gtbgs->ReceiveAugmenttoStats(value);
+	Freeze();
+	repopulate();
+	Thaw();
+}
+
 void GridGambitStats::repopulate() {
 	std::vector<Stat> tempvectforstats;
 	int col = 1;
@@ -42,9 +49,9 @@ void GridGambitStats::repopulate() {
 		int k = 0;
 	}
 
-	Stats* ptrtostats = new Stats(tempvectforstats);
-	wxCommandEvent event(TRANSMIT_GGS_STATS, (int)ID_SINGLE_CONTROL::ID_GGS);
-	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
-	event.SetClientObject(tempdata);
-	ProcessEvent(event);
+	//Stats* ptrtostats = new Stats(tempvectforstats);
+	//wxCommandEvent event(TRANSMIT_GGS_STATS, (int)ID_SINGLE_CONTROL::ID_GGS);
+	//wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
+	//event.SetClientObject(tempdata);
+	//ProcessEvent(event);
 }

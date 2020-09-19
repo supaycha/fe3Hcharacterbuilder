@@ -40,6 +40,12 @@ void GridSkillLevelAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTY
 	SendSizeEventToParent();
 }
 
+//void GridSkillLevelAbilityStats::ReceiveLBBSelection(bool ubattalionselectionmade) {
+//	gtbslas->ReceiveLBBSelection(ubattalionselectionmade);
+//	repopulate();
+//	SendSizeEventToParent();
+//}
+
 void GridSkillLevelAbilityStats::repopulate() {
 	SetColLabelSize(wxGRID_AUTOSIZE);
 	int colcount = gtbslas->GetColsCount();

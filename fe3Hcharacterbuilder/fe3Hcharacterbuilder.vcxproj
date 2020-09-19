@@ -100,7 +100,8 @@
     <ClInclude Include="include\Unit\Weapon\WhiteMagic.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelCharacterAbility.h" />
-    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneralAbility.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralAbility.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralProwessAbility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.cpp" />
