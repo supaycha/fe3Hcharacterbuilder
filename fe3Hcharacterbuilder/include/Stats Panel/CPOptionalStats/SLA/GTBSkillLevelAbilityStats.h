@@ -37,7 +37,7 @@ public:
 
 	void ReceiveSLASSelection(wxString abilityname);
 	void ReceiveLBWSelection_weapontypeifneeded(WEAPONTYPE type);	
-	//void ReceiveLBBSelection(bool ubattalionselectionmade);
+	void ReceiveLBBSelection(bool ubattalionselectionmade);
 
 	void recalculate();
 	bool DetermineStatsPresence();

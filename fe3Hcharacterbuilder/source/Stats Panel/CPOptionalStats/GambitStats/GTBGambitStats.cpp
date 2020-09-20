@@ -10,12 +10,15 @@ void GTBGambitStats::ReceiveAugmenttoStats(wxString value) {
 	recalculate();
 }
 
-void GTBGambitStats::recalculate() {
+void GTBGambitStats::recalculate() {		
 	augmentedgambitstats = gambitstats;
-	int basegmight = _wtoi(gambitstats[0].getText().c_str());
-	int augmenttobasegmight = _wtoi(gmight.c_str());
 
-	int tempnewgmight = basegmight + augmenttobasegmight;
+	if (gambitstats[0].getText() != "---") {
+		int basegmight = _wtoi(gambitstats[0].getText().c_str());
+		int augmenttobasegmight = _wtoi(gmight.c_str());
 
-	augmentedgambitstats[0] = std::to_wstring(tempnewgmight);
+		int tempnewgmight = basegmight + augmenttobasegmight;
+
+		augmentedgambitstats[0] = std::to_wstring(tempnewgmight);
+	}
 }

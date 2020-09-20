@@ -15,10 +15,10 @@ void GTBSkillLevelAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTYP
 	recalculate();
 }
 
-//void GTBSkillLevelAbilityStats::ReceiveLBBSelection(bool ubattalionselectionmade) {
-//	battalionselectionmade = ubattalionselectionmade;
-//	recalculate();
-//}
+void GTBSkillLevelAbilityStats::ReceiveLBBSelection(bool ubattalionselectionmade) {
+	battalionselectionmade = ubattalionselectionmade;
+	recalculate();
+}
 
 void GTBSkillLevelAbilityStats::recalculate() {	
 	statpVector.clear();
@@ -35,8 +35,10 @@ void GTBSkillLevelAbilityStats::recalculate() {
 
 		equivalentWTs = DetermineWTMatch();
 		if (!equivalentWTs) {
-			for (auto& stattype : statpVector) {
-				stattype.value = "0";
+			if (!battalionselectionmade) {
+				for (auto& stattype : statpVector) {
+					stattype.value = "0";
+				}
 			}
 		}
 	}

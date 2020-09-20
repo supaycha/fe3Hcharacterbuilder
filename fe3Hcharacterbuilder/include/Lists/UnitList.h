@@ -149,7 +149,7 @@ public:
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
 			L"---", 
-			L"0", L"0", L"0", L"0",
+			L"---", L"---", L"---", L"---",
 			L"---",
 			SL::BLANK));
 		list.emplace_back(std::make_unique<Battalion>(L"Church of Seiros Soldiers", 
