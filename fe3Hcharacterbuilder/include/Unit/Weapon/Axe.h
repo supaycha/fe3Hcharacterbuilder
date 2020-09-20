@@ -11,9 +11,15 @@ private:
 	WEAPONTYPE wt = WEAPONTYPE::AXE;
 public:
 	Axe() {};
-	Axe(std::wstring uName, bool uExclusivity, std::wstring uCharacterName, std::wstring uMight, std::wstring uHit, std::wstring uCrit,
+	Axe(std::wstring uName, bool uExclusivity, std::wstring uCharacterName, 
+		std::wstring uMight, std::wstring uHit, std::wstring uCrit,
 		std::wstring uRange, std::wstring uWeight, std::wstring uSkillLVL,
-		std::wstring uUses, SL skillLVL) : Weapon{ uName, uExclusivity, uCharacterName, uMight, uHit, uCrit, uRange, uWeight, uSkillLVL, uUses, skillLVL } {}
+		std::wstring uUses, SL skillLVL) : 
+		Weapon{ uName, uExclusivity, uCharacterName, 
+				uMight, uHit, uCrit, 
+				uRange, uWeight, uSkillLVL, 
+				uUses, skillLVL } 
+	{}
 	~Axe() {}
 
 	SKILLTYPE getSkillType() override { return st; };

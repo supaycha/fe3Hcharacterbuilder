@@ -9,10 +9,15 @@ class Stat {
 private:
 	std::wstring stat;
 public:
-	Stat() : stat{} {}
-	Stat(std::wstring change) : stat{ change } {}
+	Stat() : 
+		stat{} 
+	{}
+	Stat(std::wstring change) : 
+		stat{ change } 
+	{}
+
 	std::wstring getText() const { return stat; }
-	Stat& operator=(const Stat& source) = default;  //in cpp
+	Stat& operator=(const Stat& source) = default;
 	Stat(const Stat&) = default;
 };
 
@@ -20,13 +25,20 @@ class Stats : public wxClientData {
 private:
 	std::vector<Stat> stats;
 public:
-	Stats() : stats{ 10, Stat{} } {}
-	Stats(int size, std::wstring value) : stats(size, value) {}
-	Stats(std::vector<Stat> change) : stats(change) {}
+	Stats() : 
+		stats{ 10, Stat{} } 
+	{}
+	Stats(int size, std::wstring value) : 
+		stats(size, value) 
+	{}
+	Stats(std::vector<Stat> change) :
+		stats(change) 
+	{}
 	Stats(std::wstring uPROT, std::wstring uWGT, std::wstring uRES, std::wstring uHIT, std::wstring uTCRIT,
 		std::wstring uAVO, std::wstring uSPD, std::wstring uMOV, std::wstring uLCK, std::wstring uMATK, 
 		std::wstring uHEAL, std::wstring uRANGE) : 
-		stats{ uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE } {}
+		stats{ uPROT, uWGT, uRES, uHIT, uTCRIT, uAVO, uSPD, uMOV, uLCK, uMATK, uHEAL, uRANGE } 
+	{}
 	Stats(std::wstring uHP, std::wstring uMOV, std::wstring uSTR,
 		std::wstring uMAG, std::wstring uDEX, std::wstring uSPD,
 		std::wstring uLCK, std::wstring uDEF, std::wstring uRES,
@@ -50,7 +62,8 @@ public:
 	{}
 	Stats(std::wstring uGMIGHT, std::wstring uGHIT, std::wstring uGRANGE,
 		std::wstring uUSES, std::wstring uGDESCRIPTION) :
-		stats{ uGMIGHT, uGHIT, uGRANGE, uUSES, uGDESCRIPTION } {}
+		stats{ uGMIGHT, uGHIT, uGRANGE, uUSES, uGDESCRIPTION } 
+	{}
 
 	//int Size() const { return stats.size(); }
 	Stat& operator[](UINT index) { return stats[index]; }

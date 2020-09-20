@@ -7,12 +7,14 @@
 
 class Unit : public wxClientData {
 public:
-	virtual const std::wstring getName() = 0;
-	virtual const Stats getStats() = 0;
 
 	Unit() {};
 	Unit(const Unit&) = default;
-	virtual ~Unit() {}
+	virtual ~Unit() {}	
+	
+	virtual const std::wstring getName() = 0;
+	virtual const Stats getStats() = 0;
+
 	virtual Unit* new_expr() = 0;
 	virtual Unit* clone() = 0;
 };

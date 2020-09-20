@@ -11,10 +11,17 @@ private:
 	WEAPONTYPE wt = WEAPONTYPE::BLANK;
 public:
 	BlankWeapon() {}
-	BlankWeapon(std::wstring uName, bool uExclusivity, std::wstring uCharacterName, std::wstring uMight, std::wstring uHit, std::wstring uCrit,
+	BlankWeapon(std::wstring uName, bool uExclusivity, std::wstring uCharacterName,
+		std::wstring uMight, std::wstring uHit, std::wstring uCrit,
 		std::wstring uRange, std::wstring uWeight, std::wstring uSkillLVL,
-		std::wstring uUses, SL skillLVL) : Weapon{ uName, uExclusivity, uCharacterName, uMight, uHit, uCrit, uRange, uWeight, uSkillLVL, uUses, skillLVL } {}
+		std::wstring uUses, SL skillLVL) : 
+		Weapon{ uName, uExclusivity, uCharacterName, 
+				uMight, uHit, uCrit, 
+				uRange, uWeight, uSkillLVL, 
+				uUses, skillLVL } 
+	{}
 	~BlankWeapon() {}
+
 	SKILLTYPE getSkillType() override { return st; };
 	WEAPONTYPE getWeaponType() override { return wt; };
 
