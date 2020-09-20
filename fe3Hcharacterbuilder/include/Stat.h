@@ -52,7 +52,7 @@ public:
 		std::wstring uUSES, std::wstring uGDESCRIPTION) :
 		stats{ uGMIGHT, uGHIT, uGRANGE, uUSES, uGDESCRIPTION } {}
 
-	int Size() const { return stats.size(); }
+	//int Size() const { return stats.size(); }
 	Stat& operator[](UINT index) { return stats[index]; }
 	Stats& operator=(const Stats& source) = default;
 	Stats(const Stats&) = default;

@@ -29,24 +29,24 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	wxArrayString emptybuffer;
 
-	std::vector<wxString> battalionnames;
 	std::vector<wxString> characternames;
+	std::vector<wxString> battalionnames;
 	std::vector<wxString> weaponnames;
 	std::vector<wxString> classnames;
 	std::vector<wxString> equipnames;
 	std::vector<wxString> abilitynames;
 
-	std::vector<wxClientData*> battaliondata;
 	std::vector<wxClientData*> characterdata;
+	std::vector<wxClientData*> battaliondata;
 	std::vector<wxClientData*> weapondata;
 	std::vector<wxClientData*> classdata;
 	std::vector<wxClientData*> equipdata;
 	std::vector<wxClientData*> abilitydata;
 
+	std::map<wxString, wxClientData*> battalionmap;
 	std::map<wxString, wxClientData*> weaponmap;
 	std::map<wxString, wxClientData*> classmap;
 	std::map<wxString, wxClientData*> equipmap;
-	std::map<wxString, wxClientData*> battalionmap;
 	std::map<wxString, wxClientData*> abilitymap;
 	std::map<wxString, wxClientData*> skilllevelabilitymap;
 	std::map<wxString, wxClientData*> classmasteryabilitymap;
@@ -55,16 +55,16 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	AbilityList alist;
 
 	for (unsigned int i = 0; i < ulist.getSize(); ++i) {
-		if (Battalion* temp = dynamic_cast<Battalion*>(ulist[i])) {
-			battalionnames.push_back(temp->getName());
-			battaliondata.push_back(temp->clone());
+		if (Character* temp = dynamic_cast<Character*>(ulist[i])) {
+			characternames.push_back(temp->getName());
+			characterdata.push_back(temp->clone());
 		}
 	}
 
 	for (unsigned int i = 0; i < ulist.getSize(); ++i) {
-		if (Character* temp = dynamic_cast<Character*>(ulist[i])) {
-			characternames.push_back(temp->getName());
-			characterdata.push_back(temp->clone());
+		if (Battalion* temp = dynamic_cast<Battalion*>(ulist[i])) {
+			battalionnames.push_back(temp->getName());
+			battaliondata.push_back(temp->clone());
 		}
 	}
 
@@ -167,14 +167,14 @@ void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repit
 	slp->ReceiveDDCHSelection(charactername);
 	ep->ReceiveCharacterInnateExclusivity(charactername);
 	lbe->ReceiveEquipmentExclusivity(charactername);
-	//sp->ReceiveCharacterInnateExclusivity(charactername);
 }
 
 void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repititionfromMT) {
 	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
 	wxString classname = tempclass->getName();
+
+	slp->ReceiveClassMasteryExclusivity(classname);	
 	ep->ReceiveClassInnateExclusivity(classname);
-	slp->ReceiveClassMasteryExclusivity(classname);
 }
 void MyFrame::BounceRepeatedLBASLASelection_updateselabiliities(wxCommandEvent& repititionfromSLP) {
 	AbilitySelections* tempselections = dynamic_cast<AbilitySelections*>(repititionfromSLP.GetClientObject());
@@ -191,6 +191,7 @@ void MyFrame::BounceLBWSelection(wxCommandEvent& selection) {
 	Stats tempstats = tempweapon->getStats();
 	wxString tempname = tempweapon->getName();
 	WEAPONTYPE tempweapontype = tempweapon->getWeaponType();
+
 	sp->ReceiveLBWSelection(tempstats, tempweapontype);
 	ep->ReceiveLBWSelection(tempname);
 }
@@ -200,6 +201,7 @@ void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 	Stats tempstats = tempequipment->getStats();
 	wxString tempname = tempequipment->getName();
 	wxString description = tempequipment->getDescription();
+
 	sp->ReceiveLBESelection(tempstats);
 	ep->ReceiveLBESelection(tempname, description);
 }
@@ -218,23 +220,27 @@ void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
 	else {
 		selectionmade = true;
 	}
+
 	sp->ReceiveLBBSelection(tempbattalionstats, tempgambitstats, selectionmade);
 	ep->ReceiveLBBSelection(tempbattalionname, tempgambitname);
 }
 void MyFrame::BounceCHIASelection(wxCommandEvent& selection) {
 	wxString tempstring = selection.GetString();
+
 	sp->ReceiveCHIASelection(tempstring);
 }
 
 void MyFrame::BounceCLIASelection(wxCommandEvent& selection) {
 	AbilitySelections* testing = dynamic_cast<AbilitySelections*>(selection.GetClientObject());
 	std::vector<wxString> testing2 = testing->GetSelections();
+
 	sp->ReceiveCLIASelection(testing2);
 }
 
 void MyFrame::BounceSLASelection(wxCommandEvent& selection) {
 	AbilitySelections* testing = dynamic_cast<AbilitySelections*>(selection.GetClientObject());
 	std::vector<wxString> testing2 = testing->GetSelections();
+
 	sp->ReceiveSLASelection(testing2);
 }
 

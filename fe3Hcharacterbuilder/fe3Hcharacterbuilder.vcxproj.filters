@@ -342,7 +342,9 @@
     <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralAbility.h">
       <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
     </ClInclude>
-    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralProwessAbility.h" />
+    <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralProwessAbility.h">
+      <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">

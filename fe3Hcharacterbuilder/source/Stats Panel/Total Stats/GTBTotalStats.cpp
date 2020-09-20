@@ -164,7 +164,7 @@ void GTBTotalStats::CalculateTotalPhysicalAttack() {
 void GTBTotalStats::CalculateTotalMagicAttack() {
 	std::wstring statstring;
 	std::vector<int> relevantabilities(4, 0);
-	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::MMIGHT);
+	relevantabilities[0] = RetrieveStatsFromAbilityPackages(STATTYPE::MIGHT);
 	relevantabilities[1] = RetrieveStatsFromAbilityPackages(STATTYPE::MMIGHT);
 	relevantabilities[2] = RetrieveStatsFromAbilityPackages(STATTYPE::MAG);
 	relevantabilities[3] = RetrieveStatsFromAbilityPackages(STATTYPE::MATK);

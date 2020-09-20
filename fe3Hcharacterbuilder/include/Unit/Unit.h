@@ -17,19 +17,4 @@ public:
 	virtual Unit* clone() = 0;
 };
 
-//class Gambit : public Unit {
-//private:
-//	std::wstring name;
-//	Stats gambitstats;
-//public:
-//	Gambit() {}
-//	~Gambit() {}
-//
-//	const std::wstring getName() override { return name; }
-//	const Stats getStats() override { return gambitstats; }
-//
-//	Gambit* new_expr() override { return new Gambit(); }
-//	Gambit* clone() override { return new Gambit(*this); }
-//};
-
 #endif
