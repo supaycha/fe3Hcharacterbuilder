@@ -31,7 +31,7 @@ public:
 		growths{ uHP, uMOV, uSTR, uMAG, uDEX, uSPD, uLCK, uDEF, uRES, uCHA }
 	{}
 
-	int Size() const { return growths.size(); }
+	//int Size() const { return growths.size(); }
 	Growth& operator[](UINT index) { return growths[index]; }
 	Growths& operator=(const Growths& source) = default;
 	Growths(const Growths&) = default;
