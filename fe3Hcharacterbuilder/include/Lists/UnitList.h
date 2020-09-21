@@ -31,120 +31,6 @@ private:
 	std::vector<std::unique_ptr<Unit>> list;
 public:
 	UnitList() {
-		/*list.emplace_back(std::make_unique<Gambit>(L"Absolute Defense",
-			L"---", L"100", L"1", L"2", 
-			L"Grants +6 defense to all allies within its area of effect for one turn.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Absorption",
-			L"4", L"30", L"1", L"1", 
-			L"Inflicts rattled status on all targets. Restores(damage dealt / 2) HP to the user from each target in its area of effect.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Ashes and Dust",
-			L"12", L"50", L"2-3", L"2",
-			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Assault Troop",
-			L"10", L"50", L"1", L"2",
-			L"Inflicts rattled status on all targets.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Assembly",
-			L"4", L"50", L"1", L"2",
-			L"Inflicts rattled status on all targets. At the end of combat, user moves one space backward while the primary target moves into user's previous space.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Bag of Tricks",
-			L"---", L"100", L"---", L"---",
-			L"Sets the gambit uses of all allies within its area of effect to 0.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Battleground Cafe",
-			L"---", L"100", L"1", L"2",
-			L"Grants +4 strength to all allies within its area of effect for one turn.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Battleground Clean Up",
-			L"15", L"40", L"1", L"1",
-			L"Inflicts rattled status on all targets.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Blaze",
-			L"10", L"50", L"1", L"1",
-			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Blessing",
-			L"---", L"100", L"1", L"1",
-			L"Grants Blessing status to all allies within its area of effect, reducing lethal damage taken to leave them at 1 HP for one turn.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Dance of the Goddess",
-			L"---", L"100", L"1", L"1",
-			L"Refreshes all allies within its area of effect, allowing them to move again if they have already moved.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Disturbance",
-			L"4", L"60", L"1", L"2",
-			L"Inflicts rattled status on all targets.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Flash-Fire Arrows",
-			L"7", L"50", L"1", L"2",
-			L"Deals bonus damage to flying units. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Fusillade",
-			L"5", L"50", L"2-3", L"2",
-			L"Deals bonus damage to flying units. Inflicts rattled status on all targets.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Group of Flames",
-			L"2", L"60", L"1-2", L"1",
-			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Group Ice",
-			L"3", L"50", L"1-2", L"1",
-			L"Works as magical damage. Inflicts rattled status on all targets.")); 
-		list.emplace_back(std::make_unique<Gambit>(L"Group Lance Attack",
-			L"6", L"50", L"1", L"2",
-			L"Inflicts rattled status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Group Lightning",
-			L"4", L"40", L"1-2", L"1",
-			L"Works as magical damage. Inflicts rattled status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Impregnable Wall",
-			L"---", L"100", L"1", L"5",
-			L"Grants Impregnable Wall status to all allies within its area of effect, reducing all damage dealt and taken by them to 1 for one turn."));
-		list.emplace_back(std::make_unique<Gambit>(L"Line of Lances",
-			L"5", L"50", L"1", L"2",
-			L"Deals bonus damage to cavalry units. Inflicts rattled status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Linked Horses",
-			L"12", L"50", L"1", L"1",
-			L"Inflicts rattled status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Lure",
-			L"4", L"50", L"1", L"2",
-			L"Inflicts rattled status on all targets. At the end of combat, moves primary target behind the user."));
-		list.emplace_back(std::make_unique<Gambit>(L"Mad Melee",
-			L"4", L"60", L"1", L"2",
-			L"Inflicts rattled status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Onslaught",
-			L"8", L"50", L"1", L"2",
-			L"Pushes foe 1 tile away."));
-		list.emplace_back(std::make_unique<Gambit>(L"Poison Tactic",
-			L"5", L"60", L"1", L"1",
-			L"Inflicts rattled status and poison status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Poisoned Arrows",
-			L"4", L"60", L"2-3", L"2",
-			L"Deals bonus damage to flying units. Inflicts rattled status and poison status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Raging Flames",
-			L"15", L"50", L"1", L"2",
-			L"Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn."));
-		list.emplace_back(std::make_unique<Gambit>(L"Random Shot",
-			L"8", L"40", L"1", L"2",
-			L"Inflicts rattled status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Recovery Roar",
-			L"---", L"100", L"1", L"5",
-			L"Removes any status condition from all allies in range."));
-		list.emplace_back(std::make_unique<Gambit>(L"Resonant Flames",
-			L"6", L"60", L"1-2", L"1",
-			L"Works as magical damage. Inflicts rattled status on all targets. Converts grassland, forest, thicket, wasteland, and house terrain within its area of effect into flame terrain for one turn."));
-		list.emplace_back(std::make_unique<Gambit>(L"Resonant Ice",
-			L"7", L"50", L"1-2", L"1",
-			L"Works as magical damage. Inflicts rattled status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Resonant Lightning",
-			L"8", L"40", L"1-2", L"1",
-			L"Works as magical damage.Inflicts rattled status on all targets."));
-		list.emplace_back(std::make_unique<Gambit>(L"Resonant White Magic",
-			L"8", L"100", L"1", L"3",
-			L"Restores HP to all allies within its area of effect."));
-		list.emplace_back(std::make_unique<Gambit>(L"Retribution",
-			L"---", L"100", L"1", L"2",
-			L"Grants Retribution status to all allies within its area of effect, allowing them to counter-attack regardless of the range between them and their targets for 5 turns."));
-		list.emplace_back(std::make_unique<Gambit>(L"Reversal",
-			L"8", L"50", L"1", L"2",
-			L"Inflicts rattled status on all targets. At the end of combat, user switches places with the primary target."));
-		list.emplace_back(std::make_unique<Gambit>(L"Sacred Shield",
-			L"---", L"100", L"1", L"5",
-			L"Grants Sacred Shield status to all allies within its area of effect, reducing all damage dealt to them from ranged attacks to 0 for one turn."));
-		list.emplace_back(std::make_unique<Gambit>(L"Stride",
-			L"---", L"100", L"1", L"2",
-			L"Grants Stride status to all allies within its area of effect, giving them +5 Movement for one turn."));
-		list.emplace_back(std::make_unique<Gambit>(L"Wave Attack",
-			L"13", L"60", L"1", L"2",
-			L"Deals bonus damage to armored units. Inflicts Is ns01 status rattled.png rattled status on all targets."));*/
 		list.emplace_back(std::make_unique<Battalion>(L"---", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
@@ -1578,234 +1464,1156 @@ public:
 			L"26", L"4", L"6", L"11", L"8", L"6", L"4", L"4", L"7", L"4",
 			L"0.35", L"0", L"0.35", L"0.45", L"0.45", L"0.4", L"0.2", L"0.15", L"0.45", L"0.25"));
 
-		list.emplace_back(std::make_unique<BlankWeapon>(L"---", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"0", L"0", SL::BLANK));
-		list.emplace_back(std::make_unique<Sword>(L"Broken Sword", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Iron Sword", false, L"NULL", L"5", L"90", L"0", L"1", L"5", L"E", L"40", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Iron Sword+", false, L"NULL", L"6", L"100", L"0", L"1", L"5", L"E", L"45", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Steel Sword", false, L"NULL", L"8", L"85", L"0", L"1", L"10", L"D", L"50", SL::D));
-		list.emplace_back(std::make_unique<Sword>(L"Steel Sword+", false, L"NULL", L"10", L"85", L"0", L"1", L"10", L"D", L"55", SL::D));
-		list.emplace_back(std::make_unique<Sword>(L"Silver Sword", false, L"NULL", L"12", L"90", L"0", L"1", L"8", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Sword>(L"Silver Sword+", false, L"NULL", L"13", L"90", L"0", L"1", L"8", L"B", L"40", SL::B));
-		list.emplace_back(std::make_unique<Sword>(L"Brave Sword", false, L"NULL", L"9", L"75", L"0", L"1", L"12", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Sword>(L"Brave Sword+", false, L"NULL", L"10", L"85", L"0", L"1", L"12", L"B", L"40", SL::B));
-		list.emplace_back(std::make_unique<Sword>(L"Killing Edge", false, L"NULL", L"8", L"85", L"25", L"1", L"10", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Sword>(L"Killing Edge+", false, L"NULL", L"9", L"85", L"35", L"1", L"10", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Sword>(L"Training Sword", false, L"NULL", L"3", L"100", L"0", L"1", L"4", L"E", L"50", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Training Sword+", false, L"NULL", L"3", L"100", L"0", L"1", L"2", L"E", L"65", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Levin Sword", false, L"NULL", L"9", L"70", L"0", L"1-2", L"9", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Sword>(L"Levin Sword+", false, L"NULL", L"9", L"70", L"0", L"1-3", L"9", L"C", L"30", SL::C));
-		list.emplace_back(std::make_unique<Sword>(L"Armorslayer", false, L"NULL", L"8", L"80", L"0", L"1", L"11", L"D", L"20", SL::D));
-		list.emplace_back(std::make_unique<Sword>(L"Armorslayer+", false, L"NULL", L"8", L"100", L"5", L"1", L"11", L"D", L"25", SL::D));
-		list.emplace_back(std::make_unique<Sword>(L"Rapier", false, L"NULL", L"7", L"95", L"10", L"1", L"5", L"E", L"40", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Rapier+", false, L"NULL", L"9", L"95", L"20", L"1", L"5", L"E", L"45", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Devil Sword", false, L"NULL", L"13", L"65", L"0", L"1", L"10", L"D", L"30", SL::D));
-		list.emplace_back(std::make_unique<Sword>(L"Devil Sword+", false, L"NULL", L"16", L"65", L"0", L"1", L"10", L"D", L"30", SL::D));
-		list.emplace_back(std::make_unique<Sword>(L"Wo Dao", false, L"NULL", L"8", L"90", L"30", L"1", L"5", L"B", L"15", SL::B));
-		list.emplace_back(std::make_unique<Sword>(L"Wo Dao+", false, L"NULL", L"9", L"90", L"40", L"1", L"5", L"B", L"25", SL::B));
-		list.emplace_back(std::make_unique<Sword>(L"Sword of Seiros", false, L"NULL", L"11", L"80", L"10", L"1", L"6", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Sword>(L"Sword of Begalta", true, L"Claude", L"12", L"100", L"0", L"1", L"5", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Sword>(L"Sword of Moralta", false, L"NULL", L"13", L"75", L"25", L"1", L"9", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Sword>(L"Cursed Ashiya Sword", true, L"Felix", L"13", L"70", L"40", L"1", L"8", L"B", L"15", SL::B));
-		list.emplace_back(std::make_unique<Sword>(L"Cursed Ashiya Sword+", true, L"Felix", L"14", L"70", L"50", L"1", L"8", L"B", L"20", SL::B));
-		list.emplace_back(std::make_unique<Sword>(L"Sword of Zoltan", false, L"NULL", L"13", L"90", L"0", L"1", L"9", L"A", L"25", SL::A));
-		list.emplace_back(std::make_unique<Sword>(L"Sword of Zoltan+", false, L"NULL", L"16", L"90", L"5", L"1", L"9", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Sword>(L"Thunderbrand", true, L"Catherine", L"13", L"70", L"10", L"1", L"7", L"E", L"30", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Blutgang", true, L"Marianne", L"13", L"80", L"0", L"1", L"7", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Sword of the Creator", true, L"Byleth", L"7", L"90", L"0", L"1-2", L"9", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Sword>(L"Venin Edge", false, L"NULL", L"5", L"90", L"0", L"1", L"6", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Sword>(L"Venin Edge+", false, L"NULL", L"6", L"100", L"0", L"1", L"6", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Sword>(L"Mercurius", false, L"NULL", L"15", L"100", L"10", L"1", L"7", L"A", L"40", SL::A));
-		list.emplace_back(std::make_unique<Sword>(L"Rusted Sword", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Lance>(L"Broken Lance", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Lance>(L"Iron Lance", false, L"NULL", L"6", L"80", L"0", L"1", L"6", L"E", L"30", SL::E));
-		list.emplace_back(std::make_unique<Lance>(L"Iron Lance+", false, L"NULL", L"7", L"90", L"0", L"1", L"6", L"E", L"35", SL::E));
-		list.emplace_back(std::make_unique<Lance>(L"Steel Lance", false, L"NULL", L"9", L"75", L"0", L"1", L"11", L"D", L"40", SL::D));
-		list.emplace_back(std::make_unique<Lance>(L"Steel Lance+", false, L"NULL", L"11", L"75", L"0", L"1", L"11", L"D", L"45", SL::D));
-		list.emplace_back(std::make_unique<Lance>(L"Silver Lance", false, L"NULL", L"13", L"80", L"0", L"1", L"9", L"B", L"25", SL::B));
-		list.emplace_back(std::make_unique<Lance>(L"Silver Lance+", false, L"NULL", L"14", L"80", L"0", L"1", L"9", L"B", L"35", SL::B));
-		list.emplace_back(std::make_unique<Lance>(L"Brave Lance", false, L"NULL", L"10", L"70", L"0", L"1", L"13", L"B", L"25", SL::B));
-		list.emplace_back(std::make_unique<Lance>(L"Brave Lance+", false, L"NULL", L"11", L"80", L"0", L"1", L"13", L"B", L"35", SL::B));
-		list.emplace_back(std::make_unique<Lance>(L"Killer Lance", false, L"NULL", L"9", L"80", L"25", L"1", L"11", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Killer Lance+", false, L"NULL", L"10", L"80", L"35", L"1", L"11", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Training Lance", false, L"NULL", L"4", L"90", L"0", L"1", L"5", L"E", L"50", SL::E));
-		list.emplace_back(std::make_unique<Lance>(L"Training Lance+", false, L"NULL", L"4", L"90", L"0", L"1", L"3", L"E", L"65", SL::E));
-		list.emplace_back(std::make_unique<Lance>(L"Javelin", false, L"NULL", L"2", L"80", L"0", L"1-2", L"8", L"D", L"30", SL::D));
-		list.emplace_back(std::make_unique<Lance>(L"Javelin+", false, L"NULL", L"3", L"80", L"0", L"1-2", L"8", L"D", L"40", SL::D));
-		list.emplace_back(std::make_unique<Lance>(L"Short Spear", false, L"NULL", L"5", L"75", L"0", L"1-2", L"10", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Short Spear+", false, L"NULL", L"6", L"75", L"0", L"1-2", L"10", L"C", L"35", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Spear", false, L"NULL", L"8", L"70", L"0", L"1-2", L"12", L"B", L"20", SL::B));
-		list.emplace_back(std::make_unique<Lance>(L"Spear+", false, L"NULL", L"9", L"70", L"0", L"1-2", L"12", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Lance>(L"Horseslayer", false, L"NULL", L"8", L"70", L"0", L"1", L"13", L"D", L"20", SL::D));
-		list.emplace_back(std::make_unique<Lance>(L"Horseslayer+", false, L"NULL", L"8", L"90", L"5", L"1", L"13", L"D", L"25", SL::D));
-		list.emplace_back(std::make_unique<Lance>(L"Blessed Lance", false, L"NULL", L"7", L"80", L"0", L"1", L"14", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Blessed Lance+", false, L"NULL", L"9", L"80", L"0", L"1", L"14", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Crescent Sickle", false, L"NULL", L"10", L"80", L"0", L"1", L"12", L"B", L"50", SL::B));
-		list.emplace_back(std::make_unique<Lance>(L"Crescent Sickle+", false, L"NULL", L"11", L"80", L"10", L"1", L"12", L"B", L"55", SL::B));
-		list.emplace_back(std::make_unique<Lance>(L"Lance of Zoltan", false, L"NULL", L"15", L"80", L"0", L"1", L"10", L"A", L"20", SL::A));
-		list.emplace_back(std::make_unique<Lance>(L"Lance of Zoltan+", false, L"NULL", L"18", L"80", L"5", L"1", L"10", L"A", L"25", SL::A));
-		list.emplace_back(std::make_unique<Lance>(L"Lance of Ruin", true, L"Sylvain", L"22", L"65", L"20", L"1", L"9", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Lance>(L"Areadbhar", true, L"Dimitri", L"19", L"75", L"10", L"1", L"9", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Lance>(L"Luin", true, L"Ingrid", L"17", L"90", L"10", L"1", L"9", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Lance>(L"Spear of Assal", true, L"Seteth", L"14", L"85", L"10", L"1", L"9", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Lance>(L"Arrow of Indra", false, L"NULL", L"12", L"75", L"0", L"1-2", L"14", L"C", L"30", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Arrow of Indra+", false, L"NULL", L"12", L"75", L"0", L"1-3", L"14", L"C", L"35", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Venin Lance", false, L"NULL", L"6", L"80", L"0", L"1", L"7", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Venin Lance+", false, L"NULL", L"7", L"90", L"0", L"1", L"7", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Lance>(L"Gradivus", false, L"NULL", L"17", L"90", L"10", L"1-2", L"8", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Lance>(L"Rusted Lance", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Broken Axe", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));		
-		list.emplace_back(std::make_unique<Axe>(L"Iron Axe", false, L"NULL", L"8", L"70", L"0", L"1", L"7", L"E", L"45", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Iron Axe+", false, L"NULL", L"9", L"80", L"0", L"1", L"7", L"E", L"50", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Steel Axe", false, L"NULL", L"11", L"65", L"0", L"1", L"12", L"D", L"55", SL::D));
-		list.emplace_back(std::make_unique<Axe>(L"Steel Axe+", false, L"NULL", L"13", L"65", L"0", L"1", L"12", L"D", L"60", SL::D));
-		list.emplace_back(std::make_unique<Axe>(L"Silver Axe", false, L"NULL", L"16", L"70", L"0", L"1", L"10", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Axe>(L"Silver Axe+", false, L"NULL", L"17", L"70", L"0", L"1", L"10", L"B", L"40", SL::B));
-		list.emplace_back(std::make_unique<Axe>(L"Brave Axe", false, L"NULL", L"12", L"60", L"0", L"1", L"14", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Axe>(L"Brave Axe+", false, L"NULL", L"13", L"70", L"0", L"1", L"14", L"B", L"40", SL::B));
-		list.emplace_back(std::make_unique<Axe>(L"Killer Axe", false, L"NULL", L"11", L"70", L"25", L"1", L"12", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Axe>(L"Killer Axe+", false, L"NULL", L"12", L"70", L"35", L"1", L"12", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Axe>(L"Training Axe", false, L"NULL", L"6", L"80", L"0", L"1", L"6", L"E", L"50", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Training Axe+", false, L"NULL", L"6", L"80", L"0", L"1", L"4", L"E", L"65", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Bolt Axe", false, L"NULL", L"14", L"60", L"0", L"1-2", L"15", L"B", L"25", SL::B));
-		list.emplace_back(std::make_unique<Axe>(L"Bolt Axe+", false, L"NULL", L"14", L"60", L"0", L"1-3", L"15", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Axe>(L"Hand Axe", false, L"NULL", L"4", L"70", L"0", L"1-2", L"10", L"D", L"30", SL::D));
-		list.emplace_back(std::make_unique<Axe>(L"Hand Axe+", false, L"NULL", L"5", L"70", L"0", L"1-2", L"10", L"D", L"40", SL::D));
-		list.emplace_back(std::make_unique<Axe>(L"Short Axe", false, L"NULL", L"8", L"65", L"0", L"1-2", L"12", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Axe>(L"Short Axe+", false, L"NULL", L"9", L"65", L"0", L"1-2", L"12", L"C", L"35", SL::C));
-		list.emplace_back(std::make_unique<Axe>(L"Tomahawk", false, L"NULL", L"12", L"60", L"0", L"1-2", L"14", L"B", L"20", SL::B));
-		list.emplace_back(std::make_unique<Axe>(L"Tomahawk+", false, L"NULL", L"13", L"60", L"0", L"1-2", L"14", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Axe>(L"Hammer", false, L"NULL", L"10", L"60", L"0", L"1", L"15", L"D", L"20", SL::D));
-		list.emplace_back(std::make_unique<Axe>(L"Hammer+", false, L"NULL", L"10", L"80", L"5", L"1", L"15", L"D", L"25", SL::D));
-		list.emplace_back(std::make_unique<Axe>(L"Devil Axe", false, L"NULL", L"18", L"60", L"0", L"1", L"14", L"D", L"30", SL::D));
-		list.emplace_back(std::make_unique<Axe>(L"Devil Axe+", false, L"NULL", L"21", L"60", L"0", L"1", L"14", L"D", L"30", SL::D));
-		list.emplace_back(std::make_unique<Axe>(L"Freikugel", true, L"Hilda", L"23", L"65", L"10", L"1", L"11", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Crusher", true, L"Annette", L"18", L"60", L"0", L"1", L"11", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Axe of Ukonvasara", true, L"Lorenz", L"19", L"65", L"20", L"1", L"15", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Axe>(L"Axe of Zoltan", false, L"NULL", L"17", L"70", L"0", L"1", L"14", L"A", L"20", SL::A));
-		list.emplace_back(std::make_unique<Axe>(L"Axe of Zoltan+", false, L"NULL", L"20", L"70", L"5", L"1", L"14", L"A", L"25", SL::A));
-		list.emplace_back(std::make_unique<Axe>(L"Mace", false, L"NULL", L"6", L"70", L"0", L"1", L"6", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Mace+", false, L"NULL", L"6", L"90", L"5", L"1", L"6", L"E", L"25", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Amyr", true, L"Edelgard,Rhea", L"24", L"60", L"20", L"1", L"11", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Axe>(L"Venin Axe", false, L"NULL", L"8", L"70", L"0", L"1", L"8", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Axe>(L"Venin Axe+", false, L"NULL", L"9", L"80", L"0", L"1", L"8", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Axe>(L"Hauteclere", false, L"NULL", L"19", L"80", L"10", L"1", L"12", L"A", L"40", SL::A));
-		list.emplace_back(std::make_unique<Axe>(L"Rusted Axe", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Bow>(L"Broken Bow", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Bow>(L"Iron Bow", false, L"NULL", L"6", L"85", L"0", L"2", L"6", L"E", L"40", SL::E));
-		list.emplace_back(std::make_unique<Bow>(L"Iron Bow+", false, L"NULL", L"7", L"95", L"0", L"2", L"5", L"E", L"45", SL::E));
-		list.emplace_back(std::make_unique<Bow>(L"Steel Bow", false, L"NULL", L"9", L"80", L"0", L"2", L"11", L"D", L"50", SL::D));
-		list.emplace_back(std::make_unique<Bow>(L"Steel Bow+", false, L"NULL", L"11", L"80", L"0", L"2", L"10", L"D", L"55", SL::D));
-		list.emplace_back(std::make_unique<Bow>(L"Silver Bow", false, L"NULL", L"12", L"75", L"0", L"2", L"9", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Bow>(L"Silver Bow+", false, L"NULL", L"13", L"75", L"0", L"2", L"8", L"B", L"40", SL::B));
-		list.emplace_back(std::make_unique<Bow>(L"Brave Bow", false, L"NULL", L"10", L"70", L"0", L"2", L"13", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Bow>(L"Brave Bow+", false, L"NULL", L"11", L"80", L"0", L"2", L"12", L"B", L"40", SL::B));
-		list.emplace_back(std::make_unique<Bow>(L"Killer Bow", false, L"NULL", L"9", L"80", L"25", L"2", L"11", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Bow>(L"Killer Bow+", false, L"NULL", L"10", L"80", L"35", L"2", L"11", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Bow>(L"Training Bow", false, L"NULL", L"3", L"90", L"0", L"2", L"5", L"E", L"50", SL::E));
-		list.emplace_back(std::make_unique<Bow>(L"Training Bow+", false, L"NULL", L"3", L"90", L"0", L"2", L"3", L"E", L"65", SL::E));
-		list.emplace_back(std::make_unique<Bow>(L"Magic Bow", false, L"NULL", L"8", L"75", L"0", L"2", L"9", L"B", L"25", SL::B));
-		list.emplace_back(std::make_unique<Bow>(L"Magic Bow+", false, L"NULL", L"8", L"75", L"0", L"2-3", L"9", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Bow>(L"Longbow", false, L"NULL", L"9", L"70", L"0", L"2-3", L"13", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Bow>(L"Longbow+", false, L"NULL", L"11", L"70", L"0", L"2-3", L"13", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Bow>(L"Mini Bow", false, L"NULL", L"4", L"90", L"0", L"1-2", L"3", L"D", L"50", SL::D));
-		list.emplace_back(std::make_unique<Bow>(L"Mini Bow+", false, L"NULL", L"6", L"90", L"10", L"1-2", L"3", L"D", L"55", SL::D));
-		list.emplace_back(std::make_unique<Bow>(L"Blessed Bow", false, L"NULL", L"6", L"70", L"0", L"2", L"14", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Bow>(L"Blessed Bow+", false, L"NULL", L"8", L"70", L"0", L"2", L"14", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Bow>(L"Tathlum Bow", true, L"Mercedes,Jeritza", L"13", L"80", L"10", L"2", L"11", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Bow>(L"The Inexhaustible", true, L"Seteth", L"11", L"80", L"0", L"2", L"11", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Bow>(L"Bow of Zoltan", false, L"NULL", L"13", L"75", L"0", L"2", L"8", L"A", L"20", SL::A));
-		list.emplace_back(std::make_unique<Bow>(L"Bow of Zoltan+", false, L"NULL", L"16", L"75", L"5", L"2", L"8", L"A", L"25", SL::A));
-		list.emplace_back(std::make_unique<Bow>(L"Failnaught", true, L"Claude", L"18", L"75", L"20", L"2-3", L"9", L"E", L"20", SL::E));
-		list.emplace_back(std::make_unique<Bow>(L"Venin Bow", false, L"NULL", L"6", L"85", L"0", L"2", L"6", L"C", L"20", SL::C));
-		list.emplace_back(std::make_unique<Bow>(L"Venin Bow+", false, L"NULL", L"7", L"95", L"0", L"2", L"6", L"C", L"25", SL::C));
-		list.emplace_back(std::make_unique<Bow>(L"Parthia", false, L"NULL", L"15", L"85", L"10", L"2", L"7", L"A", L"40", SL::A));
-		list.emplace_back(std::make_unique<Bow>(L"Rusted Bow", false, L"NULL", L"0", L"30", L"0", L"2", L"5", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Broken Gauntlets", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Iron Gauntlets", false, L"NULL", L"1", L"85", L"5", L"1", L"3", L"E", L"50", SL::E));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Iron Gauntlets+", false, L"NULL", L"1", L"95", L"5", L"1", L"3", L"E", L"60", SL::E));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Steel Gauntlets", false, L"NULL", L"3", L"80", L"5", L"1", L"5", L"D", L"60", SL::D));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Steel Gauntlets+", false, L"NULL", L"3", L"85", L"5", L"1", L"5", L"D", L"70", SL::D));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Silver Gauntlets", false, L"NULL", L"4", L"85", L"5", L"1", L"7", L"B", L"40", SL::B));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Silver Gauntlets+", false, L"NULL", L"4", L"90", L"5", L"1", L"7", L"B", L"55", SL::B));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Training Gauntlets", false, L"NULL", L"0", L"90", L"5", L"1", L"1", L"E", L"70", SL::E));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Training Gauntlets+", false, L"NULL", L"0", L"100", L"5", L"1", L"1", L"E", L"90", SL::E));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Dragon Claws", false, L"NULL", L"4", L"75", L"5", L"1", L"7", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Dragon Claws+", false, L"NULL", L"4", L"85", L"5", L"1", L"7", L"A", L"40", SL::A));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Killer Knuckles", false, L"NULL", L"3", L"80", L"20", L"1", L"5", L"B", L"30", SL::B));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Killer Knuckles+", false, L"NULL", L"3", L"80", L"30", L"1", L"5", L"B", L"40", SL::B));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Aura Knuckles", false, L"NULL", L"2", L"70", L"0", L"1", L"4", L"A", L"30", SL::A));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Aura Knuckles+", false, L"NULL", L"2", L"80", L"0", L"1", L"4", L"A", L"40", SL::A));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Rusted Gauntlets", false, L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", SL::E));
-		list.emplace_back(std::make_unique<Gauntlets>(L"Vajra-Mushti", true, L"Balthus", L"7", L"90", L"10", L"1", L"7", L"E", L"30", SL::E));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Fire", false, L"NULL", L"3", L"90", L"0", L"1-2", L"3", L"E", L"10", SL::E));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Bolganone", false, L"NULL", L"8", L"85", L"0", L"1-2", L"6", L"C", L"5", SL::C));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Ragnarok", false, L"NULL", L"15", L"80", L"5", L"1-2", L"9", L"B", L"3", SL::B));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Thunder", false, L"NULL", L"4", L"80", L"5", L"1-2", L"4", L"E", L"8", SL::E));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Thoron", false, L"NULL", L"9", L"75", L"10", L"1-3", L"7", L"C", L"4", SL::C));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Bolting", false, L"NULL", L"12", L"65", L"15", L"3-10", L"18", L"B", L"2", SL::B));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Wind", false, L"NULL", L"2", L"100", L"10", L"1-2", L"2", L"E", L"12", SL::E));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Cutting Gale", false, L"NULL", L"7", L"95", L"10", L"1-2", L"5", L"C", L"6", SL::C));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Excalibur", false, L"NULL", L"11", L"100", L"15", L"1-2", L"8", L"B", L"4", SL::B));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Blizzard", false, L"NULL", L"3", L"70", L"15", L"1-2", L"4", L"E", L"10", SL::E));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Fimbulvetr", false, L"NULL", L"12", L"65", L"25", L"1-2", L"10", L"B", L"3", SL::B));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Sagittae", false, L"NULL", L"7", L"90", L"5", L"1-2", L"6", L"C", L"10", SL::C));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Meteor", false, L"NULL", L"10", L"80", L"0", L"3-10", L"19", L"B", L"1", SL::B));
-		list.emplace_back(std::make_unique<BlackMagic>(L"Agnea's Arrow", false, L"NULL", L"16", L"70", L"5", L"1-2", L"13", L"A", L"2", SL::A));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Miasma", false, L"NULL", L"5", L"80", L"0", L"1-2", L"5", L"E", L"10", SL::E));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Mire", false, L"NULL", L"3", L"70", L"0", L"1-3", L"5", L"E", L"8", SL::E));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Swarm", false, L"NULL", L"4", L"70", L"0", L"1-2", L"4", L"E", L"8", SL::E));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Banshee", false, L"NULL", L"9", L"75", L"5", L"1-2", L"9", L"C", L"5", SL::C));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Death", false, L"NULL", L"6", L"70", L"20", L"1-3", L"8", L"C", L"4", SL::C));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Luna", false, L"NULL", L"1", L"65", L"0", L"1-2", L"7", L"C", L"2", SL::C));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Dark Spikes", false, L"NULL", L"13", L"80", L"0", L"1-2", L"11", L"B", L"3", SL::B));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Hades", false, L"NULL", L"18", L"65", L"10", L"1-2", L"16", L"A", L"2", SL::A));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Bohr", false, L"NULL", L"10", L"60", L"0", L"3-10", L"20", L"B", L"3", SL::B));
-		list.emplace_back(std::make_unique<DarkMagic>(L"Quake", false, L"NULL", L"8", L"50", L"0", L"ALL", L"20", L"B", L"1", SL::B));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Heal", false, L"NULL", L"8", L"100", L"0", L"1", L"0", L"E", L"10", SL::E));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Recover", false, L"NULL", L"30", L"100", L"0", L"1", L"0", L"C", L"5", SL::C));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Physic", false, L"NULL", L"8", L"100", L"0", L"1", L"0", L"C", L"5", SL::C));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Fortify", false, L"NULL", L"15", L"100", L"0", L"0", L"0", L"A", L"2", SL::A));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Nosferatu", false, L"NULL", L"1", L"80", L"0", L"1-2", L"8", L"E", L"12", SL::E));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Seraphim", false, L"NULL", L"8", L"75", L"5", L"1-2", L"10", L"C", L"8", SL::C));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Aura", false, L"NULL", L"12", L"70", L"20", L"1-2", L"12", L"B", L"3", SL::B));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Abraxas", false, L"NULL", L"14", L"90", L"5", L"1-2", L"13", L"A", L"2", SL::A));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Torch", false, L"NULL", L"0", L"0", L"0", L"1-2", L"0", L"E", L"10", SL::E));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Restore", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"C", L"10", SL::C));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Ward", false, L"NULL", L"0", L"0", L"0", L"1", L"0", L"C", L"5", SL::C));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Silence", false, L"NULL", L"0", L"100", L"0", L"3-10", L"0", L"B", L"3", SL::B));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Rescue", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"B", L"3", SL::B));
-		list.emplace_back(std::make_unique<WhiteMagic>(L"Warp", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"B", L"1", SL::B));
+		list.emplace_back(std::make_unique<BlankWeapon>(
+			L"---", 
+			false,
+			L"NULL", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			SL::BLANK));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Broken Sword", 
+			false, 
+			L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", 
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Iron Sword", 
+			false,
+			L"NULL", L"5", L"90", L"0", L"1", L"5", L"E", L"40", 
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Iron Sword+", 
+			false, 
+			L"NULL", L"6", L"100", L"0", L"1", L"5", L"E", L"45", 
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Steel Sword",
+			false,
+			L"NULL", L"8", L"85", L"0", L"1", L"10", L"D", L"50",
+			SL::D));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Steel Sword+", 
+			false,
+			L"NULL", L"10", L"85", L"0", L"1", L"10", L"D", L"55",
+			SL::D));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Silver Sword",
+			false,
+			L"NULL", L"12", L"90", L"0", L"1", L"8", L"B", L"30", 
+			SL::B));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Silver Sword+", 
+			false,
+			L"NULL", L"13", L"90", L"0", L"1", L"8", L"B", L"40", 
+			SL::B));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Brave Sword",
+			false,
+			L"NULL", L"9", L"75", L"0", L"1", L"12", L"B", L"30",
+			SL::B));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Brave Sword+", 
+			false, 
+			L"NULL", L"10", L"85", L"0", L"1", L"12", L"B", L"40", 
+			SL::B));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Killing Edge",
+			false, 
+			L"NULL", L"8", L"85", L"25", L"1", L"10", L"C", L"20",
+			SL::C));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Killing Edge+", 
+			false, 
+			L"NULL", L"9", L"85", L"35", L"1", L"10", L"C", L"25", 
+			SL::C));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Training Sword", 
+			false, 
+			L"NULL", L"3", L"100", L"0", L"1", L"4", L"E", L"50", 
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Training Sword+", 
+			false,
+			L"NULL", L"3", L"100", L"0", L"1", L"2", L"E", L"65", 
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Levin Sword", 
+			false, 
+			L"NULL", L"9", L"70", L"0", L"1-2", L"9", L"C", L"25",
+			SL::C));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Levin Sword+", 
+			false, 
+			L"NULL", L"9", L"70", L"0", L"1-3", L"9", L"C", L"30",
+			SL::C));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Armorslayer", 
+			false, 
+			L"NULL", L"8", L"80", L"0", L"1", L"11", L"D", L"20", 
+			SL::D));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Armorslayer+",
+			false, 
+			L"NULL", L"8", L"100", L"5", L"1", L"11", L"D", L"25",
+			SL::D));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Rapier", 
+			false, 
+			L"NULL", L"7", L"95", L"10", L"1", L"5", L"E", L"40",
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Rapier+",
+			false, 
+			L"NULL", L"9", L"95", L"20", L"1", L"5", L"E", L"45",
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Devil Sword",
+			false, 
+			L"NULL", L"13", L"65", L"0", L"1", L"10", L"D", L"30",
+			SL::D));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Devil Sword+",
+			false,
+			L"NULL", L"16", L"65", L"0", L"1", L"10", L"D", L"30",
+			SL::D));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Wo Dao",
+			false, 
+			L"NULL", L"8", L"90", L"30", L"1", L"5", L"B", L"15", 
+			SL::B));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Wo Dao+", 
+			false, 
+			L"NULL", L"9", L"90", L"40", L"1", L"5", L"B", L"25",
+			SL::B));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Sword of Seiros",
+			false,
+			L"NULL", L"11", L"80", L"10", L"1", L"6", L"A", L"30", 
+			SL::A));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Sword of Begalta",
+			true,
+			L"Claude", L"12", L"100", L"0", L"1", L"5", L"A", L"30",
+			SL::A));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Sword of Moralta", 
+			false,
+			L"NULL", L"13", L"75", L"25", L"1", L"9", L"A", L"30",
+			SL::A));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Cursed Ashiya Sword",
+			true, 
+			L"Felix", L"13", L"70", L"40", L"1", L"8", L"B", L"15",
+			SL::B));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Cursed Ashiya Sword+", 
+			true, 
+			L"Felix", L"14", L"70", L"50", L"1", L"8", L"B", L"20", 
+			SL::B));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Sword of Zoltan",
+			false, 
+			L"NULL", L"13", L"90", L"0", L"1", L"9", L"A", L"25",
+			SL::A));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Sword of Zoltan+", 
+			false, 
+			L"NULL", L"16", L"90", L"5", L"1", L"9", L"A", L"30",
+			SL::A));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Thunderbrand", 
+			true, 
+			L"Catherine", L"13", L"70", L"10", L"1", L"7", L"E", L"30",
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Blutgang", 
+			true, 
+			L"Marianne", L"13", L"80", L"0", L"1", L"7", L"E", L"20",
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Sword of the Creator", 
+			true, 
+			L"Byleth", L"7", L"90", L"0", L"1-2", L"9", L"E", L"20",
+			SL::E));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Venin Edge", 
+			false, 
+			L"NULL", L"5", L"90", L"0", L"1", L"6", L"C", L"20", 
+			SL::C));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Venin Edge+",
+			false, 
+			L"NULL", L"6", L"100", L"0", L"1", L"6", L"C", L"25",
+			SL::C));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Mercurius", 
+			false, 
+			L"NULL", L"15", L"100", L"10", L"1", L"7", L"A", L"40",
+			SL::A));
+		list.emplace_back(std::make_unique<Sword>(
+			L"Rusted Sword", 
+			false, 
+			L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0",
+			SL::E));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Broken Lance", 
+			false,
+			L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0",
+			SL::E));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Iron Lance", 
+			false,
+			L"NULL", L"6", L"80", L"0", L"1", L"6", L"E", L"30", 
+			SL::E));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Iron Lance+", 
+			false,
+			L"NULL", L"7", L"90", L"0", L"1", L"6", L"E", L"35", 
+			SL::E));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Steel Lance", 
+			false, 
+			L"NULL", L"9", L"75", L"0", L"1", L"11", L"D", L"40", 
+			SL::D));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Steel Lance+", 
+			false,
+			L"NULL", L"11", L"75", L"0", L"1", L"11", L"D", L"45",
+			SL::D));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Silver Lance", 
+			false,
+			L"NULL", L"13", L"80", L"0", L"1", L"9", L"B", L"25",
+			SL::B));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Silver Lance+",
+			false,
+			L"NULL", L"14", L"80", L"0", L"1", L"9", L"B", L"35",
+			SL::B));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Brave Lance",
+			false, 
+			L"NULL", L"10", L"70", L"0", L"1", L"13", L"B", L"25",
+			SL::B));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Brave Lance+",
+			false,
+			L"NULL", L"11", L"80", L"0", L"1", L"13", L"B", L"35",
+			SL::B));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Killer Lance", 
+			false, 
+			L"NULL", L"9", L"80", L"25", L"1", L"11", L"C", L"20", 
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Killer Lance+", 
+			false, 
+			L"NULL", L"10", L"80", L"35", L"1", L"11", L"C", L"25",
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Training Lance",
+			false,
+			L"NULL", L"4", L"90", L"0", L"1", L"5", L"E", L"50",
+			SL::E));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Training Lance+",
+			false,
+			L"NULL", L"4", L"90", L"0", L"1", L"3", L"E", L"65",
+			SL::E));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Javelin",
+			false, 
+			L"NULL", L"2", L"80", L"0", L"1-2", L"8", L"D", L"30",
+			SL::D));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Javelin+", 
+			false,
+			L"NULL", L"3", L"80", L"0", L"1-2", L"8", L"D", L"40",
+			SL::D));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Short Spear", 
+			false, 
+			L"NULL", L"5", L"75", L"0", L"1-2", L"10", L"C", L"25", 
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Short Spear+",
+			false, 
+			L"NULL", L"6", L"75", L"0", L"1-2", L"10", L"C", L"35", 
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Spear",
+			false,
+			L"NULL", L"8", L"70", L"0", L"1-2", L"12", L"B", L"20",
+			SL::B));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Spear+", 
+			false,
+			L"NULL", L"9", L"70", L"0", L"1-2", L"12", L"B", L"30", 
+			SL::B));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Horseslayer",
+			false, 
+			L"NULL", L"8", L"70", L"0", L"1", L"13", L"D", L"20",
+			SL::D));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Horseslayer+",
+			false, 
+			L"NULL", L"8", L"90", L"5", L"1", L"13", L"D", L"25",
+			SL::D));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Blessed Lance", 
+			false, 
+			L"NULL", L"7", L"80", L"0", L"1", L"14", L"C", L"20",
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Blessed Lance+", 
+			false,
+			L"NULL", L"9", L"80", L"0", L"1", L"14", L"C", L"20",
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Crescent Sickle", 
+			false, 
+			L"NULL", L"10", L"80", L"0", L"1", L"12", L"B", L"50",
+			SL::B));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Crescent Sickle+",
+			false, 
+			L"NULL", L"11", L"80", L"10", L"1", L"12", L"B", L"55", 
+			SL::B));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Lance of Zoltan", 
+			false, 
+			L"NULL", L"15", L"80", L"0", L"1", L"10", L"A", L"20", 
+			SL::A));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Lance of Zoltan+",
+			false,
+			L"NULL", L"18", L"80", L"5", L"1", L"10", L"A", L"25",
+			SL::A));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Lance of Ruin", 
+			true,
+			L"Sylvain", L"22", L"65", L"20", L"1", L"9", L"E", L"20",
+			SL::E));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Areadbhar", 
+			true, 
+			L"Dimitri", L"19", L"75", L"10", L"1", L"9", L"E", L"20", 
+			SL::E));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Luin",
+			true, 
+			L"Ingrid", L"17", L"90", L"10", L"1", L"9", L"E", L"20",
+			SL::E));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Spear of Assal",
+			true, 
+			L"Seteth", L"14", L"85", L"10", L"1", L"9", L"A", L"30",
+			SL::A));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Arrow of Indra",
+			false,
+			L"NULL", L"12", L"75", L"0", L"1-2", L"14", L"C", L"30", 
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Arrow of Indra+",
+			false, 
+			L"NULL", L"12", L"75", L"0", L"1-3", L"14", L"C", L"35", 
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Venin Lance",
+			false, 
+			L"NULL", L"6", L"80", L"0", L"1", L"7", L"C", L"20", 
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Venin Lance+", 
+			false,
+			L"NULL", L"7", L"90", L"0", L"1", L"7", L"C", L"25",
+			SL::C));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Gradivus",
+			false, 
+			L"NULL", L"17", L"90", L"10", L"1-2", L"8", L"A", L"30",
+			SL::A));
+		list.emplace_back(std::make_unique<Lance>(
+			L"Rusted Lance",
+			false, 
+			L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", 
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Broken Axe",
+			false, 
+			L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", 
+			SL::E));		
+		list.emplace_back(std::make_unique<Axe>(
+			L"Iron Axe", 
+			false, 
+			L"NULL", L"8", L"70", L"0", L"1", L"7", L"E", L"45",
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Iron Axe+", 
+			false, 
+			L"NULL", L"9", L"80", L"0", L"1", L"7", L"E", L"50",
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Steel Axe",
+			false, 
+			L"NULL", L"11", L"65", L"0", L"1", L"12", L"D", L"55", 
+			SL::D));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Steel Axe+",
+			false,
+			L"NULL", L"13", L"65", L"0", L"1", L"12", L"D", L"60", 
+			SL::D));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Silver Axe", 
+			false, 
+			L"NULL", L"16", L"70", L"0", L"1", L"10", L"B", L"30",
+			SL::B));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Silver Axe+",
+			false, 
+			L"NULL", L"17", L"70", L"0", L"1", L"10", L"B", L"40",
+			SL::B));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Brave Axe",
+			false,
+			L"NULL", L"12", L"60", L"0", L"1", L"14", L"B", L"30", 
+			SL::B));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Brave Axe+", 
+			false, 
+			L"NULL", L"13", L"70", L"0", L"1", L"14", L"B", L"40",
+			SL::B));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Killer Axe", 
+			false, 
+			L"NULL", L"11", L"70", L"25", L"1", L"12", L"C", L"20", 
+			SL::C));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Killer Axe+", 
+			false, 
+			"NULL", L"12", L"70", L"35", L"1", L"12", L"C", L"25", 
+			SL::C));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Training Axe",
+			false, 
+			L"NULL", L"6", L"80", L"0", L"1", L"6", L"E", L"50",
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Training Axe+",
+			false,
+			L"NULL", L"6", L"80", L"0", L"1", L"4", L"E", L"65", 
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Bolt Axe",
+			false, 
+			L"NULL", L"14", L"60", L"0", L"1-2", L"15", L"B", L"25", 
+			SL::B));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Bolt Axe+", 
+			false, 
+			L"NULL", L"14", L"60", L"0", L"1-3", L"15", L"B", L"30", 
+			SL::B));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Hand Axe",
+			false,
+			L"NULL", L"4", L"70", L"0", L"1-2", L"10", L"D", L"30", 
+			SL::D));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Hand Axe+", 
+			false, 
+			L"NULL", L"5", L"70", L"0", L"1-2", L"10", L"D", L"40",
+			SL::D));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Short Axe",
+			false, 
+			L"NULL", L"8", L"65", L"0", L"1-2", L"12", L"C", L"25", 
+			SL::C));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Short Axe+", 
+			false, 
+			L"NULL", L"9", L"65", L"0", L"1-2", L"12", L"C", L"35",
+			SL::C));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Tomahawk", 
+			false,
+			L"NULL", L"12", L"60", L"0", L"1-2", L"14", L"B", L"20", 
+			SL::B));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Tomahawk+", 
+			false, 
+			L"NULL", L"13", L"60", L"0", L"1-2", L"14", L"B", L"30",
+			SL::B));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Hammer", 
+			false, 
+			L"NULL", L"10", L"60", L"0", L"1", L"15", L"D", L"20", 
+			SL::D));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Hammer+",
+			false, 
+			L"NULL", L"10", L"80", L"5", L"1", L"15", L"D", L"25", 
+			SL::D));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Devil Axe", 
+			false, 
+			L"NULL", L"18", L"60", L"0", L"1", L"14", L"D", L"30", 
+			SL::D));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Devil Axe+", 
+			false, 
+			L"NULL", L"21", L"60", L"0", L"1", L"14", L"D", L"30", 
+			SL::D));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Freikugel", 
+			true, 
+			L"Hilda", L"23", L"65", L"10", L"1", L"11", L"E", L"20", 
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Crusher",
+			true,
+			L"Annette", L"18", L"60", L"0", L"1", L"11", L"E", L"20",
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Axe of Ukonvasara",
+			true,
+			L"Lorenz", L"19", L"65", L"20", L"1", L"15", L"A", L"30", 
+			SL::A));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Axe of Zoltan", 
+			false, 
+			L"NULL", L"17", L"70", L"0", L"1", L"14", L"A", L"20",
+			SL::A));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Axe of Zoltan+",
+			false,
+			L"NULL", L"20", L"70", L"5", L"1", L"14", L"A", L"25",
+			SL::A));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Mace", 
+			false,
+			L"NULL", L"6", L"70", L"0", L"1", L"6", L"E", L"20",
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Mace+", 
+			false,
+			L"NULL", L"6", L"90", L"5", L"1", L"6", L"E", L"25", 
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Amyr", 
+			true,
+			L"Edelgard,Rhea", L"24", L"60", L"20", L"1", L"11", L"E", L"20",
+			SL::E));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Venin Axe", 
+			false, 
+			L"NULL", L"8", L"70", L"0", L"1", L"8", L"C", L"20",
+			SL::C));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Venin Axe+",
+			false,
+			L"NULL", L"9", L"80", L"0", L"1", L"8", L"C", L"25",
+			SL::C));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Hauteclere", 
+			false, 
+			L"NULL", L"19", L"80", L"10", L"1", L"12", L"A", L"40", 
+			SL::A));
+		list.emplace_back(std::make_unique<Axe>(
+			L"Rusted Axe", 
+			false, 
+			L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0", 
+			SL::E));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Broken Bow",
+			false, 
+			L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0",
+			SL::E));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Iron Bow", 
+			false, 
+			L"NULL", L"6", L"85", L"0", L"2", L"6", L"E", L"40",
+			SL::E));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Iron Bow+",
+			false, 
+			L"NULL", L"7", L"95", L"0", L"2", L"5", L"E", L"45", 
+			SL::E));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Steel Bow",
+			false, 
+			L"NULL", L"9", L"80", L"0", L"2", L"11", L"D", L"50", 
+			SL::D));
+		list.emplace_back(std::make_unique<Bow>(L"Steel Bow+",
+			false, 
+			L"NULL", L"11", L"80", L"0", L"2", L"10", L"D", L"55",
+			SL::D));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Silver Bow",
+			false, 
+			L"NULL", L"12", L"75", L"0", L"2", L"9", L"B", L"30",
+			SL::B));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Silver Bow+", 
+			false, 
+			L"NULL", L"13", L"75", L"0", L"2", L"8", L"B", L"40",
+			SL::B));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Brave Bow", 
+			false, 
+			L"NULL", L"10", L"70", L"0", L"2", L"13", L"B", L"30", 
+			SL::B));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Brave Bow+", 
+			false, 
+			L"NULL", L"11", L"80", L"0", L"2", L"12", L"B", L"40", 
+			SL::B));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Killer Bow", 
+			false, 
+			L"NULL", L"9", L"80", L"25", L"2", L"11", L"C", L"20", 
+			SL::C));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Killer Bow+",
+			false, 
+			L"NULL", L"10", L"80", L"35", L"2", L"11", L"C", L"25", 
+			SL::C));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Training Bow",
+			false, 
+			L"NULL", L"3", L"90", L"0", L"2", L"5", L"E", L"50", 
+			SL::E));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Training Bow+",
+			false, 
+			L"NULL", L"3", L"90", L"0", L"2", L"3", L"E", L"65", 
+			SL::E));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Magic Bow", 
+			false, 
+			L"NULL", L"8", L"75", L"0", L"2", L"9", L"B", L"25", 
+			SL::B));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Magic Bow+", 
+			false, 
+			L"NULL", L"8", L"75", L"0", L"2-3", L"9", L"B", L"30",
+			SL::B));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Longbow", 
+			false,
+			L"NULL", L"9", L"70", L"0", L"2-3", L"13", L"C", L"20",
+			SL::C));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Longbow+", 
+			false, 
+			L"NULL", L"11", L"70", L"0", L"2-3", L"13", L"C", L"25",
+			SL::C));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Mini Bow",
+			false,
+			L"NULL", L"4", L"90", L"0", L"1-2", L"3", L"D", L"50",
+			SL::D));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Mini Bow+", 
+			false,
+			L"NULL", L"6", L"90", L"10", L"1-2", L"3", L"D", L"55",
+			SL::D));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Blessed Bow", 
+			false,
+			L"NULL", L"6", L"70", L"0", L"2", L"14", L"C", L"20",
+			SL::C));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Blessed Bow+", 
+			false,
+			L"NULL", L"8", L"70", L"0", L"2", L"14", L"C", L"20",
+			SL::C));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Tathlum Bow", 
+			true,
+			L"Mercedes,Jeritza", L"13", L"80", L"10", L"2", L"11", L"A", L"30",
+			SL::A));
+		list.emplace_back(std::make_unique<Bow>(
+			L"The Inexhaustible",
+			true,
+			L"Seteth", L"11", L"80", L"0", L"2", L"11", L"A", L"30", 
+			SL::A));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Bow of Zoltan",
+			false,
+			L"NULL", L"13", L"75", L"0", L"2", L"8", L"A", L"20", 
+			SL::A));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Bow of Zoltan+", 
+			false, 
+			L"NULL", L"16", L"75", L"5", L"2", L"8", L"A", L"25", 
+			SL::A));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Failnaught", 
+			true, 
+			L"Claude", L"18", L"75", L"20", L"2-3", L"9", L"E", L"20",
+			SL::E));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Venin Bow",
+			false, 
+			L"NULL", L"6", L"85", L"0", L"2", L"6", L"C", L"20", 
+			SL::C));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Venin Bow+",
+			false, 
+			L"NULL", L"7", L"95", L"0", L"2", L"6", L"C", L"25", 
+			SL::C));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Parthia", 
+			false, 
+			L"NULL", L"15", L"85", L"10", L"2", L"7", L"A", L"40", 
+			SL::A));
+		list.emplace_back(std::make_unique<Bow>(
+			L"Rusted Bow", 
+			false,
+			L"NULL", L"0", L"30", L"0", L"2", L"5", L"E", L"0",
+			SL::E));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Broken Gauntlets",
+			false, 
+			L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0",
+			SL::E));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Iron Gauntlets",
+			false, 
+			L"NULL", L"1", L"85", L"5", L"1", L"3", L"E", L"50",
+			SL::E));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Iron Gauntlets+",
+			false, 
+			L"NULL", L"1", L"95", L"5", L"1", L"3", L"E", L"60",
+			SL::E));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Steel Gauntlets", 
+			false,
+			L"NULL", L"3", L"80", L"5", L"1", L"5", L"D", L"60", 
+			SL::D));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Steel Gauntlets+",
+			false, 
+			L"NULL", L"3", L"85", L"5", L"1", L"5", L"D", L"70", 
+			SL::D));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Silver Gauntlets",
+			false,
+			L"NULL", L"4", L"85", L"5", L"1", L"7", L"B", L"40",
+			SL::B));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Silver Gauntlets+", 
+			false, 
+			L"NULL", L"4", L"90", L"5", L"1", L"7", L"B", L"55", 
+			SL::B));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Training Gauntlets",
+			false, 
+			L"NULL", L"0", L"90", L"5", L"1", L"1", L"E", L"70",
+			SL::E));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Training Gauntlets+", 
+			false, 
+			L"NULL", L"0", L"100", L"5", L"1", L"1", L"E", L"90", 
+			SL::E));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Dragon Claws",
+			false,
+			L"NULL", L"4", L"75", L"5", L"1", L"7", L"A", L"30",
+			SL::A));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Dragon Claws+",
+			false, 
+			L"NULL", L"4", L"85", L"5", L"1", L"7", L"A", L"40",
+			SL::A));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Killer Knuckles", 
+			false,
+			L"NULL", L"3", L"80", L"20", L"1", L"5", L"B", L"30",
+			SL::B));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Killer Knuckles+", 
+			false, 
+			L"NULL", L"3", L"80", L"30", L"1", L"5", L"B", L"40",
+			SL::B));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Aura Knuckles", 
+			false, 
+			L"NULL", L"2", L"70", L"0", L"1", L"4", L"A", L"30",
+			SL::A));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Aura Knuckles+", 
+			false,
+			L"NULL", L"2", L"80", L"0", L"1", L"4", L"A", L"40",
+			SL::A));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Rusted Gauntlets", 
+			false, 
+			L"NULL", L"0", L"30", L"0", L"1", L"20", L"E", L"0",
+			SL::E));
+		list.emplace_back(std::make_unique<Gauntlets>(
+			L"Vajra-Mushti", 
+			true, 
+			L"Balthus", L"7", L"90", L"10", L"1", L"7", L"E", L"30", 
+			SL::E));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Fire", 
+			false,
+			L"NULL", L"3", L"90", L"0", L"1-2", L"3", L"E", L"10",
+			SL::E));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Bolganone", 
+			false, 
+			L"NULL", L"8", L"85", L"0", L"1-2", L"6", L"C", L"5",
+			SL::C));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Ragnarok",
+			false, 
+			L"NULL", L"15", L"80", L"5", L"1-2", L"9", L"B", L"3",
+			SL::B));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Thunder",
+			false, 
+			L"NULL", L"4", L"80", L"5", L"1-2", L"4", L"E", L"8", 
+			SL::E));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Thoron", 
+			false, 
+			L"NULL", L"9", L"75", L"10", L"1-3", L"7", L"C", L"4", 
+			SL::C));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Bolting", 
+			false, 
+			L"NULL", L"12", L"65", L"15", L"3-10", L"18", L"B", L"2",
+			SL::B));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Wind",
+			false,
+			L"NULL", L"2", L"100", L"10", L"1-2", L"2", L"E", L"12",
+			SL::E));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Cutting Gale", 
+			false, 
+			L"NULL", L"7", L"95", L"10", L"1-2", L"5", L"C", L"6", 
+			SL::C));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Excalibur", 
+			false, 
+			L"NULL", L"11", L"100", L"15", L"1-2", L"8", L"B", L"4",
+			SL::B));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Blizzard", 
+			false,
+			L"NULL", L"3", L"70", L"15", L"1-2", L"4", L"E", L"10", 
+			SL::E));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Fimbulvetr", 
+			false, 
+			L"NULL", L"12", L"65", L"25", L"1-2", L"10", L"B", L"3", 
+			SL::B));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Sagittae",
+			false,
+			L"NULL", L"7", L"90", L"5", L"1-2", L"6", L"C", L"10",
+			SL::C));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Meteor", 
+			false,
+			L"NULL", L"10", L"80", L"0", L"3-10", L"19", L"B", L"1",
+			SL::B));
+		list.emplace_back(std::make_unique<BlackMagic>(
+			L"Agnea's Arrow",
+			false,
+			L"NULL", L"16", L"70", L"5", L"1-2", L"13", L"A", L"2",
+			SL::A));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Miasma", 
+			false,
+			L"NULL", L"5", L"80", L"0", L"1-2", L"5", L"E", L"10", 
+			SL::E));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Mire",
+			false, 
+			L"NULL", L"3", L"70", L"0", L"1-3", L"5", L"E", L"8", 
+			SL::E));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Swarm", 
+			false, 
+			L"NULL", L"4", L"70", L"0", L"1-2", L"4", L"E", L"8", 
+			SL::E));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Banshee",
+			false, 
+			L"NULL", L"9", L"75", L"5", L"1-2", L"9", L"C", L"5", 
+			SL::C));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Death", 
+			false,
+			L"NULL", L"6", L"70", L"20", L"1-3", L"8", L"C", L"4", 
+			SL::C));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Luna", 
+			false,
+			L"NULL", L"1", L"65", L"0", L"1-2", L"7", L"C", L"2", 
+			SL::C));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Dark Spikes",
+			false, 
+			L"NULL", L"13", L"80", L"0", L"1-2", L"11", L"B", L"3", 
+			SL::B));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Hades",
+			false, 
+			L"NULL", L"18", L"65", L"10", L"1-2", L"16", L"A", L"2", 
+			SL::A));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Bohr",
+			false,
+			L"NULL", L"10", L"60", L"0", L"3-10", L"20", L"B", L"3", 
+			SL::B));
+		list.emplace_back(std::make_unique<DarkMagic>(
+			L"Quake",
+			false,
+			L"NULL", L"8", L"50", L"0", L"ALL", L"20", L"B", L"1",
+			SL::B));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Heal", 
+			false,
+
+			L"NULL", L"8", L"100", L"0", L"1", L"0", L"E", L"10", SL::E));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Recover", 
+			false, 
+			L"NULL", L"30", L"100", L"0", L"1", L"0", L"C", L"5",
+			SL::C));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Physic",
+			false, 
+			L"NULL", L"8", L"100", L"0", L"1", L"0", L"C", L"5", 
+			SL::C));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Fortify", 
+			false, 
+			L"NULL", L"15", L"100", L"0", L"0", L"0", L"A", L"2", 
+			SL::A));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Nosferatu",
+			false, 
+			L"NULL", L"1", L"80", L"0", L"1-2", L"8", L"E", L"12", 
+			SL::E));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Seraphim", 
+			false, 
+			L"NULL", L"8", L"75", L"5", L"1-2", L"10", L"C", L"8", 
+			SL::C));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Aura", 
+			false,
+			L"NULL", L"12", L"70", L"20", L"1-2", L"12", L"B", L"3", 
+			SL::B));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Abraxas", 
+			false, 
+			L"NULL", L"14", L"90", L"5", L"1-2", L"13", L"A", L"2", 
+			SL::A));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Torch", 
+			false, 
+			L"NULL", L"0", L"0", L"0", L"1-2", L"0", L"E", L"10",
+			SL::E));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Restore", 
+			false, 
+			L"NULL", L"0", L"0", L"0", L"0", L"0", L"C", L"10", 
+			SL::C));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Ward", 
+			false, 
+			L"NULL", L"0", L"0", L"0", L"1", L"0", L"C", L"5", 
+			SL::C));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Silence", 
+			false, 
+			L"NULL", L"0", L"100", L"0", L"3-10", L"0", L"B", L"3", 
+			SL::B));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Rescue",
+			false,
+			L"NULL", L"0", L"0", L"0", L"0", L"0", L"B", L"3", 
+			SL::B));
+		list.emplace_back(std::make_unique<WhiteMagic>(
+			L"Warp", 
+			false, 
+			L"NULL", L"0", L"0", L"0", L"0", L"0", L"B", L"1", 
+			SL::B));
 
 		list.emplace_back(std::make_unique<BlankEquipment>(L"---", false, L"NULL", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
 
 																								 //PROT, WEIGHT, RES, HIT, TCRIT, AVO, SPD, MOV, LCK, MATK, HEAL, RANGE
-		list.emplace_back(std::make_unique<Shield>(L"Leather Shield", false, L"NULL",			 L"1",	L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
-		list.emplace_back(std::make_unique<Shield>(L"Iron Shield", false, L"NULL",				 L"2", L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
-		list.emplace_back(std::make_unique<Shield>(L"Steel Shield", false, L"NULL",				 L"3", L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
-		list.emplace_back(std::make_unique<Shield>(L"Silver Shield", false, L"NULL",			 L"4", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"NULL"));
-		list.emplace_back(std::make_unique<Shield>(L"Talisman Shield", false, L"NULL",			 L"1", L"4", L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Resilience +2"));
-		list.emplace_back(std::make_unique<Shield>(L"Hexlock Shield", false, L"NULL",			 L"2", L"5", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Resilience +4"));
-		list.emplace_back(std::make_unique<Shield>(L"Aegis Shield", true, L"Felix",				 L"6", L"6", L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Relic shield. Resilience +3, may halve damage for Crest of Fraldarius."));
-		list.emplace_back(std::make_unique<Shield>(L"Ochain Shield", true, L"Seteth,Ferdinand",  L"6", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Sacred shield (Cichol); restores HP each turn and negates foe’s critical hits."));
-		list.emplace_back(std::make_unique<Shield>(L"Seiros Shield", true, L"Edelgard",		     L"5", L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Sacred shield (Seiros); restores HP each turn and halves damage from Monsters."));
-		list.emplace_back(std::make_unique<Shield>(L"Aurora Shield", false, L"NULL",			 L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Nullifies user’s Flying-type weakness."));
-		list.emplace_back(std::make_unique<Shield>(L"Kadmos Shield", false, L"NULL",			 L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Nullifies user’s Armoured-type weakness."));
-		list.emplace_back(std::make_unique<Shield>(L"Lampos Shield", false, L"NULL",			 L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Nullifies user’s Cavalry-type weakness."));
-		list.emplace_back(std::make_unique<Ring>(L"Accuracy Ring", false, L"NULL",				 L"0", L"0", L"0", L"10", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Hit rate +10"));
-		list.emplace_back(std::make_unique<Ring>(L"Critical Ring", false, L"NULL",				 L"0", L"0", L"0", L"0",  L"5", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Critical rate +5."));
-		list.emplace_back(std::make_unique<Ring>(L"Evasion Ring", false, L"NULL",				 L"0", L"0", L"0", L"0",  L"0", L"10",L"0", L"0", L"0", L"0", L"0", L"0", L"Avoid +10."));
-		list.emplace_back(std::make_unique<Ring>(L"Speed Ring", false, L"NULL",					 L"0", L"0", L"0", L"0",  L"0", L"0", L"2", L"0", L"0", L"0", L"0", L"0", L"Speed +2."));
-		list.emplace_back(std::make_unique<Ring>(L"March Ring", false, L"NULL",					 L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0", L"Movement +1."));
-		list.emplace_back(std::make_unique<Ring>(L"Goddess Ring", false, L"NULL",				 L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"0", L"8", L"0", L"0", L"0", L"Luck +8; restores HP each turn."));
-		list.emplace_back(std::make_unique<Ring>(L"Prayer Ring", false, L"NULL",				 L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Grants Miracle ability; restores HP each turn."));
-		list.emplace_back(std::make_unique<Ring>(L"Fetters of Dromi", true, L"Yuri",			 L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0", L"Relic ring (Aubin); Movement +1, user can continue moving after taking certain actions and may halve damage received."));
-		list.emplace_back(std::make_unique<Staff>(L"Magic Staff", false, L"NULL",				 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"3", L"0", L"0", L"Increases Might of magic spells by 3."));
-		list.emplace_back(std::make_unique<Staff>(L"Healing Staff", false, L"NULL",				 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"10", L"0", L"Increases Healing power by 10."));
-		list.emplace_back(std::make_unique<Staff>(L"Caduceus Staff", true, L"Flayn,Linhardt",	 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", L"Sacred staff (Cethleann); offensive magic range +1, restores HP each turn."));
-		list.emplace_back(std::make_unique<Staff>(L"Thyrsus", true, L"Lysithea,Lorenz",			 L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"2", L"Relic staff (Gloucester); offensive magic range +2, may halve damage received."));
-		list.emplace_back(std::make_unique<Gem>(L"Experience Gem", false, L"NULL",				 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Base experience points +50%."));
-		list.emplace_back(std::make_unique<Gem>(L"Knowledge Gem", false, L"NULL",				 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Base skill level experience +100%."));
-		list.emplace_back(std::make_unique<Gem>(L"Rafail Gem", true, L"Mercedes,Jeritza",		 L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"Base skill level experience +100%."));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Leather Shield", 
+			false, 
+			L"NULL",			
+			L"1", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"NULL"));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Iron Shield", 
+			false, 
+			L"NULL",				 
+			L"2", L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"NULL"));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Steel Shield", 
+			false, 
+			L"NULL",				 
+			L"3", L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"NULL"));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Silver Shield",
+			false, 
+			L"NULL",			
+			L"4", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"NULL"));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Talisman Shield",
+			false,
+			L"NULL",			
+			L"1", L"4", L"2", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"Resilience +2"));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Hexlock Shield", 
+			false, 
+			L"NULL",			
+			L"2", L"5", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Resilience +4"));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Aegis Shield",
+			true, 
+			L"Felix",				 
+			L"6", L"6", L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Relic shield. Resilience +3, may halve damage for Crest of Fraldarius."));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Ochain Shield",
+			true, 
+			L"Seteth,Ferdinand", 
+			L"6", L"4", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Sacred shield (Cichol); restores HP each turn and negates foe’s critical hits."));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Seiros Shield",
+			true,
+			L"Edelgard",		     
+			L"5", L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"Sacred shield (Seiros); restores HP each turn and halves damage from Monsters."));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Aurora Shield", 
+			false, 
+			L"NULL",			 
+			L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"Nullifies user’s Flying-type weakness."));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Kadmos Shield",
+			false, 
+			L"NULL",			 
+			L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Nullifies user’s Armoured-type weakness."));
+		list.emplace_back(std::make_unique<Shield>(
+			L"Lampos Shield",
+			false,
+			L"NULL",			 
+			L"3", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Nullifies user’s Cavalry-type weakness."));
+		list.emplace_back(std::make_unique<Ring>(
+			L"Accuracy Ring", 
+			false, 
+			L"NULL",				 
+			L"0", L"0", L"0", L"10", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Hit rate +10"));
+		list.emplace_back(std::make_unique<Ring>(
+			L"Critical Ring", 
+			false, 
+			L"NULL",				 
+			L"0", L"0", L"0", L"0",  L"5", L"0", L"0", L"0", L"0", L"0", L"0", L"0",
+			L"Critical rate +5."));
+		list.emplace_back(std::make_unique<Ring>(
+			L"Evasion Ring", 
+			false, 
+			L"NULL",				
+			L"0", L"0", L"0", L"0",  L"0", L"10",L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Avoid +10."));
+		list.emplace_back(std::make_unique<Ring>(
+			L"Speed Ring",
+			false, 
+			L"NULL",					 
+			L"0", L"0", L"0", L"0",  L"0", L"0", L"2", L"0", L"0", L"0", L"0", L"0", 
+			L"Speed +2."));
+		list.emplace_back(std::make_unique<Ring>(
+			L"March Ring", 
+			false,
+			L"NULL",					
+			L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0", 
+			L"Movement +1."));
+		list.emplace_back(std::make_unique<Ring>(
+			L"Goddess Ring", 
+			false, 
+			L"NULL",				 
+			L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"0", L"8", L"0", L"0", L"0", 
+			L"Luck +8; restores HP each turn."));
+		list.emplace_back(std::make_unique<Ring>(
+			L"Prayer Ring",
+			false,
+			L"NULL",				 
+			L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Grants Miracle ability; restores HP each turn."));
+		list.emplace_back(std::make_unique<Ring>(
+			L"Fetters of Dromi",
+			true, 
+			L"Yuri",			 
+			L"0", L"0", L"0", L"0",  L"0", L"0", L"0", L"1", L"0", L"0", L"0", L"0", 
+			L"Relic ring (Aubin); Movement +1, user can continue moving after taking certain actions and may halve damage received."));
+		list.emplace_back(std::make_unique<Staff>(
+			L"Magic Staff", 
+			false, 
+			L"NULL",				
+			L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"3", L"0", L"0",
+			L"Increases Might of magic spells by 3."));
+		list.emplace_back(std::make_unique<Staff>(
+			L"Healing Staff", 
+			false, 
+			L"NULL",				 
+			L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"10", L"0", 
+			L"Increases Healing power by 10."));
+		list.emplace_back(std::make_unique<Staff>(
+			L"Caduceus Staff",
+			true,
+			L"Flayn,Linhardt",	
+			L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"1", 
+			L"Sacred staff (Cethleann); offensive magic range +1, restores HP each turn."));
+		list.emplace_back(std::make_unique<Staff>(
+			L"Thyrsus", 
+			true,
+			L"Lysithea,Lorenz",			
+			L"0", L"1", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"2", 
+			L"Relic staff (Gloucester); offensive magic range +2, may halve damage received."));
+		list.emplace_back(std::make_unique<Gem>(
+			L"Experience Gem", 
+			false,
+			L"NULL",				 
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Base experience points +50%."));
+		list.emplace_back(std::make_unique<Gem>(
+			L"Knowledge Gem", 
+			false, 
+			L"NULL",				 
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Base skill level experience +100%."));
+		list.emplace_back(std::make_unique<Gem>(
+			L"Rafail Gem", 
+			true, 
+			L"Mercedes,Jeritza",		 
+			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", 
+			L"Base skill level experience +100%."));
 
 		list.emplace_back(std::make_unique<Class>(L"---", false, L"NULL",
 			L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0", L"0",

@@ -1130,50 +1130,234 @@ public:
 		///////////////////////////////////////////////////////////////////////////
 		////CLASSMASTERYABILITY//////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////////////////////////////////
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"HP +5", L"Noble,Commoner", L"Increases HP by 5", true, std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::HP, "5")}));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Speed +2", L"Myrmidon", L"Increases Spd by 2", true, std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::SPD, "2")}));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Defense +2", L"Soldier", L"Increases Def by 2", true, std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::DEF, "2")}));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Strength +2", L"Fighter", L"Increases Str by 2", true, std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::STR, "2")}));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Magic +2", L"Monk", L"Increases Mag by 2", true, std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::MAG, "2")}));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Resistance +2", L"Lord", L"Increases Res by 2", true, std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::RES, "2")}));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Vantage", L"Mercenary", L"Always attack first when under 50% HP.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Steal", L"Thief", L"Unit can steal non-weapon items from enemies with lower Spd than self.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Desperation", L"Cavalier", L"If unit initiates combat with HP ≤ 50%, unit’s follow-up attack (if possible) occurs before foe’s counterattack.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Darting Blow", L"Pegasus Knight", L"If unit initiates combat, grants AS +6 during combat.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Death Blow", L"Brigand", L"If unit initiates combat, grants Str +6 during combat.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Armored Blow", L"Armored Knight", L"If unit initiates combat, grants Def +6 during combat.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Hit +20", L"Archer", L"Increases Hit by 20.", true, std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::HIT, "20")}));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Unarmed Combat", L"Brawler", L"User can fight without a weapon equipped.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Fiendish Blow", L"Mage", L"If unit initiates combat, grants Mag+6 during combat", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Poison Strike", L"Dark Mage", L"If unit initiates combat, enemy loses up to 20% HP", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Miracle", L"Priest", L"Luck % chance to survive lethal damage with 1HP if HP is above 1", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Special Dance", L"Dancer", L"Dex/Spd/Luck +4 to target ally when using Dance", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Pomp & Circumstance", L"Armored Lord,High Lord,Wyvern Master", L"Increases Lck/Cha by 4.", true, std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::LCK, "4"), STATPACKAGE(STATTYPE::CHA, "2")}));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Sacred Power", L"Enlightened One", L"Adjacent allies deal 3 extra damage and take 3 less damage during combat.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Defiant Strength", L"Hero", L"Grants Str +8 when HP is ≤ 25%.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Lethality", L"Assassin", L"Chance to instantly kill a foe when dealing damage. Trigger % = 0.25×Dex.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Aegis", L"Paladin", L"Chance to reduce bow/magic damage by half. Trigger % = Dex stat.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Wrath", L"Warrior", L"If foe initiates combat while unit’s HP is ≤ 50%, grants Crit +50.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Pavise", L"Fortress Knight", L"Chance to reduce sword/lance/axe/brawling damage by half. Trigger % = Dex stat.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Seal Defense", L"Wyvern Rider", L"If unit damages foe during combat, foe suffers Def -6 for 1 turn after combat.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Tomebreaker", L"Grappler", L"Grants Hit/Avo +20 when brawling against magic users.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Bowbreaker", L"Warlock", L"Grants Hit/Avo +20 when using magic against bow users.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Lifetaker", L"Dark Bishop", L"Unit recovers HP equal to 50% of damage dealt after defeating a foe.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Renewal", L"Bishop", L"Unit recovers up to 20% of max HP at the start of each turn.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Warding Blow", L"Mortal Savant", L"If unit initiates combat, grants Res +6 during combat", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Defiant Avoid", L"Falcon Knight", L"Grants Avo +30 when HP is ≤ 25%.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Quick Riposte", L"War Master", L"If foe initiates combat while unit’s HP is ≥ 50%, unit makes guaranteed follow-up attack.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Defiant Critical", L"Wyvern Lord", L"Grants Crit +50 when HP is ≤ 25%.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Defiant Defense", L"Great Knight", L"Grants Def +8 when HP is ≤ 25%.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Defiant Speed", L"Bow Knight", L"Grants Spd +8 when HP is ≤ 25%.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Defiant Magic", L"Gremory", L"Grants Mag +8 when HP is ≤ 25%.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Seal Resistance", L"Dark Knight", L"If unit damages foe during combat, foe suffers Res -6 for 1 turn after combat.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Defiant Resistance", L"Holy Knight", L"Grants Res +8 when HP is ≤ 25%.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Counterattack", L"Death Knight", L"Counters attacks regardless of enemies' range.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Duelist's Blow", L"Trickster", L"If unit initiates combat, grants Avo +20 during combat", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Brawl Avo +20", L"War Monk,Cleric", L"Grants Avo +20 when brawling.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Transmute", L"Dark Flier", L"If unit is hit with a magic attack during enemy phase, grants +3 to all stats until next player phase ends.", false));
-		list.emplace_back(std::make_unique<ClassMasteryAbility>(L"Uncanny Blow", L"Valkyrie", L"If unit initiates combat, grants Hit +30 during combat", false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"HP +5", 
+			L"Noble,Commoner", 
+			L"Increases HP by 5", 
+			true, 
+			std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::HP, "5")}));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Speed +2", 
+			L"Myrmidon", 
+			L"Increases Spd by 2",
+			true,
+			std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::SPD, "2")}));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Defense +2",
+			L"Soldier",
+			L"Increases Def by 2",
+			true, 
+			std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::DEF, "2")}));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Strength +2", 
+			L"Fighter", 
+			L"Increases Str by 2",
+			true, 
+			std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::STR, "2")}));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Magic +2", 
+			L"Monk", 
+			L"Increases Mag by 2", 
+			true, 
+			std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::MAG, "2")}));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Resistance +2"
+			, L"Lord", 
+			L"Increases Res by 2",
+			true, 
+			std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::RES, "2")}));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Vantage",
+			L"Mercenary",
+			L"Always attack first when under 50% HP.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Steal", 
+			L"Thief", 
+			L"Unit can steal non-weapon items from enemies with lower Spd than self.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Desperation", 
+			L"Cavalier", 
+			L"If unit initiates combat with HP ≤ 50%, unit’s follow-up attack (if possible) occurs before foe’s counterattack.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Darting Blow",
+			L"Pegasus Knight", 
+			L"If unit initiates combat, grants AS +6 during combat.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Death Blow",
+			L"Brigand", 
+			L"If unit initiates combat, grants Str +6 during combat.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Armored Blow", 
+			L"Armored Knight",
+			L"If unit initiates combat, grants Def +6 during combat.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Hit +20",
+			L"Archer",
+			L"Increases Hit by 20.",
+			true,
+			std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::HIT, "20")}));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Unarmed Combat", 
+			L"Brawler", 
+			L"User can fight without a weapon equipped.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Fiendish Blow", 
+			L"Mage", 
+			L"If unit initiates combat, grants Mag+6 during combat", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Poison Strike",
+			L"Dark Mage", 
+			L"If unit initiates combat, enemy loses up to 20% HP",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Miracle", 
+			L"Priest", 
+			L"Luck % chance to survive lethal damage with 1HP if HP is above 1", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Special Dance",
+			L"Dancer",
+			L"Dex/Spd/Luck +4 to target ally when using Dance", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Pomp & Circumstance", 
+			L"Armored Lord,High Lord,Wyvern Master", 
+			L"Increases Lck/Cha by 4.", 
+			true, 
+			std::vector<STATPACKAGE>{STATPACKAGE(STATTYPE::LCK, "4"), STATPACKAGE(STATTYPE::CHA, "2")}));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Sacred Power",
+			L"Enlightened One",
+			L"Adjacent allies deal 3 extra damage and take 3 less damage during combat.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Defiant Strength",
+			L"Hero",
+			L"Grants Str +8 when HP is ≤ 25%.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Lethality", 
+			L"Assassin", 
+			L"Chance to instantly kill a foe when dealing damage. Trigger % = 0.25×Dex.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Aegis", 
+			L"Paladin", 
+			L"Chance to reduce bow/magic damage by half. Trigger % = Dex stat.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Wrath", 
+			L"Warrior",
+			L"If foe initiates combat while unit’s HP is ≤ 50%, grants Crit +50.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Pavise", 
+			L"Fortress Knight", 
+			L"Chance to reduce sword/lance/axe/brawling damage by half. Trigger % = Dex stat.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Seal Defense", 
+			L"Wyvern Rider",
+			L"If unit damages foe during combat, foe suffers Def -6 for 1 turn after combat.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Tomebreaker",
+			L"Grappler",
+			L"Grants Hit/Avo +20 when brawling against magic users.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Bowbreaker", 
+			L"Warlock", 
+			L"Grants Hit/Avo +20 when using magic against bow users.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Lifetaker", 
+			L"Dark Bishop", 
+			L"Unit recovers HP equal to 50% of damage dealt after defeating a foe.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Renewal",
+			L"Bishop", 
+			L"Unit recovers up to 20% of max HP at the start of each turn.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Warding Blow", 
+			L"Mortal Savant", 
+			L"If unit initiates combat, grants Res +6 during combat",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Defiant Avoid", 
+			L"Falcon Knight", 
+			L"Grants Avo +30 when HP is ≤ 25%.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Quick Riposte", 
+			L"War Master", 
+			L"If foe initiates combat while unit’s HP is ≥ 50%, unit makes guaranteed follow-up attack.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Defiant Critical", 
+			L"Wyvern Lord", 
+			L"Grants Crit +50 when HP is ≤ 25%.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Defiant Defense",
+			L"Great Knight",
+			L"Grants Def +8 when HP is ≤ 25%.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Defiant Speed",
+			L"Bow Knight",
+			L"Grants Spd +8 when HP is ≤ 25%.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Defiant Magic",
+			L"Gremory", 
+			L"Grants Mag +8 when HP is ≤ 25%.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Seal Resistance", 
+			L"Dark Knight", 
+			L"If unit damages foe during combat, foe suffers Res -6 for 1 turn after combat.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Defiant Resistance",
+			L"Holy Knight", 
+			L"Grants Res +8 when HP is ≤ 25%.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Counterattack", 
+			L"Death Knight", 
+			L"Counters attacks regardless of enemies' range.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Duelist's Blow",
+			L"Trickster",
+			L"If unit initiates combat, grants Avo +20 during combat",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Brawl Avo +20", 
+			L"War Monk,Cleric",
+			L"Grants Avo +20 when brawling.", 
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Transmute",
+			L"Dark Flier", 
+			L"If unit is hit with a magic attack during enemy phase, grants +3 to all stats until next player phase ends.",
+			false));
+		list.emplace_back(std::make_unique<ClassMasteryAbility>(
+			L"Uncanny Blow",
+			L"Valkyrie",
+			L"If unit initiates combat, grants Hit +30 during combat", 
+			false));
 	}
 	~AbilityList() { list.clear(); }
 
