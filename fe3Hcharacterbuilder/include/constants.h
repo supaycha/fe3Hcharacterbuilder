@@ -4,120 +4,110 @@
 #include <string>
 
 enum class ID_MISC {
-	ID_FRAME = 7,
-	ID_MT = 8,
-	ID_DDCH = 9,
-	ID_DDCL1 = 10,
-	ID_DDCL2 = 11,
-	ID_DDCL3 = 12,
-	ID_SPIN1 = 15,
-	ID_SPIN2 = 16,
-	ID_GMT = 20,
-	ID_WM = 21,
-	ID_ECLIA = 22,
-	ID_ECLIA2 = 23,
-	ID_ECLIA3 = 24,
-	ID_SLA = 25,
-	ID_SLA2 = 26,
-	ID_SLA3 = 27,
-	ID_SLA4 = 28,
-	ID_SLA5 = 29,
-	ID_BCLASSMASTERY = 30
+	ID_FRAME,
+	ID_MT,
+	ID_DDCH,
+	ID_DDCL1,
+	ID_DDCL2,
+	ID_DDCL3,
+	ID_SPIN1,
+	ID_SPIN2,
+	ID_GMT,
+	ID_WM,
+	//ID_ECLIA,
+	//ID_ECLIA2,
+	//ID_ECLIA3,
+	//ID_SLA,
+	//ID_SLA2,
+	//ID_SLA3,
+	//ID_SLA4,
+	//ID_SLA5,
+	ID_BCLASSMASTERY
 };
 
 enum class ID_SINGLE_CONTROL {
-	ID_LBW = 30, 
-	ID_LBE = 31, 
-	ID_LBB = 32,
-	ID_GWS = 33,
-	ID_GES = 34,
-	ID_GBS = 35,
-	ID_SLM = 36,
-	ID_LBASLA = 37,
-	ID_LBSSLA = 38,
-	ID_LBSA = 39,
-	ID_BAA = 40,
-	ID_BRA = 41,
-	ID_EB = 42,
-	ID_EW = 43,
-	ID_EE = 44,
-	ID_EP = 45,
-	ID_SP = 46,
-	ID_GTBCHIAS = 50,
-	ID_GTBCLIAS = 51,
-	ID_ECHIA = 52,
-	ID_ECLIA = 53,
-	ID_ECLIA2 = 54,
-	ID_ECLIA3 = 55,
-
-	ID_AP = 56,
-	ID_GTBSLAS = 57,
-	ID_ESLA = 58,
-	ID_SLP = 59,
-	ID_GCHIAS = 60,
-	ID_GCLIAS = 61,
-	ID_GCLIAS2 = 62,
-	ID_GCLIAS3 = 63,
-	ID_GSLAS = 64,
-	ID_GSLAS2 = 65,
-	ID_GSLAS3 = 66,
-	ID_GSLAS4 = 67,
-	ID_GSLAS5 = 68,	
-	ID_GTS = 69,
-	ID_CPOS = 70,
-	ID_EG = 71,
-	ID_GGS = 72
-	//ID_CHIATXT = 71,
-	//ID_CLIATXT = 72,
-	//ID_CLIATXT2 = 73,
-	//ID_CLIATXT3 = 74,
-	//ID_SLATXT = 75,
-	//ID_SLATXT2 = 76,
-	//ID_SLATXT3 = 77,
-	//ID_SLATXT4 = 78,
-	//ID_SLATXT5 = 79,
+	ID_LBW, 
+	ID_LBE, 
+	ID_LBB,
+	ID_GWS,
+	ID_GES,
+	ID_GBS,
+	ID_SLM,
+	ID_LBASLA,
+	//ID_LBSSLA,
+	//ID_LBSA,
+	//ID_BAA,
+	//ID_BRA,
+	ID_EB,
+	ID_EW,
+	ID_EE,
+	ID_EP,
+	ID_SP,
+	ID_GTBCHIAS,
+	//ID_GTBCLIAS,
+	ID_ECHIA,
+	ID_ECLIA,
+	ID_ECLIA2,
+	ID_ECLIA3,
+	ID_AP,
+	//ID_GTBSLAS,
+	ID_ESLA,
+	ID_SLP,
+	ID_GCHIAS,
+	ID_GCLIAS,
+	ID_GCLIAS2,
+	ID_GCLIAS3,
+	ID_GSLAS,
+	ID_GSLAS2,
+	ID_GSLAS3,
+	ID_GSLAS4,
+	ID_GSLAS5,	
+	ID_GTS,
+	ID_CPOS,
+	ID_EG,
+	ID_GGS
 };
 
 enum class DD_CONTROL {
 	ID_DDSWORD = 70,
-	ID_DDLANCE = 71,
-	ID_DDAXE = 72,
-	ID_DDBOW = 73,
-	ID_DDGAUNTLETS = 74,
-	ID_DDREASON = 75,
-	ID_DDFAITH = 76,
-	ID_DDAUTHORITY = 77,
-	ID_DDHEAVYARMOR = 78,
-	ID_DDRIDING = 79,
-	ID_DDFLYING = 80
+	ID_DDLANCE,
+	ID_DDAXE,
+	ID_DDBOW,
+	ID_DDGAUNTLETS,
+	ID_DDREASON,
+	ID_DDFAITH,
+	ID_DDAUTHORITY,
+	ID_DDHEAVYARMOR,
+	ID_DDRIDING,
+	ID_DDFLYING
 };
 
 enum class ST_CONTROL {
 	ID_STSWORD = 81,
-	ID_STLANCE = 82,
-	ID_STAXE = 83,
-	ID_STBOW = 84,
-	ID_STGAUNTLETS = 85,
-	ID_STREASON = 86,
-	ID_STFAITH = 87,
-	ID_STAUTHORITY = 88,
-	ID_STHEAVYARMOR = 89,
-	ID_STRIDING = 90,
-	ID_STFLYING = 91
+	ID_STLANCE,
+	ID_STAXE,
+	ID_STBOW,
+	ID_STGAUNTLETS,
+	ID_STREASON,
+	ID_STFAITH,
+	ID_STAUTHORITY,
+	ID_STHEAVYARMOR,
+	ID_STRIDING,
+	ID_STFLYING
 };
 
 enum class WT_CONTROL {
 	ID_BSWORD = 1,
-	ID_BAXE = 2,
-	ID_BLANCE = 3,
-	ID_BBOW = 4,
-	ID_BGAUNTLETS = 5,
-	ID_BBLACKMAGIC = 6,
-	ID_BDARKMAGIC = 7,
-	ID_BWHITEMAGIC = 8
+	ID_BAXE,
+	ID_BLANCE,
+	ID_BBOW,
+	ID_BGAUNTLETS,
+	ID_BBLACKMAGIC,
+	ID_BDARKMAGIC,
+	ID_BWHITEMAGIC
 };
 
-enum class VARIOUS_SIZE {
+enum class CONSTANT_SIZE {
 	WEAPON_TYPE_SIZE = 8,
 	CHARACTER_DATA_SIZE = 41,
 	WEAPON_DATA_SIZE = 196,
@@ -126,9 +116,25 @@ enum class VARIOUS_SIZE {
 	BATTALION_DATA_SIZE = 187,
 	SL_DATA_SIZE = 11,
 
-	CHAR_CLASS_STATS_SIZE = 10,
+	//CHAR_CLASS_STATS_SIZE = 10,
 	TOTAL_STATS_SIZE = 12,
 	EQUIPMENT_STATS_SIZE = 12,
+	NUM_OF_SKILL_LEVELS_PER_DDSL = 12,
+	NUM_OF_WEAPON_RELATED_SKILL_LEVELS = 8,
+	NUM_OF_GENERAL_WEAPONS = 178,
+	NUM_OF_CLASS_INNATE_ABILITIES_MAX = 3,
+	NUM_OF_SKILL_LEVEL_ABILITIES_MAX = 5,
+	NUM_OF_GMT_COLS = 10,
+	NUM_OF_SCL_IN_MT = 2,
+	NUM_OF_DDCL_IN_MT = 3,
+	NUM_OF_COLS_IN_MT_SIZER = 3,
+	NUM_OF_COLS_IN_GCHIAS = 2,
+	NUM_OF_COLS_IN_GCLIAS = 3,
+	NUM_OF_COLS_IN_GSLAS = 3,
+	NUM_OF_GCLIAS_IN_CPOPTIONALSTATS = 3,
+	NUM_OF_GSLAS_IN_CPOPTIONALSTATS = 5,
+	SIZE_OF_ULIST = 506,
+	SIZE_OF_ALIST = 206,
 	MIN_HEIGHT_OF_COMBOBOX = 23,
 	SET_LENGTH_OF_COLUMNS = 34,
 };
@@ -199,6 +205,40 @@ enum class EQUIPMENTTYPE : int {
 	GEM = 3
 };
 
+
+enum class STATTYPE : int {
+	BLANK = -1,
+	HP,
+	MOV,
+	STR,
+	MAG,
+	DEX,
+	SPD,
+	LCK,
+	DEF,
+	RES,
+	CHA,
+	MIGHT,
+	PMIGHT,
+	MMIGHT,
+	GMIGHT,	
+	PATK,
+	MATK,
+	HIT,
+	GHIT,
+	CRIT,	
+	WCRIT,
+	//TCRIT,
+	AVO,
+	CRITAVO,
+	PROT,
+	RANGE,
+	WEIGHT,
+	USES,
+	HEAL,
+	END
+};
+
 struct SKILLLEVELPACKAGE : public wxClientData {
 	SL sl;
 	wxString slstring;
@@ -221,39 +261,6 @@ struct STINCPACKAGE : public wxClientData {
 	STINCPACKAGE(bool inclusion, int id) : isNotIncluded(inclusion), index{id} {}
 };
 
-enum class STATTYPE : int {
-	BLANK = -1,
-	HP,
-	MOV,
-	STR,
-	MAG,
-	DEX,
-	SPD,
-	LCK,
-	DEF,
-	RES,
-	CHA,
-	MIGHT,
-	PMIGHT,
-	MMIGHT,
-	GMIGHT,
-	HIT,
-	GHIT,
-	CRIT,
-	RANGE,
-	WEIGHT,
-	USES,
-	PROT,
-	TCRIT,
-	AVO,
-	MATK,
-	HEAL,
-	PATK,
-	END,
-	CRITAVO,
-	WCRIT
-};
-
 struct STATPACKAGE {
 	STATTYPE stattype;
 	wxString value;
@@ -270,34 +277,5 @@ struct STATPACKAGEVECTOR : public wxClientData {
 	auto begin() { return statpVector.begin(); }
 	auto end() { return statpVector.end(); }
 };
-
-//struct AbilityStats {	
-//	std::wstring hp = 0;
-//	std::wstring mov = 0;
-//	std::wstring str = 0;
-//	std::wstring mag = 0;
-//	std::wstring dex = 0;
-//	std::wstring spd = 0;
-//	std::wstring lck = 0;
-//	std::wstring def = 0;
-//	std::wstring res = 0;
-//	std::wstring cha = 0;
-//	std::wstring might = 0;
-//	std::wstring gmight = 0;
-//	std::wstring hit = 0;
-//	std::wstring ghit = 0;
-//	std::wstring crit = 0;
-//	std::wstring range = 0;
-//	std::wstring weight = 0;
-//	std::wstring uses = 0;
-//	std::wstring prot = 0;
-//	std::wstring tcrit = 0;
-//	std::wstring avo = 0;
-//	std::wstring matk = 0;
-//	std::wstring heal = 0;
-//	std::wstring patk = 0;
-//	std::wstring end = 0;
-//	std::wstring critavo = 0;
-//};
 
 #endif

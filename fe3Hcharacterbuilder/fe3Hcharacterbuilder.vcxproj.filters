@@ -98,6 +98,9 @@
     <Filter Include="UnitandMisc\Ability\ClassInnateAbility">
       <UniqueIdentifier>{9649a312-0d11-4d85-b40f-32dbeee24f86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UnitandMisc\Ability\SkillLevelAbility\SkillLevelGeneralAbility">
+      <UniqueIdentifier>{4c2e7a35-b263-4fea-8893-29c935fa7654}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\MysteriousTeacher\DropDownCharacters.h">
@@ -340,10 +343,10 @@
       <Filter>UnitandMisc\Ability\ClassInnateAbility</Filter>
     </ClInclude>
     <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralAbility.h">
-      <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
+      <Filter>UnitandMisc\Ability\SkillLevelAbility\SkillLevelGeneralAbility</Filter>
     </ClInclude>
     <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralProwessAbility.h">
-      <Filter>UnitandMisc\Ability\SkillLevelAbility</Filter>
+      <Filter>UnitandMisc\Ability\SkillLevelAbility\SkillLevelGeneralAbility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

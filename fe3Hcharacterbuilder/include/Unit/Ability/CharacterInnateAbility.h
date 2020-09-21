@@ -15,33 +15,30 @@ private:
 	
 public:
 	CharacterInnateAbility() {}
-	CharacterInnateAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, bool uHasStatUp, STATTYPE ust, wxString uname) : 
+	CharacterInnateAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, 
+		bool uHasStatUp, std::vector<STATPACKAGE> ustatpVector) :
 		hasStatUp{ uHasStatUp }, 
-		statpVector{ STATPACKAGE(ust, uname) },
+		statpVector{ ustatpVector },
 		Ability{ uName, uSource, uDescription } 
 	{}
-	CharacterInnateAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, bool uHasStatUp, bool ubattalioncheck, bool ubattalionmustexist, STATTYPE ust, wxString uname) :
+	CharacterInnateAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, 
+		bool uHasStatUp, bool ubattalioncheck, bool ubattalionmustexist, std::vector<STATPACKAGE> ustatpVector) :
 		hasStatUp{ uHasStatUp },
 		battalioncheck{ ubattalioncheck },
 		battalionmustexist{ ubattalionmustexist },
-		statpVector{ STATPACKAGE(ust, uname) },
+		statpVector{ ustatpVector },
 		Ability{ uName, uSource, uDescription }
 	{}
-	CharacterInnateAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, bool uHasStatUp, bool ubattalioncheck, bool ubattalionmustexist, STATTYPE ust, wxString uname, STATTYPE ust2, wxString uname2) :
-		hasStatUp{ uHasStatUp }, 
-		battalioncheck { ubattalioncheck },
-		battalionmustexist { ubattalionmustexist },
-		statpVector{ STATPACKAGE(ust, uname), STATPACKAGE(ust2, uname2) },
-		Ability{ uName, uSource, uDescription } 
-	{}
-
 	~CharacterInnateAbility() {}
-	std::wstring getType() { return ciaType; }
+	
+	std::wstring getType() { return ciaType; }	
+	
+	CharacterInnateAbility* new_expr() override { return new CharacterInnateAbility(); }
+	CharacterInnateAbility* clone() override { return new CharacterInnateAbility(*this); }
+
 	bool getHasStatUp() { return hasStatUp; }
 	bool getBattalionMustExist() { return battalionmustexist; }
 	std::vector<STATPACKAGE>  getSTATP() { return statpVector; }
-	CharacterInnateAbility* new_expr() override { return new CharacterInnateAbility(); }
-	CharacterInnateAbility* clone() override { return new CharacterInnateAbility(*this); }
 };
 
 #endif

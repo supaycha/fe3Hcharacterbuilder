@@ -16,10 +16,11 @@ public:
 		ClassInnateAbility(uName, uSource, uDescription, uHasStatUp, ustatpVector)
 	{}
 	~ClassInnateCharacterAbility() {}
-	WEAPONTYPE getWeaponType() { return wt; }
 
 	ClassInnateCharacterAbility* new_expr() override { return new ClassInnateCharacterAbility(); }
-	ClassInnateCharacterAbility* clone() override { return new ClassInnateCharacterAbility(*this); }
+	ClassInnateCharacterAbility* clone() override { return new ClassInnateCharacterAbility(*this); }	
+	
+	WEAPONTYPE getWeaponType() { return wt; }
 };
 
 #endif

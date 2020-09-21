@@ -13,7 +13,7 @@
 class GTBSkillLevelAbilityStats : public wxGridTableBase {
 private:
 	std::vector<STATPACKAGE> headers{ { STATTYPE::PROT, "PROT" }, { STATTYPE::WEIGHT, "WGT" }, { STATTYPE::RES, "RES" }, { STATTYPE::HIT, "HIT" },
-									{ STATTYPE::AVO, "AVO" }, { STATTYPE::TCRIT, "TCRIT" }, { STATTYPE::SPD, "SPD" }, { STATTYPE::MOV, "MOV" },
+									{ STATTYPE::AVO, "AVO" }, /*{ STATTYPE::TCRIT, "TCRIT" },*/ { STATTYPE::SPD, "SPD" }, { STATTYPE::MOV, "MOV" },
 									{ STATTYPE::LCK, "LCK" }, { STATTYPE::MATK, "MATK" }, { STATTYPE::HEAL, "HEAL" }, { STATTYPE::RANGE, "RANGE" },
 									{ STATTYPE::MIGHT, "MIGHT" }, { STATTYPE::GMIGHT, "GMIGHT" }, { STATTYPE::CRITAVO, "CRITAVO" }, { STATTYPE::CRIT, "CRIT" } };
 	std::vector<wxString> currentheaders{ };

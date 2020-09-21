@@ -12,7 +12,7 @@ SkillLevelManager::SkillLevelManager(wxWindow* parent, wxWindowID id) :
 	int stslPOINToffset = 0;
 	manager = new std::map<StaticTextSkillLevel*, DropDownSkillLevel*>();
 
-	for (int i = 0; i < (int)VARIOUS_SIZE::SL_DATA_SIZE; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::SL_DATA_SIZE; ++i) {
 		StaticTextSkillLevel* stsl = new StaticTextSkillLevel(this, ((int)ST_CONTROL::ID_STSWORD + stslIDoffset), labels.at(i), 50, stslPOINToffset, 75, 25);
 		DropDownSkillLevel* ddsl = new DropDownSkillLevel(this, ((int)DD_CONTROL::ID_DDSWORD + ddslIDoffset), labels.at(i), value, 0, ddslPOINToffset, 50, 25, choices, wxCB_DROPDOWN | wxCB_READONLY);
 

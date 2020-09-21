@@ -39,11 +39,11 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 	ggs = new GridGambitStats(mainwindow, (int)ID_SINGLE_CONTROL::ID_GGS);
 	gchias = new GridCharInnateAbilityStats(characterinnateabilities, mainwindow, (int)ID_SINGLE_CONTROL::ID_GCHIAS);
 
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GCLIAS_IN_CPOPTIONALSTATS; ++i) {
 		gcliasVector.push_back(new GridClassInnateAbilityStats(classinnateabilities, mainwindow, ((int)ID_SINGLE_CONTROL::ID_GCLIAS + i)));
 	}
 
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GSLAS_IN_CPOPTIONALSTATS; ++i) {
 		gslasVector.push_back(new GridSkillLevelAbilityStats(skilllevelabilities, mainwindow, ((int)ID_SINGLE_CONTROL::ID_GSLAS + i)));
 	}
 
@@ -82,12 +82,12 @@ CPOptionalStats::CPOptionalStats(std::map<wxString, wxClientData*> uabilitymap, 
 void CPOptionalStats::ReceiveLBWSelection(Stats stats, WEAPONTYPE type) {
 	gws->ReceiveLBWSelection(stats);
 
-	for (unsigned int i = 0; i < 3; ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GCLIAS_IN_CPOPTIONALSTATS; ++i) {
 		gcliasVector[i]->ReceiveLBWSelection_weapontypeifneeded(type);
 		gcliasVector[i]->ForceRefresh();
 	}
 
-	for (unsigned int i = 0; i < 5; ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GSLAS_IN_CPOPTIONALSTATS; ++i) {
 		gslasVector[i]->ReceiveLBWSelection_weapontypeifneeded(type);
 		gslasVector[i]->ForceRefresh();
 	}
@@ -101,7 +101,7 @@ void CPOptionalStats::ReceiveLBBSelection(Stats battalionstats, Stats gambitstat
 	gbs->ReceiveLBBSelection(battalionstats);
 	ggs->ReceiveLBBSelection(gambitstats);
 	gchias->ReceiveLBBSelection(battalionselectionmade);
-	for (unsigned int i = 0; i < 5; ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GSLAS_IN_CPOPTIONALSTATS; ++i) {
 		gslasVector[i]->ReceiveLBBSelection(battalionselectionmade);
 		gslasVector[i]->ForceRefresh();
 	}

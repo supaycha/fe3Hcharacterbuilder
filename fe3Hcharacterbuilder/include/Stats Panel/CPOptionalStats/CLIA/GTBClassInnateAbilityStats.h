@@ -14,7 +14,7 @@
 class GTBClassInnateAbilityStats : public wxGridTableBase {
 private:
 	std::vector<STATPACKAGE> headers{ { STATTYPE::PROT, "PROT" }, { STATTYPE::WEIGHT, "WGT" }, { STATTYPE::RES, "RES" }, { STATTYPE::HIT, "HIT" },
-									{ STATTYPE::AVO, "AVO" }, { STATTYPE::WCRIT, "WCRIT" }, { STATTYPE::TCRIT, "TCRIT" }, { STATTYPE::SPD, "SPD" }, { STATTYPE::MOV, "MOV" },
+									{ STATTYPE::AVO, "AVO" }, { STATTYPE::WCRIT, "WCRIT" }, /*{ STATTYPE::TCRIT, "TCRIT" },*/ { STATTYPE::SPD, "SPD" }, { STATTYPE::MOV, "MOV" },
 									{ STATTYPE::LCK, "LCK" }, { STATTYPE::MATK, "MATK" }, { STATTYPE::HEAL, "HEAL" }, { STATTYPE::RANGE, "RANGE" },
 									{ STATTYPE::MIGHT, "MIGHT" }, { STATTYPE::PMIGHT, "PMIGHT" }, { STATTYPE::MMIGHT, "MMIGHT" } };
 	std::vector<wxString> currentheaders{ };	

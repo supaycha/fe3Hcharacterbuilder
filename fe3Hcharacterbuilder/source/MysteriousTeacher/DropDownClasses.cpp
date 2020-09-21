@@ -116,9 +116,9 @@ wxArrayString DropDownClasses::ToArrayString(std::vector<wxString> names) {
 }
 
 wxClientData** DropDownClasses::ToArrayData(std::vector<wxClientData*>& ptrs) {
-	int size = ptrs.size();
-	wxClientData** temparraydata = new wxClientData * [size];
-	for (int i = 0; i < size; ++i) {
+	int sizeofvector = ptrs.size();
+	wxClientData** temparraydata = new wxClientData * [sizeofvector];
+	for (int i = 0; i < sizeofvector; ++i) {
 		temparraydata[i] = ptrs[i];
 	}
 

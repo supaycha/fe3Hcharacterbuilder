@@ -7,7 +7,7 @@ GridSkillLevelAbilityStats::GridSkillLevelAbilityStats(std::map<wxString, wxClie
 	gtbslas = new GTBSkillLevelAbilityStats(uskilllevelabilities);
 
 	CreateGrid(1, 3);
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_COLS_IN_GSLAS; ++i) {
 		SetColLabelValue(i, "---");
 		SetCellValue(0, i, "---");
 		AutoSizeColumn(i, true);

@@ -10,16 +10,16 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	ddc = new DropDownCharacters(characternames, characterdata, this, (int)ID_MISC::ID_DDCH, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY);
 
 	wxString test = "1";
-	for (int i = 0; i < 2; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_SCL_IN_MT; ++i) {
 		sclVector.push_back(new SpinCtrlLevel(this, (int)ID_MISC::ID_SPIN1 + i, test, 1));
 	}
 
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_DDCL_IN_MT; ++i) {
 		ddclVector.push_back(new DropDownClasses(classmap, this, (int)ID_MISC::ID_DDCL1 + i, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY | wxCB_SORT));
 	}
 
 	total = new wxBoxSizer(wxHORIZONTAL);
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_COLS_IN_MT_SIZER; ++i) {
 		columns.push_back(new wxBoxSizer(wxVERTICAL));
 	}
 
@@ -57,7 +57,7 @@ MysteriousTeacher::MysteriousTeacher(std::vector<wxString> characternames, std::
 	columns[1]->Add(ddclVector[2], 1, wxEXPAND, 0);
 	columns[2]->Add(gmt);
 
-	for (unsigned int i = 0; i < columns.size(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_COLS_IN_MT_SIZER; ++i) {
 		total->Add(columns[i]);
 	}
 
@@ -77,7 +77,7 @@ void MysteriousTeacher::BounceDDCHSelection(wxCommandEvent& transmission) {
 	gmt->UpdateDDCHSelection(*tempcharacter);
 
 	wxString exclusivitycheck = tempcharacter->getName();
-	for (unsigned int i = 0; i < ddclVector.size(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_DDCL_IN_MT; ++i) {
 		ddclVector[i]->ReceiveExclusivity(exclusivitycheck);
 	}
 }

@@ -54,63 +54,63 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	UnitList ulist;
 	AbilityList alist;
 
-	for (unsigned int i = 0; i < ulist.getSize(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::SIZE_OF_ULIST; ++i) {
 		if (Character* temp = dynamic_cast<Character*>(ulist[i])) {
 			characternames.push_back(temp->getName());
 			characterdata.push_back(temp->clone());
 		}
 	}
 
-	for (unsigned int i = 0; i < ulist.getSize(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::SIZE_OF_ULIST; ++i) {
 		if (Battalion* temp = dynamic_cast<Battalion*>(ulist[i])) {
 			battalionnames.push_back(temp->getName());
 			battaliondata.push_back(temp->clone());
 		}
 	}
 
-	for (unsigned int i = 0; i < ulist.getSize(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::SIZE_OF_ULIST; ++i) {
 		if (dynamic_cast<Weapon*>(ulist[i])) {
 			weaponnames.push_back(ulist[i]->getName());
 			DetermineWeaponType(ulist[i], weapondata);
 		}
 	}
 
-	for (unsigned int i = 0; i < ulist.getSize(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::SIZE_OF_ULIST; ++i) {
 		if (Class* temp = dynamic_cast<Class*>(ulist[i])) {
 			classnames.push_back(temp->getName());
 			classdata.push_back(temp->clone());
 		}
 	}
 
-	for (unsigned int i = 0; i < ulist.getSize(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::SIZE_OF_ULIST; ++i) {
 		if (Equipment* temp = dynamic_cast<Equipment*>(ulist[i])) {
 			equipnames.push_back(temp->getName());
 			equipdata.push_back(temp->clone());
 		}
 	}
 
-	for (unsigned int i = 0; i < alist.getSize(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::SIZE_OF_ALIST; ++i) {
 		abilitynames.push_back(alist[i]->getName());
 		abilitydata.push_back(alist[i]->clone());
 	}
 
-	for (int i = 0; i < (int)VARIOUS_SIZE::BATTALION_DATA_SIZE; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::BATTALION_DATA_SIZE; ++i) {
 		battalionmap.emplace(battalionnames[i], battaliondata[i]);
 	}
 
-	for (int i = 0; i < (int)VARIOUS_SIZE::WEAPON_DATA_SIZE; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::WEAPON_DATA_SIZE; ++i) {
 		weaponmap.emplace(weaponnames[i], weapondata[i]);
 	}
 
-	for (int i = 0; i < (int)VARIOUS_SIZE::CLASS_DATA_SIZE; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::CLASS_DATA_SIZE; ++i) {
 		classmap.emplace(classnames[i], classdata[i]);
 	}
 
-	for (int i = 0; i < (int)VARIOUS_SIZE::EQUIPMENT_DATA_SIZE; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::EQUIPMENT_DATA_SIZE; ++i) {
 		equipmap.emplace(equipnames[i], equipdata[i]);
 	}
 
-	for (unsigned int i = 0; i < alist.getSize(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::SIZE_OF_ALIST; ++i) {
 		abilitymap.emplace(abilitynames[i], abilitydata[i]);
 		if (SkillLevelAbility* temp = dynamic_cast<SkillLevelAbility*>(abilitydata[i])) {
 			skilllevelabilitymap.emplace(abilitynames[i], abilitydata[i]);

@@ -15,12 +15,12 @@ AbilityPanel::AbilityPanel(std::map<wxString, wxClientData*> abilitymap, wxWindo
 	panelsizer->Add(echia);
 
 	panelsizer->Add(classinnatelabel);
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_CLASS_INNATE_ABILITIES_MAX; ++i) {
 		panelsizer->Add(ecliaVector[i]);
 	}
 
 	panelsizer->Add(skilllevellabel);
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_SKILL_LEVEL_ABILITIES_MAX; ++i) {
 		panelsizer->Add(eslaVector[i]);
 	}
 
@@ -48,11 +48,11 @@ void AbilityPanel::FilterAbilitiesAndInitCollPanes(std::map<wxString, wxClientDa
 	}
 
 	echia = new EquippedCharInnateAbility(characterinnateabilities, this, (int)ID_SINGLE_CONTROL::ID_ECHIA, buffer);
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_CLASS_INNATE_ABILITIES_MAX; ++i) {
 		ecliaVector.push_back(new EquippedClassInnateAbility(classinnateabilities, this, ((int)ID_SINGLE_CONTROL::ID_ECLIA + i), buffer));
 	}
 
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_SKILL_LEVEL_ABILITIES_MAX; ++i) {
 		eslaVector.push_back(new EquippedSkillLvlAbilities(skilllevelabilities, this, ((int)ID_SINGLE_CONTROL::ID_ESLA + i), buffer));
 	}
 }

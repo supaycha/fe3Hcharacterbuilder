@@ -13,7 +13,7 @@ void DropDownSkillLevel::initpopulate() {
 										  new SKILLLEVELPACKAGE(SL::B), new SKILLLEVELPACKAGE(SL::BPLUS), new SKILLLEVELPACKAGE(SL::A), new SKILLLEVELPACKAGE(SL::APLUS), new SKILLLEVELPACKAGE(SL::S), new SKILLLEVELPACKAGE(SL::SPLUS) };
 	int offset = 70;
 
-	for (int i = 0; i < 12; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_SKILL_LEVELS_PER_DDSL; ++i) {
 		SKILLLEVELPACKAGE* temp = dynamic_cast<SKILLLEVELPACKAGE*>(skillLVLdata[i]);
 		int test = GetId();
 		temp->index = (GetId() - offset);
@@ -33,9 +33,9 @@ wxArrayString DropDownSkillLevel::ToArrayString(std::vector<wxString> names) {
 }
 
 wxClientData** DropDownSkillLevel::ToArrayData(std::vector<wxClientData*>& ptrs) {
-	int size = ptrs.size();
-	wxClientData** temparraydata = new wxClientData * [size];
-	for (int i = 0; i < size; ++i) {
+	int sizeofvector = ptrs.size();
+	wxClientData** temparraydata = new wxClientData * [sizeofvector];
+	for (int i = 0; i < sizeofvector; ++i) {
 		temparraydata[i] = ptrs[i];
 	}
 

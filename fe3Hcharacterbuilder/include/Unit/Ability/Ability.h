@@ -16,15 +16,19 @@ public:
 		abname(uName),
 		source(uSource),
 		description(uDescription) {}
+	Ability(const Ability&) = default;
 	virtual ~Ability() {}
 
 	const std::wstring getName() override { return abname; }
 	const Stats getStats() { Stats nothing; return nothing; };  //does nothing
-	virtual std::wstring getType() = 0;
-	std::wstring getDescription() { return description; }
-	std::wstring getSource() { return source; }
+
 	virtual Ability* new_expr() = 0;
-	virtual Ability* clone() = 0;
+	virtual Ability* clone() = 0;	
+
+	std::wstring getDescription() { return description; }
+	std::wstring getSource() { return source; }	
+	
+	virtual std::wstring getType() = 0;
 };
 
 #endif

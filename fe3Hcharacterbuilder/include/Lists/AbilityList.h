@@ -34,243 +34,241 @@ public:
 			L"Byleth", 
 			L"+20% Experience Gained to user and adjacent ally", 
 			false, 
-			STATTYPE::BLANK, 
-			""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
-			L"Imperial Lineage", 
-			L"Edelgard", 
-			L"+20% Experience Gained", 
-			false, 
-			STATTYPE::BLANK, ""));
+			L"Imperial Lineage",
+			L"Edelgard",
+			L"+20% Experience Gained",
+			false,
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Royal Lineage",
 			L"Dimitri",
 			L"+20% Experience Gained", 
 			false,
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Leicester Lineage", 
 			L"Claude", 
 			L"+20% Experience Gained",
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Officer Duty",
 			L"Hubert",
 			L"Boosts Gambit Might by 5.", 
 			true, 
-			STATTYPE::GMIGHT, "5"));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::GMIGHT, "5")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Songstress",
 			L"Dorothea", 
 			L"At the start of each turn, restores adjacent allies’ HP by 10%.",
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Confidence", 
 			L"Ferdinand",
 			L"When HP is full, unit gains +15 Hit and Avoid", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Persecution Complex",
 			L"Bernadetta", 
 			L"When HP is not full, unit gains +5 Damage", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Born Fighter", 
 			L"Caspar", 
 			L"Adjacent foes receive Avoid -10 during combat.",
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Catnap",
 			L"Linhardt", 
 			L"If unit waits without performing an action, restores 10% HP.", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Hunter's Boon",
 			L"Petra",
 			L"When foe has less than 50% HP, Critical rate +20", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Live to Serve",
 			L"Mercedes", 
 			L"When healing allies with White Magic, unit is healed by the same amount", 
 			false, 
-			STATTYPE::BLANK,""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Staunch Shield", 
 			L"Dedue",
 			L"If user waits without acting, Defense +4 for one turn.", 
 			false,
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Lone Wolf",
 			L"Felix",
 			L"When a Battalion is not deployed or when battalion health is zero, damage dealt +5", 
 			true, true, false,
-			STATTYPE::MIGHT, "5"));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::MIGHT, "5")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Lockpick", 
 			L"Ashe", 
 			L"Unit can open locks and chests without keys", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Perseverance", 
 			L"Annette", 
 			L"When Rally command is used on ally, grants Strength +4.", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Philanderer",
 			L"Sylvain",
 			L"When adjacent to a female ally, damage dealt to foe +2, damage received from foe -2.", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Lady Knight",
 			L"Ingrid",
 			L"When using a Gambit, Might +3 and Hit Rate +5.", 
 			true, true, true, 
-			STATTYPE::GMIGHT, "3", 
-			STATTYPE::GHIT, "5"));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::GMIGHT, "3"), STATPACKAGE(STATTYPE::GHIT, "5")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Distinguished House",
 			L"Lorenz", 
 			L"When a battalion is deployed, damage dealt +2", 
 			true, true, true, 
-			STATTYPE::MIGHT, "2"));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::MIGHT, "2")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Advocate", 
 			L"Hilda",
 			L"When an adjacent male ally enters battle, ally’s damage dealt +3",
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Goody Basket", 
 			L"Raphael", 
 			L"At the start of a turn, unit has Luck% chance of regaining 10% of HP",
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Mastermind",
 			L"Lysithea",
 			L"Unit gains 2x skill EXP from combat", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Watchful Eye"
 			, L"Ignatz",
 			L"Hit rate +20.", 
 			true, 
-			STATTYPE::HIT, "20"));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::HIT, "20")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Animal Friend",
 			L"Marianne",
 			L"When adjacent to a horseback or flying ally, restores 20% HP at the start of the turn.", 
 			false,
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Rivalry", 
 			L"Leonie", 
 			L"When adjacent to a male ally, damage dealt to foe +2, damage received from foe -2.", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Infirmary Master", 
 			L"Manuela", 
 			L"Adjacent allies gain Crit Avoid +10 during combat", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Crest Scholar", 
 			L"Hanneman", 
 			L"Use Rally to grant Mag +4 to an ally", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Fighting Spirit", 
 			L"Catherine",
 			L"Unit takes 5 less damage when no battalion is assigned or when battalion endurance is 0.",
 			true, true, false, 
-			STATTYPE::PROT, "5"));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::PROT, "5")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Compassion", 
 			L"Alois",
 			L"Use Rally to grant Lck +8 to an ally.", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Guardian", 
 			L"Seteth", 
 			L"Adjacent female allies deal 3 extra damage during combat", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Lily's Poise", 
 			L"Flayn", 
 			L"Adjacent allies take 3 less damage during combat.",
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Veteran Knight", 
 			L"Gilbert", 
 			L"Unit takes 2 less damage while in formation with a battalion.", 
 			true, true, true, 
-			STATTYPE::PROT, "2"));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::PROT, "2")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Survival Instinct", 
 			L"Shamir", 
 			L"If unit initiates combat and defeats foe, grants Str/Mag/Dex/Spd +4 for one turn.",
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Aptitude", 
 			L"Cyril",
 			L"Makes each stat 20% more likely to increase on level up.", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Murderous Intent",
 			L"Jeritza", 
 			L"If unit initiates combat, grants Hit +20 during combat.",
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Business Prosperity",
 			L"Anna", 
 			L"Grants Luck +5.", 
 			true, 
-			STATTYPE::LCK, "5"));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::LCK, "5")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Honorable Spirit",
 			L"Yuri", 
 			L"If unit is not near an ally, grants Atk +3 when in combat with a foe one space away.", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Circadian Beat",
 			L"Constance",
 			L"Grants Str/Mag +3 when indoors and Def/Res +3 when outdoors.", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"King of Grappling", 
 			L"Balthus", 
 			L"Grants Str/Def +6 when HP ≤ 50%.",
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 		list.emplace_back(std::make_unique<CharacterInnateAbility>(
 			L"Monstrous Appeal",
 			L"Hapi", 
 			L"Makes all attacks effective against monsters and makes it easier for monsters to target unit.", 
 			false, 
-			STATTYPE::BLANK, ""));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::BLANK, "")}));
 
 
 
@@ -479,7 +477,7 @@ public:
 			L"Swordmaster",
 			WEAPONTYPE::SWORD, L"Critical +10 when equipped with a sword.", 
 			true, 
-			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::TCRIT, "10")}));
+			std::vector<STATPACKAGE> {STATPACKAGE(STATTYPE::WCRIT, "10")}));
 		list.emplace_back(std::make_unique<ClassInnateCharacterAbility>(
 			L"Axe Critical +10",
 			L"Warrior", 

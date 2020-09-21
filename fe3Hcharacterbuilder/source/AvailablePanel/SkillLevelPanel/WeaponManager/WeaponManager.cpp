@@ -10,7 +10,7 @@ WeaponManager::WeaponManager(std::map<wxString, wxClientData*> weaponmap, wxWind
 	wxArrayString emptybuffer;
 	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 260, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
 
-	for (int i = 0; i < (int)VARIOUS_SIZE::WEAPON_TYPE_SIZE; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::WEAPON_TYPE_SIZE; ++i) {
 		weapontypes.push_back(new wxToggleButton(this, ((int)WT_CONTROL::ID_BSWORD) + i, buffer));
 	}
 

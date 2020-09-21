@@ -7,13 +7,13 @@ GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bo
 	gtbmt = new GTBMysteriousTeacher;
 
 	CreateGrid(8, 10);
-	SetDefaultRowSize((int)VARIOUS_SIZE::MIN_HEIGHT_OF_COMBOBOX);
-	SetDefaultColSize((int)VARIOUS_SIZE::SET_LENGTH_OF_COLUMNS);
+	SetDefaultRowSize((int)CONSTANT_SIZE::MIN_HEIGHT_OF_COMBOBOX);
+	SetDefaultColSize((int)CONSTANT_SIZE::SET_LENGTH_OF_COLUMNS);
 	SetDefaultCellAlignment(wxALIGN_CENTER, wxALIGN_CENTER);
 	EnableEditing(false);
 	DisableDragGridSize();
 
-	for (unsigned int i = 0; i < 10; ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
 		SetColLabelValue(i, gtbmt->GetHeader(i));
 
 	}

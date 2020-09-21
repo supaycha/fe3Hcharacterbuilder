@@ -47,21 +47,21 @@ void GTBMysteriousTeacher::UpdateDDCLSelection(Class cLass, int ID) {
 }
 
 void GTBMysteriousTeacher::recalculate() {
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
 		totals1[i] = currentDDCHgrowths[i];
 	}
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
 		totals2[i] = currentDDCHstats[i];
 	}
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
 		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
 		float classgrowth = _wtof(currentDDCL1growths[i].getText().c_str());
 		totals3[i] = std::to_wstring(chargrowth + classgrowth);
 	}
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
 		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
 		float classgrowth = _wtof(currentDDCL1growths[i].getText().c_str());
 		float subtotal = chargrowth + classgrowth;
@@ -70,13 +70,13 @@ void GTBMysteriousTeacher::recalculate() {
 		totals4[i] = std::to_wstring(avgtotal);
 	}
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
 		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
 		float classgrowth2 = _wtof(currentDDCL2growths[i].getText().c_str());
 		totals5[i] = std::to_wstring(chargrowth + classgrowth2);
 	}
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
 		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
 		float classgrowth2 = _wtof(currentDDCL2growths[i].getText().c_str());
 		float subtotal2 = chargrowth + classgrowth2;
@@ -85,7 +85,7 @@ void GTBMysteriousTeacher::recalculate() {
 		totals6[i] = std::to_wstring(avgtotal2);
 	}
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
 		int charstat = _wtoi(currentDDCHstats[i].getText().c_str());
 
 		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
@@ -106,7 +106,7 @@ void GTBMysteriousTeacher::recalculate() {
 		totals7[i] = std::to_wstring(grandtotal);
 	}
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
 		int charstat = _wtoi(currentDDCHstats[i].getText().c_str());
 
 		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());

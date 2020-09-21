@@ -7,7 +7,7 @@ GridCharInnateAbilityStats::GridCharInnateAbilityStats(std::map<wxString, wxClie
 	gtbchias = new GTBCharInnateAbilityStats(ucharacterinnateabilities);
 
 	CreateGrid(1, 2);
-	for (int i = 0; i < 2; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_COLS_IN_GCHIAS; ++i) {
 		SetColLabelValue(i, "---");
 		SetCellValue(0, i, "---");
 		AutoSizeColumn(i, true);

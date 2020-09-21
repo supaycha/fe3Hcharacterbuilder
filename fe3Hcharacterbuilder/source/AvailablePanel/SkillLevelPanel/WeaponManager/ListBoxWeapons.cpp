@@ -4,7 +4,7 @@ ListBoxWeapons::ListBoxWeapons(std::map<wxString, wxClientData*> uweaponmap, wxW
 	wxWindowID id, int x, int y, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxDefaultPosition, wxSize(x, y), choices, style)
 {
-	for (int i = 0; i < 8; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_WEAPON_RELATED_SKILL_LEVELS; ++i) {
 		STINCPACKAGE transfer{ false, i };
 		STfilter.push_back(transfer);
 	}
@@ -89,7 +89,7 @@ void ListBoxWeapons::repopulate() {
 		}
 	}
 
-	for (unsigned int i = 0; i < generalweapons.size(); ++i) {
+	for (unsigned int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GENERAL_WEAPONS; ++i) {
 		SL weaponSL = generalweapons[i]->getSL();
 		if ((int)weaponSL == -1) {
 			weaponnames.push_back(generalweapons[i]->getName());
@@ -153,9 +153,9 @@ wxArrayString ListBoxWeapons::ToArrayString(std::vector<wxString> names) {
 }
 
 wxClientData** ListBoxWeapons::ToArrayData(std::vector<wxClientData*>& ptrs) {
-	int size = ptrs.size();
-	wxClientData** temparraydata = new wxClientData * [size];
-	for (int i = 0; i < size; ++i) {
+	int sizeofvector = ptrs.size();
+	wxClientData** temparraydata = new wxClientData * [sizeofvector];
+	for (int i = 0; i < sizeofvector; ++i) {
 		temparraydata[i] = ptrs[i];
 	}
 

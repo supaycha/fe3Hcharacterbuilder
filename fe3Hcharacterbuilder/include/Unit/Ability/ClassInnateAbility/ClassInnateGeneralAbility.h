@@ -14,6 +14,7 @@ public:
 		ClassInnateAbility(uName, uSource, uDescription, uHasStatUp, ustatpVector)
 	{}
 	~ClassInnateGeneralAbility() {}
+
 	ClassInnateGeneralAbility* new_expr() override { return new ClassInnateGeneralAbility(); }
 	ClassInnateGeneralAbility* clone() override { return new ClassInnateGeneralAbility(*this); }
 };

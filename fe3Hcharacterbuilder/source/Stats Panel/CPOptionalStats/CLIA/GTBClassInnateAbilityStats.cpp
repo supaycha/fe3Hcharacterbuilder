@@ -18,7 +18,7 @@ void GTBClassInnateAbilityStats::ReceiveLBWSelection_weapontypeifneeded(WEAPONTY
 void GTBClassInnateAbilityStats::recalculate() {
 	statpVector.clear();
 	currentheaders.clear();
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_COLS_IN_GCLIAS; ++i) {
 		statpVector.push_back(STATPACKAGE(STATTYPE::BLANK, "---"));
 		currentheaders.push_back("---");
 	}

@@ -13,16 +13,22 @@ public:
 	ClassMasteryAbility() {}
 	ClassMasteryAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, bool uHasStatUp) :
 		hasStatUp{ uHasStatUp },
-		Ability{ uName, uSource, uDescription } {}
-	ClassMasteryAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, bool uHasStatUp, std::vector<STATPACKAGE> ustatpVector) : 
+		Ability{ uName, uSource, uDescription } 
+	{}
+	ClassMasteryAbility(std::wstring uName, std::wstring uSource, std::wstring uDescription, 
+		bool uHasStatUp, std::vector<STATPACKAGE> ustatpVector) : 
 		hasStatUp{ uHasStatUp },
 		statpVector{ ustatpVector },
-		Ability{ uName, uSource, uDescription } {}
+		Ability{ uName, uSource, uDescription } 
+	{}
 	~ClassMasteryAbility() {}
+
 	std::wstring getType() { return cmaType; }
-	std::vector<STATPACKAGE> getSTATP() { return statpVector; }
+
 	ClassMasteryAbility* new_expr() override { return new ClassMasteryAbility(); }
-	ClassMasteryAbility* clone() override { return new ClassMasteryAbility(*this); }
+	ClassMasteryAbility* clone() override { return new ClassMasteryAbility(*this); }	
+	
+	std::vector<STATPACKAGE> getSTATP() { return statpVector; }
 };
 
 #endif
