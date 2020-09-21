@@ -18,8 +18,8 @@ wxDEFINE_EVENT(TRANSMIT_CHIA_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_CLIA_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_SLA_SELECTION, wxCommandEvent);
 
-MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE | wxMAXIMIZE) {
-	
+MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE | wxMAXIMIZE) 
+{
 	wxMenu* fileMenu = new wxMenu;
 	fileMenu->Append(wxID_EXIT, wxT("E&xit\tAlt-x"), wxT("Quit this program"));
 
@@ -176,6 +176,7 @@ void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repit
 	slp->ReceiveClassMasteryExclusivity(classname);	
 	ep->ReceiveClassInnateExclusivity(classname);
 }
+
 void MyFrame::BounceRepeatedLBASLASelection_updateselabiliities(wxCommandEvent& repititionfromSLP) {
 	AbilitySelections* tempselections = dynamic_cast<AbilitySelections*>(repititionfromSLP.GetClientObject());
 	ep->ReceiveSLASelections(tempselections);
@@ -207,10 +208,10 @@ void MyFrame::BounceLBESelection(wxCommandEvent& selection) {
 }
 
 void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
-	Battalion* tempbattalion = dynamic_cast<Battalion*>(selection.GetClientObject());
+	Battalion* tempbattalion = dynamic_cast<Battalion*>(selection.GetClientObject());	
+	Stats tempgambitstats = tempbattalion->getGambit().getStats();
 	Stats tempbattalionstats = tempbattalion->getStats();	
 	wxString tempgambitname = tempbattalion->getGambit().getName();
-	Stats tempgambitstats = tempbattalion->getGambit().getStats();
 	wxString tempbattalionname = tempbattalion->getName();
 
 	bool selectionmade;
@@ -224,6 +225,7 @@ void MyFrame::BounceLBBSelection(wxCommandEvent& selection) {
 	sp->ReceiveLBBSelection(tempbattalionstats, tempgambitstats, selectionmade);
 	ep->ReceiveLBBSelection(tempbattalionname, tempgambitname);
 }
+
 void MyFrame::BounceCHIASelection(wxCommandEvent& selection) {
 	wxString tempstring = selection.GetString();
 
@@ -231,17 +233,17 @@ void MyFrame::BounceCHIASelection(wxCommandEvent& selection) {
 }
 
 void MyFrame::BounceCLIASelection(wxCommandEvent& selection) {
-	AbilitySelections* testing = dynamic_cast<AbilitySelections*>(selection.GetClientObject());
-	std::vector<wxString> testing2 = testing->GetSelections();
+	AbilitySelections* tempselections = dynamic_cast<AbilitySelections*>(selection.GetClientObject());
+	std::vector<wxString> tempselectionvector = tempselections->GetSelections();
 
-	sp->ReceiveCLIASelection(testing2);
+	sp->ReceiveCLIASelection(tempselectionvector);
 }
 
 void MyFrame::BounceSLASelection(wxCommandEvent& selection) {
-	AbilitySelections* testing = dynamic_cast<AbilitySelections*>(selection.GetClientObject());
-	std::vector<wxString> testing2 = testing->GetSelections();
+	AbilitySelections* tempselections = dynamic_cast<AbilitySelections*>(selection.GetClientObject());
+	std::vector<wxString> tempselectionvector = tempselections->GetSelections();
 
-	sp->ReceiveSLASelection(testing2);
+	sp->ReceiveSLASelection(tempselectionvector);
 }
 
 void MyFrame::DetermineWeaponType(Unit* unit, std::vector<wxClientData*>& weapondata) {
@@ -286,7 +288,6 @@ void MyFrame::OnSize(wxSizeEvent& event) {
 		sp->Fit();
 	}
 
-	wxSize test = this->GetMinSize();
 	event.Skip();
 }
 

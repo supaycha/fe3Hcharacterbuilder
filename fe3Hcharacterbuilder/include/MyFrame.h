@@ -53,7 +53,6 @@ private:
 	wxBoxSizer* column3;
 	wxBoxSizer* column4;
 	wxBoxSizer* column5;
-	wxBoxSizer* column6;
 
 	MysteriousTeacher* mt;
 	EquippedPanel* ep;	
