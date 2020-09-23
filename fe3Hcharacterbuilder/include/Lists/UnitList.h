@@ -1892,7 +1892,7 @@ public:
 		list.emplace_back(std::make_unique<Axe>(
 			L"Killer Axe+", 
 			false, 
-			"NULL", L"12", L"70", L"35", L"1", L"12", L"C", L"25", 
+			L"NULL", L"12", L"70", L"35", L"1", L"12", L"C", L"25", 
 			SL::C));
 		list.emplace_back(std::make_unique<Axe>(
 			L"Training Axe",

@@ -1,7 +1,7 @@
 #include <AvailablePanel/SkillLevelPanel/SkillLevelPanel.h>
 
 wxDEFINE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
-wxDEFINE_EVENT(TRANSMIT_LBASLA_SELECTION, wxCommandEvent);
+//wxDEFINE_EVENT(TRANSMIT_LBASLA_SELECTION, wxCommandEvent);
 
 SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, std::map<wxString, wxClientData*> skilllevelabilitymap, std::map<wxString, wxClientData*> classmasteryabilitymap,  wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id)
@@ -33,13 +33,12 @@ SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, st
 	column3->Add(lbb);
 	slpSizer->Add(column3);
 	SetSizerAndFit(slpSizer);
-	//this->Layout();
 
 	Bind(TRANSMIT_SL_SELECTION, &SkillLevelPanel::BounceSLInfo, this, (int)DD_CONTROL::ID_DDSWORD, (int)DD_CONTROL::ID_DDFLYING);
-	Bind(TRANSMIT_LBASLA_SELECTION, &SkillLevelPanel::ForwardLBASLASelection, this, (int)ID_SINGLE_CONTROL::ID_LBASLA);
+	//Bind(TRANSMIT_LBASLA_SELECTION, &SkillLevelPanel::ForwardLBASLASelection, this, (int)ID_SINGLE_CONTROL::ID_LBASLA);
 }
 
-void SkillLevelPanel::ReceiveDDCHSelection(wxString charactername) {	//forwarded from MyFrame::BounceDDCInfo()
+void SkillLevelPanel::ReceiveDDCHSelection(wxString charactername) {
 	wm->ReceiveforWeaponExclusivityCheck(charactername);
 	lbasla->ReceiveforAbilityExclusivityCheck(charactername);
 }
@@ -69,11 +68,11 @@ void SkillLevelPanel::BounceSLInfo(wxCommandEvent& eventfromwho) {
 	}
 }
 
-void SkillLevelPanel::ForwardLBASLASelection(wxCommandEvent& forwarded) {
-	wxCommandEvent event(REPEAT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_SLP);
-	event.SetClientObject(forwarded.GetClientObject());
-	ProcessEvent(event);
-}
+//void SkillLevelPanel::ForwardLBASLASelection(wxCommandEvent& forwarded) {
+//	wxCommandEvent event(REPEAT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_SLP);
+//	event.SetClientObject(forwarded.GetClientObject());
+//	ProcessEvent(event);
+//}
 void SkillLevelPanel::OnToggle(wxCommandEvent& eventfromwho) {
 	bool isPressed = includeClassMasteries->GetValue();
 	lbasla->ReceiveClassMasteryButtonStatus(isPressed);

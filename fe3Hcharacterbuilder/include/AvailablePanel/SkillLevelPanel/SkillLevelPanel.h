@@ -10,7 +10,7 @@
 #include <AvailablePanel/SkillLevelPanel/WeaponManager/WeaponManager.h>
 #include <AvailablePanel/SkillLevelPanel/SkillLevelManager/SkillLevelManager.h>
 
-wxDECLARE_EVENT(REPEAT_LBASLA_SELECTION, wxCommandEvent);
+//wxDECLARE_EVENT(REPEAT_LBASLA_SELECTION, wxCommandEvent);
 
 class SkillLevelPanel : public wxPanel {
 private:
@@ -28,7 +28,7 @@ public:
 	void ReceiveDDCHSelection(wxString charactername);
 	void ReceiveClassMasteryExclusivity(wxString classmasterycheck);
 	void BounceSLInfo(wxCommandEvent& eventfromwho);
-	void ForwardLBASLASelection(wxCommandEvent& forwarded);
+	//void ForwardLBASLASelection(wxCommandEvent& forwarded);
 	void OnToggle(wxCommandEvent& eventfromwho);
 };
 
