@@ -21,21 +21,21 @@ ListBoxBattalions::ListBoxBattalions(std::map<wxString, wxClientData*> ubattalio
 	//ProcessEvent(eventtoself);
 }
 
-void ListBoxBattalions::OnNewSelection(wxCommandEvent& selection) {
-	wxCommandEvent event(TRANSMIT_LBB_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBB);
-	event.SetClientObject(selection.GetClientObject());
-	ProcessEvent(event);
-	FactorInInternalChange();
-}
+//void ListBoxBattalions::OnNewSelection(wxCommandEvent& selection) {
+//	wxCommandEvent event(TRANSMIT_LBB_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBB);
+//	event.SetClientObject(selection.GetClientObject());
+//	ProcessEvent(event);
+//	FactorInInternalChange();
+//}
 
 void ListBoxBattalions::ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage) {
 	sl = slpackage->sl;
 	FactorInExternalChange();
 }
 
-void ListBoxBattalions::FactorInInternalChange() {
-	recalculate();
-}
+//void ListBoxBattalions::FactorInInternalChange() {
+//	recalculate();
+//}
 
 void ListBoxBattalions::FactorInExternalChange() {
 	allavailableabilities = CreateListOfAvailableAbilities();
@@ -129,5 +129,5 @@ wxClientData** ListBoxBattalions::ToArrayData(std::vector<wxClientData*>& ptrs) 
 }
 
 wxBEGIN_EVENT_TABLE(ListBoxBattalions, wxListBox)
-	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBB, ListBoxBattalions::OnNewSelection)
+	//EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBB, ListBoxBattalions::OnNewSelection)
 wxEND_EVENT_TABLE()

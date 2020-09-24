@@ -7,7 +7,7 @@
 #include <Unit/Unit.h>
 #include <Unit/Battalion.h>
 
-wxDECLARE_EVENT(TRANSMIT_LBB_SELECTION, wxCommandEvent);
+//wxDECLARE_EVENT(TRANSMIT_LBB_SELECTION, wxCommandEvent);
 
 class ListBoxBattalions : public wxListBox {
 	std::map<wxString, wxClientData*> battalionmap;
@@ -24,10 +24,10 @@ public:
 		const wxArrayString& choices, long style);
 	~ListBoxBattalions() {}
 
-	void OnNewSelection(wxCommandEvent& selection);
+	//void OnNewSelection(wxCommandEvent& selection);
 	void ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage);
 
-	void FactorInInternalChange();
+	//void FactorInInternalChange();
 	void FactorInExternalChange();
 
 	std::map<wxString, wxClientData*> CreateListOfAvailableAbilities();
