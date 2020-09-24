@@ -8,7 +8,7 @@
 #include <Unit/Unit.h>
 #include <Unit/Equipment/Equipment.h>
 
-wxDECLARE_EVENT(TRANSMIT_LBE_SELECTION, wxCommandEvent);
+//wxDECLARE_EVENT(TRANSMIT_LBE_SELECTION, wxCommandEvent);
 
 class ListBoxEquipment : public wxListBox {
 private:
@@ -20,7 +20,7 @@ public:
 	ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
 	~ListBoxEquipment() {}
 
-	void OnNewSelection(wxCommandEvent& selection);
+	//void OnNewSelection(wxCommandEvent& selection);
 	void ReceiveEquipmentExclusivity(wxString charactername);
 
 	void repopulate();

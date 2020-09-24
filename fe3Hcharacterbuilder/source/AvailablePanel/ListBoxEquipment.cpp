@@ -21,11 +21,11 @@ ListBoxEquipment::ListBoxEquipment(std::map<wxString, wxClientData*> uequipmentm
 	ProcessEvent(eventtoself);
 }
 
-void ListBoxEquipment::OnNewSelection(wxCommandEvent& selection) {
-	wxCommandEvent event(TRANSMIT_LBE_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBE);
-	event.SetClientObject(selection.GetClientObject());
-	ProcessEvent(event);
-}
+//void ListBoxEquipment::OnNewSelection(wxCommandEvent& selection) {
+//	wxCommandEvent event(TRANSMIT_LBE_SELECTION, (int)ID_SINGLE_CONTROL::ID_LBE);
+//	event.SetClientObject(selection.GetClientObject());
+//	ProcessEvent(event);
+//}
 
 void ListBoxEquipment::ReceiveEquipmentExclusivity(wxString charactername) {
 	currentDDCSelection = charactername;
@@ -128,5 +128,5 @@ wxClientData** ListBoxEquipment::ToArrayData(std::vector<wxClientData*>& ptrs) {
 }
 
 wxBEGIN_EVENT_TABLE(ListBoxEquipment, wxListBox)
-	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBE, ListBoxEquipment::OnNewSelection)
+	//EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBE, ListBoxEquipment::OnNewSelection)
 wxEND_EVENT_TABLE()
