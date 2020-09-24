@@ -146,14 +146,16 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, (int)ID_MISC::ID_MT);
-	Bind(TRANSMIT_LBASLA_SELECTION, &MyFrame::BounceLBASLASelection_updateselabiliities, this, (int)ID_SINGLE_CONTROL::ID_LBASLA);
 	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, (int)ID_MISC::ID_MT);
 	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
-	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
-	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBBSelection, this, (int)ID_SINGLE_CONTROL::ID_LBB);
 	Bind(TRANSMIT_CHIA_SELECTION, &MyFrame::BounceCHIASelection, this, (int)ID_SINGLE_CONTROL::ID_ECHIA);
 	Bind(TRANSMIT_CLIA_SELECTION, &MyFrame::BounceCLIASelection, this, (int)ID_SINGLE_CONTROL::ID_AP);
-	Bind(TRANSMIT_SLA_SELECTION, &MyFrame::BounceSLASelection, this, (int)ID_SINGLE_CONTROL::ID_AP);
+	Bind(TRANSMIT_SLA_SELECTION, &MyFrame::BounceSLASelection, this, (int)ID_SINGLE_CONTROL::ID_AP);	
+	
+
+	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
+	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBBSelection, this, (int)ID_SINGLE_CONTROL::ID_LBB);
+	Bind(TRANSMIT_LBASLA_SELECTION, &MyFrame::BounceLBASLASelection_updateselabiliities, this, (int)ID_SINGLE_CONTROL::ID_LBASLA);
 }
 
 void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {

@@ -38,31 +38,31 @@ void ListBoxBattalions::ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage) {
 //}
 
 void ListBoxBattalions::FactorInExternalChange() {
-	allavailableabilities = CreateListOfAvailableAbilities();
+	allavailablebattalions = CreateListOfAvailableBattalions();
 	recalculate();
 }
 
-std::map<wxString, wxClientData*> ListBoxBattalions::CreateListOfAvailableAbilities() {
-	std::map<wxString, wxClientData*> tempallavailableabilities;
+std::map<wxString, wxClientData*> ListBoxBattalions::CreateListOfAvailableBattalions() {
+	std::map<wxString, wxClientData*> tempallavailablebattalions;
 	for (auto element : battalionmap) {
 		Battalion* tempbattalion = dynamic_cast<Battalion*>(element.second)->clone();
 		SL battalionSL = tempbattalion->getSL();
 		if ((int)battalionSL == -1) {
 			wxClientData* tempdata = dynamic_cast<wxClientData*>(tempbattalion);
-			tempallavailableabilities.emplace(std::make_pair(element.first, tempdata));
+			tempallavailablebattalions.emplace(std::make_pair(element.first, tempdata));
 		}
 
 		else {
 			if (battalionSL <= sl) {
 				wxClientData* tempdata = dynamic_cast<wxClientData*>(tempbattalion);
-				tempallavailableabilities.emplace(std::make_pair(element.first, tempdata));
+				tempallavailablebattalions.emplace(std::make_pair(element.first, tempdata));
 			}
 		}
 	}
-	return tempallavailableabilities;
+	return tempallavailablebattalions;
 }
 
-void ListBoxBattalions::ReselectAbility() {
+void ListBoxBattalions::ReselectBattalion() {
 	if (CompareAllStrings()) {
 		int index = this->FindString(mostrecentLBBselection);
 		this->SetSelection(index);
@@ -81,7 +81,7 @@ void ListBoxBattalions::recalculate() {
 	repopulate();
 	Thaw();
 
-	ReselectAbility();
+	ReselectBattalion();
 	wxCommandEvent eventtoself(wxEVT_LISTBOX, (int)ID_SINGLE_CONTROL::ID_LBB);
 	eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
 	ProcessEvent(eventtoself);
@@ -90,7 +90,7 @@ void ListBoxBattalions::recalculate() {
 void ListBoxBattalions::repopulate() {
 	std::vector<wxString> tempbattalionnames;
 	std::vector<wxClientData*> tempbattaliondata;
-	for (auto element : allavailableabilities) {
+	for (auto element : allavailablebattalions) {
 		tempbattalionnames.push_back(element.first);
 		tempbattaliondata.push_back(element.second);
 	}
@@ -128,6 +128,6 @@ wxClientData** ListBoxBattalions::ToArrayData(std::vector<wxClientData*>& ptrs) 
 	return temparraydata;
 }
 
-wxBEGIN_EVENT_TABLE(ListBoxBattalions, wxListBox)
-	//EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBB, ListBoxBattalions::OnNewSelection)
-wxEND_EVENT_TABLE()
+//wxBEGIN_EVENT_TABLE(ListBoxBattalions, wxListBox)
+//	//EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBB, ListBoxBattalions::OnNewSelection)
+//wxEND_EVENT_TABLE()

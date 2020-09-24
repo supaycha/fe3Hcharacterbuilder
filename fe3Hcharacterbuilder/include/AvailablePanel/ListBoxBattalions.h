@@ -11,12 +11,12 @@
 
 class ListBoxBattalions : public wxListBox {
 	std::map<wxString, wxClientData*> battalionmap;
-	std::map<wxString, wxClientData*> allavailableabilities;
+	std::map<wxString, wxClientData*> allavailablebattalions;
 
 	SL sl;
 	wxString mostrecentLBBselection;
 
-	wxDECLARE_EVENT_TABLE();
+	//wxDECLARE_EVENT_TABLE();
 public:
 	ListBoxBattalions(std::map<wxString, wxClientData*> ubattalionmap, 
 		wxWindow* panel, wxWindowID id, 
@@ -30,8 +30,8 @@ public:
 	//void FactorInInternalChange();
 	void FactorInExternalChange();
 
-	std::map<wxString, wxClientData*> CreateListOfAvailableAbilities();
-	void ReselectAbility();
+	std::map<wxString, wxClientData*> CreateListOfAvailableBattalions();
+	void ReselectBattalion();
 
 	void recalculate();
 	void repopulate();
