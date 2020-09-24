@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\AvailablePanel\AvailablePanel.h" />
     <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateCharacterAbility.h" />
     <ClInclude Include="include\Unit\Ability\ClassInnateAbility\ClassInnateGeneralAbility.h" />
     <ClInclude Include="include\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.h" />
@@ -27,14 +28,13 @@
     <ClInclude Include="include\Unit\Gambit.h" />
     <ClInclude Include="include\AbilitySelections.h" />
     <ClInclude Include="include\AvailablePanel\ListBoxEquipment.h" />
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxASLA.h" />
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxBattalions.h" />
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelManager\DropDownSkillLevel.h" />
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelManager\SkillLevelManager.h" />
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelManager\StaticTextSkillLevel.h" />
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelPanel.h" />
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\WeaponManager\ListBoxWeapons.h" />
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\WeaponManager\WeaponManager.h" />
+    <ClInclude Include="include\AvailablePanel\ListBoxASLA.h" />
+    <ClInclude Include="include\AvailablePanel\ListBoxBattalions.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelManager\DropDownSkillLevel.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelManager\SkillLevelManager.h" />
+    <ClInclude Include="include\AvailablePanel\SkillLevelManager\StaticTextSkillLevel.h" />
+    <ClInclude Include="include\AvailablePanel\WeaponManager\ListBoxWeapons.h" />
+    <ClInclude Include="include\AvailablePanel\WeaponManager\WeaponManager.h" />
     <ClInclude Include="include\EquippedPanel\Ability\AbilityPanel.h" />
     <ClInclude Include="include\EquippedPanel\Ability\CHIA\EquippedCharInnateAbility.h" />
     <ClInclude Include="include\EquippedPanel\Ability\CLIA\EquippedClassInnateAbility.h" />
@@ -104,19 +104,19 @@
     <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralProwessAbility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\AvailablePanel\AvailablePanel.cpp" />
     <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GridGambitStats.cpp" />
     <ClCompile Include="source\Stats Panel\CPOptionalStats\GambitStats\GTBGambitStats.cpp" />
     <ClCompile Include="source\EquippedPanel\Gambit\EquippedGambit.cpp" />
     <ClCompile Include="source\AbilitySelections.cpp" />
     <ClCompile Include="source\AvailablePanel\ListBoxEquipment.cpp" />
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxASLA.cpp" />
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxBattalions.cpp" />
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelManager\DropDownSkillLevel.cpp" />
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelManager\SkillLevelManager.cpp" />
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelManager\StaticTextSkillLevel.cpp" />
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelPanel.cpp" />
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\WeaponManager\ListBoxWeapons.cpp" />
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\WeaponManager\WeaponManager.cpp" />
+    <ClCompile Include="source\AvailablePanel\ListBoxASLA.cpp" />
+    <ClCompile Include="source\AvailablePanel\ListBoxBattalions.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelManager\DropDownSkillLevel.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelManager\SkillLevelManager.cpp" />
+    <ClCompile Include="source\AvailablePanel\SkillLevelManager\StaticTextSkillLevel.cpp" />
+    <ClCompile Include="source\AvailablePanel\WeaponManager\ListBoxWeapons.cpp" />
+    <ClCompile Include="source\AvailablePanel\WeaponManager\WeaponManager.cpp" />
     <ClCompile Include="source\EquippedPanel\Ability\AbilityPanel.cpp" />
     <ClCompile Include="source\EquippedPanel\Ability\CHIA\EquippedCharInnateAbility.cpp" />
     <ClCompile Include="source\EquippedPanel\Ability\CLIA\EquippedClassInnateAbility.cpp" />

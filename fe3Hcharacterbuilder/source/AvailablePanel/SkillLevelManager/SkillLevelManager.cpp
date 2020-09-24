@@ -1,4 +1,4 @@
-#include <AvailablePanel/SkillLevelPanel/SkillLevelManager/SkillLevelManager.h>
+#include <AvailablePanel/SkillLevelManager/SkillLevelManager.h>
 
 SkillLevelManager::SkillLevelManager(wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)

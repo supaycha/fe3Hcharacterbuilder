@@ -4,8 +4,8 @@
 #include <wx/wx.h>
 #include <map>
 #include <constants.h>
-#include <AvailablePanel/SkillLevelPanel/SkillLevelManager/StaticTextSkillLevel.h>
-#include <AvailablePanel/SkillLevelPanel/SkillLevelManager/DropDownSkillLevel.h>
+#include <AvailablePanel/SkillLevelManager/StaticTextSkillLevel.h>
+#include <AvailablePanel/SkillLevelManager/DropDownSkillLevel.h>
 ////#include <vld.h>
 
 wxDECLARE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
@@ -18,7 +18,7 @@ public:
 	SkillLevelManager(wxWindow* parent, wxWindowID id);
 	~SkillLevelManager() {}
 
-	void OnNewSelection(wxCommandEvent& uevent);
+	void OnNewSelection(wxCommandEvent& selection);
 };
 
 #endif

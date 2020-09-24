@@ -1,22 +1,22 @@
-#include <AvailablePanel/SkillLevelPanel/SkillLevelPanel.h>
+#include <AvailablePanel/AvailablePanel.h>
 
 wxDEFINE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
-//wxDEFINE_EVENT(TRANSMIT_LBASLA_SELECTION, wxCommandEvent);
 
-SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, std::map<wxString, wxClientData*> skilllevelabilitymap, std::map<wxString, wxClientData*> classmasteryabilitymap,  wxWindow* parent, wxWindowID id) :
+AvailablePanel::AvailablePanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, std::map<wxString, wxClientData*> equipmap, std::map<wxString, wxClientData*> skilllevelabilitymap, std::map<wxString, wxClientData*> classmasteryabilitymap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id)
 {
 	const wxArrayString emptybuffer{};
 
 	slm = new SkillLevelManager(this, (int)ID_SINGLE_CONTROL::ID_SLM);
-	wm = new WeaponManager(weaponmap, this, (int)ID_MISC::ID_WM);	
+	wm = new WeaponManager(weaponmap, this, (int)ID_MISC::ID_WM);
 	includeClassMasteries = new wxToggleButton(this, ((int)ID_MISC::ID_BCLASSMASTERY), "");
 
 	wxStaticText* lbaslaLABEL = new wxStaticText(this, wxID_ANY, "Available Abilities");
 	lbasla = new ListBoxASLA(skilllevelabilitymap, classmasteryabilitymap, this, (int)ID_SINGLE_CONTROL::ID_LBASLA, 0, 0, 150, 260, emptybuffer, wxLB_MULTIPLE);
 	wxStaticText* lbbLABEL = new wxStaticText(this, wxID_ANY, "Available Battalions");
 	lbb = new ListBoxBattalions(battalionmap, this, (int)ID_SINGLE_CONTROL::ID_LBB, 150, 260, emptybuffer, wxLB_SINGLE | wxLB_SORT);
-
+	wxStaticText* lbeLABEL = new wxStaticText(this, wxID_ANY, "Available Equipment");
+	lbe = new ListBoxEquipment(equipmap, this, (int)ID_SINGLE_CONTROL::ID_LBE, 150, 400, emptybuffer, wxLB_SINGLE | wxLB_SORT);
 	slpSizer = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer* column1 = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer* column2 = new wxBoxSizer(wxVERTICAL);
@@ -31,53 +31,56 @@ SkillLevelPanel::SkillLevelPanel(std::map<wxString, wxClientData*> weaponmap, st
 	slpSizer->Add(column2);
 	column3->Add(lbbLABEL);
 	column3->Add(lbb);
+	column3->Add(lbeLABEL);
+	column3->Add(lbe);
 	slpSizer->Add(column3);
 	SetSizerAndFit(slpSizer);
 
-	Bind(TRANSMIT_SL_SELECTION, &SkillLevelPanel::BounceSLInfo, this, (int)DD_CONTROL::ID_DDSWORD, (int)DD_CONTROL::ID_DDFLYING);
-	//Bind(TRANSMIT_LBASLA_SELECTION, &SkillLevelPanel::ForwardLBASLASelection, this, (int)ID_SINGLE_CONTROL::ID_LBASLA);
+	Bind(TRANSMIT_SL_SELECTION, &AvailablePanel::BounceSLInfo, this, (int)DD_CONTROL::ID_DDSWORD, (int)DD_CONTROL::ID_DDFLYING);
 }
 
-void SkillLevelPanel::ReceiveDDCHSelection(wxString charactername) {
+void AvailablePanel::ReceiveDDCHSelection(wxString charactername) {
 	wm->ReceiveforWeaponExclusivityCheck(charactername);
 	lbasla->ReceiveforAbilityExclusivityCheck(charactername);
 }
-void SkillLevelPanel::ReceiveClassMasteryExclusivity(wxString classmasterycheck) {
+void AvailablePanel::ReceiveClassMasteryExclusivity(wxString classmasterycheck) {
 	lbasla->ReceiveClassMasteryExclusivity(classmasterycheck);
 }
 
-void SkillLevelPanel::BounceSLInfo(wxCommandEvent& eventfromwho) {
-	int idofreceiver = eventfromwho.GetInt();
+void AvailablePanel::ReceiveEquipmentExclusivity(wxString charactername) {
+	lbe->ReceiveEquipmentExclusivity(charactername);
+}
+
+void AvailablePanel::BounceSLInfo(wxCommandEvent& info) {
+	int idofreceiver = info.GetInt();
 	switch (idofreceiver)
 	{
 		case (int)ID_SINGLE_CONTROL::ID_LBW: {
-			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(eventfromwho.GetClientObject());
+			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(info.GetClientObject());
 			wm->ReceiveSLInfo(slpackage);
 			break;
 		}
 		case (int)ID_SINGLE_CONTROL::ID_LBASLA: {
-			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(eventfromwho.GetClientObject());
+			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(info.GetClientObject());
 			lbasla->ReceiveSLInfo(slpackage);
 			break;
 		}
 		case (int)ID_SINGLE_CONTROL::ID_LBB: {
-			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(eventfromwho.GetClientObject());
-			lbb->ReceiveSLInfo(slpackage);
+			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(info.GetClientObject());
+			if (slpackage->index == 7) {
+				lbb->ReceiveSLInfo(slpackage);
+			}
+
 			break;
 		}
 	}
 }
 
-//void SkillLevelPanel::ForwardLBASLASelection(wxCommandEvent& forwarded) {
-//	wxCommandEvent event(REPEAT_LBASLA_SELECTION, (int)ID_SINGLE_CONTROL::ID_SLP);
-//	event.SetClientObject(forwarded.GetClientObject());
-//	ProcessEvent(event);
-//}
-void SkillLevelPanel::OnToggle(wxCommandEvent& eventfromwho) {
+void AvailablePanel::OnToggle(wxCommandEvent& eventfromwho) {
 	bool isPressed = includeClassMasteries->GetValue();
 	lbasla->ReceiveClassMasteryButtonStatus(isPressed);
 }
 
-wxBEGIN_EVENT_TABLE(SkillLevelPanel, wxPanel)
-	EVT_TOGGLEBUTTON((int)ID_MISC::ID_BCLASSMASTERY, SkillLevelPanel::OnToggle)
+wxBEGIN_EVENT_TABLE(AvailablePanel, wxPanel)
+	EVT_TOGGLEBUTTON((int)ID_MISC::ID_BCLASSMASTERY, AvailablePanel::OnToggle)
 wxEND_EVENT_TABLE()

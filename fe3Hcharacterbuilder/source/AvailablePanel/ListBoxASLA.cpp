@@ -1,6 +1,7 @@
-#include <AvailablePanel/SkillLevelPanel/ListBoxASLA.h>
+#include <AvailablePanel/ListBoxASLA.h>
 
-ListBoxASLA::ListBoxASLA(std::map<wxString, wxClientData*> uskilllevelabilitymap, std::map<wxString, wxClientData*> uclassmasteryabilitymap,  wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
+ListBoxASLA::ListBoxASLA(std::map<wxString, wxClientData*> uskilllevelabilitymap, std::map<wxString, wxClientData*> uclassmasteryabilitymap,  
+	wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style) :
 	wxListBox(panel, id, wxPoint(x, y), wxSize(x2, y2), choices, style)
 {
 	skilllevelabilitymap = uskilllevelabilitymap;
@@ -8,7 +9,7 @@ ListBoxASLA::ListBoxASLA(std::map<wxString, wxClientData*> uskilllevelabilitymap
 	//SetBackgroundStyle(wxBG_STYLE_PAINT);
 }
 
-void ListBoxASLA::OnSelection(wxCommandEvent& event) {
+void ListBoxASLA::OnNewSelection(wxCommandEvent& selection) {
 	//selectedabilities = UpdateSelectionsFromInternalSelection();
 	//selectedabilities = AccountforProwessRedudancies(selectedabilities);
 	//AbilitySelections* selections = new AbilitySelections(selectedabilities);
@@ -253,34 +254,6 @@ void ListBoxASLA::ReselectAbilities(std::vector<wxString> stillpresentabilities)
 	}
 }
 
-//std::vector<wxString> ListBoxASLA::UpdateSelectionsFromInternalSelection() {
-//	wxArrayInt selections;	
-//	this->GetSelections(selections);
-//
-//	bool isClearBeingSignaled = CheckForClearSignal(selections);	
-//	std::vector<wxString> tempvector;
-//	switch (isClearBeingSignaled) {
-//		case 0: {	
-//			tempvector = UpdateSelectionsFromExternalSelection();
-//			return tempvector;
-//			break;
-//		}
-//
-//		default: {
-//			tempvector = ClearSelections();
-//			return tempvector;
-//			break;
-//		}
-//	}
-//
-//	for (auto selection : selections) {
-//		tempvector.push_back(this->GetString(selection));
-//	}
-//
-//
-//	return tempvector;
-//}
-
 wxArrayString ListBoxASLA::ToArrayString(std::vector<wxString> names) {
 	wxArrayString temparraystring;
 	for (auto name : names) {
@@ -291,5 +264,5 @@ wxArrayString ListBoxASLA::ToArrayString(std::vector<wxString> names) {
 }
 
 wxBEGIN_EVENT_TABLE(ListBoxASLA, wxListBox)
-	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBASLA, ListBoxASLA::OnSelection)
+	EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBASLA, ListBoxASLA::OnNewSelection)
 wxEND_EVENT_TABLE()

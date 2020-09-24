@@ -11,18 +11,30 @@ wxDECLARE_EVENT(TRANSMIT_LBB_SELECTION, wxCommandEvent);
 
 class ListBoxBattalions : public wxListBox {
 	std::map<wxString, wxClientData*> battalionmap;
+	std::map<wxString, wxClientData*> allavailableabilities;
+
 	SL sl;
 	wxString mostrecentLBBselection;
+
 	wxDECLARE_EVENT_TABLE();
 public:
-	ListBoxBattalions(std::map<wxString, wxClientData*> ubattalionmap, wxWindow* panel, wxWindowID id, int x, int y, const wxArrayString& choices, long style);
+	ListBoxBattalions(std::map<wxString, wxClientData*> ubattalionmap, 
+		wxWindow* panel, wxWindowID id, 
+		int x, int y, 
+		const wxArrayString& choices, long style);
 	~ListBoxBattalions() {}
 
 	void OnNewSelection(wxCommandEvent& selection);
 	void ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage);
 
+	void FactorInInternalChange();
+	void FactorInExternalChange();
+
+	std::map<wxString, wxClientData*> CreateListOfAvailableAbilities();
+	void ReselectAbility();
+
+	void recalculate();
 	void repopulate();
-	void DetermineSelectionStatus();
 	bool CompareAllStrings();
 
 	wxArrayString ToArrayString(std::vector<wxString> names);

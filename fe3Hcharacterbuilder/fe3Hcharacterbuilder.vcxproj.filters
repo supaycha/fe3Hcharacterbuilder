@@ -50,15 +50,6 @@
     <Filter Include="AvailablePanel">
       <UniqueIdentifier>{59d01672-ca6e-4fea-b1d9-d3f6dcad0562}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AvailablePanel\SkillLevelPanel">
-      <UniqueIdentifier>{e5011233-a710-489e-a46f-c868b74e88b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AvailablePanel\SkillLevelPanel\WeaponManager">
-      <UniqueIdentifier>{d94c9eb2-e486-49ce-99c6-f026c764aa96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AvailablePanel\SkillLevelPanel\SkillLevelManager">
-      <UniqueIdentifier>{5e37b242-b01f-4b82-843c-72fb49c2f316}</UniqueIdentifier>
-    </Filter>
     <Filter Include="EquippedPanel">
       <UniqueIdentifier>{7ba0269f-ea84-48c5-abfb-917855093d9c}</UniqueIdentifier>
     </Filter>
@@ -100,6 +91,12 @@
     </Filter>
     <Filter Include="UnitandMisc\Ability\SkillLevelAbility\SkillLevelGeneralAbility">
       <UniqueIdentifier>{4c2e7a35-b263-4fea-8893-29c935fa7654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AvailablePanel\SkillLevelManager">
+      <UniqueIdentifier>{5e37b242-b01f-4b82-843c-72fb49c2f316}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AvailablePanel\WeaponManager">
+      <UniqueIdentifier>{d94c9eb2-e486-49ce-99c6-f026c764aa96}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -216,30 +213,6 @@
     <ClInclude Include="include\AvailablePanel\ListBoxEquipment.h">
       <Filter>AvailablePanel</Filter>
     </ClInclude>
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxASLA.h">
-      <Filter>AvailablePanel\SkillLevelPanel</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\ListBoxBattalions.h">
-      <Filter>AvailablePanel\SkillLevelPanel</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelPanel.h">
-      <Filter>AvailablePanel\SkillLevelPanel</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelManager\DropDownSkillLevel.h">
-      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelManager\SkillLevelManager.h">
-      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\SkillLevelManager\StaticTextSkillLevel.h">
-      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\WeaponManager\ListBoxWeapons.h">
-      <Filter>AvailablePanel\SkillLevelPanel\WeaponManager</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AvailablePanel\SkillLevelPanel\WeaponManager\WeaponManager.h">
-      <Filter>AvailablePanel\SkillLevelPanel\WeaponManager</Filter>
-    </ClInclude>
     <ClInclude Include="include\EquippedPanel\EquippedPanel.h">
       <Filter>EquippedPanel</Filter>
     </ClInclude>
@@ -348,6 +321,30 @@
     <ClInclude Include="include\Unit\Ability\SkillLevelAbility\SkillLevelGeneral\SkillLevelGeneralProwessAbility.h">
       <Filter>UnitandMisc\Ability\SkillLevelAbility\SkillLevelGeneralAbility</Filter>
     </ClInclude>
+    <ClInclude Include="include\AvailablePanel\SkillLevelManager\DropDownSkillLevel.h">
+      <Filter>AvailablePanel\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AvailablePanel\SkillLevelManager\SkillLevelManager.h">
+      <Filter>AvailablePanel\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AvailablePanel\SkillLevelManager\StaticTextSkillLevel.h">
+      <Filter>AvailablePanel\SkillLevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AvailablePanel\WeaponManager\ListBoxWeapons.h">
+      <Filter>AvailablePanel\WeaponManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AvailablePanel\WeaponManager\WeaponManager.h">
+      <Filter>AvailablePanel\WeaponManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AvailablePanel\ListBoxASLA.h">
+      <Filter>AvailablePanel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AvailablePanel\ListBoxBattalions.h">
+      <Filter>AvailablePanel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AvailablePanel\AvailablePanel.h">
+      <Filter>AvailablePanel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\MysteriousTeacher\DropDownCharacters.cpp">
@@ -378,30 +375,6 @@
     </ClCompile>
     <ClCompile Include="source\AvailablePanel\ListBoxEquipment.cpp">
       <Filter>AvailablePanel</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxASLA.cpp">
-      <Filter>AvailablePanel\SkillLevelPanel</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\ListBoxBattalions.cpp">
-      <Filter>AvailablePanel\SkillLevelPanel</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelPanel.cpp">
-      <Filter>AvailablePanel\SkillLevelPanel</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelManager\DropDownSkillLevel.cpp">
-      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelManager\SkillLevelManager.cpp">
-      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\SkillLevelManager\StaticTextSkillLevel.cpp">
-      <Filter>AvailablePanel\SkillLevelPanel\SkillLevelManager</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\WeaponManager\ListBoxWeapons.cpp">
-      <Filter>AvailablePanel\SkillLevelPanel\WeaponManager</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AvailablePanel\SkillLevelPanel\WeaponManager\WeaponManager.cpp">
-      <Filter>AvailablePanel\SkillLevelPanel\WeaponManager</Filter>
     </ClCompile>
     <ClCompile Include="source\EquippedPanel\EquippedPanel.cpp">
       <Filter>EquippedPanel</Filter>
@@ -486,6 +459,30 @@
     </ClCompile>
     <ClCompile Include="source\AbilitySelections.cpp">
       <Filter>UnitandMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AvailablePanel\SkillLevelManager\DropDownSkillLevel.cpp">
+      <Filter>AvailablePanel\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AvailablePanel\SkillLevelManager\SkillLevelManager.cpp">
+      <Filter>AvailablePanel\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AvailablePanel\SkillLevelManager\StaticTextSkillLevel.cpp">
+      <Filter>AvailablePanel\SkillLevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AvailablePanel\WeaponManager\ListBoxWeapons.cpp">
+      <Filter>AvailablePanel\WeaponManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AvailablePanel\WeaponManager\WeaponManager.cpp">
+      <Filter>AvailablePanel\WeaponManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AvailablePanel\ListBoxASLA.cpp">
+      <Filter>AvailablePanel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AvailablePanel\ListBoxBattalions.cpp">
+      <Filter>AvailablePanel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AvailablePanel\AvailablePanel.cpp">
+      <Filter>AvailablePanel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

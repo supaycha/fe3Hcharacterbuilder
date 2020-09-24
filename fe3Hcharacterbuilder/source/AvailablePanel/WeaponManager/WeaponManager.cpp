@@ -1,6 +1,7 @@
-#include <AvailablePanel/SkillLevelPanel/WeaponManager/WeaponManager.h>
+#include <AvailablePanel/WeaponManager/WeaponManager.h>
 
-WeaponManager::WeaponManager(std::map<wxString, wxClientData*> weaponmap, wxWindow* parent, wxWindowID id) :
+WeaponManager::WeaponManager(std::map<wxString, wxClientData*> weaponmap, 
+	wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id)
 {
 	mainsizer = new wxBoxSizer(wxHORIZONTAL);

@@ -24,8 +24,7 @@
 #include <constants.h>
 #include <MysteriousTeacher/MysteriousTeacher.h>
 #include <EquippedPanel/EquippedPanel.h>
-#include <AvailablePanel/SkillLevelPanel/SkillLevelPanel.h>
-#include <AvailablePanel/ListBoxEquipment.h>
+#include <AvailablePanel/AvailablePanel.h>
 #include <Stats Panel/StatsPanel.h>
 //#include <vld.h>
 
@@ -56,8 +55,7 @@ private:
 
 	MysteriousTeacher* mt;
 	EquippedPanel* ep;	
-	ListBoxEquipment* lbe;
-	SkillLevelPanel* slp;
+	AvailablePanel* ap;
 	StatsPanel* sp;
 
 	wxDECLARE_EVENT_TABLE();

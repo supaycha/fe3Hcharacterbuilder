@@ -29,10 +29,14 @@ private:
 	bool isClassMasteryToggleButtonPressed = false;
 	wxDECLARE_EVENT_TABLE();
 public:
-	ListBoxASLA(std::map<wxString, wxClientData*> skilllevelabilitymap, std::map<wxString, wxClientData*> classmasteryabilitymap, wxWindow* panel, wxWindowID id, int x, int y, int x2, int y2, const wxArrayString& choices, long style);
+	ListBoxASLA(std::map<wxString, wxClientData*> skilllevelabilitymap, 
+		std::map<wxString, wxClientData*> classmasteryabilitymap, 
+		wxWindow* panel, wxWindowID id, 
+		int x, int y, int x2, int y2, 
+		const wxArrayString& choices, long style);
 	~ListBoxASLA() {}
 
-	void OnSelection(wxCommandEvent& event);	
+	void OnNewSelection(wxCommandEvent& selection);
 	void ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage);
 	void ReceiveforAbilityExclusivityCheck(wxString charactername);
 	void ReceiveClassMasteryExclusivity(wxString classmasterycheck);
@@ -41,10 +45,7 @@ public:
 	void FactorInInternalChange();
 	bool CheckForClearSignal();	
 	std::vector<wxString> ClearSelections();
-	//std::vector<wxString> UpdateSelectionsFromInternalSelection();
-
 	std::vector<wxString> AccountforProwessRedudancies(std::vector<wxString> selectedAAnames);
-
 	void FactorInExternalChange();
 
 	std::vector<wxString> CreateListOfAvailableAbilities();
@@ -56,7 +57,6 @@ public:
 	void repopulate();
 
 	wxArrayString ToArrayString(std::vector<wxString> names);	
-	//std::vector<wxString> GetSelectionsAA() { return selectedAAnames; }
 };
 
 #endif

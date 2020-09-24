@@ -1,4 +1,4 @@
-#include <AvailablePanel/SkillLevelPanel/SkillLevelManager/StaticTextSkillLevel.h>
+#include <AvailablePanel/SkillLevelManager/StaticTextSkillLevel.h>
 
 StaticTextSkillLevel::StaticTextSkillLevel(wxWindow* parent, wxWindowID id, const wxString& label, int x, int y, int x2, int y2) :
 	wxStaticText(parent, id, label, wxPoint(x, y), wxSize(x2, y2))
