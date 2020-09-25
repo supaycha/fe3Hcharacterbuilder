@@ -32,7 +32,6 @@
     <ClInclude Include="include\AvailablePanel\ListBoxBattalions.h" />
     <ClInclude Include="include\AvailablePanel\SkillLevelManager\DropDownSkillLevel.h" />
     <ClInclude Include="include\AvailablePanel\SkillLevelManager\SkillLevelManager.h" />
-    <ClInclude Include="include\AvailablePanel\SkillLevelManager\StaticTextSkillLevel.h" />
     <ClInclude Include="include\AvailablePanel\WeaponManager\ListBoxWeapons.h" />
     <ClInclude Include="include\AvailablePanel\WeaponManager\WeaponManager.h" />
     <ClInclude Include="include\EquippedPanel\Ability\AbilityPanel.h" />
@@ -114,7 +113,6 @@
     <ClCompile Include="source\AvailablePanel\ListBoxBattalions.cpp" />
     <ClCompile Include="source\AvailablePanel\SkillLevelManager\DropDownSkillLevel.cpp" />
     <ClCompile Include="source\AvailablePanel\SkillLevelManager\SkillLevelManager.cpp" />
-    <ClCompile Include="source\AvailablePanel\SkillLevelManager\StaticTextSkillLevel.cpp" />
     <ClCompile Include="source\AvailablePanel\WeaponManager\ListBoxWeapons.cpp" />
     <ClCompile Include="source\AvailablePanel\WeaponManager\WeaponManager.cpp" />
     <ClCompile Include="source\EquippedPanel\Ability\AbilityPanel.cpp" />

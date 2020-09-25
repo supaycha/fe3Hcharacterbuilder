@@ -327,9 +327,6 @@
     <ClInclude Include="include\AvailablePanel\SkillLevelManager\SkillLevelManager.h">
       <Filter>AvailablePanel\SkillLevelManager</Filter>
     </ClInclude>
-    <ClInclude Include="include\AvailablePanel\SkillLevelManager\StaticTextSkillLevel.h">
-      <Filter>AvailablePanel\SkillLevelManager</Filter>
-    </ClInclude>
     <ClInclude Include="include\AvailablePanel\WeaponManager\ListBoxWeapons.h">
       <Filter>AvailablePanel\WeaponManager</Filter>
     </ClInclude>
@@ -464,9 +461,6 @@
       <Filter>AvailablePanel\SkillLevelManager</Filter>
     </ClCompile>
     <ClCompile Include="source\AvailablePanel\SkillLevelManager\SkillLevelManager.cpp">
-      <Filter>AvailablePanel\SkillLevelManager</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AvailablePanel\SkillLevelManager\StaticTextSkillLevel.cpp">
       <Filter>AvailablePanel\SkillLevelManager</Filter>
     </ClCompile>
     <ClCompile Include="source\AvailablePanel\WeaponManager\ListBoxWeapons.cpp">

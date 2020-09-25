@@ -4,7 +4,6 @@
 #include <wx/wx.h>
 #include <map>
 #include <constants.h>
-#include <AvailablePanel/SkillLevelManager/StaticTextSkillLevel.h>
 #include <AvailablePanel/SkillLevelManager/DropDownSkillLevel.h>
 ////#include <vld.h>
 
@@ -15,7 +14,7 @@ private:
 	wxBoxSizer* mainsizer;
 	std::vector<wxString> labels{ "Sword", "Axe", "Lance", "Bow", "Gauntlets", "Reason", "Faith", "Authority", "Heavy Armor", "Riding", "Flying" };
 	std::vector<DropDownSkillLevel*> ddslVector;
-	std::vector<StaticTextSkillLevel*> stslVector;
+	std::vector<wxStaticText*> stslVector;
 	wxDECLARE_EVENT_TABLE();
 public:
 	SkillLevelManager(wxWindow* parent, wxWindowID id);
