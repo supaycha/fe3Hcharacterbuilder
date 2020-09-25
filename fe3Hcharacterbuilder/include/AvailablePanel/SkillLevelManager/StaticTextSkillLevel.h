@@ -5,9 +5,9 @@
 
 class StaticTextSkillLevel : public wxStaticText {
 private:
-	wxString stname;
+	//wxString stname;
 public:
-	StaticTextSkillLevel(wxWindow* parent, wxWindowID id, const wxString& label, int x, int y, int x2, int y2);
+	StaticTextSkillLevel(wxWindow* parent, wxWindowID id, const wxString& label, int x, int y);
 	~StaticTextSkillLevel() {}
 };
 

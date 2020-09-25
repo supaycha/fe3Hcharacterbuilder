@@ -8,7 +8,7 @@ class DropDownSkillLevel : public wxComboBox {
 private:
 	wxString ddname;
 public:
-	DropDownSkillLevel(wxWindow* parent, wxWindowID id, const wxString& label, const wxString& value, int x, int y, int x2, int y2, const wxArrayString& choices, long style);
+	DropDownSkillLevel(wxWindow* parent, wxWindowID id, const wxString& label, const wxString& value, int x, int y, const wxArrayString& choices, long style);
 	~DropDownSkillLevel() {}
 
 	void initpopulate();

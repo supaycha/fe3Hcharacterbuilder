@@ -1,27 +1,45 @@
 #include <AvailablePanel/SkillLevelManager/SkillLevelManager.h>
 
 SkillLevelManager::SkillLevelManager(wxWindow* parent, wxWindowID id) :
-	wxPanel(parent, id, wxDefaultPosition, wxDefaultSize)
+	wxPanel(parent, id)
 {
-	std::vector<wxString> labels{ "Sword", "Axe", "Lance", "Bow", "Gauntlets", "Reason", "Faith", "Authority", "Heavy Armor", "Riding", "Flying" };
+	mainsizer = new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* dropdownsizer = new wxBoxSizer(wxVERTICAL);
+	wxBoxSizer* statictextsizer = new wxBoxSizer(wxVERTICAL);
+
+	//std::vector<wxString> labels{ "Sword", "Axe", "Lance", "Bow", "Gauntlets", "Reason", "Faith", "Authority", "Heavy Armor", "Riding", "Flying" };
 	wxString value{};
 	wxArrayString choices{};
-	int ddslIDoffset = 0;
-	int ddslPOINToffset = 0;
-	int stslIDoffset = 0;
-	int stslPOINToffset = 0;
-	manager = new std::map<StaticTextSkillLevel*, DropDownSkillLevel*>();
+	//int ddslIDoffset = 0;
+	//int ddslPOINToffset = 0;
+	//int stslIDoffset = 0;
+	//int stslPOINToffset = 0;
+	//manager = new std::map<StaticTextSkillLevel*, DropDownSkillLevel*>();
 
 	for (int i = 0; i < (int)CONSTANT_SIZE::SL_DATA_SIZE; ++i) {
-		StaticTextSkillLevel* stsl = new StaticTextSkillLevel(this, ((int)ST_CONTROL::ID_STSWORD + stslIDoffset), labels.at(i), 50, stslPOINToffset, 75, 25);
-		DropDownSkillLevel* ddsl = new DropDownSkillLevel(this, ((int)DD_CONTROL::ID_DDSWORD + ddslIDoffset), labels.at(i), value, 0, ddslPOINToffset, 50, 25, choices, wxCB_DROPDOWN | wxCB_READONLY);
+		stslVector.push_back(new StaticTextSkillLevel(this, wxID_ANY, labels.at(i), 75, 25));
+		ddslVector.push_back(new DropDownSkillLevel(this, ((int)DD_CONTROL::ID_DDSWORD + i), labels.at(i), value, 50, 25, choices, wxCB_DROPDOWN | wxCB_READONLY));
+		//StaticTextSkillLevel* stsl = new StaticTextSkillLevel(this, ((int)ST_CONTROL::ID_STSWORD + stslIDoffset), labels.at(i), 50, stslPOINToffset, 75, 25);
+		//DropDownSkillLevel* ddsl = new DropDownSkillLevel(this, ((int)DD_CONTROL::ID_DDSWORD + ddslIDoffset), labels.at(i), value, 0, ddslPOINToffset, 50, 25, choices, wxCB_DROPDOWN | wxCB_READONLY);
 
-		manager->emplace(std::make_pair(stsl, ddsl));
-		ddslIDoffset++;
-		ddslPOINToffset += 25;
-		stslIDoffset++;
-		stslPOINToffset += 25;
+		//manager->emplace(std::make_pair(stsl, ddsl));
+		//ddslIDoffset++;
+		//ddslPOINToffset += 25;
+		//stslIDoffset++;
+		//stslPOINToffset += 25;
 	}
+
+	for (int i = 0; i < (int)CONSTANT_SIZE::SL_DATA_SIZE; ++i) {
+		dropdownsizer->Add(ddslVector[i]);
+		statictextsizer->Add(stslVector[i]);
+	}
+
+	mainsizer->Add(dropdownsizer);
+	mainsizer->Add(statictextsizer);
+
+	this->SetSizer(mainsizer);
+
+	this->Layout();
 }
 
 void SkillLevelManager::OnNewSelection(wxCommandEvent& uevent) {

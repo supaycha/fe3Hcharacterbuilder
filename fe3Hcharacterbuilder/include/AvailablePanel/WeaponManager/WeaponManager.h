@@ -11,6 +11,7 @@ class WeaponManager : public wxPanel {
 private:	
 	ListBoxWeapons* lbw;
 	wxBoxSizer* mainsizer;
+
 	std::vector<wxToggleButton*> weapontypes;
 	wxDECLARE_EVENT_TABLE();
 public:
