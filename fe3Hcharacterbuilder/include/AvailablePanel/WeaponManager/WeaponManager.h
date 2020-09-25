@@ -12,7 +12,12 @@ private:
 	ListBoxWeapons* lbw;
 	wxBoxSizer* mainsizer;
 
-	std::vector<wxToggleButton*> weapontypes;
+	std::vector<wxString> bitmapVector{ 
+		"IDB_SWORD23", "IDB_AXE23", "IDB_LANCE23", 
+		"IDB_BOW23", "IDB_GAUNTLETS23", "IDB_BLACKMAGIC23", 
+		"IDB_DARKMAGIC23", "IDB_WHITEMAGIC23" };
+	std::vector<wxToggleButton*> weapontypesVector;
+	std::vector<wxBitmap> weaponbitmapVector;
 	wxDECLARE_EVENT_TABLE();
 public:
 	WeaponManager(std::map<wxString, wxClientData*> weaponmap, 
