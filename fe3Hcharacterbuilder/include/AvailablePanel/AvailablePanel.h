@@ -7,14 +7,32 @@
 #include <AvailablePanel/ListBoxASLA.h>
 #include <AvailablePanel/ListBoxBattalions.h>
 #include <AvailablePanel/ListBoxEquipment.h>
-#include <AvailablePanel/WeaponManager/WeaponManager.h>
-#include <AvailablePanel/SkillLevelManager/SkillLevelManager.h>
+#include <AvailablePanel/DropDownSkillLevel.h>
+#include <AvailablePanel/ListBoxWeapons.h>
 
 class AvailablePanel : public wxPanel {
 private:
-	wxBoxSizer* slpSizer;
-	SkillLevelManager* slm;
-	WeaponManager* wm;
+	wxBoxSizer* mainsizer;
+	//SkillLevelManager* slm;
+	std::vector<wxString> labels{ 
+		"Sword", "Axe", "Lance",
+		"Bow", "Gauntlets", "Reason", 
+		"Faith", "Authority", "Heavy Armor", 
+		"Riding", "Flying" };
+	std::vector<DropDownSkillLevel*> ddslVector;
+	std::vector<wxStaticText*> stslVector;
+
+
+	//WeaponManager* wm;
+	ListBoxWeapons* lbw;
+	std::vector<wxString> bitmapVector{
+		"IDB_SWORD23", "IDB_AXE23", "IDB_LANCE23",
+		"IDB_BOW23", "IDB_GAUNTLETS23", "IDB_BLACKMAGIC23",
+		"IDB_DARKMAGIC23", "IDB_WHITEMAGIC23" };
+	std::vector<wxToggleButton*> weapontypesVector;
+	std::vector<wxBitmap> weaponbitmapVector;
+
+
 	ListBoxASLA* lbasla;
 	ListBoxBattalions* lbb;
 	ListBoxEquipment* lbe;

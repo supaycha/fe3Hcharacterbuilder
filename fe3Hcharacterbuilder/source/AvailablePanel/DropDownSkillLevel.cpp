@@ -1,4 +1,4 @@
-#include <AvailablePanel/SkillLevelManager/DropDownSkillLevel.h>
+#include <AvailablePanel/DropDownSkillLevel.h>
 
 DropDownSkillLevel::DropDownSkillLevel(wxWindow* parent, wxWindowID id, const wxString& label, const wxString& value, int x, int y, const wxArrayString& choices, long style) :
 	wxComboBox(parent, id, value, wxDefaultPosition, wxSize(x, y), choices, style)
