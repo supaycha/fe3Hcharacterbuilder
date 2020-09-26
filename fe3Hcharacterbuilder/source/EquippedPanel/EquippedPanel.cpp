@@ -15,7 +15,7 @@ EquippedPanel::EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWin
 	ew = new EquippedWeapon(this, (int)ID_SINGLE_CONTROL::ID_EW, buffer);
 	wxStaticText* equippedequipmentlabel = new wxStaticText(this, wxID_ANY, "Equipped Equipment");
 	ee = new EquippedEquipment(this, (int)ID_SINGLE_CONTROL::ID_EE, buffer);
-	ap = new AbilityPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_AP);
+	abp = new AbilityPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_ABP);
 	physicalequipped->Add(equippedbattalionlabel);
 	physicalequipped->Add(eb);
 	physicalequipped->Add(equippedgambitlabel);
@@ -24,22 +24,22 @@ EquippedPanel::EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWin
 	physicalequipped->Add(ew);
 	physicalequipped->Add(equippedequipmentlabel);
 	physicalequipped->Add(ee);
-	intangibleequipped->Add(ap);
+	intangibleequipped->Add(abp);
 	panelsizer->Add(physicalequipped);
 	panelsizer->Add(intangibleequipped);
 	this->SetSizer(panelsizer);
 }
 
 void EquippedPanel::ReceiveCharacterInnateExclusivity(wxString charactername) {
-	ap->ReceiveCharacterInnateExclusivity(charactername);
+	abp->ReceiveCharacterInnateExclusivity(charactername);
 }
 
 void EquippedPanel::ReceiveClassInnateExclusivity(wxString classname) {
-	ap->ReceiveClassInnateExclusivity(classname);
+	abp->ReceiveClassInnateExclusivity(classname);
 }
 
 void EquippedPanel::ReceiveSLASelections(AbilitySelections* selections) {
-	ap->ReceiveSLASelections(selections);
+	abp->ReceiveSLASelections(selections);
 }
 
 void EquippedPanel::ReceiveLBWSelection(wxString weaponname) {
@@ -56,9 +56,9 @@ void EquippedPanel::ReceiveLBBSelection(wxString battalionname, wxString gambitn
 }
 
 void EquippedPanel::OnSize(wxSizeEvent& event) {
-	if (ap) {
-		ap->Fit();
-		ap->GetParent()->Fit();
+	if (abp) {
+		abp->Fit();
+		abp->GetParent()->Fit();
 	}
 
 	wxSize test = this->GetMinSize();

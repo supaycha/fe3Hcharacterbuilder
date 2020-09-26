@@ -13,7 +13,6 @@
 class AvailablePanel : public wxPanel {
 private:
 	wxBoxSizer* mainsizer;
-	//SkillLevelManager* slm;
 	std::vector<wxString> labels{ 
 		"Sword", "Axe", "Lance",
 		"Bow", "Gauntlets", "Reason", 
@@ -22,8 +21,6 @@ private:
 	std::vector<DropDownSkillLevel*> ddslVector;
 	std::vector<wxStaticText*> stslVector;
 
-
-	//WeaponManager* wm;
 	ListBoxWeapons* lbw;
 	std::vector<wxString> bitmapVector{
 		"IDB_SWORD23", "IDB_AXE23", "IDB_LANCE23",
@@ -32,11 +29,10 @@ private:
 	std::vector<wxToggleButton*> weapontypesVector;
 	std::vector<wxBitmap> weaponbitmapVector;
 
-
-	ListBoxASLA* lbasla;
+	ListBoxASLA* lbasla;	
+	wxToggleButton* includeClassMasteries;
 	ListBoxBattalions* lbb;
 	ListBoxEquipment* lbe;
-	wxToggleButton* includeClassMasteries;
 	wxDECLARE_EVENT_TABLE();
 public:
 	AvailablePanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, std::map<wxString, wxClientData*> equipmap, std::map<wxString, wxClientData*> skilllevelabilitymap, std::map<wxString, wxClientData*> classmasteryabilitymap, wxWindow* parent, wxWindowID id);
@@ -45,8 +41,10 @@ public:
 	void ReceiveDDCHSelection(wxString charactername);
 	void ReceiveClassMasteryExclusivity(wxString classmasterycheck);
 	void ReceiveEquipmentExclusivity(wxString charactername);
-	void BounceSLInfo(wxCommandEvent& info);
+	void BounceSLInfo(wxCommandEvent& ddsl);
+	void BounceSTInfo(wxCommandEvent& info);
 	void OnToggle(wxCommandEvent& eventfromwho);
+	//void OnNewSelection(wxCommandEvent& uevent);
 };
 
 

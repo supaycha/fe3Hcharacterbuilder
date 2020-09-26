@@ -18,7 +18,7 @@ private:
 	EquippedGambit* eg;
 	EquippedWeapon* ew;
 	EquippedEquipment* ee;
-	AbilityPanel* ap;
+	AbilityPanel* abp;
 public:
 	EquippedPanel(std::map<wxString, wxClientData*> abilitymap, wxWindow* parent, wxWindowID id);
 	~EquippedPanel() {}

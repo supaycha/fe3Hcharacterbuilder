@@ -4,7 +4,7 @@
 #include <string>
 
 enum class ID_MISC {
-	ID_FRAME,
+	ID_FRAME = 60,
 	ID_MT,
 	ID_DDCH,
 	ID_DDCL1,
@@ -14,19 +14,11 @@ enum class ID_MISC {
 	ID_SPIN2,
 	ID_GMT,
 	ID_WM,
-	//ID_ECLIA,
-	//ID_ECLIA2,
-	//ID_ECLIA3,
-	//ID_SLA,
-	//ID_SLA2,
-	//ID_SLA3,
-	//ID_SLA4,
-	//ID_SLA5,
 	ID_BCLASSMASTERY
 };
 
 enum class ID_SINGLE_CONTROL {
-	ID_LBW, 
+	ID_LBW = 20, 
 	ID_LBE, 
 	ID_LBB,
 	ID_GWS,
@@ -34,25 +26,19 @@ enum class ID_SINGLE_CONTROL {
 	ID_GBS,
 	ID_SLM,
 	ID_LBASLA,
-	//ID_LBSSLA,
-	//ID_LBSA,
-	//ID_BAA,
-	//ID_BRA,
 	ID_EB,
 	ID_EW,
 	ID_EE,
 	ID_EP,
 	ID_SP,
 	ID_GTBCHIAS,
-	//ID_GTBCLIAS,
 	ID_ECHIA,
 	ID_ECLIA,
 	ID_ECLIA2,
 	ID_ECLIA3,
-	ID_AP,
-	//ID_GTBSLAS,
+	ID_ABP,
 	ID_ESLA,
-	ID_SLP,
+	ID_AVP,
 	ID_GCHIAS,
 	ID_GCLIAS,
 	ID_GCLIAS2,
@@ -69,7 +55,7 @@ enum class ID_SINGLE_CONTROL {
 };
 
 enum class DD_CONTROL {
-	ID_DDSWORD = 70,
+	ID_DDSWORD,
 	ID_DDLANCE,
 	ID_DDAXE,
 	ID_DDBOW,
@@ -97,7 +83,7 @@ enum class ST_CONTROL {
 };
 
 enum class WT_CONTROL {
-	ID_BSWORD = 1,
+	ID_BSWORD = 11,
 	ID_BAXE,
 	ID_BLANCE,
 	ID_BBOW,

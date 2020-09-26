@@ -129,13 +129,13 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 
 	mt = new MysteriousTeacher(characternames, characterdata, classmap, this, (int)ID_MISC::ID_MT);
 	ep = new EquippedPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_EP);	
-	ap = new AvailablePanel(weaponmap, battalionmap, equipmap, skilllevelabilitymap, classmasteryabilitymap, this, (int)ID_SINGLE_CONTROL::ID_SLP);
+	avp = new AvailablePanel(weaponmap, battalionmap, equipmap, skilllevelabilitymap, classmasteryabilitymap, this, (int)ID_SINGLE_CONTROL::ID_AVP);
 	sp = new StatsPanel(abilitymap, this, (int)ID_SINGLE_CONTROL::ID_SP);
 	column1->Add(mt);	
 	column1->Add(sp);
 	column2->Add(ep);	
 	column3->AddStretchSpacer();
-	column4->Add(ap);
+	column4->Add(avp);
 	framesizer->Add(column1);
 	framesizer->Add(column2);
 	framesizer->Add(column3, 1, wxEXPAND, 0);
@@ -149,8 +149,8 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, (int)ID_MISC::ID_MT);
 	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
 	Bind(TRANSMIT_CHIA_SELECTION, &MyFrame::BounceCHIASelection, this, (int)ID_SINGLE_CONTROL::ID_ECHIA);
-	Bind(TRANSMIT_CLIA_SELECTION, &MyFrame::BounceCLIASelection, this, (int)ID_SINGLE_CONTROL::ID_AP);
-	Bind(TRANSMIT_SLA_SELECTION, &MyFrame::BounceSLASelection, this, (int)ID_SINGLE_CONTROL::ID_AP);	
+	Bind(TRANSMIT_CLIA_SELECTION, &MyFrame::BounceCLIASelection, this, (int)ID_SINGLE_CONTROL::ID_ABP);
+	Bind(TRANSMIT_SLA_SELECTION, &MyFrame::BounceSLASelection, this, (int)ID_SINGLE_CONTROL::ID_ABP);	
 	
 
 	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
@@ -162,8 +162,8 @@ void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repit
 	Character* tempcharacter = dynamic_cast<Character*>(repititionfromMT.GetClientObject());
 	wxString charactername = tempcharacter->getName();
 
-	ap->ReceiveDDCHSelection(charactername);
-	ap->ReceiveEquipmentExclusivity(charactername);	
+	avp->ReceiveDDCHSelection(charactername);
+	avp->ReceiveEquipmentExclusivity(charactername);	
 	ep->ReceiveCharacterInnateExclusivity(charactername);
 }
 
@@ -171,7 +171,7 @@ void MyFrame::BounceRepeatedDDCLSelection_classinnatecheck(wxCommandEvent& repit
 	Class* tempclass = dynamic_cast<Class*>(repititionfromMT.GetClientObject());
 	wxString classname = tempclass->getName();
 
-	ap->ReceiveClassMasteryExclusivity(classname);	
+	avp->ReceiveClassMasteryExclusivity(classname);	
 	ep->ReceiveClassInnateExclusivity(classname);
 }
 

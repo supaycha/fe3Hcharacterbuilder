@@ -55,7 +55,7 @@ private:
 
 	MysteriousTeacher* mt;
 	EquippedPanel* ep;	
-	AvailablePanel* ap;
+	AvailablePanel* avp;
 	StatsPanel* sp;
 
 	wxDECLARE_EVENT_TABLE();

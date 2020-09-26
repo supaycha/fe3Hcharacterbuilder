@@ -1,21 +1,21 @@
 #include <AvailablePanel/AvailablePanel.h>
 
-wxDEFINE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
+//wxDEFINE_EVENT(TRANSMIT_SL_SELECTION, wxCommandEvent);
 
 AvailablePanel::AvailablePanel(std::map<wxString, wxClientData*> weaponmap, std::map<wxString, wxClientData*> battalionmap, std::map<wxString, wxClientData*> equipmap, std::map<wxString, wxClientData*> skilllevelabilitymap, std::map<wxString, wxClientData*> classmasteryabilitymap, wxWindow* parent, wxWindowID id) :
 	wxPanel(parent, id)
 {
 	const wxString buffer;
-	wxArrayString emptybuffer;
+	const wxArrayString emptybuffer;
 	for (int i = 0; i < (int)CONSTANT_SIZE::SL_DATA_SIZE; ++i) {
-		stslVector.push_back(new wxStaticText(this, wxID_ANY, labels.at(i), wxDefaultPosition, wxSize(75, 25)));
-		ddslVector.push_back(new DropDownSkillLevel(this, ((int)DD_CONTROL::ID_DDSWORD + i), labels.at(i), buffer, 50, 25, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY));
+		ddslVector.push_back(new DropDownSkillLevel(this, ((int)DD_CONTROL::ID_DDSWORD) + i, labels[i], buffer, 50, 25, emptybuffer, wxCB_DROPDOWN | wxCB_READONLY));
+		stslVector.push_back(new wxStaticText(this, wxID_ANY, labels[i], wxDefaultPosition, wxSize(75, 25)));
 	}
 
 	wxStaticText* lbwLABEL = new wxStaticText(this, wxID_ANY, "Available Weapons");
 	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 260, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
 	for (int i = 0; i < (int)CONSTANT_SIZE::WEAPON_TYPE_SIZE; ++i) {
-		weapontypesVector.push_back(new wxToggleButton(this, ((int)WT_CONTROL::ID_BSWORD) + i, buffer));
+		weapontypesVector.push_back(new wxToggleButton(this, ((int)WT_CONTROL::ID_BSWORD + i), buffer));
 		weaponbitmapVector.push_back(wxBitmap(bitmapVector[i], wxBITMAP_TYPE_PNG_RESOURCE));
 	}
 	for (int i = 0; i < (int)CONSTANT_SIZE::WEAPON_TYPE_SIZE; ++i) {
@@ -69,7 +69,8 @@ AvailablePanel::AvailablePanel(std::map<wxString, wxClientData*> weaponmap, std:
 
 	SetSizerAndFit(mainsizer);
 
-	Bind(TRANSMIT_SL_SELECTION, &AvailablePanel::BounceSLInfo, this, (int)DD_CONTROL::ID_DDSWORD, (int)DD_CONTROL::ID_DDFLYING);
+	Bind(wxEVT_COMBOBOX, &AvailablePanel::BounceSLInfo, this, (int)DD_CONTROL::ID_DDSWORD, (int)DD_CONTROL::ID_DDFLYING);
+	Bind(wxEVT_TOGGLEBUTTON, &AvailablePanel::BounceSTInfo, this, (int)WT_CONTROL::ID_BSWORD, (int)WT_CONTROL::ID_BWHITEMAGIC);
 }
 
 void AvailablePanel::ReceiveDDCHSelection(wxString charactername) {
@@ -84,29 +85,24 @@ void AvailablePanel::ReceiveEquipmentExclusivity(wxString charactername) {
 	lbe->ReceiveEquipmentExclusivity(charactername);
 }
 
-void AvailablePanel::BounceSLInfo(wxCommandEvent& info) {
-	int idofreceiver = info.GetInt();
-	switch (idofreceiver)
-	{
-		case (int)ID_SINGLE_CONTROL::ID_LBW: {
-			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(info.GetClientObject());
-			lbw->ReceiveSLInfo(slpackage);
-			break;
-		}
-		case (int)ID_SINGLE_CONTROL::ID_LBASLA: {
-			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(info.GetClientObject());
-			lbasla->ReceiveSLInfo(slpackage);
-			break;
-		}
-		case (int)ID_SINGLE_CONTROL::ID_LBB: {
-			SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(info.GetClientObject());
-			if (slpackage->index == 7) {
-				lbb->ReceiveSLInfo(slpackage);
-			}
+void AvailablePanel::BounceSLInfo(wxCommandEvent& ddsl) {
+	SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(ddsl.GetClientObject());
+	DropDownSkillLevel* tempwindow = dynamic_cast<DropDownSkillLevel*>(ddsl.GetEventObject());
+	slpackage->slstring = tempwindow->GetLabel();
 
-			break;
-		}
+	lbw->ReceiveSLInfo(slpackage);
+	lbasla->ReceiveSLInfo(slpackage);
+	if (slpackage->index == 7) {
+		lbb->ReceiveSLInfo(slpackage);
 	}
+}
+
+void AvailablePanel::BounceSTInfo(wxCommandEvent& stsl) {
+	int id = stsl.GetId();
+	bool isNotIncluded = weapontypesVector[id]->GetValue();
+
+	STINCPACKAGE package{ isNotIncluded, id };
+	lbw->ReceiveSTInfo(package);
 }
 
 void AvailablePanel::OnToggle(wxCommandEvent& eventfromwho) {
@@ -114,6 +110,58 @@ void AvailablePanel::OnToggle(wxCommandEvent& eventfromwho) {
 	lbasla->ReceiveClassMasteryButtonStatus(isPressed);
 }
 
+//void AvailablePanel::OnNewSelection(wxCommandEvent& uevent) {
+//	//SKILLLEVELPACKAGE* temp = dynamic_cast<SKILLLEVELPACKAGE*>(uevent.GetClientObject());
+//	//DropDownSkillLevel* tempwindow = dynamic_cast<DropDownSkillLevel*>(uevent.GetEventObject());
+//
+//	//temp->slstring = tempwindow->GetLabel();
+//	//wxCommandEvent eventforlbw(TRANSMIT_SL_SELECTION, uevent.GetId());
+//	//eventforlbw.SetClientObject(dynamic_cast<wxClientData*>(temp));
+//	//eventforlbw.SetInt((int)ID_SINGLE_CONTROL::ID_LBW);
+//	//ProcessEvent(eventforlbw);
+//
+//	//wxCommandEvent eventforlbasla(TRANSMIT_SL_SELECTION, uevent.GetId());
+//	//eventforlbasla.SetClientObject(dynamic_cast<wxClientData*>(temp));
+//	//eventforlbasla.SetInt((int)ID_SINGLE_CONTROL::ID_LBASLA);
+//	//ProcessEvent(eventforlbasla);
+//
+//	//wxCommandEvent eventforlbb(TRANSMIT_SL_SELECTION, uevent.GetId());
+//	//eventforlbb.SetClientObject(dynamic_cast<wxClientData*>(temp));
+//	//eventforlbb.SetInt((int)ID_SINGLE_CONTROL::ID_LBB);
+//	//ProcessEvent(eventforlbb);
+//
+//
+//
+//
+//	int offset = 1;
+//	int id = uevent.GetId();
+//
+//	int trueid = id - offset;
+//	bool isNotIncluded = weapontypesVector[trueid]->GetValue();
+//
+//	STINCPACKAGE package{ isNotIncluded, trueid };
+//	lbw->ReceiveSTInfo(package);
+//}
+
 wxBEGIN_EVENT_TABLE(AvailablePanel, wxPanel)
 	EVT_TOGGLEBUTTON((int)ID_MISC::ID_BCLASSMASTERY, AvailablePanel::OnToggle)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDSWORD, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDLANCE, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDAXE, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDBOW, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDGAUNTLETS, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDREASON, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDFAITH, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDAUTHORITY, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDHEAVYARMOR, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDRIDING, AvailablePanel::OnNewSelection)
+	//EVT_COMBOBOX((int)DD_CONTROL::ID_DDFLYING, AvailablePanel::OnNewSelection)
+	//EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BSWORD, AvailablePanel::OnNewSelection)
+	//EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BLANCE, AvailablePanel::OnNewSelection)
+	//EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BAXE, AvailablePanel::OnNewSelection)
+	//EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BBOW, AvailablePanel::OnNewSelection)
+	//EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BGAUNTLETS, AvailablePanel::OnNewSelection)
+	//EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BBLACKMAGIC, AvailablePanel::OnNewSelection)
+	//EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BDARKMAGIC, AvailablePanel::OnNewSelection)
+	//EVT_TOGGLEBUTTON((int)WT_CONTROL::ID_BWHITEMAGIC, AvailablePanel::OnNewSelection)
 wxEND_EVENT_TABLE()
