@@ -7,7 +7,7 @@ wxDEFINE_EVENT(TRANSMIT_LBASLA_SELECTION, wxCommandEvent);
 
 wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 
-wxDEFINE_EVENT(TRANSMIT_LBW_SELECTION, wxCommandEvent);
+//wxDEFINE_EVENT(TRANSMIT_LBW_SELECTION, wxCommandEvent);
 //wxDEFINE_EVENT(TRANSMIT_LBE_SELECTION, wxCommandEvent);
 //wxDEFINE_EVENT(TRANSMIT_LBB_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
@@ -147,7 +147,7 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, (int)ID_MISC::ID_MT);
-	Bind(TRANSMIT_LBW_SELECTION, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
+	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
 	Bind(TRANSMIT_CHIA_SELECTION, &MyFrame::BounceCHIASelection, this, (int)ID_SINGLE_CONTROL::ID_ECHIA);
 	Bind(TRANSMIT_CLIA_SELECTION, &MyFrame::BounceCLIASelection, this, (int)ID_SINGLE_CONTROL::ID_ABP);
 	Bind(TRANSMIT_SLA_SELECTION, &MyFrame::BounceSLASelection, this, (int)ID_SINGLE_CONTROL::ID_ABP);	

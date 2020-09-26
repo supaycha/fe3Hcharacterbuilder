@@ -108,24 +108,6 @@ void ListBoxEquipment::ReselectEquipment() {
 	}
 }
 
-//void ListBoxEquipment::DetermineSelectionStatus() {
-//	if (CompareAllStrings()) {
-//		int index = this->FindString(mostrecentLBEselection);
-//		this->SetSelection(index);
-//		wxCommandEvent eventtoself(wxEVT_LISTBOX, (int)ID_SINGLE_CONTROL::ID_LBE);
-//		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
-//		ProcessEvent(eventtoself);
-//	}
-//
-//	else if (!CompareAllStrings()) {
-//		int index = this->FindString("---");
-//		this->SetSelection(index);
-//		wxCommandEvent eventtoself(wxEVT_LISTBOX, (int)ID_SINGLE_CONTROL::ID_LBE);
-//		eventtoself.SetClientObject(this->GetClientObject(this->GetSelection()));
-//		ProcessEvent(eventtoself);
-//	}
-//}
-
 bool ListBoxEquipment::CompareAllStrings() {
 	wxArrayString currentequipmentselections = this->GetStrings();
 	for (auto equipmentname : currentequipmentselections) {
@@ -155,7 +137,3 @@ wxClientData** ListBoxEquipment::ToArrayData(std::vector<wxClientData*>& ptrs) {
 
 	return temparraydata;
 }
-
-//wxBEGIN_EVENT_TABLE(ListBoxEquipment, wxListBox)
-//	//EVT_LISTBOX((int)ID_SINGLE_CONTROL::ID_LBE, ListBoxEquipment::OnNewSelection)
-//wxEND_EVENT_TABLE()
