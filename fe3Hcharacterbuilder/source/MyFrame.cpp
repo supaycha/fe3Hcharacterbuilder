@@ -1,14 +1,14 @@
 #include <MyFrame.h>
 
 wxDEFINE_EVENT(REPEAT_DDCH_SELECTION, wxCommandEvent);
-wxDEFINE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
+//wxDEFINE_EVENT(REPEAT_DDCL_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(REPEAT_GMT_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_LBASLA_SELECTION, wxCommandEvent);
 
 wxDEFINE_EVENT(SELECTION_HAS_CHANGED, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_DDCH_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_SCL_SELECTION, wxSpinEvent);
-wxDEFINE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
+//wxDEFINE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_GMT_STATS, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_CHIA_SELECTION, wxCommandEvent);
 wxDEFINE_EVENT(TRANSMIT_CLIA_SELECTION, wxCommandEvent);
@@ -141,17 +141,16 @@ MyFrame::MyFrame(wxWindowID id, const wxString& title) : wxFrame(NULL, id, title
 	this->Layout();
 
 	Bind(REPEAT_DDCH_SELECTION, &MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck, this, (int)ID_MISC::ID_MT);
-	Bind(REPEAT_DDCL_SELECTION, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, (int)ID_MISC::ID_MT);
 	Bind(REPEAT_GMT_STATS, &MyFrame::BounceRepeatedGMTStats_partoftotalstats, this, (int)ID_MISC::ID_MT);
-	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
 	Bind(TRANSMIT_CHIA_SELECTION, &MyFrame::BounceCHIASelection, this, (int)ID_SINGLE_CONTROL::ID_ECHIA);
 	Bind(TRANSMIT_CLIA_SELECTION, &MyFrame::BounceCLIASelection, this, (int)ID_SINGLE_CONTROL::ID_ABP);
 	Bind(TRANSMIT_SLA_SELECTION, &MyFrame::BounceSLASelection, this, (int)ID_SINGLE_CONTROL::ID_ABP);	
-	
+	Bind(TRANSMIT_LBASLA_SELECTION, &MyFrame::BounceLBASLASelection_updateselabiliities, this, (int)ID_SINGLE_CONTROL::ID_LBASLA);
 
+	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBWSelection, this, (int)ID_SINGLE_CONTROL::ID_LBW);
+	Bind(wxEVT_COMBOBOX, &MyFrame::BounceRepeatedDDCLSelection_classinnatecheck, this, (int)ID_MISC::ID_DDCL3);
 	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBESelection, this, (int)ID_SINGLE_CONTROL::ID_LBE);
 	Bind(wxEVT_LISTBOX, &MyFrame::BounceLBBSelection, this, (int)ID_SINGLE_CONTROL::ID_LBB);
-	Bind(TRANSMIT_LBASLA_SELECTION, &MyFrame::BounceLBASLASelection_updateselabiliities, this, (int)ID_SINGLE_CONTROL::ID_LBASLA);
 }
 
 void MyFrame::BounceRepeatedDDCHSelection_exclusivitycheck(wxCommandEvent& repititionfromMT) {

@@ -107,11 +107,12 @@ void MysteriousTeacher::BounceDDCLSelection(wxCommandEvent& transmission) {
 		}
 
 		case (int)ID_MISC::ID_DDCL3: {	
-			wxCommandEvent repetition(REPEAT_DDCL_SELECTION, (int)ID_MISC::ID_MT);
-			repetition.SetClientObject(transmission.GetClientObject());
-			ProcessEvent(repetition);
+			transmission.Skip();
+			//wxCommandEvent repetition(REPEAT_DDCL_SELECTION, (int)ID_MISC::ID_MT);
+			//repetition.SetClientObject(transmission.GetClientObject());
+			//ProcessEvent(repetition);
 
-			gmt->UpdateDDCLSelection(*tempclass, (int)ID_MISC::ID_DDCL3);
+			//gmt->UpdateDDCLSelection(*tempclass, (int)ID_MISC::ID_DDCL3);
 			break;
 		}
 	}
