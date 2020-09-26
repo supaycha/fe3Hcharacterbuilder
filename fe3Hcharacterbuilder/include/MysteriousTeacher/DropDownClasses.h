@@ -8,23 +8,29 @@
 #include <Unit/Unit.h>
 #include <Unit/Class.h>
 
-wxDECLARE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
+//wxDECLARE_EVENT(TRANSMIT_DDCL_SELECTION, wxCommandEvent);
 
 class DropDownClasses : public wxComboBox {
 private:
 	std::map<wxString, wxClientData*> classmap;
+	std::map<wxString, wxClientData*> allavailableclasses;
+
 	wxString currentDDCSelection;
 	wxString mostrecentDDCLselection;
-	wxDECLARE_EVENT_TABLE();
+	//wxDECLARE_EVENT_TABLE();
 public:
 	DropDownClasses(std::map<wxString, wxClientData*> classmap, wxWindow* panel, wxWindowID id, const wxArrayString& choices, long style);
 	~DropDownClasses() {}
 
-	void OnNewSelection(wxCommandEvent& selection);
+	//void OnNewSelection(wxCommandEvent& selection);
 	void ReceiveExclusivity(wxString charactername);
+	void FactorInExternalChange();
+	std::map<wxString, wxClientData*> CreateListOfAvailableClasses();
 
+	void recalculate();
 	void repopulate();
-	void DetermineSelectionStatus();
+
+	void ReselectClasses();
 	bool CompareAllStrings();
 
 	wxArrayString ToArrayString(std::vector<wxString> names);
