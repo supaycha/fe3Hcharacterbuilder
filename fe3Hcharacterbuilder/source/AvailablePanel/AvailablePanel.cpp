@@ -15,7 +15,7 @@ AvailablePanel::AvailablePanel(std::map<wxString, wxClientData*> weaponmap, std:
 	wxStaticText* lbwLABEL = new wxStaticText(this, wxID_ANY, "Available Weapons");
 	lbw = new ListBoxWeapons(weaponmap, this, (int)ID_SINGLE_CONTROL::ID_LBW, 150, 260, emptybuffer, wxLB_SINGLE | wxLB_SORT | wxLB_ALWAYS_SB);
 	for (int i = 0; i < (int)CONSTANT_SIZE::WEAPON_TYPE_SIZE; ++i) {
-		weapontypesVector.push_back(new wxToggleButton(this, ((int)WT_CONTROL::ID_BSWORD + i), buffer));
+		weapontypesVector.push_back(new wxToggleButton(this, ((int)WT_CONTROL::ID_BSWORD) + i, buffer));
 		weaponbitmapVector.push_back(wxBitmap(bitmapVector[i], wxBITMAP_TYPE_PNG_RESOURCE));
 	}
 	for (int i = 0; i < (int)CONSTANT_SIZE::WEAPON_TYPE_SIZE; ++i) {
@@ -87,8 +87,7 @@ void AvailablePanel::ReceiveEquipmentExclusivity(wxString charactername) {
 
 void AvailablePanel::BounceSLInfo(wxCommandEvent& ddsl) {
 	SKILLLEVELPACKAGE* slpackage = dynamic_cast<SKILLLEVELPACKAGE*>(ddsl.GetClientObject());
-	DropDownSkillLevel* tempwindow = dynamic_cast<DropDownSkillLevel*>(ddsl.GetEventObject());
-	slpackage->slstring = tempwindow->GetLabel();
+	slpackage->slstring = ddsl.GetString();
 
 	lbw->ReceiveSLInfo(slpackage);
 	lbasla->ReceiveSLInfo(slpackage);
@@ -99,9 +98,11 @@ void AvailablePanel::BounceSLInfo(wxCommandEvent& ddsl) {
 
 void AvailablePanel::BounceSTInfo(wxCommandEvent& stsl) {
 	int id = stsl.GetId();
-	bool isNotIncluded = weapontypesVector[id]->GetValue();
+	int offset = 11;
+	int trueid = id - offset;
+	bool isNotIncluded = weapontypesVector[trueid]->GetValue();
 
-	STINCPACKAGE package{ isNotIncluded, id };
+	STINCPACKAGE package{ isNotIncluded, trueid };
 	lbw->ReceiveSTInfo(package);
 }
 

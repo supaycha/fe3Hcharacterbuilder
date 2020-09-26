@@ -49,7 +49,9 @@ void ListBoxWeapons::ReceiveSLInfo(SKILLLEVELPACKAGE* slpackage) {
 }
 
 void ListBoxWeapons::ReceiveSTInfo(STINCPACKAGE package) {
-	STfilter[package.index].isNotIncluded = package.isNotIncluded;
+	if (package.index < 8) {
+		STfilter[package.index].isNotIncluded = package.isNotIncluded;
+	}
 	Freeze();
 	repopulate();
 	Thaw();
