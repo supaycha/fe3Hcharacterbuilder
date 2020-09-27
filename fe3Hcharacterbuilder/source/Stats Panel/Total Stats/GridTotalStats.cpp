@@ -14,15 +14,15 @@ GridTotalStats::GridTotalStats(wxWindow* parent, wxWindowID id) :
 	SetUseNativeColLabels(true);
 
 	SetRowLabelSize(0);
-	initpopulate();
+	//initpopulate();
 }
 
-void GridTotalStats::initpopulate() {
-	for (int i = 0; i < gtbts->GetColsCount(); ++i) {
-		SetCellValue(0, i, L"0");
-		int k = 0;
-	}
-}
+//void GridTotalStats::initpopulate() {
+//	for (int i = 0; i < gtbts->GetColsCount(); ++i) {
+//		SetCellValue(0, i, L"0");
+//		int k = 0;
+//	}
+//}
 
 void GridTotalStats::ReceiveGMTStats(Stats stats) {
 	gtbts->ReceiveGMTStats(stats);

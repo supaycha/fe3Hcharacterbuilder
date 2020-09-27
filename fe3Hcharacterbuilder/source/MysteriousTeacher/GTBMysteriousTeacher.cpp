@@ -1,8 +1,8 @@
 #include <MysteriousTeacher/GTBMysteriousTeacher.h>
 
 void GTBMysteriousTeacher::UpdateDDCHSelection(Character character) {
-	currentDDCHstats = character.getStats();
-	currentDDCHgrowths = character.getGrowths();
+	statsVector[0] = character.getStats();
+	growthsVector[0] = character.getGrowths();
 
 	recalculate();
 }
@@ -26,19 +26,19 @@ void GTBMysteriousTeacher::UpdateSCLSelection(int level, int ID) {
 void GTBMysteriousTeacher::UpdateDDCLSelection(Class cLass, int ID) {
 	switch (ID) {
 		case (int)ID_MISC::ID_DDCL1: {
-			currentDDCL1growths = cLass.getGrowths();
+			growthsVector[1] = cLass.getGrowths();
 			break;
 		}
 
 		case (int)ID_MISC::ID_DDCL2: {
-			currentDDCL2growths = cLass.getGrowths();
+			growthsVector[2] = cLass.getGrowths();
 			break;
 		}
 
 		case (int)ID_MISC::ID_DDCL3: {
-			currentDDCL3booststostats = cLass.getBoostedStats();
-			currentDDCL3minstats = cLass.getStats();
-			currentDDCL3mountvars = cLass.getMountedStats();
+			statsVector[1] = cLass.getBoostedStats();
+			statsVector[2] = cLass.getStats();
+			statsVector[3] = cLass.getMountedStats();
 			break;
 		}
 	}
@@ -47,51 +47,57 @@ void GTBMysteriousTeacher::UpdateDDCLSelection(Class cLass, int ID) {
 }
 
 void GTBMysteriousTeacher::recalculate() {
+	//charactergrowths to totalsgrowths1(totals1)
 	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
-		totals1[i] = currentDDCHgrowths[i];
+		growthsVector[3][i] = growthsVector[0][i];
 	}
 
+	//characterstats to totalstats1(totals2)
 	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
-		totals2[i] = currentDDCHstats[i];
+		statsVector[4][i] = statsVector[0][i];
 	}
 
+	//charactergrowths and classgrowths1 to totalgrowths2(totals3)
 	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
-		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
-		float classgrowth = _wtof(currentDDCL1growths[i].getText().c_str());
-		totals3[i] = std::to_wstring(chargrowth + classgrowth);
+		float chargrowth = _wtof(growthsVector[0][i].getText().c_str());
+		float classgrowth = _wtof(growthsVector[1][i].getText().c_str());
+		growthsVector[4][i] = std::to_wstring(chargrowth + classgrowth);
 	}
 
+	//charactergrowths and classgrowths1 to totalstats2(totals4)
 	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
-		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
-		float classgrowth = _wtof(currentDDCL1growths[i].getText().c_str());
+		float chargrowth = _wtof(growthsVector[0][i].getText().c_str());
+		float classgrowth = _wtof(growthsVector[1][i].getText().c_str());
 		float subtotal = chargrowth + classgrowth;
 		int level = currentSCL1selection;
 		int avgtotal = subtotal * level;
-		totals4[i] = std::to_wstring(avgtotal);
+		statsVector[5][i] = std::to_wstring(avgtotal);
 	}
 
+	//charactergrowths and classgrowths1 to totalgrowths3(totals5)
 	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
-		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
-		float classgrowth2 = _wtof(currentDDCL2growths[i].getText().c_str());
-		totals5[i] = std::to_wstring(chargrowth + classgrowth2);
+		float chargrowth = _wtof(growthsVector[0][i].getText().c_str());
+		float classgrowth2 = _wtof(growthsVector[2][i].getText().c_str());
+		growthsVector[5][i] = std::to_wstring(chargrowth + classgrowth2);
 	}
 
+	//charactergrowths and classgrowths1 to totalgrowths3(totals5)
 	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
-		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
-		float classgrowth2 = _wtof(currentDDCL2growths[i].getText().c_str());
+		float chargrowth = _wtof(growthsVector[0][i].getText().c_str());
+		float classgrowth2 = _wtof(growthsVector[2][i].getText().c_str());
 		float subtotal2 = chargrowth + classgrowth2;
 		int level2 = currentSCL2selection;
 		int avgtotal2 = subtotal2 * level2;
-		totals6[i] = std::to_wstring(avgtotal2);
+		statsVector[6][i] = std::to_wstring(avgtotal2);
 	}
 
 	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
-		int charstat = _wtoi(currentDDCHstats[i].getText().c_str());
+		int charstat = _wtoi(statsVector[0][i].getText().c_str());
 
-		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
+		float chargrowth = _wtof(growthsVector[0][i].getText().c_str());
 
-		float classgrowth1 = _wtof(currentDDCL1growths[i].getText().c_str());
-		float classgrowth2 = _wtof(currentDDCL2growths[i].getText().c_str());
+		float classgrowth1 = _wtof(growthsVector[1][i].getText().c_str());
+		float classgrowth2 = _wtof(growthsVector[2][i].getText().c_str());
 
 		int level1 = currentSCL1selection;
 		int level2 = currentSCL2selection;
@@ -103,18 +109,18 @@ void GTBMysteriousTeacher::recalculate() {
 		int avgtotal2 = subtotal2 * level2;
 
 		int grandtotal = charstat + avgtotal1 + avgtotal2;
-		totals7[i] = std::to_wstring(grandtotal);
+		statsVector[7][i] = std::to_wstring(grandtotal);
 	}
 
 	for (int i = 0; i < (int)CONSTANT_SIZE::NUM_OF_GMT_COLS; ++i) {
-		int charstat = _wtoi(currentDDCHstats[i].getText().c_str());
+		int charstat = _wtoi(statsVector[0][i].getText().c_str());
 
-		float chargrowth = _wtof(currentDDCHgrowths[i].getText().c_str());
+		float chargrowth = _wtof(growthsVector[0][i].getText().c_str());
 
-		float classgrowth1 = _wtof(currentDDCL1growths[i].getText().c_str());
-		float classgrowth2 = _wtof(currentDDCL2growths[i].getText().c_str());
+		float classgrowth1 = _wtof(growthsVector[1][i].getText().c_str());
+		float classgrowth2 = _wtof(growthsVector[2][i].getText().c_str());
 
-		int classboost = _wtoi(currentDDCL3booststostats[i].getText().c_str());
+		int classboost = _wtoi(statsVector[1][i].getText().c_str());
 
 		int level1 = currentSCL1selection;
 		int level2 = currentSCL2selection;
@@ -127,6 +133,6 @@ void GTBMysteriousTeacher::recalculate() {
 
 		int grandtotal = charstat + avgtotal1 + avgtotal2;
 		int megagrandtotal = grandtotal + classboost;
-		totals8[i] = std::to_wstring(megagrandtotal);
+		statsVector[8][i] = std::to_wstring(megagrandtotal);
 	}
 }

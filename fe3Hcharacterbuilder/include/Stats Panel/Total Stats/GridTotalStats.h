@@ -11,7 +11,7 @@ private:
 	GTBTotalStats* gtbts;
 public:
 	GridTotalStats(wxWindow* parent, wxWindowID id);
-	void initpopulate();
+	//void initpopulate();
 	void ReceiveGMTStats(Stats stats);
 	void ReceiveGWSStats(Stats stats);
 	void ReceiveGESStats(Stats stats);

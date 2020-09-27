@@ -19,8 +19,10 @@ public:
 	GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bool hidecolheaders);
 	~GridMysteriousTeacher() {}
 
-	void initpopulate();
+	//void initpopulate();
 	void repopulate();
+	void FillStandardRow(int row, int casenum);
+	void FillFloatRow(int row, int casenum);
 
 	void UpdateDDCHSelection(Character character);
 	void UpdateSCLSelection(int level, int ID);

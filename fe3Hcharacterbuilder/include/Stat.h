@@ -17,6 +17,8 @@ public:
 	{}
 
 	std::wstring getText() const { return stat; }
+	void setText(std::wstring change) { stat = change; }
+
 	Stat& operator=(const Stat& source) = default;
 	Stat(const Stat&) = default;
 };

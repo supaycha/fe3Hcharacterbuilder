@@ -17,6 +17,7 @@ public:
 	{}
 
 	std::wstring getText() const { return growth; }
+	void setText(wxString change) { growth = change; }
 	Growth& operator=(const Growth& source) = default;
 	Growth(const Growth&) = default;
 };

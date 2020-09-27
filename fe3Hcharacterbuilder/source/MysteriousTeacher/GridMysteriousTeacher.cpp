@@ -24,62 +24,38 @@ GridMysteriousTeacher::GridMysteriousTeacher(wxWindow* parent, wxWindowID id, bo
 	}
 
 	SetRowLabelSize(0);
-	initpopulate();
+	//initpopulate();
 }
 
-void GridMysteriousTeacher::initpopulate() {
-	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
-		SetCellValue(0, i, L"0");
-		int k = 0;
-	}
-}
+//void GridMysteriousTeacher::initpopulate() {
+//	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
+//		SetCellValue(0, i, L"0");
+//		int k = 0;
+//	}
+//}
 
 void GridMysteriousTeacher::repopulate() {
-	wxGridCellFloatRenderer* testerlulz = new wxGridCellFloatRenderer(3, 2);
 	std::vector<Stat> tempvectforstats;
-	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
-		std::wstring stattoset = gtbmt->GetValue(0, i);
-		SetCellValue(0, i, stattoset);
-	}
-
-	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
-		std::wstring stattoset = gtbmt->GetValue2(0, i);
-		SetCellValue(1, i, stattoset);
-	}
-
-	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
-		std::wstring stattoset = gtbmt->GetValue3(0, i);
-		SetCellRenderer(2, i, testerlulz->Clone());
-		SetCellAlignment(2, i, wxALIGN_CENTER, wxALIGN_CENTER);
-		SetCellValue(2, i, stattoset);
-	}
-
-	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
-		std::wstring stattoset = gtbmt->GetValue4(0, i);
-		SetCellValue(3, i, stattoset);
-	}
-
-	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
-		std::wstring stattoset = gtbmt->GetValue5(0, i);
-		SetCellRenderer(4, i, testerlulz->Clone());
-		SetCellAlignment(4, i, wxALIGN_CENTER, wxALIGN_CENTER);
-		SetCellValue(4, i, stattoset);
-	}
-
-	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
-		std::wstring stattoset = gtbmt->GetValue6(0, i);
-		SetCellValue(5, i, stattoset);
-	}
-
-	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
-		std::wstring stattoset = gtbmt->GetValue7(0, i);
-		SetCellValue(6, i, stattoset);
-	}
-
-	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
-		std::wstring stattoset = gtbmt->GetValue8(0, i);
-		SetCellValue(7, i, stattoset);
-		tempvectforstats.push_back(Stat(stattoset));
+	int floatcount = 0, standardcount = 0;
+	for (int i = 0; i < gtbmt->GetRowsCount(); ++i) {
+		switch (i) {
+			case 1:
+			case 3:
+			case 5:
+			case 6:
+			case 7: {
+				standardcount++;
+				FillStandardRow(standardcount, i);
+				break;
+			}
+			case 0:
+			case 2:
+			case 4: {
+				floatcount++;
+				FillFloatRow(floatcount, i);
+				break;
+			}
+		}
 	}
 
 	Stats* ptrtostats = new Stats(tempvectforstats);
@@ -87,7 +63,23 @@ void GridMysteriousTeacher::repopulate() {
 	wxClientData* tempdata = dynamic_cast<wxClientData*>(ptrtostats/*->clone()*/);
 	event.SetClientObject(tempdata);
 	ProcessEvent(event);
+}
 
+void GridMysteriousTeacher::FillStandardRow(int row, int casenum) {
+	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
+		std::wstring stattoset = gtbmt->GetValue(casenum, i);
+		SetCellValue(casenum, i, stattoset);
+	}
+}
+
+void GridMysteriousTeacher::FillFloatRow(int row, int casenum) {
+	for (int i = 0; i < gtbmt->GetColsCount(); ++i) {
+		wxGridCellFloatRenderer* renderer = new wxGridCellFloatRenderer(3, 2);
+		std::wstring stattoset = gtbmt->GetValue(casenum, i);
+		SetCellRenderer(casenum, i, renderer->Clone());
+		SetCellAlignment(casenum, i, wxALIGN_CENTER, wxALIGN_CENTER);
+		SetCellValue(casenum, i, stattoset);
+	}
 }
 
 void GridMysteriousTeacher::UpdateDDCHSelection(Character character) {
